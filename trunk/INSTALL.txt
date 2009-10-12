@@ -1,0 +1,103 @@
+Pour des informations sur l'installation, l'utilisation et la configuration du Bilboplanet, 
+incluant une liste des problèmes déjà connus et des informations de dépannage, référez vous à 
+http://redmine.bilboplanet.org/wiki/bilboplanet
+
+Pour poser des questions, n'hésitez pas à passer sur notre forum :
+http://redmine.bilboplanet.org/projects/bilboplanet/boards
+
+INSTALLATION AUTOMATIQUE:
+=========================
+
+Placez tous les fichiers du package dans un repertoire accessible depuis votre serveur. 
+Accédez à votre serveur à cette adresse à l'aide d'un navigateur et suivez les instructions.
+
+NOTE: Veillez à ce que les dossiers ci-dessous soient accessibles en écriture.
+
+    * /.protected
+    * /inc/config.php
+    * /admin/.htaccess
+
+Pour pouvoir utiliser l'installation automatique il est important que ces fichiers soient supprimés avant l'installation.
+Assurez-vous aussi d'avoir une base de donnée vide
+
+
+INSTALLATION MANUELLE:
+======================
+
+Créez une base de données avec 4 tables
+
+CREATE TABLE IF NOT EXISTS `article` (
+  `num_article` int(10) NOT NULL auto_increment,
+  `num_membre` varchar(32) character set utf8 collate utf8_bin NOT NULL default '',
+  `article_pub` int(15) default NULL,
+  `article_titre` varchar(255) default NULL,
+  `article_url` varchar(255) default NULL,
+  `article_content` longtext,
+  `article_statut` int(1) NOT NULL default '1',
+  `article_score` int(20) NOT NULL default '0',
+  PRIMARY KEY  (`num_article`)
+);
+
+CREATE TABLE IF NOT EXISTS `flux` (
+  `num_flux` int(5) NOT NULL auto_increment,
+  `url_flux` char(255) default '',
+  `num_membre` int(5) NOT NULL,
+  `last_updated` int(11) NOT NULL default '0',
+  `status_flux` int(1) NOT NULL default '1',
+  PRIMARY KEY  (`num_flux`,`num_membre`)
+);
+
+CREATE TABLE IF NOT EXISTS `membre` (
+  `num_membre` int(5) NOT NULL auto_increment,
+  `nom_membre` char(50) default '',
+  `email_membre` char(50) NOT NULL default '',
+  `site_membre` char(255) default '',
+  `statut_membre` int(1) default NULL,
+  PRIMARY KEY  (`num_membre`)
+);
+
+CREATE TABLE IF NOT EXISTS `votes` (
+  `num_article` int(10) NOT NULL auto_increment,
+  `vote_ip` varchar(15) NOT NULL default '',
+  PRIMARY KEY  (`num_article`,`vote_ip`)
+);
+
+
+
+Configurez votre fichier /inc/config.php à l'aide du fichier /inc/config.php.default
+Créez un fichier .htaccess pour limiter l'accès à la partie d'administration du site
+      ex: admin/.htaccess
+      AuthUserFile ../.protected
+      AuthGroupFile /dev/null
+      AuthName "Restricted Area..."
+      AuthType Basic
+      <limit GET POST>
+      require valid-user
+      </Limit>
+
+Puis créer un fichier .protected à la racine du site
+      ex: .protected
+      user:password
+
+
+MISE A JOUR:
+============
+Pour la mise à jour à partir d'une ancienne version,
+Gardez une copie des fichiers :
+.protected
+.htaccess
+admin/.htaccess
+inc/config.php
+
+Mettez à jour la base de donnée :
+
+ALTER TABLE `flux` ADD `last_updated` INT NOT NULL DEFAULT '0';
+ALTER TABLE `flux` ADD `status_flux` INT(1) NOT NULL DEFAULT '1'
+
+
+FAQ:
+====
+Pour les personne ayant des problèmes d'encodage des caractères, et n'ayant pas accès au serveur apache, 
+décommentez la 23ième ligne du fichier .htaccess à la racine du Planet : 
+      AddDefaultCharset UTF-8
+

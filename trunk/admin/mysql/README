@@ -1,0 +1,5 @@
+To install a database file onto the mysql server : 
+mysql -h host -u user -p database < backup_file.sql
+
+For a .sql.gz file :
+gunzip fichier.sql.gz | mysql -h HOST -u LOGIN -p DBNAME

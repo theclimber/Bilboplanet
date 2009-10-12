@@ -1,0 +1,97 @@
+#menu
+{
+position:relative;
+z-index:999;
+float:left;
+width:974px;
+height:33px;
+background-image:url('../images/menu_main.png');
+margin:0;
+padding:0;
+
+}
+
+/******************************/
+/**           MENU           **/
+/******************************/
+#menu li
+{
+position:relative;
+z-index:999;
+display:block;
+padding:0px;
+height:33px;
+float:left;
+list-style:none;
+}
+#menu li:hover
+{
+background-image:url('../images/menu_hover.png');
+}
+#menu li:hover a
+{
+color:#000;
+}
+#menu li.firstLi
+{
+border-left:none;
+}
+#menu li.preLastLi
+{
+}
+#menu li.lastLi
+{
+float:right;
+border-left:none;
+margin-right:175px;
+}
+#menu li.lastLi:hover
+{
+background-image:none;
+}
+#menu li.lastLi form
+{
+float:left;
+padding:0;
+}
+#menu li a
+{
+color:#191919;
+font-weight:bold;
+line-height:33px;
+position:relative;
+text-decoration:none;
+}
+#menu li ul{
+display:none;
+position:absolute;
+z-index:999;
+margin:0;
+padding:0;
+top:33px;
+left:0;
+width:200px;
+}
+#menu li:hover ul{
+display:block;
+}
+#menu li ul li{
+position:relative;
+z-index:999;
+border:none;
+width:100%;
+margin:0;
+padding:0;
+height:24px;
+text-align:left;
+background:url('../images/sub_menu_main.png') repeat transparent;
+border-bottom:1px solid #000000;
+}
+#menu li ul li:hover{
+background:url('../images/sub_menu_hover.png') repeat transparent;
+}
+#menu li ul li a{
+line-height:24px;
+color:#FFFFFF;
+padding:0 0 0 25px;
+}

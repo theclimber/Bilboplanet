@@ -1,0 +1,23 @@
+#centre
+{
+	position:relative;
+	float:left;
+	width:974px;
+}
+
+#centre_centre
+{
+	position:relative;
+	float:left;
+	width:767px;
+	background:#fdfdfd;
+	padding:5px 9px 5px 5px;
+	border-right:1px solid #afafaf;
+	border-top:1px solid #afafaf;
+	border-left:1px solid #afafaf;
+	margin-top:17px;
+	-moz-box-shadow:0 4px 18px #999;
+	-webkit-box-shadow:0 4px 18px #999;
+	-khtml-box-shadow:0 4px 18px #999;
+	box-shadow:0 4px 18px #999;
+}

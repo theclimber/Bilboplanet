@@ -1,0 +1,15 @@
+# On recrit les urls sans www
+RewriteEngine on
+
+ErrorDocument 404 /404.php
+
+# Passage de l'interface d'aministration en https
+RewriteCond %{SERVER_PORT} !^443$
+RewriteCond %{REQUEST_URI} ^/admin(.*)
+
+# On bloque les scanner de failles dont le query string contient "=http:"
+RewriteCond %{QUERY_STRING} ^(.*)http(\:|\%3A)(.*)$
+ReWriteRule .* - [F]
+
+# Forcer l'encodage en UTF8 pour les personnes n'ayant pas accès à la configuration apache
+# AddDefaultCharset UTF-8

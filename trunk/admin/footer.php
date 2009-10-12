@@ -1,0 +1,31 @@
+<?php
+/******* BEGIN LICENSE BLOCK *****
+* BilboPlanet - Un agrégateur de Flux RSS Open Source en PHP.
+* BilboPlanet - An Open Source RSS feed aggregator written in PHP
+* Copyright (C) 2009 By French Dev Team : Dev BilboPlanet
+* Contact : dev@bilboplanet.org
+* Website : www.bilboplanet.org
+* Tracker : redmine.bilboplanet.org
+* Blog : blog.bilboplanet.org
+* 
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU Affero General Public License as
+* published by the Free Software Foundation, either version 3 of the
+* License, or (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU Affero General Public License for more details.
+*
+* You should have received a copy of the GNU Affero General Public License
+* along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*
+***** END LICENSE BLOCK *****/
+?>
+<div id="protection_hack"></div></div></div>
+<div id="footer"> <a href="http://www.bilboplanet.org"><?=T_('Powered by BilboPlanet');?></a> <a href="http://validator.w3.org/check?verbose=1&uri=<?php echo $planet-url; ?>"><?=T_('Valid CSS - Xhtml');?></a> <a href="http://www.bilboplanet.org"><?=T_('Designed by BilboPlanet');?></a> <a href="#tour" id="retour_top"><?=T_('Top');?></a> </div></div>
+</div><!-- fin page -->
+</body>
+</html>

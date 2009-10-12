@@ -1,0 +1,38 @@
+#header
+{
+	position:relative;
+	background-image:url(../images/background-header.png);
+	background-position:left;
+	background-repeat:no-repeat;
+	display:block;
+	width:974px;
+}
+
+#header #title
+{
+	background-image:url(../images/planet.png);
+	background-position:right top;
+	background-repeat:no-repeat;
+	width:950px;
+	height:108px;
+}
+
+#header #title a
+{
+	letter-spacing:1px;
+	color:#F2F2F2;
+	font-size:40px;
+	padding: 15px 20px;
+	text-decoration:none;
+	text-align:center;
+	visibility:hidden;
+}
+
+#header #description_title a
+{
+	color:#F2F2F2;
+	text-align:center;
+	font-size:22px;
+	padding: 5px 20px;
+	text-decoration:none;
+}

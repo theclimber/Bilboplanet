@@ -1,0 +1,33 @@
+img
+{
+	border:0px;
+	border-bottom:none;
+}
+
+img.gravatar
+{
+	max-height:40px;
+	max-width:40px;
+	font-size:8px;
+}
+
+/* WordPress images */
+
+img.alignright
+{
+	float:right
+}
+
+img.alignleft
+{
+	float:left;
+}
+
+img.aligncenter
+{
+	margin-left:auto;
+	margin-right:auto;
+	display:block;
+}
+
+/* End WordPress images */

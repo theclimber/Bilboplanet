@@ -1,0 +1,35 @@
+#header
+{
+	/*background-image:url(../images/background-header.png);*/
+position:absolute;
+width:974px;
+}
+
+#header #title
+{
+	background-image:url(../images/planet.png);
+	background-position:right top;
+	background-repeat:no-repeat;
+	width:950px;
+	height:93px;
+	margin-top:15px;
+}
+
+#header #title a
+{
+color:#F2F2F2;
+font-family:georgia,arial;
+font-size:40px;
+font-style:italic;
+font-weight:bold;
+text-decoration:none;
+}
+
+#header #description_title a
+{
+color:#F2F2F2;
+font-size:18px;
+padding:5px 20px 5px 11px;
+text-align:center;
+text-decoration:none;
+}

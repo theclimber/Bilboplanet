@@ -1,0 +1,4 @@
+# au revoir et merci
+User-agent: *
+Disallow: /logs
+Disallow: /themes

@@ -1,5 +1,0 @@
-# Activation de l'index
-Options +indexes
-
-# Index etendu
-IndexOptions +FancyIndexing

@@ -24,7 +24,9 @@
 *
 ***** END LICENSE BLOCK *****/
 ?>
-<?php include_once(dirname(__FILE__).'/head.php');
+<?php 
+include_once(dirname(__FILE__).'/head.php');
+include_once(dirname(__FILE__).'/sidebar.php');
 # Inclusion des fonctions
 require_once(dirname(__FILE__).'/../inc/fonctions.php');
 
@@ -44,9 +46,21 @@ if(isset($_POST) && isset($_POST['nom']) && isset($_POST['path']) && isset($_POS
 		$result = exec("rm -f $path/*");
 }
 ?>
-	<p><?=T_('All the log files');?></p><br />
-<table>
-<tr><td><?=T_('Name');?></td><td><?=T_('Action');?></td><td></td></tr>
+
+<div id="BP_page" class="page">
+	<div class="inpage">
+	
+<fieldset><legend><?=T_('All the log files');?></legend>
+		<div class="message">
+			<p>Gestion des Journaux d'information du Planet (utilisateurs avanc&eacute;s).</p>
+		</div><br/>
+		
+<center><table class="table-log">
+<thead>
+<tr>
+<th class="log1 logl" scope="col"><?=T_('Name');?></th>
+<th class="log2" scope="col" /><?=T_('Action');?></th>
+
 <?php
 $log_path = dirname(__FILE__)."/../logs";
 //using the opendir function
@@ -54,17 +68,26 @@ $dir_handle = @opendir($log_path) or die("Unable to open $log_path");
 while ($file = readdir($dir_handle)){
 	if($file!="." && $file!=".." && $file!=".svn" && $file!=".DS_Store" && $file!=".htaccess")
 		# Affichage de la ligne de tableau
-		echo '<form method="POST"><tr>
+		echo '<form method="POST">
+			<tr>
 			<input type="hidden" name="nom" value="'.$file.'"/>
 			<input type="hidden" name="path" value="'.$log_path.'"/>
 			<td><a href=../logs/'.$file.'>'.$file.'</a></td>
-			<td><input type="radio" name="action" value="del"> '.T_('Supprimer').'</td>
-			<td><input type="submit" value="'.T_('Ok').'"/></td></tr></form>';
+			<td><center>
+				<input type="hidden" name="action" value="del">
+				<input class="button br3px" type="submit" value="'.T_('Delete').'"/></center>
+			</td>
+			</tr>
+			</form>';
 }
 closedir($dir_handle);
 
 ?>
-</table></p>
+</td>
+</tr>
+</thead>
+</table>
+</center>
 <br />&nbsp;
 <p>
 <?php 
@@ -73,6 +96,6 @@ echo '<center><form method="POST">
 	<input type="hidden" name="nom" value="all"/>
 	<input type="hidden" name="path" value="'.$log_path.'"/>
 	<input type="hidden" name="action" value="del">
-	<input type="submit" value="'.T_('Purge all the log files').'"/></form></center>';
+	<div class="button"><input type="submit" class="reset" value="'.T_('Purge all the log files').'"/></div></form></center>';
 
 include(dirname(__FILE__).'/footer.php'); ?>

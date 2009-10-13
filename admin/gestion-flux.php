@@ -27,14 +27,25 @@
 <?php
 # Inclusion des fonctions
 require_once(dirname(__FILE__).'/../inc/fonctions.php');
+	connectBD();
 debutCache();
 $flash = '';
 global $error;
+
 # On verifie que le formulaire est bien saisie
 if( isset($_POST) && isset($_POST['submit']))  {
 	securiteCheck();
 
-	$action = trim($_POST['action']);
+}
+if(isset($_POST) && (
+    (isset($_POST['submitModify']) && !empty($_POST['submitModify'])) ||
+    (isset($_POST['submitDelete']) && !empty($_POST['submitDelete'])) ||
+    (isset($_POST['submitAjout']) && !empty($_POST['submitAjout']))
+))
+{
+	$action = trim($_POST['submitModify']);
+	$action = trim($_POST['submitDelete']);
+	$action = trim($_POST['submitAjout']);
 	$num  = trim($_POST['num']);
 	$num_membre  = trim($_POST['num_membre']);
 	$sql = "SELECT site_membre FROM membre WHERE num_membre='".$num_membre."'";
@@ -43,7 +54,7 @@ if( isset($_POST) && isset($_POST['submit']))  {
 	if (isset($_POST['flux']) && empty($_POST['flux'])){
 			$flux = check_field('flux',trim($_POST['flux']),'feed');
 	}
-	elseif ($action == "ajout" || $action == "mod"){
+	elseif ((isset($_POST['submitDelete']) && !empty($_POST['submitDelete'])) || (isset($_POST['submitAjout']) && !empty($_POST['submitAjout']))) {
 		if (isset($_POST['statut']) && trim($_POST['statut'])==1)
 			$flux = check_field('flux',$site.trim($_POST['flux']),'feed');
 		else
@@ -55,15 +66,14 @@ if( isset($_POST) && isset($_POST['submit']))  {
 	$flux['value'] = trim($_POST['flux']);
 
 	if ($flux['success']){
-		connectBD();
-		if($action=="del") {
+	if(isset($_POST) && isset($_POST['submitDelete']) && !empty($_POST['submitDelete'])) {
 			$sql = "DELETE FROM flux WHERE num_flux='$num'";
 			$flash = array('type' => 'notice', 'msg' => sprintf(T_("The feed %s was correctly deleted"),$flux['value']));
 			$result = mysql_query($sql) or die("Error with request $sql");
 			if(!$result)
 				$flash = array('type' => 'error', 'msg' => T_("Error while trying to change the informations of the feed"));
 		}
-		elseif ($action=="ajout") {
+	if(isset($_POST) && isset($_POST['submitAjout']) && !empty($_POST['submitAjout'])) {
 			$sql = "SELECT url_flux FROM flux WHERE url_flux='".$flux['value']."' AND num_membre='".$num_membre."'";
 			$result1 = mysql_query($sql) or die("Error with request $sql");
 			if (mysql_result($result1,0)){
@@ -78,7 +88,7 @@ if( isset($_POST) && isset($_POST['submit']))  {
 			}
 			$flash = array('type' => 'notice', 'msg' => sprintf(T_("Adding the feed %s succeeded"),$flux['value']));
 		}
-		elseif ($action=="mod") {
+	if(isset($_POST) && isset($_POST['submitModify']) && !empty($_POST['submitModify'])) {
 			$statut = trim($_POST['statut']);
 			$sql = "UPDATE flux 
 				SET url_flux = '".$flux['value']."', status_flux = '$statut'
@@ -91,10 +101,11 @@ if( isset($_POST) && isset($_POST['submit']))  {
 		closeBD();
 	}
 	else {
-		if ($action=="ajout")
+	if(isset($_POST) && isset($_POST['submitAjout']) && !empty($_POST['submitAjout'])) {
 			$error['flux']=true;
 		$flash = array('type' => 'error', 'msg' => $flux['error']);
 	}
+}
 }
 function error_bool($error, $field) {
 	if($error[$field])
@@ -104,51 +115,80 @@ function error_bool($error, $field) {
 }
 
 include_once(dirname(__FILE__).'/head.php');
+include_once(dirname(__FILE__).'/sidebar.php');
 ?>
-
-	<h2><?=T_('Manage feeds');?></h2>
+<div id="BP_page" class="page">
+	<div class="inpage">
+	
 <?php if (!empty($flash))echo '<div class="flash '.$flash['type'].'">'.$flash['msg'].'</div>'; ?>
-<form method="post">
-<table width="450">
-<tr>
-<?php error_bool($error, "flux"); ?><?=T_('Url of the feed (Without the ending /)');?></td>
-<td><input type="text" name="flux" size="22" value="<?php if($error["flux"]) echo $_POST['flux'];?>" /></td>
-</tr>
-<tr>
-<td><?=T_('Name of the user');?></td>
-<td><select name="num_membre">
-<?php
-# Connection a la base 
-connectBD();
 
-# Execution de la requete
-$sql = 'SELECT num_membre, nom_membre FROM membre ORDER BY nom_membre ASC;';
-$rqt = mysql_query($sql) or die("Error with request $sql");
+<fieldset><legend><?=T_('Manage feeds');?></legend>
+	<div class="message">
+		<p>G&eacute;rer les Flus RSS des membres.</p>
+	</div>
+		
+<br/>
 
-# Traitement de la liste
-while($liste = mysql_fetch_row($rqt)) {
-  echo '<option value="'.$liste[0].'">'.$liste[1].'</option>';
-}
-?>
-</select></td>
-</tr>
-<tr>
-<td  colspan="2" align="center"><br/>
-<input type="hidden" name="action" value="ajout"/>
-<center><input type="reset" value="<?=T_('Reset');?>" onClick="this.form.reset()">&nbsp;&nbsp;
-<input type="submit" name="submit" value="<?=T_('Apply');?>"></center>
-</tr>
-</table><br/>
+<center>
+<?php error_bool($error, "flux"); ?>
+<table class="table-log sortable">
+		<thead>
+			<tr>
+				<th class="tc1 tcl" scope="col"><?=T_('Url of the feed (Without the ending /)');?></th>
+				<th class="tc2" scope="col" style='text-align:center'><?=T_('Name of the user');?></th>
+			</tr>
+		</thead>
+			<tr>
+			<form method="post">
+				<td class="tc1 tcl row1"><input class="input" style="width:98%" type="text" name="flux" size="40" value="<?php if($error["flux"]) echo $_POST['flux'];?>" /></td>
+				<td class="tc2 row1">
+					<center>
+					<select name="num_membre" style="width:98%">
+					<?php
+					# Connection a la base 
+					connectBD();
+
+					# Execution de la requete
+					$sql = 'SELECT num_membre, nom_membre FROM membre ORDER BY nom_membre ASC;';
+					$rqt = mysql_query($sql) or die("Error with request $sql");
+
+					# Traitement de la liste
+					while($liste = mysql_fetch_row($rqt)) {
+					  echo '<option value="'.$liste[0].'">'.$liste[1].'</option>';
+					}
+					?>
+					</select>
+					</center>
+				</td>
+			</tr>
+</table>
+<br />
+<div class="button"><input type="reset" class="reset" name="reset" onClick="this.form.reset()" value="<?=T_('Reset');?>"></div>
+<div class="button"><input type="submit" name="submitAjout" class="valide" value="<?=T_('Send');?>"></div>
+</center>
 </form>
+</fieldset>
 
-<h2><?=T_('Add a feed');?></h2>
+<fieldset><legend><?=T_('Add a feed');?></legend>
+	<div class="message">
+		<p>G&eacute;rer les Flus RSS des membres.</p>
+	</div>
+	
+
 <?php
 # On recupere les informtions sur les membres
 $sql = 'SELECT nom_membre, site_membre, email_membre, statut_membre FROM membre ORDER by nom_membre ASC';
 $rqt = mysql_query($sql) or die("Error with request $sql");
 ?>
-<table>
-<tr id="tr_head"><td><?=T_('Name');?></td><td><?=T_('URL of the feed');?></td><td><?=T_('Status');?></td><td><?=T_('Action');?></td><td></td></tr>
+<center>
+<table class="table-results sortable" >
+		<thead>
+			<tr>
+				<th style="width:60px;" scope="col"><?=T_('Name');?></th>
+				<th class="tc2" scope="col"><?=T_('URL of the feed');?></th>
+				<th style="width:40px;text-align:center;" scope="col"><?=T_('Status');?></th>
+				<th style="width:100px;text-align:center;" scope="col"><?=T_('Action');?></th>
+			</tr>
 <?php
 # Valeurs par defaut
 $num_page = 0;
@@ -205,20 +245,25 @@ while($liste = mysql_fetch_row($rqt)) {
 	}
 
 	# Affichage
-	echo '<form method="POST"><tr>
-		<input type="hidden" name="num" value="'.$liste[0].'"/>
-		<input type="hidden" name="num_membre" value="'.$liste[6].'"/>
-		<td class="'.$statut.'">'.$liste[2].'</td>
-		<td>'.$liste[3].'<input type="text" name="flux" value="'.$liste[1].'" size="40" class="zone-saisie" /><a href="'.$url.'" target="_bank">'.T_('show').'</a></td>
-		<td>'.$select.'</td>
-		<td><input type="radio" name="action" value="mod"> '.T_('Change').'<br />
-		<input type="radio" name="action" value="del"> '.T_('Delete').'</td>
-		<td><input type="submit" name="submit" value="'.T_('Apply').'"/></td></tr></form>';
-	echo '<tr><td  colspan="4" id="td_separateur"></td></tr>';
+	echo '<form method="POST">
+			<tr>
+				<input type="hidden" name="num" value="'.$liste[0].'"/>
+				<input type="hidden" name="num_membre" value="'.$liste[6].'"/>
+				<td class="'.$statut.'" style="width:60px;">'.$liste[2].'</td>
+				<td class="tc2">'.$liste[3].'<input class="input zone-saisie" style="width:50%" type="text" name="flux" value="'.$liste[1].'" size="40" />&nbsp;&nbsp;<a href="'.$url.'" target="_bank">'.T_('show').'</a></td>
+				<td style="width:40px;text-align:center;">'.$select.'</td>
+				<td style="width:100px;text-align:center;">
+					<center>
+					<input class="button br3px" type="submit" name="submitModify" value="'.T_('Change').'"> 
+					<input class="button br3px" type="submit" name="submitDelete" value="'.T_('Delete').'"> 
+					</center>
+				</td>
+			</tr>
+			</form>';
 }
 ?>
 </table>
-
+</center>
 <?php 
 $params = "page=$num_page&";
 ?>

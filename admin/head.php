@@ -29,8 +29,10 @@
 require_once(dirname(__FILE__).'/../inc/i18n.php');
 require_once(dirname(__FILE__).'/../inc/fonctions.php');
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
 
 <head>
 <?php
@@ -38,41 +40,48 @@ if (isset($_GET) && isset($_GET['reload'])){
 	echo '<META HTTP-EQUIV="Refresh" CONTENT="300">';
 }
 ?>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="shortcut icon" type="image/png" href="./newstyle/icons/fire.png" />
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="ROBOTS" content="noindex, nofollow, noarchive" />
+
 <title><?=T_('Administration');?> - <?php echo $planet_title ?></title>
-<link href="style/style.css" rel="stylesheet" type="text/css" />
-<link href="style/style_admin.css" rel="stylesheet" type="text/css" />
-<link rel="icon" type="image/ico" href="../favicon.ico" />
+
+	<link rel="stylesheet" type="text/css" href="newstyle/styles.css" media="all" />
+	<script type="text/javascript" src="newstyle/js/mootools-1.2.1-core.js"></script>
+	<script type="text/javascript" src="newstyle/js/mootools-1.2-more.js"></script>
+	<script type="text/javascript" src="newstyle/js/sorttable.js"></script>
+	<script type="text/javascript" src="newstyle/js/bilboplanet-0.1-core.js"></script>
+	<script type="text/javascript" src="newstyle/js/ed.js"></script>
+	<script type="text/javascript">
+	var _Admin;
+	window.addEvent('domready', function(){
+		// Lance le'admin
+		BP_Admin = new BP_Administrator();
+
+		$('BP_Logout').addEvent('click', function(event){
+			event.stop();
+			$confirm('Se d&eacute;connecter de l\'administration ?', '<span class="logout"><?=T_('Logout');?></span>');
+		});
+
+		$('BP_About').addEvent('click', function(event){
+			event.stop();
+			$alert('BilboPlanet - Essais d\'administration', '<span class="<?=T_('About BilboPlanet');?></span>');
+		});
+	});
+	</script>
 </head>
-<body>
-<a href="http://redmine.bilboplanet.org" target=_blank title="<?=T_('Report a bug');?>"><span id="bug"></span></a>
-<div id="tour">
-<div id="arriere_plan">
-	<div id="global">
-	<div id="header">
-	<div id="title">
-<?php
-echo T_('Administration').' - <a href="'.$planet_url.'">'.$planet_title.'</a>';
-?>
-	<div id="description_title">
-<?php 
-echo '<a href="'.$planet_url.'">'.$planet_desc.'</a>';
-?>
-	</div>
-	</div>
-		<ul id="menu">
-			<li class="firstLi"><a href="index.php" class="a_header"><?=T_('Dashboard');?></a></li>
-			<li><a href="gestion-membre.php" class="a_header"><?=T_('Users');?></a></li>
-			<li><a href="gestion-flux.php" class="a_header"><?=T_('Feeds');?></a></li>
-			<li><a href="gestion-articles.php" class="a_header"><?=T_('Posts');?></a></li>
-			<li><a href="gestion-mysql.php" class="a_header"><?=T_('Backup');?></a></li>
-			<li><a href="gestion-logs.php" class="a_header"><?=T_('Log files');?></a></li>
-			<li><a href="gestion-update.php" class="a_header"><?=T_('Update');?></a></li>
-			<li><a href="gestion-cache.php" class="a_header"><?=T_('Clean the cache');?></a></li>
-			<li><a href="gestion-option.php" class="a_header"><?=T_('Options');?></a></li>
-			<li><a href="<?php echo $planet_url; ?>" class="a_logout"><?=T_('Go to planet');?></a></li>
-		</ul>
-	</div>
-<div id="centre">
-<div id="centre_admin">
+
+<body class="admin">
+
+<div id="BP_head" class="toolbar bgbox bdbox"><div class="grad bdinbox">
+	<p class="site_info" style="padding-left:20px;background-image: url('newstyle/icons/arrow.png');" >
+		<span class="ctitle"><a class="tips" title="<?php echo $planet_title; ?>" rel="Retour sur le Planet" href="<?php echo $planet_url ?>" target="_blank">Retour sur le Planet</a></span>
+	</p>
+	<ul id="BP_userbar">
+		<li><a id="BP_Logout" href="#" class="button minbutton br3px"><?=T_('Logout');?></a></li>
+		<li><a id="BP_About" class="button minbutton br3px">?</a></li>
+	</ul>
+	<hr class="clear" />
+</div></div>
 

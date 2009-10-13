@@ -28,41 +28,47 @@
 /* Inclusion du fichier de configuration */
 require_once(dirname(__FILE__).'/../inc/fonctions.php');
 include_once(dirname(__FILE__).'/head.php');
+include_once(dirname(__FILE__).'/sidebar.php');
 ?>
-
-	<h2><?=T_('Dashboard');?></h2>
-
-	<p><?=T_('Voici un résumé de la situation');?></p>
-
-	<div id="box-links"><?=T_('Derniers articles publiés :');?>
-	<ul>
-		<li><?=T_('lien 1');?></li>
-		<li><?=T_('lien 1');?></li>
-		<li><?=T_('lien 1');?></li>
-		<li><?=T_('lien 1');?></li>
-		<li><?=T_('lien 1');?></li>
-	</ul>
+<div id="BP_page" class="page">
+	<div class="inpage">
+	
+	<fieldset><legend><?=T_('Dashboard');?></legend>
+		<div class="message">
+			<p><?=T_('Voici un résumé de la situation');?></p>
+		</div>
+		
+<div id="dashboard">
+	<div class="box-dashboard"><div class="top-box-dashboard"><?=T_('Derniers articles publiés :');?></div>
+		<ul>
+			<li><?=T_('lien 1');?></li>
+			<li><?=T_('lien 1');?></li>
+			<li><?=T_('lien 1');?></li>
+			<li><?=T_('lien 1');?></li>
+			<li><?=T_('lien 1');?></li>
+		</ul>
+	</div>
+	<div class="box-dashboard"><div class="top-box-dashboard"><?=T_('Statistiques :');?></div>
+		<ul>
+			<li><?=T_('Etat du cron');?></li>
+			<li><?=T_('Etat de la DB');?></li>
+			<li><?=T_('Nombre d\'articles aujourd\'hui');?></li>
+			<li><?=T_('Moyenne d\'articles par jour');?></li>
+			<li><?=T_('Nombre de votes aujourd\'hui');?></li>
+			<li><?=T_('Moyenne de votes par jour');?></li>
+			<li><?=T_('lien 1');?></li>
+		</ul>
+	</div>
+	<div class="box-dashboard"><div class="top-box-dashboard"><?=T_('News du bilboplanet (liens du blog du bilboplanet) :');?></div>
+		<ul>
+			<li><?=T_('lien 1');?></li>
+			<li><?=T_('lien 1');?></li>
+			<li><?=T_('lien 1');?></li>
+			<li><?=T_('lien 1');?></li>
+			<li><?=T_('lien 1');?></li>
+		</ul>
+	</div>
 </div>
-<div id="box-stats"><?=T_('Statistiques des visites :');?>
-	<div id="stat-graph">xxxxxxxxxxxxxxxxx</div>
-	<ul>
-	<li><?=T_('Etat du cron');?></li>
-		<li><?=T_('Etat de la DB');?></li>
-		<li><?=T_('Nombre d\'articles par jour');?></li>
-		<li><?=T_('..?');?></li>
-		<li><?=T_('lien 1');?></li>
-	</ul>
-</div>
-<div id="box-news"><?=T_('News du bilboplanet (liens du blog du bilboplanet) :');?>
-	<ul>
-		<li><?=T_('lien 1');?></li>
-		<li><?=T_('lien 1');?></li>
-		<li><?=T_('lien 1');?></li>
-		<li><?=T_('lien 1');?></li>
-		<li><?=T_('lien 1');?></li>
-	</ul>
-</div>
+</fieldset>
 
-<?php
-include(dirname(__FILE__).'/footer.php');
-?>
+<?php include(dirname(__FILE__).'/footer.php'); ?>

@@ -52,14 +52,18 @@ if(isset($_POST) && isset($_POST['Confirm_delete'])) {
 		$flash = array('type' => 'error', 'msg' => sprintf(T_('Error while trying to remove the user %s'),$nom['value']));
 	}
 }
-if(isset($_POST) && isset($_POST['submit'])) {
+if(isset($_POST) && (
+    (isset($_POST['submitModif']) && !empty($_POST['submitModif'])) ||
+    (isset($_POST['submitAjout']) && !empty($_POST['submitAjout'])) ||
+    (isset($_POST['submitDelete']) && !empty($_POST['submitDelete']))
+))
+{
 	# Fonction de securite
 	securiteCheck();
 
 	# On recupere les infos
 	$nom = check_field('nom',trim($_POST['nom']));
 	$email = check_field('email',trim($_POST['email']),'email');
-	$action = trim($_POST['action']);
 	if ($action == "ajout" || $action == "mod")
 		if (isset($_POST['statut']) && trim($_POST['statut'])==1)
 			$site = check_field('site',$site.trim($_POST['site']),'url');
@@ -67,13 +71,14 @@ if(isset($_POST) && isset($_POST['submit'])) {
 			$site = check_field('site',$site.trim($_POST['site']),'not_empty');
 	else
 		$site = check_field('site',$site.trim($_POST['site']),'not_empty');
+	$action = trim($_POST['action']);
 
 	# On convertie tous les caracteres speciaux en code html
 	if ($nom['success'] && $email['success'] && $site['success']){
 		$nom['value'] = htmlentities($nom['value'],ENT_QUOTES,mb_detect_encoding($nom['value']));
 		connectBD();
 		# On insert une nouvelle entree
-		if($action=="ajout"){
+		if(isset($_POST) && isset($_POST['submitAjout']) && !empty($_POST['submitAjout'])){
 			$sql = "SELECT nom_membre FROM membre WHERE nom_membre='".$nom['value']."'";
 			$result1 = mysql_query($sql) or die("Error with request $sql");
 			$sql = "SELECT nom_membre FROM membre WHERE email_membre='".$email['value']."'";
@@ -100,7 +105,7 @@ if(isset($_POST) && isset($_POST['submit'])) {
 					$flash = array('type' => 'error', 'msg' => sprintf(T_('Error while trying to modify user %s'),$nom['value']));
 			}
 		}
-		elseif ($action=="mod" && isset($_POST['statut']) && isset($_POST['num'])) {
+		elseif(isset($_POST['submitModif']) && !empty($_POST['submitModif']) && isset($_POST['statut']) && isset($_POST['num'])) {
 			$num = trim($_POST['num']);
 			$statut = trim($_POST['statut']);
 			$sql = "UPDATE membre 
@@ -111,22 +116,21 @@ if(isset($_POST) && isset($_POST['submit'])) {
 			if (!$result)
 				$flash = array('type' => 'error', 'msg' => sprintf(T_('Error while trying to modify user %s'),$nom['value']));
 		}
-		elseif($action=="del_confirm"){
-			$confirmation = "<p>".sprintf(T_('Are you sure you want to remove user %s ?'),$nom['value'])."?<br/>";
-			$confirmation .= "<ul><li>".T_('This action can not be canceled')."</li>";
-			$confirmation .= "<li>".T_('All the posts of the user will be removed')."</li>";
-			$confirmation .= "<li>".T_('All the votes on these posts will be removed')."</li>";
-			$confirmation .= "<li>".T_('All the feeds of this user will be removed')."</li></ul><br/>";
-			$confirmation .= "<form method='post'><input type='hidden' name='num' value='".trim($_POST['num'])."'/>";
-			$confirmation .= "<input type='submit' name='reset' value='".T_('Reset')."'/>";
-			$confirmation .= "<input type='submit' name='Confirm_delete' value='".T_('Confirm')."'/></form></p>";
-			$flash = array('type' => 'error', 'msg' => $confirmation);
-		}
-
-		# Femeture de la base
-		closeBD();
+            # Femeture de la base
+            closeBD();
 	}
-	elseif($action=="ajout"){
+	if(isset($_POST) && isset($_POST['submitDelete']) && !empty($_POST['submitDelete'])) {
+            $confirmation = "<p>".sprintf(T_('Are you sure you want to remove user %s ?'),$nom['value'])."?<br/>";
+            $confirmation .= "<ul><li>".T_('This action can not be canceled')."</li>";
+            $confirmation .= "<li>".T_('All the posts of the user will be removed')."</li>";
+            $confirmation .= "<li>".T_('All the votes on these posts will be removed')."</li>";
+            $confirmation .= "<li>".T_('All the feeds of this user will be removed')."</li></ul><br/>";
+            $confirmation .= "<form method='post'><input type='hidden' name='num' value='".trim($_POST['num'])."'/>";
+            $confirmation .= "<input type='submit' class='button br3px' name='reset' value='".T_('Reset')."'/>&nbsp;&nbsp;";
+            $confirmation .= "<input type='submit' class='button br3px' name='Confirm_delete' value='".T_('Confirm')."'/></form></p>";
+            $flash = array('type' => 'error', 'msg' => $confirmation);
+        }
+	if($action=="ajout"){
 		if(!$nom['success']){
 			$flash = array('type' => 'error', 'msg' => $nom['error']);
 			$error['nom']=true;
@@ -139,8 +143,7 @@ if(isset($_POST) && isset($_POST['submit'])) {
 			$flash = array('type' => 'error', 'msg' => $site['error']);
 			$error['site']=true;
 		}
-	}
-	else {
+	}else{
 		if(!$nom['success']){
 			$flash = array('type' => 'error', 'msg' => $nom['error']);
 		}
@@ -152,7 +155,6 @@ if(isset($_POST) && isset($_POST['submit'])) {
 		}
 	}
 }
-
 function error_bool($error, $field) {
 	if($error[$field])
 		print("<td class='error'>");
@@ -161,36 +163,40 @@ function error_bool($error, $field) {
 }
 
 include_once(dirname(__FILE__).'/head.php');
+include_once(dirname(__FILE__).'/sidebar.php');
 ?>
 
-<h2><?=T_('Add an user');?></h2>
+<div id="BP_page" class="page">
+	<div class="inpage">
+	
 <?php if (!empty($flash))echo '<div class="flash '.$flash['type'].'">'.$flash['msg'].'</div>'; ?>
 
+	
+<fieldset><legend><?=T_('Add an user');?></legend>
+		<div class="message">
+			<p>Pour ajouter un nouveau membre, remplissez le formulaire ci-dessous.</p>
+		</div><br />
+
 <form method="post">
-<table width="450">
-<tr>
-<?php error_bool($error, "nom"); ?><?=T_('Name');?></td>
-<td><input type="text" name="nom" size="30" value="<?php if($flash['type']=='error' && $_POST['nom']) echo $_POST['nom'];?>"/></td>
-</tr>
-<tr>
-<?php error_bool($error, "email"); ?><?=T_('Email');?>:</td>
-<td><input type="text" name="email" size="30" value="<?php if($flash['type']=='error' && $_POST['email']) echo $_POST['email'];?>"/></td>
-</tr>
-<tr>
-<?php error_bool($error, "site"); ?><?=T_('Website (without the ending /)');?></td>
-<td><input type="text" name="site" size="30" value="<?php if($flash['type']=='error' && $_POST['site']) echo $_POST['site'];?>"/></td>
-</tr>
-<tr>
-<td  colspan="2" align="center"><br/>
-<center><input type="hidden" name="action" value="ajout"/>
-<input type="reset" name="reset" value="<?=T_('Reset');?>" onClick="this.form.reset()">&nbsp;&nbsp;
-<input type="submit" name="submit" value="<?=T_('Send');?>"></center>
-</tr>
-</table/><br/>
+<label for="name"><strong><?php error_bool($error, "nom"); ?><?=T_('Name');?>:</strong></label>
+<input type="text" class="input" id="username" name="nom" value="<?php if($flash['type']=='error' && $_POST['nom']) echo $_POST['nom'];?>" size="50" maxlength="50" />
+<br /><br /> <!-- A CHANGER !!! -->
+<label for="email"><strong><?php error_bool($error, "email"); ?><?=T_('Email');?>:</strong></label>
+<input type="text" class="input" id="email" name="email" value="<?php if($flash['type']=='error' && $_POST['email']) echo $_POST['email'];?>" size="50" maxlength="80" />
+<br /><br /> <!-- A CHANGER !!! -->
+<label for="site"><strong><?php error_bool($error, "site"); ?><?=T_('Website (without the ending /)');?>:</strong></label>
+<input type="text" class="input" id="site" name="site" value="<?php if($flash['type']=='error' && $_POST['site']) echo $_POST['site'];?>" size="50" maxlength="80" />
+<br /><br /><br /> <!-- A CHANGER !!! -->
+<div class="button"><input type="reset" class="reset" name="reset" onClick="this.form.reset()" value="<?=T_('Reset');?>"></div>
+<div class="button"><input type="submit" name="submitAjout" class="add_user" value="<?=T_('Send');?>"></div>
 </form>
+</fieldset>
 
-<h2><?=T_('List of the users');?></h2>
 
+<fieldset><legend><?=T_('List of the users');?></legend>
+		<div class="message">
+			<p>Liste des membres du Planet</p>
+		</div>
 <?php
 
 # Valeurs par defaut
@@ -224,7 +230,17 @@ include(dirname(__FILE__).'/pagination.php');
 ?>
 <br /><br />
 <table>
-<tr id="tr_head"><td><?=T_('Name');?></td><td><?=T_('Website');?></td><td><?=T_('Email');?></td><td><?=T_('Status');?></td><td><?=T_('Action');?></td><td></td></tr>
+<table class="table-results sortable">
+		<thead>
+			<tr>
+				<th class="tc1 tcl" scope="col"><?=T_('Name');?></th>
+				<th class="tc2" scope="col"><?=T_('Website');?></th>
+				<th class="tc3" scope="col"><?=T_('Email');?></th>
+				<th class="tc4" scope="col" ><?=T_('Status');?></th>
+				<th class="tc5 tcr" scope="col"><?=T_('Action');?></th>
+			</tr>
+		</thead>
+
 <?php
 
 # On affiche la liste de membres
@@ -242,19 +258,24 @@ while($liste = mysql_fetch_row($rqt)) {
 		$statut  = "inactif";
 	}
 
+
 	# Affichage de la ligne de tableau
-	echo '<form method="POST"><tr>
+	echo '<form method="POST">
+		<tr>
 		<input type="hidden" name="num" value="'.$liste[0].'"/>
-		<td><input type="text" name="nom" value="'.$liste[1].'" class="'.$statut.'"/></td>
-		<td><input type="text" name="site" value="'.$liste[2].'" size="30" class="zone-saisie" /></td>
-		<td><input type="text" name="email" value="'.$liste[3].' " class="zone-saisie" /></td>
-		<td>'.$select.'</td>
-		<td><input type="radio" name="action" value="mod"> '.T_('Change').'<br />
-		<input type="radio" name="action" value="del_confirm"> '.T_('Delete').'</td>
-		<td><center><input type="submit" name="submit" value="'.T_('Apply').'"/><br/><a href="'.$liste[2].'" target="_bank">'.T_('Show').'</a></center></td></tr></form>';
-	echo '<tr><td  colspan="6" id="td_separateur"></td></tr>';
+		<td class="tc1 tcl row1"><input class="input '.$statut.'" type="text" name="nom" value="'.$liste[1].'" size="30" class="'.$statut.'"/></td>
+		<td class="tc2 row1"><input class="input zone-saisie" type="text" name="site" value="'.$liste[2].'" size="40%" />&nbsp;&nbsp;<label><a href="'.$liste[2].'" target="_bank">'.T_('Show').'</a></label></td>
+		<td class="tc3 row1"><input class="input zone-saisie" type="text" name="email" value="'.$liste[3].'" size="40" /></td>
+		<td class="tc4 row1">'.$select.'</td>
+		<td class="tc5 tcr row1">
+			<input type="submit" class="button br3px" name="submitModif" value="'.T_('Change').'" />
+			<input type="submit" class="button br3px" name="submitDelete" value="'.T_('Delete').'" />
+		</td>
+		</tr>
+		</form>';
 }
 ?>
+
 </table>
 
 <?php 

@@ -26,6 +26,7 @@
 ?>
 <?php 
 include_once(dirname(__FILE__).'/head.php');
+include_once(dirname(__FILE__).'/sidebar.php');
 require_once(dirname(__FILE__).'/../inc/cron_fct.php');
 $flash = '';
 $update = false;
@@ -33,6 +34,7 @@ if(isset($_POST) && isset($_POST['action']) && !empty($_POST['action'])) {
 	if ($_POST['action'] == '3') {
 		$result = exec("touch ../inc/STOP");
 		$flash = T_("The automatical update is disabled ").$result;
+		header("Location: ./gestion-update.php");
 	}
 	elseif ($_POST['action'] == '1') {
 		if (get_cron_running())
@@ -40,6 +42,7 @@ if(isset($_POST) && isset($_POST['action']) && !empty($_POST['action'])) {
 		else
 			$flash = T_('The automatic update is enabled');
 		$result = exec("rm ../inc/STOP");
+		header("Location: ./gestion-update.php");
 	}
 	else {
 		$flash = T_("Manual update ...");
@@ -48,26 +51,36 @@ if(isset($_POST) && isset($_POST['action']) && !empty($_POST['action'])) {
 }
 
 ?>
-<h2><?=T_('Automatic update');?></h2>
+
+<div id="BP_page" class="page">
+	<div class="inpage">
+	
 <?php 
 if (!empty($flash)) echo '<div class="flash notice">'.$flash.'</div>';
 elseif (!empty($error)) echo '<div class="flash error">'.$error.'</div>';
-if (get_cron_running()) echo '<p>'.T_('The update is running').'</p>';
+?>
+
+<fieldset><legend><?=T_('Automatic update');?></legend>
+		<div class="message">
+			<p>Configuration des paramètres du Planet.</p>
+		</div><br />
+		
+
+
+<?php
+if (get_cron_running()) echo '<p style="margin-left:5px;padding-bottom:8px;background-image:url(newstyle/icons/tick.png);background-repeat: no-repeat;"><strong><span style="padding-left:25px;">'.T_('The update is running').'</span></strong></p><br />';
 else
-	echo '<p>'.T_('The update is stopped').'</p>';
-if (file_exists('../inc/STOP')) echo "<p>".T_('The update is disabled')."</p>";
+	echo '<p style="margin-left:5px;padding-bottom:8px;background-image:url(newstyle/icons/cross.png);background-repeat: no-repeat;"><strong><span style="padding-left:20px;">'.T_('The update is stopped').'</span></strong></p><br />';
+if (file_exists('../inc/STOP')) echo "<p style='margin-left:5px;padding-bottom:8px;background-image:url(newstyle/icons/slash.png);background-repeat: no-repeat;'><strong><span style='padding-left:20px;'>".T_('The update is disabled')."</span></strong></p><br />";
 ?>
 <form method="POST">
-<table width="450">
-	<tr>
-	<td>
 		<input type="radio" name="action" value="3" /> <?=T_('Stop the update algorithm');?><br />
 		<input type="radio" name="action" value="1" /> <?=T_('Start the update algorithm');?><br />
-		<input type="radio" name="action" value="2" /> <?=T_('Start a manual update');?>
-	</td>
-		<td><input type="submit" value="<?=T_('Send');?>" /></td></tr>
-</table>
+		<input type="radio" name="action" value="2" /> <?=T_('Start a manual update');?><br /><br />
+
+<div class="button"><input type="submit" class="valide" value="<?=T_('Send');?>" /></div>
 </form>
+</fieldset>
 
 <?php
 if ($update) update(true);
@@ -76,4 +89,7 @@ if(isset($_POST) && isset($_POST['action']) && !empty($_POST['action']) && $_POS
 	if (!get_cron_running())
 		require_once(dirname(__FILE__).'/../inc/cron.php');
 }
+
+include(dirname(__FILE__).'/footer.php');
+
 ?>

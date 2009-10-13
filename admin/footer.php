@@ -17,6 +17,7 @@
 * This program is distributed in the hope that it will be useful,
 * but WITHOUT ANY WARRANTY; without even the implied warranty of
 * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 * GNU Affero General Public License for more details.
 *
 * You should have received a copy of the GNU Affero General Public License
@@ -24,8 +25,8 @@
 *
 ***** END LICENSE BLOCK *****/
 ?>
-<div id="protection_hack"></div></div></div>
-<div id="footer"> <a href="http://www.bilboplanet.org"><?=T_('Powered by BilboPlanet');?></a> <a href="http://validator.w3.org/check?verbose=1&uri=<?php echo $planet-url; ?>"><?=T_('Valid CSS - Xhtml');?></a> <a href="http://www.bilboplanet.org"><?=T_('Designed by BilboPlanet');?></a> <a href="#tour" id="retour_top"><?=T_('Top');?></a> </div></div>
-</div><!-- fin page -->
+</div>
+<center><p>~ <a href="www.bilboplanet.org">BilboPlanet.org</a> - Open Source Feed Agregator - 2009 ~<br />~ <a href="http://redmine.bilboplanet.org">Bug report</a>&nbsp;-&nbsp;<a href="mailto:dev@bilboplanet.org">Contact US</a>&nbsp;~</p></center>
+</div>
 </body>
 </html>

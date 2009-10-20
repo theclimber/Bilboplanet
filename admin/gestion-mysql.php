@@ -29,17 +29,16 @@
 require_once(dirname(__FILE__).'/../inc/fonctions.php');
 
 # On verifie que le formulaire est bien saisie
-if(isset($_POST) && isset($_POST['nom']) && isset($_POST['path']) && isset($_POST['action'])) {
+if(isset($_POST) && isset($_POST['nom']) && isset($_POST['path'])) {
 
 	# On recupere les infos
 	$nom = trim($_POST['nom']);
 	$path = trim($_POST['path']);
-	$action = trim($_POST['action']);
 
 	# Connection a la base
 
 	# On insert une nouvelle entree
-	if($action=="import"){
+	if(isset($_POST) && isset($_POST['import']) && !empty($_POST['import'])){
 		$result = exec("gunzip < $path/$nom | mysql -h $db_host -u $db_login --password=$db_passw $db_name");
 		$result = exec("gunzip < $path/$nom | mysql5 -h $db_host -u $db_login --password=$db_passw $db_name");
 		$flash = array('type' => 'notice', 'msg' => T_('File successfully imported'));
@@ -55,10 +54,19 @@ if(isset($_POST) && isset($_POST['nom']) && isset($_POST['path']) && isset($_POS
 }
 
 include_once(dirname(__FILE__).'/head.php');
+include_once(dirname(__FILE__).'/sidebar.php');
 ?>
-	<h2><?=T_('Export database');?></h2>
+
+<div id="BP_page" class="page">
+	<div class="inpage">
+	
 <?php if (!empty($flash))echo '<div class="flash '.$flash['type'].'">'.$flash['msg'].'</div>'; ?>
-<p><br/><br/>
+
+
+<fieldset><legend><?=T_('Export database');?></legend>
+
+
+	
 <?php
 
 # On augmenete le temps d'execution
@@ -89,32 +97,39 @@ if(is_file($snapshot_file)) $compress = exec("gzip -f $snapshot_file");
 
 # On affcihe un message
 if(is_file("$snapshot_file.gz")) {
-	echo sprintf(T_("The actual database is accessible here (in the directory %s)"),$snapshot_path)."<br />&nbsp;<br />";
-	
-	echo "<table><tr><td>".T_('Name')."</td><td>".T_('Size')."</td></tr>";
+echo "			<div class='message'>";
+echo "<p>" .sprintf(T_("The actual database is accessible here (in the directory %s)"),$snapshot_path)."</p>";
+echo "</div><br />";
+			
+	echo "<center><table style='width:60%' class='table-results'><thead><tr><th class='tc1 tcl' scope='col'>".T_('Name')."</th><th class='tc2' scope='col'>".T_('Size')."</th></tr></thead>";
 	//using the opendir function
 	$dir_handle = @opendir($snapshot_path) or die("Unable to open $snapshot_path");
 	while ($file = readdir($dir_handle)){
 	if($file!="." && $file!=".." && $file!=".svn" && $file!=".DS_Store")
 		echo "<tr><td><a href='mysql/snapshot/$file'>$file</a></td><td>".filesize($file)."</td></tr>";
 	}
-	echo "</table>";
+	echo "</table></center>";
 	closedir($dir_handle);
 
 } else {
-	echo sprintf(T_('Error : could not export the database to the %s directory'),$snapshot_path);
+
+echo "<div class='message'>";
+echo "<p>" .sprintf(T_("The actual database is accessible here (in the directory %s)"),$snapshot_path)."</p>";
+echo "</div>";
 }
 ?>
 </p>
 <br />
-<br />
 <hr />
 <br />
-<p>
-<?=T_('Other backup of the database in the directory /admin/mysql/backup.');?>
-<br /><b><font color=red><?=T_('TAKE CARE !');?></font></b> <?=T_('If you apply the content of one of this file, this action can not be cancelled');?><br />&nbsp;<br /></p><p>
-<table>
-<tr><td><?=T_('Name');?></td><td><?=T_('Action');?></td><td></td></tr>
+<div class="message">
+<p><?=T_('Other backup of the database in the directory /admin/mysql/backup.');?>
+<br /><b><font color=red><?=T_('TAKE CARE !');?></font></b> <?=T_('If you apply the content of one of this file, this action can not be cancelled');?></p>
+</div>
+<br />
+<center>
+<table style="width:60%" class="table-results">
+<thead><tr><th class="tc1 tcl" scope="col"><?=T_('Name');?></th><th class='tc2' scope='col'><?=T_('Action');?></th></tr></thead>
 <?php
 $backup_path = "mysql/backup";
 //using the opendir function
@@ -126,16 +141,17 @@ while ($file = readdir($dir_handle)){
 			<input type="hidden" name="nom" value="'.$file.'"/>
 			<input type="hidden" name="path" value="'.$backup_path.'"/>
 			<td><a href=mysql/backup/'.$file.'>'.$file.'</a></td>
-			<td><input type="radio" name="action" value="import"> '.T_('Import').'<br />
-			<input type="radio" name="action" value="del"> '.T_('Delete').'</td>
-			<td><input type="submit" value="'.T_('Apply').'"/></td></tr></form>';
+			<td><center>
+			<input type="submit" class="button br3px" name="import" value="'.T_('Import').'">
+			<input type="submit" class="button br3px"name="del" value="'.T_('Delete').'"> 
+			</center></td>';
 }
 closedir($dir_handle);
 
 ?>
-</table></p>
+</table></center>
+<br />
 <p><i>
 <?=T_('NOTE : to import a database file, the file needs to have the *.sql.gz extension !');?>
 </i></p>
-
-<?php include(dirname(__FILE__).'/footer.php'); ?>
+<?php include(dirname(__FILE__).'/footer.php');?>

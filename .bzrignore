@@ -1,0 +1,5 @@
+inc/config.php
+inc/cron_running.txt
+inc/update.txt
+admin/cache/*
+logs/*

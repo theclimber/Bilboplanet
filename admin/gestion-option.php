@@ -48,7 +48,6 @@ if(isset($_POST) && isset($_POST['submit'])) {
 	$title = stripslashes(trim($_POST['title']));
 	$desc = stripslashes(trim($_POST['desc']));
 	$msg_info = stripslashes(trim($_POST['msg_info']));
-	$email = trim($_POST['email']);
 	$inscription = stripslashes(trim($_POST['inscription']));
 	$theme = trim($_POST['theme']);
 	$lang = trim($_POST['lang']);
@@ -57,7 +56,6 @@ if(isset($_POST) && isset($_POST['submit'])) {
 	$full_conf = file_get_contents($file);
 	writeConfigValue('BP_TITLE', $title, $full_conf);
 	writeConfigValue('BP_DESC', $desc, $full_conf);
-	writeConfigValue('BP_AUTHOR_MAIL', $email, $full_conf);
 	writeConfigValue('BP_MSG_INFO', $msg_info, $full_conf);
 	writeConfigValue('BP_THEME', $theme, $full_conf);
 	writeConfigValue('BP_LANG', $lang, $full_conf);
@@ -95,45 +93,48 @@ function writeConfigValue($name, $val, &$str){
 	$str = preg_replace('/(\''.$name.'\')(.*?)$/ms','$1,\''.$val.'\');',$str);
 }
 
-
 include_once(dirname(__FILE__).'/head.php');
+include_once(dirname(__FILE__).'/sidebar.php');
 ?>
 
-<h2><?=T_('Options');?></h2>
-
-<div id="cadre">
+<div id="BP_page" class="page">
+	<div class="inpage">
+	
 <?php if (!empty($flash))echo '<div class="flash '.$flash['type'].'">'.$flash['msg'].'</div>'; ?>
 
+<fieldset><legend><?=T_('Options');?></legend>
+		<div class="message">
+			<p>Configuration des paramètres du Planet.</p>
+		</div><br />
+
+
 <form method="POST">
-<h3><?=T_('Title of the Planet');?></h3>
-<input id="cadre_options" type="text" name="title" size="80" value="<?php echo $title; ?>" /><br /><br />
+<?=T_('Title of the Planet');?><br />
+<input id="cadre_options" class='input' type="text" name="title" size="80" value="<?php echo $title; ?>" /><br /><br />
 
-<h3><?=T_('Description of the Planet');?></h3>
-<input id="cadre_options" type="text" name="desc" size="80" value="<?php echo $desc; ?>" /><br /><br />
+<?=T_('Description of the Planet');?><br />
+<input id="cadre_options" class='input' type="text" name="desc" size="80" value="<?php echo $desc; ?>" /><br /><br />
 
-<h3><?=T_('Reference contact email');?></h3>
-<input id="cadre_options" type="text" name="email" size="80" value="<?php echo $email; ?>" /><br /><br />
-
-<h3><?=T_('Information message (optional)');?></h3>
-<textarea id="cadre_options" name="msg_info" rows=3>
+<?=T_('Information message (optional)');?><br />
+<textarea class='cadre_option' name="msg_info" rows=3>
 <?php echo $msg_info; ?>
 </textarea>
-<br /><br />
+<br />
 
-<h3><?=T_('Subscription page content');?></h3>
-<textarea id="cadre_options" name="inscription" rows='40'>
+<?=T_('Subscription page content');?><br />
+<div class="wysiwyg"><script>edSimpleToolbar('mytxtarea1'); </script></div>
+<textarea id="mytxtarea1" class='cadre_option' name="inscription" rows='30'>
 <?php 
 $file=dirname(__FILE__).'/../inscription_contenu.php';
 echo stripslashes(file_get_contents($file));
 ?>
 </textarea><br /><br />
 
-<h3><?=T_('Other options');?></h3>
 <div>
-<label for="show_contact"><input type="checkbox" name="show_contact" id="cadre_options" <?php if ($contact) echo "checked"; ?>><?=T_('Show the contact page');?></label><br/>
-<label for="show_votes"><input type="checkbox" name="show_votes" id="cadre_options" <?php if ($votes) echo "checked"; ?>><?=T_('Enable voting');?></label><br/>
+<label for="show_contact"><input type="checkbox" class='input' name="show_contact" <?php if ($contact) echo "checked"; ?>><?=T_('Show the contact page');?></label><br/><br />
+<label for="show_votes"><input type="checkbox" class='input' name="show_votes" <?php if ($votes) echo "checked"; ?>><?=T_('Enable voting');?></label><br/><br />
 </div>
-<h3><?=T_('Graphical theme');?></h3>
+<?=T_('Graphical theme');?>
 <div>
 <select name="theme">
 <?php
@@ -150,8 +151,9 @@ while ($file = readdir($dir_handle)){
 closedir($dir_handle);
 ?>
 </select>
+<br /><br />
 </div>
-<h3><?=T_('Language of the Planet');?></h3>
+<?=T_('Language of the Planet');?>
 <div>
 <select name="lang">
 <?php
@@ -169,9 +171,9 @@ closedir($dir_handle);
 ?>
 </select>
 </div>
-</div>
-<br />
-<center><input type='submit' name="submit" value="<?=T_('Apply');?>"/></center>
+<br /><br />
+<div class="button"><input type='submit' class="valide" name="submit" value="<?=T_('Apply');?>"/></div>
 </form>
+</fieldset>
 
 <?php include(dirname(__FILE__).'/footer.php'); ?>

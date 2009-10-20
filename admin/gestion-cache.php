@@ -25,13 +25,24 @@
 ***** END LICENSE BLOCK *****/
 ?>
 <?php include_once(dirname(__FILE__).'/head.php'); ?>
+<?php include_once(dirname(__FILE__).'/sidebar.php'); ?>
 <?php
 # On efface les fichiers de cache du site
 $cache_dir = dirname(__FILE__).'/cache/';
 
+echo '<div id="BP_page" class="page">
+	 <div class="inpage">';
+
 # Message d'information
 $flash = T_('The cache files were correctly deleted.');
 if (!empty($flash)) echo '<div class="flash notice">'.$flash.'</div>';
+
+
+echo '<fieldset><legend>'.T_('Manage cache').'</legend>
+		<div class="message">
+			<p>Supprimer le cache du Planet</p>
+		</div><br />
+		<input type="submit" name="submitDeleteCache" class="button" value='.T_('Delete Cache').'><br /><br />';
 
 echo T_('The following files were deleted :')."<br /><pre>";
 //using the opendir function
@@ -42,8 +53,16 @@ while ($file = readdir($dir_handle)){
 		if ($result) echo $result."\n";
 	}
 }
+
 closedir($dir_handle);
 echo "</pre>";
+?>
 
+
+		
+		
+</fieldset>		
+
+<?php
 include(dirname(__FILE__).'/footer.php');
 ?>

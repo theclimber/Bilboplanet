@@ -54,9 +54,13 @@ if (isset($_GET) && isset($_GET['page']) && is_numeric(trim($_GET['page']))) {
 }
 
 # Si il y a filtrage sur le membre
-if(isset($_POST['num_membre']) && is_numeric(trim($_POST['num_membre']))) {
+if(isset($_GET['num_membre']) && !empty($_GET['num_membre'])) {
+	$num_membre = trim($_GET['num_membre']);
+}
+elseif(isset($_POST['num_membre']) && is_numeric(trim($_POST['num_membre']))) {
 	$num_membre = trim($_POST['num_membre']);
 }
+
 if(isset($_POST) && (
     (isset($_POST['submitModif']) && !empty($_POST['submitModif'])) ||
     (isset($_POST['submitDelete']) && !empty($_POST['submitDelete']))

@@ -31,6 +31,12 @@ $params = "";
 if (isset($_GET) && isset($_GET['nb_items']) && !empty($_GET['nb_items'])){
 	$params = $params."nb_items=".$_GET['nb_items']."&";
 }
+if (isset($num_membre) && $num_membre != 0){
+	$params = $params."num_membre=".$num_membre."&";
+}
+if (isset($nb_items) && $nb_items > 0){
+	$params = $params."nb_items=".$nb_items."&";
+}
 
 # Affichage des liens permettant de changer de page
 if($num_page == 0) {

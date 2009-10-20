@@ -54,7 +54,7 @@ if(isset($_POST) && (
 	if (isset($_POST['flux']) && empty($_POST['flux'])){
 			$flux = check_field('flux',trim($_POST['flux']),'feed');
 	}
-	elseif ((isset($_POST['submitDelete']) && !empty($_POST['submitDelete'])) || (isset($_POST['submitAjout']) && !empty($_POST['submitAjout']))) {
+	elseif ((isset($_POST['submitModify']) && !empty($_POST['submitModify'])) || (isset($_POST['submitAjout']) && !empty($_POST['submitAjout']))) {
 		if (isset($_POST['statut']) && trim($_POST['statut'])==1)
 			$flux = check_field('flux',$site.trim($_POST['flux']),'feed');
 		else
@@ -64,16 +64,15 @@ if(isset($_POST) && (
 		$flux = check_field('flux',$site.trim($_POST['flux']),'not_empty');
 	}
 	$flux['value'] = trim($_POST['flux']);
-
 	if ($flux['success']){
-	if(isset($_POST) && isset($_POST['submitDelete']) && !empty($_POST['submitDelete'])) {
+		if(isset($_POST) && isset($_POST['submitDelete']) && !empty($_POST['submitDelete'])) {
 			$sql = "DELETE FROM flux WHERE num_flux='$num'";
 			$flash = array('type' => 'notice', 'msg' => sprintf(T_("The feed %s was correctly deleted"),$flux['value']));
 			$result = mysql_query($sql) or die("Error with request $sql");
 			if(!$result)
 				$flash = array('type' => 'error', 'msg' => T_("Error while trying to change the informations of the feed"));
 		}
-	if(isset($_POST) && isset($_POST['submitAjout']) && !empty($_POST['submitAjout'])) {
+		if(isset($_POST) && isset($_POST['submitAjout']) && !empty($_POST['submitAjout'])) {
 			$sql = "SELECT url_flux FROM flux WHERE url_flux='".$flux['value']."' AND num_membre='".$num_membre."'";
 			$result1 = mysql_query($sql) or die("Error with request $sql");
 			if (mysql_result($result1,0)){
@@ -88,7 +87,7 @@ if(isset($_POST) && (
 			}
 			$flash = array('type' => 'notice', 'msg' => sprintf(T_("Adding the feed %s succeeded"),$flux['value']));
 		}
-	if(isset($_POST) && isset($_POST['submitModify']) && !empty($_POST['submitModify'])) {
+		if(isset($_POST) && isset($_POST['submitModify']) && !empty($_POST['submitModify'])) {
 			$statut = trim($_POST['statut']);
 			$sql = "UPDATE flux 
 				SET url_flux = '".$flux['value']."', status_flux = '$statut'
@@ -101,11 +100,11 @@ if(isset($_POST) && (
 		closeBD();
 	}
 	else {
-	if(isset($_POST) && isset($_POST['submitAjout']) && !empty($_POST['submitAjout'])) {
+		if(isset($_POST) && isset($_POST['submitAjout']) && !empty($_POST['submitAjout'])) {
 			$error['flux']=true;
+		}
 		$flash = array('type' => 'error', 'msg' => $flux['error']);
 	}
-}
 }
 function error_bool($error, $field) {
 	if($error[$field])

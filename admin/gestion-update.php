@@ -27,7 +27,8 @@
 <?php 
 include_once(dirname(__FILE__).'/head.php');
 include_once(dirname(__FILE__).'/sidebar.php');
-require_once(dirname(__FILE__).'/../inc/cron_fct.php');
+include_once(dirname(__FILE__).'/../inc/cron_fct.php');
+
 $flash = '';
 $update = false;
 if(isset($_POST) && isset($_POST['action']) && !empty($_POST['action'])) {

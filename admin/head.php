@@ -76,7 +76,7 @@ if (isset($_GET) && isset($_GET['reload'])){
 
 <div id="BP_head" class="toolbar bgbox bdbox"><div class="grad bdinbox">
 	<p class="site_info" style="padding-left:20px;background-image: url('newstyle/icons/arrow.png');" >
-		<span class="ctitle"><a class="tips" title="<?php echo $planet_title; ?>" rel="Retour sur le Planet" href="<?php echo $planet_url ?>" target="_blank">Retour sur le Planet</a></span>
+		<span class="ctitle"><a class="tips" title="<?php echo $planet_title; ?>" rel="Retour sur le Planet" href="../" target="_blank">Retour sur le Planet</a></span>
 	</p>
 	<ul id="BP_userbar">
 		<li><a id="BP_Logout" href="#" class="button minbutton br3px"><?=T_('Logout');?></a></li>

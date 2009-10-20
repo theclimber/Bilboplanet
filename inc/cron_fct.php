@@ -56,21 +56,6 @@ function update($print=false) {
 	# Connexion a la base de donnees
 	connectBD();
 
-	# Requete qui recupere les url de tous les articles deja present dans la base
-	$sql = 'SELECT site_membre, article_url, article_pub
-		FROM article, membre
-		WHERE article.num_membre = membre.num_membre';
-	$rqt_article = mysql_query($sql) or die("Error with request $sql");
-
-	# On met la liste dans un tableau
-	$nb_article = 0;
-	while ($liste = mysql_fetch_row($rqt_article)) {
-		$tab[$nb_article][0] = $liste[0];
-		$tab[$nb_article][1] = $liste[1];
-		$tab[$nb_article][2] = $liste[2];
-		$nb_article++;
-	}
-
 	# Requete permettant de recuperer la liste des flux a parser
 	$sql = "SELECT flux.num_membre, flux.url_flux, site_membre
 		FROM flux, membre 
@@ -96,14 +81,20 @@ function update($print=false) {
 		fwrite($fp,time());
 		fclose($fp);
 
-
 		$sql = "UPDATE `flux`
 			SET `last_updated` = '".time()."'
-			WHERE flux.url_flux = '$liste[1]'";
+			WHERE flux.url_flux = '".$liste[1]."'";
 		$result = mysql_query($sql);
-
+		
+		$site_membre = $liste[2];
 		# On construit l'url du flux
-		$url_flux = $liste[2].$liste[1];
+		$parse = @parse_url($liste[1]);
+		if (!$parse['scheme']){
+			$url_flux = $site_membre.$liste[1];
+		}
+		else {
+			$url_flux = $liste[1];
+		}
 
 		# Si on est en mode debug
 		if($log == "debug") {
@@ -139,11 +130,11 @@ function update($print=false) {
 
 			# On traite chaque item du flux
 			$items = $feed->get_items();
-			$url_item = '';
+			$item_permalink = '';
 			$content = '';
 
 			foreach ($items as $item) {
-				$url_item = $item->get_permalink();
+				$item_permalink = $item->get_permalink();
 				$content = $item->get_content();
 				$description = $item->get_description();
 
@@ -152,19 +143,15 @@ function update($print=false) {
 					if ($print) echo $log_msg;
 				} else {
 					# On test si le decoupage s'est bien passe
-					if(empty($url_item)) {
+					if(empty($item_permalink)) {
 
 						# Sinon on affiche la vrai cause de l'erreur
 						$log_msg = logMsg("Erreur de decoupage du lien ".$item->get_permalink(), $file, 3, $print);
-						#$sql = "UPDATE `flux`
-						#	SET `status_flux` = '0'
-						#	WHERE flux.url_flux = '$liste[1]'";
-						#$result = mysql_query($sql);
 						if ($print) echo $log_msg;
 
 						# Si on est en mode debug
 						if($log == "debug") {
-							$log_msg = logMsg("Url du site: ".$liste[2], $file, 4, $print);
+							$log_msg = logMsg("Url du site: ".$site_membre, $file, 4, $print);
 							if ($print) echo $log_msg;
 							$log_msg = logMsg("Url du permalink: ".$item->get_permalink(), $file, 4, $print);
 							if ($print) echo $log_msg;
@@ -173,16 +160,13 @@ function update($print=false) {
 					} else {
 
 						# On test si l'item est deja en base
-						$trouve = 0; $i = 0;
-						while (!$trouve && $i < $nb_article) {
-							if($tab[$i][0].$tab[$i][1] == $liste[2].$url_item) {
-								$trouve = 1; 
-							}
-							$i++;
-						}
+						$trouve = 0;
+						$sql = "SELECT article_titre, article_content, article_pub FROM article WHERE `article_url` = '".$item_permalink."'";
+						$rqt = mysql_query($sql) or die("Error with request $sql");
+						$nb = mysql_num_rows($rqt);
 
 						# Si il n'y pas d'item avec cette url, on insere
-						if(!$trouve && $item->get_date('U') < time()) {
+						if($nb == 0 && $item->get_date('U') < time()) {
 
 							# On recupere les donnes de l'article
 							$date = $item->get_date('U');
@@ -199,7 +183,7 @@ function update($print=false) {
 							# On effectue les traitements avant insertion en base
 							$titre = traitementEncodage($titre);
 							$contenu = traitementEncodage($contenu);
-							$sql = "INSERT INTO article VALUES ('','$liste[0]','$date','$titre','$url_item','$contenu','1', '0')";
+							$sql = "INSERT INTO article VALUES ('','$liste[0]','$date','$titre','$item_permalink','$contenu','1', '0')";
 							$result = mysql_query($sql);
 
 							if (!$result) {
@@ -215,20 +199,21 @@ function update($print=false) {
 								}
 							} else {
 								# Sinon, si l'insertion de l'article c'est bien passee
-								$log_msg = logMsg("Article ajoute: ".$url_item, $file, 1, $print);
+								$log_msg = logMsg("Article ajoute: ".$item_permalink, $file, 1, $print);
 								if ($print) echo $log_msg;
 
-								# On rajoute l'url a la liste pour eviter les doublons
-								$tab[$nb_article][0] = $liste[2];
-								$tab[$nb_article][1] = $url_item;
-								$tab[$nb_article][2] = $date;
-								$nb_article++;
 								$cpt++;
 							}
 						} # fin if(!trouve)
 
 						# Si l'article est deja dans la base, on test si on doit le mettre a jour
-						if($trouve) {
+						elseif($nb == 1) {
+							$result = mysql_fetch_row($rqt);
+							# Mysql virer les slashe apres insertion de la requete
+							# Pour garder la coherence des donnees on les arjoute ici
+							$titre2 = addslashes($result[0]);
+							$contenu2 = addslashes($result[1]);
+							$date2 = $result[2];
 
 							# On recupere les informations de l'article
 							$date = $item->get_date('U');
@@ -246,34 +231,20 @@ function update($print=false) {
 							# On raccourci le titre si il est trop long
 							if(strlen($titre) > 254) $titre = substr($titre, 0, 254);
 
-							# On recupere les donnees enregistrees en base de donnees
-							$sql = "SELECT article_titre, article_content 
-								FROM article, membre
-								WHERE article.num_membre = membre.num_membre
-								AND membre.site_membre = '".$tab[$i-1][0]."'
-								AND article.article_url = '".$tab[$i-1][1]."'";
-							$rqt = mysql_query($sql) or die("Error with request $sql");
-							$result = mysql_fetch_row($rqt);
-
-							# Mysql virer les slashe apres insertion de la requete
-							# Pour garder la coherence des donnees on les arjoute ici
-							$titre2 = addslashes($result[0]);
-							$contenu2 = addslashes($result[1]);
-
 							# Si l'article a ete modifie (soit la date, soit le titre, soit le contenu)
-							if(($date != $tab[$i-1][2]) || ($titre != "" && strcmp($titre, $titre2) != 0) || ($contenu != "" && strcmp($contenu, $contenu2) != 0)) {
+							if(($date != $date2) || ($titre != "" && strcmp($titre, $titre2) != 0) || ($contenu != "" && strcmp($contenu, $contenu2) != 0)) {
 
 								# On log si il y a eu des modifications trouvees
-								if($date != $tab[$i-1][2]) {
-									$log_msg = logMsg("changement de date pour l'article: ".$url_item, $file, 2, $print);
+								if($date != $date2) {
+									$log_msg = logMsg("changement de date pour l'article: ".$item_permalink, $file, 2, $print);
 									if ($print) echo $log_msg;
 								}
 								if(strcmp($titre, $titre2) != 0) {
-									$log_msg = logMsg("Changement de titre pour l'article: ".$url_item, $file, 2, $print);
+									$log_msg = logMsg("Changement de titre pour l'article: ".$item_permalink, $file, 2, $print);
 									if ($print) echo $log_msg;
 								}
 								if(strcmp($contenu, $contenu2) != 0) {
-									$log_msg = logMsg("Changement du contenu pour l'article: ".$url_item, $file, 2, $print);
+									$log_msg = logMsg("Changement du contenu pour l'article: ".$item_permalink, $file, 2, $print);
 									if ($print) echo $log_msg;
 								}
 
@@ -281,8 +252,8 @@ function update($print=false) {
 								$sql = "UPDATE article, membre 
 									SET article_pub = '$date', article_titre = '$titre', article_content = '$contenu' 
 									WHERE article.num_membre = membre.num_membre
-									AND membre.site_membre = '".$liste[2]."'
-									AND article_url = '$url_item'";
+									AND membre.site_membre = '".$site_membre."'
+									AND article_url = '$item_permalink'";
 								$result = mysql_query($sql);
 
 								# Si la mise a jour de l'article c'est mal passe
@@ -306,7 +277,7 @@ function update($print=false) {
 								} else {
 
 									# On informe que tout est ok
-									$log_msg = logMsg("Article mis a jour: ".$url_item, $file, 1, $print);
+									$log_msg = logMsg("Article mis a jour: ".$item_permalink, $file, 1, $print);
 									if ($print) echo $log_msg;
 									$cpt++;
 								}

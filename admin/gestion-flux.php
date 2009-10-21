@@ -43,25 +43,24 @@ if(isset($_POST) && (
     (isset($_POST['submitAjout']) && !empty($_POST['submitAjout']))
 ))
 {
-	$action = trim($_POST['submitModify']);
-	$action = trim($_POST['submitDelete']);
-	$action = trim($_POST['submitAjout']);
 	$num  = trim($_POST['num']);
 	$num_membre  = trim($_POST['num_membre']);
 	$sql = "SELECT site_membre FROM membre WHERE num_membre='".$num_membre."'";
 	$result1 = mysql_query($sql) or die("Error with request $sql");
 	$site = mysql_result($result1,0);
 	if (isset($_POST['flux']) && empty($_POST['flux'])){
-			$flux = check_field('flux',trim($_POST['flux']),'feed');
+		$flux = check_field('flux',trim($_POST['flux']),'feed');
 	}
 	elseif ((isset($_POST['submitModify']) && !empty($_POST['submitModify'])) || (isset($_POST['submitAjout']) && !empty($_POST['submitAjout']))) {
-		if (isset($_POST['statut']) && trim($_POST['statut'])==1)
-			$flux = check_field('flux',$site.trim($_POST['flux']),'feed');
-		else
-			$flux = check_field('flux',$site.trim($_POST['flux']),'not_empty');
+		if (isset($_POST['statut']) && trim($_POST['statut'])==1){
+			$flux = check_field('flux',trim($_POST['flux']),'feed');
+		}
+		else {
+			$flux = check_field('flux',trim($_POST['flux']),'feed');
+		}
 	}
 	else {
-		$flux = check_field('flux',$site.trim($_POST['flux']),'not_empty');
+		$flux = check_field('flux',trim($_POST['flux']),'not_empty');
 	}
 	$flux['value'] = trim($_POST['flux']);
 	if ($flux['success']){
@@ -133,13 +132,15 @@ include_once(dirname(__FILE__).'/sidebar.php');
 <table class="table-log sortable">
 		<thead>
 			<tr>
-				<th class="tc1 tcl" scope="col"><?=T_('Url of the feed (Without the ending /)');?></th>
+				<th class="tc1 tcl" scope="col"><?=T_('Full url of the feed (Without the ending /)');?></th>
 				<th class="tc2" scope="col" style='text-align:center'><?=T_('Name of the user');?></th>
 			</tr>
 		</thead>
 			<tr>
 			<form method="post">
-				<td class="tc1 tcl row1"><input class="input" style="width:98%" type="text" name="flux" size="40" value="<?php if($error["flux"]) echo $_POST['flux'];?>" /></td>
+				<td class="tc1 tcl row1">
+					<input class="input" value="http://www.exemple.com/feed" onfocus="if (this.value==='http://www.exemple.com/feed') {this.value='';}" style="width:98%" type="text" name="flux" size="40" value="<?php if($error["flux"]) echo $_POST['flux'];?>" />
+				</td>
 				<td class="tc2 row1">
 					<center>
 					<select name="num_membre" style="width:98%">
@@ -244,13 +245,20 @@ while($liste = mysql_fetch_row($rqt)) {
 	}
 
 	# Affichage
-	echo '<form method="POST">
+	$parse = @parse_url($liste[1]);
+	$line = '<form method="POST">
 			<tr>
 				<input type="hidden" name="num" value="'.$liste[0].'"/>
 				<input type="hidden" name="num_membre" value="'.$liste[6].'"/>
-				<td class="'.$statut.'" style="width:60px;">'.$liste[2].'</td>
-				<td class="tc2">'.$liste[3].'<input class="input zone-saisie" style="width:50%" type="text" name="flux" value="'.$liste[1].'" size="40" />&nbsp;&nbsp;<a href="'.$url.'" target="_bank">'.T_('show').'</a></td>
-				<td style="width:40px;text-align:center;">'.$select.'</td>
+				<td class="'.$statut.'" style="width:60px;">'.$liste[2].'</td>';
+	if (!$parse['scheme']){
+		$line .= '<td class="tc2">'.$liste[3].'<input class="input zone-saisie" style="width:50%" type="text" name="flux" value="'.$liste[1].'" size="40" />&nbsp;&nbsp;<a href="'.$url.'" target="_bank">'.T_('show').'</a></td>';
+	}
+	else {
+		$line .= '<td class="tc2"><input class="input zone-saisie" style="width:80%" type="text" name="flux" value="'.$liste[1].'" size="40" />&nbsp;&nbsp;<a href="'.$url.'" target="_bank">'.T_('show').'</a></td>';
+	}
+	
+	$line .= '	<td style="width:40px;text-align:center;">'.$select.'</td>
 				<td style="width:100px;text-align:center;">
 					<center>
 					<input class="button br3px" type="submit" name="submitModify" value="'.T_('Change').'"> 
@@ -259,6 +267,7 @@ while($liste = mysql_fetch_row($rqt)) {
 				</td>
 			</tr>
 			</form>';
+	echo $line;
 }
 ?>
 </table>

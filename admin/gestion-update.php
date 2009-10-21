@@ -46,8 +46,14 @@ if(isset($_POST) && isset($_POST['action']) && !empty($_POST['action'])) {
 		header("Location: ./gestion-update.php");
 	}
 	else {
-		$flash = T_("Manual update ...");
 		$update = true;
+		try{
+			$update_logs = update(true);
+			$flash = T_("Manual update ...");
+		}
+		catch(Exception $e){
+			$error = sprintf(T_('Error while updating : %s'), $e->getMessage());
+		}
 	}
 }
 
@@ -72,7 +78,7 @@ elseif (!empty($error)) echo '<div class="flash error">'.$error.'</div>';
 if (get_cron_running()) echo '<p style="margin-left:5px;padding-bottom:8px;background-image:url(newstyle/icons/tick.png);background-repeat: no-repeat;"><strong><span style="padding-left:25px;">'.T_('The update is running').'</span></strong></p><br />';
 else
 	echo '<p style="margin-left:5px;padding-bottom:8px;background-image:url(newstyle/icons/cross.png);background-repeat: no-repeat;"><strong><span style="padding-left:20px;">'.T_('The update is stopped').'</span></strong></p><br />';
-if (file_exists('../inc/STOP')) echo "<p style='margin-left:5px;padding-bottom:8px;background-image:url(newstyle/icons/slash.png);background-repeat: no-repeat;'><strong><span style='padding-left:20px;'>".T_('The update is disabled')."</span></strong></p><br />";
+if (file_exists(dirname(__FILE__).'/../inc/STOP')) echo "<p style='margin-left:5px;padding-bottom:8px;background-image:url(newstyle/icons/slash.png);background-repeat: no-repeat;'><strong><span style='padding-left:20px;'>".T_('The update is disabled')."</span></strong></p><br />";
 ?>
 <form method="POST">
 		<input type="radio" name="action" value="3" /> <?=T_('Stop the update algorithm');?><br />
@@ -84,7 +90,9 @@ if (file_exists('../inc/STOP')) echo "<p style='margin-left:5px;padding-bottom:8
 </fieldset>
 
 <?php
-if ($update) update(true);
+if($update) {
+	echo '<div class="update_logs">'.$update_logs.'</div>';
+}
 include(dirname(__FILE__).'/footer.php');
 if(isset($_POST) && isset($_POST['action']) && !empty($_POST['action']) && $_POST['action'] == '1') {
 	if (!get_cron_running())

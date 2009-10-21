@@ -35,6 +35,7 @@ function finished() {
 
 function update($print=false) {
 	$cron_file = dirname(__FILE__).'/cron_running.txt';
+	$output = "";
 
 	# On augmenete le temps d'execution
 	@set_time_limit(0);
@@ -76,7 +77,7 @@ function update($print=false) {
 
 		$fp = @fopen($cron_file,'wb');
 		if ($fp === false) {
-			throw new Exception(sprintf(__('Cannot write %s file.'),$fichier));
+			throw new Exception(sprintf(__('Cannot write %s file.'),$cron_file));
 		}
 		fwrite($fp,time());
 		fclose($fp);
@@ -99,7 +100,7 @@ function update($print=false) {
 		# Si on est en mode debug
 		if($log == "debug") {
 			$log_msg = logMsg("Analyse du flux ".$url_flux, $file, 4, $print);
-			if ($print) echo $log_msg;
+			if ($print) $output .= $log_msg;
 		}
 
 		# On cree un objet SimplePie et on ajuste les parametres de base
@@ -120,10 +121,10 @@ function update($print=false) {
 			$error = $feed->error();
 			if (ereg($url_flux, $error)) {
 				$log_msg = logMsg("Aucun article trouve ".$error, $file, 3, $print);
-				if ($print) echo $log_msg;
+				if ($print) $output .= $log_msg;
 			} else {
 				$log_msg = logMsg("Aucun article trouve sur $url_flux: ".$error, $file, 3, $print);
-				if ($print) echo $log_msg;
+				if ($print) $output .= $log_msg;
 			}
 
 		} else {
@@ -140,21 +141,21 @@ function update($print=false) {
 
 				if (empty($content) && empty($description)) {
 					$log_msg = logMsg("Pas de contenu sur $url_flux", $file, 3, $print);
-					if ($print) echo $log_msg;
+					if ($print) $output .= $log_msg;
 				} else {
 					# On test si le decoupage s'est bien passe
 					if(empty($item_permalink)) {
 
 						# Sinon on affiche la vrai cause de l'erreur
 						$log_msg = logMsg("Erreur de decoupage du lien ".$item->get_permalink(), $file, 3, $print);
-						if ($print) echo $log_msg;
+						if ($print) $output .= $log_msg;
 
 						# Si on est en mode debug
 						if($log == "debug") {
 							$log_msg = logMsg("Url du site: ".$site_membre, $file, 4, $print);
-							if ($print) echo $log_msg;
+							if ($print) $output .= $log_msg;
 							$log_msg = logMsg("Url du permalink: ".$item->get_permalink(), $file, 4, $print);
-							if ($print) echo $log_msg;
+							if ($print) $output .= $log_msg;
 						}
 
 					} else {
@@ -195,12 +196,12 @@ function update($print=false) {
 								} else {
 									# Sinon on affiche la vrai cause de l'erreur
 									$log_msg = logMsg("Erreur sur la requete: $sql", $file, 3, $print);
-									if ($print) echo $log_msg;
+									if ($print) $output .= $log_msg;
 								}
 							} else {
 								# Sinon, si l'insertion de l'article c'est bien passee
 								$log_msg = logMsg("Article ajoute: ".$item_permalink, $file, 1, $print);
-								if ($print) echo $log_msg;
+								if ($print) $output .= $log_msg;
 
 								$cpt++;
 							}
@@ -237,15 +238,15 @@ function update($print=false) {
 								# On log si il y a eu des modifications trouvees
 								if($date != $date2) {
 									$log_msg = logMsg("changement de date pour l'article: ".$item_permalink, $file, 2, $print);
-									if ($print) echo $log_msg;
+									if ($print) $output .= $log_msg;
 								}
 								if(strcmp($titre, $titre2) != 0) {
 									$log_msg = logMsg("Changement de titre pour l'article: ".$item_permalink, $file, 2, $print);
-									if ($print) echo $log_msg;
+									if ($print) $output .= $log_msg;
 								}
 								if(strcmp($contenu, $contenu2) != 0) {
 									$log_msg = logMsg("Changement du contenu pour l'article: ".$item_permalink, $file, 2, $print);
-									if ($print) echo $log_msg;
+									if ($print) $output .= $log_msg;
 								}
 
 								# On met a jour l'article en base
@@ -270,7 +271,7 @@ function update($print=false) {
 
 										# Sinon on affiche la vrai cause de l'erreur
 										$log_msg = logMsg("Erreur sur la requete: ".$sql, $file, 3, $print);
-										if ($print) echo $log_msg;
+										if ($print) $output .= $log_msg;
 									}
 
 									# Sinon, si la mise a jour de l'article c'est bien passee
@@ -278,7 +279,7 @@ function update($print=false) {
 
 									# On informe que tout est ok
 									$log_msg = logMsg("Article mis a jour: ".$item_permalink, $file, 1, $print);
-									if ($print) echo $log_msg;
+									if ($print) $output .= $log_msg;
 									$cpt++;
 								}
 							} # fin du if($date !=
@@ -304,7 +305,7 @@ function update($print=false) {
 
 	# Message indiquant la fin de la mise a jour
 	$log_msg = logMsg("$cpt articles mis a jour en $temps_passe secondes", $file, 2, $print);
-	if ($print) echo $log_msg;
+	if ($print) $output .= $log_msg;
 
 	# Fermeture du fichier de log
 	fclose($file); 
@@ -314,6 +315,8 @@ function update($print=false) {
 
 	# On met a jour la date d'update
 	updateDateMaj();
+
+	return $output;
 }
 
 # Procedure qui log un message a l'ecran et dans un fichier de log

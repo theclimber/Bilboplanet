@@ -46,8 +46,14 @@ if(isset($_POST) && isset($_POST['action']) && !empty($_POST['action'])) {
 		header("Location: ./gestion-update.php");
 	}
 	else {
-		$flash = T_("Manual update ...");
 		$update = true;
+		try{
+			$update_logs = update(true);
+			$flash = T_("Manual update ...");
+		}
+		catch(Exception $e){
+			$error = sprintf(T_('Error while updating : %s'), $e->getMessage());
+		}
 	}
 }
 
@@ -84,7 +90,9 @@ if (file_exists('../inc/STOP')) echo "<p style='margin-left:5px;padding-bottom:8
 </fieldset>
 
 <?php
-if ($update) update(true);
+if($update) {
+	echo '<div class="update_logs">'.$update_logs.'</div>';
+}
 include(dirname(__FILE__).'/footer.php');
 if(isset($_POST) && isset($_POST['action']) && !empty($_POST['action']) && $_POST['action'] == '1') {
 	if (!get_cron_running())

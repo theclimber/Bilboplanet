@@ -699,5 +699,30 @@ function get_cron_running() {
 		return false;
 }
 
+function get_database_size(){
+	connectBD();
+	$request = mysql_query("SHOW TABLE STATUS") or die("Error with request $sql");
+	$dbsize = 0;
+	while( $row = mysql_fetch_array($request) ) {
+		$dbsize += $row[ "Data_length" ] + $row[ "Index_length" ];
+	}
+	closeBD();
+	return $dbsize;
+}
+
+function formatfilesize( $data ) {
+	// bytes
+	if( $data < 1024 ) {
+		return $data . T_(" bytes");
+	}
+	// kilobytes
+	else if( $data < 1024000 ) {
+		return round( ( $data / 1024 ), 1 ) . T_(" Kb");
+	}
+	// megabytes
+	else {
+		return round( ( $data / 1024000 ), 1 ) . T_(" MB");
+	}
+}
 
 ?>

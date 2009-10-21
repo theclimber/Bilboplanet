@@ -29,6 +29,36 @@
 require_once(dirname(__FILE__).'/../inc/fonctions.php');
 include_once(dirname(__FILE__).'/head.php');
 include_once(dirname(__FILE__).'/sidebar.php');
+
+function showArticleSummary(){
+	connectBD();
+	/* On recupere les infomations des articles */
+	$sql = "SELECT nom_membre, article_pub, article_titre, article_url
+		FROM article, membre
+		WHERE article.num_membre = membre.num_membre
+		AND article_statut = '1'
+		AND statut_membre = '1'
+		ORDER BY article_pub DESC
+		LIMIT 0,5";
+	$request = mysql_query($sql) or die("Error with request $sql");
+	$list_articles = "<ul>";
+	$max_title_length = 50;
+	while($article = mysql_fetch_row($request)){
+		# Formatage de la date
+		$date = date("d/m/Y",$article[1]);
+		# Affichage du lien
+		$titre = html_entity_decode($article[2], ENT_QUOTES, 'UTF-8');
+		if (strlen($titre) > $max_title_length)
+			$show = substr($titre,0, $max_title_length)."...";
+		else
+			$show = $titre;
+		$list_articles .= '<li>'.$date.' : <a href="'.$article[3].'" title="'.$titre.' ('.$article[0].')" target="_blank">'.$show.'</a></li>';
+	}
+	$list_articles .= "</ul>";
+	closeBD;
+	return $list_articles;
+}
+
 ?>
 <div id="BP_page" class="page">
 	<div class="inpage">
@@ -40,32 +70,27 @@ include_once(dirname(__FILE__).'/sidebar.php');
 		
 <div id="dashboard">
 	<div class="box-dashboard"><div class="top-box-dashboard"><?=T_('Derniers articles publiés :');?></div>
-		<ul>
-			<li><?=T_('lien 1');?></li>
-			<li><?=T_('lien 1');?></li>
-			<li><?=T_('lien 1');?></li>
-			<li><?=T_('lien 1');?></li>
-			<li><?=T_('lien 1');?></li>
-		</ul>
+<?php
+echo showArticleSummary();
+?>
 	</div>
 	<div class="box-dashboard"><div class="top-box-dashboard"><?=T_('Statistiques :');?></div>
 		<ul>
-			<li><?=T_('Etat du cron');?></li>
-			<li><?=T_('Etat de la DB');?></li>
-			<li><?=T_('Nombre d\'articles aujourd\'hui');?></li>
-			<li><?=T_('Moyenne d\'articles par jour');?></li>
-			<li><?=T_('Nombre de votes aujourd\'hui');?></li>
-			<li><?=T_('Moyenne de votes par jour');?></li>
-			<li><?=T_('lien 1');?></li>
-		</ul>
-	</div>
-	<div class="box-dashboard"><div class="top-box-dashboard"><?=T_('News du bilboplanet (liens du blog du bilboplanet) :');?></div>
-		<ul>
-			<li><?=T_('lien 1');?></li>
-			<li><?=T_('lien 1');?></li>
-			<li><?=T_('lien 1');?></li>
-			<li><?=T_('lien 1');?></li>
-			<li><?=T_('lien 1');?></li>
+
+<?php
+if (get_cron_running())
+	echo '<li><strong><span style="background-image:url(newstyle/icons/tick.png);background-repeat: no-repeat;padding-left:25px;">'.T_('The update is running').'</span></strong></li>';
+else
+	echo '<li><strong><span style="background-image:url(newstyle/icons/cross.png);background-repeat: no-repeat;padding-left:20px;">'.T_('The update is stopped').'</span></strong></li>';
+if (file_exists(dirname(__FILE__).'/../inc/STOP'))
+	echo "<li><strong><span style='background-image:url(newstyle/icons/slash.png);background-repeat: no-repeat;padding-left:20px;'>".T_('The update is disabled')."</span></strong></li>";
+?>
+
+			<li><?=T_('Current size of the database :'); echo ' <strong>'.formatfilesize(get_database_size()).'</strong>';?></li>
+			<li><?=T_('Nombre d\'articles aujourd\'hui :');?></li>
+			<li><?=T_('Moyenne d\'articles par jour :');?></li>
+			<li><?=T_('Nombre de votes aujourd\'hui :');?></li>
+			<li><?=T_('Moyenne de votes par jour :');?></li>
 		</ul>
 	</div>
 </div>

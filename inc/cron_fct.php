@@ -73,14 +73,12 @@ function update($print=false) {
 	# On parcour l'ensemble des flux 
 	$cpt = 0;
 	while ($liste = mysql_fetch_row($rqt_flux)) {
-
-
-		$fp = @fopen($cron_file,'wb');
-		if ($fp === false) {
-			throw new Exception(sprintf(__('Cannot write %s file.'),$cron_file));
+		# On verifie si on n'a pas demandé l'arrêt de l'algo
+		if (file_exists(dirname(__FILE__).'/STOP')) {
+			$log_msg = logMsg("STOP file detected, trying to shut down cron job", $file, 2, $print);
+			if ($print) $output .= $log_msg;
+			break;
 		}
-		fwrite($fp,time());
-		fclose($fp);
 
 		$sql = "UPDATE `flux`
 			SET `last_updated` = '".time()."'
@@ -135,8 +133,17 @@ function update($print=false) {
 			$content = '';
 
 			foreach ($items as $item) {
+				# On ecrit dans le fichier que l'algorithme est en marche
+				$fp = @fopen($cron_file,'wb');
+				if ($fp === false) {
+					throw new Exception(sprintf(__('Cannot write %s file.'),$cron_file));
+				}
+				fwrite($fp,time());
+				fclose($fp);
+
+				# On lance l'analyse de l'entrée
 				$item_permalink = $item->get_permalink();
-				$content = $item->get_content();
+				$content = strip_script($item->get_content());
 				$description = $item->get_description();
 
 				if (empty($content) && empty($description)) {
@@ -147,14 +154,14 @@ function update($print=false) {
 					if(empty($item_permalink)) {
 
 						# Sinon on affiche la vrai cause de l'erreur
-						$log_msg = logMsg("Erreur de decoupage du lien ".$item->get_permalink(), $file, 3, $print);
+						$log_msg = logMsg("Erreur de decoupage du lien ".$item_permalink, $file, 3, $print);
 						if ($print) $output .= $log_msg;
 
 						# Si on est en mode debug
 						if($log == "debug") {
 							$log_msg = logMsg("Url du site: ".$site_membre, $file, 4, $print);
 							if ($print) $output .= $log_msg;
-							$log_msg = logMsg("Url du permalink: ".$item->get_permalink(), $file, 4, $print);
+							$log_msg = logMsg("Url du permalink: ".$item_permalink, $file, 4, $print);
 							if ($print) $output .= $log_msg;
 						}
 
@@ -162,7 +169,7 @@ function update($print=false) {
 
 						# On test si l'item est deja en base
 						$trouve = 0;
-						$sql = "SELECT article_titre, article_content, article_pub FROM article WHERE `article_url` = '".$item_permalink."'";
+						$sql = "SELECT article_titre, article_content, article_pub FROM article WHERE `article_url` = '".addslashes($item_permalink)."'";
 						$rqt = mysql_query($sql) or die("Error with request $sql");
 						$nb = mysql_num_rows($rqt);
 
@@ -171,6 +178,9 @@ function update($print=false) {
 
 							# On recupere les donnes de l'article
 							$date = $item->get_date('U');
+							if (!$date){
+								$date = time();
+							}
 							$titre = $item->get_title();
 							if (!empty($content)) {
 								$contenu = $content;
@@ -184,7 +194,7 @@ function update($print=false) {
 							# On effectue les traitements avant insertion en base
 							$titre = traitementEncodage($titre);
 							$contenu = traitementEncodage($contenu);
-							$sql = "INSERT INTO article VALUES ('','$liste[0]','$date','$titre','$item_permalink','$contenu','1', '0')";
+							$sql = "INSERT INTO article VALUES ('','$liste[0]','$date','$titre','".addslashes($item_permalink)."','$contenu','1', '0')";
 							$result = mysql_query($sql);
 
 							if (!$result) {
@@ -254,7 +264,7 @@ function update($print=false) {
 									SET article_pub = '$date', article_titre = '$titre', article_content = '$contenu' 
 									WHERE article.num_membre = membre.num_membre
 									AND membre.site_membre = '".$site_membre."'
-									AND article_url = '$item_permalink'";
+									AND article_url = '".addslashes($item_permalink)."'";
 								$result = mysql_query($sql);
 
 								# Si la mise a jour de l'article c'est mal passe
@@ -461,4 +471,15 @@ function checkUrl($url) {
 	# Ouverture / Fermeture de l'url a distance
 	return  @fclose(@fopen($url, 'r'));
 }
+
+function strip_script($string) {
+	do
+	$string = eregi_replace("<script[^>]*>.*</script[^>]*>", "", $string);
+	while (eregi_replace("<script[^>]*>.*</script[^>]*>", "", $string)==1);
+	do
+	$string = eregi_replace("<script[^>]*>", "", $string);
+	while (eregi_replace("<script[^>]*>", "", $string)==1);
+	return $string;
+}
+
 ?>

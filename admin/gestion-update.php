@@ -78,7 +78,7 @@ elseif (!empty($error)) echo '<div class="flash error">'.$error.'</div>';
 if (get_cron_running()) echo '<p style="margin-left:5px;padding-bottom:8px;background-image:url(newstyle/icons/tick.png);background-repeat: no-repeat;"><strong><span style="padding-left:25px;">'.T_('The update is running').'</span></strong></p><br />';
 else
 	echo '<p style="margin-left:5px;padding-bottom:8px;background-image:url(newstyle/icons/cross.png);background-repeat: no-repeat;"><strong><span style="padding-left:20px;">'.T_('The update is stopped').'</span></strong></p><br />';
-if (file_exists('../inc/STOP')) echo "<p style='margin-left:5px;padding-bottom:8px;background-image:url(newstyle/icons/slash.png);background-repeat: no-repeat;'><strong><span style='padding-left:20px;'>".T_('The update is disabled')."</span></strong></p><br />";
+if (file_exists(dirname(__FILE__).'/../inc/STOP')) echo "<p style='margin-left:5px;padding-bottom:8px;background-image:url(newstyle/icons/slash.png);background-repeat: no-repeat;'><strong><span style='padding-left:20px;'>".T_('The update is disabled')."</span></strong></p><br />";
 ?>
 <form method="POST">
 		<input type="radio" name="action" value="3" /> <?=T_('Stop the update algorithm');?><br />

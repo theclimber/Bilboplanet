@@ -111,14 +111,14 @@ include_once(dirname(__FILE__).'/sidebar.php');
 
 <fieldset><legend><?=T_('Filtering of the posts');?></legend>
 		<div class="message">
-			<p>Filtrer les actualit&eacute;s</p>
+			<p><?=T_('filter news');?></p>
 		</div><br />
 
 <form action="" method="POST">
-<table class="table-news">
+<table class="table-news-filter">
 <tr>
-<td style="width:150px;border-right-width: 1px;border-right-style: solid;background-color:#D8D8D8;"><?=T_('Posts of the member :');?></td>
-<td style="background-color:#D8D8D8;"><center><select name="num_membre" style="width:180px;">
+<th class="tc1 tcl"><?=T_('Posts of the member :');?></th>
+<th class="tc2 tcr"><select name="num_membre" style="width:180px;">
 
 <?php
 # Execution de la requete
@@ -141,14 +141,13 @@ if($num_membre == "0") {
 	echo '<option value="'.$liste[0].'">Tous</option>';
 }
 ?>
-</select></center></td>
+</select></th>
 </tr>
 <tr>
-<td style="border-right-width: 1px;border-right-style: solid;"><?=T_('Number of posts');?></td>
-<td><center><input type="text" class="input" style="text-align:center;width:170px;" name="nb_items"  value="<?php echo $nb_items; ?>" /></center></td>
+<td class="tc1 tcl"><?=T_('Number of posts');?></td>
+<td class="tc2 tcr"><input type="text" class="input" style="text-align:center;width:170px;" name="nb_items"  value="<?php echo $nb_items; ?>" /></center></td>
 </tr>
-</table>
-<p style="padding-top:70px">
+</table><br />
 <div class="button"><input type="reset" value="<?=T_('Reset');?>" class="reset" onClick="this.form.reset()"></div>&nbsp;&nbsp;
 <div class="button"><input type="submit" class="valide" value="<?=T_('Send');?>"></div></p>
 
@@ -168,16 +167,16 @@ $sql = "SELECT * FROM article ORDER BY num_article ASC LIMIT $num_start,$nb_item
 $rqt = mysql_query($sql) or die("Error with request $sql");
 
 include(dirname(__FILE__).'/pagination.php');
-?>
-<table class="table-results sortable">
+?><br /><br />
+<table class="table-news sortable">
 		<thead>
 			<tr>
-				<th style="width:10%;" scope="col"><?=T_('Name');?></th>
-				<th style="width:120px;" scope="col"><?=T_('Date');?></th>
+				<th class="tc1 tcr" scope="col"><?=T_('Name');?></th>
+				<th class="tc2" scope="col"><?=T_('Date');?></th>
 				<th class="tc3" scope="col"><?=T_('Title');?></th>
 				<th class="tc4" scope="col" ><?=T_('Status');?></th>
-				<th style="width:20px;" scope="col"><?=T_('Nb votes');?></th>
-				<th  style="width:160px;" scope="col"><?=T_('Action');?></th>
+				<th class="tc5" scope="col"><?=T_('Nb votes');?></th>
+				<th class="tc5 tcr" scope="col"><?=T_('Action');?></th>
 			</tr>
 		</thead>
 
@@ -227,12 +226,12 @@ while($liste = mysql_fetch_row($rqt)) {
 
 	echo '<form method="POST"><tr>
 		<input type="hidden" name="num" value="'.$liste[0].'"/>
-		<td class="'.$colore.'" style="width:10%;">'.$liste[1].'</td>
-		<td style="width:120px;">'.$date.'</td>
-		<td>'.substr($liste[3],0,70).'&nbsp;&nbsp;-&nbsp;&nbsp;<a href="'.$liste[6].'" target="_blank">'.substr($liste[6],0,65).'</a>'.$strend.'</td>
-		<td>'.$select.'</td>
-		<td style="text-align:center;width:20px;">'.$liste[5].'</td>
-		<td  style="width:160px;"><center>
+		<td class="'.$colore.' tc1 tcl">'.$liste[1].'</td>
+		<td class="tc2">'.$date.'</td>
+		<td class="tc3">'.substr($liste[3],0,70).'&nbsp;&nbsp;-&nbsp;&nbsp;<a href="'.$liste[6].'" target="_blank">'.substr($liste[6],0,65).'</a>'.$strend.'</td>
+		<td class="tc4">'.$select.'</td>
+		<td class="tc5">'.$liste[5].'</td>
+		<td class="tc6 tcr"><center>
 			<input type="submit" class="button br3px" name="submitModif" value="'.T_('Change').'" />
 			<input type="submit" class="button br3px" name="submitDelete" value="'.T_('Delete').'" />
 			</center>';

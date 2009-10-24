@@ -52,14 +52,14 @@ if(isset($_POST) && isset($_POST['nom']) && isset($_POST['path']) && isset($_POS
 	
 <fieldset><legend><?=T_('All the log files');?></legend>
 		<div class="message">
-			<p>Gestion des Journaux d'information du Planet (utilisateurs avanc&eacute;s).</p>
+			<p><?=T_('Management planet log files (Advanced users).');?></p>
 		</div><br/>
 		
-<center><table class="table-log">
+<center><table class="table-log sortable">
 <thead>
 <tr>
-<th class="log1 logl" scope="col"><?=T_('Name');?></th>
-<th class="log2" scope="col" /><?=T_('Action');?></th>
+<th class="tc1 tcl" scope="col"><?=T_('Name');?></th>
+<th class="tc2 tcr" scope="col" /><?=T_('Action');?></th>
 
 <?php
 $log_path = dirname(__FILE__)."/../logs";
@@ -72,8 +72,8 @@ while ($file = readdir($dir_handle)){
 			<tr>
 			<input type="hidden" name="nom" value="'.$file.'"/>
 			<input type="hidden" name="path" value="'.$log_path.'"/>
-			<td><a href=../logs/'.$file.'>'.$file.'</a></td>
-			<td><center>
+			<td class="tc1 tcl"><a href=../logs/'.$file.'>'.$file.'</a></td>
+			<td class="tc2 tcr"><center>
 				<input type="hidden" name="action" value="del">
 				<input class="button br3px" type="submit" value="'.T_('Delete').'"/></center>
 			</td>

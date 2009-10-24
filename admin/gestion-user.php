@@ -76,7 +76,7 @@ include_once(dirname(__FILE__).'/sidebar.php');
 
 <fieldset><legend><?=T_('Users Options');?></legend>
 		<div class="message">
-			<p>Configuration des paramètres de l'utilisateur.</p>
+			<p><?=T_('Configuring user settings.');?></p>
 		</div><br />
 
 <form method="POST">

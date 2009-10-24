@@ -98,15 +98,26 @@ if(is_file($snapshot_file)) $compress = exec("gzip -f $snapshot_file");
 # On affcihe un message
 if(is_file("$snapshot_file.gz")) {
 echo "			<div class='message'>";
-echo "<p>" .sprintf(T_("The actual database is accessible here (in the directory %s)"),$snapshot_path)."</p>";
+echo "<p>".sprintf(T_("The current database is accessible here (in the directory %s)"),$snapshot_path)."</p>";
+echo "<p>".sprintf(T_("When you reload this page, a new snapchot of your current database will be generated"));
 echo "</div><br />";
 			
-	echo "<center><table style='width:60%' class='table-results'><thead><tr><th class='tc1 tcl' scope='col'>".T_('Name')."</th><th class='tc2' scope='col'>".T_('Size')."</th></tr></thead>";
+	echo "<center>
+	<table class='table-mysql'>
+	<thead>
+		<tr>
+			<th class='tc1 tcl' scope='col'>".T_('Name')."</th>
+			<th class='tc2' scope='col'>".T_('Size')."</th>
+		</tr>
+	</thead>";
 	//using the opendir function
 	$dir_handle = @opendir($snapshot_path) or die("Unable to open $snapshot_path");
 	while ($file = readdir($dir_handle)){
 	if($file!="." && $file!=".." && $file!=".svn" && $file!=".DS_Store")
-		echo "<tr><td><a href='mysql/snapshot/$file'>$file</a></td><td>".filesize($file)."</td></tr>";
+		echo"<tr>
+		<td>
+		<a href='mysql/snapshot/$file'>$file</a></td>
+		<td>". filesize($file) ."</td></tr>";
 	}
 	echo "</table></center>";
 	closedir($dir_handle);
@@ -128,8 +139,13 @@ echo "</div>";
 </div>
 <br />
 <center>
-<table style="width:60%" class="table-results">
-<thead><tr><th class="tc1 tcl" scope="col"><?=T_('Name');?></th><th class='tc2' scope='col'><?=T_('Action');?></th></tr></thead>
+<table class="table-mysql table-mysql-600px">
+	<thead>
+		<tr>
+			<th class="tc3 tcl" scope="col"><?=T_('Name');?></th>
+			<th class='tc4 tcr' scope='col'><?=T_('Action');?></th>
+		</tr>
+	</thead>
 <?php
 $backup_path = "mysql/backup";
 //using the opendir function

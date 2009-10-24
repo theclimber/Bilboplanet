@@ -271,11 +271,8 @@ xml:lang="en" lang="en">
   <meta name="ROBOTS" content="NOARCHIVE,NOINDEX,NOFOLLOW" />
   <meta name="GOOGLEBOT" content="NOSNIPPET" />
   <link rel="icon" type="image/ico" href="../../favicon.ico" />
+  <link rel="stylesheet" type="text/css" href="install.css" media="all" />
   <title><?=T_('Installation of the Bilboplanet');?></title>
-  
-  <style type="text/css">
-  @import url(../style/install.css); 
-  </style>
   <script type="text/javascript" src="../js/jquery/jquery.js"></script>
   <script type="text/javascript">
   //<![CDATA[

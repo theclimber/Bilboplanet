@@ -56,26 +56,21 @@ if (isset($_GET) && isset($_GET['reload'])){
 	<script type="text/javascript">
 	var _Admin;
 	window.addEvent('domready', function(){
-		// Lance le'admin
 		BP_Admin = new BP_Administrator();
-
 		$('BP_Logout').addEvent('click', function(event){
 			event.stop();
 			$confirm('Se d&eacute;connecter de l\'administration ?', '<span class="logout"><?=T_('Logout');?></span>');
 		});
-
 		$('BP_About').addEvent('click', function(event){
 			event.stop();
-			$alert('BilboPlanet - Essais d\'administration', '<span class="<?=T_('About BilboPlanet');?></span>');
+			$alert('<?=T_('BilboPlanet - An Open Source RSS feed aggregator written in PHP<br />&nbsp;&nbsp;&nbsp;* Copyright &copy; 2009 By French Dev Team : Dev BilboPlanet<br />&nbsp;&nbsp;&nbsp;* Contact : dev@bilboplanet.org<br />&nbsp;&nbsp;&nbsp;* Website : www.bilboplanet.org<br />&nbsp;&nbsp;&nbsp;* Tracker : redmine.bilboplanet.org<br />&nbsp;&nbsp;&nbsp;* Blog : blog.bilboplanet.org<br /><br />Developper: Grégoire de Hemptine & Thomas Bourcey');?>', '<span class="about"><?=T_('About BilboPlanet');?></span>');
 		});
 	});
 	</script>
 </head>
-
 <body class="admin">
-
 <div id="BP_head" class="toolbar bgbox bdbox"><div class="grad bdinbox">
-	<p class="site_info" style="padding-left:20px;background-image: url('newstyle/icons/arrow.png');" >
+	<p class="site_info">
 		<span class="ctitle"><a class="tips" title="<?php echo $planet_title; ?>" rel="Retour sur le Planet" href="../" target="_blank">Retour sur le Planet</a></span>
 	</p>
 	<ul id="BP_userbar">

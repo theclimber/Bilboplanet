@@ -174,7 +174,7 @@ include_once(dirname(__FILE__).'/sidebar.php');
 	
 <fieldset><legend><?=T_('Add an user');?></legend>
 		<div class="message">
-			<p>Pour ajouter un nouveau membre, remplissez le formulaire ci-dessous.</p>
+			<p><?=T_('To add a new member, fill out the form below.');?></p>
 		</div><br />
 
 <form method="post">
@@ -195,7 +195,7 @@ include_once(dirname(__FILE__).'/sidebar.php');
 
 <fieldset><legend><?=T_('List of the users');?></legend>
 		<div class="message">
-			<p>Liste des membres du Planet</p>
+			<p><?=T_('List of members of the Planet');?></p>
 		</div>
 <?php
 
@@ -230,7 +230,7 @@ include(dirname(__FILE__).'/pagination.php');
 ?>
 <br /><br />
 <table>
-<table class="table-results sortable">
+<table class="table-membre sortable">
 		<thead>
 			<tr>
 				<th class="tc1 tcl" scope="col"><?=T_('Name');?></th>

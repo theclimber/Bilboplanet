@@ -104,39 +104,23 @@ include_once(dirname(__FILE__).'/sidebar.php');
 
 <fieldset><legend><?=T_('Options');?></legend>
 		<div class="message">
-			<p>Configuration des paramètres du Planet.</p>
+			<p><?=T_('Configuration settings Planet.');?></p>
 		</div><br />
 
 
 <form method="POST">
 <?=T_('Title of the Planet');?><br />
-<input id="cadre_options" class='input' type="text" name="title" size="80" value="<?php echo $title; ?>" /><br /><br />
+<input id="cadre_options" class='input' type="text" name="title" style="width:50%" value="<?php echo $title; ?>" /><br /><br />
 
 <?=T_('Description of the Planet');?><br />
-<input id="cadre_options" class='input' type="text" name="desc" size="80" value="<?php echo $desc; ?>" /><br /><br />
-
-<?=T_('Information message (optional)');?><br />
-<textarea class='cadre_option' name="msg_info" rows=3>
-<?php echo $msg_info; ?>
-</textarea>
-<br />
-
-<?=T_('Subscription page content');?><br />
-<div class="wysiwyg"><script>edSimpleToolbar('mytxtarea1'); </script></div>
-<textarea id="mytxtarea1" class='cadre_option' name="inscription" rows='30'>
-<?php 
-$file=dirname(__FILE__).'/../inscription_contenu.php';
-echo stripslashes(file_get_contents($file));
-?>
-</textarea><br /><br />
+<input id="cadre_options" class='input' type="text" name="desc" style="width:50%" value="<?php echo $desc; ?>" /><br /><br />
 
 <div>
-<label for="show_contact"><input type="checkbox" class='input' name="show_contact" <?php if ($contact) echo "checked"; ?>><?=T_('Show the contact page');?></label><br/><br />
-<label for="show_votes"><input type="checkbox" class='input' name="show_votes" <?php if ($votes) echo "checked"; ?>><?=T_('Enable voting');?></label><br/><br />
+<label for="show_contact"><input type="checkbox" class='input' id="show_contact" name="show_contact" <?php if ($contact) echo "checked"; ?>><?=T_('Show the contact page');?></label><br/><br />
+<label for="show_votes"><input type="checkbox" class='input' id="show_votes" name="show_votes" <?php if ($votes) echo "checked"; ?>><?=T_('Enable voting');?></label><br/><br />
 </div>
 <?=T_('Graphical theme');?>
-<div>
-<select name="theme">
+<div><select name="theme">
 <?php
 $theme_path = dirname(__FILE__)."/../themes/";
 $dir_handle = @opendir($theme_path) or die("Unable to open $theme_path");
@@ -154,8 +138,7 @@ closedir($dir_handle);
 <br /><br />
 </div>
 <?=T_('Language of the Planet');?>
-<div>
-<select name="lang">
+<div><select name="lang">
 <?php
 $lang_path = dirname(__FILE__)."/../i18n/";
 $dir_handle = @opendir($lang_path) or die("Unable to open $theme_path");
@@ -172,6 +155,23 @@ closedir($dir_handle);
 </select>
 </div>
 <br /><br />
+
+<?=T_('Information message (optional)');?><br />
+<textarea class='cadre_option' name="msg_info" rows=3>
+<?php echo $msg_info; ?>
+</textarea>
+<br />
+
+<?=T_('Subscription page content');?><br />
+<div class="wysiwyg"><script>edSimpleToolbar('mytxtarea1'); </script></div>
+<textarea id="mytxtarea1" class='cadre_option' name="inscription" rows='30'>
+<?php 
+$file=dirname(__FILE__).'/../inscription_contenu.php';
+echo stripslashes(file_get_contents($file));
+?>
+</textarea><br /><br />
+
+
 <div class="button"><input type='submit' class="valide" name="submit" value="<?=T_('Apply');?>"/></div>
 </form>
 </fieldset>

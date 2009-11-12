@@ -133,17 +133,13 @@ xml:lang="en" lang="en">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta http-equiv="Content-Script-Type" content="text/javascript" />
-  <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta http-equiv="Content-Language" content="en" />
   <meta name="MSSmartTagsPreventParsing" content="TRUE" />
   <meta name="ROBOTS" content="NOARCHIVE,NOINDEX,NOFOLLOW" />
   <link rel="icon" type="image/ico" href="../../favicon.ico" />
   <meta name="GOOGLEBOT" content="NOSNIPPET" />
+  <link rel="stylesheet" type="text/css" href="install.css" media="all" />
   <title><?=T_('Bilboplanet Install Wizard');?></title>
-  
-  <style type="text/css">
-  @import url(../style/install.css); 
-  </style>
 </head>
 
 <body id="admin" class="install">

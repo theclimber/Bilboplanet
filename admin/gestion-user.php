@@ -76,19 +76,32 @@ include_once(dirname(__FILE__).'/sidebar.php');
 
 <fieldset><legend><?=T_('Users Options');?></legend>
 		<div class="message">
-			<p>Configuration des paramètres de l'utilisateur.</p>
+			<p><?=T_('Configuring user settings.');?></p>
 		</div><br />
 
 <form method="POST">
 
 <?=T_('Contact Name');?><br />
-<input type="text" name="planet_author" size="80" class="input" value="<?php echo $planet_author; ?>" /><br /><br />
+<input type="text" name="planet_author" size="60" class="input" value="<?php echo $planet_author; ?>" /><br /><br />
 
 <?=T_('Reference contact email');?><br />
-<input type="text" name="email" size="80" class="input" value="<?php echo $email; ?>" /><br /><br />
+<input type="text" name="email" size="60" class="input" value="<?php echo $email; ?>" /><br /><br />
 
 <?=T_('Author Website');?><br />
-<input type="text" name="planet_author_site" class="input" size="80" value="<?php echo $planet_author_site; ?>" /><br /><br />
+<input type="text" name="planet_author_site" class="input" size="60" value="<?php echo $planet_author_site; ?>" /><br /><br />
+
+<?=T_('Jabber / GoogleTalk');?><br />
+<input type="text" name="planet_author_jabber" class="input" size="60" value="<?php echo $planet_author_jabber; ?>" /><br /><br />
+
+<?=T_('Other Instant Messaging');?><br />
+<input type="text" name="planet_author_im" class="input" size="60" value="<?php echo $planet_author_im; ?>" /><br /><br />
+
+<?=T_('About Me');?><br />
+<textarea type="text" name="planet_author_about" class="cadre_about" rows="10" value="<?php echo $planet_author_about; ?>" /></textarea><br /><br />
+
+<?=T_('New Password');?><br />
+<input type="text" name="planet_author_password" class="input" size="30" value="<?php echo $planet_author_password; ?>" /><br /><br />
+<input type="text" name="planet_author_password" class="input" size="30" value="<?php echo $planet_author_password; ?>" />&nbsp;<?=T_('retype your new password')?><br /><br />
 
 <div class="button"><input type='submit' class="valide" name="submit" value="<?=T_('Apply');?>"/></div>
 </form>

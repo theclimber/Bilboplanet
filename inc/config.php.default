@@ -23,6 +23,9 @@ define('BP_KEYWORD','feed, flux, rss, bilboplanet, cms, agr&eacute;gateur, aggre
 define('BP_MAINTENANCE','0');
 define('BP_VOTES', true);
 define('BP_CONTACT_PAGE', true);
+define('BP_AUTHER_JABBER','Your Jabber');
+define('BP_AUTHOR_IM','MSN Messenger, Yahoo Messenger and Other');
+define('BP_AUTHOR_ABOUT','About me');
 #define('BP_GOOGLEANALYTICS','');
 
 
@@ -52,6 +55,15 @@ $planet_author_mail = BP_AUTHOR_MAIL;
 
 # Site perso de l'auteur
 $planet_author_site = BP_AUTHOR_SITE;
+
+# Jabber / GTalk de l'auteur
+$planet_author_jabber = BP_AUTHER_JABBER;
+
+# IM de l'autheur
+$planet_author_im = BP_AUTHOR_IM;
+
+# A propos de l'auteur
+$planet_author_about = BP_AUTHOR_ABOUT;
 
 # Nom du theme a utiliser
 $planet_theme = BP_THEME;

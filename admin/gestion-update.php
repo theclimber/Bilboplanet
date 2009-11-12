@@ -69,16 +69,16 @@ elseif (!empty($error)) echo '<div class="flash error">'.$error.'</div>';
 
 <fieldset><legend><?=T_('Automatic update');?></legend>
 		<div class="message">
-			<p>Configuration des paramètres du Planet.</p>
+			<p><?=T_('System configuration update.');?></p>
 		</div><br />
 		
 
 
 <?php
-if (get_cron_running()) echo '<p style="margin-left:5px;padding-bottom:8px;background-image:url(newstyle/icons/tick.png);background-repeat: no-repeat;"><strong><span style="padding-left:25px;">'.T_('The update is running').'</span></strong></p><br />';
+if (get_cron_running()) echo '<div id="BP_startupdate">'.T_('The update is running').'</div><br />';
 else
-	echo '<p style="margin-left:5px;padding-bottom:8px;background-image:url(newstyle/icons/cross.png);background-repeat: no-repeat;"><strong><span style="padding-left:20px;">'.T_('The update is stopped').'</span></strong></p><br />';
-if (file_exists(dirname(__FILE__).'/../inc/STOP')) echo "<p style='margin-left:5px;padding-bottom:8px;background-image:url(newstyle/icons/slash.png);background-repeat: no-repeat;'><strong><span style='padding-left:20px;'>".T_('The update is disabled')."</span></strong></p><br />";
+	echo '<div id="BP_stopupdate">'.T_('The update is stopped').'</div><br />';
+if (file_exists(dirname(__FILE__).'/../inc/STOP')) echo '<div id="BP_disableupdate">'.T_('The update is disabled').'</div><br />';
 ?>
 <form method="POST">
 		<input type="radio" name="action" value="3" /> <?=T_('Stop the update algorithm');?><br />

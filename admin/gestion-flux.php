@@ -120,7 +120,7 @@ include_once(dirname(__FILE__).'/sidebar.php');
 	
 <?php if (!empty($flash))echo '<div class="flash '.$flash['type'].'">'.$flash['msg'].'</div>'; ?>
 
-<fieldset><legend><?=T_('Manage feeds');?></legend>
+<fieldset><legend><?=T_('Add a feed');?></legend>
 	<div class="message">
 		<p>G&eacute;rer les Flus RSS des membres.</p>
 	</div>
@@ -129,19 +129,19 @@ include_once(dirname(__FILE__).'/sidebar.php');
 
 <center>
 <?php error_bool($error, "flux"); ?>
-<table class="table-log sortable">
+<table class="table-flux-add">
 		<thead>
 			<tr>
 				<th class="tc1 tcl" scope="col"><?=T_('Full url of the feed (Without the ending /)');?></th>
-				<th class="tc2" scope="col" style='text-align:center'><?=T_('Name of the user');?></th>
+				<th class="tc2 tcr" scope="col"><?=T_('Name of the user');?></th>
 			</tr>
 		</thead>
 			<tr>
 			<form method="post">
-				<td class="tc1 tcl row1">
-					<input class="input" value="http://www.exemple.com/feed" onfocus="if (this.value==='http://www.exemple.com/feed') {this.value='';}" style="width:98%" type="text" name="flux" size="40" value="<?php if($error["flux"]) echo $_POST['flux'];?>" />
+				<td class="tc1 tcl row2">
+					<input class="input" value="http://www.exemple.com/feed" onfocus="if (this.value==='http://www.exemple.com/feed') {this.value='';}" size="49" type="text" name="flux" value="<?php if($error["flux"]) echo $_POST['flux'];?>" />
 				</td>
-				<td class="tc2 row1">
+				<td class="tc2 row2">
 					<center>
 					<select name="num_membre" style="width:98%">
 					<?php
@@ -169,9 +169,9 @@ include_once(dirname(__FILE__).'/sidebar.php');
 </form>
 </fieldset>
 
-<fieldset><legend><?=T_('Add a feed');?></legend>
+<fieldset><legend><?=T_('Manage feeds');?></legend>
 	<div class="message">
-		<p>G&eacute;rer les Flus RSS des membres.</p>
+		<p><?=T_('Manage member feed.');?></p>
 	</div>
 	
 
@@ -181,13 +181,13 @@ $sql = 'SELECT nom_membre, site_membre, email_membre, statut_membre FROM membre 
 $rqt = mysql_query($sql) or die("Error with request $sql");
 ?>
 <center>
-<table class="table-results sortable" >
+<table class="table-flux sortable" >
 		<thead>
 			<tr>
-				<th style="width:60px;" scope="col"><?=T_('Name');?></th>
+				<th class="tc1 tcl" scope="col"><?=T_('Name');?></th>
 				<th class="tc2" scope="col"><?=T_('URL of the feed');?></th>
-				<th style="width:40px;text-align:center;" scope="col"><?=T_('Status');?></th>
-				<th style="width:100px;text-align:center;" scope="col"><?=T_('Action');?></th>
+				<th class="tc3" scope="col"><?=T_('Status');?></th>
+				<th class="tc4 tcr" scope="col"><?=T_('Action');?></th>
 			</tr>
 <?php
 # Valeurs par defaut
@@ -250,16 +250,16 @@ while($liste = mysql_fetch_row($rqt)) {
 			<tr>
 				<input type="hidden" name="num" value="'.$liste[0].'"/>
 				<input type="hidden" name="num_membre" value="'.$liste[6].'"/>
-				<td class="'.$statut.'" style="width:60px;">'.$liste[2].'</td>';
+				<td class="tc1 '.$statut.'">'.$liste[2].'</td>';
 	if (!$parse['scheme']){
-		$line .= '<td class="tc2">'.$liste[3].'<input class="input zone-saisie" style="width:50%" type="text" name="flux" value="'.$liste[1].'" size="40" />&nbsp;&nbsp;<a href="'.$url.'" target="_bank">'.T_('show').'</a></td>';
+		$line .= '<td class="tc2">'.$liste[3].'<input class="input zone-saisie" style="width:50%" type="text" name="flux" value="'.$liste[1].'" size="40" />&nbsp;&nbsp;<a href="'.$liste[1].'" target="_bank">'.T_('show').'</a></td>';
 	}
 	else {
-		$line .= '<td class="tc2"><input class="input zone-saisie" style="width:80%" type="text" name="flux" value="'.$liste[1].'" size="40" />&nbsp;&nbsp;<a href="'.$url.'" target="_bank">'.T_('show').'</a></td>';
+		$line .= '<td class="tc2"><input class="input zone-saisie" style="width:80%" type="text" name="flux" value="'.$liste[1].'" size="40" />&nbsp;&nbsp;<a href="'.$liste[1].'" target="_bank">'.T_('show').'</a></td>';
 	}
 	
-	$line .= '	<td style="width:40px;text-align:center;">'.$select.'</td>
-				<td style="width:100px;text-align:center;">
+	$line .= '	<td class="tc3">'.$select.'</td>
+				<td class="tc4 tcr">
 					<center>
 					<input class="button br3px" type="submit" name="submitModify" value="'.T_('Change').'"> 
 					<input class="button br3px" type="submit" name="submitDelete" value="'.T_('Delete').'"> 

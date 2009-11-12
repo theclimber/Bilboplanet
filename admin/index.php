@@ -65,25 +65,25 @@ function showArticleSummary(){
 	
 	<fieldset><legend><?=T_('Dashboard');?></legend>
 		<div class="message">
-			<p><?=T_('Voici un résumé de la situation');?></p>
+			<p><?=T_('Quick summary of the planet');?></p>
 		</div>
 		
 <div id="dashboard">
-	<div class="box-dashboard"><div class="top-box-dashboard"><?=T_('Derniers articles publiés :');?></div>
+	<div class="box-dashboard"><div class="top-box-dashboard"><?=T_('Latest articles :');?></div>
 <?php
 echo showArticleSummary();
 ?>
 	</div>
-	<div class="box-dashboard"><div class="top-box-dashboard"><?=T_('Statistiques :');?></div>
+	<div class="box-dashboard"><div class="top-box-dashboard"><?=T_('Statistics :');?></div>
 		<ul>
 
 <?php
 if (get_cron_running())
-	echo '<li><strong><span style="background-image:url(newstyle/icons/tick.png);background-repeat: no-repeat;padding-left:25px;">'.T_('The update is running').'</span></strong></li>';
+	echo '<li><div id="BP_startupdate">'.T_('The update is running').'</div></li>';
 else
-	echo '<li><strong><span style="background-image:url(newstyle/icons/cross.png);background-repeat: no-repeat;padding-left:20px;">'.T_('The update is stopped').'</span></strong></li>';
+	echo '<li><div id="BP_stopupdate">'.T_('The update is stopped').'</div></li>';
 if (file_exists(dirname(__FILE__).'/../inc/STOP'))
-	echo "<li><strong><span style='background-image:url(newstyle/icons/slash.png);background-repeat: no-repeat;padding-left:20px;'>".T_('The update is disabled')."</span></strong></li>";
+	echo '<li><div id="BP_disableupdate">'.T_('The update is disabled').'</div></li>';
 ?>
 
 			<li><?=T_('Current size of the database :'); echo ' <strong>'.formatfilesize(get_database_size()).'</strong>';?></li>

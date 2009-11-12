@@ -228,7 +228,7 @@ while($liste = mysql_fetch_row($rqt)) {
 		<input type="hidden" name="num" value="'.$liste[0].'"/>
 		<td class="'.$colore.' tc1 tcl">'.$liste[1].'</td>
 		<td class="tc2">'.$date.'</td>
-		<td class="tc3">'.substr($liste[3],0,70).'&nbsp;&nbsp;-&nbsp;&nbsp;<a href="'.$liste[6].'" target="_blank">'.substr($liste[6],0,65).'</a>'.$strend.'</td>
+		<td class="tc3"><a href="'.$liste[6].'" target="_blank">'.substr($liste[3],0,70).'</a></td>
 		<td class="tc4">'.$select.'</td>
 		<td class="tc5">'.$liste[5].'</td>
 		<td class="tc6 tcr"><center>

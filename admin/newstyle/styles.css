@@ -258,7 +258,7 @@ table {
 }
 /* Tableaux Articles */
 .table-membre .input, .table-log .input, .table-mysql .input, .table-options .input, .table-flux .input, .table-flux-add .input, .table-news .input, .table-news-filter .input {
-	font-size: 10px !important;
+	font-size: 11px !important;
 	line-height: 10px;
 	padding: 3px 10px;
 }
@@ -348,11 +348,11 @@ table {
 
 /* Tableau Membres */
 .table-membre {border-width: 1px;border-style: solid;border-color: #000;background-color: #eee;}
-.table-membre .tc1 {width:200px;}
-.table-membre .tc2 {width:350px;}
-.table-membre .tc3 { }
-.table-membre .tc4 {text-align: center;width: 100px;}
-.table-membre .tc5 {text-align: center;width: 200px;}
+.table-membre .tc1 {width:100px;}
+.table-membre .tc2 {}
+.table-membre .tc3 {width:100px;}
+.table-membre .tc4 {text-align: center;width: 40px;}
+.table-membre .tc5 {text-align: center;width: 150px;}
 .table-membre td, .table-membre th {
 	text-align: left;
 	padding: 0px 4px;
@@ -382,8 +382,8 @@ table {
 }
 
 /* Tableau Flux */
-.table-flux-add {border-width: 1px;border-style: solid;width:40%;border-color: #000;background-color: #eee;}
-.table-flux-add .tc1 {width:300px;}
+.table-flux-add {border-width: 1px;border-style: solid;width:450px;border-color: #000;background-color: #eee;}
+.table-flux-add .tc1 {width:350px;}
 .table-flux-add .tc2 {width:100px;}
 .table-flux-add td, .table-flux-add th {
 	text-align: left;
@@ -414,9 +414,9 @@ table {
 }
 .table-flux {border-width: 1px;border-style: solid;border-color: #000;background-color: #eee;}
 .table-flux .tc1 {width:100px;}
-.table-flux .tc2 {width:350px;}
+.table-flux .tc2 {}
 .table-flux .tc3 {width:40px;text-align:center; }
-.table-flux .tc4 {width:100px;text-align:center;}
+.table-flux .tc4 {width:150px;text-align:center;}
 .table-flux td, .table-flux th {
 	text-align: left;
 	padding: 0px 4px;
@@ -757,6 +757,21 @@ font-size: 10px !important;
 color:#464646;
 }
 textarea.cadre_option:focus{
+border:1px solid #ce1717
+}
+/*
+ * User
+ */
+textarea.cadre_about{
+width:500px;
+border: 1px solid #BEBEBE;
+font-family: Verdana, Arial, Helvetica, sans-serif;
+font-size: 1em;
+padding: 3px 2px;
+font-size: 10px !important;
+color:#464646;
+}
+textarea.cadre_about:focus{
 border:1px solid #ce1717
 }
 /*

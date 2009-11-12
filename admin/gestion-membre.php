@@ -263,9 +263,9 @@ while($liste = mysql_fetch_row($rqt)) {
 	echo '<form method="POST">
 		<tr>
 		<input type="hidden" name="num" value="'.$liste[0].'"/>
-		<td class="tc1 tcl row1"><input class="input '.$statut.'" type="text" name="nom" value="'.$liste[1].'" size="30" class="'.$statut.'"/></td>
-		<td class="tc2 row1"><input class="input zone-saisie" type="text" name="site" value="'.$liste[2].'" size="40%" />&nbsp;&nbsp;<label><a href="'.$liste[2].'" target="_bank">'.T_('Show').'</a></label></td>
-		<td class="tc3 row1"><input class="input zone-saisie" type="text" name="email" value="'.$liste[3].'" size="40" /></td>
+		<td class="tc1 tcl row1"><input class="input '.$statut.'" type="text" name="nom" value="'.$liste[1].'"/></td>
+		<td class="tc2 row1"><input class="input zone-saisie" type="text" name="site" value="'.$liste[2].'" style="width:80%" />&nbsp;&nbsp;<a href="'.$liste[2].'" target="_bank">'.T_('Show').'</a></td>
+		<td class="tc3 row1"><input class="input zone-saisie" type="text" name="email" value="'.$liste[3].'"  /></td>
 		<td class="tc4 row1">'.$select.'</td>
 		<td class="tc5 tcr row1">
 			<input type="submit" class="button br3px" name="submitModif" value="'.T_('Change').'" />

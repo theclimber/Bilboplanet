@@ -139,7 +139,7 @@ include_once(dirname(__FILE__).'/sidebar.php');
 			<tr>
 			<form method="post">
 				<td class="tc1 tcl row2">
-					<input class="input" value="http://www.exemple.com/feed" onfocus="if (this.value==='http://www.exemple.com/feed') {this.value='';}" style="width:98%" type="text" name="flux" size="40" value="<?php if($error["flux"]) echo $_POST['flux'];?>" />
+					<input class="input" value="http://www.exemple.com/feed" onfocus="if (this.value==='http://www.exemple.com/feed') {this.value='';}" size="49" type="text" name="flux" value="<?php if($error["flux"]) echo $_POST['flux'];?>" />
 				</td>
 				<td class="tc2 row2">
 					<center>
@@ -252,10 +252,10 @@ while($liste = mysql_fetch_row($rqt)) {
 				<input type="hidden" name="num_membre" value="'.$liste[6].'"/>
 				<td class="tc1 '.$statut.'">'.$liste[2].'</td>';
 	if (!$parse['scheme']){
-		$line .= '<td class="tc2">'.$liste[3].'<input class="input zone-saisie" style="width:50%" type="text" name="flux" value="'.$liste[1].'" size="40" />&nbsp;&nbsp;<a href="'.$url.'" target="_bank">'.T_('show').'</a></td>';
+		$line .= '<td class="tc2">'.$liste[3].'<input class="input zone-saisie" style="width:50%" type="text" name="flux" value="'.$liste[1].'" size="40" />&nbsp;&nbsp;<a href="'.$liste[1].'" target="_bank">'.T_('show').'</a></td>';
 	}
 	else {
-		$line .= '<td class="tc2"><input class="input zone-saisie" style="width:80%" type="text" name="flux" value="'.$liste[1].'" size="40" />&nbsp;&nbsp;<a href="'.$url.'" target="_bank">'.T_('show').'</a></td>';
+		$line .= '<td class="tc2"><input class="input zone-saisie" style="width:80%" type="text" name="flux" value="'.$liste[1].'" size="40" />&nbsp;&nbsp;<a href="'.$liste[1].'" target="_bank">'.T_('show').'</a></td>';
 	}
 	
 	$line .= '	<td class="tc3">'.$select.'</td>

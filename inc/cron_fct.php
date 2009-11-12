@@ -70,6 +70,10 @@ function update($print=false) {
 	# Ouverture du fichier de log
 	$file = fopen('../logs/update-'.date("Y-m-d").'.log', 'a');
 
+	# Affichage des logs dans la partie admin
+	$output .= "<fieldset><legend>".T_('Log File')."</legende>
+		<div class='message'><p>".T_('Manual Update Log')."</p></div>";
+
 	# On parcour l'ensemble des flux 
 	$cpt = 0;
 	while ($liste = mysql_fetch_row($rqt_flux)) {
@@ -325,7 +329,8 @@ function update($print=false) {
 
 	# On met a jour la date d'update
 	updateDateMaj();
-
+	
+	$output .= "</fieldset>";
 	return $output;
 }
 

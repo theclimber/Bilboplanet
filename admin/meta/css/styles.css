@@ -134,22 +134,22 @@ input::-moz-focus-inner, button::-moz-focus-inner { border-color: transparent ! 
 /*
  Pannel de navigation
 */
-#BP_pannel {
+#bp_pannel {
 	float: left;
 	height: 600px;
 	width: 220px;
 }
-#BP_pannel h2 {
+#bp_pannel h2 {
 	border-bottom-width: 1px;
 	border-bottom-style: solid;
 	padding-left: 7px;
 	cursor: pointer;
 }
-#BP_pannel h2.selected {background-position:0% -43px;}
-#BP_pannel .element {padding: 5px;}
-#BP_pannel .message {margin: 5px 0px;}
-#BP_pannel ul {padding-bottom: 7px;}
-#BP_pannel li a {
+#bp_pannel h2.selected {background-position:0% -43px;}
+#bp_pannel .element {padding: 5px;}
+#bp_pannel .message {margin: 5px 0px;}
+#bp_pannel ul {padding-bottom: 7px;}
+#bp_pannel li a {
 	display: block;
 	height: 22px;
 	line-height: 22px;
@@ -163,11 +163,46 @@ input::-moz-focus-inner, button::-moz-focus-inner { border-color: transparent ! 
 	white-space: nowrap;
 	overflow: hidden;
 }
-#BP_pannel li a:hover {
+#bp_pannel li a:hover {
 	font-weight: bold;
 	padding-left: 30px;
 	background-position: 8px 3px;
 }
+/*
+ * Icones du menu
+ * */
+div#bp_pannel a#dashboard.tips {
+	background-image:url('../icons/television.png');
+}
+div#bp_pannel a#members.tips {
+	background-image:url('../icons/users.png');
+}
+div#bp_pannel a#feed.tips {
+	background-image:url('../icons/feed.png');
+}
+div#bp_pannel a#articles.tips {
+	background-image:url('../icons/blogs.png');
+}
+div#bp_pannel a#users.tips {
+	background-image:url('../icons/user-silhouette.png');
+}
+div#bp_pannel a#planet.tips {
+	background-image:url('../icons/globe.png');
+}
+div#bp_pannel a#logs.tips {
+	background-image:url('../icons/reports.png');
+}
+div#bp_pannel a#database.tips {
+	background-image:url('../icons/database.png');
+}
+div#bp_pannel a#cache.tips {
+	background-image:url('../icons/wooden-box.png');
+}
+div#bp_pannel a#config.tips {
+	background-image:url('../icons/update.png');
+}
+
+
 /*
  Bordure de séparation entre le pannel et la page
 */
@@ -579,15 +614,15 @@ table {
 /*
  Couleurs générales
 */
-body, #BP_page, #BP_pannel, #BP_page {
+body, #BP_page, #bp_pannel, #BP_page {
 	background-color: #fff;
 	color: #222;
 }
 
 .admin a { color: #6b7b95; }
 
-.admin a:hover, .ctitle, .ctitle a, .menu li a:hover span, .admin .button:hover, .admin .button:focus, .admin .input:focus, #BP_pannel li a:hover, #BP_page fieldset legend { color: #ce1717; }
-#BP_pannel li a:hover, .admin .button:hover, .admin .button:focus, .admin .input:focus { border-color:#ce1717; }
+.admin a:hover, .ctitle, .ctitle a, .menu li a:hover span, .admin .button:hover, .admin .button:focus, .admin .input:focus, #bp_pannel li a:hover, #BP_page fieldset legend { color: #ce1717; }
+#bp_pannel li a:hover, .admin .button:hover, .admin .button:focus, .admin .input:focus { border-color:#ce1717; }
 
 .admin .button, .admin .input {
 	border-color: #bebebe;
@@ -618,7 +653,7 @@ body, #BP_page, #BP_pannel, #BP_page {
 .menu .selected a span, .menu .selected a:hover span, #BP_page .table-results th a { color: #fff; }
 .menu .selected a span, .menu .selected a:hover span, #BP_page .table-log th a { color: #fff; }
 
-#BP_pannel li a { border-color: #fff; }
+#bp_pannel li a { border-color: #fff; }
 
 .tooltip {background-color: #000;color: #fff;}
 /*
@@ -802,3 +837,15 @@ background-repeat: no-repeat;
 font-weight: bold;
 }
 
+select.userslist {
+	width:100%;
+}
+
+input.nbfilter {
+	text-align:center;
+	width:170px;
+}
+
+input.inputURL {
+	width:80%;
+}

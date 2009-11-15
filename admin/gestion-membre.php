@@ -264,7 +264,7 @@ while($liste = mysql_fetch_row($rqt)) {
 		<tr>
 		<input type="hidden" name="num" value="'.$liste[0].'"/>
 		<td class="tc1 tcl row1"><input class="input '.$statut.'" type="text" name="nom" value="'.$liste[1].'"/></td>
-		<td class="tc2 row1"><input class="input zone-saisie" type="text" name="site" value="'.$liste[2].'" style="width:80%" />&nbsp;&nbsp;<a href="'.$liste[2].'" target="_bank">'.T_('Show').'</a></td>
+		<td class="tc2 row1"><input class="inputURL input" type="text" name="site" value="'.$liste[2].'" />&nbsp;&nbsp;<a href="'.$liste[2].'" target="_bank">'.T_('Show').'</a></td>
 		<td class="tc3 row1"><input class="input zone-saisie" type="text" name="email" value="'.$liste[3].'"  /></td>
 		<td class="tc4 row1">'.$select.'</td>
 		<td class="tc5 tcr row1">

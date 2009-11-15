@@ -29,41 +29,31 @@
 require_once(dirname(__FILE__).'/../inc/i18n.php');
 require_once(dirname(__FILE__).'/../inc/fonctions.php');
 ?>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
-
 <head>
 <?php
 if (isset($_GET) && isset($_GET['reload'])){
 	echo '<META HTTP-EQUIV="Refresh" CONTENT="300">';
 }
 ?>
-	<link rel="shortcut icon" type="image/png" href="./newstyle/icons/fire.png" />
-
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="ROBOTS" content="noindex, nofollow, noarchive" />
-
-<title><?=T_('Administration');?> - <?php echo $planet_title ?></title>
-
-	<link rel="stylesheet" type="text/css" href="newstyle/styles.css" media="all" />
-	<script type="text/javascript" src="newstyle/js/mootools-1.2.1-core.js"></script>
-	<script type="text/javascript" src="newstyle/js/mootools-1.2-more.js"></script>
-	<script type="text/javascript" src="newstyle/js/sorttable.js"></script>
-	<script type="text/javascript" src="newstyle/js/bilboplanet-0.1-core.js"></script>
-	<script type="text/javascript" src="newstyle/js/ed.js"></script>
+	<title><?=T_('Administration');?> - <?php echo $planet_title ?></title>
+	<link rel="shortcut icon" type="image/png" href="./meta/icons/fire.png" />
+	<link rel="stylesheet" type="text/css" href="meta/css/styles.css" media="all" />
+	<script type="text/javascript" src="meta/js/mootools-1.2.1-core.js"></script>
+	<script type="text/javascript" src="meta/js/mootools-1.2-more.js"></script>
+	<script type="text/javascript" src="meta/js/sorttable.js"></script>
+	<script type="text/javascript" src="meta/js/bilboplanet-0.1-core.js"></script>
+	<script type="text/javascript" src="meta/js/ed.js"></script>
 	<script type="text/javascript">
 	var _Admin;
 	window.addEvent('domready', function(){
 		BP_Admin = new BP_Administrator();
 		$('BP_Logout').addEvent('click', function(event){
 			event.stop();
-			$confirm('Se d&eacute;connecter de l\'administration ?', '<span class="logout"><?=T_('Logout');?></span>');
-		});
-		$('BP_About').addEvent('click', function(event){
-			event.stop();
-			$alert('<?=T_('BilboPlanet - An Open Source RSS feed aggregator written in PHP<br />&nbsp;&nbsp;&nbsp;* Copyright &copy; 2009 By French Dev Team : Dev BilboPlanet<br />&nbsp;&nbsp;&nbsp;* Contact : dev@bilboplanet.org<br />&nbsp;&nbsp;&nbsp;* Website : www.bilboplanet.org<br />&nbsp;&nbsp;&nbsp;* Tracker : redmine.bilboplanet.org<br />&nbsp;&nbsp;&nbsp;* Blog : blog.bilboplanet.org<br /><br />Developper: Grégoire de Hemptine & Thomas Bourcey');?>', '<span class="about"><?=T_('About BilboPlanet');?></span>');
+			$confirm('<?=T_('Disconnect from administration panel?');?>', '<span class="logout"><?=T_('Logout');?></span>');
 		});
 	});
 	</script>
@@ -71,7 +61,7 @@ if (isset($_GET) && isset($_GET['reload'])){
 <body class="admin">
 <div id="BP_head" class="toolbar bgbox bdbox"><div class="grad bdinbox">
 	<p class="site_info">
-		<span class="ctitle"><a class="tips" title="<?php echo $planet_title; ?>" rel="Retour sur le Planet" href="../" target="_blank">Retour sur le Planet</a></span>
+	<span class="ctitle"><a class="tips" title="<?php echo $planet_title; ?>" rel="<?=T_('Back on the Bilboplanet');?>" href="../" target="_blank"><?=T_('Back on the Bilboplanet');?></a></span>
 	</p>
 	<ul id="BP_userbar">
 		<li><a id="BP_Logout" href="#" class="button minbutton br3px"><?=T_('Logout');?></a></li>

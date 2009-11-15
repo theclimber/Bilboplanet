@@ -169,7 +169,7 @@ require valid-user
 		$fp = @fopen($access,'wb');
 		if ($fp === false) {
 			unlink(BP_PROT_PATH);
-			throw new Exception(sprintf(T_('Unable to wirte %s file.'),$access));
+			throw new Exception(sprintf(T_('Unable to write %s file.'),$access));
 		}
 		fwrite($fp,$string2);
 		fclose($fp);

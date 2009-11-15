@@ -26,7 +26,7 @@
 ***** END LICENSE BLOCK *****/
 ?>
 </div>
-<center><p>~ <a href="www.bilboplanet.org">BilboPlanet.org</a> - Open Source Feed Agregator - 2009 ~<br />~ <a href="http://redmine.bilboplanet.org">Bug report</a>&nbsp;-&nbsp;<a href="mailto:dev@bilboplanet.org">Contact US</a>&nbsp;~</p></center>
+<center><p>~ <a href="http://www.bilboplanet.com">BilboPlanet.com</a> - Open Source Feed Agregator - 2009 ~</p></center>
 </div>
 </body>
 </html>

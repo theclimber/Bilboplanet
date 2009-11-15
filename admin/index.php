@@ -87,10 +87,10 @@ if (file_exists(dirname(__FILE__).'/../inc/STOP'))
 ?>
 
 			<li><?=T_('Current size of the database :'); echo ' <strong>'.formatfilesize(get_database_size()).'</strong>';?></li>
-			<li><?=T_('Nombre d\'articles aujourd\'hui :');?></li>
-			<li><?=T_('Moyenne d\'articles par jour :');?></li>
-			<li><?=T_('Nombre de votes aujourd\'hui :');?></li>
-			<li><?=T_('Moyenne de votes par jour :');?></li>
+			<li><?=T_('Posts of the day :');?></li>
+			<li><?=T_('Mean posts per day :');?></li>
+			<li><?=T_('Votes of the day :');?></li>
+			<li><?=T_('Mean votes per day :');?></li>
 		</ul>
 	</div>
 </div>

@@ -111,14 +111,14 @@ include_once(dirname(__FILE__).'/sidebar.php');
 
 <fieldset><legend><?=T_('Filtering of the posts');?></legend>
 		<div class="message">
-			<p><?=T_('filter news');?></p>
+			<p><?=T_('Filter articles');?></p>
 		</div><br />
 
 <form action="" method="POST">
 <table class="table-news-filter">
 <tr>
 <th class="tc1 tcl"><?=T_('Posts of the member :');?></th>
-<th class="tc2 tcr"><select name="num_membre" style="width:180px;">
+<th class="tc2 tcr"><select name="num_membre" class="userslist">
 
 <?php
 # Execution de la requete
@@ -145,7 +145,7 @@ if($num_membre == "0") {
 </tr>
 <tr>
 <td class="tc1 tcl"><?=T_('Number of posts');?></td>
-<td class="tc2 tcr"><input type="text" class="input" style="text-align:center;width:170px;" name="nb_items"  value="<?php echo $nb_items; ?>" /></center></td>
+<td class="tc2 tcr"><input type="text" class="nbfilter input" name="nb_items"  value="<?php echo $nb_items; ?>" /></center></td>
 </tr>
 </table><br />
 <div class="button"><input type="reset" value="<?=T_('Reset');?>" class="reset" onClick="this.form.reset()"></div>&nbsp;&nbsp;

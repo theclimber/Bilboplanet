@@ -143,7 +143,7 @@ include_once(dirname(__FILE__).'/sidebar.php');
 				</td>
 				<td class="tc2 row2">
 					<center>
-					<select name="num_membre" style="width:98%">
+					<select name="num_membre" class="userslist">
 					<?php
 					# Connection a la base 
 					connectBD();

@@ -22,9 +22,11 @@ admin/gestion-membre.php
 admin/gestion-mysql.php
 admin/gestion-option.php
 admin/gestion-update.php
+admin/gestion-user.php
 admin/head.php
 admin/index.php
 admin/pagination.php
+admin/sidebar.php
 admin/install/check.php
 admin/install/index.php
 admin/install/wizard.php

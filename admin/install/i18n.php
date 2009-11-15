@@ -39,7 +39,7 @@ putenv('LC_ALL='.$locale);
 putenv('LC_MESSAGES='.$locale);
 T_setlocale(LC_ALL,$locale);
 T_setlocale(LC_CTYPE,$locale);
-T_setlocale(LC_MESSAGES,$locale);
+#T_setlocale(LC_MESSAGES,$locale);
 
 $locales_dir = dirname(__FILE__).'/../../i18n';
 T_bindtextdomain($textdomain,$locales_dir);

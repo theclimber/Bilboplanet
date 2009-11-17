@@ -55,7 +55,7 @@ if(isset($_POST) && isset($_POST['nom']) && isset($_POST['path']) && isset($_POS
 			<p><?=T_('Management planet log files (Advanced users).');?></p>
 		</div><br/>
 		
-<center><table class="table-log sortable">
+<center><table class="table-log">
 <thead>
 <tr>
 <th class="tc1 tcl" scope="col"><?=T_('Name');?></th>

@@ -230,7 +230,7 @@ include(dirname(__FILE__).'/pagination.php');
 ?>
 <br /><br />
 <table>
-<table class="table-membre sortable">
+<table class="table-membre">
 		<thead>
 			<tr>
 				<th class="tc1 tcl" scope="col"><?=T_('Name');?></th>

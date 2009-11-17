@@ -181,7 +181,7 @@ $sql = 'SELECT nom_membre, site_membre, email_membre, statut_membre FROM membre 
 $rqt = mysql_query($sql) or die("Error with request $sql");
 ?>
 <center>
-<table class="table-flux sortable" >
+<table class="table-flux" >
 		<thead>
 			<tr>
 				<th class="tc1 tcl" scope="col"><?=T_('Name');?></th>

@@ -39,7 +39,6 @@ require_once(dirname(__FILE__).'/../inc/fonctions.php');
 	<link rel="stylesheet" type="text/css" href="meta/css/styles.css" media="all" />
 	<script type="text/javascript" src="meta/js/mootools-1.2.1-core.js"></script>
 	<script type="text/javascript" src="meta/js/mootools-1.2-more.js"></script>
-	<script type="text/javascript" src="meta/js/sorttable.js"></script>
 	<script type="text/javascript" src="meta/js/bilboplanet-core.js"></script>
 	<script type="text/javascript" src="meta/js/ed.js"></script>
 	<script type="text/javascript">

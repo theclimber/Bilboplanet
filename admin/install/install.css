@@ -1,12 +1,11 @@
-<?php
 /******* BEGIN LICENSE BLOCK *****
 * BilboPlanet - Un agrégateur de Flux RSS Open Source en PHP.
 * BilboPlanet - An Open Source RSS feed aggregator written in PHP
 * Copyright (C) 2009 By French Dev Team : Dev BilboPlanet
-* Contact : dev@bilboplanet.com
-* Website : www.bilboplanet.com
-* Tracker : redmine.bilboplanet.com
-* Blog : blog.bilboplanet.com
+* Contact : dev@bilboplanet.org
+* Website : www.bilboplanet.org
+* Tracker : redmine.bilboplanet.org
+* Blog : blog.bilboplanet.org
 * 
 *
 * This program is free software: you can redistribute it and/or modify
@@ -23,26 +22,21 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 *
 ***** END LICENSE BLOCK *****/
-?>
-<?php
-require_once(dirname(__FILE__).'/../../inc/lib/gettext/gettext.inc');
 
-$locale = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
-$textdomain="bilbo";
-if (empty($locale))
-	$locale = 'fr';
-if (isset($_GET['locale']) && !empty($_GET['locale']))
-	$locale = $_GET['locale'];
-putenv('LANGUAGE='.$locale);
-putenv('LANG='.$locale);
-putenv('LC_ALL='.$locale);
-putenv('LC_MESSAGES='.$locale);
-T_setlocale(LC_ALL,$locale);
-T_setlocale(LC_CTYPE,$locale);
-#T_setlocale(LC_MESSAGES,$locale);
-
-$locales_dir = dirname(__FILE__).'/../../i18n';
-T_bindtextdomain($textdomain,$locales_dir);
-T_bind_textdomain_codeset($textdomain, 'UTF-8'); 
-T_textdomain($textdomain);
-?>
+html {background: #eceade;}
+body {
+	background: #fff;
+	color: #333;
+	font: 80%/1.5em "DejaVu Sans","Lucida Grande","Lucida Sans Unicode",Arial,sans-serif;
+	margin: 2em auto 0 auto;
+	width: 700px;
+	padding: 1em 2em;
+	-moz-border-radius: 11px;
+	-khtml-border-radius: 11px;
+	-webkit-border-radius: 11px;
+	border-radius: 11px;
+	border: 1px solid #dfdfdf;
+}
+h1 {color: #06c;font-size: 2.5em;font-weight: normal;}
+h2 {font-size: 1.5em;}
+h3 {font-size: 1em;font-weight: strong;}

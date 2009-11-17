@@ -3,10 +3,10 @@
 * BilboPlanet - Un agrégateur de Flux RSS Open Source en PHP.
 * BilboPlanet - An Open Source RSS feed aggregator written in PHP
 * Copyright (C) 2009 By French Dev Team : Dev BilboPlanet
-* Contact : dev@bilboplanet.org
-* Website : www.bilboplanet.org
-* Tracker : redmine.bilboplanet.org
-* Blog : blog.bilboplanet.org
+* Contact : dev@bilboplanet.com
+* Website : www.bilboplanet.com
+* Tracker : redmine.bilboplanet.com
+* Blog : blog.bilboplanet.com
 * 
 *
 * This program is free software: you can redistribute it and/or modify

@@ -7,7 +7,7 @@ var BP_Administrator = new Class({
 
 	options: {
 		IdPage: 'BP_page',
-		IdPannel: 'BP_pannel',
+		IdPannel: 'bp_pannel',
 		IdPannelSeparator: 'BP_separator',
 		IdUserBar: 'BP_userbar',
 		IdHeader: 'BP_head'
@@ -15,7 +15,6 @@ var BP_Administrator = new Class({
 
 	initialize: function(options){
 		this.setOptions(options);
-
 		this.pages = $(this.options.IdPage);
 		this.pannel = $(this.options.IdPannel);
 		this.pannelSeparator = $(this.options.IdPannelSeparator);
@@ -47,9 +46,7 @@ var BP_Administrator = new Class({
 
 		// Active le Pannel
 		this.launchPannel();
-
 	},
-
 
 	/**
 	* Redimentionne l'element Page de l'admin en fonction de la taille du navigateur
@@ -65,23 +62,10 @@ var BP_Administrator = new Class({
 		this.pages.setStyle('height', Pages_height);
 	},
 
-
 	/**
 	* Active le Pannel
 	*/
 	launchPannel: function() {
-	/**	// Lance l'accordion
-		this.pannelAccordion = new Accordion(this.pannel, '.toggler', '.element', {
-			opacity: false,
-			alwaysHide: true,
-			onActive: function(toggler, element){
-				toggler.addClass('selected');
-			},
-			onBackground: function(toggler, element){
-				toggler.removeClass('selected');
-			}
-		});**/
-
 		// Ajoute le Toggle du pannel
 		this.pannel.set('morph',{duration: 500});
 		this.pannelWidth = this.pannel.getStyle('width').toInt();
@@ -99,9 +83,6 @@ var BP_Administrator = new Class({
 	}
 });
 
-
-
-
 /**
 * Alert, Confirm, Prompt Box
 */
@@ -109,20 +90,15 @@ var ACPbox = new Class({
 	Implements: [Events, Options],
 
 	options: {
-		/*onClose: function(returnValue, apcbox) { },*/
-
 		zindex: 999,
 		container: null,
 		className: null,
-
 		overlayClassName: 'acp-overlay',
 		overlayOpacity: 0.5,
 		overlayShowDuration: 250,
-
 		buttonClassName: 'button',
 		buttonOkText : 'OK',
 		buttonCancelText : 'Annuler',
-
 		inputClassName: 'input'
 	},
 

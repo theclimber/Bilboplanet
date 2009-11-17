@@ -9,7 +9,7 @@
 
 var textarea;
 var content;
-var img_dir = 'meta/icons/';
+var img_dir = 'meta/icons';
 
 function edSimpleToolbar(obj) {
 	document.write("<img class=\"buttoned\" src=\""+img_dir+"/bold.png\" name=\"btnBold\" onClick=\"doAddTags('<strong>','</strong>','" + obj + "')\">");
@@ -23,15 +23,15 @@ function edSimpleToolbar(obj) {
 }
 
 function edToolbar(obj) {
-	document.write("<img class=\"buttoned\" src=\"icons/bold.png\" name=\"btnBold\" onClick=\"doAddTags('<strong>','</strong>','" + obj + "')\">");
-	document.write("<img class=\"buttoned\" src=\"icons/italic.png\" name=\"btnItalic\" onClick=\"doAddTags('<em>','</em>','" + obj + "')\">");
-	document.write("<img class=\"buttoned\" src=\"icons/underline.png\" name=\"btnUnderline\" onClick=\"doAddTags('<u>','</u>','" + obj + "')\">");
-	document.write("<img class=\"buttoned\" src=\"icons/link.png\" name=\"btnLink\" onClick=\"doURL('" + obj + "')\">");
-	document.write("<img class=\"buttoned\" src=\"icons/image.png\" name=\"btnPicture\" onClick=\"doImage('" + obj + "')\">");
-	document.write("<img class=\"buttoned\" src=\"icons/ordered.png\" name=\"btnList\" onClick=\"doList('<ol>','</ol>','" + obj + "')\">");
-	document.write("<img class=\"buttoned\" src=\"icons/list.png\" name=\"btnList\" onClick=\"doList('<ul>','</ul>','" + obj + "')\">");
-	document.write("<img class=\"buttoned\" src=\"icons/quote.png\" name=\"btnQuote\" onClick=\"doAddTags('<blockquote>','</blockquote>','" + obj + "')\">"); 
-  	document.write("<img class=\"buttoned\" src=\"icons/code.png\" name=\"btnCode\" onClick=\"doAddTags('<code>','</code>','" + obj + "')\">");
+	document.write("<img class=\"buttoned\" src=\""+img_dir+"/bold.png\" name=\"btnBold\" onClick=\"doAddTags('<strong>','</strong>','" + obj + "')\">");
+	document.write("<img class=\"buttoned\" src=\""+img_dir+"/italic.png\" name=\"btnItalic\" onClick=\"doAddTags('<em>','</em>','" + obj + "')\">");
+	document.write("<img class=\"buttoned\" src=\""+img_dir+"/underline.png\" name=\"btnUnderline\" onClick=\"doAddTags('<u>','</u>','" + obj + "')\">");
+	document.write("<img class=\"buttoned\" src=\""+img_dir+"/link.png\" name=\"btnLink\" onClick=\"doURL('" + obj + "')\">");
+	document.write("<img class=\"buttoned\" src=\""+img_dir+"/image.png\" name=\"btnPicture\" onClick=\"doImage('" + obj + "')\">");
+	document.write("<img class=\"buttoned\" src=\""+img_dir+"/ordered.png\" name=\"btnList\" onClick=\"doList('<ol>','</ol>','" + obj + "')\">");
+	document.write("<img class=\"buttoned\" src=\""+img_dir+"/list.png\" name=\"btnList\" onClick=\"doList('<ul>','</ul>','" + obj + "')\">");
+	document.write("<img class=\"buttoned\" src=\""+img_dir+"/quote.png\" name=\"btnQuote\" onClick=\"doAddTags('<blockquote>','</blockquote>','" + obj + "')\">"); 
+  	document.write("<img class=\"buttoned\" src=\""+img_dir+"/code.png\" name=\"btnCode\" onClick=\"doAddTags('<code>','</code>','" + obj + "')\">");
     document.write("<br>");
 }
 

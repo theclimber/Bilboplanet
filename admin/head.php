@@ -32,11 +32,6 @@ require_once(dirname(__FILE__).'/../inc/fonctions.php');
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
 <head>
-<?php
-if (isset($_GET) && isset($_GET['reload'])){
-	echo '<META HTTP-EQUIV="Refresh" CONTENT="300">';
-}
-?>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="ROBOTS" content="noindex, nofollow, noarchive" />
 	<title><?=T_('Administration');?> - <?php echo $planet_title ?></title>
@@ -45,15 +40,15 @@ if (isset($_GET) && isset($_GET['reload'])){
 	<script type="text/javascript" src="meta/js/mootools-1.2.1-core.js"></script>
 	<script type="text/javascript" src="meta/js/mootools-1.2-more.js"></script>
 	<script type="text/javascript" src="meta/js/sorttable.js"></script>
-	<script type="text/javascript" src="meta/js/bilboplanet-0.1-core.js"></script>
+	<script type="text/javascript" src="meta/js/bilboplanet-core.js"></script>
 	<script type="text/javascript" src="meta/js/ed.js"></script>
 	<script type="text/javascript">
-	var _Admin;
+	var BP_Admin;
 	window.addEvent('domready', function(){
 		BP_Admin = new BP_Administrator();
 		$('BP_Logout').addEvent('click', function(event){
 			event.stop();
-			$confirm('<?=T_('Disconnect from administration panel?');?>', '<span class="logout"><?=T_('Logout');?></span>');
+			$confirm("<?=T_('Disconnect from administration panel?');?>", '<span class="logout"><?=T_('Logout');?></span>');
 		});
 	});
 	</script>

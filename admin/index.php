@@ -52,7 +52,7 @@ function showArticleSummary(){
 			$show = substr($titre,0, $max_title_length)."...";
 		else
 			$show = $titre;
-		$list_articles .= '<li>'.$date.' : <a href="'.$article[3].'" title="'.$titre.' ('.$article[0].')" target="_blank">'.$show.'</a></li>';
+		$list_articles .= '<li>'.$date.' : <a class="tips" href="'.$article[3].'" rel="'.$titre.' ('.$article[0].')" target="_blank">'.$show.'</a></li>';
 	}
 	$list_articles .= "</ul>";
 	closeBD;
@@ -86,11 +86,7 @@ if (file_exists(dirname(__FILE__).'/../inc/STOP'))
 	echo '<li><div id="BP_disableupdate">'.T_('The update is disabled').'</div></li>';
 ?>
 
-			<li><?=T_('Current size of the database :'); echo ' <strong>'.formatfilesize(get_database_size()).'</strong>';?></li>
-			<li><?=T_('Posts of the day :');?></li>
-			<li><?=T_('Mean posts per day :');?></li>
-			<li><?=T_('Votes of the day :');?></li>
-			<li><?=T_('Mean votes per day :');?></li>
+			<li><div id="BP_stats_db"><?=T_('Current size of the database :'); echo ' <strong>'.formatfilesize(get_database_size()).'</strong>';?></div></li>
 		</ul>
 	</div>
 </div>

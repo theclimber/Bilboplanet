@@ -1,0 +1,102 @@
+TODO dans l'ordre de priorité :
+OK : 1) Modifier le Bilbo pour que dans la DB des flux on puisse mettre le flux complet ! 
+OK : (Attention, backward compatible =>  le backward compatible est mis en place)
+2) Vérifier l'interface d'admin et corriger les bugs
+3) Mettre le style dans une feuille de style
+4) Netoyer l'interface d'admin
+5) Renommer le colonnes de la DB et refaire le schéma de la DB depuis le début ... quitte a ce que ça prenne du temps
+6) Mettre en place le dashboard admin
+
+7) Faire une branch avec : changements DB :
+	* votes avec valeur et timestamp
+	* changement des noms de tables et des colonnes
+	* ajouter table settings
+	* ajouter table user => openid
+
+
+1) Mettre en place une db "settings" pour tous les details de config
+2) Mettre en place un algo d'update (serveur configurable dans le fichier de config)
+3) Mettre en utililsation la librairie Clearbricks au niveau des requetes DB
+4) Mettre en place un system de login basé sur openid + logs + votes
+5) Mettre en place un system de templating
+6) Faire un script php pour extraire tous les strings
+7) Traduire tous les strings avant la release
+
+
+
+8) Ajouter blacklist votes
+9) ajouter détection automatique de l'URL du planet pdt l'install
+
+
+
+BUGS :
+3) Bugs pour une utilisation windows : les commandes linux utilisées dans l'admin ne sont pas bonnes
+4) Lorsqu'une commande exec() est executée et qu'elle génère une erreur, l'erruer n'est pas reportée !!!
+5) Dans l'install, les erreur de lecture/ecriture des fichiers devraient être reportée plus joliment, idem pour la DB
+
+
+
+
+
+NEW DATABASE :
+
+Table USER:
+	id
+	login
+	email
+	password(sha1)
+	fullname
+
+Table OpenId:
+	id
+	user_id => user.id
+	oid
+
+Table websites:
+	id
+	user_id => user.id
+	url
+
+Table feeds:
+	id
+	user_id => user.id
+	website_id => website.id
+	url
+
+Table posts:
+	id
+	user_id => user.id
+	feed_id => feed.id
+	title
+	permalink
+	stripped_content
+
+Table tag:
+	id
+	name
+
+Table post_tag:
+	id
+	post_id => post.id
+	tag_id => tag.id
+
+Table right:
+	id
+	name
+
+Table user_rights:
+	id
+	user_id => user.id
+	right_id => right.id
+
+Table settings:
+	id
+	key
+	value
+
+Etapes de changement de DB :
+1) construire la DB
+2) faire des tests pour utiliser clearbricks ou MVC
+3) Installer un systeme qui gere openid
+4) Injecter le code dans celui du bilbo
+

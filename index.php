@@ -69,8 +69,8 @@ if (isset($_GET) && isset($_GET['populaires']) && !empty($_GET['populaires'])) {
 	$fin_sql = " ORDER BY article_score DESC LIMIT 0,$nb_article";
 	if (isset($_GET) && !(isset($_GET['tri']) && !empty($_GET['tri']))) {
 		$day = mktime(0, 0, 0, date("d",time()),  date("m",time()), date("Y",time()));
-		$week = time() - 3600*24*7;
-		$month = time() - 3600*24*31;
+		$week = $day - 3600*24*7;
+		$month = $day - 3600*24*31;
 		# On fonction du choix
 		switch($populaires) {
 			case "day"    : $debut_sql = $debut_sql." AND article_pub > ".$day; break;
@@ -114,8 +114,8 @@ if (isset($_GET) && isset($_GET['tri']) && !empty($_GET['tri'])) {
 	$tri = trim($_GET['tri']);
 	# Calcul des dates au format timestamp
 	$day = mktime(0, 0, 0, date("m",time()), date("d",time()), date("Y",time()));
-	$week = time() - 3600*24*7;
-	$month = time() - 3600*24*31;
+	$week = $day - 3600*24*7;
+	$month = $day - 3600*24*31;
 	# On fonction du choix
 	switch($tri) {
 		case "day"    : $debut_sql = $debut_sql." AND article_pub > ".$day; break;

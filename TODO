@@ -1,11 +1,5 @@
 TODO dans l'ordre de priorité :
-OK : 1) Modifier le Bilbo pour que dans la DB des flux on puisse mettre le flux complet ! 
-OK : (Attention, backward compatible =>  le backward compatible est mis en place)
-2) Vérifier l'interface d'admin et corriger les bugs
-3) Mettre le style dans une feuille de style
-4) Netoyer l'interface d'admin
 5) Renommer le colonnes de la DB et refaire le schéma de la DB depuis le début ... quitte a ce que ça prenne du temps
-6) Mettre en place le dashboard admin
 
 7) Faire une branch avec : changements DB :
 	* votes avec valeur et timestamp
@@ -20,20 +14,25 @@ OK : (Attention, backward compatible =>  le backward compatible est mis en place
 4) Mettre en place un system de login basé sur openid + logs + votes
 5) Mettre en place un system de templating
 6) Faire un script php pour extraire tous les strings
-7) Traduire tous les strings avant la release
-
-
+7) Traduire tous les strings avant la release en:
+	* Francais
+	* Allemand
+	* Neerlandais
 
 8) Ajouter blacklist votes
-9) ajouter détection automatique de l'URL du planet pdt l'install
+9) Mecanisme permettant l'envoi d'un mail lors de la modération
+10) Permettre d'envoyer un mail à tuos les membres
+11) Proposer une solution gérant plusieurs types de DB => SQlite et PostreSQL
+12) Proposer une solution multi-DB => la moitié sur SQlite, l'autre moitié sur MySQL
 
 
 
 BUGS :
 3) Bugs pour une utilisation windows : les commandes linux utilisées dans l'admin ne sont pas bonnes
-4) Lorsqu'une commande exec() est executée et qu'elle génère une erreur, l'erruer n'est pas reportée !!!
-5) Dans l'install, les erreur de lecture/ecriture des fichiers devraient être reportée plus joliment, idem pour la DB
-
+4) Gérer les exceptions : 
+	4) Lorsqu'une commande exec() est executée et qu'elle génère une erreur, l'erruer n'est pas reportée !!!
+	5) Dans l'install, les erreur de lecture/ecriture des fichiers devraient être reportée plus joliment, idem pour la DB
+5) ajouter détection automatique de l'URL du planet pdt l'install
 
 
 
@@ -47,21 +46,48 @@ Table USER:
 	password(sha1)
 	fullname
 
+CREATE TABLE `test`.`user` (
+`id` INT( 11 ) NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+`login` VARCHAR( 32 ) NOT NULL ,
+`email` VARCHAR( 255 ) NOT NULL ,
+`password` VARCHAR( 32 ) NOT NULL ,
+`fullname` VARCHAR( 255 ) NOT NULL
+);
+
 Table OpenId:
 	id
 	user_id => user.id
 	oid
 
-Table websites:
+CREATE TABLE `test`.`openid` (
+`id` INT( 11 ) NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+`user_id` INT( 11 ) NOT NULL ,
+`url` TEXT NOT NULL
+);
+
+Table website:
 	id
 	user_id => user.id
 	url
 
-Table feeds:
+CREATE TABLE `test`.`website` (
+`id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+`user_id` INT NOT NULL ,
+`url` TEXT NOT NULL
+);
+
+Table feed:
 	id
 	user_id => user.id
 	website_id => website.id
 	url
+
+CREATE TABLE `test`.`feed` (
+`id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+`user_id` INT NOT NULL ,
+`website_id` INT NOT NULL ,
+`url` TEXT NOT NULL
+);
 
 Table posts:
 	id
@@ -70,29 +96,76 @@ Table posts:
 	title
 	permalink
 	stripped_content
+	publish_date
+	created
+	modified
+
+CREATE TABLE `test`.`post` (
+`id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+`user_id` INT NOT NULL ,
+`feed_id` INT NOT NULL ,
+`title` TEXT NOT NULL ,
+`permalink` TEXT NOT NULL ,
+`publish_date` INT NOT NULL ,
+`content` TEXT NOT NULL ,
+`stripped_content` TEXT NOT NULL ,
+`created` INT NOT NULL ,
+`modified` INT NOT NULL
+)
+
 
 Table tag:
 	id
 	name
+
+CREATE TABLE `test`.`tag` (
+`id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+`name` VARCHAR( 255 ) NOT NULL
+);
+
 
 Table post_tag:
 	id
 	post_id => post.id
 	tag_id => tag.id
 
+CREATE TABLE `test`.`post_tag` (
+`id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+`post_id` INT NOT NULL ,
+`tag_id` INT NOT NULL
+);
+
 Table right:
 	id
 	name
 
-Table user_rights:
+CREATE TABLE `test`.`right` (
+`id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+`name` VARCHAR( 255 ) NOT NULL
+);
+
+Table user_right:
 	id
 	user_id => user.id
 	right_id => right.id
+
+CREATE TABLE `test`.`user_right` (
+`id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+`user_id` INT NOT NULL ,
+`right_id` INT NOT NULL
+);
 
 Table settings:
 	id
 	key
 	value
+
+CREATE TABLE `test`.`settings` (
+`id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+`key` VARCHAR( 255 ) NOT NULL ,
+`value` TEXT NOT NULL ,
+INDEX ( `key` )
+);
 
 Etapes de changement de DB :
 1) construire la DB

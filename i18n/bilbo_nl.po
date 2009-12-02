@@ -1,0 +1,1554 @@
+# Dutch translations for Bilboplanet package.
+# Copyright (C) 2009 THE Bilboplanet'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the Bilboplanet package.
+# Greg theClimber <greg@theclimber.be>, 2009.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Bilboplanet 0.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-11-15 23:24+0100\n"
+"PO-Revision-Date: 2009-12-02 17:19+0100\n"
+"Last-Translator: Grégoire de Hemptinne <g.dehemptinne@whatever-company.com>\n"
+"Language-Team: Dutch\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: 404.php:39
+msgid "Error 404"
+msgstr "Error 404"
+
+#: 404.php:41
+msgid "Page not found"
+msgstr "Pagina niet gevonden"
+
+#: archives.php:74
+msgid "Read the article"
+msgstr "Lees het artikel"
+
+#: archives.php:91
+msgid "January"
+msgstr "Januari"
+
+#: archives.php:91
+msgid "February"
+msgstr "Februari"
+
+#: archives.php:91
+msgid "March"
+msgstr "Maart"
+
+#: archives.php:91
+msgid "April"
+msgstr "April"
+
+#: archives.php:91
+msgid "May"
+msgstr "Mei"
+
+#: archives.php:91
+msgid "June"
+msgstr "Juni"
+
+#: archives.php:91
+msgid "July"
+msgstr "Juli"
+
+#: archives.php:91
+msgid "August"
+msgstr "Augustus"
+
+#: archives.php:91
+msgid "September"
+msgstr "September"
+
+#: archives.php:91
+msgid "October"
+msgstr "October"
+
+#: archives.php:91
+msgid "November"
+msgstr "November"
+
+#: archives.php:91
+msgid "December"
+msgstr "December"
+
+#: contact.php:41
+#: inscription.php:50
+#, php-format
+msgid "The reCAPTCHA wasn't entered correctly. Go back and try it again. (reCAPTCHA said: %s)"
+msgstr "De reCAPTCHA was niet juist ingevuld. Ga terug en probeer opnieuw (reCAPTCHA gaf : %s)"
+
+#: contact.php:54
+msgid "Name/Nickname : "
+msgstr "Naam/pseudoniem :"
+
+#: contact.php:55
+#: inscription.php:59
+msgid "Email : "
+msgstr "Email :"
+
+#: contact.php:56
+msgid "Subject : "
+msgstr "Onderwerp :"
+
+#: contact.php:57
+msgid "Content of the message: "
+msgstr "Inhoud van het bericht:"
+
+#: contact.php:65
+msgid "Your email has been sent !"
+msgstr "Uw e-mail is verzonden!"
+
+#: contact.php:67
+#: inscription.php:72
+msgid "Your request could not be sent for an unknown reason.<br/>Please try again."
+msgstr "Uw verzoek kan niet worden verzonden voor een onbekende reden. <br/> Probeer het opnieuw."
+
+#: contact.php:112
+#: inscription.php:125
+msgid "In case of problem"
+msgstr "In geval van problemen"
+
+#: contact.php:113
+#, php-format
+msgid "If you do not recieve any confirmation from the administration team in the 5 days, do not hesitate to contact us by email at %s"
+msgstr "Als u geen bevestiging van de administratie team in de 5 dagen ontvangen heeft, aarzel dan niet om contact met ons op te nemen via e-mail op %s"
+
+#: contact.php:120
+#: inscription.php:207
+msgid "Contact us"
+msgstr "Contacteer ons"
+
+#: contact.php:122
+msgid "You can contact the administration team with the form below:"
+msgstr "U kunt contact opnemen met de administratie team met het formulier hieronder:"
+
+#: contact.php:125
+msgid "Name / Nickname :"
+msgstr "Naam / pseudoniem:"
+
+#: contact.php:128
+msgid "Email :"
+msgstr "E-mail:"
+
+#: contact.php:131
+msgid "Subject :"
+msgstr "Onderwerp:"
+
+#: contact.php:133
+msgid "Content :"
+msgstr "Inhoud:"
+
+#: contact.php:143
+#: inscription.php:199
+#: admin/gestion-articles.php:151
+#: admin/gestion-flux.php:166
+#: admin/gestion-membre.php:129
+#: admin/gestion-membre.php:190
+msgid "Reset"
+msgstr "Reset"
+
+#: contact.php:144
+#: inscription.php:200
+#: admin/gestion-articles.php:152
+#: admin/gestion-flux.php:167
+#: admin/gestion-membre.php:191
+#: admin/gestion-update.php:88
+msgid "Send"
+msgstr "Sturen"
+
+#: feed.php:139
+#, php-format
+msgid "Gravatar of %s"
+msgstr "Gravatar van %s"
+
+#: feed.php:147
+#, php-format
+msgid "Vote for this post on <a href=\"%s\" title=\"Go on the planet\">%s</a>."
+msgstr "Stem voor deze post op <a href=\"%s\" title=\"Go on the planet\">%s.</a>"
+
+#: feed.php:196
+msgid "There is no feed here"
+msgstr "Er is geen feed hier"
+
+#: footer.php:29
+msgid "Powered by BilboPlanet"
+msgstr "Powered by BilboPlanet"
+
+#: footer.php:30
+msgid "Valid CSS - Xhtml"
+msgstr "Valid CSS - XHTML"
+
+#: footer.php:31
+msgid "Designed by BilboPlanet"
+msgstr "Designed by BilboPlanet"
+
+#: footer.php:32
+msgid "Back to top"
+msgstr "Terug naar boven"
+
+#: head.php:37
+msgid "Site down for maintenance, come back in a few moments..."
+msgstr "Site down voor onderhoud, kom terug in een paar momenten ..."
+
+#: head.php:38
+#, php-format
+msgid "While waiting you can vist the website of the <a href=\"%s\">author</a>"
+msgstr "Tijdens het wachten kun je de website van de <a href=\"%s\">auteur</a> bezoeken"
+
+#: head.php:76
+msgid "Home"
+msgstr "Home"
+
+#: head.php:79
+msgid "Top 10"
+msgstr "Top 10"
+
+#: head.php:83
+msgid "Statistics"
+msgstr "Statistieken"
+
+#: head.php:84
+msgid "Registration"
+msgstr "Registratie"
+
+#: head.php:87
+#: head.php:90
+msgid "Archives"
+msgstr "Archief"
+
+#: head.php:88
+msgid "Contact"
+msgstr "Contact"
+
+#: index.php:162
+msgid "Filter the posts :"
+msgstr "Filter de berichten:"
+
+#: index.php:164
+msgid "Posts of the day"
+msgstr "Berichten van de dag"
+
+#: index.php:167
+msgid "Posts of the week"
+msgstr "Berichten van de week"
+
+#: index.php:170
+msgid "Posts of the month"
+msgstr "Berichten van de maand"
+
+#: index.php:173
+msgid "All posts"
+msgstr "Alle berichten"
+
+#: index.php:180
+#, php-format
+msgid "You are searching for all the posts with <span class=\"search\">%s</span>"
+msgstr "U zoekt naar alle berichten met <span class=\"search\">%s</span>"
+
+#: inscription.php:57
+msgid "Name : "
+msgstr "Naam:"
+
+#: inscription.php:58
+msgid "Firstname : "
+msgstr "Voornaam:"
+
+#: inscription.php:60
+msgid "Website : "
+msgstr "Website"
+
+#: inscription.php:61
+msgid "Feed : "
+msgstr "Feed:"
+
+#: inscription.php:62
+msgid "Choice : "
+msgstr "Keuze:"
+
+#: inscription.php:70
+msgid "Your email has been sent"
+msgstr "Uw e-mail is verzonden"
+
+#: inscription.php:126
+#, php-format
+msgid "If you don't recieve any new from the administration team in the 5 days do not hesitate to contact us via %s with this information :"
+msgstr "Als u geen nieuws van de administratie team in de 5 dagen heeft ontvangen, aarzel dan niet om ons te contacteren via %s met deze informatie:"
+
+#: inscription.php:127
+msgid "Subject"
+msgstr "Onderwerp"
+
+#: inscription.php:128
+#: stats.php:62
+#: stats.php:73
+#: admin/gestion-articles.php:174
+#: admin/gestion-flux.php:187
+#: admin/gestion-logs.php:61
+#: admin/gestion-membre.php:181
+#: admin/gestion-membre.php:236
+#: admin/gestion-mysql.php:109
+#: admin/gestion-mysql.php:145
+msgid "Name"
+msgstr "Naam"
+
+#: inscription.php:129
+#: admin/install/index.php:331
+msgid "Firstname"
+msgstr "Voornaam"
+
+#: inscription.php:130
+#: admin/gestion-membre.php:184
+#: admin/gestion-membre.php:238
+#: admin/install/index.php:335
+msgid "Email"
+msgstr "E-mail"
+
+#: inscription.php:131
+#: stats.php:62
+#: stats.php:73
+#: admin/gestion-membre.php:237
+msgid "Website"
+msgstr "Website"
+
+#: inscription.php:132
+#: admin/sidebar.php:13
+msgid "Feed"
+msgstr "Feed"
+
+#: inscription.php:133
+msgid "Choice"
+msgstr "Keuze"
+
+#: inscription.php:144
+msgid "Test your feeds"
+msgstr "Test uw feeds"
+
+#: inscription.php:146
+msgid "Before to subscribe, do not hesitate to test your RSS/Atom feeds to be sure they'll be well interpretated by the planet aggregator engine which is using the <a href='http://simplepie.org/' title='Simple Pie' rel='noffolow'>Simple Pie</a> library (distributed under the LGPL licecne). Check also if your feeds are perfectly valid on <a href='http://feedvalidator.org/check.cgi' target='_blank'>Feedvalidator</a> and correct them if needed. Otherwise you could have some problems using them."
+msgstr "Alvorens in te schrijven, aarzel niet om uw RSS / Atom-feeds uit te testen om zeker te zijn dat ze goed zullen geïnterpreteerd door de planet aggregator engine worden. Deze maakt gebruik van de <a href='http://simplepie.org/' title=\"Simple Pie\" rel='noffolow'>Simple Pie</a> bibliotheek  (gedistribueerd onder de LGPL licence). Controleer ook dat uw feeds perfect geldig zijn op <a href='http://feedvalidator.org/check.cgi' target='_blank'>Feedvalidator</a> en indien nodig verbeter ze. Anders zou het kunnen dat er enkele problemen daar van komen."
+
+#: inscription.php:148
+msgid "You can test the simplepie engine on the following page :"
+msgstr "U kunt de simplepie engine op de volgende pagina uit tester:"
+
+#: inscription.php:152
+msgid "Subscribe / Unsubscribe"
+msgstr "Inschrijven / Uitschrijven"
+
+#: inscription.php:153
+msgid "To add or remove your website from the planet, just fill this form in :"
+msgstr "Toevoegen of verwijderen van uw website van de planeet kan via dit formulier:"
+
+#: inscription.php:158
+msgid "Name or nicknname"
+msgstr "Naam of pseudoniem"
+
+#: inscription.php:162
+msgid "Firstname (optional)"
+msgstr "Voornaam (optioneel)"
+
+#: inscription.php:166
+msgid "Contact email"
+msgstr "Contact e-mail"
+
+#: inscription.php:170
+msgid "Website URL"
+msgstr "Website URL"
+
+#: inscription.php:174
+msgid "Feed URL (this can be a tag or category specific feed feed too)"
+msgstr "Feed URL (dit kan een tag of categorie specifieke feed zijn ook)"
+
+#: inscription.php:178
+#: sidebar.php:40
+msgid "Subscribe"
+msgstr "Inschrijven"
+
+#: inscription.php:181
+msgid "Unsubscribe"
+msgstr "Uitschrijven"
+
+#: inscription.php:184
+msgid "Please fill in the captcha"
+msgstr "Vul in de captcha"
+
+#: inscription.php:195
+msgid "I have read and accept the charter"
+msgstr "Ik heb de charter gelezen en accepteer ze"
+
+#: inscription.php:209
+msgid "If you need to contact the administration team for any reason (change of your feed URL, suggestion ...), you can do it by <a href='contact.php'>clicking here</a>."
+msgstr "Als u de administratie team will contacteren for een reden of een ander (verandering van uw feed-URL contact, suggestie ...), kunt u dit doen door <a href='contact.php'>hier te klikken.</a>"
+
+#: mobile.php:46
+#: mobile.php:50
+msgid "Mobile version"
+msgstr "Mobiele versie"
+
+#: mobile.php:73
+msgid "Go to the summary"
+msgstr "Ga naar de samenvatting"
+
+#: mobile.php:73
+msgid "Summary"
+msgstr "Samenvatting"
+
+#: mobile.php:74
+msgid "Show posts content"
+msgstr "Toon berichten inhoud"
+
+#: mobile.php:74
+msgid "Posts detail"
+msgstr "Berichten detail"
+
+#: mobile.php:75
+msgid "See more posts"
+msgstr "Meer berichten"
+
+#: mobile.php:76
+msgid "Back to site"
+msgstr "Terug naar site"
+
+#: mobile.php:118
+#: mobile.php:124
+#: inc/fonctions.php:314
+msgid "Visit source"
+msgstr "Bezoek bron"
+
+#: mobile.php:127
+#, php-format
+msgid "%d vote(s)"
+msgstr "%d stem(men)"
+
+#: pagination.php:54
+#: pagination.php:70
+#: admin/pagination.php:46
+#: admin/pagination.php:61
+msgid "Next page"
+msgstr "Volgende pagina"
+
+#: pagination.php:62
+#: pagination.php:69
+#: admin/pagination.php:53
+#: admin/pagination.php:60
+msgid "Previous page"
+msgstr "Vorige pagina"
+
+#: sidebar.php:33
+msgid "Quick news"
+msgstr "Snel nieuws"
+
+#: sidebar.php:42
+msgid "Subscribe to RSS feed"
+msgstr "Abonneren op RSS-feed"
+
+#: sidebar.php:42
+msgid "Feed with all the posts"
+msgstr "Feed met alle berichten"
+
+#: sidebar.php:45
+msgid "Subscribe to all the popular posts RSS feed"
+msgstr "Abonneer u op alle populaire berichten RSS-feed"
+
+#: sidebar.php:45
+msgid "Popular posts feed"
+msgstr "Populaire berichten feed"
+
+#: sidebar.php:49
+#: admin/sidebar.php:10
+msgid "Members"
+msgstr "Leden"
+
+#: sidebar.php:60
+msgid "See members posts"
+msgstr "Zie leden berichten"
+
+#: sidebar.php:62
+#, php-format
+msgid "Visit the website of %s"
+msgstr "Bezoek de website van %s"
+
+#: sidebar.php:68
+msgid "Contribute"
+msgstr "Doe mee"
+
+#: sidebar.php:70
+msgid "Subscribe your blog to the planet"
+msgstr "Schrijf je blog in op de planeet"
+
+#: sidebar.php:70
+msgid "Add your blog"
+msgstr "Voeg uw blog"
+
+#: sidebar.php:71
+msgid "Admin interface"
+msgstr "Admin interface"
+
+#: sidebar.php:71
+#: admin/head.php:42
+#: admin/sidebar.php:3
+msgid "Administration"
+msgstr "Administratie"
+
+#: stats.php:49
+msgid "Main statistics"
+msgstr "Algemene statistieken"
+
+#: stats.php:51
+msgid "Number of members : "
+msgstr "Aantal leden:"
+
+#: stats.php:52
+msgid "Number of feeds : "
+msgstr "Aantal feeds:"
+
+#: stats.php:53
+#, php-format
+msgid "%d posts in here"
+msgstr "%d berichten hier"
+
+#: stats.php:54
+#, php-format
+msgid "%d votes in total"
+msgstr "%d stemmen in totaal"
+
+#: stats.php:61
+#, php-format
+msgid "List of the %d most active members"
+msgstr "Lijst van de %d meeste actieve leden"
+
+#: stats.php:62
+msgid "Qtity of posts"
+msgstr "Aantal berichten"
+
+#: stats.php:67
+#: stats.php:78
+msgid "Visit the website"
+msgstr "Bezoek de website"
+
+#: stats.php:72
+#, php-format
+msgid "List of the %d best ranked members"
+msgstr "Lijst van de %d beste gerangschikte leden"
+
+#: stats.php:73
+msgid "Total of votes"
+msgstr "Totaal stemmen"
+
+#: votes.php:86
+msgid "success"
+msgstr "succes"
+
+#: votes.php:91
+msgid "Error: the vote could not be saved"
+msgstr "Error: de stemming kon niet worden opgeslagen"
+
+#: votes.php:97
+msgid "Error: article number incorrect !"
+msgstr "Error: foute artikel nummer !"
+
+#: votes.php:103
+msgid "Error: you already vote on this post !"
+msgstr "Error: u heeft al op dit bericht gestemd!"
+
+#: votes.php:109
+msgid "Error: refused access"
+msgstr "Error: toegang geweigerd"
+
+#: inc/fonctions.php:64
+msgid "Reading cache"
+msgstr "Reading cache"
+
+#: inc/fonctions.php:266
+#: inc/fonctions.php:358
+msgid "No posts found"
+msgstr "Geen berichten gevonden"
+
+#: inc/fonctions.php:287
+#, php-format
+msgid "Score for %s"
+msgstr "Score voor %s"
+
+#: inc/fonctions.php:308
+#, php-format
+msgid "Show the posts of %s"
+msgstr "Toon de berichten van %s"
+
+#: inc/fonctions.php:319
+#, php-format
+msgid "By %s, on %s at %s."
+msgstr "Door %s, op %s om %s."
+
+#: inc/fonctions.php:325
+msgid "Read more"
+msgstr "Lees meer"
+
+#: inc/fonctions.php:332
+msgid "Back to summary"
+msgstr "Terug naar de inhoud"
+
+#: inc/fonctions.php:364
+#, php-format
+msgid "Fast access to the %d last posts"
+msgstr "Snelle toegang tot de %d laatste berichten"
+
+#: inc/fonctions.php:366
+msgid "Fast access to the last posts of the page"
+msgstr "Snelle toegang tot de laatste berichten van de pagina"
+
+#: inc/fonctions.php:455
+#: inc/fonctions.php:468
+msgid "Vote yes"
+msgstr "Stem ja"
+
+#: inc/fonctions.php:456
+#: inc/fonctions.php:474
+#: inc/fonctions.php:478
+msgid "Vote no"
+msgstr "Stem nee"
+
+#: inc/fonctions.php:466
+msgid "This post seems pertinent to you"
+msgstr "Dit bericht ziet er relevant voor u uit"
+
+#: inc/fonctions.php:472
+msgid "This post seems not pertinent to you"
+msgstr "Dit bericht ziet er niet relevant voor u uit"
+
+#: inc/fonctions.php:476
+msgid "This post should not be here"
+msgstr "Dit bericht zou hier niet mogen zijn"
+
+#: inc/fonctions.php:477
+msgid "Are you sure this post should not be on this planet and should be removed?"
+msgstr "Bent u zeker dat deze bericht hier niet zijn plaats heeft?"
+
+#: inc/fonctions.php:499
+#, php-format
+msgid "The field \"%s\" has to be a valid email address"
+msgstr "Het veld \"%s\" moet een geldig e-mailadres zijn"
+
+#: inc/fonctions.php:505
+#: inc/fonctions.php:511
+#, php-format
+msgid "The field \"%s\" %s has to be a valid URL"
+msgstr "Het veld \"%s\" %s moet een geldige URL zijn"
+
+#: inc/fonctions.php:515
+#, php-format
+msgid "The field \"%s\" %s is not a valid simplepie feed"
+msgstr "Het veld \"%s\" %s is geen geldige simplepie feed"
+
+#: inc/fonctions.php:523
+#, php-format
+msgid "The field \"%s\" is empty"
+msgstr "Het veld \"%s\" is leeg"
+
+#: inc/fonctions.php:650
+msgid "Access denied"
+msgstr "Toegang geweigerd"
+
+#: inc/fonctions.php:716
+msgid " bytes"
+msgstr "bytes"
+
+#: inc/fonctions.php:720
+msgid " Kb"
+msgstr "Kb"
+
+#: inc/fonctions.php:724
+msgid " MB"
+msgstr "MB"
+
+#: admin/gestion-articles.php:94
+#, php-format
+msgid "The post %s was changed"
+msgstr "Het bericht %s is veranderd"
+
+#: admin/gestion-articles.php:96
+#, php-format
+msgid "Error while trying to modify post %s !"
+msgstr "Error bij het proberen van de verandering van %s op te slagen!"
+
+#: admin/gestion-articles.php:112
+msgid "Filtering of the posts"
+msgstr "Filteren van de berichten"
+
+#: admin/gestion-articles.php:114
+msgid "Filter articles"
+msgstr "Filter berichten"
+
+#: admin/gestion-articles.php:120
+msgid "Posts of the member :"
+msgstr "Berichten van het lid:"
+
+#: admin/gestion-articles.php:139
+msgid "All"
+msgstr "Allemaal"
+
+#: admin/gestion-articles.php:147
+msgid "Number of posts"
+msgstr "Aantal berichten"
+
+#: admin/gestion-articles.php:158
+msgid "List of the posts"
+msgstr "Lijst van de berichten"
+
+#: admin/gestion-articles.php:160
+msgid "NOTE: If you delete a post which is too recent, it will be refetched next time the update happen !!"
+msgstr "OPMERKING: Als u een recenter bericht vermijderd, zal dit bericht refetched worden tijdens de volgende update!"
+
+#: admin/gestion-articles.php:175
+msgid "Date"
+msgstr "Datum"
+
+#: admin/gestion-articles.php:176
+msgid "Title"
+msgstr "Titel"
+
+#: admin/gestion-articles.php:177
+#: admin/gestion-flux.php:189
+#: admin/gestion-membre.php:239
+msgid "Status"
+msgstr "Status"
+
+#: admin/gestion-articles.php:178
+msgid "Nb votes"
+msgstr "Nb stemmen"
+
+#: admin/gestion-articles.php:179
+#: admin/gestion-flux.php:190
+#: admin/gestion-logs.php:62
+#: admin/gestion-membre.php:240
+#: admin/gestion-mysql.php:146
+msgid "Action"
+msgstr "Actie"
+
+#: admin/gestion-articles.php:211
+#: admin/gestion-articles.php:213
+#: admin/gestion-articles.php:217
+#: admin/gestion-flux.php:237
+#: admin/gestion-flux.php:243
+#: admin/gestion-membre.php:251
+#: admin/gestion-membre.php:257
+msgid "active"
+msgstr "actief"
+
+#: admin/gestion-articles.php:212
+#: admin/gestion-articles.php:216
+#: admin/gestion-articles.php:218
+#: admin/gestion-flux.php:238
+#: admin/gestion-flux.php:242
+#: admin/gestion-membre.php:252
+#: admin/gestion-membre.php:256
+msgid "inactive"
+msgstr "inactief"
+
+#: admin/gestion-articles.php:235
+#: admin/gestion-flux.php:264
+#: admin/gestion-membre.php:271
+msgid "Change"
+msgstr "Veranderen"
+
+#: admin/gestion-articles.php:236
+#: admin/gestion-flux.php:265
+#: admin/gestion-logs.php:78
+#: admin/gestion-membre.php:272
+#: admin/gestion-mysql.php:162
+msgid "Delete"
+msgstr "Vermijderen"
+
+#: admin/gestion-articles.php:251
+#: admin/gestion-flux.php:279
+#: admin/gestion-membre.php:285
+msgid "Show items by : "
+msgstr "Ordeer de elementen :"
+
+#: admin/gestion-cache.php:37
+msgid "The cache files were correctly deleted."
+msgstr "De cache-bestanden werden verwijderd met succes."
+
+#: admin/gestion-cache.php:41
+msgid "Manage cache"
+msgstr "Beheer cache"
+
+#: admin/gestion-cache.php:45
+msgid "Delete Cache"
+msgstr "Delete Cache"
+
+#: admin/gestion-cache.php:47
+msgid "The following files were deleted :"
+msgstr "De volgende bestanden zijn verwijderd:"
+
+#: admin/gestion-flux.php:69
+#, php-format
+msgid "The feed %s was correctly deleted"
+msgstr "De feed %s werd verwijderd"
+
+#: admin/gestion-flux.php:72
+#: admin/gestion-flux.php:85
+#: admin/gestion-flux.php:97
+msgid "Error while trying to change the informations of the feed"
+msgstr "Fout terwijl het proberen van de informatie te veranderen"
+
+#: admin/gestion-flux.php:78
+#, php-format
+msgid "The user already has a feed %s"
+msgstr "De gebruiker heeft al deze feed %s"
+
+#: admin/gestion-flux.php:87
+#, php-format
+msgid "Adding the feed %s succeeded"
+msgstr "Het toevoegen van de feed %s geslaagd"
+
+#: admin/gestion-flux.php:94
+#, php-format
+msgid "Changing the feed %s succeeded"
+msgstr "Veranderen van de feed %s geslaagd"
+
+#: admin/gestion-flux.php:123
+msgid "Add a feed"
+msgstr "Voeg een feed"
+
+#: admin/gestion-flux.php:135
+msgid "Full url of the feed (Without the ending /)"
+msgstr "Volledige URL van de feed (Zonder de eindigend /)"
+
+#: admin/gestion-flux.php:136
+msgid "Name of the user"
+msgstr "Naam van de gebruiker"
+
+#: admin/gestion-flux.php:172
+msgid "Manage feeds"
+msgstr "Beheer feeds"
+
+#: admin/gestion-flux.php:174
+msgid "Manage member feed."
+msgstr "Beheer lid feed."
+
+#: admin/gestion-flux.php:188
+msgid "URL of the feed"
+msgstr "URL van de feed"
+
+#: admin/gestion-flux.php:255
+#: admin/gestion-flux.php:258
+msgid "show"
+msgstr "tonen"
+
+#: admin/gestion-logs.php:53
+msgid "All the log files"
+msgstr "Alle log bestanden"
+
+#: admin/gestion-logs.php:55
+msgid "Management planet log files (Advanced users)."
+msgstr "Management planeet log-bestanden (Advanced gebruikers)."
+
+#: admin/gestion-logs.php:99
+msgid "Purge all the log files"
+msgstr "Verwijder alle logbestanden"
+
+#: admin/gestion-membre.php:48
+#, php-format
+msgid "Delete of user %s succeeded"
+msgstr "Verwijderen van gebruiker %s geslaagd"
+
+#: admin/gestion-membre.php:52
+#, php-format
+msgid "Error while trying to remove the user %s"
+msgstr "Fout bij het proberen om de gebruiker %s te verwijderen"
+
+#: admin/gestion-membre.php:89
+#, php-format
+msgid "The user %s already exists"
+msgstr "De gebruiker %s bestaat al"
+
+#: admin/gestion-membre.php:93
+#, php-format
+msgid "The email address %s is already in use"
+msgstr "Het e-mailadres %s is al in gebruik"
+
+#: admin/gestion-membre.php:97
+#, php-format
+msgid "The website %s is already assigned to an user"
+msgstr "De website %s is al toegewezen aan een gebruiker"
+
+#: admin/gestion-membre.php:103
+#, php-format
+msgid "User %s successfully added"
+msgstr "Gebruiker %s toegevoegd"
+
+#: admin/gestion-membre.php:105
+#: admin/gestion-membre.php:117
+#, php-format
+msgid "Error while trying to modify user %s"
+msgstr "Fout tijdens het proberen te wijzigen van de gebruiker %s"
+
+#: admin/gestion-membre.php:114
+#, php-format
+msgid "Modification of user %s succeeded"
+msgstr "Wijziging van de gebruiker %s geslaagd"
+
+#: admin/gestion-membre.php:123
+#, php-format
+msgid "Are you sure you want to remove user %s ?"
+msgstr "Weet u zeker dat u de gebruiker %s wilt verwijderen?"
+
+#: admin/gestion-membre.php:124
+msgid "This action can not be canceled"
+msgstr "Deze actie kan niet geannuleerd worden"
+
+#: admin/gestion-membre.php:125
+msgid "All the posts of the user will be removed"
+msgstr "Alle berichten van de gebruiker zullen worden verwijderd"
+
+#: admin/gestion-membre.php:126
+msgid "All the votes on these posts will be removed"
+msgstr "Alle stemmen over deze berichten zullen worden verwijderd"
+
+#: admin/gestion-membre.php:127
+msgid "All the feeds of this user will be removed"
+msgstr "Alle feeds van deze gebruiker zullen worden verwijderd"
+
+#: admin/gestion-membre.php:130
+msgid "Confirm"
+msgstr "Bevestig"
+
+#: admin/gestion-membre.php:175
+msgid "Add an user"
+msgstr "Voeg een gebruiker"
+
+#: admin/gestion-membre.php:177
+msgid "To add a new member, fill out the form below."
+msgstr "Om een nieuw lid toe te voegen, vul de onderstaande formulier in."
+
+#: admin/gestion-membre.php:187
+msgid "Website (without the ending /)"
+msgstr "Website (zonder de eindigend /)"
+
+#: admin/gestion-membre.php:196
+msgid "List of the users"
+msgstr "Lijst van de gebruikers"
+
+#: admin/gestion-membre.php:198
+msgid "List of members of the Planet"
+msgstr "Lijst van de leden van de Planeet"
+
+#: admin/gestion-membre.php:267
+msgid "Show"
+msgstr "Tonen"
+
+#: admin/gestion-mysql.php:44
+msgid "File successfully imported"
+msgstr "Bestand geïmporteerd"
+
+#: admin/gestion-mysql.php:48
+#, php-format
+msgid "File %s successfully deleted"
+msgstr "Bestand %s verwijderd"
+
+#: admin/gestion-mysql.php:52
+msgid "Error while trying to modify database informations"
+msgstr "Fout bij het wijzigen van de database informatie"
+
+#: admin/gestion-mysql.php:66
+msgid "Export database"
+msgstr "Export database"
+
+#: admin/gestion-mysql.php:101
+#, php-format
+msgid "The current database is accessible here (in the directory %s)"
+msgstr "De huidige database is toegankelijk hier (in de folder %s)"
+
+#: admin/gestion-mysql.php:102
+msgid "When you reload this page, a new snapchot of your current database will be generated"
+msgstr "Wanneer u deze pagina laad, een nieuwe snapchot van uw huidige database wordt gegenereerd"
+
+#: admin/gestion-mysql.php:110
+msgid "Size"
+msgstr "Grootte"
+
+#: admin/gestion-mysql.php:128
+#, php-format
+msgid "The actual database is accessible here (in the directory %s)"
+msgstr "De huidige database is toegankelijk hier (in de folder %s)"
+
+#: admin/gestion-mysql.php:137
+msgid "Other backup of the database in the directory /admin/mysql/backup."
+msgstr "Andere backup van de database in de folder /admin/mysql/back-up."
+
+#: admin/gestion-mysql.php:138
+msgid "TAKE CARE !"
+msgstr "PAS OP!"
+
+#: admin/gestion-mysql.php:138
+msgid "If you apply the content of one of this file, this action can not be cancelled"
+msgstr "Als u de inhoud van een van deze bestanden toepast kan deze actie niet worden geannuleerd"
+
+#: admin/gestion-mysql.php:161
+msgid "Import"
+msgstr "Import"
+
+#: admin/gestion-mysql.php:171
+msgid "NOTE : to import a database file, the file needs to have the *.sql.gz extension !"
+msgstr "OPMERKING: Om een database bestand te importeren moet het bestand in de formaat *. sql.gz zijn !"
+
+#: admin/gestion-option.php:88
+#: admin/gestion-user.php:60
+msgid "Modification succeeded"
+msgstr "Wijziging geslaagd"
+
+#: admin/gestion-option.php:105
+msgid "Options"
+msgstr "Opties"
+
+#: admin/gestion-option.php:107
+msgid "Configuration settings Planet."
+msgstr "Instellingen van de Planeet."
+
+#: admin/gestion-option.php:112
+msgid "Title of the Planet"
+msgstr "Titel van de Planeet"
+
+#: admin/gestion-option.php:115
+msgid "Description of the Planet"
+msgstr "Beschrijving van de Planeet"
+
+#: admin/gestion-option.php:119
+msgid "Show the contact page"
+msgstr "Toon de contact pagina"
+
+#: admin/gestion-option.php:120
+msgid "Enable voting"
+msgstr "Maak stemmen actief"
+
+#: admin/gestion-option.php:122
+msgid "Graphical theme"
+msgstr "Grafische thema"
+
+#: admin/gestion-option.php:140
+msgid "Language of the Planet"
+msgstr "Taal van de Planeet"
+
+#: admin/gestion-option.php:159
+msgid "Information message (optional)"
+msgstr "Informatie bericht (optioneel)"
+
+#: admin/gestion-option.php:165
+msgid "Subscription page content"
+msgstr "Inhoud van de inschrijving pagina"
+
+#: admin/gestion-option.php:175
+#: admin/gestion-user.php:106
+msgid "Apply"
+msgstr "Aanvragen"
+
+#: admin/gestion-update.php:37
+msgid "The automatical update is disabled "
+msgstr "De automatische update is uitgeschakeld"
+
+#: admin/gestion-update.php:42
+msgid "The update can not start : the process is already started (You can force update by deleting the /inc/cron_running.txt file)"
+msgstr "De update kan niet beginnen: het proces is reeds gestart (U kunt kracht bijwerken door het verwijderen van de /inc/cron_running.txt bestand)"
+
+#: admin/gestion-update.php:44
+msgid "The automatic update is enabled"
+msgstr "De automatische update is ingeschakeld"
+
+#: admin/gestion-update.php:52
+msgid "Manual update ..."
+msgstr "Handmatige update ..."
+
+#: admin/gestion-update.php:55
+#, php-format
+msgid "Error while updating : %s"
+msgstr "Fout tijdens het update: %s"
+
+#: admin/gestion-update.php:70
+msgid "Automatic update"
+msgstr "Automatische update"
+
+#: admin/gestion-update.php:72
+msgid "System configuration update."
+msgstr "Systeemconfiguratie update."
+
+#: admin/gestion-update.php:78
+#: admin/index.php:82
+msgid "The update is running"
+msgstr "De update wordt uitgevoerd"
+
+#: admin/gestion-update.php:80
+#: admin/index.php:84
+msgid "The update is stopped"
+msgstr "De update is gestopt"
+
+#: admin/gestion-update.php:81
+#: admin/index.php:86
+msgid "The update is disabled"
+msgstr "De update is uitgeschakeld"
+
+#: admin/gestion-update.php:84
+msgid "Stop the update algorithm"
+msgstr "Stop de update algoritme"
+
+#: admin/gestion-update.php:85
+msgid "Start the update algorithm"
+msgstr "Start de update algoritme"
+
+#: admin/gestion-update.php:86
+msgid "Start a manual update"
+msgstr "Start een handmatige update"
+
+#: admin/gestion-user.php:77
+msgid "Users Options"
+msgstr "Gebruikers Opties"
+
+#: admin/gestion-user.php:79
+msgid "Configuring user settings."
+msgstr "Configureren gebruikersinstellingen."
+
+#: admin/gestion-user.php:84
+msgid "Contact Name"
+msgstr "Contact naam"
+
+#: admin/gestion-user.php:87
+msgid "Reference contact email"
+msgstr "Referentie contact e-mail"
+
+#: admin/gestion-user.php:90
+msgid "Author Website"
+msgstr "Auteur website"
+
+#: admin/gestion-user.php:93
+msgid "Jabber / GoogleTalk"
+msgstr "Jabber / GoogleTalk"
+
+#: admin/gestion-user.php:96
+msgid "Other Instant Messaging"
+msgstr "Andere Instant Messaging"
+
+#: admin/gestion-user.php:99
+msgid "About Me"
+msgstr "Over mij"
+
+#: admin/gestion-user.php:102
+msgid "New Password"
+msgstr "Nieuw wachtwoord"
+
+#: admin/gestion-user.php:104
+msgid "retype your new password"
+msgstr "Typ uw nieuwe wachtwoord opnieuw"
+
+#: admin/head.php:56
+msgid "Disconnect from administration panel?"
+msgstr "Koppel van de administratie paneel?"
+
+#: admin/head.php:56
+#: admin/head.php:67
+msgid "Logout"
+msgstr "Afmelden"
+
+#: admin/head.php:64
+msgid "Back on the Bilboplanet"
+msgstr "Terug op de Bilboplanet"
+
+#: admin/index.php:66
+#: admin/sidebar.php:7
+msgid "Dashboard"
+msgstr "Dashboard"
+
+#: admin/index.php:68
+msgid "Quick summary of the planet"
+msgstr "Korte samenvatting van de planeet"
+
+#: admin/index.php:72
+msgid "Latest articles :"
+msgstr "Laatste artikelen:"
+
+#: admin/index.php:77
+msgid "Statistics :"
+msgstr "Statistieken:"
+
+#: admin/index.php:89
+msgid "Current size of the database :"
+msgstr "Huidige grootte van de database:"
+
+#: admin/index.php:90
+msgid "Posts of the day :"
+msgstr "Berichten van de dag:"
+
+#: admin/index.php:91
+msgid "Mean posts per day :"
+msgstr "Gemiddelde berichten per dag:"
+
+#: admin/index.php:92
+msgid "Votes of the day :"
+msgstr "Stemmen van de dag:"
+
+#: admin/index.php:93
+msgid "Mean votes per day :"
+msgstr "Gemiddelde stemmen per dag:"
+
+#: admin/sidebar.php:7
+msgid "Access the quick summary of the planet"
+msgstr "Toegang tot de snelle samenvatting van de planeet"
+
+#: admin/sidebar.php:10
+msgid "Manage members"
+msgstr "Leden beheren"
+
+#: admin/sidebar.php:13
+msgid "Manage feed"
+msgstr "Feed beheren"
+
+#: admin/sidebar.php:16
+msgid "Articles"
+msgstr "Artikelen"
+
+#: admin/sidebar.php:16
+msgid "Manage articles of the planet"
+msgstr "Beheer artikelen van de planeet"
+
+#: admin/sidebar.php:20
+msgid "Configuration"
+msgstr "Configuratie"
+
+#: admin/sidebar.php:24
+msgid "User"
+msgstr "Gebruiker"
+
+#: admin/sidebar.php:24
+msgid "User configuration"
+msgstr "Gebruikersconfiguratie"
+
+#: admin/sidebar.php:24
+msgid "Users"
+msgstr "Gebruikers"
+
+#: admin/sidebar.php:27
+msgid "Planet"
+msgstr "Planeet"
+
+#: admin/sidebar.php:27
+msgid "Planet Configuration"
+msgstr "Planeet Configuratie"
+
+#: admin/sidebar.php:31
+msgid "System"
+msgstr "Systeem"
+
+#: admin/sidebar.php:35
+msgid "Log"
+msgstr "Log"
+
+#: admin/sidebar.php:35
+msgid "View logs information"
+msgstr "Bekijk log informatie"
+
+#: admin/sidebar.php:35
+msgid "Logs Files"
+msgstr "Logs Bestanden"
+
+#: admin/sidebar.php:38
+msgid "Save Database"
+msgstr "Opslaan Database"
+
+#: admin/sidebar.php:38
+msgid "Save Planet database"
+msgstr "Opslaan Planeet database"
+
+#: admin/sidebar.php:38
+msgid "Save database"
+msgstr "Opslaan database"
+
+#: admin/sidebar.php:41
+msgid "Clear cache"
+msgstr "Cache wissen"
+
+#: admin/sidebar.php:41
+msgid "Clear Planet cache"
+msgstr "Clear Planeet cache"
+
+#: admin/sidebar.php:44
+msgid "Update"
+msgstr "Update"
+
+#: admin/sidebar.php:44
+msgid "System configuration update"
+msgstr "Systeemconfiguratie update"
+
+#: admin/sidebar.php:44
+msgid "Configuration update"
+msgstr "Instellingen update"
+
+#: admin/install/check.php:35
+#, php-format
+msgid "PHP version is %s (5.0 or earlier needed)."
+msgstr "PHP versie is %s (5.0 of eerder nodig)."
+
+#: admin/install/check.php:39
+msgid "Multibyte string module (mbstring) is not available."
+msgstr "Multibyte string module (mbstring) is niet beschikbaar."
+
+#: admin/install/check.php:43
+msgid "Iconv module is not available."
+msgstr "Iconv module is niet beschikbaar."
+
+#: admin/install/check.php:47
+msgid "Output control functions are not available."
+msgstr "Output controle functies zijn niet beschikbaar."
+
+#: admin/install/check.php:51
+msgid "SimpleXML module is not available."
+msgstr "SimpleXML module is niet beschikbaar."
+
+#: admin/install/check.php:55
+msgid "DOM XML module is not available."
+msgstr "DOM XML-module is niet beschikbaar."
+
+#: admin/install/check.php:60
+msgid "PCRE engine does not support UTF-8 strings."
+msgstr "PCRE motor biedt geen ondersteuning voor UTF-8 strings."
+
+#: admin/install/check.php:64
+msgid "SPL module is not available."
+msgstr "SPL-module is niet beschikbaar."
+
+#: admin/install/check.php:71
+#, php-format
+msgid "MySQL version is %s (4.1 or earlier needed)."
+msgstr "MySQL versie is %s (4.1 of eerder nodig)."
+
+#: admin/install/check.php:85
+msgid "MySQL InnoDB engine is not available."
+msgstr "MySQL InnoDB motor is niet beschikbaar."
+
+#: admin/install/check.php:93
+#, php-format
+msgid "PostgreSQL version is %s (8.0 or earlier needed)."
+msgstr "PostgreSQL versie %s (8.0 of eerder nodig)."
+
+#: admin/install/index.php:33
+msgid "No configuration file"
+msgstr "Geen configuratie bestand"
+
+#: admin/install/index.php:34
+#, php-format
+msgid "There is no configuration file, you need to create one. Therefor you can use the <a href=\"%s\">wizard</a> to generate a configuration file."
+msgstr "Er is geen configuratie bestand, u moet er een maken. Daarom kunt u de <a href=\"%s\">wizard</a> gebruiken om een configuratiebestand te genereren."
+
+#: admin/install/index.php:52
+#: admin/install/wizard.php:81
+msgid "The Bilboplanet is already installed."
+msgstr "De Bilboplanet is al geïnstalleerd."
+
+#: admin/install/index.php:58
+msgid "The Bilboplanet can not be installed"
+msgstr "De Bilboplanet kan niet worden geïnstalleerd"
+
+#: admin/install/index.php:91
+msgid "Please fill the username in."
+msgstr "Vul de gebruikersnaam in"
+
+#: admin/install/index.php:94
+msgid "The username has to be formed of minimum 2 characters with letters of numbers"
+msgstr "De gebruikersnaam moet worden gevormd door minimaal 2 tekens van letters en getallen"
+
+#: admin/install/index.php:97
+msgid "Invalid email address"
+msgstr "Ongeldig e-mailadres"
+
+#: admin/install/index.php:101
+msgid "No password given"
+msgstr "Geen password gekregen"
+
+#: admin/install/index.php:104
+msgid "The passwords don't match"
+msgstr "De wachtwoorden komen niet overeen"
+
+#: admin/install/index.php:107
+msgid "The password have to contain minimum 6 characters."
+msgstr "Het wachtwoord moet minimaal 6 tekens bevatten."
+
+#: admin/install/index.php:126
+#: admin/install/index.php:141
+#: admin/install/index.php:161
+#: admin/install/index.php:172
+#, php-format
+msgid "Unable to write %s file."
+msgstr "Het schrijven op het bestand %s onmogenlijk"
+
+#: admin/install/index.php:136
+#, php-format
+msgid "File %s already exists."
+msgstr "Bestand %s bestaat reeds."
+
+#: admin/install/index.php:275
+#: admin/install/index.php:298
+msgid "Installation of the Bilboplanet"
+msgstr "Installatie van de Bilboplanet"
+
+#: admin/install/index.php:305
+#: admin/install/wizard.php:152
+msgid "Errors:"
+msgstr "Fouten:"
+
+#: admin/install/index.php:309
+msgid "The configuration file was successfully created."
+msgstr "Het configuratie bestand is gemaakt."
+
+#: admin/install/index.php:325
+msgid "Information on the BilboPlanet"
+msgstr "Informatie over de BilboPlanet"
+
+#: admin/install/index.php:327
+msgid "Thank you for taking somes minutes to answer those questions to help to the configuration of the bilboplanet"
+msgstr "Bedankt om enkele minuten te nemen om deze vragen te antwoorden voor de configuratie van de bilboplanet"
+
+#: admin/install/index.php:330
+msgid "Information of the user"
+msgstr "Informatie van de gebruiker"
+
+#: admin/install/index.php:333
+msgid "Name:"
+msgstr "Naam:"
+
+#: admin/install/index.php:337
+msgid "Website of the user:"
+msgstr "Website van de gebruiker:"
+
+#: admin/install/index.php:341
+msgid "Information on the Planet"
+msgstr "Informatie over de Planeet"
+
+#: admin/install/index.php:342
+msgid "URL of the Planet:"
+msgstr "URL van de Planeet:"
+
+#: admin/install/index.php:344
+msgid "Title of the Planet:"
+msgstr "Titel van de Planeet:"
+
+#: admin/install/index.php:346
+msgid "Description:"
+msgstr "Beschrijving:"
+
+#: admin/install/index.php:348
+msgid "Planet Language:"
+msgstr "Planeet Taal:"
+
+#: admin/install/index.php:352
+msgid "Username and password"
+msgstr "Gebruikersnaam en wachtwoord"
+
+#: admin/install/index.php:353
+#: admin/install/index.php:355
+#: admin/install/index.php:357
+msgid "Required field"
+msgstr "Verplicht veld"
+
+#: admin/install/index.php:353
+#: admin/install/index.php:378
+#: admin/install/wizard.php:180
+msgid "Username:"
+msgstr "Gebruikersnaam:"
+
+#: admin/install/index.php:355
+#: admin/install/index.php:379
+#: admin/install/wizard.php:183
+msgid "Password:"
+msgstr "Wachtwoord:"
+
+#: admin/install/index.php:357
+msgid "Confirm your password:"
+msgstr "Bevestig uw wachtwoord:"
+
+#: admin/install/index.php:361
+#: admin/install/wizard.php:189
+msgid "Save"
+msgstr "Opslaan"
+
+#: admin/install/index.php:372
+msgid "Install succeeded"
+msgstr "Installatie geslaagd"
+
+#: admin/install/index.php:374
+msgid "The Bilboplanet was successfully installed. Here you can find a resume of the configuration"
+msgstr "De Bilboplanet is met succes geïnstalleerd. Hier vindt u een samenvatting van de configuratie"
+
+#: admin/install/index.php:376
+msgid "Your account"
+msgstr "Uw account"
+
+#: admin/install/index.php:382
+msgid "Your Bilboplanet"
+msgstr "Uw Bilboplanet"
+
+#: admin/install/index.php:384
+msgid "URL of the BilboPlanet:"
+msgstr "URL van de BilboPlanet:"
+
+#: admin/install/index.php:385
+msgid "Administration interface:"
+msgstr "Administratie interface:"
+
+#: admin/install/index.php:389
+msgid "Go to the administration interface"
+msgstr "Ga naar de administratie-interface"
+
+#: admin/install/wizard.php:75
+msgid "The Bilboplanet could not be installed."
+msgstr "De Bilboplanet kan niet worden geïnstalleerd."
+
+#: admin/install/wizard.php:87
+#, php-format
+msgid "File %s does not exist."
+msgstr "Bestand %s bestaat niet."
+
+#: admin/install/wizard.php:92
+#: admin/install/wizard.php:105
+#, php-format
+msgid "Cannot write %s file."
+msgstr "Kan niet schrijven in %s bestand."
+
+#: admin/install/wizard.php:142
+msgid "Bilboplanet Install Wizard"
+msgstr "Bilboplanet Install Wizard"
+
+#: admin/install/wizard.php:149
+msgid "Installation wizard of the Bilboplanet"
+msgstr "Installatie wizard van de Bilboplanet"
+
+#: admin/install/wizard.php:156
+#, php-format
+msgid "The file <strong>%s</strong> already exists. If you need to reinitialize on of the configuration elements in this file, please remove the configuration file first or <a href=\"%s\">continue the installation</a>."
+msgstr "Het bestand <strong>%s</strong> bestaat reeds. Als u de installatie wilt reinitialiseren kunt u het configuratie bestand verwijderen of <a href=\"%s\">verder gaan</a>.</a>"
+
+#: admin/install/wizard.php:161
+msgid ""
+"<h3>Welcome to the BilboPlanet. Before you begin, we need some informations concerning the database. You'll need to provide the following information to begin the installation and to create the configuration file.</h3>\n"
+"\n"
+"   1. The host of the database<br/>\n"
+"   2. The name of the database<br/>\n"
+"   3. Your username to the database<br/>\n"
+"   4. Your password to the database<br/><br/>"
+msgstr ""
+"<h3> Welkom op de BilboPlanet. Voordat u begint, moeten we wat informatie over de database krijgen. U moet de volgende informatie hebben om de installatie te beginnen en om de configuratie bestand te maken.</h3>\n"
+"\n"
+"  1. De host van de database <br/>\n"
+"  2. De naam van de database <br/>\n"
+"  3. Uw gebruikersnaam voor de database <br/>\n"
+"  4. Uw wachtwoord voor de database <br/><br/>"
+
+#: admin/install/wizard.php:174
+msgid "Host of the database"
+msgstr "Host van de database"
+
+#: admin/install/wizard.php:177
+msgid "Name of the database:"
+msgstr "Naam van de database:"
+

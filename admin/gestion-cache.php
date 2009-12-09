@@ -59,7 +59,7 @@ if (!empty($flash)) echo '<div class="flash notice">'.$flash.'</div>';
 
 echo '<fieldset><legend>'.T_('Manage cache').'</legend>
 		<div class="message">
-			<p>'.T_('Supprimer le cache du Planet').'</p>
+			<p>'.T_('Remove the cache files').'</p>
 		</div><br />';
 echo '<center><form method="POST">
 	<input type="hidden" name="action" value="del">

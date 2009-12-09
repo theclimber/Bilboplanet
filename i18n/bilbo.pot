@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-15 23:24+0100\n"
+"POT-Creation-Date: 2009-12-09 17:42+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -138,14 +138,14 @@ msgstr ""
 msgid "Content :"
 msgstr ""
 
-#: contact.php:143 inscription.php:199 admin/gestion-articles.php:151
-#: admin/gestion-flux.php:166 admin/gestion-membre.php:129
-#: admin/gestion-membre.php:190
+#: contact.php:143 inscription.php:199 admin/gestion-articles.php:155
+#: admin/gestion-flux.php:166 admin/gestion-membre.php:127
+#: admin/gestion-membre.php:188
 msgid "Reset"
 msgstr ""
 
-#: contact.php:144 inscription.php:200 admin/gestion-articles.php:152
-#: admin/gestion-flux.php:167 admin/gestion-membre.php:191
+#: contact.php:144 inscription.php:200 admin/gestion-articles.php:156
+#: admin/gestion-flux.php:167 admin/gestion-membre.php:189
 #: admin/gestion-update.php:88
 msgid "Send"
 msgstr ""
@@ -272,23 +272,23 @@ msgid "Subject"
 msgstr ""
 
 #: inscription.php:128 stats.php:62 stats.php:73
-#: admin/gestion-articles.php:174 admin/gestion-flux.php:187
-#: admin/gestion-logs.php:61 admin/gestion-membre.php:181
-#: admin/gestion-membre.php:236 admin/gestion-mysql.php:109
+#: admin/gestion-articles.php:178 admin/gestion-flux.php:187
+#: admin/gestion-logs.php:61 admin/gestion-membre.php:179
+#: admin/gestion-membre.php:234 admin/gestion-mysql.php:109
 #: admin/gestion-mysql.php:145
 msgid "Name"
 msgstr ""
 
-#: inscription.php:129 admin/install/index.php:331
+#: inscription.php:129 admin/install/index.php:332
 msgid "Firstname"
 msgstr ""
 
-#: inscription.php:130 admin/gestion-membre.php:184
-#: admin/gestion-membre.php:238 admin/install/index.php:335
+#: inscription.php:130 admin/gestion-membre.php:182
+#: admin/gestion-membre.php:236 admin/install/index.php:336
 msgid "Email"
 msgstr ""
 
-#: inscription.php:131 stats.php:62 stats.php:73 admin/gestion-membre.php:237
+#: inscription.php:131 stats.php:62 stats.php:73 admin/gestion-membre.php:235
 msgid "Website"
 msgstr ""
 
@@ -456,7 +456,7 @@ msgstr ""
 msgid "Admin interface"
 msgstr ""
 
-#: sidebar.php:71 admin/head.php:42 admin/sidebar.php:3
+#: sidebar.php:71 admin/head.php:37 admin/sidebar.php:3
 msgid "Administration"
 msgstr ""
 
@@ -626,108 +626,117 @@ msgstr ""
 
 #: admin/gestion-articles.php:94
 #, php-format
+msgid "The post %s was removed"
+msgstr ""
+
+#: admin/gestion-articles.php:97
+#, php-format
 msgid "The post %s was changed"
 msgstr ""
 
-#: admin/gestion-articles.php:96
+#: admin/gestion-articles.php:100
 #, php-format
 msgid "Error while trying to modify post %s !"
 msgstr ""
 
-#: admin/gestion-articles.php:112
+#: admin/gestion-articles.php:116
 msgid "Filtering of the posts"
 msgstr ""
 
-#: admin/gestion-articles.php:114
+#: admin/gestion-articles.php:118
 msgid "Filter articles"
 msgstr ""
 
-#: admin/gestion-articles.php:120
+#: admin/gestion-articles.php:124
 msgid "Posts of the member :"
 msgstr ""
 
-#: admin/gestion-articles.php:139
+#: admin/gestion-articles.php:143
 msgid "All"
 msgstr ""
 
-#: admin/gestion-articles.php:147
+#: admin/gestion-articles.php:151
 msgid "Number of posts"
 msgstr ""
 
-#: admin/gestion-articles.php:158
+#: admin/gestion-articles.php:162
 msgid "List of the posts"
 msgstr ""
 
-#: admin/gestion-articles.php:160
+#: admin/gestion-articles.php:164
 msgid "NOTE: If you delete a post which is too recent, it will be refetched next time the update happen !!"
 msgstr ""
 
-#: admin/gestion-articles.php:175
+#: admin/gestion-articles.php:179
 msgid "Date"
 msgstr ""
 
-#: admin/gestion-articles.php:176
+#: admin/gestion-articles.php:180 admin/index.php:81
 msgid "Title"
 msgstr ""
 
-#: admin/gestion-articles.php:177 admin/gestion-flux.php:189
-#: admin/gestion-membre.php:239
+#: admin/gestion-articles.php:181 admin/gestion-flux.php:189
+#: admin/gestion-membre.php:237
 msgid "Status"
 msgstr ""
 
-#: admin/gestion-articles.php:178
+#: admin/gestion-articles.php:182
 msgid "Nb votes"
 msgstr ""
 
-#: admin/gestion-articles.php:179 admin/gestion-flux.php:190
-#: admin/gestion-logs.php:62 admin/gestion-membre.php:240
+#: admin/gestion-articles.php:183 admin/gestion-flux.php:190
+#: admin/gestion-logs.php:62 admin/gestion-membre.php:238
 #: admin/gestion-mysql.php:146
 msgid "Action"
 msgstr ""
 
-#: admin/gestion-articles.php:211 admin/gestion-articles.php:213
-#: admin/gestion-articles.php:217 admin/gestion-flux.php:237
-#: admin/gestion-flux.php:243 admin/gestion-membre.php:251
-#: admin/gestion-membre.php:257
+#: admin/gestion-articles.php:215 admin/gestion-articles.php:217
+#: admin/gestion-articles.php:221 admin/gestion-flux.php:237
+#: admin/gestion-flux.php:243 admin/gestion-membre.php:249
+#: admin/gestion-membre.php:255
 msgid "active"
 msgstr ""
 
-#: admin/gestion-articles.php:212 admin/gestion-articles.php:216
-#: admin/gestion-articles.php:218 admin/gestion-flux.php:238
-#: admin/gestion-flux.php:242 admin/gestion-membre.php:252
-#: admin/gestion-membre.php:256
+#: admin/gestion-articles.php:216 admin/gestion-articles.php:220
+#: admin/gestion-articles.php:222 admin/gestion-flux.php:238
+#: admin/gestion-flux.php:242 admin/gestion-membre.php:250
+#: admin/gestion-membre.php:254
 msgid "inactive"
 msgstr ""
 
-#: admin/gestion-articles.php:235 admin/gestion-flux.php:264
-#: admin/gestion-membre.php:271
+#: admin/gestion-articles.php:240 admin/gestion-flux.php:264
+#: admin/gestion-membre.php:269
 msgid "Change"
 msgstr ""
 
-#: admin/gestion-articles.php:236 admin/gestion-flux.php:265
-#: admin/gestion-logs.php:78 admin/gestion-membre.php:272
+#: admin/gestion-articles.php:241 admin/gestion-flux.php:265
+#: admin/gestion-logs.php:78 admin/gestion-membre.php:270
 #: admin/gestion-mysql.php:162
 msgid "Delete"
 msgstr ""
 
-#: admin/gestion-articles.php:251 admin/gestion-flux.php:279
-#: admin/gestion-membre.php:285
+#: admin/gestion-articles.php:257 admin/gestion-flux.php:279
+#: admin/gestion-membre.php:283
 msgid "Show items by : "
 msgstr ""
 
-#: admin/gestion-cache.php:37
+#: admin/gestion-cache.php:49
 msgid "The cache files were correctly deleted."
 msgstr ""
 
-#: admin/gestion-cache.php:41
+#: admin/gestion-cache.php:60
 msgid "Manage cache"
 msgstr ""
 
-#: admin/gestion-cache.php:45
-msgid "Delete Cache"
+#: admin/gestion-cache.php:62
+msgid "Remove the cache files"
 msgstr ""
 
-#: admin/gestion-cache.php:47
+#: admin/gestion-cache.php:66
+msgid "Delete cache"
+msgstr ""
+
+#: admin/gestion-cache.php:69
 msgid "The following files were deleted :"
 msgstr ""
 
@@ -806,82 +815,86 @@ msgstr ""
 msgid "Error while trying to remove the user %s"
 msgstr ""
 
-#: admin/gestion-membre.php:89
+#: admin/gestion-membre.php:87
 #, php-format
 msgid "The user %s already exists"
 msgstr ""
 
-#: admin/gestion-membre.php:93
+#: admin/gestion-membre.php:91
 #, php-format
 msgid "The email address %s is already in use"
 msgstr ""
 
-#: admin/gestion-membre.php:97
+#: admin/gestion-membre.php:95
 #, php-format
 msgid "The website %s is already assigned to an user"
 msgstr ""
 
-#: admin/gestion-membre.php:103
+#: admin/gestion-membre.php:101
 #, php-format
 msgid "User %s successfully added"
 msgstr ""
 
-#: admin/gestion-membre.php:105 admin/gestion-membre.php:117
+#: admin/gestion-membre.php:103 admin/gestion-membre.php:115
 #, php-format
 msgid "Error while trying to modify user %s"
 msgstr ""
 
-#: admin/gestion-membre.php:114
+#: admin/gestion-membre.php:112
 #, php-format
 msgid "Modification of user %s succeeded"
 msgstr ""
 
-#: admin/gestion-membre.php:123
+#: admin/gestion-membre.php:121
 #, php-format
 msgid "Are you sure you want to remove user %s ?"
 msgstr ""
 
-#: admin/gestion-membre.php:124
+#: admin/gestion-membre.php:122
 msgid "This action can not be canceled"
 msgstr ""
 
-#: admin/gestion-membre.php:125
+#: admin/gestion-membre.php:123
 msgid "All the posts of the user will be removed"
 msgstr ""
 
-#: admin/gestion-membre.php:126
+#: admin/gestion-membre.php:124
 msgid "All the votes on these posts will be removed"
 msgstr ""
 
-#: admin/gestion-membre.php:127
+#: admin/gestion-membre.php:125
 msgid "All the feeds of this user will be removed"
 msgstr ""
 
-#: admin/gestion-membre.php:130
+#: admin/gestion-membre.php:128
 msgid "Confirm"
 msgstr ""
 
-#: admin/gestion-membre.php:175
+#: admin/gestion-membre.php:173
 msgid "Add an user"
 msgstr ""
 
-#: admin/gestion-membre.php:177
+#: admin/gestion-membre.php:175
 msgid "To add a new member, fill out the form below."
 msgstr ""
 
-#: admin/gestion-membre.php:187
+#: admin/gestion-membre.php:185
 msgid "Website (without the ending /)"
 msgstr ""
 
-#: admin/gestion-membre.php:196
+#: admin/gestion-membre.php:194
 msgid "List of the users"
 msgstr ""
 
-#: admin/gestion-membre.php:198
+#: admin/gestion-membre.php:196
 msgid "List of members of the Planet"
 msgstr ""
 
-#: admin/gestion-membre.php:267
+#: admin/gestion-membre.php:265
+msgid "Go to user website / blog"
+msgstr ""
+
+#: admin/gestion-membre.php:265
 msgid "Show"
 msgstr ""
 
@@ -940,7 +953,7 @@ msgstr ""
 msgid "NOTE : to import a database file, the file needs to have the *.sql.gz extension !"
 msgstr ""
 
-#: admin/gestion-option.php:88 admin/gestion-user.php:60
+#: admin/gestion-option.php:88 admin/gestion-user.php:67
 msgid "Modification succeeded"
 msgstr ""
 
@@ -976,15 +989,16 @@ msgstr ""
 msgid "Language of the Planet"
 msgstr ""
 
-#: admin/gestion-option.php:159
+#: admin/gestion-option.php:162
 msgid "Information message (optional)"
 msgstr ""
 
-#: admin/gestion-option.php:165
+#: admin/gestion-option.php:168
 msgid "Subscription page content"
 msgstr ""
 
-#: admin/gestion-option.php:175 admin/gestion-user.php:106
+#: admin/gestion-option.php:178 admin/gestion-user.php:160
+#: admin/gestion-user.php:178
 msgid "Apply"
 msgstr ""
 
@@ -1017,15 +1031,15 @@ msgstr ""
 msgid "System configuration update."
 msgstr ""
 
-#: admin/gestion-update.php:78 admin/index.php:82
+#: admin/gestion-update.php:78 admin/index.php:108
 msgid "The update is running"
 msgstr ""
 
-#: admin/gestion-update.php:80 admin/index.php:84
+#: admin/gestion-update.php:80 admin/index.php:110
 msgid "The update is stopped"
 msgstr ""
 
-#: admin/gestion-update.php:81 admin/index.php:86
+#: admin/gestion-update.php:81 admin/index.php:112
 msgid "The update is disabled"
 msgstr ""
 
@@ -1041,92 +1055,140 @@ msgstr ""
 msgid "Start a manual update"
 msgstr ""
 
-#: admin/gestion-user.php:77
-msgid "Users Options"
+#: admin/gestion-user.php:70
+msgid "Please insert a valid email address"
 msgstr ""
 
-#: admin/gestion-user.php:79
-msgid "Configuring user settings."
+#: admin/gestion-user.php:83
+msgid "Modification of the password succeeded"
 msgstr ""
 
-#: admin/gestion-user.php:84
-msgid "Contact Name"
+#: admin/gestion-user.php:85
+#, php-format
+msgid "Error : %s"
 msgstr ""
 
-#: admin/gestion-user.php:87
-msgid "Reference contact email"
-msgstr ""
-
-#: admin/gestion-user.php:90
-msgid "Author Website"
+#: admin/gestion-user.php:89
+msgid "Please fill the login in"
 msgstr ""
 
 #: admin/gestion-user.php:93
+msgid "Please be sure the two passwords are equal"
+msgstr ""
+
+#: admin/gestion-user.php:106 admin/gestion-user.php:118
+#: admin/install/index.php:126 admin/install/index.php:141
+#: admin/install/index.php:161 admin/install/index.php:172
+#, php-format
+msgid "Unable to write %s file."
+msgstr ""
+
+#: admin/gestion-user.php:134
+msgid "Users Options"
+msgstr ""
+
+#: admin/gestion-user.php:136
+msgid "Configuring user settings."
+msgstr ""
+
+#: admin/gestion-user.php:141
+msgid "Contact Name"
+msgstr ""
+
+#: admin/gestion-user.php:144
+msgid "Reference contact email"
+msgstr ""
+
+#: admin/gestion-user.php:147
+msgid "Author Website"
+msgstr ""
+
+#: admin/gestion-user.php:150
 msgid "Jabber / GoogleTalk"
 msgstr ""
 
-#: admin/gestion-user.php:96
+#: admin/gestion-user.php:153
 msgid "Other Instant Messaging"
 msgstr ""
 
-#: admin/gestion-user.php:99
+#: admin/gestion-user.php:156
 msgid "About Me"
 msgstr ""
 
-#: admin/gestion-user.php:102
-msgid "New Password"
+#: admin/gestion-user.php:166
+msgid "User login and password"
 msgstr ""
 
-#: admin/gestion-user.php:104
-msgid "retype your new password"
+#: admin/gestion-user.php:168
+msgid "Change the login and the password of the admin interface."
 msgstr ""
 
-#: admin/head.php:56
-msgid "Disconnect from administration panel?"
+#: admin/gestion-user.php:172
+msgid "Login"
 msgstr ""
 
-#: admin/head.php:56 admin/head.php:67
-msgid "Logout"
+#: admin/gestion-user.php:174
+msgid "New password"
 msgstr ""
 
-#: admin/head.php:64
+#: admin/gestion-user.php:176
+msgid "Confirm password"
+msgstr ""
+
+#: admin/head.php:54
+msgid "BilboPlanet.com - Open Source Feed Agregator - 2009"
+msgstr ""
+
+#: admin/head.php:55
+msgid "About"
+msgstr ""
+
+#: admin/head.php:63
 msgid "Back on the Bilboplanet"
 msgstr ""
 
-#: admin/index.php:66 admin/sidebar.php:7
+#: admin/head.php:66
+msgid "Logout"
+msgstr ""
+
+#: admin/index.php:81
+msgid "User"
+msgstr ""
+
+#: admin/index.php:92 admin/sidebar.php:7
 msgid "Dashboard"
 msgstr ""
 
-#: admin/index.php:68
+#: admin/index.php:94
 msgid "Quick summary of the planet"
 msgstr ""
 
-#: admin/index.php:72
+#: admin/index.php:98
 msgid "Latest articles :"
 msgstr ""
 
-#: admin/index.php:77
+#: admin/index.php:103
 msgid "Statistics :"
 msgstr ""
 
-#: admin/index.php:89
+#: admin/index.php:115
 msgid "Current size of the database :"
 msgstr ""
 
-#: admin/index.php:90
-msgid "Posts of the day :"
+#: admin/index.php:116
+msgid "Number of articles in the DB :"
 msgstr ""
 
-#: admin/index.php:91
-msgid "Mean posts per day :"
+#: admin/index.php:117
+msgid "Number of votes in the DB :"
 msgstr ""
 
-#: admin/index.php:92
-msgid "Votes of the day :"
+#: admin/index.php:118
+msgid "Number of members in the DB :"
 msgstr ""
 
-#: admin/index.php:93
-msgid "Mean votes per day :"
+#: admin/index.php:119
+msgid "Number of feeds in the DB :"
 msgstr ""
 
 #: admin/sidebar.php:7
@@ -1142,19 +1204,15 @@ msgid "Manage feed"
 msgstr ""
 
 #: admin/sidebar.php:16
-msgid "Articles"
+msgid "Manage articles of the planet"
 msgstr ""
 
 #: admin/sidebar.php:16
-msgid "Manage articles of the planet"
+msgid "Articles"
 msgstr ""
 
 #: admin/sidebar.php:20
 msgid "Configuration"
-msgstr ""
-
-#: admin/sidebar.php:24
-msgid "User"
 msgstr ""
 
 #: admin/sidebar.php:24
@@ -1166,19 +1224,15 @@ msgid "Users"
 msgstr ""
 
 #: admin/sidebar.php:27
-msgid "Planet"
+msgid "Planet Configuration"
 msgstr ""
 
 #: admin/sidebar.php:27
-msgid "Planet Configuration"
+msgid "Planet"
 msgstr ""
 
 #: admin/sidebar.php:31
 msgid "System"
-msgstr ""
-
-#: admin/sidebar.php:35
-msgid "Log"
 msgstr ""
 
 #: admin/sidebar.php:35
@@ -1190,10 +1244,6 @@ msgid "Logs Files"
 msgstr ""
 
 #: admin/sidebar.php:38
-msgid "Save Database"
-msgstr ""
-
-#: admin/sidebar.php:38
 msgid "Save Planet database"
 msgstr ""
 
@@ -1202,15 +1252,11 @@ msgid "Save database"
 msgstr ""
 
 #: admin/sidebar.php:41
-msgid "Clear cache"
-msgstr ""
-
-#: admin/sidebar.php:41
 msgid "Clear Planet cache"
 msgstr ""
 
-#: admin/sidebar.php:44
-msgid "Update"
+#: admin/sidebar.php:41
+msgid "Clear cache"
 msgstr ""
 
 #: admin/sidebar.php:44
@@ -1226,44 +1272,49 @@ msgstr ""
 msgid "PHP version is %s (5.0 or earlier needed)."
 msgstr ""
 
-#: admin/install/check.php:39
+#: admin/install/check.php:38
+#, php-format
+msgid "PHP version is %s (We are sorry to inform you that our gettext version does not support 5.3 and earlier)."
+msgstr ""
+
+#: admin/install/check.php:42
 msgid "Multibyte string module (mbstring) is not available."
 msgstr ""
 
-#: admin/install/check.php:43
+#: admin/install/check.php:46
 msgid "Iconv module is not available."
 msgstr ""
 
-#: admin/install/check.php:47
+#: admin/install/check.php:50
 msgid "Output control functions are not available."
 msgstr ""
 
-#: admin/install/check.php:51
+#: admin/install/check.php:54
 msgid "SimpleXML module is not available."
 msgstr ""
 
-#: admin/install/check.php:55
+#: admin/install/check.php:58
 msgid "DOM XML module is not available."
 msgstr ""
 
-#: admin/install/check.php:60
+#: admin/install/check.php:63
 msgid "PCRE engine does not support UTF-8 strings."
 msgstr ""
 
-#: admin/install/check.php:64
+#: admin/install/check.php:67
 msgid "SPL module is not available."
 msgstr ""
 
-#: admin/install/check.php:71
+#: admin/install/check.php:74
 #, php-format
 msgid "MySQL version is %s (4.1 or earlier needed)."
 msgstr ""
 
-#: admin/install/check.php:85
+#: admin/install/check.php:88
 msgid "MySQL InnoDB engine is not available."
 msgstr ""
 
-#: admin/install/check.php:93
+#: admin/install/check.php:96
 #, php-format
 msgid "PostgreSQL version is %s (8.0 or earlier needed)."
 msgstr ""
@@ -1309,12 +1360,6 @@ msgstr ""
 msgid "The password have to contain minimum 6 characters."
 msgstr ""
 
-#: admin/install/index.php:126 admin/install/index.php:141
-#: admin/install/index.php:161 admin/install/index.php:172
-#, php-format
-msgid "Unable to write %s file."
-msgstr ""
-
 #: admin/install/index.php:136
 #, php-format
 msgid "File %s already exists."
@@ -1332,98 +1377,98 @@ msgstr ""
 msgid "The configuration file was successfully created."
 msgstr ""
 
-#: admin/install/index.php:325
+#: admin/install/index.php:326
 msgid "Information on the BilboPlanet"
 msgstr ""
 
-#: admin/install/index.php:327
+#: admin/install/index.php:328
 msgid "Thank you for taking somes minutes to answer those questions to help to the configuration of the bilboplanet"
 msgstr ""
 
-#: admin/install/index.php:330
+#: admin/install/index.php:331
 msgid "Information of the user"
 msgstr ""
 
-#: admin/install/index.php:333
+#: admin/install/index.php:334
 msgid "Name:"
 msgstr ""
 
-#: admin/install/index.php:337
+#: admin/install/index.php:338
 msgid "Website of the user:"
 msgstr ""
 
-#: admin/install/index.php:341
+#: admin/install/index.php:342
 msgid "Information on the Planet"
 msgstr ""
 
-#: admin/install/index.php:342
+#: admin/install/index.php:343
 msgid "URL of the Planet:"
 msgstr ""
 
-#: admin/install/index.php:344
+#: admin/install/index.php:345
 msgid "Title of the Planet:"
 msgstr ""
 
-#: admin/install/index.php:346
+#: admin/install/index.php:347
 msgid "Description:"
 msgstr ""
 
-#: admin/install/index.php:348
+#: admin/install/index.php:349
 msgid "Planet Language:"
 msgstr ""
 
-#: admin/install/index.php:352
+#: admin/install/index.php:353
 msgid "Username and password"
 msgstr ""
 
-#: admin/install/index.php:353 admin/install/index.php:355
-#: admin/install/index.php:357
+#: admin/install/index.php:354 admin/install/index.php:356
+#: admin/install/index.php:358
 msgid "Required field"
 msgstr ""
 
-#: admin/install/index.php:353 admin/install/index.php:378
+#: admin/install/index.php:354 admin/install/index.php:379
 #: admin/install/wizard.php:180
 msgid "Username:"
 msgstr ""
 
-#: admin/install/index.php:355 admin/install/index.php:379
+#: admin/install/index.php:356 admin/install/index.php:380
 #: admin/install/wizard.php:183
 msgid "Password:"
 msgstr ""
 
-#: admin/install/index.php:357
+#: admin/install/index.php:358
 msgid "Confirm your password:"
 msgstr ""
 
-#: admin/install/index.php:361 admin/install/wizard.php:189
+#: admin/install/index.php:362 admin/install/wizard.php:189
 msgid "Save"
 msgstr ""
 
-#: admin/install/index.php:372
+#: admin/install/index.php:373
 msgid "Install succeeded"
 msgstr ""
 
-#: admin/install/index.php:374
+#: admin/install/index.php:375
 msgid "The Bilboplanet was successfully installed. Here you can find a resume of the configuration"
 msgstr ""
 
-#: admin/install/index.php:376
+#: admin/install/index.php:377
 msgid "Your account"
 msgstr ""
 
-#: admin/install/index.php:382
+#: admin/install/index.php:383
 msgid "Your Bilboplanet"
 msgstr ""
 
-#: admin/install/index.php:384
+#: admin/install/index.php:385
 msgid "URL of the BilboPlanet:"
 msgstr ""
 
-#: admin/install/index.php:385
+#: admin/install/index.php:386
 msgid "Administration interface:"
 msgstr ""
 
-#: admin/install/index.php:389
+#: admin/install/index.php:390
 msgid "Go to the administration interface"
 msgstr ""
 

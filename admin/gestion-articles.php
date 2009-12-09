@@ -168,7 +168,7 @@ $rqt = mysql_query($sql) or die("Error with request $sql");
 
 include(dirname(__FILE__).'/pagination.php');
 ?><br /><br />
-<table class="table-news">
+<table id="tbl1" class="table-news">
 		<thead>
 			<tr>
 				<th class="tc1 tcr" scope="col"><?=T_('Name');?></th>

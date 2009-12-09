@@ -52,7 +52,7 @@ function showArticleSummary(){
 			$show = substr($titre,0, $max_title_length)."...";
 		else
 			$show = $titre;
-		$list_articles .= '<li>'.$date.' : <a class="tips" href="'.$article[3].'" rel="'.$titre.' ('.$article[0].')" target="_blank">'.$show.'</a></li>';
+		$list_articles .= '<li>'.$date.' : <a class="tips" href="'.$article[3].'" rel="<b><u>'.T_('User').':</u></b> '.$article[0].' <br><b><u>'.T_('Title').':</u></b> '.$titre.'" target="_blank">'.$show.'</a></li>';
 	}
 	$list_articles .= "</ul>";
 	closeBD;

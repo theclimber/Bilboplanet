@@ -32,6 +32,9 @@ require_once(dirname(__FILE__).'/../inc/config.php');
 $email=BP_AUTHOR_MAIL;
 $planet_author=BP_AUTHOR;
 $planet_author_site=BP_AUTHOR_SITE;
+$planet_author_jabber=BP_AUTHER_JABBER;
+$planet_author_im=BP_AUTHOR_IM;
+$planet_author_about=stripslashes(BP_AUTHOR_ABOUT);
 $flash='';
 
 # On verifie que le formulaire est bien saisie
@@ -43,12 +46,18 @@ if(isset($_POST) && isset($_POST['submit'])) {
 	$email = trim($_POST['email']);
 	$planet_author = trim($_POST['planet_author']);
 	$planet_author_site = trim($_POST['planet_author_site']);
+	$planet_author_jabber = trim($_POST['planet_author_jabber']);
+	$planet_author_im = trim($_POST['planet_author_im']);
+	$planet_author_about = stripslashes(trim($_POST['planet_author_about']));
 	
 	$file=dirname(__FILE__).'/../inc/config.php';
 	$full_conf = file_get_contents($file);
 	writeConfigValue('BP_AUTHOR_MAIL', $email, $full_conf);
 	writeConfigValue('BP_AUTHOR', $planet_author, $full_conf);
 	writeConfigValue('BP_AUTHOR_SITE', $planet_author_site, $full_conf);
+	writeConfigValue('BP_AUTHER_JABBER', $planet_author_jabber, $full_conf);
+	writeConfigValue('BP_AUTHOR_IM', $planet_author_im, $full_conf);
+	writeConfigValue('BP_AUTHOR_ABOUT', $planet_author_about, $full_conf);
 	chmod($file, 0775);
 	$fp = @fopen($file,'wb');
 	if ($fp === false) {
@@ -97,7 +106,7 @@ include_once(dirname(__FILE__).'/sidebar.php');
 <input type="text" name="planet_author_im" class="input" size="60" value="<?php echo $planet_author_im; ?>" /><br /><br />
 
 <?=T_('About Me');?><br />
-<textarea type="text" name="planet_author_about" class="cadre_about" rows="10" value="<?php echo $planet_author_about; ?>" /></textarea><br /><br />
+<textarea type="text" name="planet_author_about" class="cadre_about" rows="10" value="<?php echo $planet_author_about; ?>" /><?php echo $planet_author_about; ?></textarea><br /><br />
 
 <?=T_('New Password');?><br />
 <input type="text" name="planet_author_password" class="input" size="30" value="<?php echo $planet_author_password; ?>" /><br /><br />

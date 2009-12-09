@@ -57,7 +57,7 @@ if ($activate_votes)
 
 			while ($liste = mysql_fetch_row($rqt_side)) {
 				/* On affiche le nom du membre */
-				echo '<li><a href="?num_membre='.$liste[2].'" title="'.T_('See members posts').'">
+				echo '<li><a href="'.$planet_url.'/?num_membre='.$liste[2].'" title="'.T_('See members posts').'">
 					<img src="themes/'.$planet_theme.'/images/ico-external.gif" alt="feed" /></a>&nbsp;
 				<a href="'.$liste[1].'" title="'.sprintf(T_('Visit the website of %s'),$liste[0]).'">'.$liste[0].'</a></li>';
 			}

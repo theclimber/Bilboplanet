@@ -179,13 +179,13 @@ include_once(dirname(__FILE__).'/sidebar.php');
 
 <form method="post">
 <label for="name"><strong><?php error_bool($error, "nom"); ?><?=T_('Name');?>:</strong></label>
-<input type="text" class="input" id="username" name="nom" value="<?php if($flash['type']=='error' && $_POST['nom']) echo $_POST['nom'];?>" size="50" maxlength="50" />
+<input type="text" class="input" style="padding-left: 10px;" id="username" name="nom" value="<?php if($flash['type']=='error' && $_POST['nom']) echo $_POST['nom'];?>" size="50" maxlength="50" />
 <br /><br /> <!-- A CHANGER !!! -->
 <label for="email"><strong><?php error_bool($error, "email"); ?><?=T_('Email');?>:</strong></label>
-<input type="text" class="input" id="email" name="email" value="<?php if($flash['type']=='error' && $_POST['email']) echo $_POST['email'];?>" size="50" maxlength="80" />
+<input type="text" class="input" style="padding-left: 10px;" id="email" name="email" value="<?php if($flash['type']=='error' && $_POST['email']) echo $_POST['email'];?>" size="50" maxlength="80" />
 <br /><br /> <!-- A CHANGER !!! -->
 <label for="site"><strong><?php error_bool($error, "site"); ?><?=T_('Website (without the ending /)');?>:</strong></label>
-<input type="text" class="input" id="site" name="site" value="<?php if($flash['type']=='error' && $_POST['site']) echo $_POST['site'];?>" size="50" maxlength="80" />
+<input type="text" class="input" style="padding-left: 10px;" value="http://www.exemple.com" onfocus="if (this.value==='http://www.exemple.com') {this.value='';}" id="site" name="site" value="<?php if($flash['type']=='error' && $_POST['site']) echo $_POST['site'];?>" size="50" maxlength="80" />
 <br /><br /><br /> <!-- A CHANGER !!! -->
 <div class="button"><input type="reset" class="reset" name="reset" onClick="this.form.reset()" value="<?=T_('Reset');?>"></div>
 <div class="button"><input type="submit" name="submitAjout" class="add_user" value="<?=T_('Send');?>"></div>
@@ -230,7 +230,7 @@ include(dirname(__FILE__).'/pagination.php');
 ?>
 <br /><br />
 <table>
-<table class="table-membre">
+<table id="tbl1" class="table-membre">
 		<thead>
 			<tr>
 				<th class="tc1 tcl" scope="col"><?=T_('Name');?></th>
@@ -264,7 +264,7 @@ while($liste = mysql_fetch_row($rqt)) {
 		<tr>
 		<input type="hidden" name="num" value="'.$liste[0].'"/>
 		<td class="tc1 tcl row1"><input class="input '.$statut.'" type="text" name="nom" value="'.$liste[1].'"/></td>
-		<td class="tc2 row1"><input class="inputURL input" type="text" name="site" value="'.$liste[2].'" />&nbsp;&nbsp;<a href="'.$liste[2].'" target="_bank">'.T_('Show').'</a></td>
+		<td class="tc2 row1"><input class="inputURL input" type="text" name="site" value="'.$liste[2].'" />&nbsp;&nbsp;<a href="'.$liste[2].'" title="'.T_('Go to user website / blog').'" target="_bank">'.T_('Show').'</a></td>
 		<td class="tc3 row1"><input class="input zone-saisie" type="text" name="email" value="'.$liste[3].'"  /></td>
 		<td class="tc4 row1">'.$select.'</td>
 		<td class="tc5 tcr row1">

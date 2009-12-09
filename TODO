@@ -1,41 +1,46 @@
 TODO dans l'ordre de priorité :
-5) Renommer le colonnes de la DB et refaire le schéma de la DB depuis le début ... quitte a ce que ça prenne du temps
 
-7) Faire une branch avec : changements DB :
+===================================================
+* Milestone 0.3
+===================================================
+
+1) Traduire tous les strings avant la release en:
+	* Francais
+	* Allemand
+	* Neerlandais
+2) Et se serai bien de rajouter dans le dashboard : nombre d'article sur le planet + nombre de vote au total + nmobre de membre + nombre de flux
+
+BUGS :
+* Bugs pour une utilisation windows : les commandes linux utilisées dans l'admin ne sont pas bonnes
+* ajouter détection automatique de l'URL du planet pdt l'install
+* Bouton deconnexion dans l'admin
+* redirection dans l'install ne gere pas le port
+* htaccess qui empêche une version PHP > 5.3
+* bouton supprimer le cache
+* page de config de l'utilisateur ne fonctionne pas
+* Suppression d'un article : pas de demande de suppression (flash_info) (lightbox?)
+
+
+
+
+===================================================
+* Milestone 0.4
+===================================================
+
+1) Renommer le colonnes de la DB et refaire le schéma de la DB depuis le début ... quitte a ce que ça prenne du temps
+2) Faire une branch avec : changements DB :
 	* votes avec valeur et timestamp
 	* changement des noms de tables et des colonnes
 	* ajouter table settings
 	* ajouter table user => openid
-
-
-1) Mettre en place une db "settings" pour tous les details de config
-2) Mettre en place un algo d'update (serveur configurable dans le fichier de config)
-3) Mettre en utililsation la librairie Clearbricks au niveau des requetes DB
-4) Mettre en place un system de login basé sur openid + logs + votes
-5) Mettre en place un system de templating
-6) Faire un script php pour extraire tous les strings
-7) Traduire tous les strings avant la release en:
-	* Francais
-	* Allemand
-	* Neerlandais
-
-8) Ajouter blacklist votes
-9) Mecanisme permettant l'envoi d'un mail lors de la modération
-10) Permettre d'envoyer un mail à tuos les membres
-11) Proposer une solution gérant plusieurs types de DB => SQlite et PostreSQL
-12) Proposer une solution multi-DB => la moitié sur SQlite, l'autre moitié sur MySQL
-
-
-
-BUGS :
-3) Bugs pour une utilisation windows : les commandes linux utilisées dans l'admin ne sont pas bonnes
-4) Gérer les exceptions : 
-	4) Lorsqu'une commande exec() est executée et qu'elle génère une erreur, l'erruer n'est pas reportée !!!
-	5) Dans l'install, les erreur de lecture/ecriture des fichiers devraient être reportée plus joliment, idem pour la DB
-5) ajouter détection automatique de l'URL du planet pdt l'install
-
-
-
+3) Mettre en place une db "settings" pour tous les details de config
+4) Mettre en place un algo d'update (serveur configurable dans le fichier de config)
+5) Mettre en utililsation la librairie Clearbricks au niveau des requetes DB
+6) Mettre en place un system de login basé sur openid + logs + votes
+7) Permettre d'envoyer un mail à tuos les membres
+8) Gérer les exceptions : 
+	* Lorsqu'une commande exec() est executée et qu'elle génère une erreur, l'erruer n'est pas reportée !!!
+	* Dans l'install, les erreur de lecture/ecriture des fichiers devraient être reportée plus joliment, idem pour la DB
 
 NEW DATABASE :
 
@@ -172,4 +177,13 @@ Etapes de changement de DB :
 2) faire des tests pour utiliser clearbricks ou MVC
 3) Installer un systeme qui gere openid
 4) Injecter le code dans celui du bilbo
+
+===================================================
+* Milestone 0.5
+===================================================
+1) Mettre en place un system de templating
+2) Ajouter blacklist votes : revoir completement le mecanisme de votes
+3) Mecanisme permettant l'envoi d'un mail lors de la modération
+4) Proposer une solution gérant plusieurs types de DB => SQlite et PostreSQL
+5) Proposer une solution multi-DB => la moitié sur SQlite, l'autre moitié sur MySQL
 

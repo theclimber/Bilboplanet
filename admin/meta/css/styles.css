@@ -119,6 +119,7 @@ input::-moz-focus-inner, button::-moz-focus-inner { border-color: transparent ! 
 	background-repeat: no-repeat;
 	padding-left:20px;
 	background-image: url('../icons/arrow.png');
+	text-shadow:2px 2px 2px rgba(160, 160, 160, 0.5)
 }
 #BP_head .site_info a {
 	font-size: 1.3em;
@@ -161,9 +162,12 @@ input::-moz-focus-inner, button::-moz-focus-inner { border-color: transparent ! 
 	white-space: nowrap;
 	overflow: hidden;
 }
+#bp_pannel li a:hover {text-shadow:2px 2px 2px rgba(160, 160, 160, 0.5);}
+
 /*
  * Icones du menu
  * */
+
 div#bp_pannel a#dashboardm {
 	background-image:url('../icons/television.png');
 }
@@ -238,6 +242,7 @@ div#bp_pannel a#config {
 	font-size: 1.4em;
 	font-weight: bold;
 	padding: 0px 5px;
+	text-shadow:1px 1px 1px rgba(160, 160, 160, 0.5);
 }
 
 /*
@@ -379,7 +384,7 @@ table {
 .table-membre .tc2 {}
 .table-membre .tc3 {width:100px;}
 .table-membre .tc4 {text-align: center;width: 40px;}
-.table-membre .tc5 {text-align: center;width: 150px;}
+.table-membre .tc5 {text-align: center;width: 210px;}
 .table-membre td, .table-membre th {
 	text-align: left;
 	padding: 0px 4px;
@@ -443,7 +448,7 @@ table {
 .table-flux .tc1 {width:100px;}
 .table-flux .tc2 {}
 .table-flux .tc3 {width:40px;text-align:center; }
-.table-flux .tc4 {width:150px;text-align:center;}
+.table-flux .tc4 {text-align: center;width: 210px;}
 .table-flux td, .table-flux th {
 	text-align: left;
 	padding: 0px 4px;
@@ -507,7 +512,7 @@ table {
 .table-news .tc3 {width:80%px;padding-left:10px;}
 .table-news .tc4 {width:100px;text-align:center;}
 .table-news .tc5 {width:20px;text-align:center;}
-.table-news .tc6 {width:160px;text-align:center;}
+.table-news .tc6 {width:210px;text-align:center;}
 .table-news td, .table-news th {
 	text-align: left;
 	padding: 0px 4px;
@@ -548,7 +553,7 @@ table {
 	border-radius: 3px;
 }
 .tooltip .tip-title { padding: 5px; font-weight: bold;}
-.tooltip .tip-text { padding: 0px 5px 5px 5px; }
+.tooltip .tip-text { padding: 5px 5px 5px 5px;padding-left:10px; }
 
 /*
  ACP Box
@@ -615,18 +620,15 @@ body, #BP_page, #bp_pannel, #BP_page {
 
 .admin a:hover, .ctitle, .ctitle a, .menu li a:hover span, .admin .button:hover, .admin .button:focus, .admin .input:focus, #bp_pannel li a:hover, #BP_page fieldset legend { color: #ce1717; }
 
-#bp_pannel li a:hover, .admin .button:hover, .admin .button:focus, .admin .input:focus { 
+#bp_pannel li a:hover, .admin .button:hover, .admin .button:focus, .admin .input:focus, .admin .input:hover {
 	border-color:#ce1717;
 }
-
 .admin .button, .admin .input {
 	border-color: #bebebe;
 	color: #464646;
 	background-color: #fff;
-	
 }
 #BP_page .input:focus, .acp .input:focus { color: #000; }
-
 .headbar, .table-membre th, .table-log th, .table-flux th, .table-flux-add th, .table-news th, .table-news-filter th, .table-mysql th {
 	background-color: #000;
 	background-image: url('../icons/headbar.jpg');
@@ -740,9 +742,12 @@ color:#FFFFFF;
 background-position: 0px 0px;
 background-repeat: repeat-x;
 padding:5px 5px 5px 5px;
--moz-border-radius: 5px;
--khtml-border-radius: 5px;
--webkit-border-radius: 5px;
+-moz-border-radius-topleft: 5px;
+-moz-border-radius-topright: 5px;
+-khtml-border-radius-topleft: 5px;
+-khtml-border-radius-topright: 5px;
+-webkit-border-top-left-radius: 5px;
+-webkit-border-top-right-radius: 5px;
 border-radius: 5px;
 }
 /*

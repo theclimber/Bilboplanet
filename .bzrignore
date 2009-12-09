@@ -2,6 +2,7 @@ inc/config.php
 inc/cron_running.txt
 inc/update.txt
 admin/cache/*
+admin/mysql/snapshot/*
 logs/*
 .protected
 admin/.htaccess

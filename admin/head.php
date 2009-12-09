@@ -35,7 +35,7 @@ require_once(dirname(__FILE__).'/../inc/fonctions.php');
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="ROBOTS" content="noindex, nofollow, noarchive" />
 	<title><?=T_('Administration');?> - <?php echo $planet_title ?></title>
-	<link rel="shortcut icon" type="image/png" href="./meta/icons/fire.png" />
+	<link rel="shortcut icon" type="image/png" href="./meta/icons/favicon.png" />
 	<link rel="stylesheet" type="text/css" href="meta/css/styles.css" media="all" />
 	<script type="text/javascript" src="meta/js/mootools-1.2.1-core.js"></script>
 	<script type="text/javascript" src="meta/js/mootools-1.2-more.js"></script>
@@ -47,7 +47,11 @@ require_once(dirname(__FILE__).'/../inc/fonctions.php');
 		BP_Admin = new BP_Administrator();
 		$('BP_Logout').addEvent('click', function(event){
 			event.stop();
-			$confirm("<?=T_('Disconnect from administration panel?');?>", '<span class="logout"><?=T_('Logout');?></span>');
+			$confirm("<?=T_('Disconnect from administration panel ?');?>", '<span class="logout"><?=T_('Logout');?></span>');
+		});
+		$('BP_About').addEvent('click', function(event){
+			event.stop();
+			$confirm("<?=T_('<b>BilboPlanet</b> - An Open Source RSS feed aggregator written in PHP<br />&nbsp;&nbsp;* Copyright &copy; 2009 By French Dev Team : BilboPlanet<br />&nbsp;&nbsp;* Contact : dev@bilboplanet.com<br />&nbsp;&nbsp;* Website : www.bilboplanet.com<br />&nbsp;&nbsp;* Bug Report : www.bilboplanet.com/forum<br />&nbsp;&nbsp;* Blog : blog.bilboplanet.com<br /><br />Main developers: Gr&eacute;goire de Hemptinne and Thomas Bourcey.');?>", '<span class="logout"><?=T_('About us:');?></span>');
 		});
 	});
 	</script>
@@ -58,7 +62,7 @@ require_once(dirname(__FILE__).'/../inc/fonctions.php');
 	<span class="ctitle"><a class="tips" title="<?php echo $planet_title; ?>" rel="<?=T_('Back on the Bilboplanet');?>" href="../" target="_blank"><?=T_('Back on the Bilboplanet');?></a></span>
 	</p>
 	<ul id="BP_userbar">
-		<li><a id="BP_Logout" href="#" class="button minbutton br3px"><?=T_('Logout');?></a></li>
+		<li><a id="BP_Logout" href="<?php $planet_url; ?>" class="button minbutton br3px"><?=T_('Logout');?></a></li>
 		<li><a id="BP_About" class="button minbutton br3px">?</a></li>
 	</ul>
 	<hr class="clear" />

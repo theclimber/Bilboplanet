@@ -67,10 +67,9 @@ if(isset($_POST) && (
 ))
 # On verifie que le formulaire est bien saisie
 if(isset($_POST) && isset($_POST['num']) && isset($_POST['statut'])) {
-
-	securiteCheck();
 	# On recupere les infos
 	$num = trim($_POST['num']);
+	$title = trim($_POST['title']);
 	$statut = trim($_POST['statut']);
 	$action = trim($_POST['submitModif']);
 	$action = trim($_POST['submitDelete']);
@@ -80,20 +79,25 @@ if(isset($_POST) && isset($_POST['num']) && isset($_POST['statut'])) {
 
 	# On insert une nouvelle entree
 	if(isset($_POST) && isset($_POST['submitDelete']) && !empty($_POST['submitDelete']))
-		$sql = "DELETE FROM article WHERE num_article='$num'";
+		$sql = "DELETE FROM article WHERE num_article='".$num."'";
 	else
 		$sql = "UPDATE article
 		SET article_statut = '$statut'
-		WHERE num_article = '$num'";
+		WHERE num_article = '".$num."'";
 	$result = mysql_query($sql) or die("Error with request $sql");
 
 	# Femeture de la base
 	closeBD();
 
 	if($result) {
-		$flash = array('type' => 'notice', 'msg' => sprintf(T_("The post %s was changed"),$num['value']));
+		if(isset($_POST) && isset($_POST['submitDelete']) && !empty($_POST['submitDelete'])){
+			$flash = array('type' => 'notice', 'msg' => sprintf(T_("The post %s was removed"),$title));
+		}
+		else {
+			$flash = array('type' => 'notice', 'msg' => sprintf(T_("The post %s was changed"),$title));
+		}
 	} else {
-		$flash = array('type' => 'error', 'msg' => sprintf(T_("Error while trying to modify post %s !"),$num['value']));
+		$flash = array('type' => 'error', 'msg' => sprintf(T_("Error while trying to modify post %s !"),$title));
 	}
 }
 
@@ -224,8 +228,9 @@ while($liste = mysql_fetch_row($rqt)) {
 		$strend = "[...]";
 
 
-	echo '<form method="POST"><tr>
+	echo '<tr><form method="POST">
 		<input type="hidden" name="num" value="'.$liste[0].'"/>
+		<input type="hidden" name="title" value="'.$liste[3].'"/>
 		<td class="'.$colore.' tc1 tcl">'.$liste[1].'</td>
 		<td class="tc2">'.$date.'</td>
 		<td class="tc3"><a href="'.$liste[6].'" target="_blank">'.substr($liste[3],0,70).'</a></td>
@@ -240,6 +245,7 @@ while($liste = mysql_fetch_row($rqt)) {
 		echo '<input type="hidden" id="nb_items" name="nb_items" value="'.$nb_items.'" /></td>';
 		
 	}
+	echo '</form></tr>';
 }
 ?>
 </table>

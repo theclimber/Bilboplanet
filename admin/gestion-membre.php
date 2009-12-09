@@ -58,8 +58,6 @@ if(isset($_POST) && (
     (isset($_POST['submitDelete']) && !empty($_POST['submitDelete']))
 ))
 {
-	# Fonction de securite
-	securiteCheck();
 
 	# On recupere les infos
 	$nom = check_field('nom',trim($_POST['nom']));

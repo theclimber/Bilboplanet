@@ -13,10 +13,6 @@ BUGS :
 * Bugs pour une utilisation windows : les commandes linux utilisées dans l'admin ne sont pas bonnes
 	* suppression de fichiers (suppression des logs / du cache / des backups de la DB)
 	* sauvegarde de la bdd ne fonctionne pas
-* page de config de l'utilisateur ne fonctionne pas
-* Suppression d'un article : pas de demande de suppression avec email a auteur? (flash_info) (prompt?)
-	La modificiation ou la supression d'un article : la confirmation de modif ou de delete ne fonctionne pas (flash_info)
-* modifier un article : ne fonctionne pas
 
 
 ===================================================

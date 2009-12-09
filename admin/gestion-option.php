@@ -151,6 +151,9 @@ while ($file = readdir($dir_handle)){
 	}
 }
 closedir($dir_handle);
+if ($lang == 'en')
+	$selected = "selected";
+echo '<option value="en" "'.$selected.'>en</option>'."\n";
 ?>
 </select>
 </div>

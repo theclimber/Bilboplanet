@@ -319,6 +319,7 @@ while ($file = readdir($dir_handle)){
 		$p_lang[$file] = $file;
 	}
 }
+$p_lang['en'] = 'en';
 closedir($dir_handle);
 
 	echo

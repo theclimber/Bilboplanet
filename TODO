@@ -8,19 +8,15 @@ TODO dans l'ordre de priorité :
 	* Francais
 	* Allemand
 	* Neerlandais
-2) Et se serai bien de rajouter dans le dashboard : nombre d'article sur le planet + nombre de vote au total + nmobre de membre + nombre de flux
 
 BUGS :
 * Bugs pour une utilisation windows : les commandes linux utilisées dans l'admin ne sont pas bonnes
-* ajouter détection automatique de l'URL du planet pdt l'install
-* Bouton deconnexion dans l'admin
-* redirection dans l'install ne gere pas le port
-* htaccess qui empêche une version PHP > 5.3
-* bouton supprimer le cache
+	* suppression de fichiers (suppression des logs / du cache / des backups de la DB)
+	* sauvegarde de la bdd ne fonctionne pas
 * page de config de l'utilisateur ne fonctionne pas
-* Suppression d'un article : pas de demande de suppression (flash_info) (lightbox?)
-
-
+* Suppression d'un article : pas de demande de suppression avec email a auteur? (flash_info) (prompt?)
+	La modificiation ou la supression d'un article : la confirmation de modif ou de delete ne fonctionne pas (flash_info)
+* modifier un article : ne fonctionne pas
 
 
 ===================================================
@@ -41,6 +37,7 @@ BUGS :
 8) Gérer les exceptions : 
 	* Lorsqu'une commande exec() est executée et qu'elle génère une erreur, l'erruer n'est pas reportée !!!
 	* Dans l'install, les erreur de lecture/ecriture des fichiers devraient être reportée plus joliment, idem pour la DB
+9) ajouter détection automatique de l'URL du planet pdt l'install
 
 NEW DATABASE :
 

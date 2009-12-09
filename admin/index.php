@@ -27,6 +27,32 @@
 <?php
 /* Inclusion du fichier de configuration */
 require_once(dirname(__FILE__).'/../inc/fonctions.php');
+
+$nb_articles = 0;
+$nb_votes = 0;
+$nb_members = 0;
+$nb_feeds = 0;
+#2) Et ce serai bien de rajouter dans le dashboard : nombre d'article sur le planet + nombre de vote au total + nmobre de membre + nombre de flux
+connectBD();
+$sql = "SELECT COUNT(*) FROM article";
+$request = mysql_query($sql) or die("Error with request $sql");
+if ($request)
+	$nb_articles = mysql_fetch_row($request);
+$sql = "SELECT COUNT(*) FROM votes";
+$request = mysql_query($sql) or die("Error with request $sql");
+if ($request)
+	$nb_votes = mysql_fetch_row($request);
+$sql = "SELECT COUNT(*) FROM membre";
+$request = mysql_query($sql) or die("Error with request $sql");
+if ($request)
+	$nb_members = mysql_fetch_row($request);
+$sql = "SELECT COUNT(*) FROM flux";
+$request = mysql_query($sql) or die("Error with request $sql");
+if ($request)
+	$nb_feeds = mysql_fetch_row($request);
+closeBD;
+
+
 include_once(dirname(__FILE__).'/head.php');
 include_once(dirname(__FILE__).'/sidebar.php');
 
@@ -87,6 +113,10 @@ if (file_exists(dirname(__FILE__).'/../inc/STOP'))
 ?>
 
 			<li><div id="BP_stats_db"><?=T_('Current size of the database :'); echo ' <strong>'.formatfilesize(get_database_size()).'</strong>';?></div></li>
+			<li><div id="BP_nb_articles"><?=T_('Number of articles in the DB :'); echo ' <strong>'.$nb_articles[0].'</strong>';?></div></li>
+			<li><div id="BP_nb_votes"><?=T_('Number of votes in the DB :'); echo ' <strong>'.$nb_votes[0].'</strong>';?></div></li>
+			<li><div id="BP_nb_members"><?=T_('Number of members in the DB :'); echo ' <strong>'.$nb_members[0].'</strong>';?></div></li>
+			<li><div id="BP_nb_feeds"><?=T_('Number of feeds in the DB :'); echo ' <strong>'.$nb_feeds[0].'</strong>';?></div></li>
 		</ul>
 	</div>
 </div>

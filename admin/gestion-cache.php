@@ -24,45 +24,55 @@
 *
 ***** END LICENSE BLOCK *****/
 ?>
-<?php include_once(dirname(__FILE__).'/head.php'); ?>
-<?php include_once(dirname(__FILE__).'/sidebar.php'); ?>
 <?php
+# Inclusion des fonctions
+require_once(dirname(__FILE__).'/../inc/fonctions.php');
 # On efface les fichiers de cache du site
 $cache_dir = dirname(__FILE__).'/cache/';
+$files = "";
+
+# On verifie que le formulaire est bien saisie
+if(isset($_POST) && isset($_POST['action'])) {
+	# On recupere les infos
+	$action = trim($_POST['action']);
+
+	//using the opendir function
+	$dir_handle = @opendir($cache_dir) or die("Unable to open $cache_dir");
+	while ($file = readdir($dir_handle)){
+		if($file!="." && $file!=".." && $file!=".svn" && $file!=".DS_Store" && $file!=".htaccess"){
+			$result = exec('cd '.$cache_dir.' && rm -vf '.$file);
+			if ($result) $files .= $result."\n";
+		}
+	}
+	closedir($dir_handle);
+	# Message d'information
+	$flash = T_('The cache files were correctly deleted.');
+}
+
+include_once(dirname(__FILE__).'/head.php');
+include_once(dirname(__FILE__).'/sidebar.php');
 
 echo '<div id="BP_page" class="page">
 	 <div class="inpage">';
 
-# Message d'information
-$flash = T_('The cache files were correctly deleted.');
 if (!empty($flash)) echo '<div class="flash notice">'.$flash.'</div>';
-
 
 echo '<fieldset><legend>'.T_('Manage cache').'</legend>
 		<div class="message">
-			<p>Supprimer le cache du Planet</p>
-		</div><br />
-		<input type="submit" name="submitDeleteCache" class="button" value='.T_('Delete Cache').'><br /><br />';
+			<p>'.T_('Supprimer le cache du Planet').'</p>
+		</div><br />';
+echo '<center><form method="POST">
+	<input type="hidden" name="action" value="del">
+	<div class="button"><input type="submit" class="reset" value="'.T_('Delete cache').'"/></div></form></center>';
 
-echo T_('The following files were deleted :')."<br /><pre>";
-//using the opendir function
-$dir_handle = @opendir($cache_dir) or die("Unable to open $cache_dir");
-while ($file = readdir($dir_handle)){
-	if($file!="." && $file!=".." && $file!=".svn" && $file!=".DS_Store" && $file!=".htaccess"){
-		$result = exec('cd '.$cache_dir.' && rm -vf '.$file);
-		if ($result) echo $result."\n";
-	}
+if ($_POST['action']) {
+	echo T_('The following files were deleted :')."<br /><pre>";
+	echo $files;
+	echo "</pre>";
 }
 
-closedir($dir_handle);
-echo "</pre>";
-?>
 
+echo '</fieldset>';
 
-		
-		
-</fieldset>		
-
-<?php
 include(dirname(__FILE__).'/footer.php');
 ?>

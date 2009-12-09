@@ -1,3 +1,4 @@
+SetEnv PHP_VER 5
 # On recrit les urls sans www
 RewriteEngine on
 

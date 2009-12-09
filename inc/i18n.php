@@ -28,7 +28,7 @@
 
 if (!is_file(dirname(__FILE__).'/config.php'))
 {
-	$url = 'http://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI']."admin/install/";
+	$url = 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'].$_SERVER['REQUEST_URI']."admin/install/";
 	header("Location: ".$url,TRUE,302);
 	exit();
 }

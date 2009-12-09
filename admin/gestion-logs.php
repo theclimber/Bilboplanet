@@ -98,4 +98,5 @@ echo '<center><form method="POST">
 	<input type="hidden" name="action" value="del">
 	<div class="button"><input type="submit" class="reset" value="'.T_('Purge all the log files').'"/></div></form></center>';
 
+echo '</fieldset>';
 include(dirname(__FILE__).'/footer.php'); ?>

@@ -8,6 +8,7 @@ TODO dans l'ordre de priorité :
 	* Francais
 	* Allemand
 	* Neerlandais
+2) Mettre en place un cron basé sur le rafraichissement de index.php (afin d'eviter les autres problemes)
 
 BUGS :
 * Bugs pour une utilisation windows : les commandes linux utilisées dans l'admin ne sont pas bonnes

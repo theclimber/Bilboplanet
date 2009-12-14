@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Bilboplanet 0.3\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-12-09 17:42+0100\n"
-"PO-Revision-Date: 2009-12-12 16:55+0100\n"
+"PO-Revision-Date: 2009-12-14 10:46+0100\n"
 "Last-Translator: Grégoire de Hemptinne <g.dehemptinne@whatever-company.com>\n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -669,9 +669,9 @@ msgid " MB"
 msgstr " MB"
 
 #: admin/gestion-articles.php:94
-#, fuzzy, php-format
+#, php-format
 msgid "The post %s was removed"
-msgstr "Beitrag %s wurde geändert"
+msgstr "Beitrag %s wurde gelöscht"
 
 #: admin/gestion-articles.php:97
 #, php-format
@@ -788,10 +788,9 @@ msgstr "Cache Verwalten"
 
 #: admin/gestion-cache.php:62
 msgid "Remove the cache files"
-msgstr ""
+msgstr "Entferne die Cache Dateien"
 
 #: admin/gestion-cache.php:66
-#, fuzzy
 msgid "Delete cache"
 msgstr "Cache Löschen"
 
@@ -910,7 +909,7 @@ msgstr "Bearbeitung des Nutzers %s erfolgreich"
 #: admin/gestion-membre.php:121
 #, php-format
 msgid "Are you sure you want to remove user %s ?"
-msgstr "Bist du dir sicher, dass du den Nutzer %s löchen willst ?"
+msgstr "Bist du dir sicher, dass du den Nutzer %s löschen willst ?"
 
 #: admin/gestion-membre.php:122
 msgid "This action can not be canceled"
@@ -954,7 +953,7 @@ msgstr "Mitgliederliste des Planet"
 
 #: admin/gestion-membre.php:265
 msgid "Go to user website / blog"
-msgstr ""
+msgstr "Gehe zur Webseite / dem Blog des Nutzers"
 
 #: admin/gestion-membre.php:265
 msgid "Show"
@@ -993,7 +992,7 @@ msgstr "Größe"
 #: admin/gestion-mysql.php:128
 #, php-format
 msgid "The actual database is accessible here (in the directory %s)"
-msgstr "Die tatsächliche Datenbank ins hier (im Verzeichnis %s) verfügbar"
+msgstr "Die tatsächliche Datenbank ist hier (im Verzeichnis %s) verfügbar"
 
 #: admin/gestion-mysql.php:137
 msgid "Other backup of the database in the directory /admin/mysql/backup."
@@ -1124,28 +1123,25 @@ msgid "Start a manual update"
 msgstr "Starte das manuelle Update"
 
 #: admin/gestion-user.php:70
-#, fuzzy
 msgid "Please insert a valid email address"
-msgstr "Ungültige E-Mail Adresse"
+msgstr "Bitte trage eine gültige E-Mail Adresse ein"
 
 #: admin/gestion-user.php:83
-#, fuzzy
 msgid "Modification of the password succeeded"
-msgstr "Bearbeitung des Nutzers %s erfolgreich"
+msgstr "Änderung des Passworts erfolgreich"
 
 #: admin/gestion-user.php:85
-#, fuzzy, php-format
+#, php-format
 msgid "Error : %s"
-msgstr "Fehler:"
+msgstr "Fehler: %s"
 
 #: admin/gestion-user.php:89
-#, fuzzy
 msgid "Please fill the login in"
-msgstr "Bitte gebe den Nutzernamen an."
+msgstr "Bitte fülle das Anmeldeformular aus"
 
 #: admin/gestion-user.php:93
 msgid "Please be sure the two passwords are equal"
-msgstr ""
+msgstr "Bitte vergewissere dich, dass die beiden Passwörter gleich sind"
 
 #: admin/gestion-user.php:106
 #: admin/gestion-user.php:118
@@ -1191,37 +1187,32 @@ msgid "About Me"
 msgstr "Über mich"
 
 #: admin/gestion-user.php:166
-#, fuzzy
 msgid "User login and password"
 msgstr "Nutzername und Passwort"
 
 #: admin/gestion-user.php:168
 msgid "Change the login and the password of the admin interface."
-msgstr ""
+msgstr "Ändere das Passwort zum Anmelden und dem Administrations-Interface."
 
 #: admin/gestion-user.php:172
-#, fuzzy
 msgid "Login"
-msgstr "Log"
+msgstr "Login"
 
 #: admin/gestion-user.php:174
-#, fuzzy
 msgid "New password"
 msgstr "Neues Passwort"
 
 #: admin/gestion-user.php:176
-#, fuzzy
 msgid "Confirm password"
 msgstr "Bestätige dein Passwort:"
 
 #: admin/head.php:54
 msgid "BilboPlanet.com - Open Source Feed Agregator - 2009"
-msgstr ""
+msgstr "BilboPlanet.com - Open Source Feed Agregator - 2009"
 
 #: admin/head.php:55
-#, fuzzy
 msgid "About"
-msgstr "Über mich"
+msgstr "Über"
 
 #: admin/head.php:63
 msgid "Back on the Bilboplanet"
@@ -1258,22 +1249,19 @@ msgstr "Aktuelle Größe der Datenbank :"
 
 #: admin/index.php:116
 msgid "Number of articles in the DB :"
-msgstr ""
+msgstr "Anzahl der Artikel in der DB :"
 
 #: admin/index.php:117
-#, fuzzy
 msgid "Number of votes in the DB :"
-msgstr "Anzahl der Feeds :"
+msgstr "Stimmanzahl in der DB :"
 
 #: admin/index.php:118
-#, fuzzy
 msgid "Number of members in the DB :"
-msgstr "Anzahl der Mitglieder :"
+msgstr "Mitgliederzahl in der DB :"
 
 #: admin/index.php:119
-#, fuzzy
 msgid "Number of feeds in the DB :"
-msgstr "Anzahl der Feeds :"
+msgstr "Anzahl der Feeds in der DB :"
 
 #: admin/sidebar.php:7
 msgid "Access the quick summary of the planet"
@@ -1359,7 +1347,7 @@ msgstr "Die PHP Version ist %s (benötigen 5.0 oder früher)"
 #: admin/install/check.php:38
 #, php-format
 msgid "PHP version is %s (We are sorry to inform you that our gettext version does not support 5.3 and earlier)."
-msgstr ""
+msgstr "PHP Version ist %s (Leider unterstützt unsere gettext Version keine PHP Versionen vor 5.3, wir entschuldigen uns dafür)."
 
 #: admin/install/check.php:42
 msgid "Multibyte string module (mbstring) is not available."

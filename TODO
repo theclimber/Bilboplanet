@@ -6,9 +6,7 @@ TODO dans l'ordre de priorité :
 
 BUGS :
 * Bugs pour une utilisation windows : les commandes linux utilisées dans l'admin ne sont pas bonnes
-	* suppression de fichiers (suppression des logs / du cache / des backups de la DB)
-	* sauvegarde de la bdd ne fonctionne pas
-
+	* Les fonctions dans la gestion de la DB fonctionnent uniquement sous les systemes UNIX
 
 ===================================================
 * Milestone 0.4

@@ -40,8 +40,8 @@ if(isset($_POST) && isset($_POST['action'])) {
 	$dir_handle = @opendir($cache_dir) or die("Unable to open $cache_dir");
 	while ($file = readdir($dir_handle)){
 		if($file!="." && $file!=".." && $file!=".svn" && $file!=".DS_Store" && $file!=".htaccess"){
-			$result = exec('cd '.$cache_dir.' && rm -vf '.$file);
-			if ($result) $files .= $result."\n";
+			unlink($cache_dir.'/'.$file);
+			$files .= 'remove '.$file."\n";
 		}
 	}
 	closedir($dir_handle);

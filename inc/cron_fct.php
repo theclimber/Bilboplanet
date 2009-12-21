@@ -325,7 +325,16 @@ function update($print=false) {
 	fclose($file); 
 
 	# On detruit les fichiers de cache des pages web pour les actualiser
-	exec('cd '.dirname(__FILE__).'/../admin/cache && rm -f *.cache');
+	$cache_dir = dirname(__FILE__).'/../admin/cache';
+	$dir_handle = @opendir($cache_dir) or die("Unable to open $cache_dir");
+	while ($file = readdir($dir_handle)){
+		if($file!="." && $file!=".." && $file!=".svn" && $file!=".DS_Store" && $file!=".htaccess"){
+			unlink($cache_dir.'/'.$file);
+		}
+	}
+	closedir($dir_handle);
+	
+//	exec('cd '.dirname(__FILE__).'/../admin/cache && rm -f *.cache');
 
 	# On met a jour la date d'update
 	updateDateMaj();

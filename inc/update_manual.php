@@ -40,7 +40,14 @@ if (file_exists(dirname(__FILE__).'/STOP')) {
 logMsg("Start update script", $log_file);
 update();
 
-$result = exec('cd '.$cache_dir.' && rm -vf *');
+$cache_dir = dirname(__FILE__).'/../admin/cache';
+$dir_handle = @opendir($cache_dir) or die("Unable to open $cache_dir");
+while ($file = readdir($dir_handle)){
+	if($file!="." && $file!=".." && $file!=".svn" && $file!=".DS_Store" && $file!=".htaccess"){
+		unlink($cache_dir.'/'.$file);
+	}
+}
+closedir($dir_handle);
 logMsg("Cleaning simplepie cache dir", $log_file);
 logMsg("Script ended\nMemory Usage : ".number_format(memory_get_usage())."\n", $log_file);
 ?>

@@ -44,7 +44,7 @@ if(isset($_POST) && isset($_POST['nom']) && isset($_POST['path'])) {
 		$flash = array('type' => 'notice', 'msg' => T_('File successfully imported'));
 	}
 	else{
-		$result = exec("rm -f $path/$nom");
+		unlink($path.'/'.$nom);
 		$flash = array('type' => 'notice', 'msg' => sprintf(T_('File %s successfully deleted'),$nom));
 	}
 
@@ -78,16 +78,25 @@ require_once(dirname(__FILE__).'/../inc/fonctions.php');
 
 # On recupere la date du jour
 $date = date("Y-m-d");
-$snapshot_path = "mysql/snapshot";
+$snapshot_path = dirname(__FILE__)."/mysql/snapshot";
 $snapshot_file = "$snapshot_path/$db_name.$date.sql";
 
 # Creation du dossier qui va stocker les dumps si il n'existe pas
 if(!is_dir($snapshot_path)) mkdir($snapshot_path, 0700);
 
 # On efface tous les dumps qui existe
-exec("rm -f $snapshot_path/*");
+
+$dir_handle = @opendir($snapshot_path) or die("Unable to open $snapshot_path");
+while ($file = readdir($dir_handle)){
+	if($file!="." && $file!=".." && $file!=".svn" && $file!=".DS_Store" && $file!=".htaccess"){
+		unlink($path.'/'.$file);
+	}
+}
+closedir($dir_handle);
 
 # On fait un dump de la base
+//$query      = "SELECT * INTO OUTFILE '$snapshot_file' FROM $tableName";
+//$result = mysql_query($query);
 exec("mysqldump -h $db_host -u $db_login --password=$db_passw $db_name > $snapshot_file");
 exec("mysqldump5 -h $db_host -u $db_login --password=$db_passw $db_name > $snapshot_file");
 

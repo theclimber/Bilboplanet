@@ -41,9 +41,16 @@ if(isset($_POST) && isset($_POST['nom']) && isset($_POST['path']) && isset($_POS
 
 	# On insert une nouvelle entree
 	if($action=="del" && $nom!="all")
-		$result = exec("rm -f $path/$nom");
-	elseif($action=="del" && $nom=="all")
-		$result = exec("rm -f $path/*");
+		unlink($path.'/'.$nom);
+	elseif($action=="del" && $nom=="all"){
+		$dir_handle = @opendir($path) or die("Unable to open $path");
+		while ($file = readdir($dir_handle)){
+			if($file!="." && $file!=".." && $file!=".svn" && $file!=".DS_Store" && $file!=".htaccess"){
+				unlink($path.'/'.$file);
+			}
+		}
+		closedir($dir_handle);
+	}
 }
 ?>
 

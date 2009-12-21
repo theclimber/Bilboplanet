@@ -51,7 +51,12 @@ if(isset($_POST)) {
 
 	if (isset($_POST['action']) && !empty($_POST['action'])){
 		if ($_POST['action'] == '3') {
-			$result = exec("touch ../inc/STOP");
+			$fp = @fopen(dirname(__FILE__).'/../inc/STOP','wb');
+			if ($fp === false) {
+				throw new Exception(sprintf(__('Cannot write %s file.'),$fichier));
+			}
+			fwrite($fp,time());
+			fclose($fp);
 			$flash = T_("The automatical update is disabled ").$result;
 			header("Location: ./gestion-update.php");
 		}
@@ -60,7 +65,7 @@ if(isset($_POST)) {
 				$error = T_('The update can not start : the process is already started (You can force update by deleting the /inc/cron_running.txt file)');
 			else
 				$flash = T_('The automatic update is enabled');
-			$result = exec("rm ../inc/STOP");
+			unlink(dirname(__FILE__).'/../inc/STOP');
 			header("Location: ./gestion-update.php");
 		}
 		else {

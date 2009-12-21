@@ -58,6 +58,7 @@ global $show_contact, $activate_votes;
 <script type="text/javascript" src="javascript/mobile.js" ></script>
 <script type="text/javascript" src="javascript/jquery.easing.1.3.js" ></script>
 <script type="text/javascript" src="javascript/jquery.fancybox-1.2.1.pack.js" ></script>
+<script type="text/javascript" src="javascript/smothscroll.js" ></script>
 </head>
 <body>
 <div id="tour">
@@ -66,7 +67,7 @@ global $show_contact, $activate_votes;
 
 	<div id="header">
 	<div id="title"><?php 
-echo "<a href=\"$planet_url\">$planet_title</a>";
+echo "<a href=\"$planet_url\" name=\"top\">$planet_title</a>";
 ?>
 	<div id="description_title"><?php 
 echo "<a href=\"$planet_url\">$planet_desc</a>";

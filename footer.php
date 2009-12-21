@@ -29,7 +29,7 @@
 <a href="http://www.bilboplanet.com"><?=T_('Powered by BilboPlanet');?></a>
 <a href="http://validator.w3.org/check?verbose=1&uri=<?php echo $planet_url; ?>"><?=T_('Valid CSS - Xhtml');?></a>
 <a href="http://www.bilboplanet.com"><?=T_('Designed by BilboPlanet');?></a>
-<a href="#tour" id="retour_top"><img src="themes/<?php echo $planet_theme; ?>/images/top.png" alt="<?=T_('Back to top');?>"/></a>
+<a href="#top" id="retour_top"><img src="themes/<?php echo $planet_theme; ?>/images/top.png" alt="<?=T_('Back to top');?>"/></a>
 </div>
   </div></div>
 </div>

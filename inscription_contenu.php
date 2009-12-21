@@ -6,6 +6,6 @@
 <h2>La charte de fonctionnement</h2>
 1. ...<br/><br/>
 2. ...<br/><br/>
-3. ...
-
+<strong>3. ...
+</strong>
 <br/><br/></p>

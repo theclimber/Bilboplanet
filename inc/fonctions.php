@@ -329,7 +329,7 @@ function afficheListeArticles($sql, $strip_tags, $recherche="") {
 			echo "</div><!-- fin post-content -->";
 
 			# Lien de retour
-			echo '<a href="#tour" class="retour_sommaire">'.T_('Back to summary').'</a>';
+			echo '<a href="#top" class="retour_sommaire">'.T_('Back to summary').'</a>';
 			echo "</div><!-- fin post -->\n";
 
 			# Incrementation du compteur d'article

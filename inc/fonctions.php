@@ -635,24 +635,6 @@ function check_feed($url){
 #   Fonction divers   #
 #---------------------#
 
-# Fonction de securite
-function securiteCheck() {
-
-	global $planet_url;
-
-	# On recupere le nom du serveur d'ou vient le visiteur
-	$server = domaine(trim($_SERVER["HTTP_REFERER"]));
-
-	# On verifie la provenance
-	if ( $server != domaine(trim($planet_url)) ) {
-
-		# On informe d'un probleme et on arrete tout
-		echo T_("Access denied");
-		exit(1);
-	}
-}
-
-
 # Fonction de cryptage d'adresse email
 function hex_encode($str) {
 	$encoded = bin2hex($str);

@@ -33,9 +33,6 @@ require_once(dirname(__FILE__).'/inc/fonctions.php');
 # Connexion a la base de donnees
 connectBD();
 
-# Securite
-securiteCheck();
-
 # Verification du contenu envoye
 if ( isset($_POST) && isset($_POST['num_article']) && is_numeric(trim($_POST['num_article'])) 
 	&& isset($_POST['token']) && isset($_POST['type']) ) {

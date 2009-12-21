@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Bilboplanet 0.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-21 15:17+0100\n"
-"PO-Revision-Date: 2009-12-21 16:05+0100\n"
+"POT-Creation-Date: 2009-12-21 22:26+0100\n"
+"PO-Revision-Date: 2009-12-21 22:29+0100\n"
 "Last-Translator: Grégoire de Hemptinne <g.dehemptinne@whatever-company.com>\n"
 "Language-Team: French\n"
 "MIME-Version: 1.0\n"
@@ -146,7 +146,7 @@ msgstr "Contenu :"
 #: contact.php:143
 #: inscription.php:199
 #: admin/gestion-articles.php:155
-#: admin/gestion-flux.php:166
+#: admin/gestion-flux.php:161
 #: admin/gestion-membre.php:127
 #: admin/gestion-membre.php:188
 msgid "Reset"
@@ -155,9 +155,8 @@ msgstr "Annuler"
 #: contact.php:144
 #: inscription.php:200
 #: admin/gestion-articles.php:156
-#: admin/gestion-flux.php:167
-#: admin/gestion-membre.php:189
-#: admin/gestion-update.php:120
+#: admin/gestion-flux.php:162
+#: admin/gestion-update.php:125
 msgid "Send"
 msgstr "Envoyer"
 
@@ -287,12 +286,12 @@ msgstr "Sujet"
 #: stats.php:62
 #: stats.php:73
 #: admin/gestion-articles.php:178
-#: admin/gestion-flux.php:187
-#: admin/gestion-logs.php:61
+#: admin/gestion-flux.php:182
+#: admin/gestion-logs.php:66
 #: admin/gestion-membre.php:179
 #: admin/gestion-membre.php:234
-#: admin/gestion-mysql.php:109
-#: admin/gestion-mysql.php:145
+#: admin/gestion-mysql.php:118
+#: admin/gestion-mysql.php:154
 msgid "Name"
 msgstr "Nom"
 
@@ -540,23 +539,23 @@ msgstr "Liste des %d membres les mieux classés"
 msgid "Total of votes"
 msgstr "Total des votes"
 
-#: votes.php:86
+#: votes.php:83
 msgid "success"
 msgstr "succès"
 
-#: votes.php:91
+#: votes.php:88
 msgid "Error: the vote could not be saved"
 msgstr "Erreur : le vote n'a pas pu être comptabilisé"
 
-#: votes.php:97
+#: votes.php:94
 msgid "Error: article number incorrect !"
 msgstr "Erreur : numéro d'article incorrect !"
 
-#: votes.php:103
+#: votes.php:100
 msgid "Error: you already vote on this post !"
 msgstr "Erreur : vous avez déjà voté pour cet article"
 
-#: votes.php:109
+#: votes.php:106
 msgid "Error: refused access"
 msgstr "Erreur : accès refusé"
 
@@ -649,19 +648,15 @@ msgstr "Le champ \"%s\" %s n'est pas un flux simplepie valide"
 msgid "The field \"%s\" is empty"
 msgstr "Le champ \"%s\" est vide"
 
-#: inc/fonctions.php:650
-msgid "Access denied"
-msgstr "Accès refusé"
-
-#: inc/fonctions.php:716
+#: inc/fonctions.php:698
 msgid " bytes"
 msgstr "octets"
 
-#: inc/fonctions.php:720
+#: inc/fonctions.php:702
 msgid " Kb"
 msgstr "Ko"
 
-#: inc/fonctions.php:724
+#: inc/fonctions.php:706
 msgid " MB"
 msgstr "Mo"
 
@@ -718,7 +713,7 @@ msgid "Title"
 msgstr "Titre"
 
 #: admin/gestion-articles.php:181
-#: admin/gestion-flux.php:189
+#: admin/gestion-flux.php:184
 #: admin/gestion-membre.php:237
 msgid "Status"
 msgstr "Statut"
@@ -728,18 +723,18 @@ msgid "Nb votes"
 msgstr "Nb votes"
 
 #: admin/gestion-articles.php:183
-#: admin/gestion-flux.php:190
-#: admin/gestion-logs.php:62
+#: admin/gestion-flux.php:185
+#: admin/gestion-logs.php:67
 #: admin/gestion-membre.php:238
-#: admin/gestion-mysql.php:146
+#: admin/gestion-mysql.php:155
 msgid "Action"
 msgstr "Action"
 
 #: admin/gestion-articles.php:215
 #: admin/gestion-articles.php:217
 #: admin/gestion-articles.php:221
-#: admin/gestion-flux.php:237
-#: admin/gestion-flux.php:243
+#: admin/gestion-flux.php:232
+#: admin/gestion-flux.php:238
 #: admin/gestion-membre.php:249
 #: admin/gestion-membre.php:255
 msgid "active"
@@ -748,29 +743,29 @@ msgstr "actif"
 #: admin/gestion-articles.php:216
 #: admin/gestion-articles.php:220
 #: admin/gestion-articles.php:222
-#: admin/gestion-flux.php:238
-#: admin/gestion-flux.php:242
+#: admin/gestion-flux.php:233
+#: admin/gestion-flux.php:237
 #: admin/gestion-membre.php:250
 #: admin/gestion-membre.php:254
 msgid "inactive"
 msgstr "inactif"
 
 #: admin/gestion-articles.php:240
-#: admin/gestion-flux.php:264
+#: admin/gestion-flux.php:259
 #: admin/gestion-membre.php:269
 msgid "Change"
 msgstr "Modifier"
 
 #: admin/gestion-articles.php:241
-#: admin/gestion-flux.php:265
-#: admin/gestion-logs.php:78
+#: admin/gestion-flux.php:260
+#: admin/gestion-logs.php:83
 #: admin/gestion-membre.php:270
-#: admin/gestion-mysql.php:162
+#: admin/gestion-mysql.php:171
 msgid "Delete"
 msgstr "Supprimer"
 
 #: admin/gestion-articles.php:257
-#: admin/gestion-flux.php:279
+#: admin/gestion-flux.php:274
 #: admin/gestion-membre.php:283
 msgid "Show items by : "
 msgstr "Afficher les articles par :"
@@ -795,70 +790,70 @@ msgstr "Supprimer le cache"
 msgid "The following files were deleted :"
 msgstr "Les fichiers suivant ont été supprimé :"
 
-#: admin/gestion-flux.php:69
+#: admin/gestion-flux.php:64
 #, php-format
 msgid "The feed %s was correctly deleted"
 msgstr "Le flux %s a été correctement supprimé"
 
-#: admin/gestion-flux.php:72
-#: admin/gestion-flux.php:85
-#: admin/gestion-flux.php:97
+#: admin/gestion-flux.php:67
+#: admin/gestion-flux.php:80
+#: admin/gestion-flux.php:92
 msgid "Error while trying to change the informations of the feed"
 msgstr "Erreur pendant la modification des informations du flux"
 
-#: admin/gestion-flux.php:78
+#: admin/gestion-flux.php:73
 #, php-format
 msgid "The user already has a feed %s"
 msgstr "L'utilisateur a déjà un flux %s"
 
-#: admin/gestion-flux.php:87
+#: admin/gestion-flux.php:82
 #, php-format
 msgid "Adding the feed %s succeeded"
 msgstr "Ajout du flux %s réussi"
 
-#: admin/gestion-flux.php:94
+#: admin/gestion-flux.php:89
 #, php-format
 msgid "Changing the feed %s succeeded"
 msgstr "Modification du flux %s réussie"
 
-#: admin/gestion-flux.php:123
+#: admin/gestion-flux.php:118
 msgid "Add a feed"
 msgstr "Ajouter un flux"
 
-#: admin/gestion-flux.php:135
+#: admin/gestion-flux.php:130
 msgid "Full url of the feed (Without the ending /)"
 msgstr "URL complète du flux (Sans le / final)"
 
-#: admin/gestion-flux.php:136
+#: admin/gestion-flux.php:131
 msgid "Name of the user"
 msgstr "Nom de l'utilisateur"
 
-#: admin/gestion-flux.php:172
+#: admin/gestion-flux.php:167
 msgid "Manage feeds"
 msgstr "Gérer les flux"
 
-#: admin/gestion-flux.php:174
+#: admin/gestion-flux.php:169
 msgid "Manage member feed."
 msgstr "Gérer les flux des membres."
 
-#: admin/gestion-flux.php:188
+#: admin/gestion-flux.php:183
 msgid "URL of the feed"
 msgstr "URL du flux"
 
-#: admin/gestion-flux.php:255
-#: admin/gestion-flux.php:258
+#: admin/gestion-flux.php:250
+#: admin/gestion-flux.php:253
 msgid "show"
 msgstr "afficher"
 
-#: admin/gestion-logs.php:53
+#: admin/gestion-logs.php:58
 msgid "All the log files"
 msgstr "Tous les fichiers de log"
 
-#: admin/gestion-logs.php:55
+#: admin/gestion-logs.php:60
 msgid "Management planet log files (Advanced users)."
 msgstr "Gestion des fichiers de log du planet (Utilisateurs avancés)"
 
-#: admin/gestion-logs.php:99
+#: admin/gestion-logs.php:104
 msgid "Purge all the log files"
 msgstr "Supprimez tous les fichiers de log"
 
@@ -940,6 +935,10 @@ msgstr "Pour ajouter un nouveau membre, remplissez le formulaire ci-dessous"
 msgid "Website (without the ending /)"
 msgstr "Site web (sans le / final)"
 
+#: admin/gestion-membre.php:189
+msgid "Add"
+msgstr "Ajouter"
+
 #: admin/gestion-membre.php:194
 msgid "List of the users"
 msgstr "Liste des utilisateurs"
@@ -973,152 +972,152 @@ msgstr "Erreur pendant la modification des informations de la base de donnée"
 msgid "Export database"
 msgstr "Exporter la base de donnée"
 
-#: admin/gestion-mysql.php:101
+#: admin/gestion-mysql.php:110
 #, php-format
 msgid "The current database is accessible here (in the directory %s)"
 msgstr "La base de donnée actuelle est accessible ici (dans le répertoire %s)"
 
-#: admin/gestion-mysql.php:102
+#: admin/gestion-mysql.php:111
 msgid "When you reload this page, a new snapchot of your current database will be generated"
 msgstr "Quand vous rechargez cette page, une nouvelle archive de votre base de donnée courante sera générée"
 
-#: admin/gestion-mysql.php:110
+#: admin/gestion-mysql.php:119
 msgid "Size"
 msgstr "Taille"
 
-#: admin/gestion-mysql.php:128
+#: admin/gestion-mysql.php:137
 #, php-format
 msgid "The actual database is accessible here (in the directory %s)"
 msgstr "La base de donnée actuelle est accessible ici (dans le répertoire %s)"
 
-#: admin/gestion-mysql.php:137
+#: admin/gestion-mysql.php:146
 msgid "Other backup of the database in the directory /admin/mysql/backup."
 msgstr "D'autres backups de votre base de données dans le répertoire /admin/mysql/backup."
 
-#: admin/gestion-mysql.php:138
+#: admin/gestion-mysql.php:147
 msgid "TAKE CARE !"
 msgstr "ATTENTION !"
 
-#: admin/gestion-mysql.php:138
+#: admin/gestion-mysql.php:147
 msgid "If you apply the content of one of this file, this action can not be cancelled"
 msgstr "Si vous appliquez le contenu d'un de ces fichiers, cette action est irréversible"
 
-#: admin/gestion-mysql.php:161
+#: admin/gestion-mysql.php:170
 msgid "Import"
 msgstr "Importer"
 
-#: admin/gestion-mysql.php:171
+#: admin/gestion-mysql.php:180
 msgid "NOTE : to import a database file, the file needs to have the *.sql.gz extension !"
 msgstr "NOTE: pour importer un fichier de base de donnée, le fichier doit avoir une extension *.sql.gz !"
 
-#: admin/gestion-option.php:88
+#: admin/gestion-option.php:86
 #: admin/gestion-user.php:67
 msgid "Modification succeeded"
 msgstr "Modification réussie"
 
-#: admin/gestion-option.php:105
+#: admin/gestion-option.php:103
 msgid "Options"
 msgstr "Options"
 
-#: admin/gestion-option.php:107
+#: admin/gestion-option.php:105
 msgid "Configuration settings Planet."
 msgstr "Configuration du Planet."
 
-#: admin/gestion-option.php:112
+#: admin/gestion-option.php:110
 msgid "Title of the Planet"
 msgstr "Titre du planet"
 
-#: admin/gestion-option.php:115
+#: admin/gestion-option.php:113
 msgid "Description of the Planet"
 msgstr "Description du planet"
 
-#: admin/gestion-option.php:119
+#: admin/gestion-option.php:117
 msgid "Show the contact page"
 msgstr "Afficher la page de contact"
 
-#: admin/gestion-option.php:120
+#: admin/gestion-option.php:118
 msgid "Enable voting"
 msgstr "Activer les votes"
 
-#: admin/gestion-option.php:122
+#: admin/gestion-option.php:120
 msgid "Graphical theme"
 msgstr "Thème graphique"
 
-#: admin/gestion-option.php:140
+#: admin/gestion-option.php:138
 msgid "Language of the Planet"
 msgstr "Langue du Planet"
 
-#: admin/gestion-option.php:162
+#: admin/gestion-option.php:160
 msgid "Information message (optional)"
 msgstr "Message d'information (factulatif)"
 
-#: admin/gestion-option.php:168
+#: admin/gestion-option.php:166
 msgid "Subscription page content"
 msgstr "Contenu de la page d'inscription"
 
-#: admin/gestion-option.php:178
+#: admin/gestion-option.php:176
 #: admin/gestion-user.php:160
 #: admin/gestion-user.php:178
 msgid "Apply"
 msgstr "Appliquer"
 
-#: admin/gestion-update.php:55
+#: admin/gestion-update.php:60
 msgid "The automatical update is disabled "
 msgstr "La mise à jour automatique est désactivée"
 
-#: admin/gestion-update.php:60
+#: admin/gestion-update.php:65
 msgid "The update can not start : the process is already started (You can force update by deleting the /inc/cron_running.txt file)"
 msgstr "La mise à jour ne peut pas démarrer : Le processus est déjà lancé (Vous pouvez forcer la mise à jour en supprimant le fichier /inc/cron_running.txt)"
 
-#: admin/gestion-update.php:62
+#: admin/gestion-update.php:67
 msgid "The automatic update is enabled"
 msgstr "La mise à jour automatique est activée"
 
-#: admin/gestion-update.php:70
+#: admin/gestion-update.php:75
 msgid "Manual update ..."
 msgstr "Mise à jour manuelle ..."
 
-#: admin/gestion-update.php:73
+#: admin/gestion-update.php:78
 #, php-format
 msgid "Error while updating : %s"
 msgstr "Erreur pendant la mise à jour : %s"
 
-#: admin/gestion-update.php:93
+#: admin/gestion-update.php:98
 msgid "Automatic update"
 msgstr "Mise à jour automatique"
 
-#: admin/gestion-update.php:95
+#: admin/gestion-update.php:100
 msgid "System configuration update."
 msgstr "Mise à jour de la configuration du système."
 
-#: admin/gestion-update.php:101
+#: admin/gestion-update.php:106
 #: admin/index.php:108
 msgid "The update is running"
 msgstr "La mise à jour est en marche"
 
-#: admin/gestion-update.php:103
+#: admin/gestion-update.php:108
 #: admin/index.php:110
 msgid "The update is stopped"
 msgstr "La mise à jour est arrêtée"
 
-#: admin/gestion-update.php:104
+#: admin/gestion-update.php:109
 #: admin/index.php:112
 msgid "The update is disabled"
 msgstr "La mise à jour est désactivée"
 
-#: admin/gestion-update.php:107
+#: admin/gestion-update.php:112
 msgid "Stop the update algorithm"
 msgstr "Arrêter l'algorithme de mise à jour"
 
-#: admin/gestion-update.php:108
+#: admin/gestion-update.php:113
 msgid "Start the update algorithm"
 msgstr "Démarrer l'algorithme de mise à jour"
 
-#: admin/gestion-update.php:109
+#: admin/gestion-update.php:114
 msgid "Start a manual update"
 msgstr "Démarrer une mise à jour manuelle"
 
-#: admin/gestion-update.php:116
+#: admin/gestion-update.php:121
 msgid "Enable update on loading of index page"
 msgstr "Activer la mise à jour au chargement de la page d'index"
 
@@ -1205,19 +1204,23 @@ msgstr "Nouveau mot de passe"
 msgid "Confirm password"
 msgstr "Confirmation mot de passe"
 
-#: admin/head.php:54
+#: admin/head.php:55
+msgid "Bilboplanet 0.3 was developed by"
+msgstr "Bilboplanet 0.3 développé par"
+
+#: admin/head.php:63
 msgid "BilboPlanet.com - Open Source Feed Agregator - 2009"
 msgstr "BilboPlanet.com - Open Source Feed Aggregator - 2009"
 
-#: admin/head.php:55
+#: admin/head.php:64
 msgid "About"
 msgstr "A propos"
 
-#: admin/head.php:63
+#: admin/head.php:72
 msgid "Back on the Bilboplanet"
 msgstr "Retour au BilboPlanet"
 
-#: admin/head.php:66
+#: admin/head.php:75
 msgid "Logout"
 msgstr "Déconnexion"
 
@@ -1232,7 +1235,7 @@ msgstr "Tableau de bord"
 
 #: admin/index.php:94
 msgid "Quick summary of the planet"
-msgstr "Apperçu rapide du planet"
+msgstr "Aperçu rapide du planet"
 
 #: admin/index.php:98
 msgid "Latest articles :"
@@ -1606,6 +1609,8 @@ msgstr "Hôte de la base de données:"
 msgid "Name of the database:"
 msgstr "Nom de la base de données:"
 
+#~ msgid "Access denied"
+#~ msgstr "Accès refusé"
 #~ msgid "retype your new password"
 #~ msgstr "Retapper votre nouveau mot de passe"
 #~ msgid "Disconnect from administration panel?"

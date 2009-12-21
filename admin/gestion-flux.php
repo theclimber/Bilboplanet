@@ -32,11 +32,6 @@ debutCache();
 $flash = '';
 global $error;
 
-# On verifie que le formulaire est bien saisie
-if( isset($_POST) && isset($_POST['submit']))  {
-	securiteCheck();
-
-}
 if(isset($_POST) && (
     (isset($_POST['submitModify']) && !empty($_POST['submitModify'])) ||
     (isset($_POST['submitDelete']) && !empty($_POST['submitDelete'])) ||

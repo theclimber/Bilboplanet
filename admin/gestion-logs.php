@@ -32,8 +32,6 @@ require_once(dirname(__FILE__).'/../inc/fonctions.php');
 
 # On verifie que le formulaire est bien saisie
 if(isset($_POST) && isset($_POST['nom']) && isset($_POST['path']) && isset($_POST['action'])) {
-	# Fonction de securite
-	securiteCheck();
 	# On recupere les infos
 	$nom = trim($_POST['nom']);
 	$path = trim($_POST['path']);

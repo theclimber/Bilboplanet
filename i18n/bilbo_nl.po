@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Bilboplanet 0.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-21 13:31+0100\n"
-"PO-Revision-Date: 2009-12-21 13:37+0100\n"
+"POT-Creation-Date: 2009-12-21 15:17+0100\n"
+"PO-Revision-Date: 2009-12-21 15:22+0100\n"
 "Last-Translator: Grégoire de Hemptinne <g.dehemptinne@whatever-company.com>\n"
 "Language-Team: Dutch\n"
 "MIME-Version: 1.0\n"
@@ -157,7 +157,7 @@ msgstr "Reset"
 #: admin/gestion-articles.php:156
 #: admin/gestion-flux.php:167
 #: admin/gestion-membre.php:189
-#: admin/gestion-update.php:88
+#: admin/gestion-update.php:120
 msgid "Send"
 msgstr "Sturen"
 
@@ -1062,61 +1062,65 @@ msgstr "Inhoud van de inschrijving pagina"
 msgid "Apply"
 msgstr "Aanvragen"
 
-#: admin/gestion-update.php:37
+#: admin/gestion-update.php:55
 msgid "The automatical update is disabled "
 msgstr "De automatische update is uitgeschakeld"
 
-#: admin/gestion-update.php:42
+#: admin/gestion-update.php:60
 msgid "The update can not start : the process is already started (You can force update by deleting the /inc/cron_running.txt file)"
 msgstr "De update kan niet beginnen: het proces is reeds gestart (U kunt kracht bijwerken door het verwijderen van de /inc/cron_running.txt bestand)"
 
-#: admin/gestion-update.php:44
+#: admin/gestion-update.php:62
 msgid "The automatic update is enabled"
 msgstr "De automatische update is ingeschakeld"
 
-#: admin/gestion-update.php:52
+#: admin/gestion-update.php:70
 msgid "Manual update ..."
 msgstr "Handmatige update ..."
 
-#: admin/gestion-update.php:55
+#: admin/gestion-update.php:73
 #, php-format
 msgid "Error while updating : %s"
 msgstr "Fout tijdens het update: %s"
 
-#: admin/gestion-update.php:70
+#: admin/gestion-update.php:93
 msgid "Automatic update"
 msgstr "Automatische update"
 
-#: admin/gestion-update.php:72
+#: admin/gestion-update.php:95
 msgid "System configuration update."
 msgstr "Systeemconfiguratie update."
 
-#: admin/gestion-update.php:78
+#: admin/gestion-update.php:101
 #: admin/index.php:108
 msgid "The update is running"
 msgstr "De update wordt uitgevoerd"
 
-#: admin/gestion-update.php:80
+#: admin/gestion-update.php:103
 #: admin/index.php:110
 msgid "The update is stopped"
 msgstr "De update is gestopt"
 
-#: admin/gestion-update.php:81
+#: admin/gestion-update.php:104
 #: admin/index.php:112
 msgid "The update is disabled"
 msgstr "De update is uitgeschakeld"
 
-#: admin/gestion-update.php:84
+#: admin/gestion-update.php:107
 msgid "Stop the update algorithm"
 msgstr "Stop de update algoritme"
 
-#: admin/gestion-update.php:85
+#: admin/gestion-update.php:108
 msgid "Start the update algorithm"
 msgstr "Start de update algoritme"
 
-#: admin/gestion-update.php:86
+#: admin/gestion-update.php:109
 msgid "Start a manual update"
 msgstr "Start een handmatige update"
+
+#: admin/gestion-update.php:116
+msgid "Enable update on loading of index page"
+msgstr "Activeer de update tijdens het laden van de index pagina"
 
 #: admin/gestion-user.php:70
 msgid "Please insert a valid email address"
@@ -1238,23 +1242,27 @@ msgstr "Laatste artikelen:"
 msgid "Statistics :"
 msgstr "Statistieken:"
 
-#: admin/index.php:115
+#: admin/index.php:114
+msgid "The update on loading of index page enabled"
+msgstr "De update tijdens het laden van de index pagina is geactiveerd"
+
+#: admin/index.php:117
 msgid "Current size of the database :"
 msgstr "Huidige grootte van de database:"
 
-#: admin/index.php:116
+#: admin/index.php:118
 msgid "Number of articles in the DB :"
 msgstr "Aantal artikels in de database :"
 
-#: admin/index.php:117
+#: admin/index.php:119
 msgid "Number of votes in the DB :"
 msgstr "Aantal stemmen in de DB :"
 
-#: admin/index.php:118
+#: admin/index.php:120
 msgid "Number of members in the DB :"
 msgstr "Aantal leden in de DB :"
 
-#: admin/index.php:119
+#: admin/index.php:121
 msgid "Number of feeds in the DB :"
 msgstr "Aantal feeds in de DB :"
 

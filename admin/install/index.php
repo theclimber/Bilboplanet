@@ -270,7 +270,7 @@ xml:lang="en" lang="en">
   <meta name="MSSmartTagsPreventParsing" content="TRUE" />
   <meta name="ROBOTS" content="NOARCHIVE,NOINDEX,NOFOLLOW" />
   <meta name="GOOGLEBOT" content="NOSNIPPET" />
-  <link rel="icon" type="image/ico" href="../../favicon.ico" />
+  <link rel="icon" type="image/ico" href="../../favicon.png" />
   <link rel="stylesheet" type="text/css" href="install.css" media="all" />
   <title><?=T_('Installation of the Bilboplanet');?></title>
   <script type="text/javascript" src="../js/jquery/jquery.js"></script>

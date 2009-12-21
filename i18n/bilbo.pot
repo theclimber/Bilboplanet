@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-21 13:31+0100\n"
+"POT-Creation-Date: 2009-12-21 15:17+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -146,7 +146,7 @@ msgstr ""
 
 #: contact.php:144 inscription.php:200 admin/gestion-articles.php:156
 #: admin/gestion-flux.php:167 admin/gestion-membre.php:189
-#: admin/gestion-update.php:88
+#: admin/gestion-update.php:120
 msgid "Send"
 msgstr ""
 
@@ -1002,57 +1002,61 @@ msgstr ""
 msgid "Apply"
 msgstr ""
 
-#: admin/gestion-update.php:37
+#: admin/gestion-update.php:55
 msgid "The automatical update is disabled "
 msgstr ""
 
-#: admin/gestion-update.php:42
+#: admin/gestion-update.php:60
 msgid "The update can not start : the process is already started (You can force update by deleting the /inc/cron_running.txt file)"
 msgstr ""
 
-#: admin/gestion-update.php:44
+#: admin/gestion-update.php:62
 msgid "The automatic update is enabled"
 msgstr ""
 
-#: admin/gestion-update.php:52
+#: admin/gestion-update.php:70
 msgid "Manual update ..."
 msgstr ""
 
-#: admin/gestion-update.php:55
+#: admin/gestion-update.php:73
 #, php-format
 msgid "Error while updating : %s"
 msgstr ""
 
-#: admin/gestion-update.php:70
+#: admin/gestion-update.php:93
 msgid "Automatic update"
 msgstr ""
 
-#: admin/gestion-update.php:72
+#: admin/gestion-update.php:95
 msgid "System configuration update."
 msgstr ""
 
-#: admin/gestion-update.php:78 admin/index.php:108
+#: admin/gestion-update.php:101 admin/index.php:108
 msgid "The update is running"
 msgstr ""
 
-#: admin/gestion-update.php:80 admin/index.php:110
+#: admin/gestion-update.php:103 admin/index.php:110
 msgid "The update is stopped"
 msgstr ""
 
-#: admin/gestion-update.php:81 admin/index.php:112
+#: admin/gestion-update.php:104 admin/index.php:112
 msgid "The update is disabled"
 msgstr ""
 
-#: admin/gestion-update.php:84
+#: admin/gestion-update.php:107
 msgid "Stop the update algorithm"
 msgstr ""
 
-#: admin/gestion-update.php:85
+#: admin/gestion-update.php:108
 msgid "Start the update algorithm"
 msgstr ""
 
-#: admin/gestion-update.php:86
+#: admin/gestion-update.php:109
 msgid "Start a manual update"
+msgstr ""
+
+#: admin/gestion-update.php:116
+msgid "Enable update on loading of index page"
 msgstr ""
 
 #: admin/gestion-user.php:70
@@ -1171,23 +1175,27 @@ msgstr ""
 msgid "Statistics :"
 msgstr ""
 
-#: admin/index.php:115
-msgid "Current size of the database :"
-msgstr ""
-
-#: admin/index.php:116
-msgid "Number of articles in the DB :"
+#: admin/index.php:114
+msgid "The update on loading of index page enabled"
 msgstr ""
 
 #: admin/index.php:117
-msgid "Number of votes in the DB :"
+msgid "Current size of the database :"
 msgstr ""
 
 #: admin/index.php:118
-msgid "Number of members in the DB :"
+msgid "Number of articles in the DB :"
 msgstr ""
 
 #: admin/index.php:119
+msgid "Number of votes in the DB :"
+msgstr ""
+
+#: admin/index.php:120
+msgid "Number of members in the DB :"
+msgstr ""
+
+#: admin/index.php:121
 msgid "Number of feeds in the DB :"
 msgstr ""
 

@@ -110,6 +110,8 @@ else
 	echo '<li><div id="BP_stopupdate">'.T_('The update is stopped').'</div></li>';
 if (file_exists(dirname(__FILE__).'/../inc/STOP'))
 	echo '<li><div id="BP_disableupdate">'.T_('The update is disabled').'</div></li>';
+if (BP_INDEX_UPDATE == '1')
+	echo '<li><div id="BP_index_update">'.T_('The update on loading of index page enabled').'</div></li>';
 ?>
 
 			<li><div id="BP_stats_db"><?=T_('Current size of the database :'); echo ' <strong>'.formatfilesize(get_database_size()).'</strong>';?></div></li>

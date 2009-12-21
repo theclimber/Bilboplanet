@@ -51,7 +51,7 @@ global $show_contact, $activate_votes;
 <link href="javascript/fancybox/fancybox.css" rel="stylesheet" type="text/css" />
 <link rel="alternate" type="application/rss+xml"  title="RSS"  href="feed.php?type=rss" />
 <link rel="alternate" type="application/atom+xml" title="ATOM" href="feed.php?type=atom" />
-<link rel="icon" type="image/ico" href="./favicon.ico" />
+<link rel="icon" type="image/ico" href="./favicon.png" />
 <title><?php echo $planet_title; ?></title>
 <script type="text/javascript" src="javascript/jquery.js"></script>
 <script type="text/javascript" src="javascript/votes.js" ></script>

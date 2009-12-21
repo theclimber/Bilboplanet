@@ -20,7 +20,7 @@ header('Content-Type: text/html; charset=utf-8');
   <meta name="MSSmartTagsPreventParsing" content="TRUE" />
   <meta name="ROBOTS" content="NOARCHIVE,NOINDEX,NOFOLLOW" />
   <meta name="GOOGLEBOT" content="NOSNIPPET" />
-  <link rel="icon" type="image/ico" href="favicon.ico" />
+  <link rel="icon" type="image/ico" href="../favicon.png" />
   <title>Bilboplanet - Error</title>
   <style media="screen" type="text/css">
   <!--

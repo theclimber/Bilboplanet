@@ -4,12 +4,6 @@ TODO dans l'ordre de priorité :
 * Milestone 0.3
 ===================================================
 
-1) Traduire tous les strings avant la release en:
-	* Francais
-	* Allemand
-	* Neerlandais
-2) Mettre en place un cron basé sur le rafraichissement de index.php (afin d'eviter les autres problemes)
-
 BUGS :
 * Bugs pour une utilisation windows : les commandes linux utilisées dans l'admin ne sont pas bonnes
 	* suppression de fichiers (suppression des logs / du cache / des backups de la DB)

@@ -26,6 +26,7 @@ define('BP_CONTACT_PAGE', true);
 define('BP_AUTHER_JABBER','Your Jabber');
 define('BP_AUTHOR_IM','MSN Messenger, Yahoo Messenger and Other');
 define('BP_AUTHOR_ABOUT','About me');
+define('BP_INDEX_UPDATE','0');
 #define('BP_GOOGLEANALYTICS','');
 
 

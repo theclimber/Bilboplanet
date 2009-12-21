@@ -136,7 +136,7 @@ xml:lang="en" lang="en">
   <meta http-equiv="Content-Language" content="en" />
   <meta name="MSSmartTagsPreventParsing" content="TRUE" />
   <meta name="ROBOTS" content="NOARCHIVE,NOINDEX,NOFOLLOW" />
-  <link rel="icon" type="image/ico" href="../../favicon.ico" />
+  <link rel="icon" type="image/ico" href="../../favicon.png" />
   <meta name="GOOGLEBOT" content="NOSNIPPET" />
   <link rel="stylesheet" type="text/css" href="install.css" media="all" />
   <title><?=T_('Bilboplanet Install Wizard');?></title>

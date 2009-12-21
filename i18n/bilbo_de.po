@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Bilboplanet 0.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-09 17:42+0100\n"
-"PO-Revision-Date: 2009-12-14 10:46+0100\n"
+"POT-Creation-Date: 2009-12-21 15:17+0100\n"
+"PO-Revision-Date: 2009-12-21 15:19+0100\n"
 "Last-Translator: Grégoire de Hemptinne <g.dehemptinne@whatever-company.com>\n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -157,7 +157,7 @@ msgstr "Zurücksetzen"
 #: admin/gestion-articles.php:156
 #: admin/gestion-flux.php:167
 #: admin/gestion-membre.php:189
-#: admin/gestion-update.php:88
+#: admin/gestion-update.php:120
 msgid "Send"
 msgstr "Senden"
 
@@ -200,28 +200,28 @@ msgstr "Die Seite wird im Moment gewartet, komm bitte in einigen Momenten zurüc
 msgid "While waiting you can vist the website of the <a href=\"%s\">author</a>"
 msgstr "Während du wartest kannst du die Website des <a href=\"%s\">Autors</a> besuchen"
 
-#: head.php:76
+#: head.php:77
 msgid "Home"
 msgstr "Start"
 
-#: head.php:79
+#: head.php:80
 msgid "Top 10"
 msgstr "Top 10"
 
-#: head.php:83
+#: head.php:84
 msgid "Statistics"
 msgstr "Statistik"
 
-#: head.php:84
+#: head.php:85
 msgid "Registration"
 msgstr "Anmeldung"
 
-#: head.php:87
-#: head.php:90
+#: head.php:88
+#: head.php:91
 msgid "Archives"
 msgstr "Archiv"
 
-#: head.php:88
+#: head.php:89
 msgid "Contact"
 msgstr "Kontakt"
 
@@ -1066,61 +1066,65 @@ msgstr "Cache des Planet löschen"
 msgid "Apply"
 msgstr "Anwenden"
 
-#: admin/gestion-update.php:37
+#: admin/gestion-update.php:55
 msgid "The automatical update is disabled "
 msgstr "Automatische Updates sind deaktiviert"
 
-#: admin/gestion-update.php:42
+#: admin/gestion-update.php:60
 msgid "The update can not start : the process is already started (You can force update by deleting the /inc/cron_running.txt file)"
 msgstr "Das Update kann nicht gestartet werden : Der Prozess wurde bereits gestartet (Du kannst das Update erzwingen, indem du die Datei /inc/cron_running.txt löschst)"
 
-#: admin/gestion-update.php:44
+#: admin/gestion-update.php:62
 msgid "The automatic update is enabled"
 msgstr "Automatische Updates sind aktiviert"
 
-#: admin/gestion-update.php:52
+#: admin/gestion-update.php:70
 msgid "Manual update ..."
 msgstr "Manuelles Update ..."
 
-#: admin/gestion-update.php:55
+#: admin/gestion-update.php:73
 #, php-format
 msgid "Error while updating : %s"
 msgstr "Fehler während des Updates: %s"
 
-#: admin/gestion-update.php:70
+#: admin/gestion-update.php:93
 msgid "Automatic update"
 msgstr "Automatisches Update"
 
-#: admin/gestion-update.php:72
+#: admin/gestion-update.php:95
 msgid "System configuration update."
 msgstr "System Konfigurations Update."
 
-#: admin/gestion-update.php:78
+#: admin/gestion-update.php:101
 #: admin/index.php:108
 msgid "The update is running"
 msgstr "Das Update läuft"
 
-#: admin/gestion-update.php:80
+#: admin/gestion-update.php:103
 #: admin/index.php:110
 msgid "The update is stopped"
 msgstr "Das Update wurde gestoppt"
 
-#: admin/gestion-update.php:81
+#: admin/gestion-update.php:104
 #: admin/index.php:112
 msgid "The update is disabled"
 msgstr "Das Update ist deaktiviert"
 
-#: admin/gestion-update.php:84
+#: admin/gestion-update.php:107
 msgid "Stop the update algorithm"
 msgstr "Stoppe den Updatevorgang"
 
-#: admin/gestion-update.php:85
+#: admin/gestion-update.php:108
 msgid "Start the update algorithm"
 msgstr "Starte den Updatevorgang"
 
-#: admin/gestion-update.php:86
+#: admin/gestion-update.php:109
 msgid "Start a manual update"
 msgstr "Starte das manuelle Update"
+
+#: admin/gestion-update.php:116
+msgid "Enable update on loading of index page"
+msgstr "Aktivieren Änderung am Laden der Index-Seite"
 
 #: admin/gestion-user.php:70
 msgid "Please insert a valid email address"
@@ -1243,23 +1247,27 @@ msgstr "Jüngste Artikel :"
 msgid "Statistics :"
 msgstr "Statistik :"
 
-#: admin/index.php:115
+#: admin/index.php:114
+msgid "The update on loading of index page enabled"
+msgstr "Das Update auf Laden der Index-Seite aktiviert"
+
+#: admin/index.php:117
 msgid "Current size of the database :"
 msgstr "Aktuelle Größe der Datenbank :"
 
-#: admin/index.php:116
+#: admin/index.php:118
 msgid "Number of articles in the DB :"
 msgstr "Anzahl der Artikel in der DB :"
 
-#: admin/index.php:117
+#: admin/index.php:119
 msgid "Number of votes in the DB :"
 msgstr "Stimmanzahl in der DB :"
 
-#: admin/index.php:118
+#: admin/index.php:120
 msgid "Number of members in the DB :"
 msgstr "Mitgliederzahl in der DB :"
 
-#: admin/index.php:119
+#: admin/index.php:121
 msgid "Number of feeds in the DB :"
 msgstr "Anzahl der Feeds in der DB :"
 

@@ -51,7 +51,16 @@ require_once(dirname(__FILE__).'/../inc/fonctions.php');
 		});
 		$('BP_About').addEvent('click', function(event){
 			event.stop();
-			var message = '<span><?=T_('BilboPlanet.com - Open Source Feed Agregator - 2009');?></span>';
+			var message = '<p>'+
+				'<h3><?=T_('Bilboplanet 0.3 was developed by');?></h3>'+
+				'<ul>'+
+				'<li>Gregoire de Hemptinne (<a href="http://www.theclimber.be" target="_blank">http://www.theclimber.be</a>)</li>'+
+				'<li>Thomas Bourcey (<a href="http://www.sckyzo.com" target="_blank">http://www.sckyzo.com</a>)</li>'+
+				'<li>Jonas Luthi (<a href="http://jonasluthi.com" target="_blank">http://jonasluthi.com</a>)</li>'+
+				'</ul>'+
+				'</p>'+
+				'<br /><hr><br/>'+
+				'<span><?=T_('BilboPlanet.com - Open Source Feed Agregator - 2009');?></span>';
 			$alert(message, '<?=T_('About');?>');
 		});
 	});

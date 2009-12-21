@@ -31,30 +31,53 @@ include_once(dirname(__FILE__).'/../inc/cron_fct.php');
 
 $flash = '';
 $update = false;
-if(isset($_POST) && isset($_POST['action']) && !empty($_POST['action'])) {
-	if ($_POST['action'] == '3') {
-		$result = exec("touch ../inc/STOP");
-		$flash = T_("The automatical update is disabled ").$result;
-		header("Location: ./gestion-update.php");
-	}
-	elseif ($_POST['action'] == '1') {
-		if (get_cron_running())
-			$error = T_('The update can not start : the process is already started (You can force update by deleting the /inc/cron_running.txt file)');
-		else
-			$flash = T_('The automatic update is enabled');
-		$result = exec("rm ../inc/STOP");
-		header("Location: ./gestion-update.php");
+if(isset($_POST)) {
+	$config_file=dirname(__FILE__).'/../inc/config.php';
+	$full_conf = file_get_contents($config_file);
+	if ($_POST['index_update'] == "on") {
+		writeConfigValue('BP_INDEX_UPDATE', '1', $full_conf);
 	}
 	else {
-		$update = true;
-		try{
-			$update_logs = update(true);
-			$flash = T_("Manual update ...");
+		writeConfigValue('BP_INDEX_UPDATE', '0', $full_conf);
+	}
+	chmod($file, 0775);
+	$fp = @fopen($config_file,'wb');
+	if ($fp === false) {
+		throw new Exception(sprintf(__('Cannot write %s file.'),$config_file));
+	}
+	fwrite($fp,$full_conf);
+	fclose($fp);
+	chmod($config_file, 0775);
+
+	if (isset($_POST['action']) && !empty($_POST['action'])){
+		if ($_POST['action'] == '3') {
+			$result = exec("touch ../inc/STOP");
+			$flash = T_("The automatical update is disabled ").$result;
+			header("Location: ./gestion-update.php");
 		}
-		catch(Exception $e){
-			$error = sprintf(T_('Error while updating : %s'), $e->getMessage());
+		elseif ($_POST['action'] == '1') {
+			if (get_cron_running())
+				$error = T_('The update can not start : the process is already started (You can force update by deleting the /inc/cron_running.txt file)');
+			else
+				$flash = T_('The automatic update is enabled');
+			$result = exec("rm ../inc/STOP");
+			header("Location: ./gestion-update.php");
+		}
+		else {
+			$update = true;
+			try{
+				$update_logs = update(true);
+				$flash = T_("Manual update ...");
+			}
+			catch(Exception $e){
+				$error = sprintf(T_('Error while updating : %s'), $e->getMessage());
+			}
 		}
 	}
+}
+function writeConfigValue($name, $val, &$str){
+	$val = str_replace("'","\'",$val);
+	$str = preg_replace('/(\''.$name.'\')(.*?)$/ms','$1,\''.$val.'\');',$str);
 }
 
 ?>
@@ -81,9 +104,18 @@ else
 if (file_exists(dirname(__FILE__).'/../inc/STOP')) echo '<div id="BP_disableupdate">'.T_('The update is disabled').'</div><br />';
 ?>
 <form method="POST">
-		<input type="radio" name="action" value="3" /> <?=T_('Stop the update algorithm');?><br />
-		<input type="radio" name="action" value="1" /> <?=T_('Start the update algorithm');?><br />
-		<input type="radio" name="action" value="2" /> <?=T_('Start a manual update');?><br /><br />
+	<input type="radio" name="action" value="3" /> <?=T_('Stop the update algorithm');?><br />
+	<input type="radio" name="action" value="1" /> <?=T_('Start the update algorithm');?><br />
+	<input type="radio" name="action" value="2" /> <?=T_('Start a manual update');?><br /><br />
+
+<?php
+$checked = "";
+if (BP_INDEX_UPDATE == '1' || $_POST['index_update'] == "on") {
+	$checked = "checked=true";
+}
+echo '<input type="checkbox" name="index_update" '.$checked.' /> '.T_('Enable update on loading of index page').'<br /><br />';
+?>
+
 
 <div class="button"><input type="submit" class="valide" value="<?=T_('Send');?>" /></div>
 </form>

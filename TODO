@@ -12,6 +12,7 @@ BUGS :
 * Milestone 0.4
 ===================================================
 
+0) Modifier la page gestion-mysql afin d'avoir un bouton pour générer le backup et d'avoir une gestion plus aisée : format de backup sous forme CSV et import sous forme CSV aussi !!
 1) Renommer le colonnes de la DB et refaire le schéma de la DB depuis le début ... quitte a ce que ça prenne du temps
 2) Faire une branch avec : changements DB :
 	* votes avec valeur et timestamp

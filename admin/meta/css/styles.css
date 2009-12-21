@@ -844,13 +844,43 @@ background-image:url(../icons/slash.png);
 background-repeat: no-repeat;
 font-weight: bold;
 }
+/*
+ * Dashboard
+ */
 #BP_stats_db {
 margin-left:5px;
 padding-bottom:8px;
 padding-left:25px;
 background-image:url(../icons/database.png);
 background-repeat: no-repeat;
-font-weight: bold;
+}
+#BP_nb_articles {
+margin-left:5px;
+padding-bottom:8px;
+padding-left:25px;
+background-image:url(../icons/news.png);
+background-repeat: no-repeat;
+}
+#BP_nb_votes {
+margin-left:5px;
+padding-bottom:8px;
+padding-left:25px;
+background-image:url(../icons/vote.png);
+background-repeat: no-repeat;
+}
+#BP_nb_members {
+margin-left:5px;
+padding-bottom:8px;
+padding-left:25px;
+background-image:url(../icons/user-silhouette.png);
+background-repeat: no-repeat;
+}
+#BP_nb_feeds {
+margin-left:5px;
+padding-bottom:8px;
+padding-left:25px;
+background-image:url(../icons/feed2.png);
+background-repeat: no-repeat;
 }
 
 select.userslist {
@@ -864,8 +894,4 @@ input.nbfilter {
 
 input.inputURL {
 	width:80%;
-}
-input#show_contact,input#show_votes
-{
-margin-right:5px;
 }

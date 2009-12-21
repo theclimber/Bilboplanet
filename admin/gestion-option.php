@@ -41,8 +41,6 @@ $flash='';
 $inscription='';
 # On verifie que le formulaire est bien saisie
 if(isset($_POST) && isset($_POST['submit'])) {
-	# Fonction de securite
-	securiteCheck();
 
 	# On recupere les infos
 	$title = stripslashes(trim($_POST['title']));

@@ -1232,7 +1232,7 @@ msgstr "Tableau de bord"
 
 #: admin/index.php:94
 msgid "Quick summary of the planet"
-msgstr "Apperçu rapide du planet"
+msgstr "Aperçu rapide du planet"
 
 #: admin/index.php:98
 msgid "Latest articles :"

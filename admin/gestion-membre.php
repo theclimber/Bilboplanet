@@ -186,7 +186,7 @@ include_once(dirname(__FILE__).'/sidebar.php');
 <input type="text" class="input" style="padding-left: 10px;" value="http://www.exemple.com" onfocus="if (this.value==='http://www.exemple.com') {this.value='';}" id="site" name="site" value="<?php if($flash['type']=='error' && $_POST['site']) echo $_POST['site'];?>" size="50" maxlength="80" />
 <br /><br /><br /> <!-- A CHANGER !!! -->
 <div class="button"><input type="reset" class="reset" name="reset" onClick="this.form.reset()" value="<?=T_('Reset');?>"></div>
-<div class="button"><input type="submit" name="submitAjout" class="add_user" value="<?=T_('Send');?>"></div>
+<div class="button"><input type="submit" name="submitAjout" class="add_user" value="<?=T_('Add');?>"></div>
 </form>
 </fieldset>
 

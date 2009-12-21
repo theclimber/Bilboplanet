@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-09 17:42+0100\n"
+"POT-Creation-Date: 2009-12-21 13:31+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -189,27 +189,27 @@ msgstr ""
 msgid "While waiting you can vist the website of the <a href=\"%s\">author</a>"
 msgstr ""
 
-#: head.php:76
+#: head.php:77
 msgid "Home"
 msgstr ""
 
-#: head.php:79
+#: head.php:80
 msgid "Top 10"
 msgstr ""
 
-#: head.php:83
+#: head.php:84
 msgid "Statistics"
 msgstr ""
 
-#: head.php:84
+#: head.php:85
 msgid "Registration"
 msgstr ""
 
-#: head.php:87 head.php:90
+#: head.php:88 head.php:91
 msgid "Archives"
 msgstr ""
 
-#: head.php:88
+#: head.php:89
 msgid "Contact"
 msgstr ""
 

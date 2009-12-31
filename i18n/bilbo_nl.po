@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Bilboplanet 0.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-21 22:26+0100\n"
-"PO-Revision-Date: 2009-12-21 22:30+0100\n"
+"POT-Creation-Date: 2009-12-31 11:21+0100\n"
+"PO-Revision-Date: 2009-12-31 11:24+0100\n"
 "Last-Translator: Grégoire de Hemptinne <g.dehemptinne@whatever-company.com>\n"
 "Language-Team: Dutch\n"
 "MIME-Version: 1.0\n"
@@ -225,26 +225,31 @@ msgid "Contact"
 msgstr "Contact"
 
 #: index.php:162
+#: index.php:179
 msgid "Filter the posts :"
 msgstr "Filter de berichten:"
 
 #: index.php:164
+#: index.php:181
 msgid "Posts of the day"
 msgstr "Berichten van de dag"
 
 #: index.php:167
+#: index.php:184
 msgid "Posts of the week"
 msgstr "Berichten van de week"
 
 #: index.php:170
+#: index.php:187
 msgid "Posts of the month"
 msgstr "Berichten van de maand"
 
 #: index.php:173
+#: index.php:190
 msgid "All posts"
 msgstr "Alle berichten"
 
-#: index.php:180
+#: index.php:200
 #, php-format
 msgid "You are searching for all the posts with <span class=\"search\">%s</span>"
 msgstr "U zoekt naar alle berichten met <span class=\"search\">%s</span>"
@@ -1121,6 +1126,18 @@ msgstr "Start een handmatige update"
 msgid "Enable update on loading of index page"
 msgstr "Activeer de update tijdens het laden van de index pagina"
 
+#: admin/gestion-update.php:128
+msgid "Setup manual crontab"
+msgstr "Maak uw eigen crontab"
+
+#: admin/gestion-update.php:129
+msgid "You can setup a manual crontab update by calling automatically every X time the following page :"
+msgstr "U kunt uw eigen crontab instellen door een oproep naar de volgende pagina elke X minuten te maken :"
+
+#: admin/gestion-update.php:131
+msgid "This will automatically launch the update and log it into the log files."
+msgstr "Het gaat automatisch de update inschakelen en de log informatie in the log bestanden zetten."
+
 #: admin/gestion-user.php:70
 msgid "Please insert a valid email address"
 msgstr "Ongeldig e-mailadres"
@@ -1388,10 +1405,6 @@ msgstr "SPL-module is niet beschikbaar."
 msgid "MySQL version is %s (4.1 or earlier needed)."
 msgstr "MySQL versie is %s (4.1 of eerder nodig)."
 
-#: admin/install/check.php:88
-msgid "MySQL InnoDB engine is not available."
-msgstr "MySQL InnoDB motor is niet beschikbaar."
-
 #: admin/install/check.php:96
 #, php-format
 msgid "PostgreSQL version is %s (8.0 or earlier needed)."
@@ -1609,6 +1622,8 @@ msgstr "Host van de database"
 msgid "Name of the database:"
 msgstr "Naam van de database:"
 
+#~ msgid "MySQL InnoDB engine is not available."
+#~ msgstr "MySQL InnoDB motor is niet beschikbaar."
 #~ msgid "Access denied"
 #~ msgstr "Toegang geweigerd"
 #~ msgid "retype your new password"

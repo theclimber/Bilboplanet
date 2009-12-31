@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-21 22:26+0100\n"
+"POT-Creation-Date: 2009-12-31 11:21+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -212,27 +212,27 @@ msgstr ""
 msgid "Contact"
 msgstr ""
 
-#: index.php:162
+#: index.php:162 index.php:179
 msgid "Filter the posts :"
 msgstr ""
 
-#: index.php:164
+#: index.php:164 index.php:181
 msgid "Posts of the day"
 msgstr ""
 
-#: index.php:167
+#: index.php:167 index.php:184
 msgid "Posts of the week"
 msgstr ""
 
-#: index.php:170
+#: index.php:170 index.php:187
 msgid "Posts of the month"
 msgstr ""
 
-#: index.php:173
+#: index.php:173 index.php:190
 msgid "All posts"
 msgstr ""
 
-#: index.php:180
+#: index.php:200
 #, php-format
 msgid "You are searching for all the posts with <span class=\"search\">%s</span>"
 msgstr ""
@@ -1058,6 +1058,18 @@ msgstr ""
 msgid "Enable update on loading of index page"
 msgstr ""
 
+#: admin/gestion-update.php:128
+msgid "Setup manual crontab"
+msgstr ""
+
+#: admin/gestion-update.php:129
+msgid "You can setup a manual crontab update by calling automatically every X time the following page :"
+msgstr ""
+
+#: admin/gestion-update.php:131
+msgid "This will automatically launch the update and log it into the log files."
+msgstr ""
+
 #: admin/gestion-user.php:70
 msgid "Please insert a valid email address"
 msgstr ""
@@ -1319,10 +1331,6 @@ msgstr ""
 #: admin/install/check.php:74
 #, php-format
 msgid "MySQL version is %s (4.1 or earlier needed)."
-msgstr ""
-
-#: admin/install/check.php:88
-msgid "MySQL InnoDB engine is not available."
 msgstr ""
 
 #: admin/install/check.php:96

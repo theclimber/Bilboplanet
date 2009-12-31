@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Bilboplanet 0.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-21 22:26+0100\n"
-"PO-Revision-Date: 2009-12-21 22:28+0100\n"
+"POT-Creation-Date: 2009-12-31 11:21+0100\n"
+"PO-Revision-Date: 2009-12-31 11:26+0100\n"
 "Last-Translator: Grégoire de Hemptinne <g.dehemptinne@whatever-company.com>\n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -225,26 +225,31 @@ msgid "Contact"
 msgstr "Kontakt"
 
 #: index.php:162
+#: index.php:179
 msgid "Filter the posts :"
 msgstr "Beiträge filtern :"
 
 #: index.php:164
+#: index.php:181
 msgid "Posts of the day"
 msgstr "Beiträge von Heute"
 
 #: index.php:167
+#: index.php:184
 msgid "Posts of the week"
 msgstr "Beiträge dieser Woche"
 
 #: index.php:170
+#: index.php:187
 msgid "Posts of the month"
 msgstr "Beiträge dieses Monats"
 
 #: index.php:173
+#: index.php:190
 msgid "All posts"
 msgstr "Alle Beiträge"
 
-#: index.php:180
+#: index.php:200
 #, php-format
 msgid "You are searching for all the posts with <span class=\"search\">%s</span>"
 msgstr "Du suchst nach allen Beiträgen die <span class=\"search\">%s</span> enthalten"
@@ -1125,6 +1130,18 @@ msgstr "Starte das manuelle Update"
 msgid "Enable update on loading of index page"
 msgstr "Aktivieren Änderung am Laden der Index-Seite"
 
+#: admin/gestion-update.php:128
+msgid "Setup manual crontab"
+msgstr "Setup-Handbuch crontab"
+
+#: admin/gestion-update.php:129
+msgid "You can setup a manual crontab update by calling automatically every X time the following page :"
+msgstr "Sie können eine manuelle crontab aktualisieren, indem Sie automatisch alle X Zeit der folgenden Seite einrichten:"
+
+#: admin/gestion-update.php:131
+msgid "This will automatically launch the update and log it into the log files."
+msgstr "Dadurch wird das Update automatisch starten und melden Sie es in die Log-Dateien."
+
 #: admin/gestion-user.php:70
 msgid "Please insert a valid email address"
 msgstr "Bitte trage eine gültige E-Mail Adresse ein"
@@ -1393,10 +1410,6 @@ msgstr "SPL Modul ist nicht verfügbar."
 msgid "MySQL version is %s (4.1 or earlier needed)."
 msgstr "MySQL Version %s (4.1 oder früher wird benötigt)."
 
-#: admin/install/check.php:88
-msgid "MySQL InnoDB engine is not available."
-msgstr "MySQL InnoDB ist nicht verfügbar."
-
 #: admin/install/check.php:96
 #, php-format
 msgid "PostgreSQL version is %s (8.0 or earlier needed)."
@@ -1614,6 +1627,8 @@ msgstr "Datenbank Host:"
 msgid "Name of the database:"
 msgstr "Datenbank Name:"
 
+#~ msgid "MySQL InnoDB engine is not available."
+#~ msgstr "MySQL InnoDB ist nicht verfügbar."
 #~ msgid "Access denied"
 #~ msgstr "Zugriff verweigert"
 #~ msgid "retype your new password"

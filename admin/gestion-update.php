@@ -31,7 +31,7 @@ include_once(dirname(__FILE__).'/../inc/cron_fct.php');
 
 $flash = '';
 $update = false;
-if(isset($_POST)) {
+if(isset($_POST) && !empty($_POST)) {
 	$config_file=dirname(__FILE__).'/../inc/config.php';
 	$full_conf = file_get_contents($config_file);
 	if ($_POST['index_update'] == "on") {
@@ -95,9 +95,9 @@ if (!empty($flash)) echo '<div class="flash notice">'.$flash.'</div>';
 elseif (!empty($error)) echo '<div class="flash error">'.$error.'</div>';
 ?>
 
-<fieldset><legend><?=T_('Automatic update');?></legend>
+<fieldset><legend><?php echo T_('Automatic update');?></legend>
 		<div class="message">
-			<p><?=T_('System configuration update.');?></p>
+			<p><?php echo T_('System configuration update.');?></p>
 		</div><br />
 		
 
@@ -109,9 +109,9 @@ else
 if (file_exists(dirname(__FILE__).'/../inc/STOP')) echo '<div id="BP_disableupdate">'.T_('The update is disabled').'</div><br />';
 ?>
 <form method="POST">
-	<input type="radio" name="action" value="3" /> <?=T_('Stop the update algorithm');?><br />
-	<input type="radio" name="action" value="1" /> <?=T_('Start the update algorithm');?><br />
-	<input type="radio" name="action" value="2" /> <?=T_('Start a manual update');?><br /><br />
+	<input type="radio" name="action" value="3" /> <?php echo T_('Stop the update algorithm');?><br />
+	<input type="radio" name="action" value="1" /> <?php echo T_('Start the update algorithm');?><br />
+	<input type="radio" name="action" value="2" /> <?php echo T_('Start a manual update');?><br /><br />
 
 <?php
 $checked = "";
@@ -122,10 +122,14 @@ echo '<input type="checkbox" name="index_update" '.$checked.' /> '.T_('Enable up
 ?>
 
 
-<div class="button"><input type="submit" class="valide" value="<?=T_('Send');?>" /></div>
+<div class="button"><input type="submit" class="valide" value="<?php echo T_('Send');?>" /></div>
 </form>
 </fieldset>
-
+<fieldset><legend><?=T_('Setup manual crontab');?></legend>
+<p><?php echo T_('You can setup a manual crontab update by calling automatically every X time the following page :'); ?><br/>
+<?php echo $planet_url."/inc/update_manual.php"; ?></p>
+<p><?php echo T_('This will automatically launch the update and log it into the log files.'); ?></p>
+</fieldset>
 <?php
 if($update) {
 	echo '<div class="update_logs">'.$update_logs.'</div>';

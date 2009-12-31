@@ -84,9 +84,9 @@ function dcSystemCheck(&$con,&$err)
 				}
 			}
 			
-			if (!$innodb) {
-				$err[] = T_('MySQL InnoDB engine is not available.');
-			}
+			#if (!$innodb) {
+			#	$err[] = T_('MySQL InnoDB engine is not available.');
+			#}
 		}
 	}
 	elseif ($con->driver() == 'pgsql')

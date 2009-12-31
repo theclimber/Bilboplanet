@@ -82,7 +82,7 @@ if ($can_install && !empty($_POST))
 	$p_desc = !empty($_POST['p_desc']) ? $_POST['p_desc'] : null;
 	$p_title = !empty($_POST['p_title']) ? $_POST['p_title'] : null;
 	$p_lang = !empty($_POST['p_lang']) ? $_POST['p_lang'] : null;
-	define('BP_PROT_PATH',dirname(__FILE__).'/../../.protected');
+	define('BP_PROT_PATH',dirname(__FILE__).'/../../.htpasswd');
 	
 	try
 	{
@@ -131,7 +131,7 @@ if ($can_install && !empty($_POST))
 
 
 		# Does .protected exist?
-		$protected = dirname(__FILE__).'/../../.protected';
+		$protected = BP_PROT_PATH;
 		if (is_file($protected)) {
 			throw new Exception(sprintf(T_('File %s already exists.'),$protected));
 		}
@@ -272,7 +272,7 @@ xml:lang="en" lang="en">
   <meta name="GOOGLEBOT" content="NOSNIPPET" />
   <link rel="icon" type="image/ico" href="../../favicon.png" />
   <link rel="stylesheet" type="text/css" href="install.css" media="all" />
-  <title><?=T_('Installation of the Bilboplanet');?></title>
+  <title><?php echo T_('Installation of the Bilboplanet');?></title>
   <script type="text/javascript" src="../js/jquery/jquery.js"></script>
   <script type="text/javascript">
   //<![CDATA[

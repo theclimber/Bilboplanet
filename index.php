@@ -37,6 +37,9 @@ $num_start = 0;
 $num_membre = '';
 global $recherche;
 $recherche = '';
+$day = mktime(0, 0, 0, date("m",time()), date("d",time()), date("Y",time()));
+$week = $day - 3600*24*7;
+$month = $day - 3600*24*31;
 
 # Verification du contenu du get
 if (isset($_GET) && isset($_GET['page']) && is_numeric(trim($_GET['page']))) {
@@ -68,14 +71,12 @@ if (isset($_GET) && isset($_GET['populaires']) && !empty($_GET['populaires'])) {
 		AND article_score > '0'";
 	$fin_sql = " ORDER BY article_score DESC LIMIT 0,$nb_article";
 	if (isset($_GET) && !(isset($_GET['tri']) && !empty($_GET['tri']))) {
-		$day = mktime(0, 0, 0, date("d",time()),  date("m",time()), date("Y",time()));
-		$week = $day - 3600*24*7;
-		$month = $day - 3600*24*31;
 		# On fonction du choix
 		switch($populaires) {
 			case "day"    : $debut_sql = $debut_sql." AND article_pub > ".$day; break;
 			case "week" : $debut_sql = $debut_sql." AND article_pub > ".$week; break;
 			case "month"    : $debut_sql = $debut_sql." AND article_pub > ".$month; break;
+			case "all"    : $debut_sql = $debut_sql; break;
 			default        : $debut_sql = $debut_sql." AND article_pub > ".$week; $tri="week"; break;
 		}
 	}
@@ -109,13 +110,9 @@ if(isset($_GET) && isset($_GET['num_membre']) && is_numeric(trim($_GET['num_memb
 }
 
 # On recupere la valeur du filtre
-if (isset($_GET) && isset($_GET['tri']) && !empty($_GET['tri'])) {
+if (isset($_GET) && isset($_GET['tri']) && !empty($_GET['tri']) && !isset($_GET['populaires'])) {
 	# On recupere la valeur du get
 	$tri = trim($_GET['tri']);
-	# Calcul des dates au format timestamp
-	$day = mktime(0, 0, 0, date("m",time()), date("d",time()), date("Y",time()));
-	$week = $day - 3600*24*7;
-	$month = $day - 3600*24*31;
 	# On fonction du choix
 	switch($tri) {
 		case "day"    : $debut_sql = $debut_sql." AND article_pub > ".$day; break;
@@ -159,19 +156,42 @@ connectBD();
 #Affichage de la barre de tri
 ?>
 <div class="tri">
-	<b><?=T_('Filter the posts :');?>&nbsp;&nbsp;&nbsp;&nbsp;</b>
-	<span <?php if(isset($tri) && $tri=="day") echo 'id="triSelected"'; ?>>
-		<a href="index.php?<?php echo $params."tri=day"; ?>"><?=T_('Posts of the day');?></a>
+<?php 
+if (isset($populaires)) {
+?>
+	<b><?php echo T_('Filter the posts :');?>&nbsp;&nbsp;&nbsp;&nbsp;</b>
+	<span <?php if(isset($populaires) && $populaires=="day") echo 'id="triSelected"'; ?>>
+		<a href="index.php?populaires=day"><?php echo T_('Posts of the day');?></a>
 	</span>&nbsp;&nbsp;-&nbsp;&nbsp;  
-	<span <?php if(isset($tri) && $tri=="week") echo 'id="triSelected"'; ?>>
-		<a href="index.php?<?php echo $params."tri=week"; ?>"><?=T_('Posts of the week');?></a>
+	<span <?php if(isset($populaires) && $populaires=="week") echo 'id="triSelected"'; ?>>
+		<a href="index.php?populaires=week"><?php echo T_('Posts of the week');?></a>
 	</span>&nbsp;&nbsp;-&nbsp;&nbsp;
-	<span <?php if(isset($tri) && $tri=="month") echo 'id="triSelected"'; ?>>
-		<a href="index.php?<?php echo $params."tri=month"; ?>"><?=T_('Posts of the month');?></a>
+	<span <?php if(isset($populaires) && $populaires=="month") echo 'id="triSelected"'; ?>>
+		<a href="index.php?populaires=month"><?php echo T_('Posts of the month');?></a>
 	</span>&nbsp;&nbsp;-&nbsp;&nbsp;
 	<span>
-		<a href="index.php?<?php echo $params; ?>"><?=T_('All posts');?></a>
+		<a href="index.php?populaires=all"><?php echo T_('All posts');?></a>
 	</span>
+<?php
+}
+else {
+?>
+	<b><?php echo T_('Filter the posts :');?>&nbsp;&nbsp;&nbsp;&nbsp;</b>
+	<span <?php if(isset($tri) && $tri=="day") echo 'id="triSelected"'; ?>>
+		<a href="index.php?<?php echo $params."tri=day"; ?>"><?php echo T_('Posts of the day');?></a>
+	</span>&nbsp;&nbsp;-&nbsp;&nbsp;  
+	<span <?php if(isset($tri) && $tri=="week") echo 'id="triSelected"'; ?>>
+		<a href="index.php?<?php echo $params."tri=week"; ?>"><?php echo T_('Posts of the week');?></a>
+	</span>&nbsp;&nbsp;-&nbsp;&nbsp;
+	<span <?php if(isset($tri) && $tri=="month") echo 'id="triSelected"'; ?>>
+		<a href="index.php?<?php echo $params."tri=month"; ?>"><?php echo T_('Posts of the month');?></a>
+	</span>&nbsp;&nbsp;-&nbsp;&nbsp;
+	<span>
+		<a href="index.php?<?php echo $params; ?>"><?php echo T_('All posts');?></a>
+	</span>
+<?php
+}
+?>
 </div>
 <?php
 if (isset($_GET) && isset($_GET['search']) && !empty($_GET['search'])){

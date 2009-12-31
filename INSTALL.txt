@@ -13,7 +13,7 @@ Accédez à votre serveur à cette adresse à l'aide d'un navigateur et suivez l
 
 NOTE: Veillez à ce que les dossiers ci-dessous soient accessibles en écriture.
 
-    * /.protected
+    * /.htpasswd
     * /inc/config.php
     * /admin/.htaccess
 
@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `votes` (
 Configurez votre fichier /inc/config.php à l'aide du fichier /inc/config.php.default
 Créez un fichier .htaccess pour limiter l'accès à la partie d'administration du site
       ex: admin/.htaccess
-      AuthUserFile ../.protected
+      AuthUserFile ../.htpasswd
       AuthGroupFile /dev/null
       AuthName "Restricted Area..."
       AuthType Basic
@@ -75,16 +75,19 @@ Créez un fichier .htaccess pour limiter l'accès à la partie d'administration 
       require valid-user
       </Limit>
 
-Puis créer un fichier .protected à la racine du site
-      ex: .protected
-      user:password
+Puis créer un fichier .htpasswd à la racine du site
+      ex: .htpasswd
+      user:md5(password)
+
+Attention, dans un fichier htpasswd il faut que le mot de passe soit hashé en md5. Pour le faire vous pouvez utiliser sous linux la commande htpasswd qui vous permet de le génerer, ou alors vous pouvez aller sur des sites qui vous génèrent le hash automatiquement. Par exemple ici :
+http://www.htaccesstools.com/htpasswd-generator/
 
 
 MISE A JOUR:
 ============
 Pour la mise à jour à partir d'une ancienne version,
 Gardez une copie des fichiers :
-.protected
+.htpasswd
 .htaccess
 admin/.htaccess
 inc/config.php

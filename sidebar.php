@@ -37,16 +37,16 @@ if(!empty($message_information)) {
 }
 ?>
 
-	<h2 id="abonnements"><?=T_('Subscribe');?></h2>
+	<h2 id="abonnements"><?php echo T_('Subscribe');?></h2>
 		<ul>
-			<li><img src="themes/<?php echo $planet_theme; ?>/images/ico-feed.gif" alt="feed" />&nbsp;<a href="feed.php?type=rss" title="<?=T_('Subscribe to RSS feed');?>" rel="nofollow"><?=T_('Feed with all the posts');?></a></li>
+			<li><img src="themes/<?php echo $planet_theme; ?>/images/ico-feed.gif" alt="feed" />&nbsp;<a href="feed.php?type=rss" title="<?php echo T_('Subscribe to RSS feed');?>" rel="nofollow"><?=T_('Feed with all the posts');?></a></li>
 <?php
 if ($activate_votes)
 	echo ' <li><img src="themes/'.$planet_theme.'/images/ico-feed.gif" alt="feed" />&nbsp;<a href="feed.php?type=rss&popular=true" title="'.T_('Subscribe to all the popular posts RSS feed').'" rel="nofollow">'.T_('Popular posts feed').'</a></li>';
 ?>
 		</ul>
 		
-	<h2 id="membres"><?=T_('Members');?></h2>
+	<h2 id="membres"><?php echo T_('Members');?></h2>
 		<ul>
 			<?php
 
@@ -65,10 +65,10 @@ if ($activate_votes)
 			?>
 		</ul>
 		
-	<h2 id="participer"><?=T_('Contribute');?></h2>
+	<h2 id="participer"><?php echo T_('Contribute');?></h2>
 		<ul>
-			<li><img src="themes/<?php echo $planet_theme; ?>/images/ico-meta.gif" alt="meta" />&nbsp;<a href="inscription.php" title="<?=T_('Subscribe your blog to the planet');?>" rel="nofollow"><?=T_('Add your blog');?></a></li>
-			<li><img src="themes/<?php echo $planet_theme; ?>/images/ico-meta.gif" alt="meta" />&nbsp;<a href="<?php echo $planet_url; ?>/admin" title="<?=T_('Admin interface');?>" rel="nofollow"><?=T_('Administration');?></a></li>
+			<li><img src="themes/<?php echo $planet_theme; ?>/images/ico-meta.gif" alt="meta" />&nbsp;<a href="inscription.php" title="<?php echo T_('Subscribe your blog to the planet');?>" rel="nofollow"><?=T_('Add your blog');?></a></li>
+			<li><img src="themes/<?php echo $planet_theme; ?>/images/ico-meta.gif" alt="meta" />&nbsp;<a href="<?php echo $planet_url; ?>/admin" title="<?php echo T_('Admin interface');?>" rel="nofollow"><?=T_('Administration');?></a></li>
 		</ul>
 
 </div>

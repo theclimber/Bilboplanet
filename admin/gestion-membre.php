@@ -170,30 +170,30 @@ include_once(dirname(__FILE__).'/sidebar.php');
 <?php if (!empty($flash))echo '<div class="flash '.$flash['type'].'">'.$flash['msg'].'</div>'; ?>
 
 	
-<fieldset><legend><?=T_('Add an user');?></legend>
+<fieldset><legend><?php echo T_('Add an user');?></legend>
 		<div class="message">
-			<p><?=T_('To add a new member, fill out the form below.');?></p>
+			<p><?php echo T_('To add a new member, fill out the form below.');?></p>
 		</div><br />
 
 <form method="post">
-<label for="name"><strong><?php error_bool($error, "nom"); ?><?=T_('Name');?>:</strong></label>
+<label for="name"><strong><?php error_bool($error, "nom"); ?><?php echo T_('Name');?>:</strong></label>
 <input type="text" class="input" style="padding-left: 10px;" id="username" name="nom" value="<?php if($flash['type']=='error' && $_POST['nom']) echo $_POST['nom'];?>" size="50" maxlength="50" />
 <br /><br /> <!-- A CHANGER !!! -->
-<label for="email"><strong><?php error_bool($error, "email"); ?><?=T_('Email');?>:</strong></label>
+<label for="email"><strong><?php error_bool($error, "email"); ?><?php echo T_('Email');?>:</strong></label>
 <input type="text" class="input" style="padding-left: 10px;" id="email" name="email" value="<?php if($flash['type']=='error' && $_POST['email']) echo $_POST['email'];?>" size="50" maxlength="80" />
 <br /><br /> <!-- A CHANGER !!! -->
-<label for="site"><strong><?php error_bool($error, "site"); ?><?=T_('Website (without the ending /)');?>:</strong></label>
+<label for="site"><strong><?php error_bool($error, "site"); ?><?php echo T_('Website (without the ending /)');?>:</strong></label>
 <input type="text" class="input" style="padding-left: 10px;" value="http://www.exemple.com" onfocus="if (this.value==='http://www.exemple.com') {this.value='';}" id="site" name="site" value="<?php if($flash['type']=='error' && $_POST['site']) echo $_POST['site'];?>" size="50" maxlength="80" />
 <br /><br /><br /> <!-- A CHANGER !!! -->
-<div class="button"><input type="reset" class="reset" name="reset" onClick="this.form.reset()" value="<?=T_('Reset');?>"></div>
-<div class="button"><input type="submit" name="submitAjout" class="add_user" value="<?=T_('Add');?>"></div>
+<div class="button"><input type="reset" class="reset" name="reset" onClick="this.form.reset()" value="<?php echo T_('Reset');?>"></div>
+<div class="button"><input type="submit" name="submitAjout" class="add_user" value="<?php echo T_('Add');?>"></div>
 </form>
 </fieldset>
 
 
-<fieldset><legend><?=T_('List of the users');?></legend>
+<fieldset><legend><?php echo T_('List of the users');?></legend>
 		<div class="message">
-			<p><?=T_('List of members of the Planet');?></p>
+			<p><?php echo T_('List of members of the Planet');?></p>
 		</div>
 <?php
 
@@ -231,11 +231,11 @@ include(dirname(__FILE__).'/pagination.php');
 <table id="tbl1" class="table-membre">
 		<thead>
 			<tr>
-				<th class="tc1 tcl" scope="col"><?=T_('Name');?></th>
-				<th class="tc2" scope="col"><?=T_('Website');?></th>
-				<th class="tc3" scope="col"><?=T_('Email');?></th>
-				<th class="tc4" scope="col" ><?=T_('Status');?></th>
-				<th class="tc5 tcr" scope="col"><?=T_('Action');?></th>
+				<th class="tc1 tcl" scope="col"><?php echo T_('Name');?></th>
+				<th class="tc2" scope="col"><?php echo T_('Website');?></th>
+				<th class="tc3" scope="col"><?php echo T_('Email');?></th>
+				<th class="tc4" scope="col" ><?php echo T_('Status');?></th>
+				<th class="tc5 tcr" scope="col"><?php echo T_('Action');?></th>
 			</tr>
 		</thead>
 
@@ -280,7 +280,7 @@ while($liste = mysql_fetch_row($rqt)) {
 $params = "page=$num_page&";
 ?>
 <div class="nbitems">
-<?=T_('Show items by : ');?> <a href="?<?php echo $params; ?>nb_items=10">10</a>, <a href="?<?php echo $params; ?>nb_items=20">20</a>, <a href="?<?php echo $params; ?>nb_items=50">50</a>
+<?php echo T_('Show items by : ');?> <a href="?<?php echo $params; ?>nb_items=10">10</a>, <a href="?<?php echo $params; ?>nb_items=20">20</a>, <a href="?<?php echo $params; ?>nb_items=50">50</a>
 </div>
 
 <?php

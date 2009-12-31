@@ -74,15 +74,15 @@ echo "<a href=\"$planet_url\">$planet_desc</a>";
 ?></div>
 	</div>
 		<ul id="menu">
-		<li class="firstLi"><a href="index.php" class="a_header"><?=T_('Home');?></a></li>
+		<li class="firstLi"><a href="index.php" class="a_header"><?php echo T_('Home');?></a></li>
 			<?php
 			if ($activate_votes) {
-				echo '<li><a href="index.php?populaires=semaine" class="a_header">'.T_('Top 10').'</a>';
+				echo '<li><a href="index.php?populaires=week" class="a_header">'.T_('Top 10').'</a>';
 			}
 			?>
 			
-		<li><a href="stats.php" class="a_header"><?=T_('Statistics');?></a>
-		<li><a href="inscription.php" class="a_header"><?=T_('Registration');?></a>
+		<li><a href="stats.php" class="a_header"><?php echo T_('Statistics');?></a>
+		<li><a href="inscription.php" class="a_header"><?php echo T_('Registration');?></a>
 			<?php
 			if ($show_contact){
 				echo '<li><a href="archives.php" class="a_header">'.T_('Archives').'</a>';

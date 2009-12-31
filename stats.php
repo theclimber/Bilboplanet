@@ -46,7 +46,7 @@ $n_votes = getNbVotes();
 <div id="centre_centre">
 <div id="template">
 
-<h2><?=T_('Main statistics');?></h2>
+<h2><?php echo T_('Main statistics');?></h2>
 <ul>
 <li><?php echo T_('Number of members : ').getNbMembres(); ?></li>
 <li><?php echo T_('Number of feeds : ').getNbFlux(); ?></li>

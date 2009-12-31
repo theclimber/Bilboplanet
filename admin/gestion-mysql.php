@@ -63,7 +63,7 @@ include_once(dirname(__FILE__).'/sidebar.php');
 <?php if (!empty($flash))echo '<div class="flash '.$flash['type'].'">'.$flash['msg'].'</div>'; ?>
 
 
-<fieldset><legend><?=T_('Export database');?></legend>
+<fieldset><legend><?php echo T_('Export database');?></legend>
 
 
 	
@@ -143,16 +143,16 @@ echo "</div>";
 <hr />
 <br />
 <div class="message">
-<p><?=T_('Other backup of the database in the directory /admin/mysql/backup.');?>
-<br /><b><font color=red><?=T_('TAKE CARE !');?></font></b> <?=T_('If you apply the content of one of this file, this action can not be cancelled');?></p>
+<p><?php echo T_('Other backup of the database in the directory /admin/mysql/backup.');?>
+<br /><b><font color=red><?php echo T_('TAKE CARE !');?></font></b> <?=T_('If you apply the content of one of this file, this action can not be cancelled');?></p>
 </div>
 <br />
 <center>
 <table class="table-mysql table-mysql-600px">
 	<thead>
 		<tr>
-			<th class="tc3 tcl" scope="col"><?=T_('Name');?></th>
-			<th class='tc4 tcr' scope='col'><?=T_('Action');?></th>
+			<th class="tc3 tcl" scope="col"><?php echo T_('Name');?></th>
+			<th class='tc4 tcr' scope='col'><?php echo T_('Action');?></th>
 		</tr>
 	</thead>
 <?php
@@ -177,6 +177,6 @@ closedir($dir_handle);
 </table></center>
 <br />
 <p><i>
-<?=T_('NOTE : to import a database file, the file needs to have the *.sql.gz extension !');?>
+<?php echo T_('NOTE : to import a database file, the file needs to have the *.sql.gz extension !');?>
 </i></p>
 <?php include(dirname(__FILE__).'/footer.php');?>

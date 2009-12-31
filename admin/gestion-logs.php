@@ -55,16 +55,16 @@ if(isset($_POST) && isset($_POST['nom']) && isset($_POST['path']) && isset($_POS
 <div id="BP_page" class="page">
 	<div class="inpage">
 	
-<fieldset><legend><?=T_('All the log files');?></legend>
+<fieldset><legend><?php echo T_('All the log files');?></legend>
 		<div class="message">
-			<p><?=T_('Management planet log files (Advanced users).');?></p>
+			<p><?php echo T_('Management planet log files (Advanced users).');?></p>
 		</div><br/>
 		
 <center><table class="table-log">
 <thead>
 <tr>
-<th class="tc1 tcl" scope="col"><?=T_('Name');?></th>
-<th class="tc2 tcr" scope="col" /><?=T_('Action');?></th>
+<th class="tc1 tcl" scope="col"><?php echo T_('Name');?></th>
+<th class="tc2 tcr" scope="col" /><?php echo T_('Action');?></th>
 
 <?php
 $log_path = dirname(__FILE__)."/../logs";

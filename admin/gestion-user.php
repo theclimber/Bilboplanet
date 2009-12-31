@@ -100,7 +100,7 @@ function writeConfigValue($name, $val, &$str){
 }
 
 function changePassword($u_login, $u_pwd) {
-	define('BP_PROT_PATH',dirname(__FILE__).'/../.protected');
+	define('BP_PROT_PATH',dirname(__FILE__).'/../.htpasswd');
 	# Can we write .protected
 	if (!is_writable(dirname(BP_PROT_PATH))) {
 		throw new Exception(sprintf(T_('Unable to write %s file.'),BP_PROT_PATH));
@@ -131,51 +131,51 @@ include_once(dirname(__FILE__).'/sidebar.php');
 	
 <?php if (!empty($flash)) echo '<div class="flash '.$flash['type'].'">'.$flash['msg'].'</div>'; ?>
 
-<fieldset><legend><?=T_('Users Options');?></legend>
+<fieldset><legend><?php echo T_('Users Options');?></legend>
 		<div class="message">
-			<p><?=T_('Configuring user settings.');?></p>
+			<p><?php echo T_('Configuring user settings.');?></p>
 		</div><br />
 
 <form method="POST">
 
-<?=T_('Contact Name');?><br />
+<?php echo T_('Contact Name');?><br />
 <input type="text" name="planet_author" size="60" class="input" value="<?php echo $planet_author; ?>" /><br /><br />
 
-<?=T_('Reference contact email');?><br />
+<?php echo T_('Reference contact email');?><br />
 <input type="text" name="email" size="60" class="input" value="<?php echo $email; ?>" /><br /><br />
 
-<?=T_('Author Website');?><br />
+<?php echo T_('Author Website');?><br />
 <input type="text" name="planet_author_site" class="input" size="60" value="<?php echo $planet_author_site; ?>" /><br /><br />
 
-<?=T_('Jabber / GoogleTalk');?><br />
+<?php echo T_('Jabber / GoogleTalk');?><br />
 <input type="text" name="planet_author_jabber" class="input" size="60" value="<?php echo $planet_author_jabber; ?>" /><br /><br />
 
-<?=T_('Other Instant Messaging');?><br />
+<?php echo T_('Other Instant Messaging');?><br />
 <input type="text" name="planet_author_im" class="input" size="60" value="<?php echo $planet_author_im; ?>" /><br /><br />
 
-<?=T_('About Me');?><br />
+<?php echo T_('About Me');?><br />
 <textarea type="text" name="planet_author_about" class="cadre_about" rows="10" value="<?php echo $planet_author_about; ?>" /><?php echo $planet_author_about; ?></textarea><br /><br />
 
 
-<div class="button"><input type='submit' class="valide" name="submit" value="<?=T_('Apply');?>"/></div>
+<div class="button"><input type='submit' class="valide" name="submit" value="<?php echo T_('Apply');?>"/></div>
 </form>
 </fieldset>
 
 <div class="clear">&nbsp;<br/></div>
 
-<fieldset><legend><?=T_('User login and password');?></legend>
+<fieldset><legend><?php echo T_('User login and password');?></legend>
 		<div class="message">
-			<p><?=T_('Change the login and the password of the admin interface.');?></p>
+			<p><?php echo T_('Change the login and the password of the admin interface.');?></p>
 		</div><br />
 <form method="POST">
 <div>
-<label for="user_login"><?=T_('Login');?></label>
+<label for="user_login"><?php echo T_('Login');?></label>
 <input type="text" name="user_login" class="input" size="30" value="" /><br/><br/>
-<label for="password"><?=T_('New password');?></label>
+<label for="password"><?php echo T_('New password');?></label>
 <input type="text" name="password" class="input" size="30" value="" /><br/><br/>
-<label for="password_confirm"><?=T_('Confirm password');?></label>
+<label for="password_confirm"><?php echo T_('Confirm password');?></label>
 <input type="text" name="password_confirm" class="input" size="30" value="" /><br/><br/>
-<div class="button"><input type='submit' class="valide" name="submitPwd" value="<?=T_('Apply');?>"/></div>
+<div class="button"><input type='submit' class="valide" name="submitPwd" value="<?php echo T_('Apply');?>"/></div>
 </form>
 
 </fieldset>

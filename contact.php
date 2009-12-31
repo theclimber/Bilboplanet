@@ -117,9 +117,9 @@ if (!empty($flash)) {
 
 <div id="template">
 	<div class="post_small">
-	<h2><?=T_("Contact us");?></h2>
+	<h2><?php echo T_("Contact us");?></h2>
 
-	<p><?=T_("You can contact the administration team with the form below:");?></p>
+	<p><?php echo T_("You can contact the administration team with the form below:");?></p>
 	<br/>
 	<form method="post">
 	<?php error_field($error,'nom',T_('Name / Nickname :')); ?><br>
@@ -140,8 +140,8 @@ $publickey = "6LdEeQgAAAAAACLccbiO8TNaptSmepfMFEDL3hj2";
 echo recaptcha_get_html($publickey);
 ?>
 	<br><br>
-	<input type="reset" value="<?=T_('Reset');?>" onclick="this.form.reset()">&nbsp;&nbsp;
-<input type="submit" value="<?=T_('Send');?>" name="submit">
+	<input type="reset" value="<?php echo T_('Reset');?>" onclick="this.form.reset()">&nbsp;&nbsp;
+<input type="submit" value="<?php echo T_('Send');?>" name="submit">
 	</form>
 	<br/>
 	</div>

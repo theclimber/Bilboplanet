@@ -113,15 +113,15 @@ include_once(dirname(__FILE__).'/sidebar.php');
 
 <?php if (!empty($flash)) echo '<div class="flash '.$flash['type'].'">'.$flash['msg'].'</div>';?>
 
-<fieldset><legend><?=T_('Filtering of the posts');?></legend>
+<fieldset><legend><?php echo T_('Filtering of the posts');?></legend>
 		<div class="message">
-			<p><?=T_('Filter articles');?></p>
+			<p><?php echo T_('Filter articles');?></p>
 		</div><br />
 
 <form action="" method="POST">
 <table class="table-news-filter">
 <tr>
-<th class="tc1 tcl"><?=T_('Posts of the member :');?></th>
+<th class="tc1 tcl"><?php echo T_('Posts of the member :');?></th>
 <th class="tc2 tcr"><select name="num_membre" class="userslist">
 
 <?php
@@ -148,20 +148,20 @@ if($num_membre == "0") {
 </select></th>
 </tr>
 <tr>
-<td class="tc1 tcl"><?=T_('Number of posts');?></td>
+<td class="tc1 tcl"><?php echo T_('Number of posts');?></td>
 <td class="tc2 tcr"><input type="text" class="nbfilter input" name="nb_items"  value="<?php echo $nb_items; ?>" /></center></td>
 </tr>
 </table><br />
-<div class="button"><input type="reset" value="<?=T_('Reset');?>" class="reset" onClick="this.form.reset()"></div>&nbsp;&nbsp;
-<div class="button"><input type="submit" class="valide" value="<?=T_('Send');?>"></div></p>
+<div class="button"><input type="reset" value="<?php echo T_('Reset');?>" class="reset" onClick="this.form.reset()"></div>&nbsp;&nbsp;
+<div class="button"><input type="submit" class="valide" value="<?php echo T_('Send');?>"></div></p>
 
 <br/>
 </form>
 </fieldset>
 
-<fieldset><legend><?=T_('List of the posts')?></legend>
+<fieldset><legend><?php echo T_('List of the posts')?></legend>
 		<div class="message">
-			<p><?=T_('NOTE: If you delete a post which is too recent, it will be refetched next time the update happen !!');?></p>
+			<p><?php echo T_('NOTE: If you delete a post which is too recent, it will be refetched next time the update happen !!');?></p>
 		</div><br />
 
 <?php
@@ -175,12 +175,12 @@ include(dirname(__FILE__).'/pagination.php');
 <table id="tbl1" class="table-news">
 		<thead>
 			<tr>
-				<th class="tc1 tcr" scope="col"><?=T_('Name');?></th>
-				<th class="tc2" scope="col"><?=T_('Date');?></th>
-				<th class="tc3" scope="col"><?=T_('Title');?></th>
-				<th class="tc4" scope="col" ><?=T_('Status');?></th>
-				<th class="tc5" scope="col"><?=T_('Nb votes');?></th>
-				<th class="tc5 tcr" scope="col"><?=T_('Action');?></th>
+				<th class="tc1 tcr" scope="col"><?php echo T_('Name');?></th>
+				<th class="tc2" scope="col"><?php echo T_('Date');?></th>
+				<th class="tc3" scope="col"><?php echo T_('Title');?></th>
+				<th class="tc4" scope="col" ><?php echo T_('Status');?></th>
+				<th class="tc5" scope="col"><?php echo T_('Nb votes');?></th>
+				<th class="tc5 tcr" scope="col"><?php echo T_('Action');?></th>
 			</tr>
 		</thead>
 
@@ -254,7 +254,7 @@ while($liste = mysql_fetch_row($rqt)) {
 $params = "page=$num_page&";
 ?>
 <div class="nbitems">
-<?=T_('Show items by : ');?> <a href="?<?php echo $params; ?>nb_items=10">10</a>, <a href="?<?php echo $params; ?>nb_items=20">20</a>, <a href="?<?php echo $params; ?>nb_items=50">50</a>
+<?php echo T_('Show items by : ');?> <a href="?<?php echo $params; ?>nb_items=10">10</a>, <a href="?<?php echo $params; ?>nb_items=20">20</a>, <a href="?<?php echo $params; ?>nb_items=50">50</a>
 </div>
 <?php
 closeBD();

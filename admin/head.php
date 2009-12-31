@@ -34,7 +34,7 @@ require_once(dirname(__FILE__).'/../inc/fonctions.php');
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="ROBOTS" content="noindex, nofollow, noarchive" />
-	<title><?=T_('Administration');?> - <?php echo $planet_title ?></title>
+	<title><?php echo T_('Administration');?> - <?php echo $planet_title ?></title>
 	<link rel="shortcut icon" type="image/png" href="./meta/icons/fire.png" />
 	<link rel="stylesheet" type="text/css" href="meta/css/styles.css" media="all" />
 	<script type="text/javascript" src="meta/js/mootools-1.2.1-core.js"></script>
@@ -52,7 +52,7 @@ require_once(dirname(__FILE__).'/../inc/fonctions.php');
 		$('BP_About').addEvent('click', function(event){
 			event.stop();
 			var message = '<p>'+
-				'<h3><?=T_('Bilboplanet 0.3 was developed by');?></h3>'+
+				'<h3><?php echo T_('Bilboplanet 0.3 was developed by');?></h3>'+
 				'<ul>'+
 				'<li>Gregoire de Hemptinne (<a href="http://www.theclimber.be" target="_blank">http://www.theclimber.be</a>)</li>'+
 				'<li>Thomas Bourcey (<a href="http://www.sckyzo.com" target="_blank">http://www.sckyzo.com</a>)</li>'+
@@ -60,8 +60,8 @@ require_once(dirname(__FILE__).'/../inc/fonctions.php');
 				'</ul>'+
 				'</p>'+
 				'<br /><hr><br/>'+
-				'<span><?=T_('BilboPlanet.com - Open Source Feed Agregator - 2009');?></span>';
-			$alert(message, '<?=T_('About');?>');
+				'<span><?php echo T_('BilboPlanet.com - Open Source Feed Agregator - 2009');?></span>';
+			$alert(message, '<?php echo T_('About');?>');
 		});
 	});
 	</script>
@@ -69,10 +69,10 @@ require_once(dirname(__FILE__).'/../inc/fonctions.php');
 <body class="admin">
 <div id="BP_head" class="toolbar bgbox bdbox"><div class="grad bdinbox">
 	<p class="site_info">
-	<span class="ctitle"><a class="tips" title="<?php echo $planet_title; ?>" rel="<?=T_('Back on the Bilboplanet');?>" href="../" target="_blank"><?=T_('Back on the Bilboplanet');?></a></span>
+	<span class="ctitle"><a class="tips" title="<?php echo $planet_title; ?>" rel="<?php echo T_('Back on the Bilboplanet');?>" href="../" target="_blank"><?=T_('Back on the Bilboplanet');?></a></span>
 	</p>
 	<ul id="BP_userbar">
-		<li><a id="BP_Logout" href="#" class="button minbutton br3px"><?=T_('Logout');?></a></li>
+		<li><a id="BP_Logout" href="#" class="button minbutton br3px"><?php echo T_('Logout');?></a></li>
 		<li><a id="BP_About" class="button minbutton br3px">?</a></li>
 	</ul>
 	<hr class="clear" />

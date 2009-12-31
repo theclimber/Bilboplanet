@@ -89,18 +89,18 @@ function showArticleSummary(){
 <div id="BP_page" class="page">
 	<div class="inpage">
 	
-	<fieldset><legend><?=T_('Dashboard');?></legend>
+	<fieldset><legend><?php echo T_('Dashboard');?></legend>
 		<div class="message">
-			<p><?=T_('Quick summary of the planet');?></p>
+			<p><?php echo T_('Quick summary of the planet');?></p>
 		</div>
 		
 <div id="dashboard">
-	<div class="box-dashboard"><div class="top-box-dashboard"><?=T_('Latest articles :');?></div>
+	<div class="box-dashboard"><div class="top-box-dashboard"><?php echo T_('Latest articles :');?></div>
 <?php
 echo showArticleSummary();
 ?>
 	</div>
-	<div class="box-dashboard"><div class="top-box-dashboard"><?=T_('Statistics :');?></div>
+	<div class="box-dashboard"><div class="top-box-dashboard"><?php echo T_('Statistics :');?></div>
 		<ul>
 
 <?php
@@ -114,11 +114,11 @@ if (BP_INDEX_UPDATE == '1')
 	echo '<li><div id="BP_index_update">'.T_('The update on loading of index page enabled').'</div></li>';
 ?>
 
-			<li><div id="BP_stats_db"><?=T_('Current size of the database :'); echo ' <strong>'.formatfilesize(get_database_size()).'</strong>';?></div></li>
-			<li><div id="BP_nb_articles"><?=T_('Number of articles in the DB :'); echo ' <strong>'.$nb_articles[0].'</strong>';?></div></li>
-			<li><div id="BP_nb_votes"><?=T_('Number of votes in the DB :'); echo ' <strong>'.$nb_votes[0].'</strong>';?></div></li>
-			<li><div id="BP_nb_members"><?=T_('Number of members in the DB :'); echo ' <strong>'.$nb_members[0].'</strong>';?></div></li>
-			<li><div id="BP_nb_feeds"><?=T_('Number of feeds in the DB :'); echo ' <strong>'.$nb_feeds[0].'</strong>';?></div></li>
+			<li><div id="BP_stats_db"><?php echo T_('Current size of the database :'); echo ' <strong>'.formatfilesize(get_database_size()).'</strong>';?></div></li>
+			<li><div id="BP_nb_articles"><?php echo T_('Number of articles in the DB :'); echo ' <strong>'.$nb_articles[0].'</strong>';?></div></li>
+			<li><div id="BP_nb_votes"><?php echo T_('Number of votes in the DB :'); echo ' <strong>'.$nb_votes[0].'</strong>';?></div></li>
+			<li><div id="BP_nb_members"><?php echo T_('Number of members in the DB :'); echo ' <strong>'.$nb_members[0].'</strong>';?></div></li>
+			<li><div id="BP_nb_feeds"><?php echo T_('Number of feeds in the DB :'); echo ' <strong>'.$nb_feeds[0].'</strong>';?></div></li>
 		</ul>
 	</div>
 </div>

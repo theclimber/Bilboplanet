@@ -139,7 +139,7 @@ xml:lang="en" lang="en">
   <link rel="icon" type="image/ico" href="../../favicon.png" />
   <meta name="GOOGLEBOT" content="NOSNIPPET" />
   <link rel="stylesheet" type="text/css" href="install.css" media="all" />
-  <title><?=T_('Bilboplanet Install Wizard');?></title>
+  <title><?php echo T_('Bilboplanet Install Wizard');?></title>
 </head>
 
 <body id="admin" class="install">

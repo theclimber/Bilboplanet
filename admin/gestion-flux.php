@@ -115,7 +115,7 @@ include_once(dirname(__FILE__).'/sidebar.php');
 	
 <?php if (!empty($flash))echo '<div class="flash '.$flash['type'].'">'.$flash['msg'].'</div>'; ?>
 
-<fieldset><legend><?=T_('Add a feed');?></legend>
+<fieldset><legend><?php echo T_('Add a feed');?></legend>
 	<div class="message">
 		<p>G&eacute;rer les Flus RSS des membres.</p>
 	</div>
@@ -127,8 +127,8 @@ include_once(dirname(__FILE__).'/sidebar.php');
 <table class="table-flux-add">
 		<thead>
 			<tr>
-				<th class="tc1 tcl" scope="col"><?=T_('Full url of the feed (Without the ending /)');?></th>
-				<th class="tc2 tcr" scope="col"><?=T_('Name of the user');?></th>
+				<th class="tc1 tcl" scope="col"><?php echo T_('Full url of the feed (Without the ending /)');?></th>
+				<th class="tc2 tcr" scope="col"><?php echo T_('Name of the user');?></th>
 			</tr>
 		</thead>
 			<tr>
@@ -158,15 +158,15 @@ include_once(dirname(__FILE__).'/sidebar.php');
 			</tr>
 </table>
 <br />
-<div class="button"><input type="reset" class="reset" name="reset" onClick="this.form.reset()" value="<?=T_('Reset');?>"></div>
-<div class="button"><input type="submit" name="submitAjout" class="valide" value="<?=T_('Send');?>"></div>
+<div class="button"><input type="reset" class="reset" name="reset" onClick="this.form.reset()" value="<?php echo T_('Reset');?>"></div>
+<div class="button"><input type="submit" name="submitAjout" class="valide" value="<?php echo T_('Send');?>"></div>
 </center>
 </form>
 </fieldset>
 
-<fieldset><legend><?=T_('Manage feeds');?></legend>
+<fieldset><legend><?php echo T_('Manage feeds');?></legend>
 	<div class="message">
-		<p><?=T_('Manage member feed.');?></p>
+		<p><?php echo T_('Manage member feed.');?></p>
 	</div>
 	
 
@@ -179,10 +179,10 @@ $rqt = mysql_query($sql) or die("Error with request $sql");
 <table class="table-flux" >
 		<thead>
 			<tr>
-				<th class="tc1 tcl" scope="col"><?=T_('Name');?></th>
-				<th class="tc2" scope="col"><?=T_('URL of the feed');?></th>
-				<th class="tc3" scope="col"><?=T_('Status');?></th>
-				<th class="tc4 tcr" scope="col"><?=T_('Action');?></th>
+				<th class="tc1 tcl" scope="col"><?php echo T_('Name');?></th>
+				<th class="tc2" scope="col"><?php echo T_('URL of the feed');?></th>
+				<th class="tc3" scope="col"><?php echo T_('Status');?></th>
+				<th class="tc4 tcr" scope="col"><?php echo T_('Action');?></th>
 			</tr>
 <?php
 # Valeurs par defaut
@@ -271,7 +271,7 @@ while($liste = mysql_fetch_row($rqt)) {
 $params = "page=$num_page&";
 ?>
 <div class="nbitems">
-<?=T_('Show items by : ');?> <a href="?<?php echo $params; ?>nb_items=10">10</a>, <a href="?<?php echo $params; ?>nb_items=20">20</a>, <a href="?<?php echo $params; ?>nb_items=50">50</a>
+<?php echo T_('Show items by : ');?> <a href="?<?php echo $params; ?>nb_items=10">10</a>, <a href="?<?php echo $params; ?>nb_items=20">20</a>, <a href="?<?php echo $params; ?>nb_items=50">50</a>
 </div>
 
 <?php 

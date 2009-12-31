@@ -36,9 +36,9 @@ include_once(dirname(__FILE__).'/sidebar.php');
 ?>
 <div id="centre_centre">
 <center>
-<h3><?=T_('Error 404');?></h3>
+<h3><?php echo T_('Error 404');?></h3>
 <img src="themes/<?php echo $planet_theme; ?>/images/404.png">
-<p><?=T_("Page not found");?></p>
+<p><?php echo T_("Page not found");?></p>
 </center>
 
 <?php

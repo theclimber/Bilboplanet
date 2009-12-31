@@ -43,11 +43,11 @@ debutCache();
 <link href="themes/<?php echo $planet_theme; ?>/style_mobile.css" rel="stylesheet" type="text/css" />
 <link rel="alternate" type="application/rss+xml"  title="RSS"  href="feed.php?type=rss" />
 <link rel="alternate" type="application/atom+xml" title="ATOM" href="feed.php?type=atom" />
-<title><?php echo $planet_title; ?> - <?=T_('Mobile version');?></title>
+<title><?php echo $planet_title; ?> - <?php echo T_('Mobile version');?></title>
 </head>
 <body>
 <div id="header">
-<?php echo $planet_title; ?> <small>- <?=T_('Mobile version');?></small>
+<?php echo $planet_title; ?> <small>- <?php echo T_('Mobile version');?></small>
 </div>
 <?php
 
@@ -116,7 +116,7 @@ while ($liste = mysql_fetch_row($liste_articles)) {
 
 		# Affichage du sommaire
 		echo '<p class="topic"><a href="'.$liste[3].'" title="'.T_('Visit source').'" rel="nofollow">';
-		echo $nom.' : '.$titre'.</a></p>';
+		echo $nom.' : '.$titre.'</a></p>';
 
 	} else {
 

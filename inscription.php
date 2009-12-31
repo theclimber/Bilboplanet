@@ -141,47 +141,47 @@ $content = file_get_contents($file);
 echo stripslashes($content);
 ?>
 
-<h2><?=T_('Test your feeds');?></h2>
+<h2><?php echo T_('Test your feeds');?></h2>
 
-<p><?=T_("Before to subscribe, do not hesitate to test your RSS/Atom feeds to be sure they'll be well interpretated by the planet aggregator engine which is using the <a href='http://simplepie.org/' title='Simple Pie' rel='noffolow'>Simple Pie</a> library (distributed under the LGPL licecne). Check also if your feeds are perfectly valid on <a href='http://feedvalidator.org/check.cgi' target='_blank'>Feedvalidator</a> and correct them if needed. Otherwise you could have some problems using them.");?>
+<p><?php echo T_("Before to subscribe, do not hesitate to test your RSS/Atom feeds to be sure they'll be well interpretated by the planet aggregator engine which is using the <a href='http://simplepie.org/' title='Simple Pie' rel='noffolow'>Simple Pie</a> library (distributed under the LGPL licecne). Check also if your feeds are perfectly valid on <a href='http://feedvalidator.org/check.cgi' target='_blank'>Feedvalidator</a> and correct them if needed. Otherwise you could have some problems using them.");?>
 <br/>
-<?=T_("You can test the simplepie engine on the following page :");?><br/>
+<?php echo T_("You can test the simplepie engine on the following page :");?><br/>
 <a href="http://simplepie.org/demo/" title="test" rel="nofollow">http://simplepie.org/demo/</a>
 
 
-<h2><?=T_('Subscribe / Unsubscribe');?></h2>
-<p><?=T_('To add or remove your website from the planet, just fill this form in :');?></p>
+<h2><?php echo T_('Subscribe / Unsubscribe');?></h2>
+<p><?php echo T_('To add or remove your website from the planet, just fill this form in :');?></p>
 
 <form method="post">
 <table border="0" width="600">
 	<tr>
-	<?php error_bool($error, "nom"); ?><?=T_('Name or nicknname');?></td>
+	<?php error_bool($error, "nom"); ?><?php echo T_('Name or nicknname');?></td>
 		<td><input type="text" name="nom" value="<?php if($nom) echo $nom['value']; ?>" /></td>
 	</tr>
 	<tr>
-	<?php error_bool($error, "prenom"); ?><?=T_('Firstname (optional)');?></td>
+	<?php error_bool($error, "prenom"); ?><?php echo T_('Firstname (optional)');?></td>
 		<td><input type="text" name="prenom" value="<?php if($prenom) echo $prenom['value']; ?>" /></td>
 	</tr>
 	<tr>
-	<?php error_bool($error, "email"); ?><?=T_('Contact email');?></td>
+	<?php error_bool($error, "email"); ?><?php echo T_('Contact email');?></td>
 		<td><input type="text" name="email" value="<?php if($mail) echo $mail['value']; ?>" /></td>
 	</tr>
 	<tr>
-	<?php error_bool($error, "site"); ?><?=T_('Website URL');?></td>
+	<?php error_bool($error, "site"); ?><?php echo T_('Website URL');?></td>
 		<td><input type="text" name="url" value="<?php if($url) echo $url['value']; ?>" /></td>
 	</tr>
 	<tr>
-	<?php error_bool($error, "flux"); ?><?=T_('Feed URL (this can be a tag or category specific feed feed too)');?></td>
+	<?php error_bool($error, "flux"); ?><?php echo T_('Feed URL (this can be a tag or category specific feed feed too)');?></td>
 		<td><input type="text" name="rss" value="<?php if($rss) echo $rss['value']; ?>" /></td>
 	</tr>
 	<tr>
-	<td colspan="2"><br/><input type="radio" name="choix" value="abonnement" checked /> <?=T_('Subscribe');?></td>
+	<td colspan="2"><br/><input type="radio" name="choix" value="abonnement" checked /> <?php echo T_('Subscribe');?></td>
 	</tr>
 	<tr>
-	<td colspan="2"><input type="radio" name="choix" value="desabonnement" /> <?=T_('Unsubscribe');?></td>
+	<td colspan="2"><input type="radio" name="choix" value="desabonnement" /> <?php echo T_('Unsubscribe');?></td>
 	</tr>
 	<tr>
-	<?php error_bool($error, "captcha"); ?><?=T_('Please fill in the captcha');?></td>
+	<?php error_bool($error, "captcha"); ?><?php echo T_('Please fill in the captcha');?></td>
 		<td >
 <?php
 require_once(dirname(__FILE__).'/inc/lib/recaptchalib.php');
@@ -192,21 +192,21 @@ echo recaptcha_get_html($publickey);
 	</tr>
 	<tr>
 		<td colspan="2"><input type="checkbox" name="ok" value="" />
-		<?=T_('I have read and accept the charter');?></td>
+		<?php echo T_('I have read and accept the charter');?></td>
 	</tr>
 	<tr>
 		<td  colspan="2" align="center"><br/>
-		<input type="reset" value="<?=T_('Reset');?>" onclick="this.form.reset()">&nbsp;&nbsp;
-		<input type="submit" value="<?=T_('Send');?>" name="submit"></td>
+		<input type="reset" value="<?php echo T_('Reset');?>" onclick="this.form.reset()">&nbsp;&nbsp;
+		<input type="submit" value="<?php echo T_('Send');?>" name="submit"></td>
 	</tr>
 </table>
 </form>
 </div>
 
 <div class="post_small">
-<h2><?=T_('Contact us');?></h2>
+<h2><?php echo T_('Contact us');?></h2>
 
-<p><?=T_("If you need to contact the administration team for any reason (change of your feed URL, suggestion ...), you can do it by <a href='contact.php'>clicking here</a>.");?>
+<p><?php echo T_("If you need to contact the administration team for any reason (change of your feed URL, suggestion ...), you can do it by <a href='contact.php'>clicking here</a>.");?>
 </p>
 </div>
 

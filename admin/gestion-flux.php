@@ -117,7 +117,7 @@ include_once(dirname(__FILE__).'/sidebar.php');
 
 <fieldset><legend><?php echo T_('Add a feed');?></legend>
 	<div class="message">
-		<p>G&eacute;rer les Flus RSS des membres.</p>
+		<p><?php echo T_('Manage member\'s feeds.'); ?></p>
 	</div>
 		
 <br/>

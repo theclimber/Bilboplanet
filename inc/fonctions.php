@@ -559,6 +559,10 @@ function check_email_address($email) {
 }
 
 function check_url($url){
+	if (substr($url, -1) == '/'){ # remove de last '/' in URL if exists
+		$url = substr_replace($url, '', -1, 1);
+	}
+
 	// SCHEME
 	$urlregex = "^(https?|ftp)\:\/\/";
 

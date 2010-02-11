@@ -71,8 +71,8 @@ function update($print=false) {
 	$file = fopen('../logs/update-'.date("Y-m-d").'.log', 'a');
 
 	# Affichage des logs dans la partie admin
-	$output .= "<fieldset><legend>".T_('Log File')."</legende>
-		<div class='message'><p>".T_('Manual Update Log')."</p></div>";
+	$output .= "<fieldset><legend>Log File</legend>
+		<div class='message'><p>Manual Update Log</p></div>";
 
 	# On parcour l'ensemble des flux 
 	$cpt = 0;

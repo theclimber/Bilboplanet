@@ -692,7 +692,7 @@ div.flash.notice {
 	color: #005f00;
 }
 div.flash.warning {
-	background: url(images/warning.png) 8px no-repeat;
+	background: url(../icons/warn.png) 8px no-repeat;
 	background-color: #FFEBC1;
 	border-color: #FDBF3B;
 	color: #A6750C;

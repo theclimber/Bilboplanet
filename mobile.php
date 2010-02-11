@@ -25,6 +25,7 @@
 ***** END LICENSE BLOCK *****/
 ?>
 <?php
+# Inclusion des fonctions
 require_once(dirname(__FILE__).'/inc/i18n.php');
 require_once(dirname(__FILE__).'/inc/fonctions.php');
 
@@ -40,11 +41,124 @@ debutCache();
 <meta http-equiv="content-language" content="fr-fr" />
 <meta name="description" content="<?php echo $planet_desc_meta; ?>" />
 <meta name="keywords" content="<?php echo $planet_keywords; ?>" />
-<link href="themes/<?php echo $planet_theme; ?>/style_mobile.css" rel="stylesheet" type="text/css" />
 <link rel="alternate" type="application/rss+xml"  title="RSS"  href="feed.php?type=rss" />
 <link rel="alternate" type="application/atom+xml" title="ATOM" href="feed.php?type=atom" />
 <title><?php echo $planet_title; ?> - <?php echo T_('Mobile version');?></title>
 </head>
+
+<style rel="stylesheet" type="text/css" />
+body {
+	margin:0;
+	padding:0;
+	font-size:0.8em;
+	font-family:Arial, Verdana,sans-serif;
+}
+
+input, textarea, select {
+	font-size:1em;
+}
+
+div#header {
+	background-color:#161616;
+	color:#fff;
+	font-size:1.8em;
+	font-weight: bold;
+	padding:8px 10px;
+}
+
+div#header a {
+	color:#fff;
+}
+
+a {
+	color:#191919;
+}
+
+a:hover {
+	color:#ffffff;
+	background-color:#191919;
+}
+
+div#start_over {
+	background-color:#dadada;
+	color:#3c3c3c;
+	font-size:0.9em;
+	padding:2px 0;
+}
+
+div#start_over a {
+	color:#191919;
+}
+
+div#start_over a:hover
+{
+	color:#fff;
+}
+
+div#sp_results {
+	width:100%;
+}
+
+hr {
+	display:none;
+}
+
+div.chunk {
+	padding:10px 0;
+	border-bottom:1px solid #999;
+	padding-left:10px;
+}
+
+p {
+	margin:0;
+	padding:2px;
+}
+
+b.topic {
+f	ont-size:1.1em;
+}
+
+p.datestamp {
+	font-size:0.8em;
+	color: #999999;
+}
+
+div#bottom {
+	background:#6699CC;
+	font-size:0.9em;
+	text-align: center;
+	color: #ffffff;
+	padding:2px 0;
+}
+
+div#bottom a, div#bottom a:hover, div#bottom a:visited {
+	color: #ffffff;
+}
+
+div.diff {
+	background-color:#f8f8f8;
+}
+
+p#nbr_articles {
+	padding-left:10px;
+}
+
+a img {
+	border:0;
+}
+
+img.alignright {
+	float:right;
+}
+img.alignleft {
+	float:left;
+}
+
+blockquote {
+	font-style:italic;
+}
+</style>
+
 <body>
 <div id="header">
 <?php echo $planet_title; ?> <small>- <?php echo T_('Mobile version');?></small>
@@ -63,18 +177,18 @@ if(isset($_GET) && isset($_GET['nb_articles']) && is_numeric(trim($_GET['nb_arti
 }
 
 # Calcule du nombre d'articles possibles a afficher (max = 20)
-$articles_mobile_max = 20;
+$articles_mobile_max = 50;
 $nb_articles_affiche = $nb_article_mobile + 5;
 if($nb_articles_affiche > $articles_mobile_max) $nb_articles_affiche = $articles_mobile_max;
 if($nb_article_mobile > $articles_mobile_max) $nb_article_mobile = $articles_mobile_max;
 
 # Affichage du start_over
-echo '<div id="start_over">';
+echo '<center><div id="start_over">';
 echo '<a href="?affichage=sommaire" title="'.T_('Go to the summary').'">'.T_('Summary').'</a> ';
 echo '| <a href="?affichage=detail" title="'.T_('Show posts content').'">'.T_('Posts detail').'</a> ';
 echo '| <a href="?nb_articles='.$nb_articles_affiche.'" title="'.T_('See more posts').'">'.T_('See more posts').'</a> ';
 echo '| <a href="'.$planet_url.'" title="'.T_('Back to site').'">'.T_('Back to site').'</a>';
-echo '</div>';
+echo '</div></center>';
 
 # On recupere les infomations des articles
 $sql = "SELECT nom_membre, article_pub, article_titre, article_url, article_content, site_membre, num_article, article_score
@@ -94,7 +208,8 @@ $liste_articles = mysql_query(trim($sql)) or die("Error with request $sql");
 
 # On affiche le contenu
 echo '<div id="sp_results">';
-echo "<p>".sprintf("The %s last published posts on %s",$nb_article_mobile,$plannet_title)."</p>";
+echo "<p id='nbr_articles'><b>".sprintf("The %s last published posts on %s",$nb_article_mobile,$plannet_title)."</b> (<a href='mobile.php?nb_articles=10'>10</a>, <a href='mobile.php?nb_articles=20'>20</a>, <a href='mobile.php?nb_articles=30'>30</a>)</p>";
+
 while ($liste = mysql_fetch_row($liste_articles)) {
 
 	# Convertion en UTF8 des valeurs
@@ -107,24 +222,35 @@ while ($liste = mysql_fetch_row($liste_articles)) {
 	$heure = date("H:i",$liste[1]);
 
 	# On vire les balises images
-	$item = preg_replace('`<img[^>]*>`', '', $item);
+	if ($_GET['img']=='no') {
+		$item = preg_replace('`<img[^>]*>`', '', $item);
+	}
 	#  $item = ereg_replace("<img.*src=\"(.*)\".*>","<a href=\"\\1\" title=\"Visioner l'image\"><img src=\"monimage\" alt=\"Image\"/></a>",$item);
 
-	echo '<hr/>';
-	echo '<div class="chunk">';
-	if ($affichage == "sommaire") {
-
-		# Affichage du sommaire
-		echo '<p class="topic"><a href="'.$liste[3].'" title="'.T_('Visit source').'" rel="nofollow">';
-		echo $nom.' : '.$titre.'</a></p>';
-
-	} else {
-
-		# Affichage de tout
-		echo '<p class="topic"><a href="'.$liste[5].$liste[3].'" title="'.T_('Visit source').'" rel="nofollow">';
-		echo $nom.' : '.$titre.'</a></p><br/>'.$item;
+	$class='chunk';
+	$params = '';
+	$content = '';
+	if (isset($_GET['nb_articles'])) {
+		$nb_articles=$_GET['nb_articles'];
+		$params .= '&nb_articles='.$nb_articles;
 	}
+	if ($affichage == "sommaire") {
+		if ($i%2==0) {
+			$class .= " diff";
+		}
+		// echo '<p class="topic"><a href="'.$liste[3].'" title="'.T_('Visit source').'" rel="nofollow">';
+		// echo $nom.' : '.$titre.'</a></p>';
+		$content .= '<p class="topic"><a href="mobile.php?affichage=detail'.$params.'#post-$i" rel="nofollow">';
+		$content .= $titre.'</a></p>';
+	} else { # Affichage de tout
+		$content .= '<p class="topic"><a href="'.$liste[3].'" title="'.T_('Visit source').'" rel="nofollow">';
+		$content .= '<b>'.$nom.' :</b> '.$titre.'</a></p><br/>'.$item.'<br/>';
+	}
+	echo '<hr/>';
+	echo '<div id="post-'.$i.'" class="'.$class.'">';
+	echo $content;
 	echo '<p class="datestamp">'.$date.' : '.$heure.' | '.sprintf(T_("%d vote(s)"), $liste[7]).'</p></div>';
+	$i++;
 }
 
 # Femeture de la base
@@ -132,7 +258,6 @@ closeBD();
 
 # Pied de page
 include(dirname(__FILE__).'footer.php');
-
 # On termine le cache
 finCache();
 ?>

@@ -25,10 +25,11 @@
 ***** END LICENSE BLOCK *****/
 ?>
 <?php
+echo '<?xml version="1.0" encoding="UTF-8" ?>'."\n";
+
 require_once(dirname(__FILE__).'/inc/i18n.php');
 require_once(dirname(__FILE__).'/inc/fonctions.php');
 
-echo '<?xml version="1.0" encoding="UTF-8" ?>'."\n";
 # Verification du contenu du get
 if (isset($_GET) && isset($_GET['type'])) {
 	if ($_GET['type']=="rss"){

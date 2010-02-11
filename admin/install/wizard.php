@@ -138,18 +138,27 @@ xml:lang="en" lang="en">
   <meta name="ROBOTS" content="NOARCHIVE,NOINDEX,NOFOLLOW" />
   <link rel="icon" type="image/ico" href="../../favicon.png" />
   <meta name="GOOGLEBOT" content="NOSNIPPET" />
-  <link rel="stylesheet" type="text/css" href="install.css" media="all" />
+  <link rel="stylesheet" type="text/css" href="meta/css/install.css" media="all" />
   <title><?php echo T_('Bilboplanet Install Wizard');?></title>
 </head>
 
-<body id="admin" class="install">
+<body>
+<div id="header_ext">
+<div id="header">
+<div id="logo">
+
+<h1>Bilboplanet</h1>
+
+</div>
+</div>
+</div>
 <div id="content">
 <?php
 echo
-'<h1>'.T_('Installation wizard of the Bilboplanet').'</h1>';
+'<h2>'.T_('Installation wizard of the Bilboplanet').'</h2>';
 
 if (!empty($err)) {
-	echo '<div class="error"><p><strong>'.T_('Errors:').'</strong></p>'.$err.'</div>';
+	echo '<div class="error"><strong>'.T_('Errors:').'</strong>'.$err.'</div>';
 }
 
 if (is_file(BP_CONFIG_PATH)) {
@@ -158,12 +167,11 @@ if (is_file(BP_CONFIG_PATH)) {
 }
 
 echo
-'<p>'.T_('<h3>Welcome to the BilboPlanet. Before you begin, we need some informations concerning the database. You\'ll need to provide the following information to begin the installation and to create the configuration file.</h3>
-
-   1. The host of the database<br/>
-   2. The name of the database<br/>
-   3. Your username to the database<br/>
-   4. Your password to the database<br/><br/>').'</p>'.
+'<p>'.T_('<h3>Welcome to the BilboPlanet. Before you begin, we need some informations concerning the database. You\'ll need to provide the following information to begin the installation and to create the configuration file.<br /><br />
+   1. The host of the database.<br/>
+   2. The name of the database.<br/>
+   3. Your username to the database.<br/>
+   4. Your password to the database.<br/><br/>').'</h3></p>'.
 
 
 '<form action="wizard.php" method="post">'.
@@ -172,21 +180,25 @@ echo
 #form::hidden('DBDRIVER','mysql',$DBDRIVER).'</label></p>'.
 
 '<p><label>'.T_('Host of the database').' '.
-form::field('DBHOST',30,255,html::escapeHTML($DBHOST)).'</label></p>'.
+form::field('DBHOST',30,255,html::escapeHTML($DBHOST)).'</label><br />
+<font color="#A4A4A4">'.T_('ex: localhost').'</font></p>'.
 
 '<p><label>'.T_('Name of the database:').' '.
-form::field('DBNAME',30,255,html::escapeHTML($DBNAME)).'</label></p>'.
+form::field('DBNAME',30,255,html::escapeHTML($DBNAME)).'</label><br />
+ <font color="#A4A4A4">'.T_('ex: bilboplanet').'</font></p>'.
 
 '<p><label>'.T_('Username:').' '.
-form::field('DBUSER',30,255,html::escapeHTML($DBUSER)).'</label></p>'.
+form::field('DBUSER',30,255,html::escapeHTML($DBUSER)).'</label><br/>
+<font color="#A4A4A4">'.T_('Your username depends of your provider').'</font></p>'.
 
 '<p><label>'.T_('Password:').' '.
-form::password('DBPASSWORD',30,255).'</label></p>'.
+form::password('DBPASSWORD',30,255).'</label>
+ <font color="#A4A4A4">'.T_('Your password depends of your provider').'</font></p>'.
 
 #'<p><label class="required" title="'.T_('Required field').'">'.T_('Database Tables Prefix:').' '.
 #form::field('DBPREFIX',30,255,html::escapeHTML($DBPREFIX)).'</label></p>'.
 
-'<p><input type="submit" value="'.T_('Save').'" /></p>'.
+'<p><input class="save" type="submit" value="'.T_('Save').'" /></p>'.
 '</form>';
 ?>
 </div>

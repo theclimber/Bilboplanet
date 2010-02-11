@@ -27,6 +27,70 @@
 <?php
 /* Inclusion du fichier de configuration */
 require_once(dirname(__FILE__).'/../inc/fonctions.php');
+require_once(dirname(__FILE__).'/../inc/lib/simplepie/simplepie.inc');
+function showArticleSummary(){
+	$content = '<div class="box-dashboard"><div class="top-box-dashboard">'.T_('Latest articles :').'</div>';
+	$nb_articles=0;
+	connectBD();
+	/* On recupere les infomations des articles */
+	$sql = "SELECT nom_membre, article_pub, article_titre, article_url
+		FROM article, membre
+		WHERE article.num_membre = membre.num_membre
+		AND article_statut = '1'
+		AND statut_membre = '1'
+		ORDER BY article_pub DESC
+		LIMIT 0,5";
+	$request = mysql_query($sql) or die("Error with request $sql");
+	$list_articles = "<ul>";
+	$max_title_length = 50;
+	while($article = mysql_fetch_row($request)){
+		$nb_articles++;
+		# Formatage de la date
+		$date = date("d/m/Y",$article[1]);
+		# Affichage du lien
+		$titre = html_entity_decode($article[2], ENT_QUOTES, 'UTF-8');
+		if (strlen($titre) > $max_title_length)
+			$show = substr($titre,0, $max_title_length)."...";
+		else
+			$show = $titre;
+		$list_articles .= '<li>'.$date.' : <a class="tips" href="'.$article[3].'" rel="<b><u>'.T_('User').':</u></b> '.$article[0].' <br><b><u>'.T_('Title').':</u></b> '.$titre.'" target="_blank">'.$show.'</a></li>';
+	}
+	$list_articles .= "</ul>";
+	closeBD();
+	$content .= $list_articles;
+	$content .= '</div>';
+	if ($nb_articles==0){
+		return '';
+	}
+	return $content;
+}
+
+
+function showBlogLastArticles() {
+	$content = '';
+	$feed = new SimplePie();
+	$feed->set_feed_url(array('http://bilboplanet.com/blog/feed/'));
+	$feed->set_cache_duration (600);
+	$feed->enable_xml_dump(isset($_GET['xmldump']) ? true : false);
+	$success = $feed->init();
+	$feed->handle_content_type();
+	if ($success) {
+		$content .= '<div class="box-dashboard"><div class="top-box-dashboard">'.T_('Latest articles :').'</div>';
+		$content .= '<ul>';
+		$itemlimit=0;
+		foreach($feed->get_items() as $item) {
+			if ($itemlimit==4) {
+				break;
+			}
+			$content .= '<li>'.$item->get_date('j F Y | g:i a').' : ';
+			$content .= '<a href="'.$item->get_permalink().'" target="_blank">'.$item->get_title().'</a>';
+			$content .= '</li>';
+			$itemlimit = $itemlimit + 1;
+		}
+		$content .= '</ul></div>';
+	}
+	return $content;
+}
 
 $nb_articles = 0;
 $nb_votes = 0;
@@ -50,40 +114,11 @@ $sql = "SELECT COUNT(*) FROM flux";
 $request = mysql_query($sql) or die("Error with request $sql");
 if ($request)
 	$nb_feeds = mysql_fetch_row($request);
-closeBD;
+closeBD();
 
 
 include_once(dirname(__FILE__).'/head.php');
 include_once(dirname(__FILE__).'/sidebar.php');
-
-function showArticleSummary(){
-	connectBD();
-	/* On recupere les infomations des articles */
-	$sql = "SELECT nom_membre, article_pub, article_titre, article_url
-		FROM article, membre
-		WHERE article.num_membre = membre.num_membre
-		AND article_statut = '1'
-		AND statut_membre = '1'
-		ORDER BY article_pub DESC
-		LIMIT 0,5";
-	$request = mysql_query($sql) or die("Error with request $sql");
-	$list_articles = "<ul>";
-	$max_title_length = 50;
-	while($article = mysql_fetch_row($request)){
-		# Formatage de la date
-		$date = date("d/m/Y",$article[1]);
-		# Affichage du lien
-		$titre = html_entity_decode($article[2], ENT_QUOTES, 'UTF-8');
-		if (strlen($titre) > $max_title_length)
-			$show = substr($titre,0, $max_title_length)."...";
-		else
-			$show = $titre;
-		$list_articles .= '<li>'.$date.' : <a class="tips" href="'.$article[3].'" rel="<b><u>'.T_('User').':</u></b> '.$article[0].' <br><b><u>'.T_('Title').':</u></b> '.$titre.'" target="_blank">'.$show.'</a></li>';
-	}
-	$list_articles .= "</ul>";
-	closeBD;
-	return $list_articles;
-}
 
 ?>
 <div id="BP_page" class="page">
@@ -95,11 +130,9 @@ function showArticleSummary(){
 		</div>
 		
 <div id="dashboard">
-	<div class="box-dashboard"><div class="top-box-dashboard"><?php echo T_('Latest articles :');?></div>
 <?php
 echo showArticleSummary();
 ?>
-	</div>
 	<div class="box-dashboard"><div class="top-box-dashboard"><?php echo T_('Statistics :');?></div>
 		<ul>
 
@@ -121,6 +154,9 @@ if (BP_INDEX_UPDATE == '1')
 			<li><div id="BP_nb_feeds"><?php echo T_('Number of feeds in the DB :'); echo ' <strong>'.$nb_feeds[0].'</strong>';?></div></li>
 		</ul>
 	</div>
+<?php
+echo showBlogLastArticles();
+?>
 </div>
 </fieldset>
 

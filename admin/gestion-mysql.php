@@ -60,9 +60,14 @@ include_once(dirname(__FILE__).'/sidebar.php');
 <div id="BP_page" class="page">
 	<div class="inpage">
 	
-<?php if (!empty($flash))echo '<div class="flash '.$flash['type'].'">'.$flash['msg'].'</div>'; ?>
-
-
+<?php
+if (!empty($flash)) {
+	echo '<div class="flash '.$flash['type'].'">'.$flash['msg'].'</div>';
+}
+if ($_POST['mysqldump']=='creat') {
+	echo '<div class="flash notice">'.sprintf(T_("A snapshot of your current database was created"),$snapshot_path).'</div>';
+}
+?>
 <fieldset><legend><?php echo T_('Export database');?></legend>
 
 
@@ -97,20 +102,21 @@ closedir($dir_handle);
 # On fait un dump de la base
 //$query      = "SELECT * INTO OUTFILE '$snapshot_file' FROM $tableName";
 //$result = mysql_query($query);
-exec("mysqldump -h $db_host -u $db_login --password=$db_passw $db_name > $snapshot_file");
-exec("mysqldump5 -h $db_host -u $db_login --password=$db_passw $db_name > $snapshot_file");
-
-# On compresse le fichier si le dump c'est bien passe
-if(is_file($snapshot_file)) $compress = exec("gzip -f $snapshot_file");
-
+if ($_POST['mysqldump']=='creat')
+{
+	exec("mysqldump -h $db_host -u $db_login --password=$db_passw $db_name > $snapshot_file");
+	exec("mysqldump5 -h $db_host -u $db_login --password=$db_passw $db_name > $snapshot_file");
+	
+	# On compresse le fichier si le dump c'est bien passe
+	if(is_file($snapshot_file)) $compress = exec("gzip -f $snapshot_file");
+}
 
 # On affcihe un message
-if(is_file("$snapshot_file.gz")) {
-echo "			<div class='message'>";
-echo "<p>".sprintf(T_("The current database is accessible here (in the directory %s)"),$snapshot_path)."</p>";
-echo "<p>".sprintf(T_("When you reload this page, a new snapchot of your current database will be generated"));
-echo "</div><br />";
-			
+if(is_file($snapshot_file.".gz")) {
+	echo "<div class='message'>";
+	echo "<p>".sprintf(T_("The current database is accessible here (in the directory %s)"),$snapshot_path)."</p>";
+	echo "</div><br />";
+
 	echo "<center>
 	<table class='table-mysql'>
 	<thead>
@@ -128,15 +134,11 @@ echo "</div><br />";
 		<a href='mysql/snapshot/$file'>$file</a></td>
 		<td>". filesize($file) ."</td></tr>";
 	}
-	echo "</table></center>";
+	echo "</table>";
+	echo "</center>";
 	closedir($dir_handle);
-
-} else {
-
-echo "<div class='message'>";
-echo "<p>" .sprintf(T_("The actual database is accessible here (in the directory %s)"),$snapshot_path)."</p>";
-echo "</div>";
 }
+echo '<br/><center><div class="button"><form action="" method="POST"><input type="hidden" name="mysqldump" value="creat"/><input type="submit" value="'.sprintf(T_("Create a new snapshot of your current database"),$snapshot_path).'"/></form></div></center>';
 ?>
 </p>
 <br />

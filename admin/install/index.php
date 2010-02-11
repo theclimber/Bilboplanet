@@ -31,7 +31,8 @@ $rc_path = dirname(__FILE__).'/../../inc/config.php';
 
 if (!is_file($rc_path)) {
 	$summary = T_('No configuration file');
-	$message = sprintf(T_('There is no configuration file, you need to create one. Therefor you can use the <a href="%s">wizard</a> to generate a configuration file.'), 'wizard.php');
+	$message = T_('There is no configuration file, you need to create one. Therefor you can use the wizard to generate a configuration file. Click "Next" to go to the setup page.');
+	$message2 = '<a href="wizard.php"><div class="next">'.T_('Next').' &rarr;</div></a>';
 	$code = 0;
 	include dirname(__FILE__).'/../../inc/core_error.php';
 	exit;
@@ -49,13 +50,13 @@ $err = '';
 $schema = dbSchema::init($core->con);
 if (in_array($core->prefix.'flux',$schema->getTables())) {
 	$can_install = false;
-	$err = '<p>'.T_('The Bilboplanet is already installed.').'</p>';
+	$err = T_('The Bilboplanet is already installed.');
 }
 
 # Check system capabilites
 if (!dcSystemCheck($core->con,$_e)) {
 	$can_install = false;
-	$err = '<p>'.T_('The Bilboplanet can not be installed').'</p><ul><li>'.implode('</li><li>',$_e).'</li></ul>';
+	$err = T_('The Bilboplanet can not be installed').'<ul><li>'.implode('</li><li>',$_e).'</li></ul>';
 }
 
 # Get information and perform install
@@ -271,7 +272,7 @@ xml:lang="en" lang="en">
   <meta name="ROBOTS" content="NOARCHIVE,NOINDEX,NOFOLLOW" />
   <meta name="GOOGLEBOT" content="NOSNIPPET" />
   <link rel="icon" type="image/ico" href="../../favicon.png" />
-  <link rel="stylesheet" type="text/css" href="install.css" media="all" />
+  <link rel="stylesheet" type="text/css" href="meta/css/install.css" media="all" />
   <title><?php echo T_('Installation of the Bilboplanet');?></title>
   <script type="text/javascript" src="../js/jquery/jquery.js"></script>
   <script type="text/javascript">
@@ -292,17 +293,26 @@ xml:lang="en" lang="en">
   </script>
 </head>
 
-<body id="admin" class="install">
+<body>
+<div id="header_ext">
+<div id="header">
+<div id="logo">
+
+<h1>Bilboplanet</h1>
+
+</div>
+</div>
+</div>
 <div id="content">
 <?php
-echo '<h1>'.T_('Installation of the Bilboplanet').'</h1>';
+echo '<h2>'.T_('Installation of the Bilboplanet').'</h2>';
 
 /*if (!is_writable(DC_TPL_CACHE)) {
 	echo '<div class="error"><p>'.sprintf(T_('Cache directory %s is not writable.'),DC_TPL_CACHE).'</p></div>';
 }*/
 
 if (!empty($err)) {
-	echo '<div class="error"><p><strong>'.T_('Errors:').'</strong></p>'.$err.'</div>';
+	echo '<div class="error"><p><strong>'.T_('Errors:').'</strong>'.$err.'</p></div>';
 }
 
 if (!empty($_GET['wiz'])) {
@@ -314,12 +324,15 @@ if ($can_install && $step == 0)
 $lang_path = dirname(__FILE__)."/../../i18n/";
 $dir_handle = @opendir($lang_path) or die("Unable to open $lang_path");
 $p_lang = array();
+$p_lang['en'] = 'en';
 while ($file = readdir($dir_handle)){
 	if($file!="." && $file!=".." && $file!=".svn" && $file!=".DS_Store" && $file!=".htaccess" && is_dir($lang_path.$file)){
-		$p_lang[$file] = $file;
+		$mo_dir = $lang_path.$file.'/LC_MESSAGES/';
+		if (is_dir($mo_dir) && is_file($mo_dir.'bilbo.mo')){
+			$p_lang[$file] = $file;
+		}
 	}
 }
-$p_lang['en'] = 'en';
 closedir($dir_handle);
 
 	echo
@@ -359,7 +372,7 @@ closedir($dir_handle);
 	form::password('u_pwd2',30,255).'</label></p>'.
 	'</fieldset><br/>'.
 	
-	'<p><input type="submit" value="'.T_('Save').'" /></p>'.
+	'<p style="text-align:center"><input class="save" type="submit" value="'.T_('Save').'" /></p>'.
 	'</form>';
 }
 elseif ($can_install && $step == 1)
@@ -370,7 +383,7 @@ elseif ($can_install && $step == 1)
 	$adminPath = $adminPath[0];
 	
 	echo
-	'<h2>'.T_('Install succeeded').'</h2>'.
+	'<p class="message"><strong>'.T_('Install succeeded').'</strong></p>'.
 	
 	'<p>'.T_('The Bilboplanet was successfully installed. Here you can find a resume of the configuration').'</p>'.
 	
@@ -387,7 +400,7 @@ elseif ($can_install && $step == 1)
 	'</ul>'.
 	
 	'<form action="'.html::escapeHTML($adminPath).'" method="post">'.
-	'<p><input type="submit" value="'.T_('Go to the administration interface').'" />'.
+	'<p><input class="save" type="submit" value="'.T_('Go to the administration interface').'" />'.
 	'</p>'.
 	'</form>';
 }

@@ -27,7 +27,7 @@
 <?php
 # Inclusion des fonctions
 require_once(dirname(__FILE__).'/../inc/fonctions.php');
-	connectBD();
+connectBD();
 debutCache();
 $flash = '';
 global $error;
@@ -58,7 +58,7 @@ if(isset($_POST) && (
 		$flux = check_field('flux',trim($_POST['flux']),'not_empty');
 	}
 	$flux['value'] = trim($_POST['flux']);
-	if ($flux['success']){
+	if ($flux['success'] && !empty($num_membre)){
 		if(isset($_POST) && isset($_POST['submitDelete']) && !empty($_POST['submitDelete'])) {
 			$sql = "DELETE FROM flux WHERE num_flux='$num'";
 			$flash = array('type' => 'notice', 'msg' => sprintf(T_("The feed %s was correctly deleted"),$flux['value']));
@@ -94,10 +94,14 @@ if(isset($_POST) && (
 		closeBD();
 	}
 	else {
-		if(isset($_POST) && isset($_POST['submitAjout']) && !empty($_POST['submitAjout'])) {
-			$error['flux']=true;
+		if (empty($num_membre)){
+			$flash = array('type' => 'error', 'msg' => T_('You are not allowed to create a feed without selecting an user'));
+		} else {
+			if(isset($_POST) && isset($_POST['submitAjout']) && !empty($_POST['submitAjout'])) {
+				$error['flux']=true;
+			}
+			$flash = array('type' => 'error', 'msg' => $flux['error']);
 		}
-		$flash = array('type' => 'error', 'msg' => $flux['error']);
 	}
 }
 function error_bool($error, $field) {
@@ -134,7 +138,7 @@ include_once(dirname(__FILE__).'/sidebar.php');
 			<tr>
 			<form method="post">
 				<td class="tc1 tcl row2">
-					<input class="input" value="http://www.exemple.com/feed" onfocus="if (this.value==='http://www.exemple.com/feed') {this.value='';}" size="49" type="text" name="flux" value="<?php if($error["flux"]) echo $_POST['flux'];?>" />
+					<input class="input" value="<?php if($error["flux"]) { echo $_POST['flux']; } else { echo 'http://www.exemple.com/feed';}?>" onfocus="if (this.value==='http://www.exemple.com/feed') {this.value='';}" size="49" type="text" name="flux" />
 				</td>
 				<td class="tc2 row2">
 					<center>

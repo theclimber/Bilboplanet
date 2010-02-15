@@ -25,31 +25,61 @@
 ***** END LICENSE BLOCK *****/
 ?>
 <?php
-# Inclusion des fonctions
+require_once(dirname(__FILE__).'/../inc/i18n.php');
 require_once(dirname(__FILE__).'/../inc/fonctions.php');
 
-# On verifie que le formulaire est bien saisie
-if(isset($_POST) && isset($_POST['nom']) && isset($_POST['path'])) {
+if (isset($_POST)){
+	if ($_POST['importform']=='Import'){
+		# On recupere les infos
+		if(!is_uploaded_file($_FILES['file']['tmp_name']) ){
+			$flash = array('type' => 'error', 'msg' => T_('Your file could not be downloaded'));
+		}
+		elseif ($_FILES["file"]["error"] > 0){
+			$flash = array('type' => 'error', 'msg' => T_("Your file could not be imported").'<br />'.$_FILES["file"]["error"]);
+		}
+		elseif( $_FILES["file"]["type"] != 'application/x-gzip'){
+			$flash = array('type' => 'error', 'msg' => T_("Your file doesn't have the right format : ").'<br />'.$_FILES["file"]["type"]);
+		}
+		else {
+			$response = T_('Congratulations! You imported an old data configuration successfully')."<br/>";
+			$response .= T_("File name: ") . $_FILES["file"]["name"] . "<br />";
+			$response .= T_("Size: ") . ($_FILES["file"]["size"] / 1024)." ".T_("Kb")."<br />";
+			$gzfile = file_get_contents($_FILES['file']['tmp_name'], FILE_USE_INCLUDE_PATH);
+			$content = my_gzdecode($gzfile);
+			$tables = json_decode($content, true);
 
-	# On recupere les infos
-	$nom = trim($_POST['nom']);
-	$path = trim($_POST['path']);
-
-	# Connection a la base
-
-	# On insert une nouvelle entree
-	if(isset($_POST) && isset($_POST['import']) && !empty($_POST['import'])){
-		$result = exec("gunzip < $path/$nom | mysql -h $db_host -u $db_login --password=$db_passw $db_name");
-		$result = exec("gunzip < $path/$nom | mysql5 -h $db_host -u $db_login --password=$db_passw $db_name");
-		$flash = array('type' => 'notice', 'msg' => T_('File successfully imported'));
-	}
-	else{
-		unlink($path.'/'.$nom);
-		$flash = array('type' => 'notice', 'msg' => sprintf(T_('File %s successfully deleted'),$nom));
-	}
-
-	if(!$result) {
-		$flash = array('type' => 'error', 'msg' => T_('Error while trying to modify database informations'));
+			$flash = array('type' => 'notice', 'msg' => $response);
+			connectBD();
+			foreach ($tables as $table){
+				if ($table['name'] == "config"){
+					// do nothing
+				}
+				else { // on insere le contenu dans la table
+					$truncate = "TRUNCATE TABLE `".$table['name']."`";
+					//echo $truncate."<br/>";
+					$result = mysql_query($truncate);
+					if (!$result)
+						$flash = array('type' => 'error', 'msg' => sprintf(T_('Error while truncating table %s : %s'),$table['name'], mysql_error()));
+					else {
+						$cols = $table['head'];
+						foreach($table['content'] as $key => $value){
+							$n = 0;
+							$values = "'".$key."'";
+							while ($n < count($cols)-1){
+								$values .= ",'".$value[$n]."'";
+								$n+=1;
+							}
+							$sql = "INSERT INTO ".$table['name']." VALUES (".$values.")";
+							$result = mysql_query($sql);
+							//echo $sql."<br/>";
+							if (!$result)
+								$flash = array('type' => 'error', 'msg' => sprintf(T_('Error while appending table %s : %s'),$table['name'], mysql_error()));
+						}
+					}
+				}
+			}
+			closeBD();
+		}
 	}
 }
 
@@ -64,121 +94,53 @@ include_once(dirname(__FILE__).'/sidebar.php');
 if (!empty($flash)) {
 	echo '<div class="flash '.$flash['type'].'">'.$flash['msg'].'</div>';
 }
-if ($_POST['mysqldump']=='creat') {
-	echo '<div class="flash notice">'.sprintf(T_("A snapshot of your current database was created"),$snapshot_path).'</div>';
-}
 ?>
-<fieldset><legend><?php echo T_('Export database');?></legend>
+<fieldset><legend><?php echo T_('Export planet configuration');?></legend>
+<br />
 
+<div class="message"><?php echo T_('Please select the data you want to export'); ?></div>
+<p><?php echo T_('This will export the data to a file that you\'ll be able to import later on another installation'); ?></p>
+<br/>
 
-	
-<?php
+<div id="export-log" style="display:none;">
+	<h3><?php echo T_('Exported data');?></h3>
+	<div id="export_res"><!-- spanner --></div>
+</div>
 
-# On augmenete le temps d'execution
-@set_time_limit(0);
-@ini_set('max_execution_time',0);
+<form id="exportform" action="manage-database.php" method="post">
+<ul>
+	<li><input type="checkbox" name="list[]" value="membre" /><?php echo T_('Members table'); ?></li>
+	<li><input type="checkbox" name="list[]" value="flux" /><?php echo T_('Feeds table'); ?></li>
+	<li><input type="checkbox" name="list[]" value="article" /><?php echo T_('Articles table'); ?></li>
+	<li><input type="checkbox" name="list[]" value="votes" /><?php echo T_('Votes table'); ?></li>
+	<li><input type="checkbox" name="config" value="config" /><?php echo T_('Configuration file'); ?></li>
+</ul>
+<br/>
+<div class="button"><input type="submit" name="exportform" value="<?php echo T_("Export"); ?>"/></div>
+</form>
 
-# Inclusion des fonctions
-require_once(dirname(__FILE__).'/../inc/fonctions.php');
-
-# On recupere la date du jour
-$date = date("Y-m-d");
-$snapshot_path = dirname(__FILE__)."/mysql/snapshot";
-$snapshot_file = "$snapshot_path/$db_name.$date.sql";
-
-# Creation du dossier qui va stocker les dumps si il n'existe pas
-if(!is_dir($snapshot_path)) mkdir($snapshot_path, 0700);
-
-# On efface tous les dumps qui existe
-
-$dir_handle = @opendir($snapshot_path) or die("Unable to open $snapshot_path");
-while ($file = readdir($dir_handle)){
-	if($file!="." && $file!=".." && $file!=".svn" && $file!=".DS_Store" && $file!=".htaccess"){
-		unlink($path.'/'.$file);
-	}
-}
-closedir($dir_handle);
-
-# On fait un dump de la base
-//$query      = "SELECT * INTO OUTFILE '$snapshot_file' FROM $tableName";
-//$result = mysql_query($query);
-if ($_POST['mysqldump']=='creat')
-{
-	exec("mysqldump -h $db_host -u $db_login --password=$db_passw $db_name > $snapshot_file");
-	exec("mysqldump5 -h $db_host -u $db_login --password=$db_passw $db_name > $snapshot_file");
-	
-	# On compresse le fichier si le dump c'est bien passe
-	if(is_file($snapshot_file)) $compress = exec("gzip -f $snapshot_file");
-}
-
-# On affcihe un message
-if(is_file($snapshot_file.".gz")) {
-	echo "<div class='message'>";
-	echo "<p>".sprintf(T_("The current database is accessible here (in the directory %s)"),$snapshot_path)."</p>";
-	echo "</div><br />";
-
-	echo "<center>
-	<table class='table-mysql'>
-	<thead>
-		<tr>
-			<th class='tc1 tcl' scope='col'>".T_('Name')."</th>
-			<th class='tc2' scope='col'>".T_('Size')."</th>
-		</tr>
-	</thead>";
-	//using the opendir function
-	$dir_handle = @opendir($snapshot_path) or die("Unable to open $snapshot_path");
-	while ($file = readdir($dir_handle)){
-	if($file!="." && $file!=".." && $file!=".svn" && $file!=".DS_Store")
-		echo"<tr>
-		<td>
-		<a href='mysql/snapshot/$file'>$file</a></td>
-		<td>". filesize($file) ."</td></tr>";
-	}
-	echo "</table>";
-	echo "</center>";
-	closedir($dir_handle);
-}
-echo '<br/><center><div class="button"><form action="" method="POST"><input type="hidden" name="mysqldump" value="creat"/><input type="submit" value="'.sprintf(T_("Create a new snapshot of your current database"),$snapshot_path).'"/></form></div></center>';
-?>
 </p>
 <br />
-<hr />
+</fieldset>
+<fieldset><legend><?php echo T_('Import planet configuration');?></legend>
 <br />
 <div class="message">
-<p><?php echo T_('Other backup of the database in the directory /admin/mysql/backup.');?>
+<p><?php echo T_('Please select the file you want to restore.');?>
 <br /><b><font color=red><?php echo T_('TAKE CARE !');?></font></b> <?=T_('If you apply the content of one of this file, this action can not be cancelled');?></p>
 </div>
 <br />
-<center>
-<table class="table-mysql table-mysql-600px">
-	<thead>
-		<tr>
-			<th class="tc3 tcl" scope="col"><?php echo T_('Name');?></th>
-			<th class='tc4 tcr' scope='col'><?php echo T_('Action');?></th>
-		</tr>
-	</thead>
-<?php
-$backup_path = "mysql/backup";
-//using the opendir function
-$dir_handle = @opendir($backup_path) or die("Unable to open $backup_path");
-while ($file = readdir($dir_handle)){
-	if($file!="." && $file!=".." && $file!=".svn" && $file!=".DS_Store")
-		# Affichage de la ligne de tableau
-		echo '<form method="POST"><tr>
-			<input type="hidden" name="nom" value="'.$file.'"/>
-			<input type="hidden" name="path" value="'.$backup_path.'"/>
-			<td><a href=mysql/backup/'.$file.'>'.$file.'</a></td>
-			<td><center>
-			<input type="submit" class="button br3px" name="import" value="'.T_('Import').'">
-			<input type="submit" class="button br3px"name="del" value="'.T_('Delete').'"> 
-			</center></td>';
-}
-closedir($dir_handle);
 
-?>
-</table></center>
+<form id="importform" enctype="multipart/form-data" method="post">
+<p>
+<?php echo T_('Select your backup file :'); ?> <input type="file" name="file" id="file" />
+</p>
+<br/>
+<div class="button"><input type="submit" name="importform" value="<?php echo T_("Import"); ?>"/></div>
+</form>
 <br />
 <p><i>
-<?php echo T_('NOTE : to import a database file, the file needs to have the *.sql.gz extension !');?>
+<?php echo T_('NOTE : to import a backup file, the file needs to have the *.json.gz extension !');?>
 </i></p>
+<script type="text/javascript" src="meta/js/import-export.js"></script>
+
 <?php include(dirname(__FILE__).'/footer.php');?>

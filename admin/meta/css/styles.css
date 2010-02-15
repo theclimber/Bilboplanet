@@ -895,3 +895,35 @@ input.nbfilter {
 input.inputURL {
 	width:80%;
 }
+
+#export-log {
+	float: right;
+	padding: 0.5em;
+	margin-left: 10px;
+	width: 300px;
+	border: 1px solid #d6d6d6;
+	border-left-color: #e4e4e4;
+	border-top-color: #e4e4e4;
+	margin-top: 10px;
+}
+ 
+#export_res {
+	overflow: auto;
+}
+#export_res div.flash {
+	font-size: 10px;
+	width:200px;
+}
+
+#export_res p.file {
+	margin-left:5px;
+	padding-bottom:8px;
+	padding-left:25px;
+	background-image:url(../icons/download.png);
+	background-repeat: no-repeat;
+}
+ 
+#export_res.ajax-loading {
+	padding: 20px 0;
+	background: url(../icons/spinner.gif) no-repeat center;
+}

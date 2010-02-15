@@ -711,4 +711,8 @@ function formatfilesize( $data ) {
 	}
 }
 
+function my_gzdecode($string) {
+	$string = substr($string, 10);
+	return gzinflate($string);
+}
 ?>

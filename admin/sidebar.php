@@ -35,7 +35,7 @@
 				<a href="gestion-logs.php" class="tips" rel="<?php echo T_('View logs information');?>." id="logs" ><?=T_('Logs Files');?></a>
 			</li>
 			<li>
-				<a href="gestion-mysql.php" class="tips" rel="<?php echo T_('Save Planet database');?>." id="database" ><?=T_('Save database');?></a>
+				<a href="gestion-mysql.php" class="tips" rel="<?php echo T_('Import/Export Planet configuration');?>." id="database" ><?=T_('Import/Export');?></a>
 			</li>
 			<li>
 				<a href="gestion-cache.php" class="tips" rel="<?php echo T_('Clear Planet cache');?>." id="cache" ><?=T_('Clear cache');?></a>

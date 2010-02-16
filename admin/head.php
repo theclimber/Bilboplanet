@@ -52,11 +52,18 @@ require_once(dirname(__FILE__).'/../inc/fonctions.php');
 		$('BP_About').addEvent('click', function(event){
 			event.stop();
 			var message = '<p>'+
-				'<h3><?php echo T_('Bilboplanet 0.3 was developed by');?></h3>'+
+				'<h3><?php echo T_('Bilboplanet was developed by');?></h3>'+
 				'<ul>'+
 				'<li>Gregoire de Hemptinne (<a href="http://www.theclimber.be" target="_blank">http://www.theclimber.be</a>)</li>'+
 				'<li>Thomas Bourcey (<a href="http://www.sckyzo.com" target="_blank">http://www.sckyzo.com</a>)</li>'+
-				'<li>Jonas Luthi (<a href="http://jonasluthi.com" target="_blank">http://jonasluthi.com</a>)</li>'+
+				'</ul>'+
+				'</p><br />'+
+				'<h3><?php echo T_('BilboPlanet : Useful links');?></h3>'+
+				'<p>'+
+				'<ul>'+
+				'<li><?php echo T_('Official WebSite: ');?><a href="http://www.bilboplanet.com" target="_blank">http://www.bilboplanet.com</a></li>'+
+				'<li><?php echo T_('Official Forum: ');?><a href="http://www.bilboplanet.com/forum" target="_blank">http://www.bilboplanet.com/forum</a></li>'+
+				'<li><?php echo T_('Official Documentation: ');?><a href="http://www.bilboplanet.com/documentation.php" target="_blank">http://www.bilboplanet.com/documentation.php</a></li>'+
 				'</ul>'+
 				'</p>'+
 				'<br /><hr><br/>'+
@@ -73,7 +80,7 @@ require_once(dirname(__FILE__).'/../inc/fonctions.php');
 	</p>
 	<ul id="BP_userbar">
 		<li><a id="BP_Logout" href="#" class="button minbutton br3px"><?php echo T_('Logout');?></a></li>
-		<li><a id="BP_About" class="button minbutton br3px">?</a></li>
+		<li><a id="BP_About" class="button minbutton br3px"><?php echo T_('About');?></a></li>
 	</ul>
 	<hr class="clear" />
 </div></div>

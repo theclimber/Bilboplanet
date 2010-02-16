@@ -192,7 +192,7 @@ form::field('DBUSER',30,255,html::escapeHTML($DBUSER)).'</label><br/>
 <font color="#A4A4A4">'.T_('Your username depends of your provider').'</font></p>'.
 
 '<p><label>'.T_('Password:').' '.
-form::password('DBPASSWORD',30,255).'</label>
+form::password('DBPASSWORD',30,255).'</label><br/>
  <font color="#A4A4A4">'.T_('Your password depends of your provider').'</font></p>'.
 
 #'<p><label class="required" title="'.T_('Required field').'">'.T_('Database Tables Prefix:').' '.

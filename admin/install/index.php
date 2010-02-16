@@ -343,33 +343,44 @@ closedir($dir_handle);
 	'<form action="index.php" method="post">'.
 	'<fieldset><legend><strong>'.T_('Information of the user').'</strong></legend>'.
 	'<p><label>'.T_('Firstname').' '.
-	form::field('u_firstname',30,255,html::escapeHTML($u_firstname)).'</label></p>'.
+	form::field('u_firstname',30,255,html::escapeHTML($u_firstname)).'</label><br />
+	<font color="#A4A4A4">'.T_('Enter your firstname or nickname').'</font></p>'.
 	'<p><label>'.T_('Name:').' '.
-	form::field('u_name',30,255,html::escapeHTML($u_name)).'</label></p>'.
+	form::field('u_name',30,255,html::escapeHTML($u_name)).'</label><br />
+	<font color="#A4A4A4">'.T_('Enter your name (optional)').'</font></p>'.
 	'<p><label>'.T_('Email').' '.
-	form::field('u_email',30,255,html::escapeHTML($u_email)).'</label></p>'.
+	form::field('u_email',30,255,html::escapeHTML($u_email)).'</label><br />
+	<font color="#A4A4A4">'.T_('Enter your email address').'</font></p>'.
 	'<p><label>'.T_('Website of the user:').' '.
-	form::field('u_site',30,255,html::escapeHTML($u_site)).'</label></p>'.
+	form::field('u_site',30,255,html::escapeHTML($u_site)).'</label><br />
+	<font color="#A4A4A4">'.T_('Entre address of your website or blog (optional)').'</font></p>'.
 	'</fieldset><br/>'.
 
 	'<fieldset><legend><strong>'.T_('Information on the Planet').'</strong></legend>'.
 	'<p><label>'.T_('URL of the Planet:').' '.
-	form::field('p_url',30,255,html::escapeHTML($p_url)).'</label></p>'.
+	form::field('p_url',30,255,html::escapeHTML($p_url)).'</label><br />
+	<font color="#A4A4A4">'.T_('ex: http://www.example.com or http://planet.example.com').'</font></p>'.
 	'<p><label>'.T_('Title of the Planet:').' '.
-	form::field('p_title',30,255,html::escapeHTML($p_title)).'</label></p>'.
+	form::field('p_title',30,255,html::escapeHTML($p_title)).'</label><br />
+	<font color="#A4A4A4">'.T_('Fill the title of your planet').'</font></p>'.
 	'<p><label>'.T_('Description:').' '.
-	form::field('p_desc',30,255,html::escapeHTML($p_desc)).'</label></p>'.
+	form::field('p_desc',30,255,html::escapeHTML($p_desc)).'</label><br />
+	<font color="#A4A4A4">'.T_('Give a description of your planet').'</font></p>'.
 	'<p><label>'.T_('Planet Language:').' '.
-	form::combo('p_lang',$p_lang).'</label></p>'.
+	form::combo('p_lang',$p_lang).'</label><br />
+	<font color="#A4A4A4">'.T_('Choose your langage').'</font></p>'.
 	'</fieldset><br/>'.
 	
-	'<fieldset><legend><strong>'.T_('Username and password').'</strong></legend>'.
+	'<fieldset><legend><strong>'.T_('Administration username and password').'</strong></legend>'.
 	'<p><label class="required" title="'.T_('Required field').'">'.T_('Username:').' '.
-	form::field('u_login',30,32,html::escapeHTML($u_login)).'</label></p>'.
+	form::field('u_login',30,32,html::escapeHTML($u_login)).'</label><br />
+	<font color="#A4A4A4">'.T_('Enter your username').'</font></p>'.
 	'<p><label class="required" title="'.T_('Required field').'">'.T_('Password:').' '.
-	form::password('u_pwd',30,255).'</label></p>'.
+	form::password('u_pwd',30,255).'</label><br />
+	<font color="#A4A4A4">'.T_('Enter your password').'</font></p>'.
 	'<p><label class="required" title="'.T_('Required field').'">'.T_('Confirm your password:').' '.
-	form::password('u_pwd2',30,255).'</label></p>'.
+	form::password('u_pwd2',30,255).'</label><br />
+	<font color="#A4A4A4">'.T_('Re-enter your password for verification').'</font></p>'.
 	'</fieldset><br/>'.
 	
 	'<p style="text-align:center"><input class="save" type="submit" value="'.T_('Save').'" /></p>'.

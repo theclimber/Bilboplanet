@@ -131,7 +131,7 @@ include_once(dirname(__FILE__).'/sidebar.php');
 <table class="table-flux-add">
 		<thead>
 			<tr>
-				<th class="tc1 tcl" scope="col"><?php echo T_('Full url of the feed (Without the ending /)');?></th>
+				<th class="tc1 tcl" scope="col"><?php echo T_('Full url of the feed');?></th>
 				<th class="tc2 tcr" scope="col"><?php echo T_('Name of the user');?></th>
 			</tr>
 		</thead>

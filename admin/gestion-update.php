@@ -126,8 +126,12 @@ echo '<input type="checkbox" name="index_update" '.$checked.' /> '.T_('Enable up
 </form>
 </fieldset>
 <fieldset><legend><?=T_('Setup manual crontab');?></legend>
+		<div class="message">
+			<p><?php echo T_('How to do a manual update ?');?></p>
+		</div><br />
+		
 <p><?php echo T_('You can setup a manual crontab update by calling automatically every X time the following page :'); ?><br/>
-<?php echo $planet_url."/inc/update_manual.php"; ?></p>
+<b><?php echo $planet_url."/inc/update_manual.php"; ?></b></p><br />
 <p><?php echo T_('This will automatically launch the update and log it into the log files.'); ?></p>
 </fieldset>
 <?php

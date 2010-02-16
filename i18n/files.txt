@@ -23,6 +23,7 @@ admin/gestion-mysql.php
 admin/gestion-option.php
 admin/gestion-update.php
 admin/gestion-user.php
+admin/manage-database.php
 admin/head.php
 admin/index.php
 admin/pagination.php

@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Bilboplanet 0.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-31 11:21+0100\n"
-"PO-Revision-Date: 2009-12-31 11:24+0100\n"
-"Last-Translator: Grégoire de Hemptinne <g.dehemptinne@whatever-company.com>\n"
+"POT-Creation-Date: 2010-02-16 16:02+0100\n"
+"PO-Revision-Date: 2010-02-16 16:23+0100\n"
+"Last-Translator: Gregoire de Hemptinne <greg@theclimber.be>\n"
 "Language-Team: Dutch\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -146,7 +146,7 @@ msgstr "Inhoud:"
 #: contact.php:143
 #: inscription.php:199
 #: admin/gestion-articles.php:155
-#: admin/gestion-flux.php:161
+#: admin/gestion-flux.php:165
 #: admin/gestion-membre.php:127
 #: admin/gestion-membre.php:188
 msgid "Reset"
@@ -155,22 +155,22 @@ msgstr "Reset"
 #: contact.php:144
 #: inscription.php:200
 #: admin/gestion-articles.php:156
-#: admin/gestion-flux.php:162
+#: admin/gestion-flux.php:166
 #: admin/gestion-update.php:125
 msgid "Send"
 msgstr "Sturen"
 
-#: feed.php:139
+#: feed.php:140
 #, php-format
 msgid "Gravatar of %s"
 msgstr "Gravatar van %s"
 
-#: feed.php:147
+#: feed.php:148
 #, php-format
 msgid "Vote for this post on <a href=\"%s\" title=\"Go on the planet\">%s</a>."
 msgstr "Stem voor deze post op <a href=\"%s\" title=\"Go on the planet\">%s.</a>"
 
-#: feed.php:196
+#: feed.php:197
 msgid "There is no feed here"
 msgstr "Er is geen feed hier"
 
@@ -291,30 +291,30 @@ msgstr "Onderwerp"
 #: stats.php:62
 #: stats.php:73
 #: admin/gestion-articles.php:178
-#: admin/gestion-flux.php:182
+#: admin/gestion-flux.php:186
 #: admin/gestion-logs.php:66
 #: admin/gestion-membre.php:179
 #: admin/gestion-membre.php:234
-#: admin/gestion-mysql.php:118
-#: admin/gestion-mysql.php:154
+#: admin/install/index.php:348
 msgid "Name"
 msgstr "Naam"
 
 #: inscription.php:129
-#: admin/install/index.php:332
+#: admin/install/index.php:345
 msgid "Firstname"
 msgstr "Voornaam"
 
 #: inscription.php:130
 #: admin/gestion-membre.php:182
 #: admin/gestion-membre.php:236
-#: admin/install/index.php:336
+#: admin/install/index.php:351
 msgid "Email"
 msgstr "E-mail"
 
 #: inscription.php:131
 #: stats.php:62
 #: stats.php:73
+#: admin/gestion-membre.php:185
 #: admin/gestion-membre.php:235
 msgid "Website"
 msgstr "Website"
@@ -390,41 +390,40 @@ msgid "If you need to contact the administration team for any reason (change of 
 msgstr "Als u de administratie team will contacteren for een reden of een ander (verandering van uw feed-URL contact, suggestie ...), kunt u dit doen door <a href='contact.php'>hier te klikken.</a>"
 
 #: mobile.php:46
-#: mobile.php:50
+#: mobile.php:164
 msgid "Mobile version"
 msgstr "Mobiele versie"
 
-#: mobile.php:73
+#: mobile.php:187
 msgid "Go to the summary"
 msgstr "Ga naar de samenvatting"
 
-#: mobile.php:73
+#: mobile.php:187
 msgid "Summary"
 msgstr "Samenvatting"
 
-#: mobile.php:74
+#: mobile.php:188
 msgid "Show posts content"
 msgstr "Toon berichten inhoud"
 
-#: mobile.php:74
+#: mobile.php:188
 msgid "Posts detail"
 msgstr "Berichten detail"
 
-#: mobile.php:75
+#: mobile.php:189
 msgid "See more posts"
 msgstr "Meer berichten"
 
-#: mobile.php:76
+#: mobile.php:190
 msgid "Back to site"
 msgstr "Terug naar site"
 
-#: mobile.php:118
-#: mobile.php:124
+#: mobile.php:246
 #: inc/fonctions.php:314
 msgid "Visit source"
 msgstr "Bezoek bron"
 
-#: mobile.php:127
+#: mobile.php:252
 #, php-format
 msgid "%d vote(s)"
 msgstr "%d stem(men)"
@@ -653,15 +652,15 @@ msgstr "Het veld \"%s\" %s is geen geldige simplepie feed"
 msgid "The field \"%s\" is empty"
 msgstr "Het veld \"%s\" is leeg"
 
-#: inc/fonctions.php:698
+#: inc/fonctions.php:702
 msgid " bytes"
 msgstr "bytes"
 
-#: inc/fonctions.php:702
+#: inc/fonctions.php:706
 msgid " Kb"
 msgstr "Kb"
 
-#: inc/fonctions.php:706
+#: inc/fonctions.php:710
 msgid " MB"
 msgstr "MB"
 
@@ -713,12 +712,12 @@ msgid "Date"
 msgstr "Datum"
 
 #: admin/gestion-articles.php:180
-#: admin/index.php:81
+#: admin/index.php:57
 msgid "Title"
 msgstr "Titel"
 
 #: admin/gestion-articles.php:181
-#: admin/gestion-flux.php:184
+#: admin/gestion-flux.php:188
 #: admin/gestion-membre.php:237
 msgid "Status"
 msgstr "Status"
@@ -728,18 +727,17 @@ msgid "Nb votes"
 msgstr "Nb stemmen"
 
 #: admin/gestion-articles.php:183
-#: admin/gestion-flux.php:185
+#: admin/gestion-flux.php:189
 #: admin/gestion-logs.php:67
 #: admin/gestion-membre.php:238
-#: admin/gestion-mysql.php:155
 msgid "Action"
 msgstr "Actie"
 
 #: admin/gestion-articles.php:215
 #: admin/gestion-articles.php:217
 #: admin/gestion-articles.php:221
-#: admin/gestion-flux.php:232
-#: admin/gestion-flux.php:238
+#: admin/gestion-flux.php:236
+#: admin/gestion-flux.php:242
 #: admin/gestion-membre.php:249
 #: admin/gestion-membre.php:255
 msgid "active"
@@ -748,29 +746,28 @@ msgstr "actief"
 #: admin/gestion-articles.php:216
 #: admin/gestion-articles.php:220
 #: admin/gestion-articles.php:222
-#: admin/gestion-flux.php:233
 #: admin/gestion-flux.php:237
+#: admin/gestion-flux.php:241
 #: admin/gestion-membre.php:250
 #: admin/gestion-membre.php:254
 msgid "inactive"
 msgstr "inactief"
 
 #: admin/gestion-articles.php:240
-#: admin/gestion-flux.php:259
+#: admin/gestion-flux.php:263
 #: admin/gestion-membre.php:269
 msgid "Change"
 msgstr "Veranderen"
 
 #: admin/gestion-articles.php:241
-#: admin/gestion-flux.php:260
+#: admin/gestion-flux.php:264
 #: admin/gestion-logs.php:83
 #: admin/gestion-membre.php:270
-#: admin/gestion-mysql.php:171
 msgid "Delete"
 msgstr "Vermijderen"
 
 #: admin/gestion-articles.php:257
-#: admin/gestion-flux.php:274
+#: admin/gestion-flux.php:278
 #: admin/gestion-membre.php:283
 msgid "Show items by : "
 msgstr "Ordeer de elementen :"
@@ -821,32 +818,36 @@ msgstr "Het toevoegen van de feed %s geslaagd"
 msgid "Changing the feed %s succeeded"
 msgstr "Veranderen van de feed %s geslaagd"
 
-#: admin/gestion-flux.php:118
+#: admin/gestion-flux.php:98
+msgid "You are not allowed to create a feed without selecting an user"
+msgstr "U bent niet toegelaten om een feed toe te voegen zonder een lid te selecteren"
+
+#: admin/gestion-flux.php:122
 msgid "Add a feed"
 msgstr "Voeg een feed"
 
-#: admin/gestion-flux.php:130
-msgid "Full url of the feed (Without the ending /)"
-msgstr "Volledige URL van de feed (Zonder de eindigend /)"
+#: admin/gestion-flux.php:134
+msgid "Full url of the feed"
+msgstr "URL van de feed"
 
-#: admin/gestion-flux.php:131
+#: admin/gestion-flux.php:135
 msgid "Name of the user"
 msgstr "Naam van de gebruiker"
 
-#: admin/gestion-flux.php:167
+#: admin/gestion-flux.php:171
 msgid "Manage feeds"
 msgstr "Beheer feeds"
 
-#: admin/gestion-flux.php:169
+#: admin/gestion-flux.php:173
 msgid "Manage member feed."
 msgstr "Beheer lid feed."
 
-#: admin/gestion-flux.php:183
+#: admin/gestion-flux.php:187
 msgid "URL of the feed"
 msgstr "URL van de feed"
 
-#: admin/gestion-flux.php:250
-#: admin/gestion-flux.php:253
+#: admin/gestion-flux.php:254
+#: admin/gestion-flux.php:257
 msgid "show"
 msgstr "tonen"
 
@@ -936,10 +937,6 @@ msgstr "Voeg een gebruiker"
 msgid "To add a new member, fill out the form below."
 msgstr "Om een nieuw lid toe te voegen, vul de onderstaande formulier in."
 
-#: admin/gestion-membre.php:185
-msgid "Website (without the ending /)"
-msgstr "Website (zonder de eindigend /)"
-
 #: admin/gestion-membre.php:189
 msgid "Add"
 msgstr "Toevoegen"
@@ -960,60 +957,111 @@ msgstr "Ga naar de lid website / blog"
 msgid "Show"
 msgstr "Tonen"
 
+#: admin/gestion-mysql.php:35
+msgid "Your file could not be downloaded"
+msgstr "Het bestand kon niet download worden"
+
+#: admin/gestion-mysql.php:38
+msgid "Your file could not be imported"
+msgstr "Het bestand kon niet geimporteerd worden"
+
+#: admin/gestion-mysql.php:41
+msgid "Your file doesn't have the right format : "
+msgstr "Uw bestand is niet in de goede formaat : "
+
 #: admin/gestion-mysql.php:44
-msgid "File successfully imported"
-msgstr "Bestand geïmporteerd"
+msgid "Congratulations! You imported an old data configuration successfully"
+msgstr "Proficiat! De importatie is gelukt"
 
-#: admin/gestion-mysql.php:48
+#: admin/gestion-mysql.php:45
+msgid "File name: "
+msgstr "Bestand naam:"
+
+#: admin/gestion-mysql.php:46
+msgid "Size: "
+msgstr "Grootte:"
+
+#: admin/gestion-mysql.php:46
+msgid "Kb"
+msgstr "Kb"
+
+#: admin/gestion-mysql.php:62
 #, php-format
-msgid "File %s successfully deleted"
-msgstr "Bestand %s verwijderd"
+msgid "Error while truncating table %s : %s"
+msgstr "Fout tijdens het legen van de tabel %s : %s"
 
-#: admin/gestion-mysql.php:52
-msgid "Error while trying to modify database informations"
-msgstr "Fout bij het wijzigen van de database informatie"
-
-#: admin/gestion-mysql.php:66
-msgid "Export database"
-msgstr "Export database"
-
-#: admin/gestion-mysql.php:110
+#: admin/gestion-mysql.php:76
 #, php-format
-msgid "The current database is accessible here (in the directory %s)"
-msgstr "De huidige database is toegankelijk hier (in de folder %s)"
+msgid "Error while appending table %s : %s"
+msgstr "Fout tijdens het invullen van de tabel %s : %s"
 
-#: admin/gestion-mysql.php:111
-msgid "When you reload this page, a new snapchot of your current database will be generated"
-msgstr "Wanneer u deze pagina laad, een nieuwe snapchot van uw huidige database wordt gegenereerd"
+#: admin/gestion-mysql.php:98
+msgid "Export planet configuration"
+msgstr "Export planeet Configuratie"
+
+#: admin/gestion-mysql.php:101
+msgid "Please select the data you want to export"
+msgstr "Selecteer de gegevens dat u wil exporteren"
+
+#: admin/gestion-mysql.php:102
+msgid "This will export the data to a file that you'll be able to import later on another installation"
+msgstr "Dit gaat een bestand exporteren dat u later terug gaat kunnen importeren op een andere installatie."
+
+#: admin/gestion-mysql.php:106
+msgid "Exported data"
+msgstr "Bewaarde bestand"
+
+#: admin/gestion-mysql.php:112
+msgid "Members table"
+msgstr "Leden tabel"
+
+#: admin/gestion-mysql.php:113
+msgid "Feeds table"
+msgstr "Feeds tabel"
+
+#: admin/gestion-mysql.php:114
+msgid "Articles table"
+msgstr "Artikelen tabel"
+
+#: admin/gestion-mysql.php:115
+msgid "Votes table"
+msgstr "Stemmen tabel"
+
+#: admin/gestion-mysql.php:116
+msgid "Configuration file"
+msgstr "Configuratie bestand"
 
 #: admin/gestion-mysql.php:119
-msgid "Size"
-msgstr "Grootte"
+msgid "Export"
+msgstr "Export"
 
-#: admin/gestion-mysql.php:137
-#, php-format
-msgid "The actual database is accessible here (in the directory %s)"
-msgstr "De huidige database is toegankelijk hier (in de folder %s)"
+#: admin/gestion-mysql.php:125
+msgid "Import planet configuration"
+msgstr "Import planeet Configuratie"
 
-#: admin/gestion-mysql.php:146
-msgid "Other backup of the database in the directory /admin/mysql/backup."
-msgstr "Andere backup van de database in de folder /admin/mysql/back-up."
+#: admin/gestion-mysql.php:128
+msgid "Please select the file you want to restore."
+msgstr "Selecteer het bestand dat u wil importeren."
 
-#: admin/gestion-mysql.php:147
+#: admin/gestion-mysql.php:129
 msgid "TAKE CARE !"
 msgstr "PAS OP!"
 
-#: admin/gestion-mysql.php:147
+#: admin/gestion-mysql.php:129
 msgid "If you apply the content of one of this file, this action can not be cancelled"
 msgstr "Als u de inhoud van een van deze bestanden toepast kan deze actie niet worden geannuleerd"
 
-#: admin/gestion-mysql.php:170
+#: admin/gestion-mysql.php:135
+msgid "Select your backup file :"
+msgstr "Selecteer uw backup bestand :"
+
+#: admin/gestion-mysql.php:138
 msgid "Import"
 msgstr "Import"
 
-#: admin/gestion-mysql.php:180
-msgid "NOTE : to import a database file, the file needs to have the *.sql.gz extension !"
-msgstr "OPMERKING: Om een database bestand te importeren moet het bestand in de formaat *. sql.gz zijn !"
+#: admin/gestion-mysql.php:142
+msgid "NOTE : to import a backup file, the file needs to have the *.json.gz extension !"
+msgstr "OPMERKING: Om een database bestand te importeren moet het bestand in de formaat *. json.gz zijn !"
 
 #: admin/gestion-option.php:86
 #: admin/gestion-user.php:67
@@ -1029,6 +1077,7 @@ msgid "Configuration settings Planet."
 msgstr "Instellingen van de Planeet."
 
 #: admin/gestion-option.php:110
+#: admin/install/index.php:363
 msgid "Title of the Planet"
 msgstr "Titel van de Planeet"
 
@@ -1096,17 +1145,17 @@ msgid "System configuration update."
 msgstr "Systeemconfiguratie update."
 
 #: admin/gestion-update.php:106
-#: admin/index.php:108
+#: admin/index.php:156
 msgid "The update is running"
 msgstr "De update wordt uitgevoerd"
 
 #: admin/gestion-update.php:108
-#: admin/index.php:110
+#: admin/index.php:158
 msgid "The update is stopped"
 msgstr "De update is gestopt"
 
 #: admin/gestion-update.php:109
-#: admin/index.php:112
+#: admin/index.php:160
 msgid "The update is disabled"
 msgstr "De update is uitgeschakeld"
 
@@ -1130,11 +1179,15 @@ msgstr "Activeer de update tijdens het laden van de index pagina"
 msgid "Setup manual crontab"
 msgstr "Maak uw eigen crontab"
 
-#: admin/gestion-update.php:129
+#: admin/gestion-update.php:130
+msgid "How to do a manual update ?"
+msgstr "Hoe een manuele update maken?"
+
+#: admin/gestion-update.php:133
 msgid "You can setup a manual crontab update by calling automatically every X time the following page :"
 msgstr "U kunt uw eigen crontab instellen door een oproep naar de volgende pagina elke X minuten te maken :"
 
-#: admin/gestion-update.php:131
+#: admin/gestion-update.php:135
 msgid "This will automatically launch the update and log it into the log files."
 msgstr "Het gaat automatisch de update inschakelen en de log informatie in the log bestanden zetten."
 
@@ -1161,10 +1214,11 @@ msgstr "Gelieve na te kijken dat de twee wachtwoorden gelijk zijn"
 
 #: admin/gestion-user.php:106
 #: admin/gestion-user.php:118
-#: admin/install/index.php:126
-#: admin/install/index.php:141
-#: admin/install/index.php:161
-#: admin/install/index.php:172
+#: admin/manage-database.php:106
+#: admin/install/index.php:127
+#: admin/install/index.php:142
+#: admin/install/index.php:162
+#: admin/install/index.php:173
 #, php-format
 msgid "Unable to write %s file."
 msgstr "Het schrijven op het bestand %s onmogenlijk"
@@ -1221,70 +1275,131 @@ msgstr "Nieuw wachtwoord"
 msgid "Confirm password"
 msgstr "Bevestig uw wachtwoord:"
 
-#: admin/head.php:55
-msgid "Bilboplanet 0.3 was developed by"
-msgstr "Bilboplanet 0.3 ontwikkeld door"
+#: admin/manage-database.php:112
+msgid "A snapshot of your current database was successfully created. Please download the following file and put it in some safe place."
+msgstr "Een backup bestand was met succes gecreëert. Download het bestand en zet hem in een veilige plaats."
+
+#: admin/manage-database.php:116
+msgid "Please select at least one table to export"
+msgstr "Selecteer minimum een tabel te exporteren"
+
+#: admin/head.php:53
+msgid "Bilboplanet was developed by"
+msgstr "Bilboplanet was ontwikkeld door"
+
+#: admin/head.php:59
+msgid "BilboPlanet : Useful links"
+msgstr "Bilboplanet : nuttige linken"
+
+#: admin/head.php:62
+msgid "Official WebSite : "
+msgstr "Officiele Website :"
 
 #: admin/head.php:63
+msgid "Official Forum : "
+msgstr "Officiele forum :"
+
+#: admin/head.php:64
+msgid "Official Documentation : "
+msgstr "Officiele documentatie : "
+
+#: admin/head.php:68
 msgid "BilboPlanet.com - Open Source Feed Agregator - 2009"
 msgstr "BilboPlanet.com - Open Source Feed Agregator - 2009"
 
-#: admin/head.php:64
+#: admin/head.php:69
+#: admin/head.php:81
 msgid "About"
 msgstr "Over ons"
 
-#: admin/head.php:72
+#: admin/head.php:77
 msgid "Back on the Bilboplanet"
 msgstr "Terug op de Bilboplanet"
 
-#: admin/head.php:75
+#: admin/head.php:80
 msgid "Logout"
 msgstr "Afmelden"
 
-#: admin/index.php:81
+#: admin/index.php:33
+msgid "Latest articles :"
+msgstr "Laatste artikelen:"
+
+#: admin/index.php:57
 msgid "User"
 msgstr "Gebruiker"
 
-#: admin/index.php:92
+#: admin/index.php:79
+msgid "BilboPlanet news - Official Website :"
+msgstr "Bilboplanet nieuws - Officiele website"
+
+#: admin/index.php:140
 #: admin/sidebar.php:7
 msgid "Dashboard"
 msgstr "Dashboard"
 
-#: admin/index.php:94
+#: admin/index.php:142
 msgid "Quick summary of the planet"
 msgstr "Korte samenvatting van de planeet"
 
-#: admin/index.php:98
-msgid "Latest articles :"
-msgstr "Laatste artikelen:"
-
-#: admin/index.php:103
+#: admin/index.php:151
 msgid "Statistics :"
 msgstr "Statistieken:"
 
-#: admin/index.php:114
+#: admin/index.php:162
 msgid "The update on loading of index page enabled"
 msgstr "De update tijdens het laden van de index pagina is geactiveerd"
 
-#: admin/index.php:117
+#: admin/index.php:164
 msgid "Current size of the database :"
 msgstr "Huidige grootte van de database:"
 
-#: admin/index.php:118
+#: admin/index.php:165
 msgid "Number of articles in the DB :"
 msgstr "Aantal artikels in de database :"
 
-#: admin/index.php:119
+#: admin/index.php:166
 msgid "Number of votes in the DB :"
 msgstr "Aantal stemmen in de DB :"
 
-#: admin/index.php:120
+#: admin/index.php:167
 msgid "Number of members in the DB :"
 msgstr "Aantal leden in de DB :"
 
-#: admin/index.php:121
+#: admin/index.php:168
 msgid "Number of feeds in the DB :"
 msgstr "Aantal feeds in de DB :"
+
+#: admin/index.php:174
+msgid "System information :"
+msgstr "Systeem informaties :"
+
+#: admin/index.php:176
+msgid "Date server :"
+msgstr "Datum van de server :"
+
+#: admin/index.php:177
+msgid "Operating System :"
+msgstr "Operating system :"
+
+#: admin/index.php:178
+msgid "PHP version :"
+msgstr "PHP versie :"
+
+#: admin/index.php:179
+msgid "MySQL version :"
+msgstr "MySQL versie :"
+
+#: admin/index.php:180
+msgid "Apache version :"
+msgstr "Apache versie :"
+
+#: admin/index.php:181
+msgid "Memory :"
+msgstr "Geheugen :"
+
+#: admin/index.php:182
+msgid "Your BilboPlanet version :"
+msgstr "Uw Bilboplanet versie :"
 
 #: admin/sidebar.php:7
 msgid "Access the quick summary of the planet"
@@ -1339,12 +1454,12 @@ msgid "Logs Files"
 msgstr "Logs Bestanden"
 
 #: admin/sidebar.php:38
-msgid "Save Planet database"
-msgstr "Opslaan Planeet database"
+msgid "Import/Export Planet configuration"
+msgstr "Import/Export planeet configuratie"
 
 #: admin/sidebar.php:38
-msgid "Save database"
-msgstr "Opslaan database"
+msgid "Import/Export"
+msgstr "Import/Export"
 
 #: admin/sidebar.php:41
 msgid "Clear Planet cache"
@@ -1415,158 +1530,203 @@ msgid "No configuration file"
 msgstr "Geen configuratie bestand"
 
 #: admin/install/index.php:34
-#, php-format
-msgid "There is no configuration file, you need to create one. Therefor you can use the <a href=\"%s\">wizard</a> to generate a configuration file."
-msgstr "Er is geen configuratie bestand, u moet er een maken. Daarom kunt u de <a href=\"%s\">wizard</a> gebruiken om een configuratiebestand te genereren."
+msgid "There is no configuration file, you need to create one. Therefor you can use the wizard to generate a configuration file. Click \"Next\" to go to the setup page."
+msgstr "Er is geen configuratie bestand, u moet er een maken. Daarom kunt u de wizard gebruiken om een configuratiebestand te genereren. Klik op volgende om naar de installatie pagina te gaan."
 
-#: admin/install/index.php:52
+#: admin/install/index.php:35
+msgid "Next"
+msgstr "Volgende"
+
+#: admin/install/index.php:53
 #: admin/install/wizard.php:81
 msgid "The Bilboplanet is already installed."
 msgstr "De Bilboplanet is al geïnstalleerd."
 
-#: admin/install/index.php:58
+#: admin/install/index.php:59
 msgid "The Bilboplanet can not be installed"
 msgstr "De Bilboplanet kan niet worden geïnstalleerd"
 
-#: admin/install/index.php:91
+#: admin/install/index.php:92
 msgid "Please fill the username in."
 msgstr "Vul de gebruikersnaam in"
 
-#: admin/install/index.php:94
+#: admin/install/index.php:95
 msgid "The username has to be formed of minimum 2 characters with letters of numbers"
 msgstr "De gebruikersnaam moet worden gevormd door minimaal 2 tekens van letters en getallen"
 
-#: admin/install/index.php:97
+#: admin/install/index.php:98
 msgid "Invalid email address"
 msgstr "Ongeldig e-mailadres"
 
-#: admin/install/index.php:101
+#: admin/install/index.php:102
 msgid "No password given"
 msgstr "Geen password gekregen"
 
-#: admin/install/index.php:104
+#: admin/install/index.php:105
 msgid "The passwords don't match"
 msgstr "De wachtwoorden komen niet overeen"
 
-#: admin/install/index.php:107
+#: admin/install/index.php:108
 msgid "The password have to contain minimum 6 characters."
 msgstr "Het wachtwoord moet minimaal 6 tekens bevatten."
 
-#: admin/install/index.php:136
+#: admin/install/index.php:137
 #, php-format
 msgid "File %s already exists."
 msgstr "Bestand %s bestaat reeds."
 
-#: admin/install/index.php:275
-#: admin/install/index.php:298
+#: admin/install/index.php:276
+#: admin/install/index.php:308
 msgid "Installation of the Bilboplanet"
 msgstr "Installatie van de Bilboplanet"
 
-#: admin/install/index.php:305
-#: admin/install/wizard.php:152
+#: admin/install/index.php:315
+#: admin/install/wizard.php:161
 msgid "Errors:"
 msgstr "Fouten:"
 
-#: admin/install/index.php:309
+#: admin/install/index.php:319
 msgid "The configuration file was successfully created."
 msgstr "Het configuratie bestand is gemaakt."
 
-#: admin/install/index.php:326
+#: admin/install/index.php:339
 msgid "Information on the BilboPlanet"
 msgstr "Informatie over de BilboPlanet"
 
-#: admin/install/index.php:328
+#: admin/install/index.php:341
 msgid "Thank you for taking somes minutes to answer those questions to help to the configuration of the bilboplanet"
 msgstr "Bedankt om enkele minuten te nemen om deze vragen te antwoorden voor de configuratie van de bilboplanet"
 
-#: admin/install/index.php:331
+#: admin/install/index.php:344
 msgid "Information of the user"
 msgstr "Informatie van de gebruiker"
 
-#: admin/install/index.php:334
-msgid "Name:"
-msgstr "Naam:"
+#: admin/install/index.php:347
+msgid "Enter your firstname or nickname"
+msgstr "Geef uw naam of pseudoniem"
 
-#: admin/install/index.php:338
-msgid "Website of the user:"
-msgstr "Website van de gebruiker:"
+#: admin/install/index.php:350
+msgid "Enter your name (optional)"
+msgstr "Geef uw naam (facultatief)"
 
-#: admin/install/index.php:342
+#: admin/install/index.php:353
+msgid "Enter your email address"
+msgstr "Geeg uw email adres"
+
+#: admin/install/index.php:354
+msgid "Website of the user"
+msgstr "Website van de gebruiker"
+
+#: admin/install/index.php:356
+msgid "Entre address of your website or blog (optional)"
+msgstr "Geef de url van uw website of blog (facultatief)"
+
+#: admin/install/index.php:359
 msgid "Information on the Planet"
 msgstr "Informatie over de Planeet"
 
-#: admin/install/index.php:343
-msgid "URL of the Planet:"
-msgstr "URL van de Planeet:"
+#: admin/install/index.php:360
+msgid "URL of the Planet"
+msgstr "URL van de Planeet"
 
-#: admin/install/index.php:345
-msgid "Title of the Planet:"
-msgstr "Titel van de Planeet:"
+#: admin/install/index.php:362
+msgid "ex: http://www.example.com or http://planet.example.com"
+msgstr "bv: http://www.example.com of http://planet.example.com"
 
-#: admin/install/index.php:347
-msgid "Description:"
-msgstr "Beschrijving:"
+#: admin/install/index.php:365
+msgid "Fill the title of your planet"
+msgstr "Vul de titel van de planeet in"
 
-#: admin/install/index.php:349
-msgid "Planet Language:"
-msgstr "Planeet Taal:"
+#: admin/install/index.php:366
+msgid "Description"
+msgstr "Beschrijving"
 
-#: admin/install/index.php:353
-msgid "Username and password"
-msgstr "Gebruikersnaam en wachtwoord"
+#: admin/install/index.php:368
+msgid "Give a description of your planet"
+msgstr "Geef een beschrijving van de Planeet"
 
-#: admin/install/index.php:354
-#: admin/install/index.php:356
-#: admin/install/index.php:358
+#: admin/install/index.php:369
+msgid "Planet Language"
+msgstr "Planeet Taal"
+
+#: admin/install/index.php:371
+msgid "Choose your langage"
+msgstr "Kies uw taal"
+
+#: admin/install/index.php:374
+msgid "Administration username and password"
+msgstr "Administratie gebruikersnaam en wachtwoord"
+
+#: admin/install/index.php:375
+#: admin/install/index.php:378
+#: admin/install/index.php:381
 msgid "Required field"
 msgstr "Verplicht veld"
 
-#: admin/install/index.php:354
-#: admin/install/index.php:379
-#: admin/install/wizard.php:180
-msgid "Username:"
-msgstr "Gebruikersnaam:"
+#: admin/install/index.php:375
+msgid "Username"
+msgstr "Gebruikersnaam"
 
-#: admin/install/index.php:356
+#: admin/install/index.php:377
+msgid "Enter your username"
+msgstr "Geef uw gebruikersnaam"
+
+#: admin/install/index.php:378
+msgid "Password"
+msgstr "Wachtwoord"
+
 #: admin/install/index.php:380
-#: admin/install/wizard.php:183
-msgid "Password:"
-msgstr "Wachtwoord:"
+msgid "Enter your password"
+msgstr "Geef uw wachtwoord:"
 
-#: admin/install/index.php:358
-msgid "Confirm your password:"
+#: admin/install/index.php:381
+msgid "Confirm your password"
 msgstr "Bevestig uw wachtwoord:"
 
-#: admin/install/index.php:362
-#: admin/install/wizard.php:189
+#: admin/install/index.php:383
+msgid "Re-enter your password for verification"
+msgstr "Geef uw wachtwoord opnieuw voor bevestiging"
+
+#: admin/install/index.php:386
+#: admin/install/wizard.php:200
 msgid "Save"
 msgstr "Opslaan"
 
-#: admin/install/index.php:373
+#: admin/install/index.php:397
 msgid "Install succeeded"
 msgstr "Installatie geslaagd"
 
-#: admin/install/index.php:375
+#: admin/install/index.php:399
 msgid "The Bilboplanet was successfully installed. Here you can find a resume of the configuration"
 msgstr "De Bilboplanet is met succes geïnstalleerd. Hier vindt u een samenvatting van de configuratie"
 
-#: admin/install/index.php:377
+#: admin/install/index.php:401
 msgid "Your account"
 msgstr "Uw account"
 
-#: admin/install/index.php:383
+#: admin/install/index.php:403
+#: admin/install/wizard.php:189
+msgid "Username:"
+msgstr "Gebruikersnaam:"
+
+#: admin/install/index.php:404
+#: admin/install/wizard.php:193
+msgid "Password:"
+msgstr "Wachtwoord:"
+
+#: admin/install/index.php:407
 msgid "Your Bilboplanet"
 msgstr "Uw Bilboplanet"
 
-#: admin/install/index.php:385
+#: admin/install/index.php:409
 msgid "URL of the BilboPlanet:"
 msgstr "URL van de BilboPlanet:"
 
-#: admin/install/index.php:386
+#: admin/install/index.php:410
 msgid "Administration interface:"
 msgstr "Administratie interface:"
 
-#: admin/install/index.php:390
+#: admin/install/index.php:414
 msgid "Go to the administration interface"
 msgstr "Ga naar de administratie-interface"
 
@@ -1589,23 +1749,22 @@ msgstr "Kan niet schrijven in %s bestand."
 msgid "Bilboplanet Install Wizard"
 msgstr "Bilboplanet Install Wizard"
 
-#: admin/install/wizard.php:149
+#: admin/install/wizard.php:158
 msgid "Installation wizard of the Bilboplanet"
 msgstr "Installatie wizard van de Bilboplanet"
 
-#: admin/install/wizard.php:156
+#: admin/install/wizard.php:165
 #, php-format
 msgid "The file <strong>%s</strong> already exists. If you need to reinitialize on of the configuration elements in this file, please remove the configuration file first or <a href=\"%s\">continue the installation</a>."
 msgstr "Het bestand <strong>%s</strong> bestaat reeds. Als u de installatie wilt reinitialiseren kunt u het configuratie bestand verwijderen of <a href=\"%s\">verder gaan</a>.</a>"
 
-#: admin/install/wizard.php:161
+#: admin/install/wizard.php:170
 msgid ""
-"<h3>Welcome to the BilboPlanet. Before you begin, we need some informations concerning the database. You'll need to provide the following information to begin the installation and to create the configuration file.</h3>\n"
-"\n"
-"   1. The host of the database<br/>\n"
-"   2. The name of the database<br/>\n"
-"   3. Your username to the database<br/>\n"
-"   4. Your password to the database<br/><br/>"
+"<h3>Welcome to the BilboPlanet. Before you begin, we need some informations concerning the database. You'll need to provide the following information to begin the installation and to create the configuration file.<br /><br />\n"
+"   1. The host of the database.<br/>\n"
+"   2. The name of the database.<br/>\n"
+"   3. Your username to the database.<br/>\n"
+"   4. Your password to the database.<br/><br/>"
 msgstr ""
 "<h3> Welkom op de BilboPlanet. Voordat u begint, moeten we wat informatie over de database krijgen. U moet de volgende informatie hebben om de installatie te beginnen en om de configuratie bestand te maken.</h3>\n"
 "\n"
@@ -1614,14 +1773,60 @@ msgstr ""
 "  3. Uw gebruikersnaam voor de database <br/>\n"
 "  4. Uw wachtwoord voor de database <br/><br/>"
 
-#: admin/install/wizard.php:174
+#: admin/install/wizard.php:181
 msgid "Host of the database"
 msgstr "Host van de database"
 
-#: admin/install/wizard.php:177
+#: admin/install/wizard.php:183
+msgid "ex: localhost"
+msgstr "bv: localhost"
+
+#: admin/install/wizard.php:185
 msgid "Name of the database:"
 msgstr "Naam van de database:"
 
+#: admin/install/wizard.php:187
+msgid "ex: bilboplanet"
+msgstr "bv: bilboplanet"
+
+#: admin/install/wizard.php:191
+msgid "Your username depends of your provider"
+msgstr "Uw gebruikersnaam hangt af van uw provider"
+
+#: admin/install/wizard.php:195
+msgid "Your password depends of your provider"
+msgstr "Uw wachtwoord hangt af van uw provider"
+
+#~ msgid "Full url of the feed (Without the ending /)"
+#~ msgstr "Volledige URL van de feed (Zonder de eindigend /)"
+#~ msgid "Website (without the ending /)"
+#~ msgstr "Website (zonder de eindigend /)"
+#~ msgid "File successfully imported"
+#~ msgstr "Bestand geïmporteerd"
+#~ msgid "File %s successfully deleted"
+#~ msgstr "Bestand %s verwijderd"
+#~ msgid "Error while trying to modify database informations"
+#~ msgstr "Fout bij het wijzigen van de database informatie"
+#~ msgid "The current database is accessible here (in the directory %s)"
+#~ msgstr "De huidige database is toegankelijk hier (in de folder %s)"
+#~ msgid ""
+#~ "When you reload this page, a new snapchot of your current database will "
+#~ "be generated"
+#~ msgstr ""
+#~ "Wanneer u deze pagina laad, een nieuwe snapchot van uw huidige database "
+#~ "wordt gegenereerd"
+#~ msgid "The actual database is accessible here (in the directory %s)"
+#~ msgstr "De huidige database is toegankelijk hier (in de folder %s)"
+#~ msgid "Other backup of the database in the directory /admin/mysql/backup."
+#~ msgstr "Andere backup van de database in de folder /admin/mysql/back-up."
+#~ msgid "Save Planet database"
+#~ msgstr "Opslaan Planeet database"
+#~ msgid "Save database"
+#~ msgstr "Opslaan database"
+#~ msgid "Name:"
+#~ msgstr "Naam:"
+#~ msgid "Title of the Planet:"
+#~ msgstr "Titel van de Planeet:"
 #~ msgid "MySQL InnoDB engine is not available."
 #~ msgstr "MySQL InnoDB motor is niet beschikbaar."
 #~ msgid "Access denied"

@@ -5,11 +5,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Bilboplanet 0.3\n"
+"Project-Id-Version: Bilboplanet\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-31 11:21+0100\n"
-"PO-Revision-Date: 2009-12-31 11:23+0100\n"
-"Last-Translator: Grégoire de Hemptinne <g.dehemptinne@whatever-company.com>\n"
+"POT-Creation-Date: 2010-02-16 16:02+0100\n"
+"PO-Revision-Date: 2010-02-16 16:04+0100\n"
+"Last-Translator: Gregoire de Hemptinne <greg@theclimber.be>\n"
 "Language-Team: French\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -146,7 +146,7 @@ msgstr "Contenu :"
 #: contact.php:143
 #: inscription.php:199
 #: admin/gestion-articles.php:155
-#: admin/gestion-flux.php:161
+#: admin/gestion-flux.php:165
 #: admin/gestion-membre.php:127
 #: admin/gestion-membre.php:188
 msgid "Reset"
@@ -155,22 +155,22 @@ msgstr "Annuler"
 #: contact.php:144
 #: inscription.php:200
 #: admin/gestion-articles.php:156
-#: admin/gestion-flux.php:162
+#: admin/gestion-flux.php:166
 #: admin/gestion-update.php:125
 msgid "Send"
 msgstr "Envoyer"
 
-#: feed.php:139
+#: feed.php:140
 #, php-format
 msgid "Gravatar of %s"
 msgstr "Gravatar de %s"
 
-#: feed.php:147
+#: feed.php:148
 #, php-format
 msgid "Vote for this post on <a href=\"%s\" title=\"Go on the planet\">%s</a>."
 msgstr "Votez pour ce billet sur <a href=\"%s\" title=\"Aller sur le planet\">%s</a>."
 
-#: feed.php:196
+#: feed.php:197
 msgid "There is no feed here"
 msgstr "Il n'y a aucun flux ici"
 
@@ -291,30 +291,30 @@ msgstr "Sujet"
 #: stats.php:62
 #: stats.php:73
 #: admin/gestion-articles.php:178
-#: admin/gestion-flux.php:182
+#: admin/gestion-flux.php:186
 #: admin/gestion-logs.php:66
 #: admin/gestion-membre.php:179
 #: admin/gestion-membre.php:234
-#: admin/gestion-mysql.php:118
-#: admin/gestion-mysql.php:154
+#: admin/install/index.php:348
 msgid "Name"
 msgstr "Nom"
 
 #: inscription.php:129
-#: admin/install/index.php:332
+#: admin/install/index.php:345
 msgid "Firstname"
 msgstr "Prénom"
 
 #: inscription.php:130
 #: admin/gestion-membre.php:182
 #: admin/gestion-membre.php:236
-#: admin/install/index.php:336
+#: admin/install/index.php:351
 msgid "Email"
 msgstr "Email"
 
 #: inscription.php:131
 #: stats.php:62
 #: stats.php:73
+#: admin/gestion-membre.php:185
 #: admin/gestion-membre.php:235
 msgid "Website"
 msgstr "Site web"
@@ -390,41 +390,40 @@ msgid "If you need to contact the administration team for any reason (change of 
 msgstr "Si vous souhaitez contacter l'équipe d'administration pour une raison ou un autre (changer l'adresse de vos flux, faire une suggestion, ...) vous pouvez le faire en <a href='contact.php'>cliquant ici</a>."
 
 #: mobile.php:46
-#: mobile.php:50
+#: mobile.php:164
 msgid "Mobile version"
 msgstr "Version mobile"
 
-#: mobile.php:73
+#: mobile.php:187
 msgid "Go to the summary"
 msgstr "Aller au sommaire"
 
-#: mobile.php:73
+#: mobile.php:187
 msgid "Summary"
 msgstr "Sommaire"
 
-#: mobile.php:74
+#: mobile.php:188
 msgid "Show posts content"
 msgstr "Afficher le contenu des articles"
 
-#: mobile.php:74
+#: mobile.php:188
 msgid "Posts detail"
 msgstr "Contenu des articles"
 
-#: mobile.php:75
+#: mobile.php:189
 msgid "See more posts"
 msgstr "Afficher plus d'articles"
 
-#: mobile.php:76
+#: mobile.php:190
 msgid "Back to site"
 msgstr "Retour au site"
 
-#: mobile.php:118
-#: mobile.php:124
+#: mobile.php:246
 #: inc/fonctions.php:314
 msgid "Visit source"
 msgstr "Visiter la source"
 
-#: mobile.php:127
+#: mobile.php:252
 #, php-format
 msgid "%d vote(s)"
 msgstr "%d vote(s)"
@@ -653,15 +652,15 @@ msgstr "Le champ \"%s\" %s n'est pas un flux simplepie valide"
 msgid "The field \"%s\" is empty"
 msgstr "Le champ \"%s\" est vide"
 
-#: inc/fonctions.php:698
+#: inc/fonctions.php:702
 msgid " bytes"
 msgstr "octets"
 
-#: inc/fonctions.php:702
+#: inc/fonctions.php:706
 msgid " Kb"
 msgstr "Ko"
 
-#: inc/fonctions.php:706
+#: inc/fonctions.php:710
 msgid " MB"
 msgstr "Mo"
 
@@ -713,12 +712,12 @@ msgid "Date"
 msgstr "Date"
 
 #: admin/gestion-articles.php:180
-#: admin/index.php:81
+#: admin/index.php:57
 msgid "Title"
 msgstr "Titre"
 
 #: admin/gestion-articles.php:181
-#: admin/gestion-flux.php:184
+#: admin/gestion-flux.php:188
 #: admin/gestion-membre.php:237
 msgid "Status"
 msgstr "Statut"
@@ -728,18 +727,17 @@ msgid "Nb votes"
 msgstr "Nb votes"
 
 #: admin/gestion-articles.php:183
-#: admin/gestion-flux.php:185
+#: admin/gestion-flux.php:189
 #: admin/gestion-logs.php:67
 #: admin/gestion-membre.php:238
-#: admin/gestion-mysql.php:155
 msgid "Action"
 msgstr "Action"
 
 #: admin/gestion-articles.php:215
 #: admin/gestion-articles.php:217
 #: admin/gestion-articles.php:221
-#: admin/gestion-flux.php:232
-#: admin/gestion-flux.php:238
+#: admin/gestion-flux.php:236
+#: admin/gestion-flux.php:242
 #: admin/gestion-membre.php:249
 #: admin/gestion-membre.php:255
 msgid "active"
@@ -748,29 +746,28 @@ msgstr "actif"
 #: admin/gestion-articles.php:216
 #: admin/gestion-articles.php:220
 #: admin/gestion-articles.php:222
-#: admin/gestion-flux.php:233
 #: admin/gestion-flux.php:237
+#: admin/gestion-flux.php:241
 #: admin/gestion-membre.php:250
 #: admin/gestion-membre.php:254
 msgid "inactive"
 msgstr "inactif"
 
 #: admin/gestion-articles.php:240
-#: admin/gestion-flux.php:259
+#: admin/gestion-flux.php:263
 #: admin/gestion-membre.php:269
 msgid "Change"
 msgstr "Modifier"
 
 #: admin/gestion-articles.php:241
-#: admin/gestion-flux.php:260
+#: admin/gestion-flux.php:264
 #: admin/gestion-logs.php:83
 #: admin/gestion-membre.php:270
-#: admin/gestion-mysql.php:171
 msgid "Delete"
 msgstr "Supprimer"
 
 #: admin/gestion-articles.php:257
-#: admin/gestion-flux.php:274
+#: admin/gestion-flux.php:278
 #: admin/gestion-membre.php:283
 msgid "Show items by : "
 msgstr "Afficher les articles par :"
@@ -821,32 +818,36 @@ msgstr "Ajout du flux %s réussi"
 msgid "Changing the feed %s succeeded"
 msgstr "Modification du flux %s réussie"
 
-#: admin/gestion-flux.php:118
+#: admin/gestion-flux.php:98
+msgid "You are not allowed to create a feed without selecting an user"
+msgstr "Vous n'êtes pas authorisé à ajouter un flux sans sélectionner un membre"
+
+#: admin/gestion-flux.php:122
 msgid "Add a feed"
 msgstr "Ajouter un flux"
 
-#: admin/gestion-flux.php:130
-msgid "Full url of the feed (Without the ending /)"
-msgstr "URL complète du flux (Sans le / final)"
+#: admin/gestion-flux.php:134
+msgid "Full url of the feed"
+msgstr "URL complète du flux"
 
-#: admin/gestion-flux.php:131
+#: admin/gestion-flux.php:135
 msgid "Name of the user"
 msgstr "Nom de l'utilisateur"
 
-#: admin/gestion-flux.php:167
+#: admin/gestion-flux.php:171
 msgid "Manage feeds"
 msgstr "Gérer les flux"
 
-#: admin/gestion-flux.php:169
+#: admin/gestion-flux.php:173
 msgid "Manage member feed."
 msgstr "Gérer les flux des membres."
 
-#: admin/gestion-flux.php:183
+#: admin/gestion-flux.php:187
 msgid "URL of the feed"
 msgstr "URL du flux"
 
-#: admin/gestion-flux.php:250
-#: admin/gestion-flux.php:253
+#: admin/gestion-flux.php:254
+#: admin/gestion-flux.php:257
 msgid "show"
 msgstr "afficher"
 
@@ -936,10 +937,6 @@ msgstr "Ajouter un utilisateur"
 msgid "To add a new member, fill out the form below."
 msgstr "Pour ajouter un nouveau membre, remplissez le formulaire ci-dessous"
 
-#: admin/gestion-membre.php:185
-msgid "Website (without the ending /)"
-msgstr "Site web (sans le / final)"
-
 #: admin/gestion-membre.php:189
 msgid "Add"
 msgstr "Ajouter"
@@ -960,60 +957,111 @@ msgstr "Se rendre sur le site web de l'utilisateur"
 msgid "Show"
 msgstr "Afficher"
 
+#: admin/gestion-mysql.php:35
+msgid "Your file could not be downloaded"
+msgstr "Votre fichier n'a pas pu être téléchargé"
+
+#: admin/gestion-mysql.php:38
+msgid "Your file could not be imported"
+msgstr "Votre fichier n'a pas pu être importé"
+
+#: admin/gestion-mysql.php:41
+msgid "Your file doesn't have the right format : "
+msgstr "Le fichier n'a pas le bon format :"
+
 #: admin/gestion-mysql.php:44
-msgid "File successfully imported"
-msgstr "Fichier importé avec succès"
+msgid "Congratulations! You imported an old data configuration successfully"
+msgstr "Félicitations! Vous avez importé les données de votre ancienne configuration correctement"
 
-#: admin/gestion-mysql.php:48
+#: admin/gestion-mysql.php:45
+msgid "File name: "
+msgstr "Nom du fichier :"
+
+#: admin/gestion-mysql.php:46
+msgid "Size: "
+msgstr "Taille:"
+
+#: admin/gestion-mysql.php:46
+msgid "Kb"
+msgstr "Ko"
+
+#: admin/gestion-mysql.php:62
 #, php-format
-msgid "File %s successfully deleted"
-msgstr "Fichier %s supprimé avec succès"
+msgid "Error while truncating table %s : %s"
+msgstr "Erreur pendant le vidage de la table %s : %s"
 
-#: admin/gestion-mysql.php:52
-msgid "Error while trying to modify database informations"
-msgstr "Erreur pendant la modification des informations de la base de donnée"
-
-#: admin/gestion-mysql.php:66
-msgid "Export database"
-msgstr "Exporter la base de donnée"
-
-#: admin/gestion-mysql.php:110
+#: admin/gestion-mysql.php:76
 #, php-format
-msgid "The current database is accessible here (in the directory %s)"
-msgstr "La base de donnée actuelle est accessible ici (dans le répertoire %s)"
+msgid "Error while appending table %s : %s"
+msgstr "Erreur pendant l'insertion dans la table %s : %s"
 
-#: admin/gestion-mysql.php:111
-msgid "When you reload this page, a new snapchot of your current database will be generated"
-msgstr "Quand vous rechargez cette page, une nouvelle archive de votre base de donnée courante sera générée"
+#: admin/gestion-mysql.php:98
+msgid "Export planet configuration"
+msgstr "Exporter la configuration du planet"
+
+#: admin/gestion-mysql.php:101
+msgid "Please select the data you want to export"
+msgstr "Veuillez sélectionner les données que vous voulez exporter"
+
+#: admin/gestion-mysql.php:102
+msgid "This will export the data to a file that you'll be able to import later on another installation"
+msgstr "Ceci va exporter les données dans un fichier que vous pourrez importer plus tard dans une autre installation"
+
+#: admin/gestion-mysql.php:106
+msgid "Exported data"
+msgstr "Donnés exportées"
+
+#: admin/gestion-mysql.php:112
+msgid "Members table"
+msgstr "Table des membres"
+
+#: admin/gestion-mysql.php:113
+msgid "Feeds table"
+msgstr "Table des flux"
+
+#: admin/gestion-mysql.php:114
+msgid "Articles table"
+msgstr "Table des articles"
+
+#: admin/gestion-mysql.php:115
+msgid "Votes table"
+msgstr "Table des votes"
+
+#: admin/gestion-mysql.php:116
+msgid "Configuration file"
+msgstr "Fichier de configuration"
 
 #: admin/gestion-mysql.php:119
-msgid "Size"
-msgstr "Taille"
+msgid "Export"
+msgstr "Exporter"
 
-#: admin/gestion-mysql.php:137
-#, php-format
-msgid "The actual database is accessible here (in the directory %s)"
-msgstr "La base de donnée actuelle est accessible ici (dans le répertoire %s)"
+#: admin/gestion-mysql.php:125
+msgid "Import planet configuration"
+msgstr "Importer la configuration du planet"
 
-#: admin/gestion-mysql.php:146
-msgid "Other backup of the database in the directory /admin/mysql/backup."
-msgstr "D'autres backups de votre base de données dans le répertoire /admin/mysql/backup."
+#: admin/gestion-mysql.php:128
+msgid "Please select the file you want to restore."
+msgstr "Veuillez sélectionner le fichier que vous voulez restorer"
 
-#: admin/gestion-mysql.php:147
+#: admin/gestion-mysql.php:129
 msgid "TAKE CARE !"
 msgstr "ATTENTION !"
 
-#: admin/gestion-mysql.php:147
+#: admin/gestion-mysql.php:129
 msgid "If you apply the content of one of this file, this action can not be cancelled"
 msgstr "Si vous appliquez le contenu d'un de ces fichiers, cette action est irréversible"
 
-#: admin/gestion-mysql.php:170
+#: admin/gestion-mysql.php:135
+msgid "Select your backup file :"
+msgstr "Sélectionnez votre fichier de sauvegarde :"
+
+#: admin/gestion-mysql.php:138
 msgid "Import"
 msgstr "Importer"
 
-#: admin/gestion-mysql.php:180
-msgid "NOTE : to import a database file, the file needs to have the *.sql.gz extension !"
-msgstr "NOTE: pour importer un fichier de base de donnée, le fichier doit avoir une extension *.sql.gz !"
+#: admin/gestion-mysql.php:142
+msgid "NOTE : to import a backup file, the file needs to have the *.json.gz extension !"
+msgstr "NOTE: pour importer un fichier, le fichier doit avoir une extension *.json.gz !"
 
 #: admin/gestion-option.php:86
 #: admin/gestion-user.php:67
@@ -1029,6 +1077,7 @@ msgid "Configuration settings Planet."
 msgstr "Configuration du Planet."
 
 #: admin/gestion-option.php:110
+#: admin/install/index.php:363
 msgid "Title of the Planet"
 msgstr "Titre du planet"
 
@@ -1096,17 +1145,17 @@ msgid "System configuration update."
 msgstr "Mise à jour de la configuration du système."
 
 #: admin/gestion-update.php:106
-#: admin/index.php:108
+#: admin/index.php:156
 msgid "The update is running"
 msgstr "La mise à jour est en marche"
 
 #: admin/gestion-update.php:108
-#: admin/index.php:110
+#: admin/index.php:158
 msgid "The update is stopped"
 msgstr "La mise à jour est arrêtée"
 
 #: admin/gestion-update.php:109
-#: admin/index.php:112
+#: admin/index.php:160
 msgid "The update is disabled"
 msgstr "La mise à jour est désactivée"
 
@@ -1130,11 +1179,15 @@ msgstr "Activer la mise à jour au chargement de la page d'index"
 msgid "Setup manual crontab"
 msgstr "Installer un crontab manuellement"
 
-#: admin/gestion-update.php:129
+#: admin/gestion-update.php:130
+msgid "How to do a manual update ?"
+msgstr "Comment faire une mise à jour manuelle?"
+
+#: admin/gestion-update.php:133
 msgid "You can setup a manual crontab update by calling automatically every X time the following page :"
 msgstr "Vous pouvez mettre en place un crontab manuellement en appellant tous les X temps la page suivante : "
 
-#: admin/gestion-update.php:131
+#: admin/gestion-update.php:135
 msgid "This will automatically launch the update and log it into the log files."
 msgstr "Ceci va automatiquement lancer la mise à jour et logger les informations dans les fichiers de log."
 
@@ -1161,10 +1214,11 @@ msgstr "Veuillez vous assurer que les deux mots de passes sont identiques"
 
 #: admin/gestion-user.php:106
 #: admin/gestion-user.php:118
-#: admin/install/index.php:126
-#: admin/install/index.php:141
-#: admin/install/index.php:161
-#: admin/install/index.php:172
+#: admin/manage-database.php:106
+#: admin/install/index.php:127
+#: admin/install/index.php:142
+#: admin/install/index.php:162
+#: admin/install/index.php:173
 #, php-format
 msgid "Unable to write %s file."
 msgstr "Impossible d'écrire dans le fichier %s"
@@ -1221,70 +1275,131 @@ msgstr "Nouveau mot de passe"
 msgid "Confirm password"
 msgstr "Confirmation mot de passe"
 
-#: admin/head.php:55
-msgid "Bilboplanet 0.3 was developed by"
-msgstr "Bilboplanet 0.3 développé par"
+#: admin/manage-database.php:112
+msgid "A snapshot of your current database was successfully created. Please download the following file and put it in some safe place."
+msgstr "Une sauvegarde de votre base de donnée courrante a été crée avec succès. Veuillez télécharger le fichier suivant et le mettre en sécurité."
+
+#: admin/manage-database.php:116
+msgid "Please select at least one table to export"
+msgstr "Veuillez au moins séletionner une table à exporter"
+
+#: admin/head.php:53
+msgid "Bilboplanet was developed by"
+msgstr "Bilboplanet est développé par"
+
+#: admin/head.php:59
+msgid "BilboPlanet : Useful links"
+msgstr "BilboPlanet : Liens utiles"
+
+#: admin/head.php:62
+msgid "Official WebSite : "
+msgstr "Site Officiel :  "
 
 #: admin/head.php:63
+msgid "Official Forum : "
+msgstr "Forum officiel : "
+
+#: admin/head.php:64
+msgid "Official Documentation : "
+msgstr "Documentation officielle : "
+
+#: admin/head.php:68
 msgid "BilboPlanet.com - Open Source Feed Agregator - 2009"
 msgstr "BilboPlanet.com - Open Source Feed Aggregator - 2009"
 
-#: admin/head.php:64
+#: admin/head.php:69
+#: admin/head.php:81
 msgid "About"
 msgstr "A propos"
 
-#: admin/head.php:72
+#: admin/head.php:77
 msgid "Back on the Bilboplanet"
 msgstr "Retour au BilboPlanet"
 
-#: admin/head.php:75
+#: admin/head.php:80
 msgid "Logout"
 msgstr "Déconnexion"
 
-#: admin/index.php:81
+#: admin/index.php:33
+msgid "Latest articles :"
+msgstr "Derniers articles :"
+
+#: admin/index.php:57
 msgid "User"
 msgstr "Utilisateur"
 
-#: admin/index.php:92
+#: admin/index.php:79
+msgid "BilboPlanet news - Official Website :"
+msgstr "Nouvelles du Bilboplanet - Site Officiel :"
+
+#: admin/index.php:140
 #: admin/sidebar.php:7
 msgid "Dashboard"
 msgstr "Tableau de bord"
 
-#: admin/index.php:94
+#: admin/index.php:142
 msgid "Quick summary of the planet"
 msgstr "Aperçu rapide du planet"
 
-#: admin/index.php:98
-msgid "Latest articles :"
-msgstr "Derniers articles :"
-
-#: admin/index.php:103
+#: admin/index.php:151
 msgid "Statistics :"
 msgstr "Statistiques :"
 
-#: admin/index.php:114
+#: admin/index.php:162
 msgid "The update on loading of index page enabled"
 msgstr "Mise à jour au chargement de la page d'index activé"
 
-#: admin/index.php:117
+#: admin/index.php:164
 msgid "Current size of the database :"
 msgstr "Taille de la base de donnée :"
 
-#: admin/index.php:118
+#: admin/index.php:165
 msgid "Number of articles in the DB :"
 msgstr "Nombre d'articles :"
 
-#: admin/index.php:119
+#: admin/index.php:166
 msgid "Number of votes in the DB :"
 msgstr "Nombre de votes : "
 
-#: admin/index.php:120
+#: admin/index.php:167
 msgid "Number of members in the DB :"
 msgstr "Nombre de membres : "
 
-#: admin/index.php:121
+#: admin/index.php:168
 msgid "Number of feeds in the DB :"
 msgstr "Nombre de flux : "
+
+#: admin/index.php:174
+msgid "System information :"
+msgstr "Informations du système :"
+
+#: admin/index.php:176
+msgid "Date server :"
+msgstr "Date du serveur :"
+
+#: admin/index.php:177
+msgid "Operating System :"
+msgstr "Système d'exploitation :"
+
+#: admin/index.php:178
+msgid "PHP version :"
+msgstr "Version PHP :"
+
+#: admin/index.php:179
+msgid "MySQL version :"
+msgstr "Version MySQL :"
+
+#: admin/index.php:180
+msgid "Apache version :"
+msgstr "Version Apache :"
+
+#: admin/index.php:181
+msgid "Memory :"
+msgstr "Mémoire :"
+
+#: admin/index.php:182
+msgid "Your BilboPlanet version :"
+msgstr "Version de votre Bilboplanet :"
 
 #: admin/sidebar.php:7
 msgid "Access the quick summary of the planet"
@@ -1339,12 +1454,12 @@ msgid "Logs Files"
 msgstr "Fichiers de log"
 
 #: admin/sidebar.php:38
-msgid "Save Planet database"
-msgstr "Sauvegarder la base de données du Planet"
+msgid "Import/Export Planet configuration"
+msgstr "Importer/Exporter la configuration du planet"
 
 #: admin/sidebar.php:38
-msgid "Save database"
-msgstr "Sauvegarder la base de données"
+msgid "Import/Export"
+msgstr "Import/Export"
 
 #: admin/sidebar.php:41
 msgid "Clear Planet cache"
@@ -1415,158 +1530,203 @@ msgid "No configuration file"
 msgstr "Pas de fichier de configuration"
 
 #: admin/install/index.php:34
-#, php-format
-msgid "There is no configuration file, you need to create one. Therefor you can use the <a href=\"%s\">wizard</a> to generate a configuration file."
-msgstr "Il n'y a pas de fichier de configuration, vous devez en créer un. Pour ça vous pouvez utiliser l'<a href=\"%s\">assistant</a> pour générer un fichier de configuration"
+msgid "There is no configuration file, you need to create one. Therefor you can use the wizard to generate a configuration file. Click \"Next\" to go to the setup page."
+msgstr "Il n'y a pas de fichier de configuration, vous devez en créer un. Pour ça vous pouvez utiliser l'assistant qui générera automatiquement un fichier de configuration. Cliquez sur \"Suivant\" pour aller à la page d'installation."
 
-#: admin/install/index.php:52
+#: admin/install/index.php:35
+msgid "Next"
+msgstr "Suivant"
+
+#: admin/install/index.php:53
 #: admin/install/wizard.php:81
 msgid "The Bilboplanet is already installed."
 msgstr "Le Bilboplanet est déjà installé"
 
-#: admin/install/index.php:58
+#: admin/install/index.php:59
 msgid "The Bilboplanet can not be installed"
 msgstr "Le Bilboplanet ne peut pas être installé"
 
-#: admin/install/index.php:91
+#: admin/install/index.php:92
 msgid "Please fill the username in."
 msgstr "Veuillez remplir le nom d'utilisateur"
 
-#: admin/install/index.php:94
+#: admin/install/index.php:95
 msgid "The username has to be formed of minimum 2 characters with letters of numbers"
 msgstr "Le nom d'utilisateur doit être formé au minimum de 2 caractères avec des lettres et des chiffres"
 
-#: admin/install/index.php:97
+#: admin/install/index.php:98
 msgid "Invalid email address"
 msgstr "Adresse email invalide"
 
-#: admin/install/index.php:101
+#: admin/install/index.php:102
 msgid "No password given"
 msgstr "Aucun mot de passe donné"
 
-#: admin/install/index.php:104
+#: admin/install/index.php:105
 msgid "The passwords don't match"
 msgstr "Les mots de passe ne correspondent pas"
 
-#: admin/install/index.php:107
+#: admin/install/index.php:108
 msgid "The password have to contain minimum 6 characters."
 msgstr "Le mot de passe doit contenir au minimum 6 caractères"
 
-#: admin/install/index.php:136
+#: admin/install/index.php:137
 #, php-format
 msgid "File %s already exists."
 msgstr "Le fichier %s existe déjà"
 
-#: admin/install/index.php:275
-#: admin/install/index.php:298
+#: admin/install/index.php:276
+#: admin/install/index.php:308
 msgid "Installation of the Bilboplanet"
 msgstr "Installation du Bilboplanet"
 
-#: admin/install/index.php:305
-#: admin/install/wizard.php:152
+#: admin/install/index.php:315
+#: admin/install/wizard.php:161
 msgid "Errors:"
 msgstr "Erreurs:"
 
-#: admin/install/index.php:309
+#: admin/install/index.php:319
 msgid "The configuration file was successfully created."
 msgstr "Le fichier de configuration a bien été crée"
 
-#: admin/install/index.php:326
+#: admin/install/index.php:339
 msgid "Information on the BilboPlanet"
 msgstr "Informations sur le Bilboplanet"
 
-#: admin/install/index.php:328
+#: admin/install/index.php:341
 msgid "Thank you for taking somes minutes to answer those questions to help to the configuration of the bilboplanet"
 msgstr "Merci de prendre quelques minutes pour répondres à ces questions pour aider à la configuration du bilboplanet"
 
-#: admin/install/index.php:331
+#: admin/install/index.php:344
 msgid "Information of the user"
 msgstr "Information de l'utilisateur"
 
-#: admin/install/index.php:334
-msgid "Name:"
-msgstr "Nom:"
+#: admin/install/index.php:347
+msgid "Enter your firstname or nickname"
+msgstr "Entrez votre prénom ou votre pseudo"
 
-#: admin/install/index.php:338
-msgid "Website of the user:"
-msgstr "Site web de l'utilisateur:"
+#: admin/install/index.php:350
+msgid "Enter your name (optional)"
+msgstr "Entrez votre nom (optionnel)"
 
-#: admin/install/index.php:342
+#: admin/install/index.php:353
+msgid "Enter your email address"
+msgstr "Entrez votre adresse email"
+
+#: admin/install/index.php:354
+msgid "Website of the user"
+msgstr "Site web de l'utilisateur"
+
+#: admin/install/index.php:356
+msgid "Entre address of your website or blog (optional)"
+msgstr "Ajoutez l'adresse de votre site ou blog personnel (optionnel)"
+
+#: admin/install/index.php:359
 msgid "Information on the Planet"
 msgstr "Information du planet"
 
-#: admin/install/index.php:343
-msgid "URL of the Planet:"
-msgstr "URL du planet:"
+#: admin/install/index.php:360
+msgid "URL of the Planet"
+msgstr "URL du planet"
 
-#: admin/install/index.php:345
-msgid "Title of the Planet:"
-msgstr "Titre du planet:"
+#: admin/install/index.php:362
+msgid "ex: http://www.example.com or http://planet.example.com"
+msgstr "ex: http://www.example.com ou http://planet.example.com"
 
-#: admin/install/index.php:347
-msgid "Description:"
-msgstr "Description:"
+#: admin/install/index.php:365
+msgid "Fill the title of your planet"
+msgstr "Remplissez le titre de votre planet"
 
-#: admin/install/index.php:349
-msgid "Planet Language:"
-msgstr "Langue du planet:"
+#: admin/install/index.php:366
+msgid "Description"
+msgstr "Description"
 
-#: admin/install/index.php:353
-msgid "Username and password"
-msgstr "Nom d'utilisateur et mot de passe"
+#: admin/install/index.php:368
+msgid "Give a description of your planet"
+msgstr "Donnez une description du planet"
 
-#: admin/install/index.php:354
-#: admin/install/index.php:356
-#: admin/install/index.php:358
+#: admin/install/index.php:369
+msgid "Planet Language"
+msgstr "Langue du planet"
+
+#: admin/install/index.php:371
+msgid "Choose your langage"
+msgstr "Choisissez votre langue"
+
+#: admin/install/index.php:374
+msgid "Administration username and password"
+msgstr "Nom d'utilisateur et mot de passe d'administration"
+
+#: admin/install/index.php:375
+#: admin/install/index.php:378
+#: admin/install/index.php:381
 msgid "Required field"
 msgstr "Champ requis"
 
-#: admin/install/index.php:354
-#: admin/install/index.php:379
-#: admin/install/wizard.php:180
-msgid "Username:"
-msgstr "Nom d'utilisateur:"
+#: admin/install/index.php:375
+msgid "Username"
+msgstr "Nom d'utilisateur"
 
-#: admin/install/index.php:356
+#: admin/install/index.php:377
+msgid "Enter your username"
+msgstr "Entrez votre nom d'utilisateur"
+
+#: admin/install/index.php:378
+msgid "Password"
+msgstr "Mot de passe"
+
 #: admin/install/index.php:380
-#: admin/install/wizard.php:183
-msgid "Password:"
-msgstr "Mot de passe:"
+msgid "Enter your password"
+msgstr "Entrez votre mot de passe"
 
-#: admin/install/index.php:358
-msgid "Confirm your password:"
-msgstr "Confirmation mot de passe:"
+#: admin/install/index.php:381
+msgid "Confirm your password"
+msgstr "Confirmez votre mot de passe"
 
-#: admin/install/index.php:362
-#: admin/install/wizard.php:189
+#: admin/install/index.php:383
+msgid "Re-enter your password for verification"
+msgstr "Entrez votre mot de passe à nouveau pour vérification"
+
+#: admin/install/index.php:386
+#: admin/install/wizard.php:200
 msgid "Save"
 msgstr "Enregistrer"
 
-#: admin/install/index.php:373
+#: admin/install/index.php:397
 msgid "Install succeeded"
 msgstr "Installation réussie"
 
-#: admin/install/index.php:375
+#: admin/install/index.php:399
 msgid "The Bilboplanet was successfully installed. Here you can find a resume of the configuration"
 msgstr "Le bilboplanet a été installé avec succès. Ici vous pouvez trouver un résumé de la configuration"
 
-#: admin/install/index.php:377
+#: admin/install/index.php:401
 msgid "Your account"
 msgstr "Votre compte"
 
-#: admin/install/index.php:383
+#: admin/install/index.php:403
+#: admin/install/wizard.php:189
+msgid "Username:"
+msgstr "Nom d'utilisateur:"
+
+#: admin/install/index.php:404
+#: admin/install/wizard.php:193
+msgid "Password:"
+msgstr "Mot de passe:"
+
+#: admin/install/index.php:407
 msgid "Your Bilboplanet"
 msgstr "Votre Bilboplanet"
 
-#: admin/install/index.php:385
+#: admin/install/index.php:409
 msgid "URL of the BilboPlanet:"
 msgstr "URL du Bilboplanet"
 
-#: admin/install/index.php:386
+#: admin/install/index.php:410
 msgid "Administration interface:"
 msgstr "Interface d'administration"
 
-#: admin/install/index.php:390
+#: admin/install/index.php:414
 msgid "Go to the administration interface"
 msgstr "Aller à l'interface d'administration"
 
@@ -1589,23 +1749,22 @@ msgstr "Impossible d'écrire dans le fichier %s"
 msgid "Bilboplanet Install Wizard"
 msgstr "Assistant d'installation du bilboplanet"
 
-#: admin/install/wizard.php:149
+#: admin/install/wizard.php:158
 msgid "Installation wizard of the Bilboplanet"
 msgstr "Assistant d'installation du bilboplanet"
 
-#: admin/install/wizard.php:156
+#: admin/install/wizard.php:165
 #, php-format
 msgid "The file <strong>%s</strong> already exists. If you need to reinitialize on of the configuration elements in this file, please remove the configuration file first or <a href=\"%s\">continue the installation</a>."
 msgstr "Le fichier <strong>%s</strong> existe déjà. Si vous avez besoin de réinitialiser la configuration dans ce fichier, supprimez ce fichier d'abord ou <a href=\"%s\">continuez l'installation</a>"
 
-#: admin/install/wizard.php:161
+#: admin/install/wizard.php:170
 msgid ""
-"<h3>Welcome to the BilboPlanet. Before you begin, we need some informations concerning the database. You'll need to provide the following information to begin the installation and to create the configuration file.</h3>\n"
-"\n"
-"   1. The host of the database<br/>\n"
-"   2. The name of the database<br/>\n"
-"   3. Your username to the database<br/>\n"
-"   4. Your password to the database<br/><br/>"
+"<h3>Welcome to the BilboPlanet. Before you begin, we need some informations concerning the database. You'll need to provide the following information to begin the installation and to create the configuration file.<br /><br />\n"
+"   1. The host of the database.<br/>\n"
+"   2. The name of the database.<br/>\n"
+"   3. Your username to the database.<br/>\n"
+"   4. Your password to the database.<br/><br/>"
 msgstr ""
 "<h3>Bienvenue sur le Bilboplanet. Avant de commencer, vous avez besoin de connaitre quelques informations concernant votre base de données. Vous devrez fournir les informations suivantes pour commencer l'installation et créer le fichier de configuration.</h3>\n"
 "\n"
@@ -1614,14 +1773,65 @@ msgstr ""
 "3. Le nom d'utilisateur<br/>\n"
 "4. Le mot de passe<br/><br>"
 
-#: admin/install/wizard.php:174
+#: admin/install/wizard.php:181
 msgid "Host of the database"
 msgstr "Hôte de la base de données:"
 
-#: admin/install/wizard.php:177
+#: admin/install/wizard.php:183
+msgid "ex: localhost"
+msgstr "ex: localhost"
+
+#: admin/install/wizard.php:185
 msgid "Name of the database:"
 msgstr "Nom de la base de données:"
 
+#: admin/install/wizard.php:187
+msgid "ex: bilboplanet"
+msgstr "ex: bilboplanet"
+
+#: admin/install/wizard.php:191
+msgid "Your username depends of your provider"
+msgstr "Votre nom d'utilisateur dépend de votre fournisseur"
+
+#: admin/install/wizard.php:195
+msgid "Your password depends of your provider"
+msgstr "Votre mot de passe dépend de votre fournisseur"
+
+#~ msgid "Full url of the feed (Without the ending /)"
+#~ msgstr "URL complète du flux (Sans le / final)"
+#~ msgid "Website (without the ending /)"
+#~ msgstr "Site web (sans le / final)"
+#~ msgid "File successfully imported"
+#~ msgstr "Fichier importé avec succès"
+#~ msgid "File %s successfully deleted"
+#~ msgstr "Fichier %s supprimé avec succès"
+#~ msgid "Error while trying to modify database informations"
+#~ msgstr ""
+#~ "Erreur pendant la modification des informations de la base de donnée"
+#~ msgid "The current database is accessible here (in the directory %s)"
+#~ msgstr ""
+#~ "La base de donnée actuelle est accessible ici (dans le répertoire %s)"
+#~ msgid ""
+#~ "When you reload this page, a new snapchot of your current database will "
+#~ "be generated"
+#~ msgstr ""
+#~ "Quand vous rechargez cette page, une nouvelle archive de votre base de "
+#~ "donnée courante sera générée"
+#~ msgid "The actual database is accessible here (in the directory %s)"
+#~ msgstr ""
+#~ "La base de donnée actuelle est accessible ici (dans le répertoire %s)"
+#~ msgid "Other backup of the database in the directory /admin/mysql/backup."
+#~ msgstr ""
+#~ "D'autres backups de votre base de données dans le répertoire /admin/mysql/"
+#~ "backup."
+#~ msgid "Save Planet database"
+#~ msgstr "Sauvegarder la base de données du Planet"
+#~ msgid "Save database"
+#~ msgstr "Sauvegarder la base de données"
+#~ msgid "Name:"
+#~ msgstr "Nom:"
+#~ msgid "Title of the Planet:"
+#~ msgstr "Titre du planet:"
 #~ msgid "MySQL InnoDB engine is not available."
 #~ msgstr "Le moteur MySQL InnoDB n'est pas disponible"
 #~ msgid "Access denied"
@@ -1684,8 +1894,4 @@ msgstr "Nom de la base de données:"
 #, fuzzy
 #~ msgid "Top"
 #~ msgstr "Top 10"
-
-#, fuzzy
-#~ msgid "Feeds"
-#~ msgstr "Flux"
 

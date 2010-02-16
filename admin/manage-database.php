@@ -110,7 +110,7 @@ if(isset($_POST)) {
 			chmod($snapshot_file, 0777);
 
 			$response = '<div class="flash notice">'.T_("A snapshot of your current database was successfully created. Please download the following file and put it in some safe place.").'</div>';
-			$response .= '<p class="file"><a href="'.$planet_url.'/admin/cache/'.$filename.'" target="_blank" type="octet-stream">'.$filename.'</a></p>';
+			$response .= '<p class="file"><a href="cache/'.$filename.'" target="_blank" type="octet-stream">'.$filename.'</a></p>';
 		}
 		else {
 			$response = '<div class="flash error">'.T_("Please select at least one table to export").'</div>';

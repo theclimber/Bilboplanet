@@ -133,8 +133,6 @@ $version_apache = substr( $version_apache, 0, strpos( $version_apache, ' ' ) );
 $version_mysql = mysql_get_client_info();
 $version_php = phpversion();
 
-
-
 ?>
 <div id="BP_page" class="page">
 	<div class="inpage">
@@ -145,9 +143,11 @@ $version_php = phpversion();
 		</div>
 		
 <div id="dashboard">
+	<div class="box-container-left">
 <?php
 echo showArticleSummary();
 ?>
+<p class="clear"/>
 	<div class="box-dashboard"><div class="top-box-dashboard"><?php echo T_('Statistics :');?></div>
 		<ul>
 
@@ -167,7 +167,10 @@ if (BP_INDEX_UPDATE == '1')
 			<li><div id="BP_nb_members"><?php echo T_('Number of members in the DB :'); echo ' <strong>'.$nb_members[0].'</strong>';?></div></li>
 			<li><div id="BP_nb_feeds"><?php echo T_('Number of feeds in the DB :'); echo ' <strong>'.$nb_feeds[0].'</strong>';?></div></li>
 		</ul>
+		</div>
+	<p class="clear"/>
 	</div>
+	<div class="box-container-right">
 	<div class="box-dashboard"><div class="top-box-dashboard"><?php echo T_('System information :');?></div>
 		<ul>
 			<li><div id="BP_system_date"><?php echo T_('Date server :'); echo ' <strong>'. timeserver(0, '%A %d %B %Y - %H:%M:%S') .'</strong>';?></div></li>
@@ -179,10 +182,13 @@ if (BP_INDEX_UPDATE == '1')
 			<li><div id="BP_system_bilboplanet"><?php echo T_('Your BilboPlanet version :'); echo ' <strong>'. $planet_version .'</strong>';?></div></li>
 		</ul>
 	</div>
+<p class="clear"/>
 <?php
 echo showBlogLastArticles();
 ?>
-</div>
+		</div>
+	<p class="clear"/>
+	</div>
 </fieldset>
 
 <?php include(dirname(__FILE__).'/footer.php'); ?>

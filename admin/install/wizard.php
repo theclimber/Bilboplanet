@@ -176,29 +176,28 @@ echo
 
 '<form action="wizard.php" method="post">'.
 
-#'<p><label class="required" title="'.T_('Required field').'">'.T_('Database type:').' '.
-#form::hidden('DBDRIVER','mysql',$DBDRIVER).'</label></p>'.
+#'<p><label class="required" title="'.T_('Required field').'">'.T_('Database type:').' '.#form::hidden('DBDRIVER','mysql',$DBDRIVER).'</label></p>'.
 
-'<p><label>'.T_('Host of the database').' '.
-form::field('DBHOST',30,255,html::escapeHTML($DBHOST)).'</label><br />
-<font color="#A4A4A4">'.T_('ex: localhost').'</font></p>'.
+'<label>'.T_('Host of the database').' '.
+form::field('DBHOST',30,255,html::escapeHTML($DBHOST)).'</label>
+<span class="description">'.T_('ex: localhost').'</span><p class="clear" />'.
 
-'<p><label>'.T_('Name of the database:').' '.
-form::field('DBNAME',30,255,html::escapeHTML($DBNAME)).'</label><br />
- <font color="#A4A4A4">'.T_('ex: bilboplanet').'</font></p>'.
+'<label>'.T_('Name of the database:').' '.
+form::field('DBNAME',30,255,html::escapeHTML($DBNAME)).'</label>
+<span class="description">'.T_('ex: bilboplanet').'</span><p class="clear" />'.
 
-'<p><label>'.T_('Username:').' '.
-form::field('DBUSER',30,255,html::escapeHTML($DBUSER)).'</label><br/>
-<font color="#A4A4A4">'.T_('Your username depends of your provider').'</font></p>'.
+'<label>'.T_('Username:').' '.
+form::field('DBUSER',30,255,html::escapeHTML($DBUSER)).'</label>
+<span class="description">'.T_('Your username depends of your provider').'</span><p class="clear" />'.
 
-'<p><label>'.T_('Password:').' '.
-form::password('DBPASSWORD',30,255).'</label><br/>
- <font color="#A4A4A4">'.T_('Your password depends of your provider').'</font></p>'.
+'<label>'.T_('Password:').' '.
+form::password('DBPASSWORD',30,255).'</label>
+<span class="description">'.T_('Your password depends of your provider').'</span><p class="clear" />'.
 
 #'<p><label class="required" title="'.T_('Required field').'">'.T_('Database Tables Prefix:').' '.
 #form::field('DBPREFIX',30,255,html::escapeHTML($DBPREFIX)).'</label></p>'.
 
-'<p><input class="save" type="submit" value="'.T_('Save').'" /></p>'.
+'<input class="save" type="submit" value="'.T_('Save').'" />'.
 '</form>';
 ?>
 </div>

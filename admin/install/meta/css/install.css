@@ -132,3 +132,17 @@ text-shadow: rgba(119, 119, 119, 0.8) 2px 2px 2px;
 	font-weight: normal;
 	padding-left:30px;
 }
+span.description {
+	color: #A4A4A4;
+	font-size: 0.9em;
+}
+#install-form label {
+	display: block;
+	margin-top: 10px;
+	font-size:1em;
+}
+#install-form input {
+	margin-top: 10px;
+	margin-left: 15px;
+	border: 1px solid #B3B3B3;
+}

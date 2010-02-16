@@ -717,18 +717,26 @@ white-space: nowrap;
 overflow: hidden;
 }
 .box-dashboard {
-width:50%;
+width:90%;
 border-style: solid;
 border-right: solid 1px #000;
 border-bottom: solid 1px #000;
 border-left: solid 1px #000;
 display: block;
-margin: 5px 0 0 0;
-padding: 0 0 5px 0;
+margin: 10px;
+padding: 0px;
 -moz-border-radius: 5px;
 -khtml-border-radius: 5px;
 -webkit-border-radius: 5px;
 border-radius: 5px;
+}
+.box-container-right {
+	float : right;
+	width : 50%
+}
+.box-container-left {
+	float : left;
+	width : 50%;
 }
 .box-dashboard ul {
 padding:5px 5px 5px 5px;
@@ -979,3 +987,9 @@ input.inputURL {
 	padding: 20px 0;
 	background: url(../icons/spinner.gif) no-repeat center;
 }
+p.clear {
+	clear: both;
+	margin: 0px;
+	padding: 0px;
+}
+

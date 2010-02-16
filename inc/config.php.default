@@ -27,6 +27,7 @@ define('BP_AUTHER_JABBER','Your Jabber');
 define('BP_AUTHOR_IM','MSN Messenger, Yahoo Messenger and Other');
 define('BP_AUTHOR_ABOUT','About me');
 define('BP_INDEX_UPDATE','0');
+define('BP_VERSION','0.3.2');
 #define('BP_GOOGLEANALYTICS','');
 
 
@@ -88,6 +89,9 @@ $show_contact = BP_CONTACT_PAGE;
 
 # Activation ou non des avatars des membres
 $planet_avatar = BP_AVATAR;
+
+# Version du bilboplanet
+$planet_version = BP_VERSION;
 
 #------------------------------------------#
 #   Configuration des messages d'erreurs   #

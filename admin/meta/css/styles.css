@@ -882,6 +882,58 @@ padding-left:25px;
 background-image:url(../icons/feed2.png);
 background-repeat: no-repeat;
 }
+/*
+ * Dashboard System info
+ */
+#BP_system_date {
+margin-left:5px;
+padding-bottom:8px;
+padding-left:25px;
+background-image:url(../icons/calendar.png);
+background-repeat: no-repeat;
+}
+#BP_system_os {
+margin-left:5px;
+padding-bottom:8px;
+padding-left:25px;
+background-image:url(../icons/os.png);
+background-repeat: no-repeat;
+}
+#BP_system_php {
+margin-left:5px;
+padding-bottom:8px;
+padding-left:25px;
+background-image:url(../icons/php.png);
+background-repeat: no-repeat;
+}
+#BP_system_mysql {
+margin-left:5px;
+padding-bottom:8px;
+padding-left:25px;
+background-image:url(../icons/database.png);
+background-repeat: no-repeat;
+}
+#BP_system_apache {
+margin-left:5px;
+padding-bottom:8px;
+padding-left:25px;
+background-image:url(../icons/apache.png);
+background-repeat: no-repeat;
+}
+#BP_system_memory {
+margin-left:5px;
+padding-bottom:8px;
+padding-left:25px;
+background-image:url(../icons/memory.png);
+background-repeat: no-repeat;
+}
+#BP_system_bilboplanet {
+margin-left:5px;
+padding-bottom:8px;
+padding-left:25px;
+background-image:url(../icons/release.png);
+background-repeat: no-repeat;
+}
 
 select.userslist {
 	width:100%;

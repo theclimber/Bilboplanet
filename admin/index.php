@@ -27,6 +27,7 @@
 <?php
 /* Inclusion du fichier de configuration */
 require_once(dirname(__FILE__).'/../inc/fonctions.php');
+require_once(dirname(__FILE__).'/../inc/config.php');
 require_once(dirname(__FILE__).'/../inc/lib/simplepie/simplepie.inc');
 function showArticleSummary(){
 	$content = '<div class="box-dashboard"><div class="top-box-dashboard">'.T_('Latest articles :').'</div>';
@@ -75,21 +76,27 @@ function showBlogLastArticles() {
 	$success = $feed->init();
 	$feed->handle_content_type();
 	if ($success) {
-		$content .= '<div class="box-dashboard"><div class="top-box-dashboard">'.T_('Latest articles :').'</div>';
+		$content .= '<div class="box-dashboard"><div class="top-box-dashboard">'.T_('BilboPlanet news - Official Website :').'</div>';
 		$content .= '<ul>';
 		$itemlimit=0;
 		foreach($feed->get_items() as $item) {
 			if ($itemlimit==4) {
 				break;
 			}
-			$content .= '<li>'.$item->get_date('j F Y | g:i a').' : ';
-			$content .= '<a href="'.$item->get_permalink().'" target="_blank">'.$item->get_title().'</a>';
+			$content .= '<li>'.$item->get_date('j F Y - g:i a').' : ';
+			$content .= '<a class="tips" rel="'.$item->get_title().'" href="'.$item->get_permalink().'" target="_blank">'.$item->get_title().'</a>';
 			$content .= '</li>';
 			$itemlimit = $itemlimit + 1;
 		}
 		$content .= '</ul></div>';
 	}
 	return $content;
+}
+
+function timeserver($timestamp = 0, $format = '%A %d %B %Y à %H:%M:%S') {
+
+	$timestamp = ($timestamp) ? $timestamp : time();
+	return strftime($format, $timestamp);
 }
 
 $nb_articles = 0;
@@ -120,6 +127,14 @@ closeBD();
 include_once(dirname(__FILE__).'/head.php');
 include_once(dirname(__FILE__).'/sidebar.php');
 
+# Version Apache MySQL PHP
+$version_apache = substr(apache_get_version(),strlen("Apache/"));
+$version_apache = substr( $version_apache, 0, strpos( $version_apache, ' ' ) );
+$version_mysql = mysql_get_client_info();
+$version_php = phpversion();
+
+
+
 ?>
 <div id="BP_page" class="page">
 	<div class="inpage">
@@ -146,12 +161,22 @@ if (file_exists(dirname(__FILE__).'/../inc/STOP'))
 if (BP_INDEX_UPDATE == '1')
 	echo '<li><div id="BP_index_update">'.T_('The update on loading of index page enabled').'</div></li>';
 ?>
-
 			<li><div id="BP_stats_db"><?php echo T_('Current size of the database :'); echo ' <strong>'.formatfilesize(get_database_size()).'</strong>';?></div></li>
 			<li><div id="BP_nb_articles"><?php echo T_('Number of articles in the DB :'); echo ' <strong>'.$nb_articles[0].'</strong>';?></div></li>
 			<li><div id="BP_nb_votes"><?php echo T_('Number of votes in the DB :'); echo ' <strong>'.$nb_votes[0].'</strong>';?></div></li>
 			<li><div id="BP_nb_members"><?php echo T_('Number of members in the DB :'); echo ' <strong>'.$nb_members[0].'</strong>';?></div></li>
 			<li><div id="BP_nb_feeds"><?php echo T_('Number of feeds in the DB :'); echo ' <strong>'.$nb_feeds[0].'</strong>';?></div></li>
+		</ul>
+	</div>
+	<div class="box-dashboard"><div class="top-box-dashboard"><?php echo T_('System information :');?></div>
+		<ul>
+			<li><div id="BP_system_date"><?php echo T_('Date server :'); echo ' <strong>'. timeserver(0, '%A %d %B %Y - %H:%M:%S') .'</strong>';?></div></li>
+			<li><div id="BP_system_os"><?php echo T_('Operating System :'); echo ' <strong>'. PHP_OS .'</strong>';?></div></li>
+			<li><div id="BP_system_php"><?php echo T_('PHP version :'); echo ' <strong>'. $version_php .'</strong>';?></div></li>
+			<li><div id="BP_system_mysql"><?php echo T_('MySQL version :'); echo ' <strong>'. $version_mysql .'</strong>';?></div></li>
+			<li><div id="BP_system_apache"><?php echo T_('Apache version :');  echo ' <strong>'. $version_apache .'</strong>';?></div></li>
+			<li><div id="BP_system_memory"><?php echo T_('Memory :');  echo ' <strong>'. @ini_get('memory_limit') .'</strong>';?></div></li>
+			<li><div id="BP_system_bilboplanet"><?php echo T_('Your BilboPlanet version :'); echo ' <strong>'. $planet_version .'</strong>';?></div></li>
 		</ul>
 	</div>
 <?php

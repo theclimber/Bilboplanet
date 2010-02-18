@@ -43,6 +43,7 @@ require_once(dirname(__FILE__).'/../inc/fonctions.php');
 	<script type="text/javascript" src="meta/js/ed.js"></script>
 	<script type="text/javascript">
 		window.addEvent('domready', function(){
+			new BP_Administrator();
 			$('BP_Logout').addEvent('click', function(event){
 				event.stop();
 				window.location.replace('<?php echo $planet_url; ?>');
@@ -59,9 +60,9 @@ require_once(dirname(__FILE__).'/../inc/fonctions.php');
 					'<h3><?php echo T_('BilboPlanet : Useful links');?></h3>'+
 					'<p>'+
 					'<ul>'+
-					'<li><?php echo T_('Official WebSite : ');?><a href="http://www.bilboplanet.com" target="_blank">http://www.bilboplanet.com</a></li>'+
-					'<li><?php echo T_('Official Forum : ');?><a href="http://www.bilboplanet.com/forum" target="_blank">http://www.bilboplanet.com/forum</a></li>'+
-					'<li><?php echo T_('Official Documentation : ');?><a href="http://www.bilboplanet.com/documentation.php" target="_blank">http://www.bilboplanet.com/documentation.php</a></li>'+
+					'<li><?php echo T_('Official WebSite: ');?><a href="http://www.bilboplanet.com" target="_blank">http://www.bilboplanet.com</a></li>'+
+					'<li><?php echo T_('Official Forum: ');?><a href="http://www.bilboplanet.com/forum" target="_blank">http://www.bilboplanet.com/forum</a></li>'+
+					'<li><?php echo T_('Official Documentation: ');?><a href="http://www.bilboplanet.com/documentation.php" target="_blank">http://www.bilboplanet.com/documentation.php</a></li>'+
 					'</ul>'+
 					'</p>'+
 					'<br /><hr><br/>'+

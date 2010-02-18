@@ -114,8 +114,8 @@ include_once(dirname(__FILE__).'/sidebar.php');
 <input id="cadre_options" class='input' type="text" name="desc" value="<?php echo $desc; ?>" /><br /><br />
 
 <div>
-<label for="show_contact"><input type="checkbox" class='input' id="show_contact" name="show_contact" <?php if ($contact) echo "checked"; ?>><?php echo T_('Show the contact page');?></label><br/><br />
-<label for="show_votes"><input type="checkbox" class='input' id="show_votes" name="show_votes" <?php if ($votes) echo "checked"; ?>><?php echo T_('Enable voting');?></label><br/><br />
+<label for="show_contact"><input type="checkbox" class='input' id="show_contact" name="show_contact" <?php if ($contact) echo "checked"; ?>> <?php echo T_('Show the contact page');?></label><br/><br />
+<label for="show_votes"><input type="checkbox" class='input' id="show_votes" name="show_votes" <?php if ($votes) echo "checked"; ?>> <?php echo T_('Enable voting');?></label><br/><br />
 </div>
 <?php echo T_('Graphical theme');?>
 <div><select name="theme">

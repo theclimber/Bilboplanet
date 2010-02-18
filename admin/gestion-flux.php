@@ -121,7 +121,7 @@ include_once(dirname(__FILE__).'/sidebar.php');
 
 <fieldset><legend><?php echo T_('Add a feed');?></legend>
 	<div class="message">
-		<p><?php echo T_('Manage member\'s feeds.'); ?></p>
+		<p><?php echo T_("Manage member's feeds"); ?></p>
 	</div>
 		
 <br/>

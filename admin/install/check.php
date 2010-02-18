@@ -34,9 +34,6 @@ function dcSystemCheck(&$con,&$err)
 	if (version_compare(phpversion(),'5.0','<')) {
 		$err[] = sprintf(T_('PHP version is %s (5.0 or earlier needed).'),phpversion());
 	}
-	if (version_compare(phpversion(),'5.3','>')) {
-		$err[] = sprintf(T_('PHP version is %s (We are sorry to inform you that our gettext version does not support 5.3 and earlier).'),phpversion());
-	}
 	
 	if (!function_exists('mb_detect_encoding')) {
 		$err[] = T_('Multibyte string module (mbstring) is not available.');

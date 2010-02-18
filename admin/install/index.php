@@ -88,6 +88,15 @@ if ($can_install && !empty($_POST))
 	try
 	{
 		# Check user information
+		if (empty($p_title)) {
+			throw new Exception(T_('Please fill the title in.'));
+		}
+		if (empty($p_url)) {
+			throw new Exception(T_('Please fill the planet url in.'));
+		}
+		if (empty($u_email)) {
+			throw new Exception(T_('Please fill the user email in.'));
+		}
 		if (empty($u_login)) {
 			throw new Exception(T_('Please fill the username in.'));
 		}
@@ -194,7 +203,7 @@ require valid-user
 				unset($_tz);
 			}
 		}
-		createTables(BP_DBHOST,BP_DBNAME,BP_DBUSER,BP_DBPASSWORD);
+		createTables(BP_DBHOST,BP_DBNAME,BP_DBUSER,base64_decode(BP_DBPASSWORD));
 
 
 		$step = 1;
@@ -348,7 +357,7 @@ closedir($dir_handle);
 	'<label>'.T_('Name').' '.
 	form::field('u_name',30,255,html::escapeHTML($u_name)).'</label>
 	<span class="description">'.T_('Enter your name (optional)').'</span>'.
-	'<label>'.T_('Email').' '.
+	'<label>'.T_('Email').' * '.
 	form::field('u_email',30,255,html::escapeHTML($u_email)).'</label>
 	<span class="description">'.T_('Enter your email address').'</span>'.
 	'<label>'.T_('Website of the user').' '.
@@ -357,10 +366,10 @@ closedir($dir_handle);
 	'</fieldset><br/>'.
 
 	'<fieldset><legend><strong>'.T_('Information on the Planet').'</strong></legend>'.
-	'<label>'.T_('URL of the Planet').' '.
+	'<label>'.T_('URL of the Planet').' *  '.
 	form::field('p_url',30,255,html::escapeHTML($p_url)).'</label>
 	<span class="description">'.T_('ex: http://www.example.com or http://planet.example.com').'</span>'.
-	'<label>'.T_('Title of the Planet').' '.
+	'<label>'.T_('Title of the Planet').' * '.
 	form::field('p_title',30,255,html::escapeHTML($p_title)).'</label>
 	<span class="description">'.T_('Fill the title of your planet').'</span>'.
 	'<label>'.T_('Description').' '.
@@ -372,13 +381,13 @@ closedir($dir_handle);
 	'</fieldset><br/>'.
 	
 	'<fieldset><legend><strong>'.T_('Administration username and password').'</strong></legend>'.
-	'<label class="required" title="'.T_('Required field').'">'.T_('Username').' '.
+	'<label class="required" title="'.T_('Required field').'">'.T_('Username').' * '.
 	form::field('u_login',30,32,html::escapeHTML($u_login)).'</label>
 	<span class="description"'.T_('Enter your username').'</span>'.
-	'<label class="required" title="'.T_('Required field').'">'.T_('Password').' '.
+	'<label class="required" title="'.T_('Required field').'">'.T_('Password').' * '.
 	form::password('u_pwd',30,255).'</label>
 	<span class="description"'.T_('Enter your password').'</span>'.
-	'<label class="required" title="'.T_('Required field').'">'.T_('Confirm your password').' '.
+	'<label class="required" title="'.T_('Required field').'">'.T_('Confirm your password').' * '.
 	form::password('u_pwd2',30,255).'</label>
 	<span class="description">'.T_('Re-enter your password for verification').'</span>'.
 	'</fieldset><br/>'.

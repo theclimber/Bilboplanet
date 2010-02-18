@@ -78,7 +78,7 @@ if (!empty($_POST))
 		# Check if bilboplanet is already installed
 		$schema = dbSchema::init($con);
 		if (in_array($DBPREFIX.'flux',$schema->getTables())) {
-			throw new Exception(T_('The Bilboplanet is already installed.'));
+			throw new Exception(T_('The Bilboplanet is already installed. Please remove the tables in the database before.'));
 		}
 
 		# Does config.php.default exist?
@@ -96,7 +96,7 @@ if (!empty($_POST))
 		$full_conf = file_get_contents($config_in);
 		writeConfigValue('BP_DBHOST',$DBHOST,$full_conf);
 		writeConfigValue('BP_DBUSER',$DBUSER,$full_conf);
-		writeConfigValue('BP_DBPASSWORD',$DBPASSWORD,$full_conf);
+		writeConfigValue('BP_DBPASSWORD',base64_encode($DBPASSWORD),$full_conf);
 		writeConfigValue('BP_DBNAME',$DBNAME,$full_conf);
 		writeConfigValue('BP_DBPREFIX',$DBPREFIX,$full_conf);
 

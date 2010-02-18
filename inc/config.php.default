@@ -59,7 +59,7 @@ $planet_author_mail = BP_AUTHOR_MAIL;
 $planet_author_site = BP_AUTHOR_SITE;
 
 # Jabber / GTalk de l'auteur
-$planet_author_jabber = BP_AUTHER_JABBER;
+$planet_author_jabber = BP_AUTHOR_JABBER;
 
 # IM de l'autheur
 $planet_author_im = BP_AUTHOR_IM;
@@ -137,11 +137,6 @@ define('BP_DBPREFIX','');
 define('BP_DBDRIVER','mysql');
 # Persistent database connection
 define('BP_DBPERSIST',false);
-
-$db_host = BP_DBHOST;
-$db_name = BP_DBNAME;
-$db_login = BP_DBUSER;
-$db_passw = BP_DBPASSWORD;
 
 $timezone = 'Europe/Paris';
 date_default_timezone_set($timezone);

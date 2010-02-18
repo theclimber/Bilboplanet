@@ -33,7 +33,7 @@ $db_host  = BP_DBHOST;
 # Login d'access
 $db_login = BP_DBUSER;
 # Password d'access
-$db_passw = BP_DBPASSWORD;
+$db_passw = base64_decode(BP_DBPASSWORD);
 # Nom de la base
 $db_name  = BP_DBNAME;
 

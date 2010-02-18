@@ -130,7 +130,7 @@ if (!defined('DC_UPDATE_VERSION')) {
 }*/
 
 try {
-	$core = new dcCore(BP_DBDRIVER,BP_DBHOST,BP_DBNAME,BP_DBUSER,BP_DBPASSWORD,BP_DBPREFIX,BP_DBPERSIST);
+	$core = new dcCore(BP_DBDRIVER,BP_DBHOST,BP_DBNAME,BP_DBUSER,base64_decode(BP_DBPASSWORD),BP_DBPREFIX,BP_DBPERSIST);
 } catch (Exception $e) {
 	__error($e->getMessage()
 		,$e->getCode() == 0 ?
@@ -143,7 +143,7 @@ try {
 		'<li>Are you sure that the database server is running?</li></ul>'.
 		'<p>If you\'re unsure what these terms mean you should probably contact '.
 		'your host. If you still need help you can always visit the '.
-		'<a href="http://forum.dotclear.net/">Dotclear Support Forums</a>.</p>'
+		'<a href="http://www.bilboplanet.com/forum/">Bilboplanet Support Forums</a>.</p>'
 		: ''
 		,20);
 }

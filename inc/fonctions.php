@@ -253,7 +253,7 @@ function convert_iso_special_html_char($string) {
 function afficheListeArticles($sql, $strip_tags, $recherche="") {
 
 	# Recuperation des options de configuration
-	global $planet_theme, $planet_password, $planet_url, $planet_avatar, $planet_votes_system, $activate_votes;
+	global $planet_theme, $planet_url, $planet_avatar, $planet_votes_system, $activate_votes;
 
 	# Execution de la rqt sql
 	$liste_articles = mysql_query(trim($sql)) or die("Error with request $sql");

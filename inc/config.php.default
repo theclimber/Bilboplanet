@@ -15,7 +15,6 @@ define('BP_THEME','gil-galad');
 define('BP_NB_ART','10');
 define('BP_NB_ART_MOB','10');
 define('BP_USER','admin');
-define('BP_PWD','passwordeouf'); # this is a hash of your passwd : md5(YOURPASSWORD);
 define('BP_AVATAR','1');
 define('BP_MSG_INFO', 'BilboPlanet - An Open Source RSS feed aggregator written in PHP');
 define('BP_META','Le CMS BilboPlanet est un agrégateur de Flux RSS Open Source écrit en PHP.');
@@ -76,9 +75,6 @@ $nb_article = BP_NB_ART;
 # Nombre d'article a afficher pour la version mobile
 $nb_article_mobile = BP_NB_ART_MOB;
 
-# Mot de passe pour les votes
-$planet_password = BP_PWD;
-
 # Systeme de vote (yes-no = positif and negatif, yes-warn = positif and warn)
 $planet_votes_system = "yes-warn";
 
@@ -135,6 +131,7 @@ define('BP_DBNAME','');
 define('BP_DBPREFIX','');
 # Database driver (mysql, pgsql, sqlite)
 define('BP_DBDRIVER','mysql');
+define('BP_DBENCRYPTED_PASSWORD', '0');
 # Persistent database connection
 define('BP_DBPERSIST',false);
 

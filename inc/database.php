@@ -28,36 +28,22 @@
 # Inclusion de la configuration du planet
 require_once(dirname(__FILE__).'/config.php');
 
-# Adresse du serveur de base de donnees */
-$db_host  = BP_DBHOST;
-# Login d'access
-$db_login = BP_DBUSER;
-# Password d'access
-$db_passw = base64_decode(BP_DBPASSWORD);
-# Nom de la base
-$db_name  = BP_DBNAME;
-
-
 #-----------------------------------------------#
 #   Fonction de gestion de la base de donnees   #
 #-----------------------------------------------#
 
 # Fonction de connection a la base
 function connectBD() {
+	if (BP_DBENCRYPTED_PASSWORD) {
+		mysql_connect(BP_DBHOST, BP_DBUSER, base64_decode(BP_DBPASSWORD)) or die("Error : could not connect to mysql : ".mysql_error());
+	} else {
+		mysql_connect(BP_DBHOST, BP_DBUSER, BP_DBPASSWORD) or die("Error : could not connect to mysql : ".mysql_error());
+	}
 
-	global $db_host, $db_login, $db_passw, $db_name;
-
-	# Connexion au serveur MySQL
-	mysql_connect($db_host, $db_login, $db_passw) or die("Error : could not connect to mysql !");
-
-	# Selection de la base
-	mysql_select_db($db_name) or die('Error : Connexion error to database "'.$db_name.'"');
+	mysql_select_db(BP_DBNAME) or die('Error : Connexion error to database "'.BP_DBNAME.'" : '.mysql_error());
 }
 
-# Fonction de deconnexion a la base
 function closeBD() {
-
-	# Fermeture de la connexion MySQL
 	mysql_close();
 }
 ?>

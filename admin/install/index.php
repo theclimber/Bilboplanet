@@ -125,7 +125,6 @@ if ($can_install && !empty($_POST))
 		writeConfigValue('BP_AUTHOR_MAIL',$u_email,$full_conf);
 		writeConfigValue('BP_AUTHOR_SITE',$u_site,$full_conf);
 		writeConfigValue('BP_USER',$u_login,$full_conf);
-		writeConfigValue('BP_PWD',md5(trim($u_pwd)),$full_conf);
 		writeConfigValue('BP_TITLE',$p_title,$full_conf);
 		writeConfigValue('BP_URL',$p_url,$full_conf);
 		writeConfigValue('BP_DESC',$p_desc,$full_conf);
@@ -203,7 +202,7 @@ require valid-user
 				unset($_tz);
 			}
 		}
-		createTables(BP_DBHOST,BP_DBNAME,BP_DBUSER,base64_decode(BP_DBPASSWORD));
+		createTables(BP_DBHOST,BP_DBNAME,BP_DBUSER,BP_DBPASSWORD);
 
 
 		$step = 1;
@@ -216,7 +215,7 @@ require valid-user
 function createTables($host,$name,$user,$pass)
 {
   # Connexion au serveur MySQL
-  mysql_connect($host, $user, $pass) or die("Connexion error to the MySQL server !");
+  mysql_connect($host, $user, base64_decode($pass)) or die("Connexion error to the MySQL server !");
 
   # Selection de la base
   mysql_select_db($name) or die("Connexion error to the database -> $name");

@@ -142,7 +142,7 @@ while($liste = mysql_fetch_row($rqt)) {
 if($num_membre == "0") {
 	echo '<option value="'.$liste[0].'" selected>'.T_('All').'</option>';
 } else {
-	echo '<option value="'.$liste[0].'">Tous</option>';
+	echo '<option value="'.$liste[0].'">'.T_('All').'</option>';
 }
 ?>
 </select></th>

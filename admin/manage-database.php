@@ -75,7 +75,6 @@ if(isset($_POST)) {
 				'BP_NB_ART' => BP_NB_ART,
 				'BP_NB_ART_MOB' => BP_NB_ART_MOB,
 				'BP_USER' => BP_USER,
-				'BP_PWD' => BP_PWD,
 				'BP_AVATAR' => BP_AVATAR,
 				'BP_MSG_INFO' => BP_MSG_INFO,
 				'BP_META' => BP_META,

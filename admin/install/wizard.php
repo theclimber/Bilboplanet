@@ -54,7 +54,7 @@ $DBDRIVER = !empty($_POST['DBDRIVER']) ? $_POST['DBDRIVER'] : 'mysql';
 $DBHOST = !empty($_POST['DBHOST']) ? $_POST['DBHOST'] : '';
 $DBNAME = !empty($_POST['DBNAME']) ? $_POST['DBNAME'] : '';
 $DBUSER = !empty($_POST['DBUSER']) ? $_POST['DBUSER'] : '';
-$DBPASSWORD = !empty($_POST['DBPASSWORD']) ? $_POST['DBPASSWORD'] : '';
+$DBPASSWORD = !empty($_POST['DBPASSWORD']) ? base64_encode(stripslashes($_POST['DBPASSWORD'])): '';
 $DBPREFIX = !empty($_POST['DBPREFIX']) ? $_POST['DBPREFIX'] : '';
 
 if (!empty($_POST))
@@ -63,7 +63,7 @@ if (!empty($_POST))
 	{
 		# Tries to connect to database
 		try {
-			$con = dbLayer::init($DBDRIVER,$DBHOST,$DBNAME,$DBUSER,$DBPASSWORD);
+			$con = dbLayer::init($DBDRIVER,$DBHOST,$DBNAME,$DBUSER,base64_decode($DBPASSWORD));
 		} catch (Exception $e) {
 			throw new Exception('<p>' . T_($e->getMessage()) . '</p>');
 		}
@@ -96,9 +96,10 @@ if (!empty($_POST))
 		$full_conf = file_get_contents($config_in);
 		writeConfigValue('BP_DBHOST',$DBHOST,$full_conf);
 		writeConfigValue('BP_DBUSER',$DBUSER,$full_conf);
-		writeConfigValue('BP_DBPASSWORD',base64_encode($DBPASSWORD),$full_conf);
+		writeConfigValue('BP_DBPASSWORD',$DBPASSWORD,$full_conf);
 		writeConfigValue('BP_DBNAME',$DBNAME,$full_conf);
 		writeConfigValue('BP_DBPREFIX',$DBPREFIX,$full_conf);
+		writeConfigValue('BP_DBENCRYPTED_PASSWORD','1',$full_conf);
 
 		$fp = @fopen(BP_CONFIG_PATH,'wb');
 		if ($fp === false) {

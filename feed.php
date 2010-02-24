@@ -97,7 +97,7 @@ if (isset($_GET) && isset($_GET['type'])) {
 		<dc:language><?php echo $planet_lang; ?></dc:language>
 		<dc:creator><?php echo $planet_author; ?></dc:creator>
 		<dc:rights></dc:rights>
-		<dc:date><?php echo date('Y-m-d\\TH:i:s+00:00'); ?></dc:date>
+		<dc:date><?php echo date('Y-m-d H:i:s+00:00'); ?></dc:date>
 		<admin:generatorAgent rdf:resource="<?php echo $planet_url; ?>" />
 
 		<items>
@@ -123,7 +123,7 @@ if (isset($_GET) && isset($_GET['type'])) {
 			<id><?php echo $planet_url; ?></id>
 			<link rel="alternate" type="text/html" href="<?php echo $planet_url; ?>" />
 			<link rel="self" href="<?php echo $planet_url; ?>atom10.php" />
-			<updated><?php echo date("Y-m-d\TH:i:s\Z") ?></updated>
+			<updated><?php echo date("Y-m-d H:i:s\Z") ?></updated>
 			<author><name><?php echo $planet_author; ?></name></author>
 <?php 
 	}

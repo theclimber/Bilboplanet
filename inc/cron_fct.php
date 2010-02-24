@@ -37,16 +37,6 @@ function update($print=false) {
 	$cron_file = dirname(__FILE__).'/cron_running.txt';
 	$output = "";
 
-	# On augmenete le temps d'execution
-	@set_time_limit(0);
-	@ini_set('max_execution_time',0);
-
-	# On augmente l'allocation memoire
-	@ini_set('output_buffering',0);
-
-	# On ignore les arrets venant du client
-	ignore_user_abort(true);
-
 	# Inclusion des fichiers necessaires
 	require_once(dirname(__FILE__).'/lib/simplepie/simplepie.inc');
 

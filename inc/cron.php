@@ -51,6 +51,16 @@ logMsg("Register the shutdown function", $log_file);
 register_shutdown_function('finished');
 $cache_dir = dirname(__FILE__).'/../admin/cache/';
 
+# On augmenete le temps d'execution
+@set_time_limit(0);
+@ini_set('max_execution_time',0);
+
+# On augmente l'allocation memoire
+@ini_set('output_buffering',0);
+
+# On ignore les arrets venant du client
+ignore_user_abort(true);
+
 $stop_requested=false;
 while(1){
 	logMsg("Actual time : ".time()."", $log_file);

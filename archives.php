@@ -53,7 +53,7 @@ $sql = "SELECT nom_membre, article_pub, article_titre, article_url, site_membre
         WHERE article.num_membre =  membre.num_membre
         AND article_statut = '1'
         ORDER BY article_pub DESC";
-$rqt = mysql_query(trim($sql)) or die("Error with request $sql");
+$rqt = mysql_query(trim($sql)) or die("Error with request $sql : ".mysql_error());
 
 # On recupere le mois en cours
 $mois_en_cours = date("n");

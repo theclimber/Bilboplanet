@@ -73,8 +73,8 @@ if (isset($_GET) && isset($_GET['type'])) {
 	connectBD();
 
 	# Execution des rqt
-	$liste_rapide = mysql_query(trim($sql)) or die("Error with request $sql");
-	$liste_articles = mysql_query(trim($sql)) or die("Error with request $sql");
+	$liste_rapide = mysql_query(trim($sql)) or die("Error with request $sql : ".mysql_error());
+	$liste_articles = mysql_query(trim($sql)) or die("Error with request $sql : ".mysql_error());
 
 	# Femeture de la base
 	closeBD();

@@ -94,7 +94,7 @@ function getNbMembres() {
 
 	# Requete sql
 	$sql = 'SELECT COUNT(*) FROM membre WHERE statut_membre = 1';
-	$rqt = mysql_query($sql) or die("Error with request $sql");
+	$rqt = mysql_query($sql) or die("Error with request $sql : ".mysql_error());
 	$nb = mysql_fetch_row($rqt);
 
 	# On retourne le resultat
@@ -106,7 +106,7 @@ function getNbFlux() {
 
 	# Requete sql
 	$sql = 'SELECT COUNT(*) FROM flux, membre WHERE membre.num_membre = flux.num_membre AND statut_membre = 1';
-	$rqt = mysql_query($sql) or die("Error with request $sql");
+	$rqt = mysql_query($sql) or die("Error with request $sql : ".mysql_error());
 	$nb = mysql_fetch_row($rqt);
 
 	# On retourne le resultat
@@ -118,7 +118,7 @@ function getNbArticles() {
 
 	# Requete sql
 	$sql = 'SELECT COUNT(*) FROM article WHERE article_statut = 1';
-	$rqt = mysql_query($sql) or die("Error with request $sql");
+	$rqt = mysql_query($sql) or die("Error with request $sql : ".mysql_error());
 	$nb = mysql_fetch_row($rqt);
 
 	# On retourne le resultat
@@ -130,7 +130,7 @@ function getNbVotes() {
 
 	# Requete sql
 	$sql = 'SELECT COUNT(*) FROM votes';
-	$rqt = mysql_query($sql) or die("Error with request $sql");
+	$rqt = mysql_query($sql) or die("Error with request $sql : ".mysql_error());
 	$nb = mysql_fetch_row($rqt);
 
 	# On retourne le resultat
@@ -148,7 +148,7 @@ function getTopMembreArticles($nb) {
 		GROUP BY nom_membre
 		ORDER BY nb_article DESC
 		LIMIT 0,$nb";
-	$rqt = mysql_query($sql) or die("Error with request $sql");
+	$rqt = mysql_query($sql) or die("Error with request $sql : ".mysql_error());
 
 	# On retourne la liste
 	return $rqt;
@@ -165,7 +165,7 @@ function getTopMembreVotes($nb) {
 		GROUP BY nom_membre
 		ORDER BY score DESC
 		LIMIT 0,$nb";
-	$rqt = mysql_query($sql) or die("Error with request $sql");
+	$rqt = mysql_query($sql) or die("Error with request $sql : ".mysql_error());
 
 	# On retourne la liste
 	return $rqt;
@@ -215,7 +215,7 @@ function checkVote($ip, $num_article) {
 
 	# Recuperation des adresses IP qui ont votes
 	$sql = "SELECT vote_ip FROM votes WHERE num_article = '$num_article' AND vote_ip = '$ip'";
-	$rqt_article = mysql_query($sql) or die("Error with request $sql");
+	$rqt_article = mysql_query($sql) or die("Error with request $sql : ".mysql_error());
 	$nb_vote = mysql_num_rows($rqt_article);
 
 	if ($nb_vote==0){
@@ -256,7 +256,7 @@ function afficheListeArticles($sql, $strip_tags, $recherche="") {
 	global $planet_theme, $planet_url, $planet_avatar, $planet_votes_system, $activate_votes;
 
 	# Execution de la rqt sql
-	$liste_articles = mysql_query(trim($sql)) or die("Error with request $sql");
+	$liste_articles = mysql_query(trim($sql)) or die("Error with request $sql : ".mysql_error());
 
 	# On recupere le nombre de resultat
 	$nb = mysql_num_rows($liste_articles);
@@ -345,7 +345,7 @@ function afficheSommaireArticles($sql) {
 	global $nb_article;
 
 	# Execution de la rqt sql
-	$liste_articles = mysql_query(trim($sql)) or die("Error with request $sql");
+	$liste_articles = mysql_query(trim($sql)) or die("Error with request $sql : ".mysql_error());
 
 	# On recupere le nombre de resultat
 	$nb = mysql_num_rows($liste_articles);
@@ -687,7 +687,7 @@ function get_cron_running() {
 
 function get_database_size(){
 	connectBD();
-	$request = mysql_query("SHOW TABLE STATUS") or die("Error with request $sql");
+	$request = mysql_query("SHOW TABLE STATUS") or die("Error with request $sql : ".mysql_error());
 	$dbsize = 0;
 	while( $row = mysql_fetch_array($request) ) {
 		$dbsize += $row[ "Data_length" ] + $row[ "Index_length" ];

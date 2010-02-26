@@ -84,7 +84,7 @@ if(isset($_POST) && isset($_POST['num']) && isset($_POST['statut'])) {
 		$sql = "UPDATE article
 		SET article_statut = '$statut'
 		WHERE num_article = '".$num."'";
-	$result = mysql_query($sql) or die("Error with request $sql");
+	$result = mysql_query($sql) or die("Error with request $sql : ".mysql_error());
 
 	# Femeture de la base
 	closeBD();
@@ -127,7 +127,7 @@ include_once(dirname(__FILE__).'/sidebar.php');
 <?php
 # Execution de la requete
 $sql = 'SELECT num_membre, nom_membre FROM membre ORDER BY nom_membre ASC;';
-$rqt = mysql_query($sql) or die("Error with request $sql");
+$rqt = mysql_query($sql) or die("Error with request $sql : ".mysql_error());
 
 # Traitement de la liste
 while($liste = mysql_fetch_row($rqt)) {
@@ -168,7 +168,7 @@ if($num_membre == "0") {
 
 # Execution de la requete
 $sql = "SELECT * FROM article ORDER BY num_article ASC LIMIT $num_start,$nb_items;";
-$rqt = mysql_query($sql) or die("Error with request $sql");
+$rqt = mysql_query($sql) or die("Error with request $sql : ".mysql_error());
 
 include(dirname(__FILE__).'/pagination.php');
 ?><br /><br />
@@ -198,7 +198,7 @@ if($num_membre != 0) $sql .= "AND article.num_membre = '$num_membre'";
 $sql .= "ORDER by article_pub DESC LIMIT $num_start,$nb_items";
 
 # Execution de la requete
-$rqt = mysql_query($sql) or die("Error with request $sql");
+$rqt = mysql_query($sql) or die("Error with request $sql : ".mysql_error());
 
 /* Traitement de la liste */
 while($liste = mysql_fetch_row($rqt)) {

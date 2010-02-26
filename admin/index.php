@@ -41,7 +41,7 @@ function showArticleSummary(){
 		AND statut_membre = '1'
 		ORDER BY article_pub DESC
 		LIMIT 0,5";
-	$request = mysql_query($sql) or die("Error with request $sql");
+	$request = mysql_query($sql) or die("Error with request $sql : ".mysql_error());
 	$list_articles = "<ul>";
 	$max_title_length = 50;
 	while($article = mysql_fetch_row($request)){
@@ -106,19 +106,19 @@ $nb_feeds = 0;
 #2) Et ce serai bien de rajouter dans le dashboard : nombre d'article sur le planet + nombre de vote au total + nmobre de membre + nombre de flux
 connectBD();
 $sql = "SELECT COUNT(*) FROM article";
-$request = mysql_query($sql) or die("Error with request $sql");
+$request = mysql_query($sql) or die("Error with request $sql : ".mysql_error());
 if ($request)
 	$nb_articles = mysql_fetch_row($request);
 $sql = "SELECT COUNT(*) FROM votes";
-$request = mysql_query($sql) or die("Error with request $sql");
+$request = mysql_query($sql) or die("Error with request $sql : ".mysql_error());
 if ($request)
 	$nb_votes = mysql_fetch_row($request);
 $sql = "SELECT COUNT(*) FROM membre";
-$request = mysql_query($sql) or die("Error with request $sql");
+$request = mysql_query($sql) or die("Error with request $sql : ".mysql_error());
 if ($request)
 	$nb_members = mysql_fetch_row($request);
 $sql = "SELECT COUNT(*) FROM flux";
-$request = mysql_query($sql) or die("Error with request $sql");
+$request = mysql_query($sql) or die("Error with request $sql : ".mysql_error());
 if ($request)
 	$nb_feeds = mysql_fetch_row($request);
 closeBD();
@@ -127,11 +127,16 @@ closeBD();
 include_once(dirname(__FILE__).'/head.php');
 include_once(dirname(__FILE__).'/sidebar.php');
 
-# Version Apache MySQL PHP
-$version_apache = substr(apache_get_version(),strlen("Apache/"));
-$version_apache = substr( $version_apache, 0, strpos( $version_apache, ' ' ) );
-$version_mysql = mysql_get_client_info();
-$version_php = phpversion();
+# Version MySQL
+$version_mysql = "N/C";
+if (function_exists('mysql_get_client_info')){
+	$version_mysql = mysql_get_client_info();
+}
+# Version PHP
+$version_php = "N/C";
+if (function_exists('phpversion')){
+	$version_php = phpversion();
+}
 
 ?>
 <div id="BP_page" class="page">
@@ -177,7 +182,7 @@ if (BP_INDEX_UPDATE == '1')
 			<li><div id="BP_system_os"><?php echo T_('Operating System :'); echo ' <strong>'. PHP_OS .'</strong>';?></div></li>
 			<li><div id="BP_system_php"><?php echo T_('PHP version :'); echo ' <strong>'. $version_php .'</strong>';?></div></li>
 			<li><div id="BP_system_mysql"><?php echo T_('MySQL version :'); echo ' <strong>'. $version_mysql .'</strong>';?></div></li>
-			<li><div id="BP_system_apache"><?php echo T_('Apache version :');  echo ' <strong>'. $version_apache .'</strong>';?></div></li>
+			<li><div id="BP_system_apache"><?php echo T_('Server :');  echo ' <strong>'. $_SERVER['SERVER_SOFTWARE'] .'</strong>';?></div></li>
 			<li><div id="BP_system_memory"><?php echo T_('Memory :');  echo ' <strong>'. @ini_get('memory_limit') .'</strong>';?></div></li>
 			<li><div id="BP_system_bilboplanet"><?php echo T_('Your BilboPlanet version :'); echo ' <strong>'. $planet_version .'</strong>';?></div></li>
 		</ul>

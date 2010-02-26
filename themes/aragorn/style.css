@@ -744,3 +744,9 @@ h2#informations_title
 {
 padding-top:9px;	
 }
+.votes {
+	display:block;
+	float:right;
+	margin-top:-10px;
+	width:42px;
+}

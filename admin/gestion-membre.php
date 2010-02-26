@@ -38,13 +38,13 @@ if(isset($_POST) && isset($_POST['Confirm_delete'])) {
 	connectBD();
 	$num = trim($_POST['num']);
 	$sql = "DELETE FROM membre WHERE num_membre='$num'";
-	$result = mysql_query($sql) or die("Error with request $sql");
+	$result = mysql_query($sql) or die("Error with request $sql : ".mysql_error());
 	$sql = "DELETE FROM flux WHERE num_membre='$num'";
-	$result = mysql_query($sql) or die("Error with request $sql");
+	$result = mysql_query($sql) or die("Error with request $sql : ".mysql_error());
 	$sql = "DELETE FROM votes USING article, votes WHERE article.num_article=votes.num_article AND article.num_membre = '$num'";
-	$result = mysql_query($sql) or die("Error with request $sql");
+	$result = mysql_query($sql) or die("Error with request $sql : ".mysql_error());
 	$sql = "DELETE FROM article WHERE num_membre='$num'";
-	$result = mysql_query($sql) or die("Error with request $sql");
+	$result = mysql_query($sql) or die("Error with request $sql : ".mysql_error());
 	$flash = array('type' => 'notice', 'msg' => sprintf(T_("Delete of user %s succeeded"),$nom['value']));
 	# Femeture de la base
 	closeBD();
@@ -78,11 +78,11 @@ if(isset($_POST) && (
 		# On insert une nouvelle entree
 		if(isset($_POST) && isset($_POST['submitAjout']) && !empty($_POST['submitAjout'])){
 			$sql = "SELECT nom_membre FROM membre WHERE nom_membre='".$nom['value']."'";
-			$result1 = mysql_query($sql) or die("Error with request $sql");
+			$result1 = mysql_query($sql) or die("Error with request $sql : ".mysql_error());
 			$sql = "SELECT nom_membre FROM membre WHERE email_membre='".$email['value']."'";
-			$result2 = mysql_query($sql) or die("Error with request $sql");
+			$result2 = mysql_query($sql) or die("Error with request $sql : ".mysql_error());
 			$sql = "SELECT nom_membre FROM membre WHERE site_membre='".$site['value']."'";
-			$result3 = mysql_query($sql) or die("Error with request $sql");
+			$result3 = mysql_query($sql) or die("Error with request $sql : ".mysql_error());
 			if (mysql_result($result1,0)){
 				$flash = array('type' => 'error', 'msg' => sprintf(T_('The user %s already exists'),$nom['value']));
 				$error['nom']=true;
@@ -97,7 +97,7 @@ if(isset($_POST) && (
 			}
 			if (!mysql_result($result1,0) && !mysql_result($result2,0) && !mysql_result($result3,0)) {
 				$sql = "INSERT INTO membre VALUES ('', '".$nom['value']."', '".$email['value']."', '".$site['value']."', '1')";
-				$result = mysql_query($sql) or die("Error with request $sql");
+				$result = mysql_query($sql) or die("Error with request $sql : ".mysql_error());
 				$flash = array('type' => 'notice', 'msg' => sprintf(T_("User %s successfully added"),$nom['value']));
 				if (!$result)
 					$flash = array('type' => 'error', 'msg' => sprintf(T_('Error while trying to modify user %s'),$nom['value']));
@@ -110,7 +110,7 @@ if(isset($_POST) && (
 				SET nom_membre = '".$nom['value']."', site_membre = '".$site['value']."', email_membre = '".$email['value']."', statut_membre = '$statut'
 				WHERE num_membre = '$num'";
 			$flash = array('type' => 'notice', 'msg' => sprintf(T_('Modification of user %s succeeded'),$nom['value']));
-			$result = mysql_query($sql) or die("Error with request $sql");
+			$result = mysql_query($sql) or die("Error with request $sql : ".mysql_error());
 			if (!$result)
 				$flash = array('type' => 'error', 'msg' => sprintf(T_('Error while trying to modify user %s'),$nom['value']));
 		}
@@ -221,7 +221,7 @@ connectBD();
 
 # On recupere les informtions sur les membres
 $sql = 'SELECT num_membre, nom_membre, site_membre, email_membre, statut_membre FROM membre ORDER by nom_membre ASC LIMIT '.$num_start.','.$nb_items;
-$rqt = mysql_query($sql) or die("Error with request $sql");
+$rqt = mysql_query($sql) or die("Error with request $sql : ".mysql_error());
 $nb = mysql_num_rows($rqt);
 
 include(dirname(__FILE__).'/pagination.php');

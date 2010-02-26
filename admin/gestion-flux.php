@@ -41,7 +41,7 @@ if(isset($_POST) && (
 	$num  = trim($_POST['num']);
 	$num_membre  = trim($_POST['num_membre']);
 	$sql = "SELECT site_membre FROM membre WHERE num_membre='".$num_membre."'";
-	$result1 = mysql_query($sql) or die("Error with request $sql");
+	$result1 = mysql_query($sql) or die("Error with request $sql : ".mysql_error());
 	$site = mysql_result($result1,0);
 	if (isset($_POST['flux']) && empty($_POST['flux'])){
 		$flux = check_field('flux',trim($_POST['flux']),'feed');
@@ -62,20 +62,20 @@ if(isset($_POST) && (
 		if(isset($_POST) && isset($_POST['submitDelete']) && !empty($_POST['submitDelete'])) {
 			$sql = "DELETE FROM flux WHERE num_flux='$num'";
 			$flash = array('type' => 'notice', 'msg' => sprintf(T_("The feed %s was correctly deleted"),$flux['value']));
-			$result = mysql_query($sql) or die("Error with request $sql");
+			$result = mysql_query($sql) or die("Error with request $sql : ".mysql_error());
 			if(!$result)
 				$flash = array('type' => 'error', 'msg' => T_("Error while trying to change the informations of the feed"));
 		}
 		if(isset($_POST) && isset($_POST['submitAjout']) && !empty($_POST['submitAjout'])) {
 			$sql = "SELECT url_flux FROM flux WHERE url_flux='".$flux['value']."' AND num_membre='".$num_membre."'";
-			$result1 = mysql_query($sql) or die("Error with request $sql");
+			$result1 = mysql_query($sql) or die("Error with request $sql : ".mysql_error());
 			if (mysql_result($result1,0)){
 				$flash = array('type' => 'error', 'msg' => sprintf(T_("The user already has a feed %s"),$flux['value']));
 				$error['flux']=true;
 			}
 			else{
 				$sql = "INSERT INTO flux (`num_flux`, `url_flux`, `num_membre`) VALUES ('', '".$flux['value']."', '$num_membre')";
-				$result = mysql_query($sql) or die("Error with request $sql");
+				$result = mysql_query($sql) or die("Error with request $sql : ".mysql_error());
 				if(!$result)
 					$flash = array('type' => 'error', 'msg' => T_("Error while trying to change the informations of the feed"));
 			}
@@ -87,7 +87,7 @@ if(isset($_POST) && (
 				SET url_flux = '".$flux['value']."', status_flux = '$statut'
 				WHERE num_flux = '$num'";
 			$flash = array('type' => 'notice', 'msg' => sprintf(T_("Changing the feed %s succeeded"),$flux['value']));
-			$result = mysql_query($sql) or die("Error with request $sql");
+			$result = mysql_query($sql) or die("Error with request $sql : ".mysql_error());
 			if(!$result)
 				$flash = array('type' => 'error', 'msg' => T_("Error while trying to change the informations of the feed"));
 		}
@@ -149,7 +149,7 @@ include_once(dirname(__FILE__).'/sidebar.php');
 
 					# Execution de la requete
 					$sql = 'SELECT num_membre, nom_membre FROM membre ORDER BY nom_membre ASC;';
-					$rqt = mysql_query($sql) or die("Error with request $sql");
+					$rqt = mysql_query($sql) or die("Error with request $sql : ".mysql_error());
 
 					# Traitement de la liste
 					while($liste = mysql_fetch_row($rqt)) {
@@ -177,7 +177,7 @@ include_once(dirname(__FILE__).'/sidebar.php');
 <?php
 # On recupere les informtions sur les membres
 $sql = 'SELECT nom_membre, site_membre, email_membre, statut_membre FROM membre ORDER by nom_membre ASC';
-$rqt = mysql_query($sql) or die("Error with request $sql");
+$rqt = mysql_query($sql) or die("Error with request $sql : ".mysql_error());
 ?>
 <center>
 <table class="table-flux" >
@@ -214,7 +214,7 @@ $sql = 'SELECT num_flux, url_flux, nom_membre, site_membre,statut_membre,status_
 	WHERE flux.num_membre = membre.num_membre 
 	ORDER by nom_membre ASC
 	LIMIT '.$num_start.','.$nb_items;
-$rqt = mysql_query($sql) or die("Error with request $sql");
+$rqt = mysql_query($sql) or die("Error with request $sql : ".mysql_error());
 $nb = mysql_num_rows($rqt);
 
 include(dirname(__FILE__).'/pagination.php');

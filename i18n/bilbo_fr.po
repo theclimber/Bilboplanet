@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Bilboplanet\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-16 16:02+0100\n"
-"PO-Revision-Date: 2010-02-16 16:04+0100\n"
+"POT-Creation-Date: 2010-02-26 12:17+0100\n"
+"PO-Revision-Date: 2010-02-26 12:20+0100\n"
 "Last-Translator: Gregoire de Hemptinne <greg@theclimber.be>\n"
 "Language-Team: French\n"
 "MIME-Version: 1.0\n"
@@ -295,19 +295,19 @@ msgstr "Sujet"
 #: admin/gestion-logs.php:66
 #: admin/gestion-membre.php:179
 #: admin/gestion-membre.php:234
-#: admin/install/index.php:348
+#: admin/install/index.php:373
 msgid "Name"
 msgstr "Nom"
 
 #: inscription.php:129
-#: admin/install/index.php:345
+#: admin/install/index.php:370
 msgid "Firstname"
 msgstr "Prénom"
 
 #: inscription.php:130
 #: admin/gestion-membre.php:182
 #: admin/gestion-membre.php:236
-#: admin/install/index.php:351
+#: admin/install/index.php:376
 msgid "Email"
 msgstr "Email"
 
@@ -692,6 +692,7 @@ msgid "Posts of the member :"
 msgstr "Articles du membre :"
 
 #: admin/gestion-articles.php:143
+#: admin/gestion-articles.php:145
 msgid "All"
 msgstr "Tous"
 
@@ -825,6 +826,10 @@ msgstr "Vous n'êtes pas authorisé à ajouter un flux sans sélectionner un mem
 #: admin/gestion-flux.php:122
 msgid "Add a feed"
 msgstr "Ajouter un flux"
+
+#: admin/gestion-flux.php:124
+msgid "Manage member's feeds"
+msgstr "Gérer les flux des membres"
 
 #: admin/gestion-flux.php:134
 msgid "Full url of the feed"
@@ -1077,7 +1082,7 @@ msgid "Configuration settings Planet."
 msgstr "Configuration du Planet."
 
 #: admin/gestion-option.php:110
-#: admin/install/index.php:363
+#: admin/install/index.php:388
 msgid "Title of the Planet"
 msgstr "Titre du planet"
 
@@ -1145,17 +1150,17 @@ msgid "System configuration update."
 msgstr "Mise à jour de la configuration du système."
 
 #: admin/gestion-update.php:106
-#: admin/index.php:156
+#: admin/index.php:161
 msgid "The update is running"
 msgstr "La mise à jour est en marche"
 
 #: admin/gestion-update.php:108
-#: admin/index.php:158
+#: admin/index.php:163
 msgid "The update is stopped"
 msgstr "La mise à jour est arrêtée"
 
 #: admin/gestion-update.php:109
-#: admin/index.php:160
+#: admin/index.php:165
 msgid "The update is disabled"
 msgstr "La mise à jour est désactivée"
 
@@ -1214,11 +1219,11 @@ msgstr "Veuillez vous assurer que les deux mots de passes sont identiques"
 
 #: admin/gestion-user.php:106
 #: admin/gestion-user.php:118
-#: admin/manage-database.php:106
-#: admin/install/index.php:127
-#: admin/install/index.php:142
-#: admin/install/index.php:162
-#: admin/install/index.php:173
+#: admin/manage-database.php:105
+#: admin/install/index.php:135
+#: admin/install/index.php:150
+#: admin/install/index.php:170
+#: admin/install/index.php:181
 #, php-format
 msgid "Unable to write %s file."
 msgstr "Impossible d'écrire dans le fichier %s"
@@ -1275,48 +1280,48 @@ msgstr "Nouveau mot de passe"
 msgid "Confirm password"
 msgstr "Confirmation mot de passe"
 
-#: admin/manage-database.php:112
+#: admin/manage-database.php:111
 msgid "A snapshot of your current database was successfully created. Please download the following file and put it in some safe place."
 msgstr "Une sauvegarde de votre base de donnée courrante a été crée avec succès. Veuillez télécharger le fichier suivant et le mettre en sécurité."
 
-#: admin/manage-database.php:116
+#: admin/manage-database.php:115
 msgid "Please select at least one table to export"
 msgstr "Veuillez au moins séletionner une table à exporter"
 
-#: admin/head.php:53
+#: admin/head.php:54
 msgid "Bilboplanet was developed by"
 msgstr "Bilboplanet est développé par"
 
-#: admin/head.php:59
+#: admin/head.php:60
 msgid "BilboPlanet : Useful links"
 msgstr "BilboPlanet : Liens utiles"
 
-#: admin/head.php:62
-msgid "Official WebSite : "
+#: admin/head.php:63
+msgid "Official WebSite: "
 msgstr "Site Officiel :  "
 
-#: admin/head.php:63
-msgid "Official Forum : "
+#: admin/head.php:64
+msgid "Official Forum: "
 msgstr "Forum officiel : "
 
-#: admin/head.php:64
-msgid "Official Documentation : "
+#: admin/head.php:65
+msgid "Official Documentation: "
 msgstr "Documentation officielle : "
 
-#: admin/head.php:68
+#: admin/head.php:69
 msgid "BilboPlanet.com - Open Source Feed Agregator - 2009"
 msgstr "BilboPlanet.com - Open Source Feed Aggregator - 2009"
 
-#: admin/head.php:69
-#: admin/head.php:81
+#: admin/head.php:70
+#: admin/head.php:82
 msgid "About"
 msgstr "A propos"
 
-#: admin/head.php:77
+#: admin/head.php:78
 msgid "Back on the Bilboplanet"
 msgstr "Retour au BilboPlanet"
 
-#: admin/head.php:80
+#: admin/head.php:81
 msgid "Logout"
 msgstr "Déconnexion"
 
@@ -1332,72 +1337,72 @@ msgstr "Utilisateur"
 msgid "BilboPlanet news - Official Website :"
 msgstr "Nouvelles du Bilboplanet - Site Officiel :"
 
-#: admin/index.php:140
+#: admin/index.php:145
 #: admin/sidebar.php:7
 msgid "Dashboard"
 msgstr "Tableau de bord"
 
-#: admin/index.php:142
+#: admin/index.php:147
 msgid "Quick summary of the planet"
 msgstr "Aperçu rapide du planet"
 
-#: admin/index.php:151
+#: admin/index.php:156
 msgid "Statistics :"
 msgstr "Statistiques :"
 
-#: admin/index.php:162
+#: admin/index.php:167
 msgid "The update on loading of index page enabled"
 msgstr "Mise à jour au chargement de la page d'index activé"
 
-#: admin/index.php:164
+#: admin/index.php:169
 msgid "Current size of the database :"
 msgstr "Taille de la base de donnée :"
 
-#: admin/index.php:165
+#: admin/index.php:170
 msgid "Number of articles in the DB :"
 msgstr "Nombre d'articles :"
 
-#: admin/index.php:166
+#: admin/index.php:171
 msgid "Number of votes in the DB :"
 msgstr "Nombre de votes : "
 
-#: admin/index.php:167
+#: admin/index.php:172
 msgid "Number of members in the DB :"
 msgstr "Nombre de membres : "
 
-#: admin/index.php:168
+#: admin/index.php:173
 msgid "Number of feeds in the DB :"
 msgstr "Nombre de flux : "
 
-#: admin/index.php:174
+#: admin/index.php:179
 msgid "System information :"
 msgstr "Informations du système :"
 
-#: admin/index.php:176
+#: admin/index.php:181
 msgid "Date server :"
 msgstr "Date du serveur :"
 
-#: admin/index.php:177
+#: admin/index.php:182
 msgid "Operating System :"
 msgstr "Système d'exploitation :"
 
-#: admin/index.php:178
+#: admin/index.php:183
 msgid "PHP version :"
 msgstr "Version PHP :"
 
-#: admin/index.php:179
+#: admin/index.php:184
 msgid "MySQL version :"
 msgstr "Version MySQL :"
 
-#: admin/index.php:180
-msgid "Apache version :"
-msgstr "Version Apache :"
+#: admin/index.php:185
+msgid "Server :"
+msgstr "Serveur :"
 
-#: admin/index.php:181
+#: admin/index.php:186
 msgid "Memory :"
 msgstr "Mémoire :"
 
-#: admin/index.php:182
+#: admin/index.php:187
 msgid "Your BilboPlanet version :"
 msgstr "Version de votre Bilboplanet :"
 
@@ -1482,45 +1487,40 @@ msgstr "Configuration de la mise à jour"
 msgid "PHP version is %s (5.0 or earlier needed)."
 msgstr "Votre version PHP est la %s (5.0 ou plus récent requis)"
 
-#: admin/install/check.php:38
-#, php-format
-msgid "PHP version is %s (We are sorry to inform you that our gettext version does not support 5.3 and earlier)."
-msgstr "La version de PHP est %s (Nous sommes désolés de vous informer que notre version de gettext ne supporte pas les version 5.3 et plus récentes)."
-
-#: admin/install/check.php:42
+#: admin/install/check.php:39
 msgid "Multibyte string module (mbstring) is not available."
 msgstr "String multibyte (mbstring) n'est pas disponible"
 
-#: admin/install/check.php:46
+#: admin/install/check.php:43
 msgid "Iconv module is not available."
 msgstr "Le module Iconv n'est pas disponible."
 
-#: admin/install/check.php:50
+#: admin/install/check.php:47
 msgid "Output control functions are not available."
 msgstr "Le controle de sortie des fonction n'est pas disponible"
 
-#: admin/install/check.php:54
+#: admin/install/check.php:51
 msgid "SimpleXML module is not available."
 msgstr "Le module SimpleXML n'est pas disponible"
 
-#: admin/install/check.php:58
+#: admin/install/check.php:55
 msgid "DOM XML module is not available."
 msgstr "Le module DOM XML n'est pas disponible"
 
-#: admin/install/check.php:63
+#: admin/install/check.php:60
 msgid "PCRE engine does not support UTF-8 strings."
 msgstr "Le moteur PCRE ne supporte pas les strings UTF-8"
 
-#: admin/install/check.php:67
+#: admin/install/check.php:64
 msgid "SPL module is not available."
 msgstr "Le module SPL n'est pas disponible"
 
-#: admin/install/check.php:74
+#: admin/install/check.php:71
 #, php-format
 msgid "MySQL version is %s (4.1 or earlier needed)."
 msgstr "MySQL est à la version %s (4.1 ou plus récent requis)"
 
-#: admin/install/check.php:96
+#: admin/install/check.php:93
 #, php-format
 msgid "PostgreSQL version is %s (8.0 or earlier needed)."
 msgstr "PostgreSQL est en version %s (8.0 ou plus récent requis)"
@@ -1538,7 +1538,6 @@ msgid "Next"
 msgstr "Suivant"
 
 #: admin/install/index.php:53
-#: admin/install/wizard.php:81
 msgid "The Bilboplanet is already installed."
 msgstr "Le Bilboplanet est déjà installé"
 
@@ -1547,186 +1546,208 @@ msgid "The Bilboplanet can not be installed"
 msgstr "Le Bilboplanet ne peut pas être installé"
 
 #: admin/install/index.php:92
+msgid "Please fill the title in."
+msgstr "Veuillez remplir le titre."
+
+#: admin/install/index.php:95
+msgid "Please fill the planet url in."
+msgstr "Veuillez remplir l'url du planet."
+
+#: admin/install/index.php:98
+msgid "Please fill the user email in."
+msgstr "Veuillez remplir l'adresse email de l'utilisateur"
+
+#: admin/install/index.php:101
 msgid "Please fill the username in."
 msgstr "Veuillez remplir le nom d'utilisateur"
 
-#: admin/install/index.php:95
+#: admin/install/index.php:104
 msgid "The username has to be formed of minimum 2 characters with letters of numbers"
 msgstr "Le nom d'utilisateur doit être formé au minimum de 2 caractères avec des lettres et des chiffres"
 
-#: admin/install/index.php:98
+#: admin/install/index.php:107
 msgid "Invalid email address"
 msgstr "Adresse email invalide"
 
-#: admin/install/index.php:102
+#: admin/install/index.php:111
 msgid "No password given"
 msgstr "Aucun mot de passe donné"
 
-#: admin/install/index.php:105
+#: admin/install/index.php:114
 msgid "The passwords don't match"
 msgstr "Les mots de passe ne correspondent pas"
 
-#: admin/install/index.php:108
+#: admin/install/index.php:117
 msgid "The password have to contain minimum 6 characters."
 msgstr "Le mot de passe doit contenir au minimum 6 caractères"
 
-#: admin/install/index.php:137
+#: admin/install/index.php:145
 #, php-format
 msgid "File %s already exists."
 msgstr "Le fichier %s existe déjà"
 
-#: admin/install/index.php:276
-#: admin/install/index.php:308
+#: admin/install/index.php:258
+#: admin/install/index.php:261
+#: admin/install/index.php:264
+#: admin/install/index.php:267
+#: admin/install/index.php:274
+#: admin/install/index.php:277
+#, php-format
+msgid "Error with request %s : %s"
+msgstr "Erreur dans la requête %s : %s"
+
+#: admin/install/index.php:301
+#: admin/install/index.php:333
 msgid "Installation of the Bilboplanet"
 msgstr "Installation du Bilboplanet"
 
-#: admin/install/index.php:315
-#: admin/install/wizard.php:161
+#: admin/install/index.php:340
+#: admin/install/wizard.php:162
 msgid "Errors:"
 msgstr "Erreurs:"
 
-#: admin/install/index.php:319
+#: admin/install/index.php:344
 msgid "The configuration file was successfully created."
 msgstr "Le fichier de configuration a bien été crée"
 
-#: admin/install/index.php:339
+#: admin/install/index.php:364
 msgid "Information on the BilboPlanet"
 msgstr "Informations sur le Bilboplanet"
 
-#: admin/install/index.php:341
+#: admin/install/index.php:366
 msgid "Thank you for taking somes minutes to answer those questions to help to the configuration of the bilboplanet"
 msgstr "Merci de prendre quelques minutes pour répondres à ces questions pour aider à la configuration du bilboplanet"
 
-#: admin/install/index.php:344
+#: admin/install/index.php:369
 msgid "Information of the user"
 msgstr "Information de l'utilisateur"
 
-#: admin/install/index.php:347
+#: admin/install/index.php:372
 msgid "Enter your firstname or nickname"
 msgstr "Entrez votre prénom ou votre pseudo"
 
-#: admin/install/index.php:350
+#: admin/install/index.php:375
 msgid "Enter your name (optional)"
 msgstr "Entrez votre nom (optionnel)"
 
-#: admin/install/index.php:353
+#: admin/install/index.php:378
 msgid "Enter your email address"
 msgstr "Entrez votre adresse email"
 
-#: admin/install/index.php:354
+#: admin/install/index.php:379
 msgid "Website of the user"
 msgstr "Site web de l'utilisateur"
 
-#: admin/install/index.php:356
+#: admin/install/index.php:381
 msgid "Entre address of your website or blog (optional)"
 msgstr "Ajoutez l'adresse de votre site ou blog personnel (optionnel)"
 
-#: admin/install/index.php:359
+#: admin/install/index.php:384
 msgid "Information on the Planet"
 msgstr "Information du planet"
 
-#: admin/install/index.php:360
+#: admin/install/index.php:385
 msgid "URL of the Planet"
 msgstr "URL du planet"
 
-#: admin/install/index.php:362
+#: admin/install/index.php:387
 msgid "ex: http://www.example.com or http://planet.example.com"
 msgstr "ex: http://www.example.com ou http://planet.example.com"
 
-#: admin/install/index.php:365
+#: admin/install/index.php:390
 msgid "Fill the title of your planet"
 msgstr "Remplissez le titre de votre planet"
 
-#: admin/install/index.php:366
+#: admin/install/index.php:391
 msgid "Description"
 msgstr "Description"
 
-#: admin/install/index.php:368
+#: admin/install/index.php:393
 msgid "Give a description of your planet"
 msgstr "Donnez une description du planet"
 
-#: admin/install/index.php:369
+#: admin/install/index.php:394
 msgid "Planet Language"
 msgstr "Langue du planet"
 
-#: admin/install/index.php:371
+#: admin/install/index.php:396
 msgid "Choose your langage"
 msgstr "Choisissez votre langue"
 
-#: admin/install/index.php:374
+#: admin/install/index.php:399
 msgid "Administration username and password"
 msgstr "Nom d'utilisateur et mot de passe d'administration"
 
-#: admin/install/index.php:375
-#: admin/install/index.php:378
-#: admin/install/index.php:381
+#: admin/install/index.php:400
+#: admin/install/index.php:403
+#: admin/install/index.php:406
 msgid "Required field"
 msgstr "Champ requis"
 
-#: admin/install/index.php:375
+#: admin/install/index.php:400
 msgid "Username"
 msgstr "Nom d'utilisateur"
 
-#: admin/install/index.php:377
+#: admin/install/index.php:402
 msgid "Enter your username"
 msgstr "Entrez votre nom d'utilisateur"
 
-#: admin/install/index.php:378
+#: admin/install/index.php:403
 msgid "Password"
 msgstr "Mot de passe"
 
-#: admin/install/index.php:380
+#: admin/install/index.php:405
 msgid "Enter your password"
 msgstr "Entrez votre mot de passe"
 
-#: admin/install/index.php:381
+#: admin/install/index.php:406
 msgid "Confirm your password"
 msgstr "Confirmez votre mot de passe"
 
-#: admin/install/index.php:383
+#: admin/install/index.php:408
 msgid "Re-enter your password for verification"
 msgstr "Entrez votre mot de passe à nouveau pour vérification"
 
-#: admin/install/index.php:386
-#: admin/install/wizard.php:200
+#: admin/install/index.php:411
+#: admin/install/wizard.php:201
 msgid "Save"
 msgstr "Enregistrer"
 
-#: admin/install/index.php:397
+#: admin/install/index.php:422
 msgid "Install succeeded"
 msgstr "Installation réussie"
 
-#: admin/install/index.php:399
+#: admin/install/index.php:424
 msgid "The Bilboplanet was successfully installed. Here you can find a resume of the configuration"
 msgstr "Le bilboplanet a été installé avec succès. Ici vous pouvez trouver un résumé de la configuration"
 
-#: admin/install/index.php:401
+#: admin/install/index.php:426
 msgid "Your account"
 msgstr "Votre compte"
 
-#: admin/install/index.php:403
-#: admin/install/wizard.php:189
+#: admin/install/index.php:428
+#: admin/install/wizard.php:190
 msgid "Username:"
 msgstr "Nom d'utilisateur:"
 
-#: admin/install/index.php:404
-#: admin/install/wizard.php:193
+#: admin/install/index.php:429
+#: admin/install/wizard.php:194
 msgid "Password:"
 msgstr "Mot de passe:"
 
-#: admin/install/index.php:407
+#: admin/install/index.php:432
 msgid "Your Bilboplanet"
 msgstr "Votre Bilboplanet"
 
-#: admin/install/index.php:409
+#: admin/install/index.php:434
 msgid "URL of the BilboPlanet:"
 msgstr "URL du Bilboplanet"
 
-#: admin/install/index.php:410
+#: admin/install/index.php:435
 msgid "Administration interface:"
 msgstr "Interface d'administration"
 
-#: admin/install/index.php:414
+#: admin/install/index.php:439
 msgid "Go to the administration interface"
 msgstr "Aller à l'interface d'administration"
 
@@ -1734,31 +1755,35 @@ msgstr "Aller à l'interface d'administration"
 msgid "The Bilboplanet could not be installed."
 msgstr "Le Bilboplanet ne peut pas être installé"
 
+#: admin/install/wizard.php:81
+msgid "The Bilboplanet is already installed. Please remove the tables in the database before."
+msgstr "Le Bilboplanet est déjà installé. Veuillez d'abord supprimer les tables de la base de donnée."
+
 #: admin/install/wizard.php:87
 #, php-format
 msgid "File %s does not exist."
 msgstr "Le fichier %s n'existe pas"
 
 #: admin/install/wizard.php:92
-#: admin/install/wizard.php:105
+#: admin/install/wizard.php:106
 #, php-format
 msgid "Cannot write %s file."
 msgstr "Impossible d'écrire dans le fichier %s"
 
-#: admin/install/wizard.php:142
+#: admin/install/wizard.php:143
 msgid "Bilboplanet Install Wizard"
 msgstr "Assistant d'installation du bilboplanet"
 
-#: admin/install/wizard.php:158
+#: admin/install/wizard.php:159
 msgid "Installation wizard of the Bilboplanet"
 msgstr "Assistant d'installation du bilboplanet"
 
-#: admin/install/wizard.php:165
+#: admin/install/wizard.php:166
 #, php-format
 msgid "The file <strong>%s</strong> already exists. If you need to reinitialize on of the configuration elements in this file, please remove the configuration file first or <a href=\"%s\">continue the installation</a>."
 msgstr "Le fichier <strong>%s</strong> existe déjà. Si vous avez besoin de réinitialiser la configuration dans ce fichier, supprimez ce fichier d'abord ou <a href=\"%s\">continuez l'installation</a>"
 
-#: admin/install/wizard.php:170
+#: admin/install/wizard.php:171
 msgid ""
 "<h3>Welcome to the BilboPlanet. Before you begin, we need some informations concerning the database. You'll need to provide the following information to begin the installation and to create the configuration file.<br /><br />\n"
 "   1. The host of the database.<br/>\n"
@@ -1773,30 +1798,38 @@ msgstr ""
 "3. Le nom d'utilisateur<br/>\n"
 "4. Le mot de passe<br/><br>"
 
-#: admin/install/wizard.php:181
+#: admin/install/wizard.php:182
 msgid "Host of the database"
 msgstr "Hôte de la base de données:"
 
-#: admin/install/wizard.php:183
+#: admin/install/wizard.php:184
 msgid "ex: localhost"
 msgstr "ex: localhost"
 
-#: admin/install/wizard.php:185
+#: admin/install/wizard.php:186
 msgid "Name of the database:"
 msgstr "Nom de la base de données:"
 
-#: admin/install/wizard.php:187
+#: admin/install/wizard.php:188
 msgid "ex: bilboplanet"
 msgstr "ex: bilboplanet"
 
-#: admin/install/wizard.php:191
+#: admin/install/wizard.php:192
 msgid "Your username depends of your provider"
 msgstr "Votre nom d'utilisateur dépend de votre fournisseur"
 
-#: admin/install/wizard.php:195
+#: admin/install/wizard.php:196
 msgid "Your password depends of your provider"
 msgstr "Votre mot de passe dépend de votre fournisseur"
 
+#~ msgid "Apache version :"
+#~ msgstr "Version Apache :"
+#~ msgid ""
+#~ "PHP version is %s (We are sorry to inform you that our gettext version "
+#~ "does not support 5.3 and earlier)."
+#~ msgstr ""
+#~ "La version de PHP est %s (Nous sommes désolés de vous informer que notre "
+#~ "version de gettext ne supporte pas les version 5.3 et plus récentes)."
 #~ msgid "Full url of the feed (Without the ending /)"
 #~ msgstr "URL complète du flux (Sans le / final)"
 #~ msgid "Website (without the ending /)"

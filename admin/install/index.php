@@ -230,7 +230,6 @@ function createTables($host,$name,$user,$pass)
   `article_content` longtext,
   `article_statut` int(1) NOT NULL default '1',
   `article_score` int(20) NOT NULL default '0',
-  FULLTEXT (`article_titre`, `article_content`),
   PRIMARY KEY  (`num_article`)
 );";
   $create_table2 = "CREATE TABLE IF NOT EXISTS `flux` (
@@ -254,10 +253,28 @@ function createTables($host,$name,$user,$pass)
   `vote_ip` varchar(15) NOT NULL default '',
   PRIMARY KEY  (`num_article`,`vote_ip`)
 );";
-  $result = mysql_query($create_table1) or die("Error with request $create_table1");
-  $result = mysql_query($create_table2) or die("Error with request $create_table2");
-  $result = mysql_query($create_table3) or die("Error with request $create_table3");
-  $result = mysql_query($create_table4) or die("Error with request $create_table4");
+  $result = mysql_query($create_table1);
+  if (!$result)
+	  throw new Exception(sprintf(T_('Error with request %s : %s'),$create_table1, mysql_error()));
+  $result = mysql_query($create_table2);
+  if (!$result)
+	  throw new Exception(sprintf(T_('Error with request %s : %s'),$create_table2, mysql_error()));
+  $result = mysql_query($create_table3);
+  if (!$result)
+	  throw new Exception(sprintf(T_('Error with request %s : %s'),$create_table3, mysql_error()));
+  $result = mysql_query($create_table4);
+  if (!$result)
+	  throw new Exception(sprintf(T_('Error with request %s : %s'),$create_table4, mysql_error()));
+
+  $create_index1 = "ALTER TABLE article ENGINE = MYISAM";
+  $create_index2 = "ALTER TABLE article ADD FULLTEXT(article_titre, article_content);";
+
+  $result = mysql_query($create_index1);
+  if (!$result)
+	  throw new Exception(sprintf(T_('Error with request %s : %s'),$create_index1, mysql_error()));
+  $result = mysql_query($create_index2);
+  if (!$result)
+	  throw new Exception(sprintf(T_('Error with request %s : %s'),$create_index2, mysql_error()));
 
   # Femeture de la base
   mysql_close();

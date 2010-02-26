@@ -810,6 +810,19 @@ color:#464646;
 textarea.cadre_option:focus{
 border:1px solid #ce1717
 }
+.cadre_option_350px {
+width:350px;
+}
+
+.import_style {
+border: 1px solid #000;
+border-top-width: 5px;
+display:inline-block;
+font-family:"Lucida Grande",Verdana,Arial,"Bitstream Vera Sans",sans-serif;
+font-size:12px !important;
+padding:2px 10px;
+text-decoration:none !important;
+}
 /*
  * User
  */

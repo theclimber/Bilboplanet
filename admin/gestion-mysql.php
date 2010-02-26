@@ -109,11 +109,11 @@ if (!empty($flash)) {
 
 <form id="exportform" action="manage-database.php" method="post">
 <ul>
-	<li><input type="checkbox" name="list[]" value="membre" /><?php echo T_('Members table'); ?></li>
-	<li><input type="checkbox" name="list[]" value="flux" /><?php echo T_('Feeds table'); ?></li>
-	<li><input type="checkbox" name="list[]" value="article" /><?php echo T_('Articles table'); ?></li>
-	<li><input type="checkbox" name="list[]" value="votes" /><?php echo T_('Votes table'); ?></li>
-	<li><input type="checkbox" name="config" value="config" /><?php echo T_('Configuration file'); ?></li>
+	<li><label for="members_table"><input id="members_table" type="checkbox" class="input" name="list[]" value="membre" /> <?php echo T_('Members table'); ?></label></li>
+	<li><label for="feeds_table"><input id="feeds_table" type="checkbox" class="input" name="list[]" value="flux" /> <?php echo T_('Feeds table'); ?></label></li>
+	<li><label for="articles_table"><input id="articles_table" type="checkbox" class="input" name="list[]" value="article" /> <?php echo T_('Articles table'); ?></label></li>
+	<li><label for="votes_table"><input id="votes_table" type="checkbox" class="input" name="list[]" value="votes" /> <?php echo T_('Votes table'); ?></label></li>
+	<li><label for="conf_table"><input id="conf_table" type="checkbox" class="input" name="config" value="config" /> <?php echo T_('Configuration file'); ?></label></li>
 </ul>
 <br/>
 <div class="button"><input type="submit" name="exportform" value="<?php echo T_("Export"); ?>"/></div>
@@ -132,7 +132,7 @@ if (!empty($flash)) {
 
 <form id="importform" enctype="multipart/form-data" method="post">
 <p>
-<?php echo T_('Select your backup file :'); ?> <input type="file" name="file" id="file" />
+<?php echo T_('Select your backup file :'); ?> <input type="file" class="input import_style" name="file" id="file" />
 </p>
 <br/>
 <div class="button"><input type="submit" name="importform" value="<?php echo T_("Import"); ?>"/></div>

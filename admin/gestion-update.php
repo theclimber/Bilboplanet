@@ -109,16 +109,16 @@ else
 if (file_exists(dirname(__FILE__).'/../inc/STOP')) echo '<div id="BP_disableupdate">'.T_('The update is disabled').'</div><br />';
 ?>
 <form method="POST">
-	<input type="radio" name="action" value="3" /> <?php echo T_('Stop the update algorithm');?><br />
-	<input type="radio" name="action" value="1" /> <?php echo T_('Start the update algorithm');?><br />
-	<input type="radio" name="action" value="2" /> <?php echo T_('Start a manual update');?><br /><br />
+	<label for="stop_update"><input id="stop_update" type="radio" name="action" value="3" /> <?php echo T_('Stop the update algorithm');?></label><br />
+	<label for="start_update"><input id="start_update" type="radio" name="action" value="1" /> <?php echo T_('Start the update algorithm');?></label><br />
+	<label for="manual_update"><input id="manual_update" type="radio" name="action" value="2" /> <?php echo T_('Start a manual update');?><br /></label><br />
 
 <?php
 $checked = "";
 if (BP_INDEX_UPDATE == '1' || $_POST['index_update'] == "on") {
 	$checked = "checked=true";
 }
-echo '<input type="checkbox" name="index_update" '.$checked.' /> '.T_('Enable update on loading of index page').'<br /><br />';
+echo '<label for="enable_on_index"><input id="enable_on_index" type="checkbox" name="index_update" '.$checked.' /> '.T_('Enable update on loading of index page').'</label><br /><br />';
 ?>
 
 

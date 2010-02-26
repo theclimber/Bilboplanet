@@ -108,10 +108,10 @@ include_once(dirname(__FILE__).'/sidebar.php');
 
 <form method="POST">
 <?php echo T_('Title of the Planet');?><br />
-<input id="cadre_options" class='input' type="text" name="title" value="<?php echo $title; ?>" /><br /><br />
+<input class='input' type="text" name="title" value="<?php echo $title; ?>" /><br /><br />
 
 <?php echo T_('Description of the Planet');?><br />
-<input id="cadre_options" class='input' type="text" name="desc" value="<?php echo $desc; ?>" /><br /><br />
+<input class='input cadre_option_350px' style='width=500px' type="text" name="desc" value="<?php echo $desc; ?>" /><br /><br />
 
 <div>
 <label for="show_contact"><input type="checkbox" class='input' id="show_contact" name="show_contact" <?php if ($contact) echo "checked"; ?>> <?php echo T_('Show the contact page');?></label><br/><br />

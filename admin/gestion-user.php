@@ -32,7 +32,7 @@ require_once(dirname(__FILE__).'/../inc/config.php');
 $email=BP_AUTHOR_MAIL;
 $planet_author=BP_AUTHOR;
 $planet_author_site=BP_AUTHOR_SITE;
-$planet_author_jabber=BP_AUTHER_JABBER;
+$planet_author_jabber=BP_AUTHOR_JABBER;
 $planet_author_im=BP_AUTHOR_IM;
 $planet_author_about=stripslashes(BP_AUTHOR_ABOUT);
 $flash='';
@@ -53,7 +53,7 @@ if(isset($_POST) && isset($_POST['submit'])) {
 		writeConfigValue('BP_AUTHOR_MAIL', $email['value'], $full_conf);
 		writeConfigValue('BP_AUTHOR', $planet_author, $full_conf);
 		writeConfigValue('BP_AUTHOR_SITE', $planet_author_site, $full_conf);
-		writeConfigValue('BP_AUTHER_JABBER', $planet_author_jabber, $full_conf);
+		writeConfigValue('BP_AUTHOR_JABBER', $planet_author_jabber, $full_conf);
 		writeConfigValue('BP_AUTHOR_IM', $planet_author_im, $full_conf);
 		writeConfigValue('BP_AUTHOR_ABOUT', $planet_author_about, $full_conf);
 		chmod($file, 0775);

@@ -237,13 +237,40 @@ function update($print=false) {
 							if(strlen($titre) > 254) $titre = substr($titre, 0, 254);
 
 							# Si l'article a ete modifie (soit la date, soit le titre, soit le contenu)
-							if(($date != $date2) || ($titre != "" && strcmp($titre, $titre2) != 0) || ($contenu != "" && strcmp($contenu, $contenu2) != 0)) {
+							if($date != $date2 && $date != '') {
 
 								# On log si il y a eu des modifications trouvees
-								if($date != $date2) {
-									$log_msg = logMsg("changement de date pour l'article: ".$item_permalink, $file, 2, $print);
+								$log_msg = logMsg("changement de date pour l'article: ".$item_permalink, $file, 2, $print);
+								if ($print) $output .= $log_msg;
+
+								# On met a jour l'article en base
+								$sql = "UPDATE article, membre 
+									SET article_pub = '$date'
+									WHERE article.num_membre = membre.num_membre
+									AND membre.site_membre = '".$site_membre."'
+									AND article_url = '".addslashes($item_permalink)."'";
+								$result = mysql_query($sql);
+
+								# Si la mise a jour de l'article c'est mal passe
+								if (!$result) {
+									if (mysql_error() == 'MySQL server has gone away') {
+										# On se reconnect a la base
+										closeBD();
+										connectBD();
+									} else {
+										# Sinon on affiche la vrai cause de l'erreur
+										$log_msg = logMsg("Erreur sur la requete: ".$sql, $file, 3, $print);
+										if ($print) $output .= $log_msg;
+									}
+									# Sinon, si la mise a jour de l'article c'est bien passee
+								} else {
+									# On informe que tout est ok
+									$log_msg = logMsg("Date mise a jour: ".$item_permalink, $file, 1, $print);
 									if ($print) $output .= $log_msg;
+									$cpt++;
 								}
+							}
+							if(($titre != "" && strcmp($titre, $titre2) != 0) || ($contenu != "" && strcmp($contenu, $contenu2) != 0)) {
 								if(strcmp($titre, $titre2) != 0) {
 									$log_msg = logMsg("Changement de titre pour l'article: ".$item_permalink, $file, 2, $print);
 									if ($print) $output .= $log_msg;
@@ -255,7 +282,7 @@ function update($print=false) {
 
 								# On met a jour l'article en base
 								$sql = "UPDATE article, membre 
-									SET article_pub = '$date', article_titre = '$titre', article_content = '$contenu' 
+									SET article_titre = '$titre', article_content = '$contenu' 
 									WHERE article.num_membre = membre.num_membre
 									AND membre.site_membre = '".$site_membre."'
 									AND article_url = '".addslashes($item_permalink)."'";
@@ -263,26 +290,16 @@ function update($print=false) {
 
 								# Si la mise a jour de l'article c'est mal passe
 								if (!$result) {
-
-									# On test si on a pas perdu la connexion a cause d'un temps trop long a parser le flux
 									if (mysql_error() == 'MySQL server has gone away') {
-
-										# On se reconnect a la base
 										closeBD();
 										connectBD();
-
 									} else {
-
-										# Sinon on affiche la vrai cause de l'erreur
 										$log_msg = logMsg("Erreur sur la requete: ".$sql, $file, 3, $print);
 										if ($print) $output .= $log_msg;
 									}
-
 									# Sinon, si la mise a jour de l'article c'est bien passee
 								} else {
-
-									# On informe que tout est ok
-									$log_msg = logMsg("Article mis a jour: ".$item_permalink, $file, 1, $print);
+									$log_msg = logMsg("Titre et contenu mis a jour: ".$item_permalink, $file, 1, $print);
 									if ($print) $output .= $log_msg;
 									$cpt++;
 								}

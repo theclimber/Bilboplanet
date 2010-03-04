@@ -276,7 +276,7 @@ function afficheListeArticles($sql, $strip_tags, $recherche="") {
 			$date = date("d/m/Y",$liste[1]);
 			$heure = date("H:i",$liste[1]);
 			$relevance = "";
-			$article_url = $liste[3];
+			$article_url = urldecode($liste[3]);
 			$article_titre = html_entity_decode($liste[2], ENT_QUOTES, 'UTF-8');
 			$article_contenu = html_entity_decode($liste[4], ENT_QUOTES, 'UTF-8');
 			$membre_id = $liste[9];
@@ -578,7 +578,7 @@ function check_url($url){
 	// PORT (optional)
 	$urlregex .= "(\:[0-9]{2,5})?";
 	// PATH  (optional)
-	$urlregex .= "(\/([a-z0-9+\$_-]\.?)+)*\/?";
+	$urlregex .= "(\/([a-z0-9+\$_-~\%\-]\.?)+)*\/?";
 	// GET Query (optional)
 	$urlregex .= "(\?[a-z+&\$_.-][a-z0-9;:@/&%=+\$_.-]*)?";
 	// ANCHOR (optional)

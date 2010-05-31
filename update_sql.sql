@@ -1,0 +1,1 @@
+ALTER TABLE `flux` ADD `trust` BOOL NOT NULL DEFAULT '0';

@@ -57,6 +57,12 @@ if(isset($_POST) && (
 	else {
 		$flux = check_field('flux',trim($_POST['flux']),'not_empty');
 	}
+	$trust_flux = 1;
+	if (isset($_POST['trust']) && empty($_POST['trust'])){
+		$trust_flux = $_POST['trust'];
+	}else if (isset($_GET['trust']) && empty($_GET['trust'])){
+		$trust_flux = $_GET['trust'];
+	}
 	$flux['value'] = trim($_POST['flux']);
 	if ($flux['success'] && !empty($num_membre)){
 		if(isset($_POST) && isset($_POST['submitDelete']) && !empty($_POST['submitDelete'])) {
@@ -74,7 +80,7 @@ if(isset($_POST) && (
 				$error['flux']=true;
 			}
 			else{
-				$sql = "INSERT INTO flux (`num_flux`, `url_flux`, `num_membre`) VALUES ('', '".$flux['value']."', '$num_membre')";
+				$sql = "INSERT INTO flux (`num_flux`, `url_flux`, `num_membre`, `trust`) VALUES ('', '".$flux['value']."', '$num_membre', '$trust_flux')";
 				$result = mysql_query($sql) or die("Error with request $sql : ".mysql_error());
 				if(!$result)
 					$flash = array('type' => 'error', 'msg' => T_("Error while trying to change the informations of the feed"));
@@ -84,7 +90,7 @@ if(isset($_POST) && (
 		if(isset($_POST) && isset($_POST['submitModify']) && !empty($_POST['submitModify'])) {
 			$statut = trim($_POST['statut']);
 			$sql = "UPDATE flux 
-				SET url_flux = '".$flux['value']."', status_flux = '$statut'
+				SET url_flux = '".$flux['value']."', status_flux = '$statut', trust = '$trust_flux'
 				WHERE num_flux = '$num'";
 			$flash = array('type' => 'notice', 'msg' => sprintf(T_("Changing the feed %s succeeded"),$flux['value']));
 			$result = mysql_query($sql) or die("Error with request $sql : ".mysql_error());
@@ -133,6 +139,7 @@ include_once(dirname(__FILE__).'/sidebar.php');
 			<tr>
 				<th class="tc1 tcl" scope="col"><?php echo T_('Full url of the feed');?></th>
 				<th class="tc2 tcr" scope="col"><?php echo T_('Name of the user');?></th>
+				<?php if (MODERATION == true):?><th class="tc2 tcr" scope="col"><?php echo T_('Trust URL');?></th><?php endif;?>
 			</tr>
 		</thead>
 			<tr>
@@ -159,6 +166,14 @@ include_once(dirname(__FILE__).'/sidebar.php');
 					</select>
 					</center>
 				</td>
+				<?php if (MODERATION == true):?>
+				<td class="tc1 tcl row2">
+					<select name="trust" class="userlist">
+						<option value="1"><?php echo T_('true')?></option>
+						<option value="0" selected=""><?php echo T_('false')?></option>
+					</select>
+				</td>
+				<?php endif;?>
 			</tr>
 </table>
 <br />
@@ -187,6 +202,9 @@ $rqt = mysql_query($sql) or die("Error with request $sql : ".mysql_error());
 				<th class="tc2" scope="col"><?php echo T_('URL of the feed');?></th>
 				<th class="tc3" scope="col"><?php echo T_('Status');?></th>
 				<th class="tc4 tcr" scope="col"><?php echo T_('Action');?></th>
+				<?php if (MODERATION == true):?>
+				<th class="tc3" scope="col"><?php echo T_('Trust URL');?></th>
+				<?php endif;?>
 			</tr>
 <?php
 # Valeurs par defaut
@@ -209,7 +227,7 @@ if (isset($_GET) && isset($_GET['page']) && is_numeric(trim($_GET['page']))) {
 
 
 # Execution de la requete
-$sql = 'SELECT num_flux, url_flux, nom_membre, site_membre,statut_membre,status_flux,membre.num_membre
+$sql = 'SELECT num_flux, url_flux, nom_membre, site_membre,statut_membre,status_flux,membre.num_membre,trust
 	FROM flux, membre 
 	WHERE flux.num_membre = membre.num_membre 
 	ORDER by nom_membre ASC
@@ -242,6 +260,18 @@ while($liste = mysql_fetch_row($rqt)) {
 		$select .= '<option value="1">'.T_('active').'</option></select>';
 		$statut  = "inactif";
 	}
+	if ($liste[7])
+	{
+		$select2  = '<select name="trust" class="actif">';
+		$select2 .= '<option value="1" selected>'.T_('true').'</option>';
+		$select2 .= '<option value="0">'.T_('false').'</option></select>';
+		$statut2  = "true";
+	} else {
+		$select2  = '<select name="trust" class="inactif">';
+		$select2 .= '<option value="0" selected>'.T_('false').'</option>';
+		$select2 .= '<option value="1">'.T_('true').'</option></select>';
+		$statut2  = "false";
+	}
 
 	# Affichage
 	$parse = @parse_url($liste[1]);
@@ -256,9 +286,10 @@ while($liste = mysql_fetch_row($rqt)) {
 	else {
 		$line .= '<td class="tc2"><input class="input zone-saisie" style="width:80%" type="text" name="flux" value="'.$liste[1].'" size="40" />&nbsp;&nbsp;<a href="'.$liste[1].'" target="_bank">'.T_('show').'</a></td>';
 	}
-	
-	$line .= '	<td class="tc3">'.$select.'</td>
-				<td class="tc4 tcr">
+	$line .= '	<td class="tc3">'.$select.'</td>';
+	if (MODERATION == true)
+			$line .= '<td class="tc3">'.$select2.'</td>';
+	$line .= '	<td class="tc4 tcr">
 					<center>
 					<input class="button br3px" type="submit" name="submitModify" value="'.T_('Change').'"> 
 					<input class="button br3px" type="submit" name="submitDelete" value="'.T_('Delete').'"> 

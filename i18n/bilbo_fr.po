@@ -1928,3 +1928,20 @@ msgstr "Votre mot de passe dépend de votre fournisseur"
 #~ msgid "Top"
 #~ msgstr "Top 10"
 
+msgid "pending"
+msgstr "en attente"
+
+#: admin/gestion-articles.php:150
+msgid "Article status"
+msgstr "Statut des articles"
+
+#: admin/gestion-flux.php:135
+msgid "Trust Url"
+msgstr "URL de confiance"
+
+msgid "true"
+msgstr "vrai"
+
+msgid "false"
+msgstr "faux"
+

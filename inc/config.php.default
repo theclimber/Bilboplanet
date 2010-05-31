@@ -134,7 +134,7 @@ define('BP_DBDRIVER','mysql');
 define('BP_DBENCRYPTED_PASSWORD', '0');
 # Persistent database connection
 define('BP_DBPERSIST',false);
-
+define('MODERATION','1');
 $timezone = 'Europe/Paris';
 date_default_timezone_set($timezone);
 ?>

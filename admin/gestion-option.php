@@ -37,6 +37,7 @@ $votes=BP_VOTES;
 $contact=BP_CONTACT_PAGE;
 $theme=BP_THEME;
 $lang=BP_LANG;
+$moderation=MODERATION;
 $flash='';
 $inscription='';
 # On verifie que le formulaire est bien saisie
@@ -49,6 +50,10 @@ if(isset($_POST) && isset($_POST['submit'])) {
 	$inscription = stripslashes(trim($_POST['inscription']));
 	$theme = trim($_POST['theme']);
 	$lang = trim($_POST['lang']);
+	if ($_POST['moderation'] == '1')
+		$moderation = '1';
+	else
+		$moderation = '';
 
 	$file=dirname(__FILE__).'/../inc/config.php';
 	$full_conf = file_get_contents($file);
@@ -57,6 +62,7 @@ if(isset($_POST) && isset($_POST['submit'])) {
 	writeConfigValue('BP_MSG_INFO', $msg_info, $full_conf);
 	writeConfigValue('BP_THEME', $theme, $full_conf);
 	writeConfigValue('BP_LANG', $lang, $full_conf);
+	writeConfigValue('MODERATION', $moderation, $full_conf);
 	if ($_REQUEST['show_contact'] == "on") writeConfigValue('BP_CONTACT_PAGE', '1', $full_conf);
 	else writeConfigValue('BP_CONTACT_PAGE', '0', $full_conf);
 	if ($_REQUEST['show_votes'] == "on") writeConfigValue('BP_VOTES', '1', $full_conf);
@@ -153,6 +159,13 @@ if ($lang == 'en')
 	$selected = "selected";
 echo '<option value="en" "'.$selected.'>en</option>'."\n";
 ?>
+</select>
+</div>
+<br />
+<?php echo T_('Option of moderation');?>
+<div><select name="moderation">
+<option value="1" <?php if (MODERATION) echo 'selected'?>> <?php echo T_('true')?> </option>
+<option value="0" <?php if (!MODERATION) echo 'selected'?>> <?php echo T_('false')?> </option>
 </select>
 </div>
 <br /><br />

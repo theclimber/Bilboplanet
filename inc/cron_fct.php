@@ -1,6 +1,6 @@
 <?php
 /******* BEGIN LICENSE BLOCK *****
-* BilboPlanet - Un agrégateur de Flux RSS Open Source en PHP.
+* BilboPlanet - Un agrï¿½gateur de Flux RSS Open Source en PHP.
 * BilboPlanet - An Open Source RSS feed aggregator written in PHP
 * Copyright (C) 2009 By French Dev Team : Dev BilboPlanet
 * Contact : dev@bilboplanet.com
@@ -48,7 +48,7 @@ function update($print=false) {
 	connectBD();
 
 	# Requete permettant de recuperer la liste des flux a parser
-	$sql = "SELECT flux.num_membre, flux.url_flux, site_membre
+	$sql = "SELECT flux.num_membre, flux.url_flux, site_membre,trust
 		FROM flux, membre 
 		WHERE membre.num_membre = flux.num_membre 
 		AND statut_membre = '1'
@@ -67,7 +67,7 @@ function update($print=false) {
 	# On parcour l'ensemble des flux 
 	$cpt = 0;
 	while ($liste = mysql_fetch_row($rqt_flux)) {
-		# On verifie si on n'a pas demandé l'arrêt de l'algo
+		# On verifie si on n'a pas demandï¿½ l'arrï¿½t de l'algo
 		if (file_exists(dirname(__FILE__).'/STOP')) {
 			$log_msg = logMsg("STOP file detected, trying to shut down cron job", $file, 2, $print);
 			if ($print) $output .= $log_msg;
@@ -135,7 +135,7 @@ function update($print=false) {
 				fwrite($fp,time());
 				fclose($fp);
 
-				# On lance l'analyse de l'entrée
+				# On lance l'analyse de l'entrï¿½e
 				$item_permalink = $item->get_permalink();
 				$content = strip_script($item->get_content());
 				$description = $item->get_description();
@@ -188,7 +188,7 @@ function update($print=false) {
 							# On effectue les traitements avant insertion en base
 							$titre = traitementEncodage($titre);
 							$contenu = traitementEncodage($contenu);
-							$sql = "INSERT INTO article VALUES ('','$liste[0]','$date','$titre','".addslashes($item_permalink)."','$contenu','1', '0')";
+							$sql = "INSERT INTO article VALUES ('','$liste[0]','$date','$titre','".addslashes($item_permalink)."','$contenu','".($liste[3] == 1 ? 1 : 2)."', '0')";
 							$result = mysql_query($sql);
 
 							if (!$result) {

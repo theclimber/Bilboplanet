@@ -61,6 +61,13 @@ elseif(isset($_POST['num_membre']) && is_numeric(trim($_POST['num_membre']))) {
 	$num_membre = trim($_POST['num_membre']);
 }
 
+if(isset($_GET['status_article']) && !empty($_GET['status_article'])) {
+      $status_article = trim($_GET['status_article']);
+}
+elseif(isset($_POST['num_membre']) && is_numeric(trim($_POST['status_article']))) {
+      $status_article = trim($_POST['status_article']);
+}
+
 if(isset($_POST) && (
     (isset($_POST['submitModif']) && !empty($_POST['submitModif'])) ||
     (isset($_POST['submitDelete']) && !empty($_POST['submitDelete']))
@@ -146,7 +153,21 @@ if($num_membre == "0") {
 }
 ?>
 </select></th>
+
+<?php if (MODERATION == true):?>
+ </tr>
+ <tr>
+<td class="tc1 tcl"><?php echo T_('Status des articles');?> :</th>
+<td class="tc2 tcr">
+      <select name="status_article" class="userslist">
+              <option value="all"><?php echo T_('All')?></option>
+              <option value="0" <?php if ($status_article === 0) echo "selected";?>><?php echo T_('inactive')?></option>
+              <option value="1" <?php if ($status_article === 1) echo "selected";?>><?php echo T_('active')?></option>
+              <option value="2" <?php if ($status_article === 2) echo "selected";?>><?php echo T_('pending')?></option>
+      </select>
+</th>
 </tr>
+<?php endif;?>
 <tr>
 <td class="tc1 tcl"><?php echo T_('Number of posts');?></td>
 <td class="tc2 tcr"><input type="text" class="nbfilter input" name="nb_items"  value="<?php echo $nb_items; ?>" /></center></td>
@@ -194,6 +215,9 @@ $sql = "SELECT num_article, nom_membre, article_pub, article_titre, article_stat
 # Si on filtre un membre
 if($num_membre != 0) $sql .= "AND article.num_membre = '$num_membre'"; 
 
+#si on filtre un status
+if($status_article != "all" && is_numeric($status_article)) $sql .= " AND article.article_statut = '$status_article'";
+
 # Fin de la requete
 $sql .= "ORDER by article_pub DESC LIMIT $num_start,$nb_items";
 
@@ -210,18 +234,35 @@ while($liste = mysql_fetch_row($rqt)) {
 	$date = date("d/m/Y",$liste[2])." &agrave; ".date("H:i",$liste[2]);
  
 	# Couleur de la ligne en fonciton du statut du membre
-	if($liste[4]) {
+	if($liste[4] == 1) {
 		$select  = '<select name="statut" class="actif">';
 		$select .= '<option value="1" selected>'.T_('active').'</option>';
-		$select .= '<option value="0">'.T_('inactive').'</option></select>';
+		$select .= '<option value="0">'.T_('inactive').'</option>';
+		if (MODERATION == true)
+			$select .= '<option value="2">'.T_('pending').'</option>';
+		$select .= '</select>';
 		$statut  = T_("active");
-	} else {
+		$style = 'white';
+	} elseif ($liste[4] == "0" || ($liste[4] == "2" && MODERATION != true)) {
 		$select  = '<select name="statut" class="inactif">';
 		$select .= '<option value="0" selected>'.T_('inactive').'</option>';
-		$select .= '<option value="1">'.T_('active').'</option></select>';
+		$select .= '<option value="1">'.T_('active').'</option>';
+		if (MODERATION == true)
+			$select .= '<option value="2">'.T_('pending').'</option>';
+		$select .= '</select>';
+		$style = '#FFFF99';
 		$statut  = T_("inactive");
-	}
+	} else {
+		$select  = '<select name="statut" class="inactif">';
+		$select .= '<option value="2" selected>'.T_('pending').'</option>';
+		$select .= '<option value="0">'.T_('inactive').'</option>';
+		$select .= '<option value="1">'.T_('active').'</option></select>';
+		$statut  = T_("pending");
+		$style = '#FFCC66';
+ 	}
 
+ 	$style = 'style="background-color:'.$style.';"';
+ 	
 	# Affichage
 	$strend = "";
 	if (strlen($liste[6])>50)
@@ -231,19 +272,19 @@ while($liste = mysql_fetch_row($rqt)) {
 	echo '<tr><form method="POST">
 		<input type="hidden" name="num" value="'.$liste[0].'"/>
 		<input type="hidden" name="title" value="'.$liste[3].'"/>
-		<td class="'.$colore.' tc1 tcl">'.$liste[1].'</td>
-		<td class="tc2">'.$date.'</td>
-		<td class="tc3"><a href="'.$liste[6].'" target="_blank">'.substr($liste[3],0,70).'</a></td>
-		<td class="tc4">'.$select.'</td>
-		<td class="tc5">'.$liste[5].'</td>
-		<td class="tc6 tcr"><center>
+		<td class="'.$colore.' tc1 tcl" '.$style.'>'.$liste[1].'</td>
+		<td class="tc2" '.$style.'>'.$date.'</td>
+		<td class="tc3" '.$style.'><a href="'.$liste[6].'" target="_blank">'.substr($liste[3],0,70).'</a></td>
+		<td class="tc4" '.$style.'>'.$select.'</td>
+		<td class="tc5" '.$style.'>'.$liste[5].'</td>
+		<td class="tc6 tcr" '.$style.'><center>
 			<input type="submit" class="button br3px" name="submitModif" value="'.T_('Change').'" />
 			<input type="submit" class="button br3px" name="submitDelete" value="'.T_('Delete').'" />
 			</center>';
 	if($num_membre != 0 || $nb_items != 10) {
 		echo '<input type="hidden" id="num_membre" name="num_membre" value="'.$num_membre.'" />';
 		echo '<input type="hidden" id="nb_items" name="nb_items" value="'.$nb_items.'" /></td>';
-		
+		echo '<input type="hidden" id="status_article" name="status_article" value="'.$status_article.'" />';
 	}
 	echo '</form></tr>';
 }

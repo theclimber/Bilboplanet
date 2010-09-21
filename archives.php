@@ -25,71 +25,61 @@
 ***** END LICENSE BLOCK *****/
 ?>
 <?php
-require_once(dirname(__FILE__).'/inc/i18n.php');
-require_once(dirname(__FILE__).'/inc/fonctions.php');
-include(dirname(__FILE__).'/head.php');
-?>
-<script type="text/javascript" src="javascript/show-hide.js"></script>
-<div id="centre">
+# Fonction convertion de mois (= date("n")) en fr
+function convertMonth($num_month) {
+	$month = array(1 => T_("January"), T_("February"), T_("March"), T_("April"), T_("May"), T_("June"), T_("July"), T_("August"), T_("September"), T_("October"), T_("November"), T_("December"));
+	return $month[$num_month];
+}
 
-<?php
-include_once(dirname(__FILE__).'/sidebar.php');
-?>
-
-<div id="centre_centre">
-<div id="template">
-<div id="archive_page">
-<?php
-
-# On active le cache
-debutCache();
-
-# Connexion a la base de donnees
-connectBD();
+require_once(dirname(__FILE__).'/inc/prepend.php');
+$scripts = array();
+$scripts[] = "javascript/show-hide.js";
+include dirname(__FILE__).'/tpl.php';#
+header('Content-type: text/html; charset=utf-8');
 
 # On recupere les infomations des articles
-$sql = "SELECT nom_membre, article_pub, article_titre, article_url, site_membre
-        FROM article, membre 
-        WHERE article.num_membre =  membre.num_membre
-        AND article_statut = '1'
-        ORDER BY article_pub DESC";
-$rqt = mysql_query(trim($sql)) or die("Error with request $sql : ".mysql_error());
+$sql = "SELECT
+			user_fullname as fullname,
+			post_pubdate as pubdate,
+			post_title,
+			post_permalink as permalink
+		FROM ".$core->prefix."post, ".$core->prefix."user
+		WHERE ".$core->prefix."post.user_id = ".$core->prefix."user.user_id
+		AND post_status = '1'
+		ORDER BY post_pubdate DESC";
+$rs = $core->con->select($sql);
 
-# On recupere le mois en cours
-$mois_en_cours = date("n");
-
-?>
-
-<h3><?php echo convertMois($mois_en_cours)." ".date("Y"); ?></h3>
-
-<?php
-
+$last_month = 0;
 /* Boucle d'affichage des archives du mois */
-while ($liste = mysql_fetch_row($rqt)) {
-	/* Si le mois de l'article est different du mois en cours */
-	if (($mois = date('n', $liste[1])) != $mois_en_cours) {
-		$mois_en_cours = $mois;
-		echo '<h3>'.convertMois($mois).' '.date("Y", $liste[1]).'</h3>';
+$iter = 0;
+while ($rs->fetch()) {
+	$current_month = date('n', mysqldatetime_to_timestamp($rs->pubdate));
+	$post = array(
+			"permalink" => $rs->permalink,
+			"fullname" => $rs->fullname,
+			"title" => htmlspecialchars_decode($rs->post_title),
+			"head" => "",
+		);
+	if ($current_month != $last_month && $iter > 0) {
+		$post['head'] = "</ul>\n\t";
 	}
-	echo '<a href="'.$liste[3].'" title="'.T_("Read the article").'">'.$liste[0].' : '.htmlspecialchars_decode($liste[2]).'</a>';
+	/* Si le mois de l'article est different du mois en cours */
+	if ($current_month != $last_month) {
+		$post['head'] .= '<h3>'.
+			convertMonth($current_month).' '.date("Y", mysqldatetime_to_timestamp($rs->pubdate)).
+			"</h3>\n\t<ul>";
+	}
+
+	$core->tpl->setVar('post', $post);
+	$core->tpl->render('archives.line');
+
+	$last_month = $current_month;
+	$iter+=1;
 }
-?>
-</div>
-</div>
-<?php include(dirname(__FILE__).'/footer.php'); ?>
-<?php 
-# Fermeture de la base
-closeBD();
-
-# On termine le cache
-finCache();
-
-
-# Fonction convertion de mois (= date("n")) en fr
-function convertMois($num_mois) {
-
-	$month = array(1 => T_("January"), T_("February"), T_("March"), T_("April"), T_("May"), T_("June"), T_("July"), T_("August"), T_("September"), T_("October"), T_("November"), T_("December"));
-	return $month[$num_mois];
+if ($iter > 0) {
+	$core->tpl->render('archives.closure');
 }
 
+$core->tpl->render('content.archives');
+echo $core->tpl->render();
 ?>

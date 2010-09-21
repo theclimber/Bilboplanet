@@ -25,6 +25,7 @@
 ***** END LICENSE BLOCK *****/
 ?>
 <?php
+require_once(dirname(__FILE__).'/prepend.php');
 require_once(dirname(__FILE__).'/cron_fct.php');
 
 $log_file = fopen(dirname(__FILE__).'/../logs/cron_job.log', 'a');
@@ -38,7 +39,7 @@ if (file_exists(dirname(__FILE__).'/STOP')) {
 }
 
 logMsg("Start update script", $log_file);
-update();
+echo update($core, true);
 
 $cache_dir = dirname(__FILE__).'/../admin/cache';
 $dir_handle = @opendir($cache_dir) or die("Unable to open $cache_dir");

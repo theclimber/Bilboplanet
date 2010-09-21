@@ -25,23 +25,16 @@
 ***** END LICENSE BLOCK *****/
 ?>
 <?php
-require_once(dirname(__FILE__).'/inc/i18n.php');
-require_once(dirname(__FILE__).'/inc/fonctions.php');
-include(dirname(__FILE__).'/head.php');
-?>
+require_once(dirname(__FILE__).'/inc/prepend.php');
+include dirname(__FILE__).'/tpl.php';
+header('Content-type: text/html; charset=utf-8');
 
-<div id="centre">
-<?php
-include_once(dirname(__FILE__).'/sidebar.php');
-?>
-<div id="centre_centre">
-<center>
-<h3><?php echo T_('Error 404');?></h3>
-<img src="themes/<?php echo $planet_theme; ?>/images/404.png">
-<p><?php echo T_("Page not found");?></p>
-</center>
-
-<?php
-include_once(dirname(__FILE__).'/sidebar.php');
-include(dirname(__FILE__).'/footer.php');
+$core->tpl->setVar('html', '
+	<center>
+	<h3>'.T_('Error 404').'</h3>
+	<img src="themes/'.$blog_settings->get('planet_theme').'/images/404.png">
+	<p>'.T_("Page not found").'</p>
+	</center>');
+$core->tpl->render('content.html');
+echo $core->tpl->render();
 ?>

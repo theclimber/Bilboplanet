@@ -25,10 +25,17 @@
 ***** END LICENSE BLOCK *****/
 ?>
 <?php
-require_once(dirname(__FILE__).'/inc/i18n.php');
-require_once(dirname(__FILE__).'/inc/fonctions.php');
+require_once(dirname(__FILE__).'/inc/prepend.php');
+# If contact page is disable
+if(!$blog_settings->get('planet_contact_page')) {
+	http::redirect('index.php');
+}
+$scripts = array();
+$scripts[] = "javascript/functions.js";
+include dirname(__FILE__).'/tpl.php';#
+header('Content-type: text/html; charset=utf-8');
+
 $flash='';
-global $error;
 if(isset($_POST) && isset($_POST['submit'])){
 	require_once(dirname(__FILE__).'/inc/lib/recaptchalib.php');
 	$privatekey = "6LdEeQgAAAAAABrweqchK5omdyYS_fUeDqvDRq3Q";
@@ -41,24 +48,24 @@ if(isset($_POST) && isset($_POST['submit'])){
 		$flash = array('type' => 'error', 'msg' => sprintf(T_("The reCAPTCHA wasn't entered correctly. Go back and try it again. (reCAPTCHA said: %s)"),$captcha->error));
 	} else {
 		# On recupere les infos
-		$nom = check_field('nom',trim($_POST['nom']),'not_empty');
-		$mail = check_field('email',trim($_POST['email']),'email');
-		$titre = check_field('titre',trim($_POST['titre']),'not_empty');
+		$name = check_field('name',trim($_POST['name']),'not_empty');
+		$email = check_field('email',trim($_POST['email']),'email');
+		$subject = check_field('subject',trim($_POST['subject']),'not_empty');
 		$content = check_field('content',trim($_POST['content']),'not_empty');
 		$ip     = getIP();
 
-		if ($nom['success'] && $mail['success'] && $titre['success'] && $content['success']){
+		if ($name['success'] && $email['success'] && $subject['success'] && $content['success']){
 
 			# Construction du mail
-			$objet = $planet_title." - ".$titre['value'];
-			$msg = T_("Name/Nickname : ").$nom['value'];
-			$msg .= "\n".T_("Email : ").$mail['value'];
-			$msg .= "\n".T_("Subject : ").$titre['value'];
+			$objet = $blog_settings->get('planet_title')." - ".$subject['value'];
+			$msg = T_("Name/Nickname : ").$name['value'];
+			$msg .= "\n".T_("Email : ").$email['value'];
+			$msg .= "\n".T_("Subject : ").$subject['value'];
 			$msg .= "\n".T_("Content of the message: ").$content['value'];
 			$msg .= "\nIP : $ip";
 
 			# Envoi du mail
-			$envoi= mail($planet_author_mail, $objet, $msg,"From: ".$mail['value']."\r\nReply-To: ".$mail['value']."\r\n");
+			$envoi = sendmail($email['value'], $blog_settings->get('author_mail'), $objet, $msg);
 
 			# Message d'information
 			if($envoi) {
@@ -66,87 +73,50 @@ if(isset($_POST) && isset($_POST['submit'])){
 			} else {
 				$flash = array('type' => 'error', 'msg' => T_("Your request could not be sent for an unknown reason.<br/>Please try again."));
 			}
-
 		}
 		else {
-			if(!$nom['success']){
-				$flash = array('type' => 'error', 'msg' => $nom['error']);
-				$error['nom']=true;
+			if(!$name['success']){
+				$flash = array('type' => 'error', 'msg' => $name['error']);
 			}
-			if(!$mail['success']){
-				$flash = array('type' => 'error', 'msg' => $mail['error']);
-				$error['email']=true;
+			if(!$email['success']){
+				$flash = array('type' => 'error', 'msg' => $email['error']);
 			}
-			if(!$titre['success']){
-				$flash = array('type' => 'error', 'msg' => $titre['error']);
-				$error['titre']=true;
+			if(!$subject['success']){
+				$flash = array('type' => 'error', 'msg' => $subject['error']);
 			}
 			if(!$content['success']){
 				$flash = array('type' => 'error', 'msg' => $content['error']);
-				$error['content']=true;
 			}
 		}
 	}
 }
-function error_field($error, $field, $content) {
-	if($error[$field])
-		print("<span class='error'>".$content."</span>");
-	else
-		print("<span>".$content."</span>");
-}
-include(dirname(__FILE__).'/head.php');
-# On active le cache
-debutCache();
-?>
-<script type="text/javascript" src="javascript/functions.js"></script>
-<div id="centre">
 
-<?php
-include_once(dirname(__FILE__).'/sidebar.php');
-?>
-
-<div id="centre_centre">
-<?php 
 if (!empty($flash)) {
-	echo '<div class="flash'.$flash['type'].'">'.$flash['msg'].'</div>';
-	echo "<div class='informations'><h2>".T_("In case of problem")."</h2><p>";
-	printf(T_("If you do not recieve any confirmation from the administration team in the 5 days, do not hesitate to contact us by email at %s"), $planet_author_mail);
-	echo "</p></div>";
+	$msg = '<div class="flash'.$flash['type'].'">'.$flash['msg'].'</div>';
+	$msg .= "<div class='informations'><h2>".T_("In case of problem")."</h2><p>";
+	$msg .= sprintf(T_("If you do not recieve any confirmation from the administration team in the 5 days, do not hesitate to contact us by email at %s"), $blog_settings->get('author_mail'));
+	$msg .= "</p></div>";
+	$core->tpl->setVar('flashmsg', $msg);
+	$core->tpl->render('contact.flash');
 }
-?>
 
-<div id="template">
-	<div class="post_small">
-	<h2><?php echo T_("Contact us");?></h2>
-
-	<p><?php echo T_("You can contact the administration team with the form below:");?></p>
-	<br/>
-	<form method="post">
-	<?php error_field($error,'nom',T_('Name / Nickname :')); ?><br>
-	<input class="contact" size="30" maxlength="30" type="text" name="nom" value="<?php if($nom) echo $nom['value']; ?>" /><br>
-	<br>
-	<?php error_field($error,'email',T_('Email :')); ?><br>
-	<input class="contact" size="30" maxlength="30" type="text" name="email" value="<?php if($mail) echo $mail['value']; ?>" /><br>
-	<br>
-	<?php error_field($error,'titre',T_('Subject :')); ?><br>
-	<input class="contact" size="73" maxlength="96" type="text" name="titre" /><br>
-	<br><?php error_field($error,'content',T_('Content :')); ?><br>
-	<textarea id="styled" class="contact" type="text" name="content"></textarea>
-	<br>
-	<br>
-<?php
 require_once(dirname(__FILE__).'/inc/lib/recaptchalib.php');
 $publickey = "6LdEeQgAAAAAACLccbiO8TNaptSmepfMFEDL3hj2";
-echo recaptcha_get_html($publickey);
-?>
-	<br><br>
-	<input type="reset" value="<?php echo T_('Reset');?>" onclick="this.form.reset()">&nbsp;&nbsp;
-<input type="submit" value="<?php echo T_('Send');?>" name="submit">
-	</form>
-	<br/>
-	</div>
-</div>
-<?php
-include(dirname(__FILE__).'/footer.php');
-finCache();
+$captcha_html = recaptcha_get_html($publickey);
+
+$form_values = array(
+	"name" => "",
+	"email" => "",
+	"subject" => "",
+	"content" => "",
+);
+if($name)		$form_values["name"] = $name['value'];
+if($email)		$form_values["email"] = $email['value'];
+if($subject)	$form_values["subject"] = $subject['value'];
+if($content)	$form_values["content"] = $content['value'];
+
+$core->tpl->setVar('captcha_html', $captcha_html);
+$core->tpl->setVar('form', $form_values);
+$core->tpl->render('content.contact');
+echo $core->tpl->render();
 ?>

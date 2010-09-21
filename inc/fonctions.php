@@ -25,35 +25,13 @@
 ***** END LICENSE BLOCK *****/
 ?>
 <?php
-
-require_once(dirname(__FILE__).'/i18n.php');
-require_once(dirname(__FILE__).'/database.php');
-
-# Fonction qui retourne le nom de domaine en fonction de l'url
-function domaine($referer) {
-
-	# On recupere l'adresse sans le protocole
-	$referer_light = substr(strstr($referer, "://"), 3);
-
-	# Si il n' y a pas d'url, on retourne rien
-	if (empty($referer_light)) return "";
-
-	# On recharche si il y a une / dans l'url et si oui on retourne l'adresse jusqu'a ce caractere
-	if (($qm = strpos($referer_light, "/")) !== false) $referer_light = substr($referer_light, 0, $qm);
-
-	# On retourne le resultat
-	return $referer_light;
-}
-
-
 #----------------------------------#
 #   Fonction de gestion du cache   #
 #----------------------------------#
 
 # Procedure de debut de cache des pages
 function debutCache() {
-
-	global $secondes_cache, $log;
+	global $log;
 
 	# Construction du nom du fichier servant de cache
 	$url_cache = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
@@ -72,7 +50,6 @@ function debutCache() {
 
 # Procedure de fin de cache
 function finCache() {
-
 	# Construction du nom du fichier servant de cache
 	$url_cache = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 	$fichier_cache = dirname(__FILE__).'/cache/'.md5($url_cache).'.cache';
@@ -90,87 +67,36 @@ function finCache() {
 #------------------------------#
 
 # Fonction qui retourne le nombre de membres
-function getNbMembres() {
-
-	# Requete sql
-	$sql = 'SELECT COUNT(*) FROM membre WHERE statut_membre = 1';
-	$rqt = mysql_query($sql) or die("Error with request $sql : ".mysql_error());
-	$nb = mysql_fetch_row($rqt);
-
-	# On retourne le resultat
-	return $nb[0];
+function getNbUsers($con) {
+	global $core;
+	$sql = 'SELECT COUNT(1) as nb FROM '.$core->prefix.'user WHERE user_status = 1';
+	$rs = $con->select($sql);
+	return $rs->f('nb');
 }
 
 # Fonction qui retourne le nombre de flux
-function getNbFlux() {
-
-	# Requete sql
-	$sql = 'SELECT COUNT(*) FROM flux, membre WHERE membre.num_membre = flux.num_membre AND statut_membre = 1';
-	$rqt = mysql_query($sql) or die("Error with request $sql : ".mysql_error());
-	$nb = mysql_fetch_row($rqt);
-
-	# On retourne le resultat
-	return $nb[0];
+function getNbFeeds($con) {
+	global $core;
+	$sql = 'SELECT COUNT(1) as nb FROM '.$core->prefix.'user, '.$core->prefix.'feed WHERE '.$core->prefix.'user.user_id = '.$core->prefix.'feed.user_id AND '.$core->prefix.'user.user_status = 1';
+	$rs = $con->select($sql);
+	return $rs->f('nb');
 }
 
 # Fonction qui retourne le nombre d'articles
-function getNbArticles() {
-
-	# Requete sql
-	$sql = 'SELECT COUNT(*) FROM article WHERE article_statut = 1';
-	$rqt = mysql_query($sql) or die("Error with request $sql : ".mysql_error());
-	$nb = mysql_fetch_row($rqt);
-
-	# On retourne le resultat
-	return $nb[0];
+function getNbPosts($con) {
+	global $core;
+	$sql = 'SELECT COUNT(1) as nb FROM '.$core->prefix.'post WHERE post_status = 1';
+	$rs = $con->select($sql);
+	return $rs->f('nb');
 }
 
 # Fonction qui retourne le nombre de votes
-function getNbVotes() {
-
-	# Requete sql
-	$sql = 'SELECT COUNT(*) FROM votes';
-	$rqt = mysql_query($sql) or die("Error with request $sql : ".mysql_error());
-	$nb = mysql_fetch_row($rqt);
-
-	# On retourne le resultat
-	return $nb[0];
+function getNbVotes($con) {
+	global $core;
+	$sql = 'SELECT COUNT(1) as nb FROM '.$core->prefix.'votes';
+	$rs = $con->select($sql);
+	return $rs->f('nb');
 }
-
-# Fonction qui retourne la liste des nb membres les plus actifs
-function getTopMembreArticles($nb) {
-
-	# Requete sql
-	$sql = "SELECT nom_membre, site_membre, COUNT(num_article) AS nb_article 
-		FROM article, membre 
-		WHERE article.num_membre = membre.num_membre
-		AND statut_membre = 1
-		GROUP BY nom_membre
-		ORDER BY nb_article DESC
-		LIMIT 0,$nb";
-	$rqt = mysql_query($sql) or die("Error with request $sql : ".mysql_error());
-
-	# On retourne la liste
-	return $rqt;
-}
-
-# Fonction qui retourne la liste des nb membres qui ont le plu de points
-function getTopMembreVotes($nb) {
-
-	# Requete sql
-	$sql = "SELECT nom_membre, site_membre, SUM(article_score) AS score
-		FROM article, membre 
-		WHERE article.num_membre = membre.num_membre 
-		AND statut_membre = 1
-		GROUP BY nom_membre
-		ORDER BY score DESC
-		LIMIT 0,$nb";
-	$rqt = mysql_query($sql) or die("Error with request $sql : ".mysql_error());
-
-	# On retourne la liste
-	return $rqt;
-}
-
 
 #-----------------------#
 #   Fonction de votes   #
@@ -179,276 +105,133 @@ function getTopMembreVotes($nb) {
 # Fonction qui recupere l'adresse IP meme a travers un proxy
 # Provenance : http://devloop.lyua.org/blog/index.php?2007/01/07/376-detection-de-proxy-en-php
 function getIP() {
-
 	# Si le visiteur passe par un proxy
 	if(isset($_SERVER['HTTP_X_FORWARDED_FOR']) && $_SERVER['HTTP_X_FORWARDED_FOR']!="") {
-
 		if(strchr($_SERVER['HTTP_X_FORWARDED_FOR'],',')) {
-
 			$tab = explode(',',$_SERVER['HTTP_X_FORWARDED_FOR']);
 			$proxy = trim($tab[count($tab)-1]);
 			$realip = trim($tab[0]);
-
 		} else {
-
 			$realip = trim($_SERVER['HTTP_X_FORWARDED_FOR']);
 			$proxy = $_SERVER['REMOTE_ADDR'];
 		}
-
 		if(ip2long($realip)===FALSE) $realip = $_SERVER['REMOTE_ADDR'];
-
 		# Sinon si il se connecte en direct
 	} else {
-
 		$realip = $_SERVER['REMOTE_ADDR'];
 		$proxy = "";
 	}
-
 	if($realip == $proxy) $proxy = "";
-
 	# on retoune l'ip
 	return $realip;
 }
 
 # Fonction qui verifie si une ip a votee sur un article
-function checkVote($ip, $num_article) {
-
+function checkVote($con, $ip, $num_article) {
+	global $core;
 	# Recuperation des adresses IP qui ont votes
-	$sql = "SELECT vote_ip FROM votes WHERE num_article = '$num_article' AND vote_ip = '$ip'";
-	$rqt_article = mysql_query($sql) or die("Error with request $sql : ".mysql_error());
-	$nb_vote = mysql_num_rows($rqt_article);
-
-	if ($nb_vote==0){
-		return 0;
-	}
-	else {
-		return 1;
-	}
-}
-
-# Fonciton qui retourn 0 ou un nombre positif
-function positif($val) {
-	if($val < 0) {
-		$result = 0;
-	} else {
-		$result = $val;
-	}
-	return $result;
+	$sql = "SELECT COUNT(vote_ip) as nb FROM ".$core->prefix."votes WHERE post_id = '$num_article' AND vote_ip = '$ip'";
+	$rs = $con->select($sql);
+	if ($rs->f('nb')==0)
+		return false;
+	return true;
 }
 
 # Fonction qui converti les code de carateres html special iso en code utf8 html
 function convert_iso_special_html_char($string) {
-
 	$search = array('&lsquo;', '&rsquo;', '&ldquo;', '&rdquo;', '&');
 	$replace = array('&#39;', '&#39;', '&quot;', '&quot;', '&amp;');
 	return str_replace($search, $replace, $string);
 }
 
-
 #--------------------------#
 #   Fonction d'affichage   #
 #--------------------------#
 
-# Fonction qui affiche les articles en fonction d'une requete (possibilite d'utiliser la fonction strip_tag, valeur 0 ou 1)
-function afficheListeArticles($sql, $strip_tags, $recherche="") {
+function showPosts($rs, $tpl, $search_value="", $strip_tags=false) {
+	global $blog_settings;
+	$gravatar = $blog_settings->get('planet_avatar');
 
-	# Recuperation des options de configuration
-	global $planet_theme, $planet_url, $planet_avatar, $planet_votes_system, $activate_votes;
+	while($rs->fetch()){
 
-	# Execution de la rqt sql
-	$liste_articles = mysql_query(trim($sql)) or die("Error with request $sql : ".mysql_error());
+		$post = array(
+			"id" => $rs->post_id,
+			"date" => mysqldatetime_to_date("d/m/Y",$rs->pubdate),
+			"hour" => mysqldatetime_to_date("H:i",$rs->pubdate),
+			"permalink" => urldecode($rs->permalink),
+			"title" => html_entity_decode($rs->title, ENT_QUOTES, 'UTF-8'),
+			"content" => html_entity_decode($rs->content, ENT_QUOTES, 'UTF-8'),
+			"author_id" => $rs->user_id,
+			"author_fullname" => $rs->user_fullname,
+			"author_email" => $rs->user_email,
+			);
 
-	# On recupere le nombre de resultat
-	$nb = mysql_num_rows($liste_articles);
-
-	# Si il n'y a pas de resultat
-	if(!$nb) {
-		echo '<div class="post">'.T_('No posts found').'</div>';
-
-		# Sinon si il y a des resultats
-	} else {
-
-		# Boucle d'affichage des articles
-		$cpt = 1;
-		while ($liste = mysql_fetch_row($liste_articles)) {
-
-			# Formatage de la date et heure
-			$date = date("d/m/Y",$liste[1]);
-			$heure = date("H:i",$liste[1]);
-			$relevance = "";
-			$article_url = urldecode($liste[3]);
-			$article_titre = html_entity_decode($liste[2], ENT_QUOTES, 'UTF-8');
-			$article_contenu = html_entity_decode($liste[4], ENT_QUOTES, 'UTF-8');
-			$membre_id = $liste[9];
-			$membre_nom = $liste[0];
-			$membre_email = $liste[8];
-			$membre_site = $liste[5];
-			if (!empty($recherche)){
-				$relevance = '<span class="relevance">'.sprintf(T_('Score for %s'),$recherche).' : '.$liste[10].'</span>';
-				#$article_titre = ereg_replace($recherche, '<span class="highlight">\\0</span>', $article_titre);
-				#$article_contenu = ereg_replace($recherche, '<span class="highlight">\\0</span>', $article_contenu);
-				/*preg_match_all("/([^<>]+)/", $article_contenu, $matches);
-				$article_contenu = "";
-				foreach ($matches as $val) {
-					print_r($val);
-					if (preg_match("/<$val>/", $article_contenu)) { $article_contenu .= '<'.$val.'>'; }
-					else {
-						$article_contenu .= str_replace( $recherche, '<span class="highlight">'.$searchString.'</span>', $val);
-					}
-				}*/
-			}
-
-			# Balise HTML
-			echo '<!-- debut post-content --><div class="article"><div class="separ_article_top"></div>';
-
-			# Gravatar
-			if($planet_avatar) {
-				$gravatar_url = "http://www.gravatar.com/avatar.php?gravatar_id=".md5($membre_email)."&default=".urlencode($planet_url."/themes/$planet_theme/images/gravatar.png")."&size=40";
-
-				$gravatar = '<div class="avatar_article"><a href="'.$planet_url.'/?num_membre='.$membre_id.'" title="'.sprintf(T_("Show the posts of %s"),$membre_nom).'"><img src="'.$gravatar_url.'" class="gravatar" /></a></div>';
-			}
-
-			# Titre de l'article + ancre
-			echo '<div class="nom_article">';
-			if($planet_avatar) echo $gravatar;
-			echo '<a href="'.$article_url.'" title="'.T_('Visit source').'">'.$article_titre.'</a><a name="article'.$cpt.'">&nbsp;</a>'.$relevance.'</div>'."\n";
-			if ($activate_votes)
-				echo afficheVotes($liste[7], $liste[6]);
-
-			# Chapo de l'article
-			echo '<div class="complement_article">'.sprintf(T_('By %s, on %s at %s.'),'<a href="'.$planet_url.'/?num_membre='.$membre_id.'">'.$membre_nom.'</a>',$date,$heure).'</div>';
-
-			# Contenu de l'article
-			echo "<div class=\"contenu_article\"> ";
-			if($strip_tags) {
-				echo strip_tags($article_contenu)."&nbsp;[...]";
-				echo '<br /><a href="'.$article_url.'" title="'.$article_titre.'">'.T_('Read more').'</a>';
-			}
-			else echo $article_contenu;
-			echo '<div class="separ_article_bottom"></div>';
-			echo "</div><!-- fin post-content -->";
-
-			# Lien de retour
-			echo '<a href="#top" class="retour_sommaire">'.T_('Back to summary').'</a>';
-			echo "</div><!-- fin post -->\n";
-
-			# Incrementation du compteur d'article
-			$cpt++;
+		$post['description'] = sprintf(T_('By %s, on %s at %s.'),'<a href="'.$blog_settings->get('planet_url').'/index.php?num_membre='.$rs->user_id.'">'.$rs->user_fullname.'</a>',$post["date"],$post["hour"]);
+		if (!empty($search_value)){
+			# Format the occurences of the search request in the posts list
+			$post['content'] = split_balise($search_value, '<span class="search_content">'.$search_value.'</span>', $post['content'], 'str_ireplace', 1);
+			# Format the occurences of the search request in the posts title
+			$post['title'] = split_balise($search_value, '<span class="search_title">'.$search_value.'</span>', $post['title'], 'str_ireplace', 1);
 		}
+
+		$tpl->setVar('post', $post);
+		# Gravatar
+		if($gravatar) {
+			$gravatar_email = strtolower($post['author_email']);
+			$tpl->setVar('gravatar_url', "http://www.gravatar.com/avatar.php?gravatar_id=".md5($gravatar_email)."&default=".urlencode($blog_settings->get('planet_url')."/themes/".$blog_settings->get('planet_theme')."/images/gravatar.png")."&size=40");
+
+			$tpl->render('post.block.gravatar');
+		}
+		if ($blog_settings->get('planet_vote')) {
+			$votes_HTML = afficheVotes($rs->score, $rs->post_id);
+			$tpl->render('post.block.votes');
+		}
+		if($strip_tags) {
+			$post['content'] .= strip_tags($post['content'])."&nbsp;[...]".
+				'<br /><a href="'.$post['permalink'].'" title="'.$post['title'].'">'.T_('Read more').'</a>';
+		}
+		$tpl->render('post.block');
 	}
+	return $tpl;
 }
 
 # Fonction qui affiche le sommaire rapide d'une liste d'article
-function afficheSommaireArticles($sql) {
-
-	# Recuperation des options de configuration
-	global $nb_article;
-
-	# Execution de la rqt sql
-	$liste_articles = mysql_query(trim($sql)) or die("Error with request $sql : ".mysql_error());
-
-	# On recupere le nombre de resultat
-	$nb = mysql_num_rows($liste_articles);
-
-	# Division
-	echo "<div id=\"top_10\">";
-
-	# Si il n'y a pas de resultat
-	if(!$nb) {
-		echo '<div class="post">'.T_('No posts found').'</div></div>';
-		# Sinon si il y a des resultats
-	} else {
-
-		if($_SERVER['REQUEST_URI'] == '/') {
-			# Si on est sur la page d'accueil
-			echo '<h3>'.sprintf(T_('Fast access to the %d last posts'),$nb_article).'</h3><br/>';
-		} else {
-			echo '<h3>'.T_('Fast access to the last posts of the page').'</h3><br/>';
-		}
-
+function showPostsSummary($rs, $tpl) {
+	while($rs->fetch()){
 		$max_title_length = 100;
-		$cpt = 1;
-		while ($cpt <= $nb_article && ($liste = mysql_fetch_row($liste_articles))) {
+		$title = html_entity_decode($rs->title, ENT_QUOTES, 'UTF-8');
+		if (strlen($title) > $max_title_length)
+			$show = substr($title,0,$max_title_length)."...";
+		else
+			$show = $title;
 
-			# Formatage de la date
-			$date = date("d/m/Y",$liste[1]);
-			# Affichage du lien
-			$titre = html_entity_decode($liste[2], ENT_QUOTES, 'UTF-8');
-			if (strlen($titre) > $max_title_length)
-				$show = substr($titre,0,$max_title_length)."...";
-			else
-				$show = $titre;
-			echo '<a href="#article'.$cpt.'" title="'.$titre.'">'.$date.' : '.$show.'</a> ';
-			# Incrementation du compteur
-			$cpt++;
-		}
-		echo '</div><!-- fin post -->';
+		$line = array(
+			"date" => mysqldatetime_to_date("d/m/Y",$rs->pubdate),
+			"title" => $title,
+			"short_title" => $show,
+			"url" => "#post".$rs->post_id);
+		$tpl->setVar('summary', $line);
+		$tpl->render('summary.line');
 	}
-}
-
-# Procedure qui affiche les titres des items d'un flux RSS
-function afficheTitreFlux($url, $nb, $htmlAvant, $htmlApres) {
-	# Inclusion de la librairie simplepie (on le fait seulement ici
-	# Afin d'optimiser le code
-	require_once(dirname(__FILE__).'/lib/simplepie/simplepie.inc');
-	# On cree un objet SimplePie
-	$feed = new SimplePie();
-	$feed->set_feed_url($url);
-	$feed->set_cache_location(dirname(__FILE__).'/cache');
-	$feed->set_cache_duration($item_refresh);
-	$feed->init();
-	$item_nb = $feed->get_item_quantity();
-	if ($feed->get_item_quantity() == 0) {
-		# Si le flux ne contient pas de donnee
-		echo "Error: no item for $url";
-	} else {
-
-		# Sinon on affiche les titres de chaque item
-		$items = $feed->get_items(0, $nb);
-		foreach ($items as $item) {
-			echo $htmlAvant.'<a href="'.$item->get_permalink().'">'.$item->get_title().'</a>'.$htmlApres;
-		}
-
-		# Destruction de l'objet
-		unset($feed);
-	}
-}
-
-# Fonction qui affiche la version du planet
-function afficheVersion() {
-
-	# Nom du fichier
-	$fichier = dirname(__FILE__).'/../VERSION';
-
-	# Ouverture du fichier en lecture
-	$file = fopen($fichier, "r");
-
-	# On recupere la version
-	$version = trim(fgets($file,20));
-
-	# Fermeture du fichier
-	fclose($file);
-
-	# On retourne le resultat
-	return $version;
+	return $tpl;
 }
 
 function afficheVotes($nb_votes, $num_article) {
-	global $planet_theme, $planet_url;
+	
+	global $blog_settings, $core;
+		
 	# On met un s a vote si il le faut
 	$vote = "vote";
 	if($nb_votes > 1) $vote = "votes";
 
 	# Score du vote en fonction du system
-	if($planet_votes_system == "yes-no") {
-		$score = $nb_votes;
-	} else {
-		$score = positif($nb_votes);
-	}
+	$score = $nb_votes;
+	if($blog_settings->get('planet_votes_system') != "yes-no" && $score < 0)
+		$score = 0;
 
 	# Bouton de vote
 	$text =  '<div class="votes">';
-	if (checkVote(getIP(), $num_article)) {
+	if (checkVote($core->con, getIP(), $num_article)) {
 
 		# Si le visiteur a deja vote
 		$text .= '<span id="vote'.$num_article.'" class="avote">'.$score.' '.$vote.'.<br/>
@@ -468,7 +251,7 @@ function afficheVotes($nb_votes, $num_article) {
 				<span id="imgoui" title="'.T_('Vote yes').'"></span></a>';
 
 		# En fonciton du systeme de vote
-		if($planet_votes_system == "yes-no") {
+		if($blog_settings->get('planet_votes_system') == "yes-no") {
 			$text .= '<a href="#blackhole" title="'.T_('This post seems not pertinent to you').'" id="anon'.$num_article.'"
 				onclick="javascript:vote('."'$num_article','$token', 'negatif'".');" >
 				<span id="imgnon" title="'.T_('Vote no').'"></span></a>';
@@ -490,6 +273,8 @@ function afficheVotes($nb_votes, $num_article) {
 # Valid field types :
 # email
 # url
+# feed
+# login
 function check_field($fieldname, $value, $type="none", $required=true){
 	$success=true;
 	$error="";
@@ -515,6 +300,25 @@ function check_field($fieldname, $value, $type="none", $required=true){
 				$error = sprintf(T_('The field "%s" %s is not a valid simplepie feed'),$fieldname,$value);
 				$success = false;
 			}
+			break;
+		case "login":
+			if (!check_login($value)) {
+				$msg = "The username has to be formed of minimum 2 characters with letters and/or numbers. ";
+				$msg .= "Specials characters allowed: \"@\" \".\" \"_\" \"-\"";
+				$error = sprintf(T_($msg).'.',$fieldname,$value);
+				$success = false;
+			}
+			break;
+		case "password":
+			if ($value['password'] != $value['password2']) {
+				$success = false;
+				$error = sprintf(T_('The fields %s does not match'),$fieldname,$value);
+			}
+			elseif(strlen($value['password']) < 4 && strlen($value['password']) != 0) {
+				$success = false;
+				$error = sprintf(T_('The fields %s needs to have 4 characters minimum'),$fieldname,$value);
+			}
+			$value = $value['password'];
 			break;
 		default:
 			break;
@@ -634,40 +438,19 @@ function check_feed($url){
 		return false;
 }
 
+function check_login ($login) {
+		$regex = '/^[A-Za-z0-9@._-]{2,}$/';
+		if(preg_match($regex, $login)) {
+			return true;
+		}
+		else {
+			return false;
+		}
+}
 
 #---------------------#
 #   Fonction divers   #
 #---------------------#
-
-# Fonction de cryptage d'adresse email
-function hex_encode($str) {
-	$encoded = bin2hex($str);
-	$encoded = chunk_split($encoded, 2, '%');
-	$encoded = '%'.substr($encoded, 0, strlen($encoded) - 1);
-	return $encoded;
-}
-
-# Fonction qui retourne la taille d'un fichier
-function tailleFichier($fichier) {
-
-	# On recupere la taille du fichier
-	$taille=filesize($fichier);
-
-	# Gestion de l'unite
-	if ($taille >= 1073741824) {
-		$taille = round($taille / 1073741824 * 100) / 100 . " Go";
-	} elseif ($taille >= 1048576) {
-		$taille = round($taille / 1048576 * 100) / 100 . " Mo";
-	} elseif ($taille >= 1024) {
-		$taille = round($taille / 1024 * 100) / 100 . " Ko";
-	} else {
-		$taille = $taille . " o";
-	} 
-
-	if($taille==0) $taille="-";
-	return $taille;
-}
-
 
 # Returns if cron is running or not
 function get_cron_running() {
@@ -686,13 +469,11 @@ function get_cron_running() {
 }
 
 function get_database_size(){
-	connectBD();
 	$request = mysql_query("SHOW TABLE STATUS") or die("Error with request $sql : ".mysql_error());
 	$dbsize = 0;
 	while( $row = mysql_fetch_array($request) ) {
 		$dbsize += $row[ "Data_length" ] + $row[ "Index_length" ];
 	}
-	closeBD();
 	return $dbsize;
 }
 
@@ -702,17 +483,150 @@ function formatfilesize( $data ) {
 		return $data . T_(" bytes");
 	}
 	// kilobytes
-	else if( $data < 1024000 ) {
+	elseif( $data < 1024000 ) {
 		return round( ( $data / 1024 ), 1 ) . T_(" Kb");
 	}
 	// megabytes
-	else {
+	elseif ($data < 1073741824) {
 		return round( ( $data / 1024000 ), 1 ) . T_(" MB");
+	}
+	// gigabytes
+	else {
+		return round( ( $data / 1073741824 ), 1) . T_(" GB");
 	}
 }
 
 function my_gzdecode($string) {
 	$string = substr($string, 10);
 	return gzinflate($string);
+}
+#---------------------#
+#   Fonction mail     #
+#---------------------#
+
+function sendmail ($sender, $recipients, $subject, $message, $type='normal', $reply_to='') {
+	
+	global $blog_settings;
+	
+	$planet_title = html_entity_decode($blog_settings->get('planet_title'), ENT_QUOTES, 'UTF-8');
+	$subject = "[".$planet_title."] ".$subject;
+	
+	if (empty($reply_to)){
+		$reply_to = $sender;
+	}
+	
+	if ($type == 'newsletter') {
+		$headers  = "From: ".$planet_title."<".$sender.">\r\n";
+		$headers .= "Reply-To: ".$reply_to."\r\n";
+		$headers .= "Bcc: ".$recipients."\r\n";
+		$headers .= "MIME-Version: 1.0\r\n";
+		$headers .= "Content-Type: text/html; charset=utf-8\r\n" .
+		$headers .= "Content-Transfer-Encoding: 8bit\r\n\r\n"; 
+		$message_content  = "<html>\r\n";
+		$message_content .= "<body>\r\n";
+		$message_content .= $message."\r\n";
+		$message_content .= "</body>\r\n";
+		$message_content .= "</html>\r\n";
+	$recipients = $sender;
+	}
+	elseif ($type == 'normal') {
+		$headers  = "From: ".$sender."\r\n";
+		$headers .= "Reply-To: ".$reply_to."\r\n"; 
+		$message_content = $message;
+	}
+	return mail($recipients, $subject, $message_content, $headers);
+}
+
+/**
+* Convert MySQL's DATE (YYYY-MM-DD) or DATETIME (YYYY-MM-DD hh:mm:ss) to timestamp
+*
+* Returns the timestamp equivalent of a given DATE/DATETIME
+*
+* @todo add regex to validate given datetime
+* @author Clemens Kofler <clemens.kofler@chello.at>
+* @access    public
+* @return    integer
+*/
+function mysqldatetime_to_timestamp($datetime = "")
+{
+  // function is only applicable for valid MySQL DATETIME (19 characters) and DATE (10 characters)
+  $l = strlen($datetime);
+    if(!($l == 10 || $l == 19))
+      return 0;
+
+    //
+    $date = $datetime;
+    $hours = 0;
+    $minutes = 0;
+    $seconds = 0;
+
+    // DATETIME only
+    if($l == 19)
+    {
+      list($date, $time) = explode(" ", $datetime);
+      list($hours, $minutes, $seconds) = explode(":", $time);
+    }
+
+    list($year, $month, $day) = explode("-", $date);
+
+    return mktime($hours, $minutes, $seconds, $month, $day, $year);
+}
+
+/**
+* Convert MySQL's DATE (YYYY-MM-DD) or DATETIME (YYYY-MM-DD hh:mm:ss) to date using given format string
+*
+* Returns the date (format according to given string) of a given DATE/DATETIME
+*
+* @author Clemens Kofler <clemens.kofler@chello.at>
+* @access    public
+* @return    integer
+*/
+function mysqldatetime_to_date($format = "d.m.Y, H:i:s", $datetime = "")
+{
+    return date($format, mysqldatetime_to_timestamp($datetime));
+}
+
+/**
+* Convert timestamp to MySQL's DATE or DATETIME (YYYY-MM-DD hh:mm:ss)
+*
+* Returns the DATE or DATETIME equivalent of a given timestamp
+*
+* @author Clemens Kofler <clemens.kofler@chello.at>
+* @access    public
+* @return    integer
+*/
+function timestamp_to_mysqldatetime($timestamp = "", $datetime = true)
+{
+  if(empty($timestamp) || !is_numeric($timestamp)) $timestamp = time();
+
+    return ($datetime) ? date("Y-m-d H:i:s", $timestamp) : date("Y-m-d", $timestamp);
+}
+
+function decode_strip($str, $max_str_length){
+	$dstr = html_entity_decode($str, ENT_QUOTES, 'UTF-8');
+	if (strlen($dstr) > $max_str_length)
+		return substr($dstr,0, $max_str_length)."...";
+	else
+		return $dstr;
+}
+
+#-------------------------------------------------------------------#
+# Functions to recover the plain text into the HTML original code.	#
+# To search into the HTML tags, the variable $flag need to be at -1	#
+#-------------------------------------------------------------------#
+function split_balise($de, $par, $txt, $fct, $flag = 1){
+	global $arg;
+	$arg = compact('de', 'par', 'fct', 'flag');
+	return preg_replace_callback('#((?:(?!<[/a-z]).)*)([^>]*>|$)#si', "mon_rplc_callback", $txt);
+}
+
+function mon_rplc_callback($capture){
+	global $arg;
+	if ($arg['flag'] == 1) {
+		return $arg['fct']($arg['de'], $arg['par'], $capture[1]).$capture[2];
+	}
+	else {
+		return $capture[1].$arg['fct']($arg['de'], $arg['par'], $capture[2]);
+	}
 }
 ?>

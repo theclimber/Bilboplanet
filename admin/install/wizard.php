@@ -55,7 +55,7 @@ $DBHOST = !empty($_POST['DBHOST']) ? $_POST['DBHOST'] : '';
 $DBNAME = !empty($_POST['DBNAME']) ? $_POST['DBNAME'] : '';
 $DBUSER = !empty($_POST['DBUSER']) ? $_POST['DBUSER'] : '';
 $DBPASSWORD = !empty($_POST['DBPASSWORD']) ? base64_encode(stripslashes($_POST['DBPASSWORD'])): '';
-$DBPREFIX = !empty($_POST['DBPREFIX']) ? $_POST['DBPREFIX'] : '';
+$DBPREFIX = !empty($_POST['DBPREFIX']) ? $_POST['DBPREFIX'] : 'bp_';
 
 if (!empty($_POST))
 {
@@ -77,7 +77,7 @@ if (!empty($_POST))
 		
 		# Check if bilboplanet is already installed
 		$schema = dbSchema::init($con);
-		if (in_array($DBPREFIX.'flux',$schema->getTables())) {
+		if (in_array($DBPREFIX.'feed',$schema->getTables())) {
 			throw new Exception(T_('The Bilboplanet is already installed. Please remove the tables in the database before.'));
 		}
 
@@ -98,7 +98,7 @@ if (!empty($_POST))
 		writeConfigValue('BP_DBUSER',$DBUSER,$full_conf);
 		writeConfigValue('BP_DBPASSWORD',$DBPASSWORD,$full_conf);
 		writeConfigValue('BP_DBNAME',$DBNAME,$full_conf);
-		writeConfigValue('BP_DBPREFIX',$DBPREFIX,$full_conf);
+		writeConfigValue('BP_DBPREFIX',strtolower($DBPREFIX),$full_conf);
 		writeConfigValue('BP_DBENCRYPTED_PASSWORD','1',$full_conf);
 
 		$fp = @fopen(BP_CONFIG_PATH,'wb');
@@ -168,11 +168,12 @@ if (is_file(BP_CONFIG_PATH)) {
 }
 
 echo
-'<p>'.T_('<h3>Welcome to the BilboPlanet. Before you begin, we need some informations concerning the database. You\'ll need to provide the following information to begin the installation and to create the configuration file.<br /><br />
+'<p>'.T_('Welcome to the BilboPlanet. Before you begin, we need some informations concerning the database. You\'ll need to provide the following information to begin the installation and to create the configuration file.<br /><br />
    1. The host of the database.<br/>
    2. The name of the database.<br/>
    3. Your username to the database.<br/>
-   4. Your password to the database.<br/><br/>').'</h3></p>'.
+   4. Your password to the database.<br/>
+   4. Table prefix for your database.<br/><br/>').'</p>'.
 
 
 '<form action="wizard.php" method="post">'.
@@ -195,8 +196,9 @@ form::field('DBUSER',30,255,html::escapeHTML($DBUSER)).'</label>
 form::password('DBPASSWORD',30,255).'</label>
 <span class="description">'.T_('Your password depends of your provider').'</span><p class="clear" />'.
 
-#'<p><label class="required" title="'.T_('Required field').'">'.T_('Database Tables Prefix:').' '.
-#form::field('DBPREFIX',30,255,html::escapeHTML($DBPREFIX)).'</label></p>'.
+'<label class="required" title="'.T_('Required field').'">'.T_('Database Tables Prefix:').' '.
+form::field('DBPREFIX',30,255,html::escapeHTML($DBPREFIX)).'</label>
+<span class="description">'.T_('bp_ is the default prefix').'</span><p class="clear" />'.
 
 '<input class="save" type="submit" value="'.T_('Save').'" />'.
 '</form>';

@@ -1,131 +1,15 @@
 <?php
-
-#-------------------------------#
-#   Configuration du Planet     #
-#-------------------------------#
-
-define('BP_URL','http://yoursite.tld');
-define('BP_DESC','About Planet');
-define('BP_TITLE','Bilboplanet');
-define('BP_LANG','fr');
-define('BP_AUTHOR','Bilboplanet Inc');
-define('BP_AUTHOR_MAIL','contact@yoursite.tld');
-define('BP_AUTHOR_SITE','http://www.bilboplanet.com');
-define('BP_THEME','gil-galad');
-define('BP_NB_ART','10');
-define('BP_NB_ART_MOB','10');
-define('BP_USER','admin');
-define('BP_AVATAR','1');
-define('BP_MSG_INFO', 'BilboPlanet - An Open Source RSS feed aggregator written in PHP');
-define('BP_META','Le CMS BilboPlanet est un agrégateur de Flux RSS Open Source écrit en PHP.');
-define('BP_KEYWORD','feed, flux, rss, bilboplanet, cms, agr&eacute;gateur, aggregator, planet, app, open source, free, linux, xml, development, web, php, mysql');
-define('BP_MAINTENANCE','0');
-define('BP_VOTES', true);
-define('BP_CONTACT_PAGE', true);
-define('BP_AUTHOR_JABBER','Your Jabber');
-define('BP_AUTHOR_IM','MSN Messenger, Yahoo Messenger and Other');
-define('BP_AUTHOR_ABOUT','About me');
-define('BP_INDEX_UPDATE','1');
-define('BP_VERSION','0.3.2');
-#define('BP_GOOGLEANALYTICS','');
-
-
-# Url pour acceder au planet
-$planet_url = BP_URL;
-
-# Titre du planet
-$planet_title = BP_TITLE;
-
-# Description du planet afficher sur le site
-$planet_desc = BP_DESC;
-
-# Description du planet au niveau de meta tag
-$planet_desc_meta = BP_META;
-
-# Liste des mots cles au niveau des meta tags pour les moteurs de recherche (separe par des virgules)
-$planet_keywords = BP_KEYWORD;
-
-# Langue du planet
-$planet_lang = BP_LANG;
-
-# Auteur du planet
-$planet_author = BP_AUTHOR;
-
-# Mail de l'auteur
-$planet_author_mail = BP_AUTHOR_MAIL;
-
-# Site perso de l'auteur
-$planet_author_site = BP_AUTHOR_SITE;
-
-# Jabber / GTalk de l'auteur
-$planet_author_jabber = BP_AUTHOR_JABBER;
-
-# IM de l'autheur
-$planet_author_im = BP_AUTHOR_IM;
-
-# A propos de l'auteur
-$planet_author_about = BP_AUTHOR_ABOUT;
-
-# Nom du theme a utiliser
-$planet_theme = BP_THEME;
-
-# Nombre d'articles a afficher sur le site
-$nb_article = BP_NB_ART;
-
-# Nombre d'article a afficher pour la version mobile
-$nb_article_mobile = BP_NB_ART_MOB;
-
-# Systeme de vote (yes-no = positif and negatif, yes-warn = positif and warn)
-$planet_votes_system = "yes-warn";
-
-# Score pour lequel un article est retire du planet
-$planet_votes_limite = -5;
-$activate_votes = BP_VOTES;
-$show_contact = BP_CONTACT_PAGE;
-
-# Activation ou non des avatars des membres
-$planet_avatar = BP_AVATAR;
-
-# Version du bilboplanet
-$planet_version = BP_VERSION;
-
-#------------------------------------------#
-#   Configuration des messages d'erreurs   #
-#------------------------------------------#
-
-# Niveau d'erreur des logs de mise a jour (choix : debug, notice)
-#$log = "debug";
-$log = "notice";
-
-# Activation de l'affiche des messages d'erreur (actif = 1, inactif = 0)
+# Display error or not (enable = 1, disable = 0)
 @ini_set('display_errors', 1);
 
-# Niveau d'erreur php (choix : E_ALL, E_NOTICE, E_WARNING, E_ERROR ou 0 pour desactiver)
-#error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
+# Sets which PHP errors are reported (E_ALL, E_NOTICE, E_WARNING, E_ERROR, E_PARSE, E_STRICT or 0 to disabled)
 error_reporting(E_ERROR);
 
-# Activation du mode de maintenance
-$maintenance = BP_MAINTENANCE;
-
-# Message d'information a affciher sur la page d'acceuil, laisser vide pour desactiver cette fonciton
-$message_information = BP_MSG_INFO;
-
-# Activation de l'envoie de mail a l'utilisateur quand son flux est en erreur
-$mail_erreur = 1;
-
-#----------------------------#
-#   Configuration des flux   #
-#----------------------------#
-
-# Nombre d'article a afficher dans les flux
-$nb_article_flux = 20;
-
-#-----------------------------------------#
-#   Configuration de la base de donnees   #
-#-----------------------------------------#
-
+#---------------------------------------#
+#	Database configuration				#
+#---------------------------------------#
 define('BP_DBHOST','');
-define('BP_DBUSER','dcxd');
+define('BP_DBUSER','');
 define('BP_DBPASSWORD','');
 define('BP_DBNAME','');
 define('BP_DBPREFIX','');
@@ -135,6 +19,6 @@ define('BP_DBENCRYPTED_PASSWORD', '0');
 # Persistent database connection
 define('BP_DBPERSIST',false);
 
-$timezone = 'Europe/Paris';
-date_default_timezone_set($timezone);
+# Session name for cookie
+define('BP_SESSION_NAME','bpxd');
 ?>

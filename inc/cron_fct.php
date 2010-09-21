@@ -25,7 +25,6 @@
 ***** END LICENSE BLOCK *****/
 ?>
 <?php
-require_once(dirname(__FILE__).'/database.php');
 require_once(dirname(__FILE__).'/lib/checkValidHTML.php');
 
 function finished() {
@@ -33,7 +32,8 @@ function finished() {
 	logMsg("The Cron is stopped and exited", $log_file);
 }
 
-function update($print=false) {
+function update($core, $print=false) {
+	global $log;
 	$cron_file = dirname(__FILE__).'/cron_running.txt';
 	$output = "";
 
@@ -44,19 +44,23 @@ function update($print=false) {
 	$debut = explode(" ",microtime());
 	$debut = $debut[1]+$debut[0]; 
 
-	# Connexion a la base de donnees
-	connectBD();
-
 	# Requete permettant de recuperer la liste des flux a parser
-	$sql = "SELECT flux.num_membre, flux.url_flux, site_membre
-		FROM flux, membre 
-		WHERE membre.num_membre = flux.num_membre 
-		AND statut_membre = '1'
-		AND status_flux = '1'
-		ORDER BY last_updated ASC
+	$sql = "SELECT
+			".$core->prefix."feed.user_id as user_id,
+			feed_id,
+			feed_url,
+			site_url,
+			feed_trust
+		FROM ".$core->prefix."feed, ".$core->prefix."site, ".$core->prefix."user
+		WHERE
+			".$core->prefix."feed.site_id = ".$core->prefix."site.site_id
+			AND ".$core->prefix."feed.user_id = ".$core->prefix."user.user_id
+			AND user_status = 1
+			AND site_status = 1
+			AND feed_status = 1
+		ORDER BY feed_checked ASC
 		LIMIT 30";
-	$rqt_flux = mysql_query($sql) or die("Error with request $sql");
-
+	$rs = $core->con->select($sql);
 	# Ouverture du fichier de log
 	$file = fopen('../logs/update-'.date("Y-m-d").'.log', 'a');
 
@@ -66,7 +70,7 @@ function update($print=false) {
 
 	# On parcour l'ensemble des flux 
 	$cpt = 0;
-	while ($liste = mysql_fetch_row($rqt_flux)) {
+	while ($rs->fetch()) {
 		# On verifie si on n'a pas demandé l'arrêt de l'algo
 		if (file_exists(dirname(__FILE__).'/STOP')) {
 			$log_msg = logMsg("STOP file detected, trying to shut down cron job", $file, 2, $print);
@@ -74,30 +78,20 @@ function update($print=false) {
 			break;
 		}
 
-		$sql = "UPDATE `flux`
-			SET `last_updated` = '".time()."'
-			WHERE flux.url_flux = '".$liste[1]."'";
-		$result = mysql_query($sql);
+		$cur = $core->con->openCursor($core->prefix.'feed');
+		$cur->feed_checked = array('NOW()');
+		$cur->modified = array('NOW()');
+		$cur->update("WHERE feed_id = '$rs->feed_id'");
 		
-		$site_membre = $liste[2];
-		# On construit l'url du flux
-		$parse = @parse_url($liste[1]);
-		if (!$parse['scheme']){
-			$url_flux = $site_membre.$liste[1];
-		}
-		else {
-			$url_flux = $liste[1];
-		}
-
 		# Si on est en mode debug
 		if($log == "debug") {
-			$log_msg = logMsg("Analyse du flux ".$url_flux, $file, 4, $print);
+			$log_msg = logMsg("Analyse du flux ".$rs->feed_url, $file, 4, $print);
 			if ($print) $output .= $log_msg;
 		}
 
 		# On cree un objet SimplePie et on ajuste les parametres de base
 		$feed = new SimplePie();
-		$feed->set_feed_url($url_flux);
+		$feed->set_feed_url($rs->feed_url);
 		$feed->set_cache_location(dirname(__FILE__).'/../admin/cache');
 		$feed->set_cache_duration($item_refresh);
 		$feed->init();
@@ -111,11 +105,11 @@ function update($print=false) {
 
 			# Affichage du message d'erreur
 			$error = $feed->error();
-			if (ereg($url_flux, $error)) {
+			if (ereg($rs->feed_url, $error)) {
 				$log_msg = logMsg("Aucun article trouve ".$error, $file, 3, $print);
 				if ($print) $output .= $log_msg;
 			} else {
-				$log_msg = logMsg("Aucun article trouve sur $url_flux: ".$error, $file, 3, $print);
+				$log_msg = logMsg("Aucun article trouve sur $rs->feed_url: ".$error, $file, 3, $print);
 				if ($print) $output .= $log_msg;
 			}
 
@@ -124,10 +118,9 @@ function update($print=false) {
 			# On traite chaque item du flux
 			$items = $feed->get_items();
 			$item_permalink = '';
-			$content = '';
 
 			foreach ($items as $item) {
-				# On ecrit dans le fichier que l'algorithme est en marche
+				# open log file and write activity down
 				$fp = @fopen($cron_file,'wb');
 				if ($fp === false) {
 					throw new Exception(sprintf(__('Cannot write %s file.'),$cron_file));
@@ -135,177 +128,121 @@ function update($print=false) {
 				fwrite($fp,time());
 				fclose($fp);
 
-				# On lance l'analyse de l'entrée
+				# Analyse the item
+				#####################
+
+				# Permalink
 				$item_permalink = $item->get_permalink();
-				$content = strip_script($item->get_content());
-				$description = $item->get_description();
+				# Content
+				$item_content = strip_script($item->get_content());
+				if (empty($item_content)) {
+					$item_content = $item->get_description();
+				}
+				$item_content = traitementEncodage($item_content);
+				# Title
+				$item_title = traitementEncodage($item->get_title());
+				if(strlen($item_title) > 254) {
+					$item_title = substr($item_title, 0, 254);
+				}
+				# Date
+				$item_date = date('Y-m-d H:i:s',$item->get_date('U'));
 
-				if (empty($content) && empty($description)) {
-					$log_msg = logMsg("Pas de contenu sur $url_flux", $file, 3, $print);
+				if (empty($item_content)) {
+					$log_msg = logMsg("Pas de contenu sur $rs->feed_url", $file, 3, $print);
 					if ($print) $output .= $log_msg;
-				} else {
-					# On test si le decoupage s'est bien passe
-					if(empty($item_permalink)) {
+				} elseif(empty($item_permalink)) {
+					$log_msg = logMsg("Erreur de decoupage du lien ".$item_permalink, $file, 3, $print);
+					if ($print) $output .= $log_msg;
 
-						# Sinon on affiche la vrai cause de l'erreur
-						$log_msg = logMsg("Erreur de decoupage du lien ".$item_permalink, $file, 3, $print);
+					# Si on est en mode debug
+					if($log == "debug") {
+						$log_msg = logMsg("Url du site: ".$rs->site_url, $file, 4, $print);
 						if ($print) $output .= $log_msg;
+						$log_msg = logMsg("Url du permalink: ".$item_permalink, $file, 4, $print);
+						if ($print) $output .= $log_msg;
+					}
+				} else {
+					# Check if item is already in the database
+					$sql = "SELECT
+							post_title,
+							post_content,
+							post_pubdate
+						FROM ".$core->prefix."post
+						WHERE `post_permalink` = '".addslashes($item_permalink)."'";
+					$rs2 = $core->con->select($sql);
 
-						# Si on est en mode debug
-						if($log == "debug") {
-							$log_msg = logMsg("Url du site: ".$site_membre, $file, 4, $print);
+					# There is no such permalink, we can insert the new item
+					if($rs2->count() == 0 && $item->get_date('U') < time()) {
+						# Get ID
+						$rs3 = $core->con->select(
+							'SELECT MAX(post_id) '.
+							'FROM '.$core->prefix.'post ' 
+							);
+						$next_post_id = (integer) $rs3->f(0) + 1;
+
+						$cur = $core->con->openCursor($core->prefix.'post');
+						$cur->post_id = $next_post_id;
+						$cur->user_id = $rs->user_id;
+						$cur->feed_id = $rs->feed_id;
+						$cur->post_pubdate = $item_date;
+						$cur->post_permalink = addslashes($item_permalink);
+						$cur->post_title = $item_title;
+						$cur->post_content = $item_content;
+						$cur->post_status = $rs->feed_trust == 1 ? 1 : 2;
+						$cur->created = array(' NOW() ');
+						$cur->modified = array(' NOW() ');
+						$cur->insert();
+
+						$log_msg = logMsg("Article ajoute: ".$item_permalink, $file, 1, $print);
+						if ($print) $output .= $log_msg;
+						$cpt++;
+					} # fin if(!found)
+
+					# If post is already in database, check if update needed
+					elseif($rs->count() == 1) {
+						$title2 = addslashes($rs2->f('post_title'));
+						$content2 = addslashes($rs2->f('post_content'));
+
+						# Si l'article a ete modifie (soit la date, soit le titre, soit le contenu)
+						if($item_date != $rs2->f('post_pubdate') && !empty($item_date)) {
+							# On log si il y a eu des modifications trouvees
+							$log_msg = logMsg("changement de date pour l'article: ".$item_permalink, $file, 2, $print);
 							if ($print) $output .= $log_msg;
-							$log_msg = logMsg("Url du permalink: ".$item_permalink, $file, 4, $print);
+
+							# Update post in database
+							$cur = $core->con->openCursor($core->prefix.'post');
+							$cur->post_pubdate = $item_date;
+							$cur->modified = array('NOW()');
+							$cur->update("WHERE ".$core->prefix."post.post_permalink = '".addslashes($item_permalink)."'");
+							# On informe que tout est ok
+							$log_msg = logMsg("Date mise a jour: ".$item_permalink, $file, 1, $print);
 							if ($print) $output .= $log_msg;
 						}
-
-					} else {
-
-						# On test si l'item est deja en base
-						$trouve = 0;
-						$sql = "SELECT article_titre, article_content, article_pub FROM article WHERE `article_url` = '".addslashes($item_permalink)."'";
-						$rqt = mysql_query($sql) or die("Error with request $sql");
-						$nb = mysql_num_rows($rqt);
-
-						# Si il n'y pas d'item avec cette url, on insere
-						if($nb == 0 && $item->get_date('U') < time()) {
-
-							# On recupere les donnes de l'article
-							$date = $item->get_date('U');
-							if (!$date){
-								$date = time();
-							}
-							$titre = $item->get_title();
-							if (!empty($content)) {
-								$contenu = $content;
-							} else {
-								$contenu = $description;
-							}
-
-							# On raccourci le titre si il est trop long
-							if(strlen($titre) > 254) $titre = substr($titre, 0, 254);
-
-							# On effectue les traitements avant insertion en base
-							$titre = traitementEncodage($titre);
-							$contenu = traitementEncodage($contenu);
-							$sql = "INSERT INTO article VALUES ('','$liste[0]','$date','$titre','".addslashes($item_permalink)."','$contenu','1', '0')";
-							$result = mysql_query($sql);
-
-							if (!$result) {
-								# On test si on a pas perdu la connexion a cause d'un temps trop long a parser le flux
-								if (mysql_error() == 'MySQL server has gone away') {
-									# On se reconnect a la base
-									closeBD();
-									connectBD();
-								} else {
-									# Sinon on affiche la vrai cause de l'erreur
-									$log_msg = logMsg("Erreur sur la requete: $sql", $file, 3, $print);
-									if ($print) $output .= $log_msg;
-								}
-							} else {
-								# Sinon, si l'insertion de l'article c'est bien passee
-								$log_msg = logMsg("Article ajoute: ".$item_permalink, $file, 1, $print);
+						if((!empty($item_title) && strcmp($item_title, $title2) != 0)
+							|| (!empty($item_content) && strcmp($item_content, $content2) != 0)) {
+							if(strcmp($item_title, $title2) != 0) {
+								$log_msg = logMsg("Changement de titre pour l'article: ".$item_permalink, $file, 2, $print);
 								if ($print) $output .= $log_msg;
 
-								$cpt++;
+								# Update post in database
+								$cur = $core->con->openCursor($core->prefix.'post');
+								$cur->post_title = $item_title;
+								$cur->modified = array('NOW()');
+								$cur->update("WHERE ".$core->prefix."post.post_permalink = '".addslashes($item_permalink)."'");
 							}
-						} # fin if(!trouve)
-
-						# Si l'article est deja dans la base, on test si on doit le mettre a jour
-						elseif($nb == 1) {
-							$result = mysql_fetch_row($rqt);
-							# Mysql virer les slashe apres insertion de la requete
-							# Pour garder la coherence des donnees on les arjoute ici
-							$titre2 = addslashes($result[0]);
-							$contenu2 = addslashes($result[1]);
-							$date2 = $result[2];
-
-							# On recupere les informations de l'article
-							$date = $item->get_date('U');
-							$titre = $item->get_title();
-							if (!empty($content)) {
-								$contenu = $content;
-							} else {
-								$contenu = $description;
-							}
-
-							# On effectue les traitements avant insertion en base
-							$titre = traitementEncodage($titre);
-							$contenu = traitementEncodage($contenu);
-
-							# On raccourci le titre si il est trop long
-							if(strlen($titre) > 254) $titre = substr($titre, 0, 254);
-
-							# Si l'article a ete modifie (soit la date, soit le titre, soit le contenu)
-							if($date != $date2 && $date != '') {
-
-								# On log si il y a eu des modifications trouvees
-								$log_msg = logMsg("changement de date pour l'article: ".$item_permalink, $file, 2, $print);
+							if(strcmp($item_content, $content2) != 0) {
+								$log_msg = logMsg("Changement du contenu pour l'article: ".$item_permalink, $file, 2, $print);
 								if ($print) $output .= $log_msg;
 
-								# On met a jour l'article en base
-								$sql = "UPDATE article, membre 
-									SET article_pub = '$date'
-									WHERE article.num_membre = membre.num_membre
-									AND membre.site_membre = '".$site_membre."'
-									AND article_url = '".addslashes($item_permalink)."'";
-								$result = mysql_query($sql);
-
-								# Si la mise a jour de l'article c'est mal passe
-								if (!$result) {
-									if (mysql_error() == 'MySQL server has gone away') {
-										# On se reconnect a la base
-										closeBD();
-										connectBD();
-									} else {
-										# Sinon on affiche la vrai cause de l'erreur
-										$log_msg = logMsg("Erreur sur la requete: ".$sql, $file, 3, $print);
-										if ($print) $output .= $log_msg;
-									}
-									# Sinon, si la mise a jour de l'article c'est bien passee
-								} else {
-									# On informe que tout est ok
-									$log_msg = logMsg("Date mise a jour: ".$item_permalink, $file, 1, $print);
-									if ($print) $output .= $log_msg;
-									$cpt++;
-								}
+								# Update post in database
+								$cur = $core->con->openCursor($core->prefix.'post');
+								$cur->post_content = $item_content;
+								$cur->modified = array('NOW()');
+								$cur->update("WHERE ".$core->prefix."post.post_permalink = '".addslashes($item_permalink)."'");
 							}
-							if(($titre != "" && strcmp($titre, $titre2) != 0) || ($contenu != "" && strcmp($contenu, $contenu2) != 0)) {
-								if(strcmp($titre, $titre2) != 0) {
-									$log_msg = logMsg("Changement de titre pour l'article: ".$item_permalink, $file, 2, $print);
-									if ($print) $output .= $log_msg;
-								}
-								if(strcmp($contenu, $contenu2) != 0) {
-									$log_msg = logMsg("Changement du contenu pour l'article: ".$item_permalink, $file, 2, $print);
-									if ($print) $output .= $log_msg;
-								}
-
-								# On met a jour l'article en base
-								$sql = "UPDATE article, membre 
-									SET article_titre = '$titre', article_content = '$contenu' 
-									WHERE article.num_membre = membre.num_membre
-									AND membre.site_membre = '".$site_membre."'
-									AND article_url = '".addslashes($item_permalink)."'";
-								$result = mysql_query($sql);
-
-								# Si la mise a jour de l'article c'est mal passe
-								if (!$result) {
-									if (mysql_error() == 'MySQL server has gone away') {
-										closeBD();
-										connectBD();
-									} else {
-										$log_msg = logMsg("Erreur sur la requete: ".$sql, $file, 3, $print);
-										if ($print) $output .= $log_msg;
-									}
-									# Sinon, si la mise a jour de l'article c'est bien passee
-								} else {
-									$log_msg = logMsg("Titre et contenu mis a jour: ".$item_permalink, $file, 1, $print);
-									if ($print) $output .= $log_msg;
-									$cpt++;
-								}
-							} # fin du if($date !=
-						} # fin du if($trouve)
-					} # fin empty($url ...
+						} # fin du if($date !=
+						$cpt++;
+					}
 				} # fin du $item->get_content()
 			} # fin du foreach
 			# On fait un reset du foreach
@@ -315,9 +252,6 @@ function update($print=false) {
 		# Destruction de l'objet feed avant de passer a un autre
 		unset($feed);
 	} # fin du while
-
-	# Femeture de la base
-	closeBD();
 
 	# Duree de la mise a jour
 	$fin = explode(" ",microtime());

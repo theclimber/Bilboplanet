@@ -205,12 +205,12 @@ class dcModules
 		
 		if ($zip->isEmpty()) {
 			unlink($zip_file);
-			throw new Exception(__('Empty module zip file.'));
+			throw new Exception(T_('Empty module zip file.'));
 		}
 		
 		if (!$has_define) {
 			unlink($zip_file);
-			throw new Exception(__('The zip file does not appear to be a valid Dotclear module.'));
+			throw new Exception(T_('The zip file does not appear to be a valid Bilboplanet module.'));
 		}
 		
 		$ret_code = 1;
@@ -235,20 +235,20 @@ class dcModules
 				{
 					# delete old module
 					if (!files::deltree($destination)) {
-						throw new Exception(__('An error occurred during module deletion.'));
+						throw new Exception(T_('An error occurred during module deletion.'));
 					}
 					$ret_code = 2;
 				}
 				else
 				{
 					unlink($zip_file);
-					throw new Exception(sprintf(__('Unable to upgrade "%s". (same version)'),basename($destination)));		
+					throw new Exception(sprintf(T_('Unable to upgrade "%s". (same version)'),basename($destination)));		
 				}
 			}
 			else
 			{
 				unlink($zip_file);
-				throw new Exception(sprintf(__('Unable to read new _define.php file')));			
+				throw new Exception(sprintf(T_('Unable to read new _define.php file')));			
 			}
 		}
 		$zip->unzipAll($target);
@@ -312,41 +312,41 @@ class dcModules
 		}
 		
 		if (!isset($p[$id])) {
-			throw new Exception(__('No such module.'));
+			throw new Exception(T_('No such module.'));
 		}
 		
 		if (!files::deltree($p[$id]['root'])) {
-			throw new Exception(__('Cannot remove module files'));
+			throw new Exception(T_('Cannot remove module files'));
 		}
 	}
 	
 	public function deactivateModule($id)
 	{
 		if (!isset($this->modules[$id])) {
-			throw new Exception(__('No such module.'));
+			throw new Exception(T_('No such module.'));
 		}
 		
 		if (!$this->modules[$id]['root_writable']) {
-			throw new Exception(__('Cannot deactivate plugin.'));
+			throw new Exception(T_('Cannot deactivate plugin.'));
 		}
 		
 		if (@file_put_contents($this->modules[$id]['root'].'/_disabled','')) {
-			throw new Exception(__('Cannot deactivate plugin.'));
+			throw new Exception(T_('Cannot deactivate plugin.'));
 		}
 	}
 	
 	public function activateModule($id)
 	{
 		if (!isset($this->disabled[$id])) {
-			throw new Exception(__('No such module.'));
+			throw new Exception(T_('No such module.'));
 		}
 		
 		if (!$this->disabled[$id]['root_writable']) {
-			throw new Exception(__('Cannot activate plugin.'));
+			throw new Exception(T_('Cannot activate plugin.'));
 		}
 		
 		if (@unlink($this->disabled[$id]['root'].'/_disabled') === false) {
-			throw new Exception(__('Cannot activate plugin.'));
+			throw new Exception(T_('Cannot activate plugin.'));
 		}
 	}
 	

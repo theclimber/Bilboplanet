@@ -1,0 +1,185 @@
+$(document).ready(function() {
+	$('#adduser_form').submit(function() {
+		var data = $('#adduser_form').serialize();
+		$('#flash-log').css('display','');
+		$('#flash-msg').addClass('ajax-loading');
+		$.ajax({
+			type: "POST",
+			url: "api/",
+			data: 'ajax=user&action=add&'+data,
+			success: function(msg){
+				updateUserList();
+				$('#flash-msg').removeClass('ajax-loading');
+				$('#flash-msg').html(msg);
+			}
+		});
+		return false;
+	});
+	$("#users-list").ready( function() {
+		updateUserList();
+	});
+
+});
+
+function updateUserList(num_page, nb_items) {
+	$.ajax({
+		type: "POST",
+		url: "api/",
+		data : {'ajax' : 'user', 'action' : 'list', 'num_page': num_page, 'nb_items' : nb_items},
+		success: function(msg){
+			$("#users-list").html(msg);
+		}
+	});
+}
+
+function toggleUserStatus(user_id, num_page, nb_items) {
+	$('#flash-log').css('display','');
+	$('#flash-msg').addClass('ajax-loading');
+	$.ajax({
+		type: "POST",
+		url: "api/",
+		data : {'ajax' : 'user', 'action' : 'toggle', 'user_id' : user_id},
+		success: function(msg){
+			$('#flash-msg').removeClass('ajax-loading');
+			$('#flash-msg').html(msg);
+			updateUserList(num_page, nb_items);
+		}
+	});
+}
+
+function removeUser(user_id, num_page, nb_items) {
+	$('#flash-log').css('display','');
+	$('#flash-msg').addClass('ajax-loading');
+	$.ajax({
+		type: "POST",
+		url: "api/",
+		data : {'ajax' : 'user', 'action' : 'remove', 'user_id' : user_id},
+		success: function(msg){
+			$('#flash-msg').removeClass('ajax-loading');
+			$('#flash-msg').html(msg);
+			$('#removeConfirm_form').submit(function() {
+				var data = $('#removeConfirm_form').serialize();
+				$('#flash-log').css('display','');
+				$('#flash-msg').addClass('ajax-loading');
+				$.ajax({
+					type: "POST",
+					url: "api/",
+					data: 'ajax=user&action=removeConfirm&'+data,
+					success: function(msg){
+						updateUserList(num_page, nb_items);
+						$('#flash-msg').removeClass('ajax-loading');
+						$('#flash-msg').html(msg);
+					}
+				});
+				return false;
+			});
+		}
+	});
+}
+
+function removeSite(site_id, num_page, nb_items) {
+	$('#flash-log').css('display','');
+	$('#flash-msg').addClass('ajax-loading');
+	$.ajax({
+		type: "POST",
+		url: "api/",
+		data : {'ajax' : 'site', 'action' : 'remove', 'site_id' : site_id},
+		success: function(msg){
+			$('#flash-msg').removeClass('ajax-loading');
+			$('#flash-msg').html(msg);
+			$('#removeSiteConfirm_form').submit(function() {
+				var data = $('#removeSiteConfirm_form').serialize();
+				$('#flash-log').css('display','');
+				$('#flash-msg').addClass('ajax-loading');
+				$.ajax({
+					type: "POST",
+					url: "api/",
+					data: 'ajax=site&action=removeConfirm&'+data,
+					success: function(msg){
+						updateUserList(num_page, nb_items);
+						$('#flash-msg').removeClass('ajax-loading');
+						$('#flash-msg').html(msg);
+					}
+				});
+				return false;
+			});
+		}
+	});
+	return false;
+}
+
+function profile(user_id, num_page, nb_items) {
+	$('#flash-log').css('display','');
+	$('#flash-msg').addClass('ajax-loading');
+	$.ajax({
+		type: "POST",
+		url: "api/",
+		data: {'ajax' : 'user', 'action' : 'profile', 'user_id' : user_id},
+		dataType: 'json',
+		success: function(user){
+			$('#flash-msg').removeClass('ajax-loading');
+			
+			$('#user-edit-form #euser_id').val(user.user_id);
+			$('#user-edit-form #euser_id').attr('disabled', 'true');
+			$('#user-edit-form #efullname').val(user.user_fullname);
+			$('#user-edit-form #eemail').val(user.user_email);
+			var content = $('#user-edit-form form').clone();
+
+			Boxy.askform(content, function(val) {
+				val['ajax'] = "user";
+				val['action'] = "update";
+				val['user_id'] = $('#user-edit-form #euser_id').val();
+				$.ajax({
+					type: "POST",
+					url: "api/",
+					data : val,
+					success: function(msg){
+						$('#user-edit-form #euser_id').removeAttr('disabled');
+						$('#user-edit-form #euser_id').val('');
+						$('#user-edit-form #efullname').val('');
+						$('#user-edit-form #eemail').val('');
+						updateUserList(num_page, nb_items);
+						$("#flash-msg").html(msg);
+					}
+				});
+			}, {
+				title: "Update "+user.user_id+" profile",
+				closeable: true,
+			});
+		}
+	});
+	return false;
+}
+
+
+function addSite(user_id, num_page, nb_items) {
+	$('#flash-log').css('display','');
+	$('#flash-msg').addClass('ajax-loading');
+			
+	$('#add-site-form #suser_id').val(user_id);
+	$('#add-site-form #suser_id').attr('disabled', 'true');
+	var content = $('#add-site-form form').clone();
+
+	Boxy.askform(content, function(val) {
+		val['ajax'] = "site";
+		val['action'] = "add";
+		val['user_id'] = $('#add-site-form #suser_id').val();
+		$.ajax({
+			type: "POST",
+			url: "api/",
+			data : val,
+			success: function(msg){
+				$('#add-site-form #suser_id').removeAttr('disabled');
+				$('#flash-msg').removeClass('ajax-loading');
+				$("#flash-msg").html(msg);
+				$('#add-site-form #suser_id').removeAttr('disabled');
+				$('#add-site-form #suser_id').val('');
+				updateUserList(num_page, nb_items);
+			}
+		});
+	}, {
+		title: "Add site to "+user_id,
+		closeable: true,
+	});
+	return false;
+}

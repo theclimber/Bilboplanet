@@ -25,11 +25,11 @@
 ***** END LICENSE BLOCK *****/
 ?>
 <?php
-require_once(dirname(__FILE__).'/i18n.php');
 
 $rc_path = dirname(__FILE__).'/../../inc/config.php';
 
 if (!is_file($rc_path)) {
+	require_once(dirname(__FILE__).'/i18n.php');
 	$summary = T_('No configuration file');
 	$message = T_('There is no configuration file, you need to create one. Therefor you can use the wizard to generate a configuration file. Click "Next" to go to the setup page.');
 	$message2 = '<a href="wizard.php"><div class="next">'.T_('Next').' &rarr;</div></a>';
@@ -38,10 +38,8 @@ if (!is_file($rc_path)) {
 	exit;
 }
 
-require dirname(__FILE__).'/../../inc/prepend.php';
-require dirname(__FILE__).'/check.php';
-require $rc_path;
-
+require_once dirname(__FILE__).'/../../inc/prepend.php';
+require_once dirname(__FILE__).'/check.php';
 
 $can_install = true;
 $err = '';
@@ -62,13 +60,18 @@ if (!dcSystemCheck($core->con,$_e)) {
 # Get information and perform install
 $u_email = $u_firstname = $u_name = $u_login = $u_pwd = '';
 $mail_sent = false;
+$subscription_content = htmlentities(stripslashes('<h2>Description</h2>
 
-function writeConfigValue($name,$val,&$str)
-{
-	$val = str_replace("'","\'",$val);
-	$str = preg_replace('/(\''.$name.'\')(.*?)$/ms','$1,\''.$val.'\');',$str);
-}
+<p><br/>Le <a href="#"><strong>Nom du Planet</strong></a> est un planet visant à regrouper un ensemble de flux RSS de divers sites/blogs.
+<br/><br/></p>
 
+<h2>La charte de fonctionnement</h2>
+<ul>
+	<li>1. ...</li>
+	<li>2. ...</li>
+	<li><strong>3. ...</strong></li>
+</ul>
+<br/><br/></p>'), ENT_QUOTES, 'UTF-8');
 
 if ($can_install && !empty($_POST))
 {
@@ -79,20 +82,25 @@ if ($can_install && !empty($_POST))
 	$u_pwd = !empty($_POST['u_pwd']) ? $_POST['u_pwd'] : null;
 	$u_pwd2 = !empty($_POST['u_pwd2']) ? $_POST['u_pwd2'] : null;
 	$u_site = !empty($_POST['u_site']) ? $_POST['u_site'] : null;
-	$p_url = !empty($_POST['p_url']) ? $_POST['p_url'] : null;
-	$p_desc = !empty($_POST['p_desc']) ? $_POST['p_desc'] : null;
-	$p_title = !empty($_POST['p_title']) ? $_POST['p_title'] : null;
+	$p_desc = !empty($_POST['p_desc']) ? htmlentities(stripslashes($_POST['p_desc']), ENT_QUOTES) : null;
+	$p_title = !empty($_POST['p_title']) ? htmlentities(stripslashes($_POST['p_title']), ENT_QUOTES) : null;
 	$p_lang = !empty($_POST['p_lang']) ? $_POST['p_lang'] : null;
 	define('BP_PROT_PATH',dirname(__FILE__).'/../../.htpasswd');
+	
+	# Version of the planet
+	$version_file = dirname(__FILE__).'/VERSION';
+	$fp = @fopen($version_file, 'rb');
+	if ($fp === false) {
+		throw new Exception(sprintf(T_('Unable to read %s file.'),$version_file));
+	}
+	$p_version = fread($fp, 10);
+	fclose($fp);
 	
 	try
 	{
 		# Check user information
 		if (empty($p_title)) {
 			throw new Exception(T_('Please fill the title in.'));
-		}
-		if (empty($p_url)) {
-			throw new Exception(T_('Please fill the planet url in.'));
 		}
 		if (empty($u_email)) {
 			throw new Exception(T_('Please fill the user email in.'));
@@ -106,7 +114,6 @@ if ($can_install && !empty($_POST))
 		if ($u_email && !text::isEmail($u_email)) {
 			throw new Exception(T_('Invalid email address'));
 		}
-		
 		if (empty($u_pwd)) {
 			throw new Exception(T_('No password given'));
 		}
@@ -116,75 +123,6 @@ if ($can_install && !empty($_POST))
 		if (strlen($u_pwd) < 6) {
 			throw new Exception(T_('The password have to contain minimum 6 characters.'));
 		}
-
-		# Finish configuring config.php
-		$config_in = dirname(__FILE__).'/../../inc/config.php';
-		$full_conf = file_get_contents($config_in);
-
-		writeConfigValue('BP_AUTHOR',"$u_firstname $u_name",$full_conf);
-		writeConfigValue('BP_AUTHOR_MAIL',$u_email,$full_conf);
-		writeConfigValue('BP_AUTHOR_SITE',$u_site,$full_conf);
-		writeConfigValue('BP_USER',$u_login,$full_conf);
-		writeConfigValue('BP_TITLE',$p_title,$full_conf);
-		writeConfigValue('BP_URL',$p_url,$full_conf);
-		writeConfigValue('BP_DESC',$p_desc,$full_conf);
-		writeConfigValue('BP_LANG',$p_lang,$full_conf);
-
-		$fp = @fopen($config_in,'wb');
-		if ($fp === false) {
-			throw new Exception(sprintf(T_('Unable to write %s file.'),$config_in));
-		}
-		fwrite($fp,$full_conf);
-		fclose($fp);
-		chmod($config_in, 0775);
-
-
-		# Does .protected exist?
-		$protected = BP_PROT_PATH;
-		if (is_file($protected)) {
-			throw new Exception(sprintf(T_('File %s already exists.'),$protected));
-		}
-		
-		# Can we write .protected
-		if (!is_writable(dirname(BP_PROT_PATH))) {
-			throw new Exception(sprintf(T_('Unable to write %s file.'),BP_PROT_PATH));
-		}
-		
-		# Creates .protected file
-		$user_login = (string) $u_login;
-		$user_passwd = crypt(trim($u_pwd),base64_encode(CRYPT_STD_DES));
-		
-		$string = $user_login.':'.$user_passwd ;
-
-		$string2 = "AuthUserFile ".BP_PROT_PATH."
-AuthGroupFile /dev/null
-AuthName \"Restricted Area...\"
-AuthType Basic
-<limit GET POST>
-require valid-user
-</Limit>";
-
-		# Create the .protected file
-		$fp = @fopen(BP_PROT_PATH,'wb');
-		if ($fp === false) {
-			throw new Exception(sprintf(T_('Unable to write %s file.'),BP_PROT_PATH));
-		}
-		fwrite($fp,$string);
-		fclose($fp);
-		chmod(BP_PROT_PATH, 0666);
-
-		# Create the .htaccess file
-		$access = dirname(__FILE__).'/../../admin/.htaccess';
-		$fp = @fopen($access,'wb');
-		if ($fp === false) {
-			unlink(BP_PROT_PATH);
-			throw new Exception(sprintf(T_('Unable to write %s file.'),$access));
-		}
-		fwrite($fp,$string2);
-		fclose($fp);
-		chmod($access, 0666);
-
-		//http::redirect('index.php?wiz=1');
 
 		# Try to guess timezone
 		$default_tz = 'Europe/Paris';
@@ -202,82 +140,91 @@ require valid-user
 				unset($_tz);
 			}
 		}
-		createTables(BP_DBHOST,BP_DBNAME,BP_DBUSER,BP_DBPASSWORD);
+		
+		# Create schema
+		$_s = new dbStruct($core->con,$core->prefix);
+		require dirname(__FILE__).'/../../inc/dbschema/db-schema.php';
+		
+		$si = new dbStruct($core->con,$core->prefix);
+		$changes = $si->synchronize($_s);
+		
+		# Create user
+		$cur = $core->con->openCursor($core->prefix.'user');
+		$cur->user_id = (string) $u_login;
+		$cur->user_fullname = (string) $u_firstname.' '.$u_name;
+		$cur->user_email = (string) $u_email;
+		$cur->user_pwd = crypt::hmac('BP_MASTER_KEY',$u_pwd);
+		$cur->user_lang = $p_lang;
+		$cur->created = array('NOW()');
+		$cur->modified = array('NOW()');
+		$cur->insert();
 
+		if (!empty($u_site)) {
+			# Get next ID
+			$rs3 = $core->con->select(
+				'SELECT MAX(site_id) '.
+				'FROM '.$core->prefix.'site ' 
+				);
+			$next_site_id = (integer) $rs3->f(0) + 1;
+			$cur = $core->con->openCursor($core->prefix.'site');
+			$cur->site_id = $next_site_id;
+			$cur->user_id = $u_login;
+			$cur->site_name = 'Author site';
+			$cur->site_url = $u_site;
+			$cur->site_status = 1;
+			$cur->created = array(' NOW() ');
+			$cur->modified = array(' NOW() ');
+			$cur->insert();
+		}
 
+		$core->setUserRole($u_login, 'god');
+
+		$root_url = preg_replace('%/admin/install/index.php$%','',$_SERVER['REQUEST_URI']);
+		$planet_url = http::getHost().$root_url;
+
+		$blog_settings = new bpSettings($core,'root');
+		
+		$blog_settings->put('author', "$u_firstname $u_name", "string");
+		$blog_settings->put('author_mail', $u_email, "string");
+		$blog_settings->put('author_id', $u_login, "string");
+		$blog_settings->put('author_site', $u_site, "string");
+		$blog_settings->put('author_jabber', "Your Jabber", "string");
+		$blog_settings->put('author_im', "MSN Messenger, Yahoo Messenger and Other", "string");
+		$blog_settings->put('author_about', "About me", "string");
+		$blog_settings->put('planet_title', $p_title, "string");
+		$blog_settings->put('planet_url', $planet_url, "string");
+		$blog_settings->put('planet_desc', $p_desc, "string");
+		$blog_settings->put('planet_lang', $p_lang, "string");
+		$blog_settings->put('planet_version', $p_version, "string");
+		$blog_settings->put('planet_log', 'notice', "string");
+		$blog_settings->put('planet_theme', 'gil-galad', "string");
+		$blog_settings->put('planet_msg_info', 'BilboPlanet - An Open Source RSS feed aggregator written in PHP.', "string");
+		$blog_settings->put('planet_meta', 'BilboPlanet - An Open Source RSS feed aggregator written in PHP.', "string");
+		$blog_settings->put('planet_keywords', 'feed, flux, rss, bilboplanet, cms, agr&eacute;gateur, aggregator, planet, app, open source, free, linux, xml, development, web, php, mysql', "string");
+		$blog_settings->put('planet_contact_page', '1', "boolean");
+		$blog_settings->put('planet_vote', '1', "boolean");
+		$blog_settings->put('planet_votes_limit', '-5', "integer");
+		$blog_settings->put('planet_votes_system', 'yes-warn', "string");
+		$blog_settings->put('planet_nb_post', '10', "integer");
+		$blog_settings->put('planet_nb_art_mob', '10', "integer");
+		$blog_settings->put('planet_nb_art_flux', '20', "integer");
+		$blog_settings->put('planet_avatar', '1', "boolean");
+		$blog_settings->put('planet_index_update', '1', "boolean");
+		$blog_settings->put('planet_moderation', '1', "boolean");
+		$blog_settings->put('planet_subscription', '1', "boolean");
+		$blog_settings->put('planet_subscription_content', $subscription_content, "string");
+		$blog_settings->put('planet_mail_error','1', "boolean");
+		
+		# Advanced configuration
+		$blog_settings->put('planet_timezone',$default_tz, "string");
+		$blog_settings->put('planet_maint','0', "boolean");
+		
 		$step = 1;
 	}
 	catch (Exception $e)
 	{
 		$err = $e->getMessage();
 	}
-}
-function createTables($host,$name,$user,$pass)
-{
-  # Connexion au serveur MySQL
-  mysql_connect($host, $user, base64_decode($pass)) or die("Connexion error to the MySQL server !");
-
-  # Selection de la base
-  mysql_select_db($name) or die("Connexion error to the database -> $name");
-
-  # On insert une nouvelle entree
-  $create_table1 = "CREATE TABLE IF NOT EXISTS `article` (
-  `num_article` int(10) NOT NULL auto_increment,
-  `num_membre` varchar(32) character set utf8 collate utf8_bin NOT NULL default '',
-  `article_pub` int(15) default NULL,
-  `article_titre` varchar(255) default NULL,
-  `article_url` varchar(255) default NULL,
-  `article_content` longtext,
-  `article_statut` int(1) NOT NULL default '1',
-  `article_score` int(20) NOT NULL default '0',
-  PRIMARY KEY  (`num_article`)
-);";
-  $create_table2 = "CREATE TABLE IF NOT EXISTS `flux` (
-  `num_flux` int(5) NOT NULL auto_increment,
-  `url_flux` char(255) default '',
-  `num_membre` int(5) NOT NULL,
-  `last_updated` int(11) NOT NULL default '0',
-  `status_flux` int(1) NOT NULL default '1',
-  PRIMARY KEY  (`num_flux`,`num_membre`)
-);";
-  $create_table3 = "CREATE TABLE IF NOT EXISTS `membre` (
-  `num_membre` int(5) NOT NULL auto_increment,
-  `nom_membre` char(50) default '',
-  `email_membre` char(50) NOT NULL default '',
-  `site_membre` char(255) default '',
-  `statut_membre` int(1) default NULL,
-  PRIMARY KEY  (`num_membre`)
-);";
-  $create_table4 = "CREATE TABLE IF NOT EXISTS `votes` (
-  `num_article` int(10) NOT NULL auto_increment,
-  `vote_ip` varchar(15) NOT NULL default '',
-  PRIMARY KEY  (`num_article`,`vote_ip`)
-);";
-  $result = mysql_query($create_table1);
-  if (!$result)
-	  throw new Exception(sprintf(T_('Error with request %s : %s'),$create_table1, mysql_error()));
-  $result = mysql_query($create_table2);
-  if (!$result)
-	  throw new Exception(sprintf(T_('Error with request %s : %s'),$create_table2, mysql_error()));
-  $result = mysql_query($create_table3);
-  if (!$result)
-	  throw new Exception(sprintf(T_('Error with request %s : %s'),$create_table3, mysql_error()));
-  $result = mysql_query($create_table4);
-  if (!$result)
-	  throw new Exception(sprintf(T_('Error with request %s : %s'),$create_table4, mysql_error()));
-
-  $create_index1 = "ALTER TABLE article ENGINE = MYISAM";
-  $create_index2 = "ALTER TABLE article ADD FULLTEXT(article_titre, article_content);";
-
-  $result = mysql_query($create_index1);
-  if (!$result)
-	  throw new Exception(sprintf(T_('Error with request %s : %s'),$create_index1, mysql_error()));
-  $result = mysql_query($create_index2);
-  if (!$result)
-	  throw new Exception(sprintf(T_('Error with request %s : %s'),$create_index2, mysql_error()));
-
-  # Femeture de la base
-  mysql_close();
 }
 
 if (!isset($step)) {
@@ -286,55 +233,32 @@ if (!isset($step)) {
 header('Content-Type: text/html; charset=UTF-8');
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-xml:lang="en" lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <meta http-equiv="Content-Script-Type" content="text/javascript" />
-  <meta http-equiv="Content-Style-Type" content="text/css" />
-  <meta http-equiv="Content-Language" content="en" />
-  <meta name="MSSmartTagsPreventParsing" content="TRUE" />
-  <meta name="ROBOTS" content="NOARCHIVE,NOINDEX,NOFOLLOW" />
-  <meta name="GOOGLEBOT" content="NOSNIPPET" />
-  <link rel="icon" type="image/ico" href="../../favicon.png" />
-  <link rel="stylesheet" type="text/css" href="meta/css/install.css" media="all" />
-  <title><?php echo T_('Installation of the Bilboplanet');?></title>
-  <script type="text/javascript" src="../js/jquery/jquery.js"></script>
-  <script type="text/javascript">
-  //<![CDATA[
-  $(function() {
-    var login_re = new RegExp('[^A-Za-z0-9@._-]+','g');
-    $('#u_firstname').keyup(function() {
-      var login = this.value.toLowerCase().replace(login_re,'').substring(0,32);
-	 $('#u_login').val(login);
-    });
-    $('#u_login').keyup(function() {
-      $(this).val(this.value.replace(login_re,''));
-    });
-    
-    $('#u_login').parent().after($('<input type="hidden" name="u_date" value="' + Date().toLocaleString() + '" />'));
-  });
-  //]]>
-  </script>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="Content-Script-Type" content="text/javascript" />
+	<meta http-equiv="Content-Style-Type" content="text/css" />
+	<meta http-equiv="Content-Language" content="en" />
+	<meta name="MSSmartTagsPreventParsing" content="TRUE" />
+	<meta name="ROBOTS" content="NOARCHIVE,NOINDEX,NOFOLLOW" />
+	<meta name="GOOGLEBOT" content="NOSNIPPET" />
+	<link rel="icon" type="image/ico" href="../../favicon.png" />
+	<link rel="stylesheet" type="text/css" href="meta/css/install.css" media="all" />
+	<title><?php echo T_('Installation of the Bilboplanet');?></title>
+	<script type="text/javascript" src="../js/jquery/jquery.js"></script>
 </head>
 
 <body>
 <div id="header_ext">
-<div id="header">
-<div id="logo">
-
-<h1>Bilboplanet</h1>
-
-</div>
-</div>
+	<div id="header">
+		<div id="logo">
+			<h1>Bilboplanet</h1>
+		</div>
+	</div>
 </div>
 <div id="content">
 <?php
 echo '<h2>'.T_('Installation of the Bilboplanet').'</h2>';
-
-/*if (!is_writable(DC_TPL_CACHE)) {
-	echo '<div class="error"><p>'.sprintf(T_('Cache directory %s is not writable.'),DC_TPL_CACHE).'</p></div>';
-}*/
 
 if (!empty($err)) {
 	echo '<div class="error"><p><strong>'.T_('Errors:').'</strong>'.$err.'</p></div>';
@@ -363,17 +287,18 @@ closedir($dir_handle);
 	echo
 	'<h2>'.T_('Information on the BilboPlanet').'</h2>'.
 	
-	'<p>'.T_('Thank you for taking somes minutes to answer those questions to help to the configuration of the bilboplanet').'</p>'.
+	'<p>'.T_('Thank you for taking somes minutes to answer those questions to help to the configuration of the bilboplanet.').'</p>'.
+	'<p><span class="red">*&nbsp;</span>'.T_('Fields marked with an asterisk are obligatory').'</p>'.
 	
 	'<form id="install-form" action="index.php" method="post">'.
 	'<fieldset><legend><strong>'.T_('Information of the user').'</strong></legend>'.
-	'<label>'.T_('Firstname').' '.
+	'<label>'.T_('Firstname').'<span class="red"> * </span>'.
 	form::field('u_firstname',30,255,html::escapeHTML($u_firstname)).'</label>
 	<span class="description">'.T_('Enter your firstname or nickname').'</span>'.
 	'<label>'.T_('Name').' '.
 	form::field('u_name',30,255,html::escapeHTML($u_name)).'</label>
 	<span class="description">'.T_('Enter your name (optional)').'</span>'.
-	'<label>'.T_('Email').' * '.
+	'<label>'.T_('Email').'<span class="red"> * </span>'.
 	form::field('u_email',30,255,html::escapeHTML($u_email)).'</label>
 	<span class="description">'.T_('Enter your email address').'</span>'.
 	'<label>'.T_('Website of the user').' '.
@@ -382,10 +307,7 @@ closedir($dir_handle);
 	'</fieldset><br/>'.
 
 	'<fieldset><legend><strong>'.T_('Information on the Planet').'</strong></legend>'.
-	'<label>'.T_('URL of the Planet').' *  '.
-	form::field('p_url',30,255,html::escapeHTML($p_url)).'</label>
-	<span class="description">'.T_('ex: http://www.example.com or http://planet.example.com').'</span>'.
-	'<label>'.T_('Title of the Planet').' * '.
+	'<label>'.T_('Title of the Planet').'<span class="red"> * </span>'.
 	form::field('p_title',30,255,html::escapeHTML($p_title)).'</label>
 	<span class="description">'.T_('Fill the title of your planet').'</span>'.
 	'<label>'.T_('Description').' '.
@@ -397,13 +319,13 @@ closedir($dir_handle);
 	'</fieldset><br/>'.
 	
 	'<fieldset><legend><strong>'.T_('Administration username and password').'</strong></legend>'.
-	'<label class="required" title="'.T_('Required field').'">'.T_('Username').' * '.
+	'<label class="required" title="'.T_('Required field').'">'.T_('Username').'<span class="red"> * </span>'.
 	form::field('u_login',30,32,html::escapeHTML($u_login)).'</label>
-	<span class="description"'.T_('Enter your username').'</span>'.
-	'<label class="required" title="'.T_('Required field').'">'.T_('Password').' * '.
+	<span class="description">'.T_('Enter your username').'</span>'.
+	'<label class="required" title="'.T_('Required field').'">'.T_('Password').'<span class="red"> * </span>'.
 	form::password('u_pwd',30,255).'</label>
-	<span class="description"'.T_('Enter your password').'</span>'.
-	'<label class="required" title="'.T_('Required field').'">'.T_('Confirm your password').' * '.
+	<span class="description">'.T_('Enter your password').'</span>'.
+	'<label class="required" title="'.T_('Required field').'">'.T_('Confirm your password').'<span class="red"> * </span>'.
 	form::password('u_pwd2',30,255).'</label>
 	<span class="description">'.T_('Re-enter your password for verification').'</span>'.
 	'</fieldset><br/>'.

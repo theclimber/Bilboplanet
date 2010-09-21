@@ -26,7 +26,7 @@
 ***** END LICENSE BLOCK *****/
 ?>
 </div>
-<center><p>~ <a href="http://www.bilboplanet.com">BilboPlanet.com</a> - Open Source Feed Agregator - 2009 ~</p></center>
+<center><p>~ <a href="http://www.bilboplanet.com">BilboPlanet.com</a> - Open Source Feed Agregator - 2010 ~</p></center>
 </div>
 </body>
 </html>

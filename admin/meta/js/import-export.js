@@ -1,15 +1,18 @@
-window.addEvent('domready', function(){
+$(document).ready(function() {
 	// Pour le formulaire d'export
-	$('exportform').addEvent('submit', function(e) {
-		e.stop();
-		//Empty the log and show the spinning indicator.
-		var box = $('export-log').setStyle('display','');
-		var log = $('export_res').empty().addClass('ajax-loading');
-		this.set('send', {onComplete: function(response) { 
-			log.removeClass('ajax-loading');
-			log.set('html', response);
-		}});
-		this.send();
+	$('#exportform').submit(function() {
+		var data = $('#exportform').serialize();
+		$('#export-log').css('display','');
+		$('#export_res').addClass('ajax-loading');
+		$.ajax({
+			type: "POST",
+			url: "api/",
+			data: 'ajax=database&action=export&'+data,
+			success: function(msg){
+				$('#export_res').removeClass('ajax-loading');
+				$('#export_res').html(msg);
+			}
+		});
+		return false;
 	});
 });
-

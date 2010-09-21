@@ -26,38 +26,51 @@
 ?>
 <?php
 /* Inclusion du fichier de configuration */
-require_once(dirname(__FILE__).'/../inc/fonctions.php');
-require_once(dirname(__FILE__).'/../inc/config.php');
+require_once(dirname(__FILE__).'/../inc/admin/prepend.php');
+if ($core->auth->sessionExists()):
+	if (!$core->hasRole('manager')){
+		__error(T_("Permission denied"),
+			T_('You are not allowed to see this page.')
+			.' '.T_('You can delete your session if you logout : ').'<a href="?logout">Logout</a>');
+		exit;
+	}
+
 require_once(dirname(__FILE__).'/../inc/lib/simplepie/simplepie.inc');
-function showArticleSummary(){
+
+function showArticleSummary($con){
+	global $core;
 	$content = '<div class="box-dashboard"><div class="top-box-dashboard">'.T_('Latest articles :').'</div>';
 	$nb_articles=0;
-	connectBD();
+	#connectBD();
 	/* On recupere les infomations des articles */
-	$sql = "SELECT nom_membre, article_pub, article_titre, article_url
-		FROM article, membre
-		WHERE article.num_membre = membre.num_membre
-		AND article_statut = '1'
-		AND statut_membre = '1'
-		ORDER BY article_pub DESC
+	$sql = "SELECT
+			user_fullname as fullname,
+			post_pubdate as pubdate,
+			post_title as title,
+			post_permalink as permalink
+		FROM ".$core->prefix."post, ".$core->prefix."user
+		WHERE ".$core->prefix."post.user_id = ".$core->prefix."user.user_id
+		AND post_status = '1'
+		AND user_status = '1'
+		ORDER BY pubdate DESC
 		LIMIT 0,5";
-	$request = mysql_query($sql) or die("Error with request $sql : ".mysql_error());
+	$rs = $con->select($sql);
 	$list_articles = "<ul>";
 	$max_title_length = 50;
-	while($article = mysql_fetch_row($request)){
+	while($rs->fetch()){
 		$nb_articles++;
 		# Formatage de la date
-		$date = date("d/m/Y",$article[1]);
+		$date = mysqldatetime_to_date("d/m/Y",$rs->pubdate);
 		# Affichage du lien
-		$titre = html_entity_decode($article[2], ENT_QUOTES, 'UTF-8');
+		$titre = html_entity_decode($rs->title, ENT_QUOTES, 'UTF-8');
 		if (strlen($titre) > $max_title_length)
 			$show = substr($titre,0, $max_title_length)."...";
 		else
 			$show = $titre;
-		$list_articles .= '<li>'.$date.' : <a class="tips" href="'.$article[3].'" rel="<b><u>'.T_('User').':</u></b> '.$article[0].' <br><b><u>'.T_('Title').':</u></b> '.$titre.'" target="_blank">'.$show.'</a></li>';
+		$list_articles .= '<li>'.$date.' : <a class="tips" href="'.$rs->permalink.'" rel="<b><u>'.T_('User').':</u></b> '.$rs->fullname.' <br><b><u>'.T_('Title').':</u></b> '.$titre.'" target="_blank">'.$show.'</a></li>';
 	}
 	$list_articles .= "</ul>";
-	closeBD();
+	#closeBD();
 	$content .= $list_articles;
 	$content .= '</div>';
 	if ($nb_articles==0){
@@ -99,30 +112,18 @@ function timeserver($timestamp = 0, $format = '%A %d %B %Y à %H:%M:%S') {
 	return strftime($format, $timestamp);
 }
 
-$nb_articles = 0;
-$nb_votes = 0;
-$nb_members = 0;
-$nb_feeds = 0;
-#2) Et ce serai bien de rajouter dans le dashboard : nombre d'article sur le planet + nombre de vote au total + nmobre de membre + nombre de flux
-connectBD();
-$sql = "SELECT COUNT(*) FROM article";
-$request = mysql_query($sql) or die("Error with request $sql : ".mysql_error());
-if ($request)
-	$nb_articles = mysql_fetch_row($request);
-$sql = "SELECT COUNT(*) FROM votes";
-$request = mysql_query($sql) or die("Error with request $sql : ".mysql_error());
-if ($request)
-	$nb_votes = mysql_fetch_row($request);
-$sql = "SELECT COUNT(*) FROM membre";
-$request = mysql_query($sql) or die("Error with request $sql : ".mysql_error());
-if ($request)
-	$nb_members = mysql_fetch_row($request);
-$sql = "SELECT COUNT(*) FROM flux";
-$request = mysql_query($sql) or die("Error with request $sql : ".mysql_error());
-if ($request)
-	$nb_feeds = mysql_fetch_row($request);
-closeBD();
 
+$rs = $core->con->select("SELECT COUNT(1) as nb FROM ".$core->prefix."post");
+$nb_posts = $rs->nb;
+
+$rs = $core->con->select("SELECT COUNT(1) as nb FROM ".$core->prefix."votes");
+$nb_votes = $rs->nb;
+
+$rs = $core->con->select("SELECT COUNT(1) as nb FROM ".$core->prefix."user");
+$nb_users = $rs->nb;
+
+$rs = $core->con->select("SELECT COUNT(1) as nb FROM ".$core->prefix."feed");
+$nb_feeds = $rs->nb;
 
 include_once(dirname(__FILE__).'/head.php');
 include_once(dirname(__FILE__).'/sidebar.php');
@@ -150,7 +151,7 @@ if (function_exists('phpversion')){
 <div id="dashboard">
 	<div class="box-container-left">
 <?php
-echo showArticleSummary();
+echo showArticleSummary($core->con);
 ?>
 <p class="clear"/>
 	<div class="box-dashboard"><div class="top-box-dashboard"><?php echo T_('Statistics :');?></div>
@@ -163,14 +164,14 @@ else
 	echo '<li><div id="BP_stopupdate">'.T_('The update is stopped').'</div></li>';
 if (file_exists(dirname(__FILE__).'/../inc/STOP'))
 	echo '<li><div id="BP_disableupdate">'.T_('The update is disabled').'</div></li>';
-if (BP_INDEX_UPDATE == '1')
+if ($blog_settings->get('planet_index_update'))
 	echo '<li><div id="BP_index_update">'.T_('The update on loading of index page enabled').'</div></li>';
 ?>
 			<li><div id="BP_stats_db"><?php echo T_('Current size of the database :'); echo ' <strong>'.formatfilesize(get_database_size()).'</strong>';?></div></li>
-			<li><div id="BP_nb_articles"><?php echo T_('Number of articles in the DB :'); echo ' <strong>'.$nb_articles[0].'</strong>';?></div></li>
-			<li><div id="BP_nb_votes"><?php echo T_('Number of votes in the DB :'); echo ' <strong>'.$nb_votes[0].'</strong>';?></div></li>
-			<li><div id="BP_nb_members"><?php echo T_('Number of members in the DB :'); echo ' <strong>'.$nb_members[0].'</strong>';?></div></li>
-			<li><div id="BP_nb_feeds"><?php echo T_('Number of feeds in the DB :'); echo ' <strong>'.$nb_feeds[0].'</strong>';?></div></li>
+			<li><div id="BP_nb_articles"><?php echo T_('Number of articles in the DB :'); echo ' <strong>'.$nb_posts.'</strong>';?></div></li>
+			<li><div id="BP_nb_votes"><?php echo T_('Number of votes in the DB :'); echo ' <strong>'.$nb_votes.'</strong>';?></div></li>
+			<li><div id="BP_nb_members"><?php echo T_('Number of members in the DB :'); echo ' <strong>'.$nb_users.'</strong>';?></div></li>
+			<li><div id="BP_nb_feeds"><?php echo T_('Number of feeds in the DB :'); echo ' <strong>'.$nb_feeds.'</strong>';?></div></li>
 		</ul>
 		</div>
 	<p class="clear"/>
@@ -184,7 +185,7 @@ if (BP_INDEX_UPDATE == '1')
 			<li><div id="BP_system_mysql"><?php echo T_('MySQL version :'); echo ' <strong>'. $version_mysql .'</strong>';?></div></li>
 			<li><div id="BP_system_apache"><?php echo T_('Server :');  echo ' <strong>'. $_SERVER['SERVER_SOFTWARE'] .'</strong>';?></div></li>
 			<li><div id="BP_system_memory"><?php echo T_('Memory :');  echo ' <strong>'. @ini_get('memory_limit') .'</strong>';?></div></li>
-			<li><div id="BP_system_bilboplanet"><?php echo T_('Your BilboPlanet version :'); echo ' <strong>'. $planet_version .'</strong>';?></div></li>
+			<li><div id="BP_system_bilboplanet"><?php echo T_('Your BilboPlanet version :'); echo ' <strong>'. $blog_settings->get('planet_version') .'</strong>';?></div></li>
 		</ul>
 	</div>
 <p class="clear"/>
@@ -196,4 +197,10 @@ echo showBlogLastArticles();
 	</div>
 </fieldset>
 
-<?php include(dirname(__FILE__).'/footer.php'); ?>
+<?php
+include(dirname(__FILE__).'/footer.php');
+else:
+	$page_url = urlencode(http::getHost().$_SERVER['REQUEST_URI']);
+	http::redirect('auth.php?came_from='.$page_url);
+endif;
+?>

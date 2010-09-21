@@ -97,7 +97,7 @@ class http
 		}
 		
 		header('Location: '.$redir);
-		exit;
+		#exit;
 	}
 	
 	/**

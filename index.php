@@ -26,210 +26,200 @@
 ?>
 <?php
 # Inclusion des fonctions
-require_once(dirname(__FILE__).'/inc/i18n.php');
-require_once(dirname(__FILE__).'/inc/fonctions.php');
-# On active le cache
-debutCache();
+require_once(dirname(__FILE__).'/inc/prepend.php');
+include dirname(__FILE__).'/tpl.php';#
+header('Content-type: text/html; charset=utf-8');
 
 # Valeurs par defaut
-$num_page = 0;
 $num_start = 0;
-$num_membre = '';
-global $recherche;
-$recherche = '';
-$day = mktime(0, 0, 0, date("m",time()), date("d",time()), date("Y",time()));
-$week = $day - 3600*24*7;
-$month = $day - 3600*24*31;
-
-# Verification du contenu du get
-if (isset($_GET) && isset($_GET['page']) && is_numeric(trim($_GET['page']))) {
-	# On recuepre la valeur du get
-	$num_page = trim($_GET['page']);
-	if ($num_page < 1) {
-		$num_page = 0;
-	}
-	$num_start = $num_page * $nb_article;
-}
+$params = array();
 
 /* On recupere les infomations des articles */
-$debut_sql = "SELECT nom_membre, article_pub, article_titre, article_url, article_content, site_membre, num_article, article_score, email_membre, membre.num_membre
-	FROM article, membre
-	WHERE article.num_membre =  membre.num_membre
-	AND article_statut = '1'
-	AND statut_membre = '1'
-	AND article_score > $planet_votes_limite ";
-$fin_sql = " ORDER BY article_pub DESC
-	LIMIT $num_start,$nb_article";
+$debut_sql = "SELECT 
+		".$core->prefix."user.user_id		as user_id,
+		user_fullname	as user_fullname,
+		user_email		as user_email,
+		post_pubdate	as pubdate,
+		post_title		as title,
+		post_permalink	as permalink,
+		post_content	as content,
+		SUBSTRING(post_content,1,400) as short_content,
+		".$core->prefix."post.post_id		as post_id,
+		post_score		as score
+	FROM ".$core->prefix."post, ".$core->prefix."user
+	WHERE ".$core->prefix."user.user_id = ".$core->prefix."post.user_id
+	AND post_status = '1'
+	AND user_status = '1'
+	AND post_score > '".$blog_settings->get('planet_votes_limit')."'";
 
-if (isset($_GET) && isset($_GET['populaires']) && !empty($_GET['populaires'])) {
-	$populaires = $_GET['populaires'];
-	$debut_sql = "SELECT nom_membre, article_pub, article_titre, article_url, SUBSTRING(article_content,1,400), site_membre, num_article, article_score, email_membre, membre.num_membre
-		FROM article, membre
-		WHERE article.num_membre =  membre.num_membre
-		AND article_statut = '1'
-		AND statut_membre = '1'
-		AND article_score > '0'";
-	$fin_sql = " ORDER BY article_score DESC LIMIT 0,$nb_article";
-	if (isset($_GET) && !(isset($_GET['tri']) && !empty($_GET['tri']))) {
-		# On fonction du choix
-		switch($populaires) {
-			case "day"    : $debut_sql = $debut_sql." AND article_pub > ".$day; break;
-			case "week" : $debut_sql = $debut_sql." AND article_pub > ".$week; break;
-			case "month"    : $debut_sql = $debut_sql." AND article_pub > ".$month; break;
-			case "all"    : $debut_sql = $debut_sql; break;
-			default        : $debut_sql = $debut_sql." AND article_pub > ".$week; $tri="week"; break;
+# Verification du contenu du get
+if (isset($_GET)) {
+	if (isset($_GET['page']) && is_numeric(trim($_GET['page']))) {
+		# On recuepre la valeur du get
+		$params["page"] = trim($_GET['page']);
+		if ($params["page"] < 1) {
+			$params["page"] = 0;
+		}
+		$num_start = $params["page"] * $blog_settings->get('planet_nb_post');
+	}
+	# Si le lecteur a fait une recherche
+	if (isset($_GET['search']) && !empty($_GET['search'])){
+		$params["search"] = $_GET['search'];
+
+		# Complete the SQL query
+		$search_value = addslashes(trim($_GET['search']));
+		$debut_sql = $debut_sql." AND (".$core->prefix."post.post_title LIKE '%$search_value%'
+			OR ".$core->prefix."post.post_permalink LIKE '%$search_value%'
+			OR ".$core->prefix."post.post_content LIKE '%$search_value%'
+			OR ".$core->prefix."user.user_fullname LIKE '%$search_value%')";
+	}
+	# On recupere le numero du membre
+	if (isset($_GET['user_id']) && !empty($_GET['user_id'])){
+		$params["user_id"] = $_GET['user_id'];
+
+		# Complete the SQL query
+		$debut_sql = $debut_sql." AND ".$core->prefix."post.user_id = '".$params["user_id"]."'";
+	}
+	if (isset($_GET['popular']) && !empty($_GET['popular'])){
+		$params['popular'] = $_GET['popular'];
+	}
+
+	# If there is a filter call
+	if (isset($_GET['filter']) && !empty($_GET['filter']) && !isset($_GET['popular'])) {
+		$params["filter"] = trim($_GET['filter']);
+
+		# Complete the SQL query
+		$now = mktime(0, 0, 0, date("m",time()), date("d",time()), date("Y",time()));
+		$day = date('Y-m-d', $now).' 00:00:00';
+		$week = date('Y-m-d', $now - 3600*24*7).' 00:00:00';
+		$month = date('Y-m-d', $now - 3600*24*31).' 00:00:00';
+		$filter_class = array(
+			"day" => "",
+			"week" => "",
+			"month" => "");
+		switch($params["filter"]) {
+		case "day"		:
+			$filter_class["day"] = "selected";
+			$debut_sql = $debut_sql." AND post_pubdate > '".$day."'";
+			break;
+		case "week"		:
+			$filter_class["week"] = "selected";
+			$debut_sql = $debut_sql." AND post_pubdate > '".$week."'";
+			break;
+		case "month"	:
+			$filter_class["month"] = "selected";
+			$debut_sql = $debut_sql." AND post_pubdate > '".$month."'";
+			break;
+		default			:
+			$debut_sql = $debut_sql." AND post_pubdate > '".$week."'";
+			$params["filter"] = "week";
+			break;
 		}
 	}
 }
 
-# Si le lecteur a fait une recherche
-if (isset($_GET) && isset($_GET['search']) && !empty($_GET['search'])) {
-	# On recupere la chaine de recherche
-	$recherche = addslashes(trim($_GET['search']));
-	#$sql_search = "AND (article_titre LIKE '%$recherche%' OR article_url LIKE '%$recherche%' OR article_content LIKE '%$recherche%' OR site_membre LIKE '%$recherche%' OR nom_membre LIKE '%$recherche%')";
-	#$debut_sql = $debut_sql." ".$sql_search;
-	$debut_sql = "SELECT nom_membre, article_pub, article_titre, article_url, article_content,
-		site_membre, num_article,article_score, email_membre, membre.num_membre,
-		match(article_titre,article_content) against('".$recherche."') as relevance
-		FROM article, membre
-		WHERE article.num_membre =  membre.num_membre
-		AND article_statut = '1'
-		AND statut_membre = '1'
-		AND article_score > ".$planet_votes_limite."
-		AND (match(article_titre, article_content) against('".$recherche."'))";
-	$fin_sql = "ORDER BY relevance DESC
-		LIMIT 0,$nb_article";
+if (array_key_exists('popular', $params)){
+	# Complete the SQL query
+	$fin_sql = " ORDER BY post_score DESC LIMIT $num_start,".$blog_settings->get('planet_nb_post');
+}
+else {
+	$fin_sql = " ORDER BY post_pubdate DESC
+		LIMIT $num_start,".$blog_settings->get('planet_nb_post');
 }
 
-# On recupere le numero du membre
-if(isset($_GET) && isset($_GET['num_membre']) && is_numeric(trim($_GET['num_membre']))) {
-  # On recuepre la valeur du get
-  $num_membre = trim($_GET['num_membre']);
-  $sql_membre = "AND article.num_membre = '$num_membre'";
-  $debut_sql = $debut_sql." ".$sql_membre;
-}
-
-# On recupere la valeur du filtre
-if (isset($_GET) && isset($_GET['tri']) && !empty($_GET['tri']) && !isset($_GET['populaires'])) {
-	# On recupere la valeur du get
-	$tri = trim($_GET['tri']);
-	# On fonction du choix
-	switch($tri) {
-		case "day"    : $debut_sql = $debut_sql." AND article_pub > ".$day; break;
-		case "week" : $debut_sql = $debut_sql." AND article_pub > ".$week; break;
-		case "month"    : $debut_sql = $debut_sql." AND article_pub > ".$month; break;
-		default        : $debut_sql = $debut_sql." AND article_pub > ".$week; $tri="week"; break;
-	}
-}
-	
 # Terminaison de la commande SQL
 $sql = $debut_sql." ".$fin_sql;
 
-$params = "";
-if (isset($_GET) && isset($_GET['search']) && !empty($_GET['search'])){
-	$params = $params."search=".$_GET['search']."&";
+$page_url = '';
+foreach ($params as $key => $val) {
+	if ($key != "page") {
+		$page_url .= $key."=".$val."&";
+	}
 }
-if (isset($_GET) && isset($_GET['page']) && !empty($_GET['page'])){
-	$params = $params."page=".$_GET['page']."&";
+$filter_url = '';
+foreach ($params as $key => $val) {
+	if ($key != "page" && $key != "filter") {
+		$filter_url .= $key."=".$val."&";
+	}
 }
-if (isset($_GET) && isset($_GET['num_membre']) && !empty($_GET['num_membre'])){
-	$params = $params."num_membre=".$_GET['num_membre']."&";
-}
-if (isset($_GET) && isset($_GET['populaires']) && !empty($_GET['populaires'])){
-	$params = $params."populaires=".$_GET['populaires']."&";
-}
+$page_vars = array(
+	"next" => $params["page"]+1,
+	"prev" => $params["page"]-1,
+	"params" => $page_url
+);
+$core->tpl->setVar('search_value', $search_value);
+$core->tpl->setVar('params', $params);
+$core->tpl->setVar('page', $page_vars);
+$core->tpl->setVar('filter_url', $filter_url);
 
-include(dirname(__FILE__).'/head.php');
-?>
-<div id="centre">
-
-<?php
-include_once(dirname(__FILE__).'/sidebar.php');
-?>
-
-<div id="centre_centre">
-
-<?php
-# Si on veut afficher un message d'information generale
-
-connectBD();
-#Affichage de la barre de tri
-?>
-<div class="tri">
-<?php 
-if (isset($populaires)) {
-?>
-	<b><?php echo T_('Filter the posts :');?>&nbsp;&nbsp;&nbsp;&nbsp;</b>
-	<span <?php if(isset($populaires) && $populaires=="day") echo 'id="triSelected"'; ?>>
-		<a href="index.php?populaires=day"><?php echo T_('Posts of the day');?></a>
-	</span>&nbsp;&nbsp;-&nbsp;&nbsp;  
-	<span <?php if(isset($populaires) && $populaires=="week") echo 'id="triSelected"'; ?>>
-		<a href="index.php?populaires=week"><?php echo T_('Posts of the week');?></a>
-	</span>&nbsp;&nbsp;-&nbsp;&nbsp;
-	<span <?php if(isset($populaires) && $populaires=="month") echo 'id="triSelected"'; ?>>
-		<a href="index.php?populaires=month"><?php echo T_('Posts of the month');?></a>
-	</span>&nbsp;&nbsp;-&nbsp;&nbsp;
-	<span>
-		<a href="index.php?populaires=all"><?php echo T_('All posts');?></a>
-	</span>
-<?php
-}
-else {
-?>
-	<b><?php echo T_('Filter the posts :');?>&nbsp;&nbsp;&nbsp;&nbsp;</b>
-	<span <?php if(isset($tri) && $tri=="day") echo 'id="triSelected"'; ?>>
-		<a href="index.php?<?php echo $params."tri=day"; ?>"><?php echo T_('Posts of the day');?></a>
-	</span>&nbsp;&nbsp;-&nbsp;&nbsp;  
-	<span <?php if(isset($tri) && $tri=="week") echo 'id="triSelected"'; ?>>
-		<a href="index.php?<?php echo $params."tri=week"; ?>"><?php echo T_('Posts of the week');?></a>
-	</span>&nbsp;&nbsp;-&nbsp;&nbsp;
-	<span <?php if(isset($tri) && $tri=="month") echo 'id="triSelected"'; ?>>
-		<a href="index.php?<?php echo $params."tri=month"; ?>"><?php echo T_('Posts of the month');?></a>
-	</span>&nbsp;&nbsp;-&nbsp;&nbsp;
-	<span>
-		<a href="index.php?<?php echo $params; ?>"><?php echo T_('All posts');?></a>
-	</span>
-<?php
-}
-?>
-</div>
-<?php
-if (isset($_GET) && isset($_GET['search']) && !empty($_GET['search'])){
-?>
-<div class="search">
-<span class="searchText"><?php printf(T_('You are searching for all the posts with <span class="search">%s</span>'),$_GET['search'])?></span>
-</div>
-<?php
+$core->tpl->render('search.box');
+if (isset($_GET)) {
+	if (isset($_GET['filter']) && !empty($_GET['filter'])){
+		$core->tpl->setVar("filter", $filter_class);
+		$core->tpl->render('search.filter');
+	}
+	if (isset($_GET['user_id']) && !empty($_GET['user_id'])){
+		$core->tpl->render('search.user_id');
+	}
+	if (isset($_GET['popular']) && !empty($_GET['popular'])){
+		$core->tpl->render('search.popular');
+	}
+	if (isset($_GET['search']) && !empty($_GET['search'])){
+		$core->tpl->render('search.line');
+	}
 }
 
-# Affichage du sommaire
-afficheSommaireArticles($sql);
+# Executing sql querry
+$rs = $core->con->select($sql);
 
-# Navigation par pages
-$nb = mysql_num_rows(mysql_query(trim($sql)));
+#######################
+# RENDER FILTER MENU
+#######################
+$core->tpl->render('menu.filter');
 
-include(dirname(__FILE__).'/pagination.php');
+#######################
+# RENDER PAGINATION
+#######################
+if($params["page"] == 0) {
+	# if we are on the first page
+	$core->tpl->render('pagination.up.next');
+	$core->tpl->render('pagination.low.next');
+} else {
+	if(!$rs->count()) {
+		# if we are on the last page
+		$core->tpl->render('pagination.up.prev');
+		$core->tpl->render('pagination.low.prev');
+	} else {
+		$core->tpl->render('pagination.up.prev');
+		$core->tpl->render('pagination.up.next');
+		$core->tpl->render('pagination.low.prev');
+		$core->tpl->render('pagination.low.next');
+	}
+}
+
+######################
+# RENDER POST LIST
+######################
+$core->tpl = showPostsSummary($rs, $core->tpl);
 
 # Liste des articles
-if (isset($_GET) && isset($_GET['populaires']) && !empty($_GET['populaires']))
-	afficheListeArticles($sql, 1);
-else
-	afficheListeArticles($sql, 0, $recherche);
+if (isset($_GET) && isset($_GET['popular']) && !empty($_GET['popular'])) {
+	$core->tpl = showPosts($rs, $core->tpl, $search_value, true);
+}
+else {
+	$core->tpl = showPosts($rs, $core->tpl, $search_value, false);
+}
+$core->tpl->render("content.posts");
 
-# Navigation par pages
-include(dirname(__FILE__).'/pagination.php');
-include(dirname(__FILE__).'/footer.php');
+# Show result
+echo $core->tpl->render();
 
-# Fermeture de la base de donnees
-closeBD(); 
-
-# On termine le cache
-finCache();
-
-# Update algo
+##################
+# UPDATE ALGO
+##################
 $cron_file = dirname(__FILE__).'/inc/cron_running.txt';
 $dodo_interval = 250;
-if (!file_exists(dirname(__FILE__).'/STOP') && BP_INDEX_UPDATE == '1') {
+if (!file_exists(dirname(__FILE__).'/STOP') && $blog_settings->get('planet_index_update')) {
 	$fp = fopen($cron_file, "rb");
 	$contents = fread($fp, filesize($cron_file));
 	$next = (int) $contents + $dodo_interval;
@@ -241,8 +231,7 @@ if (!file_exists(dirname(__FILE__).'/STOP') && BP_INDEX_UPDATE == '1') {
 		}
 		fwrite($fp,time());
 		fclose($fp);
-		update();
+		update($core);
 	}
 }
-
 ?>

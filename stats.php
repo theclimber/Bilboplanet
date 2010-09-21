@@ -25,68 +25,84 @@
 ***** END LICENSE BLOCK *****/
 ?>
 <?php
-require_once(dirname(__FILE__).'/inc/i18n.php');
-require_once(dirname(__FILE__).'/inc/fonctions.php');
-include(dirname(__FILE__).'/head.php');
+# Fonction qui retourne le nom de domaine en fonction de l'url
+function domain($referer) {
+	# On recupere l'adresse sans le protocole
+	$referer_light = substr(strstr($referer, "://"), 3);
+	# Si il n' y a pas d'url, on retourne rien
+	if (empty($referer_light)) return "";
+	# On recharche si il y a une / dans l'url et si oui on retourne l'adresse jusqu'a ce caractere
+	if (($qm = strpos($referer_light, "/")) !== false) $referer_light = substr($referer_light, 0, $qm);
+	# On retourne le resultat
+	return $referer_light;
+}
 
-# On active le cache
-debutCache();
-
-# Connexion a la base de donnees
-
-?>
-<div id="centre">
-<?php
-include_once(dirname(__FILE__).'/sidebar.php');
-connectBD();
-$n_articles = getNbArticles();
-$n_votes = getNbVotes();
-?>
-
-<div id="centre_centre">
-<div id="template">
-
-<h2><?php echo T_('Main statistics');?></h2>
-<ul>
-<li><?php echo T_('Number of members : ').getNbMembres(); ?></li>
-<li><?php echo T_('Number of feeds : ').getNbFlux(); ?></li>
-<li><?php echo sprintf(T_('%d posts in here'),$n_articles); ?></li>
-<li><?php echo sprintf(T_('%d votes in total'),$n_votes);?></li>
-</ul>
-<?php
+require_once(dirname(__FILE__).'/inc/prepend.php');
+include dirname(__FILE__).'/tpl.php';#
+header('Content-type: text/html; charset=utf-8');
 
 # Nombre de ligne a afficher
 $nb = 15;
 
-echo "<br/><br/><h2>".sprintf(T_("List of the %d most active members"),$nb)."</h2>";
-echo "<table><tr class='table_th'><th>".T_("Name")."</th><th>".T_("Website")."</th><th>".T_("Qtity of posts")."</th></tr>";
-
-# On recupere la liste et on affiche
-$tab = getTopMembreArticles($nb);
-while ($liste = mysql_fetch_row($tab))
-	echo '<tr><td>'.$liste[0].'</td><td><a href="'.$liste[1].'" title="'.T_('Visit the website').'">
-		'.domaine($liste[1]).'</a></td><td>'.$liste[2].'</td></tr>';
-echo "</table>";
-
-if ($activate_votes) {
-	echo "<br/><br/><h2>".sprintf(T_("List of the %d best ranked members"),$nb)."</h2>";
-	echo "<table><tr class='table_th'><th>".T_('Name')."</th><th>".T_("Website")."</th><th>".T_('Total of votes')."</th></tr>";
-
-	# On recupere la liste et on affiche
-	$tab = getTopMembreVotes($nb);
-	while ($liste = mysql_fetch_row($tab))
-		echo '<tr><td>'.$liste[0].'</td><td><a href="'.$liste[1].'" title="'.T_('Visit the website').'">
-			'.domaine($liste[1]).'</a></td><td>'.$liste[2].'</td></tr>';
-	echo "</table>";
+$sql = "SELECT
+		".$core->prefix."user.user_id AS user_id,
+		user_fullname AS fullname,
+		site_url,
+		COUNT( post_id ) AS nb_post
+	FROM ".$core->prefix."post, ".$core->prefix."user, ".$core->prefix."site
+	WHERE
+		".$core->prefix."site.user_id = ".$core->prefix."user.user_id
+		AND ".$core->prefix."user.user_id = ".$core->prefix."post.user_id
+		AND user_status = 1
+	GROUP BY user_fullname
+	ORDER BY nb_post DESC
+	LIMIT 0,$nb";
+$rs = $core->con->select($sql);
+while ($rs->fetch()) {
+	$core->tpl->setVar("active", array(
+		"fullname" => $rs->fullname,
+		"site_url" => $rs->site_url,
+		"domain_url" => domain($rs->site_url),
+		"nb_post" => $rs->nb_post
+		));
+	$core->tpl->render('stats.main.line');
 }
-?>
-</div>
-<?php 
-closeBD();
-include(dirname(__FILE__).'/footer.php');
 
-# Fermeture de la base de donnees
+if ($blog_settings->get('planet_vote')) {
+	# On recupere la liste et on affiche
+	$sql = "SELECT
+			".$core->prefix."user.user_id as user_id,
+			user_fullname as fullname,
+			site_url,
+			SUM(post_score) AS score
+		FROM ".$core->prefix."post, ".$core->prefix."user, ".$core->prefix."site 
+		WHERE
+			".$core->prefix."site.user_id = ".$core->prefix."user.user_id
+			AND ".$core->prefix."user.user_id = ".$core->prefix."post.user_id
+			AND user_status = 1
+		GROUP BY user_fullname
+		ORDER BY score DESC
+		LIMIT 0,$nb";
+	$rs = $core->con->select($sql);
 
-# On termine le cache
-finCache();
+	while ($rs->fetch()){
+		$core->tpl->setVar("votes", array(
+			"fullname" => $rs->fullname,
+			"site_url" => $rs->site_url,
+			"domain_url" => domain($rs->site_url),
+			"score" => $rs->score));
+		$core->tpl->render('stats.votes.line');
+	}
+
+	$core->tpl->render('stats.votes');
+}
+
+$core->tpl->setVar('nb', array(
+	"nb_users" => getNbUsers($core->con),
+	"nb_feeds" => getNbFeeds($core->con),
+	"nb_posts" => getNbPosts($core->con),
+	"nb_votes" => getNbVotes($core->con)
+));
+$core->tpl->render('content.stats');
+echo $core->tpl->render();
 ?>

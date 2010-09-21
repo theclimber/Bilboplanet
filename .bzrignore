@@ -4,5 +4,3 @@ inc/update.txt
 admin/cache/*
 admin/mysql/snapshot/*
 logs/*
-.protected
-admin/.htaccess

@@ -24,7 +24,7 @@
 ***** END LICENSE BLOCK *****/
 
 body {
-margin: 20px auto;
+margin: 0 auto;
 font-family: "Lucida Grande", Verdana, Arial, "Bitstream Vera Sans", sans-serif;
 background-color:#E7E7E7;
 color:#3a3a3a;
@@ -75,7 +75,7 @@ border-left:1px solid #AFAFAF;
 border-right:1px solid #AFAFAF;
 border-top:1px solid #AFAFAF;
 margin:17px auto;
-padding:10px 20px 40px 20px;
+padding:10px 20px 60px 20px;
 width:700px;
 -moz-border-radius: 3px;
 -khtml-border-radius: 3px;
@@ -91,11 +91,12 @@ background-color:#E1E1E1 ;
 -khtml-border-radius:6px ;
 -o-border-radius:6px ;
 padding:3px 10px 4px 12px;
-width:50px;
+width:60px;
 float:right;
 margin-right:10px;
 margin-top:10px;
 }
+
 .save {
 border:1px solid #A1A1A1;
 background-color:#E1E1E1 ;
@@ -145,4 +146,8 @@ span.description {
 	margin-top: 10px;
 	margin-left: 15px;
 	border: 1px solid #B3B3B3;
+}
+.red {
+font-weight: bold;
+color:red;
 }

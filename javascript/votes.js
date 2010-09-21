@@ -2,7 +2,7 @@
 function vote(num_article, token, type) {
   $.ajax({
   type: "POST",
-  url: "votes.php",
+  url: "api/votes.php",
   data: "num_article=" + num_article + "&token=" + token + "&type=" + type,
   success: function(msg){
     if(type == "positif") {

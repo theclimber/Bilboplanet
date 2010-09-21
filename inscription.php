@@ -25,10 +25,13 @@
 ***** END LICENSE BLOCK *****/
 ?>
 <?php
-require_once(dirname(__FILE__).'/inc/i18n.php');
-require_once(dirname(__FILE__).'/inc/fonctions.php');
+require_once(dirname(__FILE__).'/inc/prepend.php');
+$scripts = array();
+$scripts[] = "javascript/functions.js";
+include dirname(__FILE__).'/tpl.php';#
+header('Content-type: text/html; charset=utf-8');
+	
 $flash='';
-global $error;
 session_start();
 if(isset($_POST) && isset($_POST['submit'])){
 	require_once(dirname(__FILE__).'/inc/lib/recaptchalib.php');
@@ -40,30 +43,31 @@ if(isset($_POST) && isset($_POST['submit'])){
 		$_POST["recaptcha_response_field"]);
 
 	# On recupere les infos
-	$nom = check_field('nom',trim($_POST['nom']),'not_empty');
-	$prenom = check_field('prenom',trim($_POST['prenom']),'',false);
-	$mail = check_field('email',trim($_POST['email']),'email');
+	$user_id = check_field('user_id',trim($_POST['user_id']),'not_empty');
+	$fullname = check_field('fullname',trim($_POST['fullname']),'',false);
+	$email = check_field('email',trim($_POST['email']),'email');
 	$url = check_field('url',trim($_POST['url']),'url');
-	$rss = check_field('flux',trim($_POST['rss']),'feed');
-	$choix = check_field('choix',trim($_POST['choix']),'not_empty');
+	$feed = check_field('flux',trim($_POST['feed']),'feed');
+	$choice = check_field('choice',trim($_POST['choice']),'not_empty');
 	if (!$captcha->is_valid) {
 		$flash = array('type' => 'error', 'msg' => sprintf(T_("The reCAPTCHA wasn't entered correctly. Go back and try it again. (reCAPTCHA said: %s)"),$captcha->error));
 	} else {
-		$ip     = getIP();
+		$ip = getIP();
 
-		if ($nom['success'] && $prenom['success'] && $mail['success'] && $url['success'] && $rss['success'] && $choix['success']){
-			# Construction du mail
-			$objet = $planet_title." - ".$choix['value'];
-			$msg = T_("Name : ").$nom['value'];
-			$msg .= "\n".T_("Firstname : ").$prenom['value'];
-			$msg .= "\n".T_("Email : ").$mail['value'];
+		if ($user_id['success'] && $fullname['success'] && $email['success'] && $url['success'] && $feed['success'] && $choice['success']){
+			# Construction du email
+			#$objet = $blog_settings->get('planet_title')." - ".$choice['value'];
+			$objet = $choice['value'];
+			$msg = T_("Name : ").$user_id['value'];
+			$msg .= "\n".T_("Firstname : ").$fullname['value'];
+			$msg .= "\n".T_("Email : ").$email['value'];
 			$msg .= "\n".T_("Website : ").$url['value'];
-			$msg .= "\n".T_("Feed : ").$rss['value'];
-			$msg .= "\n".T_("Choice : ").$choix['value'];
+			$msg .= "\n".T_("Feed : ").$feed['value'];
+			$msg .= "\n".T_("Choice : ").$choice['value'];
 			$msg .= "\nIP : $ip";
 
-			# Envoi du mail
-			$envoi = mail($planet_author_mail, $objet, $msg,"From: ".$mail['value']."\r\nReply-To: ".$mail['value']."\r\n");
+			# Envoi du email
+			$envoi = sendmail($email['value'], $blog_settings->get('author_mail'), $objet, $msg);
 
 			# Message d'information
 			if($envoi) {
@@ -73,146 +77,75 @@ if(isset($_POST) && isset($_POST['submit'])){
 			}
 		}
 		else {
-			if(!$nom['success']){
-				$flash = array('type' => 'error', 'msg' => $nom['error']);
-				$error['nom']=true;
+			if(!$user_id['success']){
+				$flash = array('type' => 'error', 'msg' => $user_id['error']);
 			}
-			if(!$prenom['success']){
-				$flash = array('type' => 'error', 'msg' => $prenom['error']);
-				$error['prenom']=true;
+			if(!$fullname['success']){
+				$flash = array('type' => 'error', 'msg' => $fullname['error']);
 			}
-			if(!$mail['success']){
-				$flash = array('type' => 'error', 'msg' => $mail['error']);
-				$error['email']=true;
+			if(!$email['success']){
+				$flash = array('type' => 'error', 'msg' => $email['error']);
 			}
 			if(!$url['success']){
 				$flash = array('type' => 'error', 'msg' => $url['error']);
-				$error['site']=true;
 			}
-			if(!$rss['success']){
-				$flash = array('type' => 'error', 'msg' => $rss['error']);
-				$error['flux']=true;
+			if(!$feed['success']){
+				$flash = array('type' => 'error', 'msg' => $feed['error']);
 			}
-			if(!$choix['success']){
-				$flash = array('type' => 'error', 'msg' => $choix['error']);
+			if(!$choice['success']){
+				$flash = array('type' => 'error', 'msg' => $choice['error']);
 			}
 		}
 	}
 }
-function error_bool($error, $field) {
-	if($error[$field])
-		print("<td class='error'>");
-	else
-		print("<td>");
+
+if(!$blog_settings->get('planet_subscription')) {
+	$content = "<img src=\"themes/".$blog_settings->get('planet_theme')."/images/closed.png\" />";
+	$core->tpl->setVar('html', $content);
+	$core->tpl->render('content.html');
+	echo $core->tpl->render();
+	exit;
 }
+else {
+	if (!empty($flash)) {
+		$msg = '<div class="flash '.$flash['type'].'">'.$flash['msg'].'</div>';
+		$msg .= "<div class='informations'><h2 class='informations'>".T_("In case of problem")."</h2>";
+		$msg .= "<p>".sprintf(T_("If you don't recieve any new from the administration team in the 5 days do not hesitate to contact us via %s with this information :"),$blog_settings->get('planet_mail'))."<br /><ul>";
+		$msg .= "<li><b>".T_("Subject")."</b> : ".$blog_settings->get('planet_title') ." - ".$choice['value']."</li>";
+		$msg .= "<li><b>".T_("Username")."</b> : ".$user_id['value']."</li>";
+		$msg .= "<li><b>".T_("Fullname")."</b> : ".$fullname['value']."</li>";
+		$msg .= "<li><b>".T_("Email")."</b> : ".$email['value']."</li>";
+		$msg .= "<li><b>".T_("Website")."</b> : ".$url['value']."</li>";
+		$msg .= "<li><b>".T_("Feed")."</b> : ".$feed['value']."</li>";
+		$msg .= "<li><b>".T_("Choice")."</b> : ".$choice['value']."</li>";
+		$msg .= "</ul></p></div>";
+		$core->tpl->setVar('flashmsg', $msg);
+		$core->tpl->render('subscription.flash');
+	}
 
-include('head.php');
-debutCache();
-?>
+	$content = html_entity_decode(stripslashes($blog_settings->get('planet_subscription_content')), ENT_QUOTES, 'UTF-8');
 
-<div id="centre">
+	require_once(dirname(__FILE__).'/inc/lib/recaptchalib.php');
+	$publickey = "6LdEeQgAAAAAACLccbiO8TNaptSmepfMFEDL3hj2";
+	$captcha_html = recaptcha_get_html($publickey);
 
-<?php
-include_once('sidebar.php');
-?>
+	$form_values = array(
+		"user_id" => "",
+		"fullname" => "",
+		"email" => "",
+		"url" => "",
+		"feed" => "",
+	);
+	if($user_id)	$form_values["user_id"] = $user_id['value'];
+	if($fullname)	$form_values["fullname"] = $fullname['value'];
+	if($email)	$form_values["email"] = $email['value'];
+	if($url)	$form_values["url"] = $url['value'];
+	if($feed)	$form_values["feed"] = $feed['value'];
 
-<div id="centre_centre">
-<div id="template">
-<div class="post_small">
-<?php 
-if (!empty($flash)) {
-	echo '<div class="flash'.$flash['type'].'">'.$flash['msg'].'</div>';
-	echo "<div class='informations'><h2 class='informations'>".T_("In case of problem")."</h2>";
-	echo "<p>".sprintf(T_("If you don't recieve any new from the administration team in the 5 days do not hesitate to contact us via %s with this information :"),$planet_author_mail)."<br /><ul>";
-	echo "<li><b>".T_("Subject")."</b> : $planet_title - ".$choix['value']."</li>";
-	echo "<li><b>".T_("Name")."</b> : ".$nom['value']."</li>";
-	echo "<li><b>".T_("Firstname")."</b> : ".$prenom['value']."</li>";
-	echo "<li><b>".T_("Email")."</b> : ".$mail['value']."</li>";
-	echo "<li><b>".T_("Website")."</b> : ".$url['value']."</li>";
-	echo "<li><b>".T_("Feed")."</b> : ".$rss['value']."</li>";
-	echo "<li><b>".T_("Choice")."</b> : ".$choix['value']."</li>";
-	echo "</ul></p></div>";
+	$core->tpl->setVar('form', $form_values);
+	$core->tpl->setVar('subscription_content', $content);
+	$core->tpl->setVar('captcha_html', $captcha_html);
+	$core->tpl->render('content.subscription');
+	echo $core->tpl->render();
 }
-?>
-
-<?php
-$file=dirname(__FILE__).'/inscription_contenu.php';
-$content = file_get_contents($file);
-echo stripslashes($content);
-?>
-
-<h2><?php echo T_('Test your feeds');?></h2>
-
-<p><?php echo T_("Before to subscribe, do not hesitate to test your RSS/Atom feeds to be sure they'll be well interpretated by the planet aggregator engine which is using the <a href='http://simplepie.org/' title='Simple Pie' rel='noffolow'>Simple Pie</a> library (distributed under the LGPL licecne). Check also if your feeds are perfectly valid on <a href='http://feedvalidator.org/check.cgi' target='_blank'>Feedvalidator</a> and correct them if needed. Otherwise you could have some problems using them.");?>
-<br/>
-<?php echo T_("You can test the simplepie engine on the following page :");?><br/>
-<a href="http://simplepie.org/demo/" title="test" rel="nofollow">http://simplepie.org/demo/</a>
-
-
-<h2><?php echo T_('Subscribe / Unsubscribe');?></h2>
-<p><?php echo T_('To add or remove your website from the planet, just fill this form in :');?></p>
-
-<form method="post">
-<table border="0" width="600">
-	<tr>
-	<?php error_bool($error, "nom"); ?><?php echo T_('Name or nicknname');?></td>
-		<td><input type="text" name="nom" value="<?php if($nom) echo $nom['value']; ?>" /></td>
-	</tr>
-	<tr>
-	<?php error_bool($error, "prenom"); ?><?php echo T_('Firstname (optional)');?></td>
-		<td><input type="text" name="prenom" value="<?php if($prenom) echo $prenom['value']; ?>" /></td>
-	</tr>
-	<tr>
-	<?php error_bool($error, "email"); ?><?php echo T_('Contact email');?></td>
-		<td><input type="text" name="email" value="<?php if($mail) echo $mail['value']; ?>" /></td>
-	</tr>
-	<tr>
-	<?php error_bool($error, "site"); ?><?php echo T_('Website URL');?></td>
-		<td><input type="text" name="url" value="<?php if($url) echo $url['value']; ?>" /></td>
-	</tr>
-	<tr>
-	<?php error_bool($error, "flux"); ?><?php echo T_('Feed URL (this can be a tag or category specific feed feed too)');?></td>
-		<td><input type="text" name="rss" value="<?php if($rss) echo $rss['value']; ?>" /></td>
-	</tr>
-	<tr>
-	<td colspan="2"><br/><input type="radio" name="choix" value="abonnement" checked /> <?php echo T_('Subscribe');?></td>
-	</tr>
-	<tr>
-	<td colspan="2"><input type="radio" name="choix" value="desabonnement" /> <?php echo T_('Unsubscribe');?></td>
-	</tr>
-	<tr>
-	<?php error_bool($error, "captcha"); ?><?php echo T_('Please fill in the captcha');?></td>
-		<td >
-<?php
-require_once(dirname(__FILE__).'/inc/lib/recaptchalib.php');
-$publickey = "6LdEeQgAAAAAACLccbiO8TNaptSmepfMFEDL3hj2";
-echo recaptcha_get_html($publickey);
-?>
-		</td>
-	</tr>
-	<tr>
-		<td colspan="2"><input type="checkbox" name="ok" value="" />
-		<?php echo T_('I have read and accept the charter');?></td>
-	</tr>
-	<tr>
-		<td  colspan="2" align="center"><br/>
-		<input type="reset" value="<?php echo T_('Reset');?>" onclick="this.form.reset()">&nbsp;&nbsp;
-		<input type="submit" value="<?php echo T_('Send');?>" name="submit"></td>
-	</tr>
-</table>
-</form>
-</div>
-
-<div class="post_small">
-<h2><?php echo T_('Contact us');?></h2>
-
-<p><?php echo T_("If you need to contact the administration team for any reason (change of your feed URL, suggestion ...), you can do it by <a href='contact.php'>clicking here</a>.");?>
-</p>
-</div>
-
-</div>
-<script type="text/javascript" src="javascript/functions.js"></script>
-<?php 
-include(dirname(__FILE__).'/footer.php');
-finCache();
 ?>

@@ -54,7 +54,7 @@
 				<h2><a href="{$post.permalink}" title="{_Visit source}">{$post.title}</a></h2>
 			</div>
 			<!-- BEGIN post.block.votes -->
-			<div class="votes"></div>
+			<div class="votes">{$votes.html}</div>
 			<!-- END post.block.votes -->
 			<div class="post_description">
 				<h3>{$post.description}</h3>

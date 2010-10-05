@@ -183,7 +183,8 @@ function showPosts($rs, $tpl, $search_value="", $strip_tags=false) {
 			$tpl->render('post.block.gravatar');
 		}
 		if ($blog_settings->get('planet_vote')) {
-			$votes_HTML = afficheVotes($rs->score, $rs->post_id);
+			$votes = array("html" => afficheVotes($rs->score, $rs->post_id));
+			$tpl->setVar('votes', $votes);
 			$tpl->render('post.block.votes');
 		}
 		if($strip_tags) {

@@ -33,7 +33,7 @@ function finished() {
 }
 
 function update($core, $print=false) {
-	global $log;
+	global $log, $blog_settings;
 	$cron_file = dirname(__FILE__).'/cron_running.txt';
 	$output = "";
 
@@ -50,7 +50,8 @@ function update($core, $print=false) {
 			feed_id,
 			feed_url,
 			site_url,
-			feed_trust
+			feed_trust,
+			feed_checked
 		FROM ".$core->prefix."feed, ".$core->prefix."site, ".$core->prefix."user
 		WHERE
 			".$core->prefix."feed.site_id = ".$core->prefix."site.site_id
@@ -78,11 +79,6 @@ function update($core, $print=false) {
 			break;
 		}
 
-		$cur = $core->con->openCursor($core->prefix.'feed');
-		$cur->feed_checked = array('NOW()');
-		$cur->modified = array('NOW()');
-		$cur->update("WHERE feed_id = '$rs->feed_id'");
-		
 		# Si on est en mode debug
 		if($log == "debug") {
 			$log_msg = logMsg("Analyse du flux ".$rs->feed_url, $file, 4, $print);
@@ -247,10 +243,26 @@ function update($core, $print=false) {
 			} # fin du foreach
 			# On fait un reset du foreach
 			reset($items);
+
+			# Le flux a ete mis a jour, on le marque a la derniere date
+			$cur = $core->con->openCursor($core->prefix.'feed');
+			$cur->feed_checked = array('NOW()');
+			$cur->update("WHERE feed_id = '$rs->feed_id'");
 		} # fin $feed->error()
 		$feed->__destruct();
 		# Destruction de l'objet feed avant de passer a un autre
 		unset($feed);
+
+		if ($blog_settings->get('auto_feed_disabling')) {
+			$toolong = time() - 86400*5; # five days ago
+			if (mysqldatetime_to_timestamp($rs->feed_checked) < $toolong) {
+				# if feed was in error for too long, let's disable it
+				$cur = $core->con->openCursor($core->prefix.'feed');
+				$cur->feed_status = 2;
+				$cur->update("WHERE feed_id = '$rs->feed_id'");
+			}
+		}
+
 	} # fin du while
 
 	# Duree de la mise a jour

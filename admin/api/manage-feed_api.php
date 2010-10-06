@@ -233,15 +233,43 @@ if(isset($_POST['action'])) {
 		break;
 
 ##########################################################
+# GET FILTERED FEED LIST
+##########################################################
+	case 'filter':
+		$user_id = trim($_POST['user_id']);
+		$feed_status = trim($_POST['feed_status']);
+		$sql_cond = '';
+		if ($user_id != 'all') {
+			$sql_cond .= ' AND '.$core->prefix.'feed.user_id=\''.$user_id.'\'';
+		}
+		if ($feed_status != 'all') {
+			$sql_cond .= ' AND '.$core->prefix.'feed.feed_status='.$feed_status;
+		}
+		# On recupere les informtions sur les membres
+		$sql = 'SELECT
+			feed_id,
+			'.$core->prefix.'feed.user_id as user_id,
+			site_url,
+			site_name,
+			feed_name,
+			feed_url,
+			feed_status,
+			feed_trust
+			FROM '.$core->prefix.'feed, '.$core->prefix.'site
+			WHERE '.$core->prefix.'feed.site_id = '.$core->prefix.'site.site_id'.
+			$sql_cond.' 
+			ORDER by '.$core->prefix.'feed.user_id ASC';
+
+		print getOutput($sql);
+		break;
+
+##########################################################
 # GET FEED LIST
 ##########################################################
 	case 'list':
 		$num_page = !empty($_POST['num_page']) ? $_POST['num_page'] : 0;
 		$nb_items = !empty($_POST['nb_items']) ? $_POST['nb_items'] : 30;
 		$num_start = $num_page * $nb_items;
-
-		$next_page = $num_page + 1;
-		$prev_page = $num_page - 1;
 
 		# On recupere les informtions sur les membres
 		$sql = 'SELECT
@@ -257,84 +285,9 @@ if(isset($_POST['action'])) {
 			WHERE '.$core->prefix.'feed.site_id = '.$core->prefix.'site.site_id
 			ORDER by '.$core->prefix.'feed.user_id
 			ASC LIMIT '.$num_start.','.$nb_items;
-		$rs = $core->con->select($sql);
-		$nb = $rs->count();
 
-		$output .= '<div class="navigation">';
-		if ($prev_page >= 0) {
-			$output .= '<a href="#" onclick="javascript:updateUserList(\''.$prev_page.'\', \''.$nb_items.'\')"
-				class="page_prc">&laquo; '.T_('Previous page').'</a>';
-		}
-		if ($nb >= $next_page * $nb_items) {
-			$output .= '<a href="#" onclick="javascript:updateUserList(\''.$next_page.'\', \''.$nb_items.'\')"
-				class="page_svt">'.T_('Next Page').' &raquo;</a>';
-		}
-		$output .= '</div><!-- fin pagination -->';
-
-		$output .= '
-<br />
-<table id="feedlist" class="table-member">
-<thead>
-		<tr>
-			<th class="tc7 tcr" scope="col">'.T_('User').'</th>
-			<th class="tc9 tcr" scope="col">'.T_('Website(s) user Informations').'</th>
-			<th class="tc8 tcr" scope="col">'.T_('Feed').'</th>
-			<th class="tc10 tcr" scope="col">'.T_('Action').'</th>
-		</tr>
-</thead>'
-;
-		# On affiche la liste de membres
-		while($rs->fetch()) {
-
-			if($rs->feed_status) {
-				$status = 'active';
-				$toggle_status = 'disable';
-				$toggle_msg = T_('Disable feed');
-			} else {
-				$status = 'inactive';
-				$toggle_status = 'enable';
-				$toggle_msg = T_('Enable feed');
-			}
-			
-			if($rs->feed_trust) {
-				$toggle_trust = 'untrust';
-				$trust_msg = T_('Untrust this feed');
-			} else {
-				$toggle_trust = 'trust';
-				$trust_msg = T_('Trust this feed');
-			}
-
-			$user = $core->con->select("SELECT user_email FROM ".$core->prefix."user WHERE user_id = '".$rs->user_id."'");
-			$gravatar_email = strtolower($user->f('user_email'));
-			$gravatar_url = "http://www.gravatar.com/avatar.php?gravatar_id=".md5($gravatar_email)."&default=".urlencode($blog_settings->get('planet_url')."/themes/".$blog_settings->get('planet_theme')."/images/gravatar.png")."&size=40";
-
-			# Affichage de la ligne de tableau
-			$output .= '<tr class="line '.$status.'"><td><img src="'.$gravatar_url.'" /><br />'.$rs->user_id.'</td>
-				<td><ul>
-					<li>'.T_('Feed name : ').$rs->feed_name.'</li>
-					<li>'.T_('Site URL : ').'<a href="'.$rs->site_url.'" target="_blank">'.$rs->site_url.'</a></li>
-				</ul></div></td>';
-			$output .= '<td>';
-			$output .=  '<a href="'.$rs->feed_url.'" target="_blank">'.$rs->feed_url.'</a></td>';
-			$output .= '<td style="text-align: center;">';
-
-			if ($blog_settings->get('planet_moderation')) {
-				$output .= '<a href="#" onclick="javascript:toggleFeedTrust(\''.$rs->feed_id.'\', \''.$num_page.'\', \''.$nb_items.'\')">
-					<img src="meta/icons/action-'.$toggle_trust.'.png" title="'.$trust_msg.'" /></a>';
-			}
-			$output .= '<a href="#" onclick="javascript:toggleFeedStatus(\''.$rs->feed_id.'\', \''.$num_page.'\', \''.$nb_items.'\')">
-					<img src="meta/icons/action-'.$toggle_status.'.png" title="'.$toggle_msg.'" /></a>
-				<a href="#" onclick="javascript:edit(\''.$rs->feed_id.'\', \''.$num_page.'\', \''.$nb_items.'\')">
-					<img src="meta/icons/action-edit.png" title="'.T_('Update').'" /></a>
-				<a href="#" onclick="javascript:removeFeed(\''.$rs->feed_id.'\', \''.$num_page.'\', \''.$nb_items.'\')">
-					<img src="meta/icons/action-remove.png" title="'.T_('Delete').'" /></a>
-				</td></tr>';
-		}
-		$output .= '</table>';
-
-		print $output;
+		print getOutput($sql, $num_page, $nb_items);
 		break;
-
 
 	default:
 		print '<div class="flash error">'.T_('User bad call').'</div>';
@@ -342,5 +295,91 @@ if(isset($_POST['action'])) {
 	}
 } else {
 	print 'forbidden';
+}
+
+function getOutput($sql, $num_page=0, $nb_items=30) {
+	global $blog_settings, $core;
+	$next_page = $num_page + 1;
+	$prev_page = $num_page - 1;
+
+	$rs = $core->con->select($sql);
+	$nb = $rs->count();
+
+	$output .= '<div class="navigation">';
+	if ($prev_page >= 0) {
+		$output .= '<a href="#" onclick="javascript:updateUserList(\''.$prev_page.'\', \''.$nb_items.'\')"
+			class="page_prc">&laquo; '.T_('Previous page').'</a>';
+	}
+	if ($nb >= $next_page * $nb_items) {
+		$output .= '<a href="#" onclick="javascript:updateUserList(\''.$next_page.'\', \''.$nb_items.'\')"
+			class="page_svt">'.T_('Next Page').' &raquo;</a>';
+	}
+	$output .= '</div><!-- fin pagination -->';
+
+	$output .= '
+<br />
+<table id="feedlist" class="table-member">
+<thead>
+	<tr>
+		<th class="tc7 tcr" scope="col">'.T_('User').'</th>
+		<th class="tc9 tcr" scope="col">'.T_('Website(s) user Informations').'</th>
+		<th class="tc8 tcr" scope="col">'.T_('Feed').'</th>
+		<th class="tc10 tcr" scope="col">'.T_('Action').'</th>
+	</tr>
+</thead>'
+;
+	# On affiche la liste de membres
+	while($rs->fetch()) {
+
+		if($rs->feed_status == 1) {
+			$status = 'active';
+			$toggle_status = 'disable';
+			$toggle_msg = T_('Disable feed');
+		} elseif ($rs->feed_status == 2) {
+			$status = 'auto-disabled';
+			$toggle_status = 'enable';
+			$toggle_msg = T_('Enable feed');
+		} else {
+			$status = 'inactive';
+			$toggle_status = 'enable';
+			$toggle_msg = T_('Enable feed');
+		}
+		
+		if($rs->feed_trust) {
+			$toggle_trust = 'untrust';
+			$trust_msg = T_('Untrust this feed');
+		} else {
+			$toggle_trust = 'trust';
+			$trust_msg = T_('Trust this feed');
+		}
+
+		$user = $core->con->select("SELECT user_email FROM ".$core->prefix."user WHERE user_id = '".$rs->user_id."'");
+		$gravatar_email = strtolower($user->f('user_email'));
+		$gravatar_url = "http://www.gravatar.com/avatar.php?gravatar_id=".md5($gravatar_email)."&default=".urlencode($blog_settings->get('planet_url')."/themes/".$blog_settings->get('planet_theme')."/images/gravatar.png")."&size=40";
+
+		# Affichage de la ligne de tableau
+		$output .= '<tr class="line '.$status.'"><td><img src="'.$gravatar_url.'" /><br />'.$rs->user_id.'</td>
+			<td><ul>
+				<li>'.T_('Feed name : ').$rs->feed_name.'</li>
+				<li>'.T_('Site URL : ').'<a href="'.$rs->site_url.'" target="_blank">'.$rs->site_url.'</a></li>
+			</ul></div></td>';
+		$output .= '<td>';
+		$output .=  '<a href="'.$rs->feed_url.'" target="_blank">'.$rs->feed_url.'</a></td>';
+		$output .= '<td style="text-align: center;">';
+
+		if ($blog_settings->get('planet_moderation')) {
+			$output .= '<a href="#" onclick="javascript:toggleFeedTrust(\''.$rs->feed_id.'\', \''.$num_page.'\', \''.$nb_items.'\')">
+				<img src="meta/icons/action-'.$toggle_trust.'.png" title="'.$trust_msg.'" /></a>';
+		}
+		$output .= '<a href="#" onclick="javascript:toggleFeedStatus(\''.$rs->feed_id.'\', \''.$num_page.'\', \''.$nb_items.'\')">
+				<img src="meta/icons/action-'.$toggle_status.'.png" title="'.$toggle_msg.'" /></a>
+			<a href="#" onclick="javascript:edit(\''.$rs->feed_id.'\', \''.$num_page.'\', \''.$nb_items.'\')">
+				<img src="meta/icons/action-edit.png" title="'.T_('Update').'" /></a>
+			<a href="#" onclick="javascript:removeFeed(\''.$rs->feed_id.'\', \''.$num_page.'\', \''.$nb_items.'\')">
+				<img src="meta/icons/action-remove.png" title="'.T_('Delete').'" /></a>
+			</td></tr>';
+	}
+	$output .= '</table>';
+	return $output;
 }
 ?>

@@ -47,7 +47,54 @@ include_once(dirname(__FILE__).'/sidebar.php');
 
 <div class="button br3px" id="add-form"><a onclick="jQuery('#addfeed-field').css('display', '')">
 	<?php echo T_('Add a feed'); ?></a>
+</div>
+<div class="button br3px" id="filter-form"><a onclick="jQuery('#filterfeed-field').css('display', '')">
+	<?php echo T_('Filter feedlist'); ?></a>
 </div></p>
+</p>
+
+
+<fieldset id="filterfeed-field" style="display:none"><legend><?php echo T_('Filter');?></legend>
+	<br/>
+
+<?php
+
+# Traitement de la liste
+$rs = $core->con->select('SELECT DISTINCT
+		'.$core->prefix.'user.user_id,
+		user_fullname
+	FROM '.$core->prefix.'user, '.$core->prefix.'feed
+	WHERE '.$core->prefix.'feed.user_id = '.$core->prefix.'user.user_id
+	ORDER BY user_fullname ASC;');
+$users = array();
+$users['-- '.T_('All').' --'] = 'all';
+while($rs->fetch()) {
+	$users["$rs->user_fullname"] = $rs->user_id;
+}
+
+$status = array();
+$status['-- '.T_('All').' --'] = "all";
+$status[T_('Active feeds')] = 1;
+$status[T_('Inactive feeds')] = 0;
+if ($blog_settings->get('auto_feed_disabling')){
+	$status[T_('Auto disabled feeds')] = 2;
+}
+echo
+'<form id="filterfeed_form">'.
+
+'<label class="required" for="user_id">'.T_('User id').' : '.
+form::combo('user_id',$users,'', 'input','','').'</label><br /><br />'.
+
+'<label class="required" for="feed_status">'.T_('Feed status').' : '.
+form::combo('feed_status',$status,'', 'input','','').'</label><br /><br />';
+
+echo 
+'<div class="button br3px"><input type="submit" name="filter_feed" class="valide" value="'.T_('Filter').'" /></div>'.
+'<div class="button br3px close-button"><a class="close" onclick="jQuery(\'#filterfeed-field\').css(\'display\', \'none\');updateFeedList(0, 30)">'.T_('Close').'</a></div>'.
+'</form>';
+?>
+</fieldset>
+
 
 <fieldset id="addfeed-field" style="display:none"><legend><?php echo T_('Add a feed');?></legend>
 	<div class="message">

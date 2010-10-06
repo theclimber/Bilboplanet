@@ -231,7 +231,7 @@ function afficheVotes($nb_votes, $num_article) {
 		$score = 0;
 
 	# Bouton de vote
-	$text =  '<div class="votes">';
+	$text =  '';
 	if (checkVote($core->con, getIP(), $num_article)) {
 
 		# Si le visiteur a deja vote
@@ -263,7 +263,6 @@ function afficheVotes($nb_votes, $num_article) {
 		}
 		$text .= "</span>";
 	}
-	$text .= "</div><!-- fin vote -->\n";
 	return $text;
 }
 

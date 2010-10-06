@@ -59,6 +59,7 @@
 		</div>
 		<!-- BEGIN post.block.votes -->
 		<div class="votes">
+			{$votes.html}
 		</div>
 		<!-- END post.block.votes -->
 		<div class="post_description">{$post.description}</div>

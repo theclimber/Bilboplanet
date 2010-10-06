@@ -167,6 +167,7 @@ function showPosts($rs, $tpl, $search_value="", $strip_tags=false) {
 			);
 
 		$post['description'] = sprintf(T_('By %s, on %s at %s.'),'<a href="'.$blog_settings->get('planet_url').'/index.php?num_membre='.$rs->user_id.'">'.$rs->user_fullname.'</a>',$post["date"],$post["hour"]);
+		$post['description'].= ' <a href="'.$blog_settings->get('planet_url').'/index.php?post_id='.$rs->post_id.'" title="'.$post['title'].'">'.T_("View post detail").'</a>';
 		if (!empty($search_value)){
 			# Format the occurences of the search request in the posts list
 			$post['content'] = split_balise($search_value, '<span class="search_content">'.$search_value.'</span>', $post['content'], 'str_ireplace', 1);
@@ -190,6 +191,9 @@ function showPosts($rs, $tpl, $search_value="", $strip_tags=false) {
 		if($strip_tags) {
 			$post['content'] .= strip_tags($post['content'])."&nbsp;[...]".
 				'<br /><a href="'.$post['permalink'].'" title="'.$post['title'].'">'.T_('Read more').'</a>';
+		}
+		if ($rs->count()>1) {
+			$tpl->render('post.backsummary');
 		}
 		$tpl->render('post.block');
 	}

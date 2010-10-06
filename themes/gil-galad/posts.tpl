@@ -3,6 +3,7 @@
 	<span class="searchText">{_You are searching for all the posts with :} <span class="search">{$search_value}</span></span>
 </div>
 <!-- END search.line -->
+<!-- BEGIN summary.block -->
 <div id="summary">
 	<h3><a name="top">{_Fast access to the last posts of the page}</a></h3>
 	<ul>
@@ -13,6 +14,7 @@
 		<!-- END summary.line -->
 	</ul>
 </div>
+<!-- END summary.block -->
 <div id="upper_navigation">
 	<!-- BEGIN pagination.up.prev -->
 	<div class="page_previous"><a href="?{$page.params}page={$page.prev}" class="page_prc"> &laquo; {_Previous page}</a></div>

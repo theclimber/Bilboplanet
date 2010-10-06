@@ -73,6 +73,12 @@ if (isset($_GET)) {
 			OR ".$core->prefix."post.post_content LIKE '%$search_value%'
 			OR ".$core->prefix."user.user_fullname LIKE '%$search_value%')";
 	}
+	if (isset($_GET['post_id']) && !empty($_GET['post_id'])){
+		$params["post_id"] = $_GET['post_id'];
+
+		# Complete the SQL query
+		$debut_sql = $debut_sql." AND ".$core->prefix."post.post_id = '".$params["post_id"]."'";
+	}
 	# On recupere le numero du membre
 	if (isset($_GET['user_id']) && !empty($_GET['user_id'])){
 		$params["user_id"] = $_GET['user_id'];
@@ -180,27 +186,35 @@ $core->tpl->render('menu.filter');
 #######################
 # RENDER PAGINATION
 #######################
-if($params["page"] == 0) {
-	# if we are on the first page
-	$core->tpl->render('pagination.up.next');
-	$core->tpl->render('pagination.low.next');
-} else {
-	if(!$rs->count()) {
-		# if we are on the last page
-		$core->tpl->render('pagination.up.prev');
-		$core->tpl->render('pagination.low.prev');
-	} else {
-		$core->tpl->render('pagination.up.prev');
+if (!isset($_GET['post_id']) | empty($_GET['post_id'])){
+	if($params["page"] == 0 & $rs->count()>=10) {
+		# if we are on the first page
 		$core->tpl->render('pagination.up.next');
-		$core->tpl->render('pagination.low.prev');
 		$core->tpl->render('pagination.low.next');
+	} elseif($params["page"] == 0 & $rs->count()<10) {
+		# we don't show any button
+	} else {
+		if($rs->count() == 0 | $rs->count() < 10) {
+			# if we are on the last page
+			$core->tpl->render('pagination.up.prev');
+			$core->tpl->render('pagination.low.prev');
+		} else {
+			$core->tpl->render('pagination.up.prev');
+			$core->tpl->render('pagination.up.next');
+			$core->tpl->render('pagination.low.prev');
+			$core->tpl->render('pagination.low.next');
+		}
 	}
 }
 
 ######################
 # RENDER POST LIST
 ######################
-$core->tpl = showPostsSummary($rs, $core->tpl);
+
+if (!isset($_GET['post_id']) | empty($_GET['post_id'])){
+	$core->tpl = showPostsSummary($rs, $core->tpl);
+	$core->tpl->render('summary.block');
+}
 
 # Liste des articles
 if (isset($_GET) && isset($_GET['popular']) && !empty($_GET['popular'])) {

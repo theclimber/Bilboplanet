@@ -82,8 +82,8 @@ if ($blog_settings->get('auto_feed_disabling')){
 echo
 '<form id="filterfeed_form">'.
 
-'<label class="required" for="user_id">'.T_('User id').' : '.
-form::combo('user_id',$users,'', 'input','','').'</label><br /><br />'.
+'<label class="required" for="fuser_id">'.T_('User id').' : '.
+form::combo('fuser_id',$users,'', 'input','','').'</label><br /><br />'.
 
 '<label class="required" for="feed_status">'.T_('Feed status').' : '.
 form::combo('feed_status',$status,'', 'input','','').'</label><br /><br />';

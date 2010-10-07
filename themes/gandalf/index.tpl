@@ -15,7 +15,6 @@
 	<script type="text/javascript" src="{$planet.url}/themes/{$planet.theme}/js/votes.js" ></script>
 	<script type="text/javascript" src="{$planet.url}/themes/{$planet.theme}/js/mobile.js" ></script>
 	<script type="text/javascript" src="{$planet.url}/themes/{$planet.theme}/js/jquery.js" ></script>
-	<script type="text/javascript" src="{$planet.url}/themes/{$planet.theme}/js/fancy.js" ></script>
 	<script type="text/javascript" src="{$planet.url}/themes/{$planet.theme}/js/smothscroll.js" ></script>
 
 </head>

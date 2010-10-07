@@ -383,10 +383,12 @@ if(isset($_POST['action'])) {
 				<img src="meta/icons/action-'.$toggle_status.'.png" title="'.$toggle_msg.'" /></a>';
 			}
 			$output .= '<a href="#" onclick="javascript:profile(\''.$rs->user_id.'\', \''.$num_page.'\', \''.$nb_items.'\')">
-					<img src="meta/icons/action-edit.png" title="'.T_('Update').'" /></a>
-				<a href="#" onclick="javascript:removeUser(\''.$rs->user_id.'\', \''.$num_page.'\', \''.$nb_items.'\')">
-					<img src="meta/icons/action-remove.png" title="'.T_('Delete').'" /></a>
-				</td></tr>';
+					<img src="meta/icons/action-edit.png" title="'.T_('Update').'" /></a>';
+			if (!$is_god) {
+			$output .= '<a href="#" onclick="javascript:removeUser(\''.$rs->user_id.'\', \''.$num_page.'\', \''.$nb_items.'\')">
+					<img src="meta/icons/action-remove.png" title="'.T_('Delete').'" /></a>';
+			}
+			$output .= '</td></tr>';
 		}
 		$output .= '</table>';
 

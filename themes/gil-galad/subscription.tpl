@@ -20,7 +20,7 @@
 	<form method="post">
 	<table border="0" width="600">
 		<tr>
-			<td>{_Name or nicknname}</td>
+			<td>{_Name or nickname}</td>
 			<td><input type="text" name="user_id" value="{$form.user_id}" /></td>
 		</tr>
 		<tr>

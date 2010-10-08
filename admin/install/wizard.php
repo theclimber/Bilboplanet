@@ -178,7 +178,9 @@ echo
 
 '<form action="wizard.php" method="post">'.
 
-#'<p><label class="required" title="'.T_('Required field').'">'.T_('Database type:').' '.#form::hidden('DBDRIVER','mysql',$DBDRIVER).'</label></p>'.
+#'<p><label class="required" title="'.T_('Required field').'">'.T_('Database type:').' '.
+#form::combo('DBDRIVER',array('MySQL'=>'mysql','PosqtgreSQL'=>'pgsql','SQLite'=>'sqlite'), '', 'input').'</label></p>'.
+#form::combo('feed_status',$status,'', 'input','','').'</label><br /><br />';
 
 '<label>'.T_('Host of the database').' '.
 form::field('DBHOST',30,255,html::escapeHTML($DBHOST)).'</label>

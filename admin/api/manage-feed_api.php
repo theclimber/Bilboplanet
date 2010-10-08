@@ -236,7 +236,7 @@ if(isset($_POST['action'])) {
 # GET FILTERED FEED LIST
 ##########################################################
 	case 'filter':
-		$user_id = trim($_POST['user_id']);
+		$user_id = trim($_POST['fuser_id']);
 		$feed_status = trim($_POST['feed_status']);
 		$sql_cond = '';
 		if ($user_id != 'all') {

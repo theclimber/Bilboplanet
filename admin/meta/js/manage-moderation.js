@@ -2,6 +2,7 @@ function accept(post_id, nom) {
 	Boxy.confirm("Merci de confirmer?", function(val) {
 		$('#flash-log').css('display','');
 		$('#flash-msg').addClass('ajax-loading');
+		$('#flash-msg').html('Loading');
 		$("#action"+post_id)[0].setAttribute('class','ajax-loading');
 		$.ajax({
 			type: "POST",

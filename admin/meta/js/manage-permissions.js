@@ -16,6 +16,7 @@ function updateUserList(num_page, nb_items) {
 				var data = $('form.managerPerm').serialize();
 				$('#flash-log').css('display','');
 				$('#flash-msg').addClass('ajax-loading');
+				$('#flash-msg').html('Loading');
 				$.ajax({
 					type: "POST",
 					url: "api/",
@@ -35,6 +36,7 @@ function updateUserList(num_page, nb_items) {
 function toggleUserRole(user_id, num_page, nb_items) {
 	$('#flash-log').css('display','');
 	$('#flash-msg').addClass('ajax-loading');
+	$('#flash-msg').html('Loading');
 	user_role = $('#role'+user_id).val()
 	$.ajax({
 		type: "POST",
@@ -50,6 +52,7 @@ function toggleUserRole(user_id, num_page, nb_items) {
 function toggleUserPermission(perm, user_id, num_page, nb_items) {
 	$('#flash-log').css('display','');
 	$('#flash-msg').addClass('ajax-loading');
+	$('#flash-msg').html('Loading');
 
 	value = $('#'+perm+user_id).val()
 	action = 'unset';

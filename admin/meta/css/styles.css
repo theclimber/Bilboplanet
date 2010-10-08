@@ -842,10 +842,19 @@ body, #BP_page, #bp_pannel, #BP_page {
 	border: 1px solid;
 }
 div.flash {
-	margin-top: 8px;
-	margin-left: 5px;
+	margin: 10px 5px;
 	width:95%;
 }
+#flash-msg.ajax-loading {
+	margin: 10px 5px;
+	width:95%;
+	background: url(../icons/spinner.gif) no-repeat;
+	background-color: #eaeaea;
+	border: 1px solid #000000;
+	color: #550000;
+	height: 20px;
+}
+
 div.flash.error, #errorExplanation {
     background: url(../icons/false.png) 8px no-repeat;
 	background-color: #ffe3e3;

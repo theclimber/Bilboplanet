@@ -3,6 +3,7 @@ $(document).ready(function() {
 		var data = $('#addfeed_form').serialize();
 		$('#flash-log').css('display','');
 		$('#flash-msg').addClass('ajax-loading');
+		$('#flash-msg').html('Loading');
 		$.ajax({
 			type: "POST",
 			url: "api/",
@@ -55,6 +56,7 @@ function updateSiteCombo() {
 function toggleFeedStatus(feed_id, num_page, nb_items) {
 	$('#flash-log').css('display','');
 	$('#flash-msg').addClass('ajax-loading');
+	$('#flash-msg').html('Loading');
 	$.ajax({
 		type: "POST",
 		url: "api/",
@@ -70,6 +72,7 @@ function toggleFeedStatus(feed_id, num_page, nb_items) {
 function toggleFeedTrust(feed_id, num_page, nb_items) {
 	$('#flash-log').css('display','');
 	$('#flash-msg').addClass('ajax-loading');
+	$('#flash-msg').html('Loading');
 	$.ajax({
 		type: "POST",
 		url: "api/",
@@ -85,6 +88,7 @@ function toggleFeedTrust(feed_id, num_page, nb_items) {
 function removeFeed(feed_id, num_page, nb_items) {
 	$('#flash-log').css('display','');
 	$('#flash-msg').addClass('ajax-loading');
+	$('#flash-msg').html('Loading');
 	$.ajax({
 		type: "POST",
 		url: "api/",
@@ -96,6 +100,7 @@ function removeFeed(feed_id, num_page, nb_items) {
 				var data = $('#removeFeedConfirm_form').serialize();
 				$('#flash-log').css('display','');
 				$('#flash-msg').addClass('ajax-loading');
+				$('#flash-msg').html('Loading');
 				$.ajax({
 					type: "POST",
 					url: "api/",
@@ -115,6 +120,7 @@ function removeFeed(feed_id, num_page, nb_items) {
 function edit(feed_id, num_page, nb_items) {
 	$('#flash-log').css('display','');
 	$('#flash-msg').addClass('ajax-loading');
+	$('#flash-msg').html('Loading');
 	$.ajax({
 		type: "POST",
 		url: "api/",

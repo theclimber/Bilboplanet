@@ -3,6 +3,7 @@ $(document).ready(function() {
 		var data = $('#adduser_form').serialize();
 		$('#flash-log').css('display','');
 		$('#flash-msg').addClass('ajax-loading');
+		$('#flash-msg').html('Loading');
 		$.ajax({
 			type: "POST",
 			url: "api/",
@@ -35,6 +36,7 @@ function updateUserList(num_page, nb_items) {
 function toggleUserStatus(user_id, num_page, nb_items) {
 	$('#flash-log').css('display','');
 	$('#flash-msg').addClass('ajax-loading');
+	$('#flash-msg').html('Loading');
 	$.ajax({
 		type: "POST",
 		url: "api/",
@@ -50,6 +52,7 @@ function toggleUserStatus(user_id, num_page, nb_items) {
 function removeUser(user_id, num_page, nb_items) {
 	$('#flash-log').css('display','');
 	$('#flash-msg').addClass('ajax-loading');
+	$('#flash-msg').html('Loading');
 	$.ajax({
 		type: "POST",
 		url: "api/",
@@ -61,6 +64,7 @@ function removeUser(user_id, num_page, nb_items) {
 				var data = $('#removeConfirm_form').serialize();
 				$('#flash-log').css('display','');
 				$('#flash-msg').addClass('ajax-loading');
+				$('#flash-msg').html('Loading');
 				$.ajax({
 					type: "POST",
 					url: "api/",
@@ -80,6 +84,7 @@ function removeUser(user_id, num_page, nb_items) {
 function removeSite(site_id, num_page, nb_items) {
 	$('#flash-log').css('display','');
 	$('#flash-msg').addClass('ajax-loading');
+	$('#flash-msg').html('Loading');
 	$.ajax({
 		type: "POST",
 		url: "api/",
@@ -91,6 +96,7 @@ function removeSite(site_id, num_page, nb_items) {
 				var data = $('#removeSiteConfirm_form').serialize();
 				$('#flash-log').css('display','');
 				$('#flash-msg').addClass('ajax-loading');
+				$('#flash-msg').html('Loading');
 				$.ajax({
 					type: "POST",
 					url: "api/",
@@ -111,6 +117,7 @@ function removeSite(site_id, num_page, nb_items) {
 function profile(user_id, num_page, nb_items) {
 	$('#flash-log').css('display','');
 	$('#flash-msg').addClass('ajax-loading');
+	$('#flash-msg').html('Loading');
 	$.ajax({
 		type: "POST",
 		url: "api/",
@@ -155,7 +162,8 @@ function profile(user_id, num_page, nb_items) {
 function addSite(user_id, num_page, nb_items) {
 	$('#flash-log').css('display','');
 	$('#flash-msg').addClass('ajax-loading');
-			
+	$('#flash-msg').html('Loading');
+
 	$('#add-site-form #suser_id').val(user_id);
 	$('#add-site-form #suser_id').attr('disabled', 'true');
 	var content = $('#add-site-form form').clone();

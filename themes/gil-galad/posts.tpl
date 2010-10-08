@@ -15,7 +15,7 @@
 	</ul>
 </div>
 <!-- END summary.block -->
-<div id="upper_navigation">
+<div id="navigation">
 	<!-- BEGIN pagination.up.prev -->
 	<div class="page_previous"><a href="?{$page.params}page={$page.prev}" class="page_prc"> &laquo; {_Previous page}</a></div>
 	<!-- END pagination.up.prev -->
@@ -26,11 +26,11 @@
 
 <div class="posts-list">
 	<!-- BEGIN post.block -->
-	<div class="post">
+	<div class="article">
 		<div class="separ_article_top"></div>
-		<div class="post_title">
+		<div class="article_nom">
 			<!-- BEGIN post.block.gravatar -->
-			<div class="gravatar">
+			<div class="avatar_article">
 				<a href="{$planet.url}/index.php?user_id={$post.author_id}" title="{_Show user's posts}">
 				<img src="{$gravatar_url}" class="gravatar" /></a>
 			</div>
@@ -44,16 +44,18 @@
 		</div>
 		<!-- END post.block.votes -->
 		<div class="post_description">{$post.description}</div>
-		<div class="post_content">{$post.content}</div>
+		<div class="contenu_article">{$post.content}</div>
 		<div class="separ_article_bottom"></div>
-		<a href="#top" class="backtop">{_Back to summary}</a>
+		<!-- BEGIN post.backsummary -->
+		<a href="#top" class="retour_sommaire">{_Back to summary}</a>
+		<!-- END post.backsummary -->
 	</div>
 	<!-- ELSE post.block -->
 	{_No posts found}
 	<!-- END post.block -->
 </div>
 
-<div id="lower_navigation">
+<div id="navigation">
 	<!-- BEGIN pagination.low.prev -->
 	<div class="page_previous"><a href="?{$page.params}page={$page.prev}" class="page_prc"> &laquo; {_Previous page}</a></div>
 	<!-- END pagination.low.prev -->

@@ -66,7 +66,10 @@
 		<div class="post_content">{$post.content}</div>
 		<div class="post_footer">
 			<span class="twitter"><a href="http://twitter.com/planetlibre" data-url="{$post.permalink}" class="twitter-share-button" data-count="horizontal" data-lang="fr">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script></span>
+
+			<!-- BEGIN post.backsummary -->
 			<span class="backtop"><a href="#top">{_Back to summary}&nbsp;&uarr;</a></span>
+			<!-- END post.backsummary -->
 		</div>
 	</div>
 	<!-- ELSE post.block -->

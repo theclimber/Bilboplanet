@@ -19,37 +19,63 @@
 
 </head>
 <body>
-<div id="wrap">
-	<div id="header"><!--header-->
-		<!-- BEGIN search.box -->
-		<div id="search">
-			<form id="form_search" action="index.php" method="get">
-				<!-- BEGIN search.popular -->
-				<input type="hidden" id="popular" name="popular" value="{$params.popular}" />
-				<!-- END search.popular -->
-				<!-- BEGIN search.user_id -->
-				<input type="hidden" id="user_id" name="user_id" value="{$params.user_id}" />
-				<!-- END search.user_id -->
-				<!-- BEGIN search.filter -->
-				<input type="hidden" id="filter" name="filter" value="{$params.filter}" />
-				<!-- END search.filter -->
-				<input type="submit" id="mainmenu_search_btn" value="OK" />
-				<input type="text" id="mainmenu_search" name="search" value="{$search_value}" />
-			</form>
-		</div>
-		<!-- END search.box -->
+<div id="tour">
+	<div id="header" class="header"><!--header-->
 		<div id="logo">
-			<h1 id="sitename"><a href="{$planet.url}">{$planet.title}</a></h1>
-			<h2 class="description">{$planet.desc}</h2>
+			<h1 id="title"><a href="{$planet.url}">{$planet.title}</a></h1>
+			<h2 id="description_title">{$planet.desc}</h2>
 		</div>
 	</div><!-- end header -->
 
-	<div id="main">
+	<div id="centre">
+
+		<div class="contenu">
 		<!-- ADD MENU HERE -->
 		{!include:'menu.tpl'}
 
-		<div id="content">
-			<div id="homeleft">
+	<!-- BEGIN menu.filter -->
+	<div id="tri">
+		<ul>
+			<li class="{$filter.day}">
+				<a href="index.php?{$filter_url}filter=day">{_Posts of the day}</a>
+			</li>
+			<li class="{$filter.week}">
+				<a href="index.php?{$filter_url}filter=week">{_Posts of the week}</a>
+			</li>
+			<li class="{$filter.month}">
+				<a href="index.php?{$filter_url}filter=month">{_Posts of the month}</a>
+			</li>
+			<li>
+				<a href="index.php?{$filter_url}">{_All posts}</a>
+			</li>
+		</ul>
+	</div><!-- end submenu -->
+
+	<!-- END menu.filter -->
+			<div id="colonne">
+				<!-- BEGIN search.box -->
+				<div id="recherche">
+					<form id="form_search" action="index.php" method="get">
+						<!-- BEGIN search.popular -->
+						<input type="hidden" id="popular" name="popular" value="{$params.popular}" />
+						<!-- END search.popular -->
+						<!-- BEGIN search.user_id -->
+						<input type="hidden" id="user_id" name="user_id" value="{$params.user_id}" />
+						<!-- END search.user_id -->
+						<!-- BEGIN search.filter -->
+						<input type="hidden" id="filter" name="filter" value="{$params.filter}" />
+						<!-- END search.filter -->
+						<input type="submit" id="recherche_global_btn" value="OK" />
+						<input type="text" id="mainmenu_search" name="search" value="{$search_value}" />
+					</form>
+				</div>
+				<!-- END search.box -->
+
+				<!-- ADD SIDEBAR HERE -->
+				{!include:'sidebar.tpl'}
+			</div>
+
+			<div id="centre_centre">
 				<!-- ADD CONTENT HERE -->
 				<!-- BEGIN content.posts -->
 					{!include:'posts.tpl'}
@@ -76,10 +102,6 @@
 				<!-- END content.archives -->
 			</div>
 
-			<div id="homeright">
-				<!-- ADD SIDEBAR HERE -->
-				{!include:'sidebar.tpl'}
-			</div>
 		</div><!-- end content -->
 
 	</div><!-- end main -->

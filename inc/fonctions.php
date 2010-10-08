@@ -166,7 +166,7 @@ function showPosts($rs, $tpl, $search_value="", $strip_tags=false) {
 			"author_email" => $rs->user_email,
 			);
 
-		$post['description'] = sprintf(T_('By %s, on %s at %s.'),'<a href="'.$blog_settings->get('planet_url').'/index.php?num_membre='.$rs->user_id.'">'.$rs->user_fullname.'</a>',$post["date"],$post["hour"]);
+		$post['description'] = sprintf(T_('By %s, on %s at %s.'),'<a href="'.$blog_settings->get('planet_url').'/index.php?user_id='.$rs->user_id.'">'.$rs->user_fullname.'</a>',$post["date"],$post["hour"]);
 		if (!empty($search_value)){
 			# Format the occurences of the search request in the posts list
 			$post['content'] = split_balise($search_value, '<span class="search_content">'.$search_value.'</span>', $post['content'], 'str_ireplace', 1);

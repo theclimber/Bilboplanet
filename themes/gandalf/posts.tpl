@@ -3,6 +3,7 @@
 	<span class="searchText">{_You are searching for all the posts with :} <span class="search">{$search_value}</span></span>
 </div>
 <!-- END search.line -->
+<!-- BEGIN summary.block -->
 <div id="summary">
 	<h3><a name="top">{_Fast access to the last posts of the page}</a></h3>
 	<ul>
@@ -31,6 +32,7 @@
 		<!-- END summary.line -->
 	</ul>
 </div>
+<!-- END summary.block -->
 <div class="navigation">
 	<!-- BEGIN pagination.up.prev -->
 	<div class="page_previous"><a href="?{$page.params}page={$page.prev}" class="page_prc"> &laquo; {_Previous page}</a></div>
@@ -54,7 +56,7 @@
 				<h2><a href="{$post.permalink}" title="{_Visit source}">{$post.title}</a></h2>
 			</div>
 			<!-- BEGIN post.block.votes -->
-			<div class="votes"></div>
+			<div class="votes">{$votes.html}</div>
 			<!-- END post.block.votes -->
 			<div class="post_description">
 				<h3>{$post.description}</h3>

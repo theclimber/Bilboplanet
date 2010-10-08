@@ -167,6 +167,7 @@ function showPosts($rs, $tpl, $search_value="", $strip_tags=false) {
 			);
 
 		$post['description'] = sprintf(T_('By %s, on %s at %s.'),'<a href="'.$blog_settings->get('planet_url').'/index.php?user_id='.$rs->user_id.'">'.$rs->user_fullname.'</a>',$post["date"],$post["hour"]);
+		$post['description'].= ' <a href="'.$blog_settings->get('planet_url').'/index.php?post_id='.$rs->post_id.'" title="'.$post['title'].'">'.T_("View post detail").'</a>';
 		if (!empty($search_value)){
 			# Format the occurences of the search request in the posts list
 			$post['content'] = split_balise($search_value, '<span class="search_content">'.$search_value.'</span>', $post['content'], 'str_ireplace', 1);
@@ -183,12 +184,16 @@ function showPosts($rs, $tpl, $search_value="", $strip_tags=false) {
 			$tpl->render('post.block.gravatar');
 		}
 		if ($blog_settings->get('planet_vote')) {
-			$votes_HTML = afficheVotes($rs->score, $rs->post_id);
+			$votes = array("html" => afficheVotes($rs->score, $rs->post_id));
+			$tpl->setVar('votes', $votes);
 			$tpl->render('post.block.votes');
 		}
 		if($strip_tags) {
 			$post['content'] .= strip_tags($post['content'])."&nbsp;[...]".
 				'<br /><a href="'.$post['permalink'].'" title="'.$post['title'].'">'.T_('Read more').'</a>';
+		}
+		if ($rs->count()>1) {
+			$tpl->render('post.backsummary');
 		}
 		$tpl->render('post.block');
 	}
@@ -230,7 +235,7 @@ function afficheVotes($nb_votes, $num_article) {
 		$score = 0;
 
 	# Bouton de vote
-	$text =  '<div class="votes">';
+	$text =  '';
 	if (checkVote($core->con, getIP(), $num_article)) {
 
 		# Si le visiteur a deja vote
@@ -262,7 +267,6 @@ function afficheVotes($nb_votes, $num_article) {
 		}
 		$text .= "</span>";
 	}
-	$text .= "</div><!-- fin vote -->\n";
 	return $text;
 }
 

@@ -22,6 +22,21 @@ $_s->user
 	->primary('pk_user','user_id')
 	;
 
+$_s->pending_user
+	->puser_id		('varchar',		64,	false)
+	->user_fullname	('varchar',		128,true)
+	->user_email	('varchar',		128,false)
+	->user_pwd		('varchar',		255,true)
+	->user_lang		('varchar',		5,	true, null)
+	->licence		('varchar',		255,true, null)
+	->feed_url		('text',		0,	false)
+	->feed_tags		('text',		0,	false)
+	->created		('timestamp',	0,	true, 'now()')
+	->modified		('timestamp',	0,	true, 'now()')
+
+	->primary('pk_pending_user','puser_id')
+	;
+
 $_s->post
 	->post_id		('integer',		0,	false)
 	->user_id		('varchar',		64,	false)
@@ -51,6 +66,20 @@ $_s->feed
 	->modified		('timestamp',	0,	true, 'now()')
 
 	->primary('pk_feed','feed_id')
+	;
+
+$_s->feed_tag
+	->tag_id		('varchar',		255, false)
+	->feed_id		('integer',		0, false)
+
+	->primary('pk_feed_tag', 'tag_id', 'feed_id')
+	;
+
+$_s->post_tag
+	->tag_id		('varchar',		255, false)
+	->post_id		('integer',		0, false)
+
+	->primary('pk_post_tag', 'tag_id', 'post_id')
 	;
 
 $_s->site

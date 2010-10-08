@@ -273,3 +273,37 @@ ul.no_bullet {
 	line-height: 18px;
 }
 
+.votes {
+display:block;
+float:right;
+margin-top:-10px;
+width:42px;
+}
+.vote span#imgoui {
+display:block;
+background:url('../images/oui.png') no-repeat;
+height:18px;
+width:18px;
+float:left;
+}
+.vote span#imgnon {
+float:right;
+display:block;
+background:url('../images/warn.png') no-repeat;
+height:18px;
+width:18px;
+}
+.avote span#imgoui {
+display:block;
+background:url('../images/oui-light.png') no-repeat;
+height:18px;
+width:18px;
+float:left;
+}
+.avote span#imgnon {
+float:right;
+display:block;
+background:url('../images/warn-light.png') no-repeat;
+height:18px;
+width:18px;
+}

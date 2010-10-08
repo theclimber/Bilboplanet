@@ -127,6 +127,9 @@ table#feedlist li {
 table#feedlist tr.inactive, tr.inactive a, tr.inactive a:visited {
 	color: #C9C9C9;
 }
+table#feedlist tr.auto-disabled, tr.auto-disabled a, tr.auto-disabled a:visited {
+	color: #ff6d6d;
+}
 /*
  Génériques
 */
@@ -358,6 +361,21 @@ form label {
 }
 form input.input {
 	margin:5px;
+}
+div#filter-form {
+	padding: 5px;
+	margin: 5px;
+	margin-bottom:30px;
+}
+div#filter-form a{
+	text-decoration:none;
+	background-image:url(../icons/action-filter.png);
+	background-repeat:no-repeat;
+	padding-left:20px;
+	padding-bottom:10px;
+}
+div#filter-form a:hover, div#add-form a:focus {
+text-decoration:underline;
 }
 div#add-form {
 	padding: 5px;

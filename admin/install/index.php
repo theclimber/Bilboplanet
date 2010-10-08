@@ -245,7 +245,7 @@ header('Content-Type: text/html; charset=UTF-8');
 	<link rel="icon" type="image/ico" href="../../favicon.png" />
 	<link rel="stylesheet" type="text/css" href="meta/css/install.css" media="all" />
 	<title><?php echo T_('Installation of the Bilboplanet');?></title>
-	<script type="text/javascript" src="../js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="../meta/js/jquery-1.4.2.min.js"></script>
 </head>
 
 <body>

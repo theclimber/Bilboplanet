@@ -20,62 +20,47 @@
 </head>
 <body>
 <div id="tour">
-	<div id="header" class="header"><!--header-->
-		<div id="logo">
-			<h1 id="title"><a href="{$planet.url}">{$planet.title}</a></h1>
-			<h2 id="description_title">{$planet.desc}</h2>
-		</div>
-	</div><!-- end header -->
+<div id="arriere_plan">
+<div id="global">
+<div id="header">
+
+	<div id="title">
+		<a href="{$planet.url}">{$planet.title}</a>
+		<div id="description_title">{$planet.desc}</div>
+	</div>
+
+	<!-- ADD MENU HERE -->
+	{!include:'menu.tpl'}
 
 	<div id="centre">
 
 		<div class="contenu">
-		<!-- ADD MENU HERE -->
-		{!include:'menu.tpl'}
-
-	<!-- BEGIN menu.filter -->
-	<div id="tri">
-		<ul>
-			<li class="{$filter.day}">
-				<a href="index.php?{$filter_url}filter=day">{_Posts of the day}</a>
-			</li>
-			<li class="{$filter.week}">
-				<a href="index.php?{$filter_url}filter=week">{_Posts of the week}</a>
-			</li>
-			<li class="{$filter.month}">
-				<a href="index.php?{$filter_url}filter=month">{_Posts of the month}</a>
-			</li>
-			<li>
-				<a href="index.php?{$filter_url}">{_All posts}</a>
-			</li>
-		</ul>
-	</div><!-- end submenu -->
-
-	<!-- END menu.filter -->
 			<div id="colonne">
-				<!-- BEGIN search.box -->
-				<div id="recherche">
-					<form id="form_search" action="index.php" method="get">
-						<!-- BEGIN search.popular -->
-						<input type="hidden" id="popular" name="popular" value="{$params.popular}" />
-						<!-- END search.popular -->
-						<!-- BEGIN search.user_id -->
-						<input type="hidden" id="user_id" name="user_id" value="{$params.user_id}" />
-						<!-- END search.user_id -->
-						<!-- BEGIN search.filter -->
-						<input type="hidden" id="filter" name="filter" value="{$params.filter}" />
-						<!-- END search.filter -->
-						<input type="submit" id="recherche_global_btn" value="OK" />
-						<input type="text" id="mainmenu_search" name="search" value="{$search_value}" />
-					</form>
-				</div>
-				<!-- END search.box -->
 
 				<!-- ADD SIDEBAR HERE -->
 				{!include:'sidebar.tpl'}
 			</div>
 
 			<div id="centre_centre">
+
+				<!-- BEGIN menu.filter -->
+				<div class="tri">
+					<b>Filtrer les articles :&nbsp;&nbsp;&nbsp;&nbsp;</b>
+					<span>
+						<a href="index.php?{$filter_url}filter=day">Articles du jour</a>
+					</span>&nbsp;&nbsp;-&nbsp;&nbsp;  
+					<span>
+						<a href="index.php?{$filter_url}filter=week">Articles de la semaine</a>
+					</span>&nbsp;&nbsp;-&nbsp;&nbsp;
+					<span>
+						<a href="index.php?{$filter_url}filter=month">Articles du mois</a>
+					</span>&nbsp;&nbsp;-&nbsp;&nbsp;
+					<span>
+						<a href="index.php?{$filter_url}">Tous les articles</a>
+					</span>
+				</div><!-- end submenu -->
+				<!-- END menu.filter -->
+
 				<!-- ADD CONTENT HERE -->
 				<!-- BEGIN content.posts -->
 					{!include:'posts.tpl'}
@@ -109,6 +94,9 @@
 <!-- ADD FOOTER HERE -->
 {!include:'footer.tpl'}
 
+</div>
+</div>
+</div>
 </div><!-- end wrap -->
 
 <!-- ADD JAVASCRIPT IMPORT HERE -->

@@ -4,7 +4,7 @@
 </div>
 <!-- END search.line -->
 <!-- BEGIN summary.block -->
-<div id="summary">
+<div id="top_10">
 	<h3><a name="top">{_Fast access to the last posts of the page}</a></h3>
 	<ul>
 		<!-- BEGIN summary.line -->
@@ -17,10 +17,10 @@
 <!-- END summary.block -->
 <div id="navigation">
 	<!-- BEGIN pagination.up.prev -->
-	<div class="page_previous"><a href="?{$page.params}page={$page.prev}" class="page_prc"> &laquo; {_Previous page}</a></div>
+	<a class="page_prc" href="?{$page.params}page={$page.prev}" class="page_prc"> &laquo; {_Previous page}</a>
 	<!-- END pagination.up.prev -->
 	<!-- BEGIN pagination.up.next -->
-	<div class="paging_next"><a href="?{$page.params}page={$page.next}" class="page_svt">{_Next page} &raquo;</a></div>
+	<a class="page_svt" href="?{$page.params}page={$page.next}" class="page_svt">{_Next page} &raquo;</a>
 	<!-- END pagination.up.next -->
 </div>
 
@@ -57,9 +57,9 @@
 
 <div id="navigation">
 	<!-- BEGIN pagination.low.prev -->
-	<div class="page_previous"><a href="?{$page.params}page={$page.prev}" class="page_prc"> &laquo; {_Previous page}</a></div>
+	<a class="page_prc" href="?{$page.params}page={$page.prev}" class="page_prc"> &laquo; {_Previous page}</a>
 	<!-- END pagination.low.prev -->
 	<!-- BEGIN pagination.low.next -->
-	<div class="paging_next"><a href="?{$page.params}page={$page.next}" class="page_svt">{_Next page} &raquo;</a></div>
+	<a class="page_svt" href="?{$page.params}page={$page.next}" class="page_svt">{_Next page} &raquo;</a>
 	<!-- END pagination.low.next -->
 </div>

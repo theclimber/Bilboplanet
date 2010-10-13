@@ -72,6 +72,8 @@ try {
 		,20);
 }
 
+if (!isset($locale))
+	$locale = 'en';
 
 # Check if setting table exist
 $schema = dbSchema::init($core->con);
@@ -107,14 +109,13 @@ if (in_array($core->prefix.'setting', $schema->getTables())) {
 
 # Definition of the language
 $textdomain="bilbo";
-if (empty($locale))
-	$locale = 'en';
 if (isset($_GET['locale']) && !empty($_GET['locale']))
 	$locale = $_GET['locale'];
 putenv('LANGUAGE='.$locale);
-putenv('LANG='.$locale);
+#putenv('LANG='.$locale);
 putenv('LC_ALL='.$locale);
 putenv('LC_MESSAGES='.$locale);
+T_setlocale('LANGUAGE='.$locale);
 T_setlocale(LC_ALL, $locale);
 T_setlocale(LC_CTYPE, $locale);
 

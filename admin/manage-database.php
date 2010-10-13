@@ -103,10 +103,10 @@ if (isset($_POST)) {
 							$cur->created = array('NOW()');
 							$cur->modified = array('NOW()');
 
-							if($nom_membre == $author_id) {
+							if($user_id == $author_id) {
 								$cur->update("WHERE user_id == '".$author_id."'");
 							} else {
-								$cur->user_pwd = crypt::hmac($nom_membre,$email_membre);
+								$cur->user_pwd = crypt::hmac($user_id,$email_membre);
 								$cur->insert();
 							}
 
@@ -138,27 +138,32 @@ if (isset($_POST)) {
 							$last_updated = timestamp_to_mysqldatetime($value[2]);
 							$status_flux = $value[3];
 							$user_id = $tables['membre']['content'][$num_membre][0];
+							$user_id = preg_replace("( )", "_", $user_id);
 
 							$sql = "SELECT site_id FROM ".$core->prefix."site WHERE user_id = '".$user_id."'";
 							$rs = $core->con->select($sql);
 							$site_id = $rs->f('site_id');
 
-							$rs3 = $core->con->select(
-								'SELECT MAX(feed_id) '.
-								'FROM '.$core->prefix.'feed '
-								);
-							$next_feed_id = (integer) $rs3->f(0) + 1;
-							$cur = $core->con->openCursor($core->prefix."feed");
-							$cur->feed_id = $next_feed_id;
-							$cur->user_id = $user_id;
-							$cur->site_id = $site_id;
-							$cur->feed_url = $url_flux;
-							$cur->feed_checked = $last_checked;
-							$cur->feed_status = $status_flux;
-							$cur->feed_trust = 1;
-							$cur->created = array(' NOW() ');
-							$cur->modified = array(' NOW() ');
-							$cur->insert();
+							if (!empty($site_id)) {
+								$rs3 = $core->con->select(
+									'SELECT MAX(feed_id) '.
+									'FROM '.$core->prefix.'feed '
+									);
+								$next_feed_id = (integer) $rs3->f(0) + 1;
+								$cur = $core->con->openCursor($core->prefix."feed");
+								$cur->feed_id = $next_feed_id;
+								$cur->user_id = $user_id;
+								$cur->site_id = $site_id;
+								$cur->feed_url = $url_flux;
+								$cur->feed_checked = $last_checked;
+								$cur->feed_status = $status_flux;
+								$cur->feed_trust = 1;
+								$cur->created = array(' NOW() ');
+								$cur->modified = array(' NOW() ');
+								$cur->insert();
+							} else {
+								$errors[] = T_("site_id should not be null for user ".$user_id );
+							}
 						}
 						break;
 					case "article":
@@ -180,6 +185,7 @@ if (isset($_POST)) {
 							$article_statut = $value[5];
 							$article_score = $value[6];
 							$user_id = $tables['membre']['content'][$num_membre][0];
+							$user_id = preg_replace("( )", "_", $user_id);
 
 							$sql = "SELECT feed_id FROM ".$core->prefix."feed WHERE user_id = '".$user_id."'";
 							$rs = $core->con->select($sql);

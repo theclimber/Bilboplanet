@@ -41,6 +41,7 @@ if(isset($_POST['action'])) {
 ##########################################################
 	case 'add':
 		$user_id = check_field('user_id',trim($_POST['user_id']));
+		$user_id = preg_replace("( )", "_", $user_id);
 		$user_fullname = check_field('fullname',trim($_POST['fullname']));
 		$user_email = check_field('email',trim($_POST['email']),'email');
 		$user_password = check_field('password', array("password" => trim($_POST['password']), "password2" => trim($_POST['password2'])), 'password');

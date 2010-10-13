@@ -41,7 +41,7 @@ function toggleUserRole(user_id, num_page, nb_items) {
 	$.ajax({
 		type: "POST",
 		url: "api/",
-		data : {'ajax' : 'permissions', 'action' : 'toggleRole', 'user_id' : user_id, 'user_role' : user_role},
+		data : {'ajax' : 'permissions', 'action' : 'toggleRole', 'user_id' : encodeURIComponent(user_id), 'user_role' : user_role},
 		success: function(msg){
 			$('#flash-msg').removeClass('ajax-loading');
 			$('#flash-msg').html(msg);

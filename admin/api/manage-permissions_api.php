@@ -6,7 +6,7 @@ if(isset($_POST['action'])) {
 # TOGGLE USER ROLE
 ##########################################################
 	case 'toggleRole':
-		$user_id = trim($_POST['user_id']);
+		$user_id = urldecode(trim($_POST['user_id']));
 		$user_role = trim($_POST['user_role']);
 		if ($user_id == $core->auth->userID()) {
 			print '<div class="flash error">'.T_('Impossible to change your own role').'</div>';
@@ -21,7 +21,7 @@ if(isset($_POST['action'])) {
 # TOGGLE USER PERMISSIONS
 ##########################################################
 	case 'togglePerms':
-		$user_id = trim($_POST['user_id']);
+		$user_id = urldecode(trim($_POST['user_id']));
 
 		$manager_perm = array();
 		if (isset($_POST['config'.$user_id])) {

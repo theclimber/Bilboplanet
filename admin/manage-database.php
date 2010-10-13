@@ -92,9 +92,10 @@ if (isset($_POST)) {
 							$email_membre = $value[1];
 							$site_membre = $value[2];
 							$statut_membre = $value[3];
+							$user_id = preg_replace("( )", "_", $nom_membre);
 
 							$cur = $core->con->openCursor($core->prefix."user");
-							$cur->user_id = $nom_membre;
+							$cur->user_id = $user_id;
 							$cur->user_fullname = $nom_membre;
 							$cur->user_email = $email_membre;
 							$cur->user_status = $statut_membre;
@@ -116,7 +117,7 @@ if (isset($_POST)) {
 							$next_site_id = (integer) $rs3->f(0) + 1;
 							$cur = $core->con->openCursor($core->prefix.'site');
 							$cur->site_id = $next_site_id;
-							$cur->user_id = $nom_membre;
+							$cur->user_id = $user_id;
 							$cur->site_name = '';
 							$cur->site_url = $site_membre;
 							$cur->site_status = 1;

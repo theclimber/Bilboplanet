@@ -44,7 +44,7 @@ if (isset($_POST)) {
 ##########################################################
 # IMPORT DATABASE VERSION
 ##########################################################
-	if($_POST['importform'] == 'Import'){
+	if(isset($_POST['importform'])){
 		$imported_version = (string) trim($_POST['import_version']);
 		# On recupere les infos
 		if(!is_uploaded_file($_FILES['imported_file']['tmp_name']) ){
@@ -212,7 +212,6 @@ if (isset($_POST)) {
 						$config = $tables['config'];
 						$blog_settings->put('planet_desc', $config['BP_DESC'], "string");
 						$blog_settings->put('planet_title', $config['BP_TITLE'], "string");
-						$blog_settings->put('planet_lang', $config['BP_LANG'], "string");
 						$blog_settings->put('author', $config['BP_AUTHOR'], "string");
 						$blog_settings->put('author_mail', $config['BP_AUTHOR_MAIL'], "string");
 						$blog_settings->put('author_site', $config['BP_AUTHOR_SITE'], "string");

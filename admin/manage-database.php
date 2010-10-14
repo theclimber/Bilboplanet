@@ -135,10 +135,16 @@ if (isset($_POST)) {
 						foreach($table['content'] as $key => $value){
 							$url_flux = $value[0];
 							$num_membre = $value[1];
-							$last_updated = timestamp_to_mysqldatetime($value[2]);
-							$status_flux = $value[3];
+							$last_updated = timestamp_to_mysqldatetime($value[3]);
+							$status_flux = $value[4];
 							$user_id = $tables['membre']['content'][$num_membre][0];
 							$user_id = preg_replace("( )", "_", $user_id);
+							# We build the url of flux
+							$parse = @parse_url($url_flux);
+							if (!$parse['scheme']){
+								$site_membre = $tables['membre']['content'][$num_membre][2];
+								$url_flux = $site_membre.$url_flux;
+							}
 
 							$sql = "SELECT site_id FROM ".$core->prefix."site WHERE user_id = '".$user_id."'";
 							$rs = $core->con->select($sql);
@@ -155,7 +161,7 @@ if (isset($_POST)) {
 								$cur->user_id = $user_id;
 								$cur->site_id = $site_id;
 								$cur->feed_url = $url_flux;
-								$cur->feed_checked = $last_checked;
+								$cur->feed_checked = $last_updated;
 								$cur->feed_status = $status_flux;
 								$cur->feed_trust = 1;
 								$cur->created = array(' NOW() ');
@@ -186,29 +192,37 @@ if (isset($_POST)) {
 							$article_score = $value[6];
 							$user_id = $tables['membre']['content'][$num_membre][0];
 							$user_id = preg_replace("( )", "_", $user_id);
+							# We build the url of article
+							$parse = @parse_url($article_url);
+							if (!$parse['scheme']){
+								$site_membre = $tables['membre']['content'][$num_membre][2];
+								$article_url = $site_membre.$article_url;
+							}
 
 							$sql = "SELECT feed_id FROM ".$core->prefix."feed WHERE user_id = '".$user_id."'";
 							$rs = $core->con->select($sql);
-							$feed_id = $rs->f('feed_id');
 
-							$rs3 = $core->con->select(
-								'SELECT MAX(post_id) '.
-								'FROM '.$core->prefix.'post '
-								);
-							$next_post_id = (integer) $rs3->f(0) + 1;
-							$cur = $core->con->openCursor($core->prefix."post");
-							$cur->post_id = $next_post_id;
-							$cur->user_id = $user_id;
-							$cur->feed_id = $feed_id;
-							$cur->post_pubdate = $article_pub;
-							$cur->post_permalink = $article_url;
-							$cur->post_title = $article_titre;
-							$cur->post_content = $article_content;
-							$cur->post_status = $article_statut;
-							$cur->post_score = $article_score;
-							$cur->created = array(' NOW() ');
-							$cur->modified = array(' NOW() ');
-							$cur->insert();
+							if ($rs->count() > 0) {
+								$feed_id = $rs->f('feed_id');
+								$rs3 = $core->con->select(
+									'SELECT MAX(post_id) '.
+									'FROM '.$core->prefix.'post '
+									);
+								$next_post_id = (integer) $rs3->f(0) + 1;
+								$cur = $core->con->openCursor($core->prefix."post");
+								$cur->post_id = $next_post_id;
+								$cur->user_id = $user_id;
+								$cur->feed_id = $feed_id;
+								$cur->post_pubdate = $article_pub;
+								$cur->post_permalink = $article_url;
+								$cur->post_title = $article_titre;
+								$cur->post_content = $article_content;
+								$cur->post_status = $article_statut;
+								$cur->post_score = $article_score;
+								$cur->created = array(' NOW() ');
+								$cur->modified = array(' NOW() ');
+								$cur->insert();
+							}
 						}
 						break;
 					case "votes":
@@ -330,7 +344,8 @@ if (!empty($output)) {
 <br />
 <div class="message">
 <p><?php echo T_('Please select the file you want to restore.');?>
-<br /><b><font color=red><?php echo T_('TAKE CARE !');?></font></b> <?=T_('If you apply the content of one of this file, this action can not be cancelled');?></p>
+<br /><b><font color=red><?php echo T_('TAKE CARE !');?></font></b> <?=T_('If you apply the content of one of this file, this action can not be cancelled');?><br/>
+<?php echo T_("This action can take several minutes. Be patient and don't cancel the process during execution"); ?></p>
 </div>
 <br />
 

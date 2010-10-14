@@ -63,7 +63,7 @@ while ($rs->fetch()) {
 		"fullname" => $rs->fullname,
 		"site_url" => $rs->site_url,
 		"domain_url" => domain($rs->site_url),
-		"nb_post" => $rs->nb_post
+		"nb_posts" => $rs->nb_post
 		));
 	$core->tpl->render('stats.main.line');
 }

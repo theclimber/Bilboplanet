@@ -287,15 +287,51 @@ if(isset($_POST['action'])) {
 		break;
 
 ##########################################################
+# FILTERED USER LIST RETURN
+##########################################################
+	case 'filter':
+		$user_id = trim($_POST['fuser_id']);
+		$user_status = trim($_POST['user_status']);
+		$sql_cond = array();
+		if ($user_id != 'all') {
+			$sql_cond[] = $core->prefix.'user.user_id=\''.$user_id.'\'';
+		}
+		if ($user_status != 'all') {
+			$sql_cond[] = $core->prefix.'user.user_status='.$user_status;
+		}
+		if (!empty($sql_cond)) {
+			$where_clause = "WHERE ";
+			if (sizeof($sql_cond) < 1) {
+				print "error";
+				break;
+			}
+			elseif (sizeof($sql_cond) == 1) {
+				$where_clause .= $sql_cond[0];
+			} else {
+				$where_clause .= $sql_cond[0].' AND '.$sql_cond[1];
+			}
+		}
+
+		# On recupere les informtions sur les membres
+		$sql = 'SELECT
+			user_id,
+			user_fullname,
+			user_email,
+			user_status
+			FROM '.$core->prefix.'user 
+			'.$where_clause.'
+			ORDER by user_fullname';
+
+		print getOutput($sql);
+		break;
+
+##########################################################
 # USERS LIST RETURN
 ##########################################################
 	case 'list':
 		$num_page = !empty($_POST['num_page']) ? $_POST['num_page'] : 0;
 		$nb_items = !empty($_POST['nb_items']) ? $_POST['nb_items'] : 30;
 		$num_start = $num_page * $nb_items;
-
-		$next_page = $num_page + 1;
-		$prev_page = $num_page - 1;
 
 		# On recupere les informtions sur les membres
 		$sql = 'SELECT
@@ -306,94 +342,8 @@ if(isset($_POST['action'])) {
 			FROM '.$core->prefix.'user
 			ORDER by user_fullname
 			ASC LIMIT '.$num_start.','.$nb_items;
-		$rs = $core->con->select($sql);
 
-		$output .= '<div class="navigation">';
-		if ($prev_page >= 0) {
-			$output .= '<a href="#" onclick="javascript:updateUserList(\''.$prev_page.'\', \''.$nb_items.'\')"
-				class="page_prc">&laquo; '.T_('Previous page').'</a>';
-		}
-		if ($rs->count() >= $next_page * $nb_items) {
-			$output .= '<a href="#" onclick="javascript:updateUserList(\''.$next_page.'\', \''.$nb_items.'\')"
-				class="page_svt">'.T_('Next Page').' &raquo;</a>';
-		}
-		$output .= '</div><!-- fin pagination -->';
-
-		$output .= '
-<br />
-<table id="userlist" class="table-member">
-<thead>
-		<tr>
-			<th class="tc7 tcr" scope="col">'.T_('Avatar').'</th>
-			<th class="tc9 tcr" scope="col">'.T_('User Informations').'</th>
-			<th class="tc8 tcr" scope="col">'.T_('Website').'</th>
-			<th class="tc10 tcr" scope="col">'.T_('Action').'</th>
-		</tr>
-</thead>';
-		# On affiche la liste de membres
-		$author_id = $blog_settings->get('author_id');
-		while($rs->fetch()) {
-			$sql = "SELECT site_id, site_name, site_url FROM ".$core->prefix."site WHERE user_id = '$rs->user_id'";
-			$sites = $core->con->select($sql);
-			$god_class = '';
-			$is_god = false;
-			if ($rs->user_id == $author_id) {
-				$is_god = true;
-				$god_class = 'god';
-			}
-			if($rs->user_status) {
-				$status = 'active';
-				$toggle_status = 'disable';
-				$toggle_msg = T_('Disable user');
-			} else {
-				$toggle_status = 'enable';
-				$toggle_msg = T_('Enable user');
-				$status = 'inactive';
-			}
-			$gravatar_email = strtolower($rs->user_email);
-			$gravatar_url = "http://www.gravatar.com/avatar.php?gravatar_id=".md5($gravatar_email)."&default=".urlencode($blog_settings->get('planet_url')."/themes/".$blog_settings->get('planet_theme')."/images/gravatar.png")."&size=40";
-
-			# Affichage de la ligne de tableau
-			$output .= '<tr class="line '.$status.'"><td class="'.$god_class.'" style="text-align: center;"><img src="'.$gravatar_url.'"></td>
-				<td class="'.$god_class.'"><ul>
-					<li>User id : '.$rs->user_id.'</li>
-					<li>Fullname : '.$rs->user_fullname.'</li>
-					<li>Email : '.$rs->user_email.'</li>';
-			if ($is_god) {
-				$output .= '<li>'.T_('Planet author').'<li>';
-			}
-			$output .= '</ul></div></td>';
-			$output .= '<td class="'.$god_class.'">';
-			if ($sites->count()){
-				$output .= '<ul>';
-				while($sites->fetch()){
-					$s_name = '';
-					if ($sites->site_name != "") {
-						$s_name = $sites->site_name.' : ';
-					}
-					$output .= '<li>'.$s_name.'<a href="'.$sites->site_url.'" target="_blank">'.$sites->site_url.'</a>&nbsp;&nbsp;';
-					$output .= '<a href="#" class="del-website" onclick="javascript:removeSite(\''.$sites->site_id.'\', \''.$num_page.'\', \''.$nb_items.'\')"></a>';
-					$output .= '</li>';
-				}
-				$output .= '</ul><br/>';
-			}
-			$output .= '<a class="add-website" href="#" onclick="javascript:addSite(\''.$rs->user_id.'\', \''.$num_page.'\', \''.$nb_items.'\')">'.T_("Add a new website").'</a></td>';
-			$output .= '<td  class="'.$god_class.'" style="text-align: center;">';
-			if (!$is_god) {
-				$output .= '<a href="#" onclick="javascript:toggleUserStatus(\''.$rs->user_id.'\', \''.$num_page.'\', \''.$nb_items.'\')">
-				<img src="meta/icons/action-'.$toggle_status.'.png" title="'.$toggle_msg.'" /></a>';
-			}
-			$output .= '<a href="#" onclick="javascript:profile(\''.$rs->user_id.'\', \''.$num_page.'\', \''.$nb_items.'\')">
-					<img src="meta/icons/action-edit.png" title="'.T_('Update').'" /></a>';
-			if (!$is_god) {
-			$output .= '<a href="#" onclick="javascript:removeUser(\''.$rs->user_id.'\', \''.$num_page.'\', \''.$nb_items.'\')">
-					<img src="meta/icons/action-remove.png" title="'.T_('Delete').'" /></a>';
-			}
-			$output .= '</td></tr>';
-		}
-		$output .= '</table>';
-
-		print $output;
+		print getOutput($sql, $num_page, $nb_items);
 		break;
 		
 ##########################################################
@@ -405,5 +355,99 @@ if(isset($_POST['action'])) {
 	}
 } else {
 	print 'forbidden';
+}
+
+function getOutput($sql, $num_page=0, $nb_items=30) {
+	global $core, $blog_settings;
+	$next_page = $num_page + 1;
+	$prev_page = $num_page - 1;
+
+	$rs = $core->con->select($sql);
+
+	$output .= '<div class="navigation">';
+	if ($prev_page >= 0) {
+		$output .= '<a href="#" onclick="javascript:updateUserList(\''.$prev_page.'\', \''.$nb_items.'\')"
+			class="page_prc">&laquo; '.T_('Previous page').'</a>';
+	}
+	if ($rs->count() >= $next_page * $nb_items) {
+		$output .= '<a href="#" onclick="javascript:updateUserList(\''.$next_page.'\', \''.$nb_items.'\')"
+			class="page_svt">'.T_('Next Page').' &raquo;</a>';
+	}
+	$output .= '</div><!-- fin pagination -->';
+
+	$output .= '
+<br />
+<table id="userlist" class="table-member">
+<thead>
+	<tr>
+		<th class="tc7 tcr" scope="col">'.T_('Avatar').'</th>
+		<th class="tc9 tcr" scope="col">'.T_('User Informations').'</th>
+		<th class="tc8 tcr" scope="col">'.T_('Website').'</th>
+		<th class="tc10 tcr" scope="col">'.T_('Action').'</th>
+	</tr>
+</thead>';
+	# On affiche la liste de membres
+	$author_id = $blog_settings->get('author_id');
+	while($rs->fetch()) {
+		$sql = "SELECT site_id, site_name, site_url FROM ".$core->prefix."site WHERE user_id = '$rs->user_id'";
+		$sites = $core->con->select($sql);
+		$god_class = '';
+		$is_god = false;
+		if ($rs->user_id == $author_id) {
+			$is_god = true;
+			$god_class = 'god';
+		}
+		if($rs->user_status) {
+			$status = 'active';
+			$toggle_status = 'disable';
+			$toggle_msg = T_('Disable user');
+		} else {
+			$toggle_status = 'enable';
+			$toggle_msg = T_('Enable user');
+			$status = 'inactive';
+		}
+		$gravatar_email = strtolower($rs->user_email);
+		$gravatar_url = "http://www.gravatar.com/avatar.php?gravatar_id=".md5($gravatar_email)."&default=".urlencode($blog_settings->get('planet_url')."/themes/".$blog_settings->get('planet_theme')."/images/gravatar.png")."&size=40";
+
+		# Affichage de la ligne de tableau
+		$output .= '<tr class="line '.$status.'"><td class="'.$god_class.'" style="text-align: center;"><img src="'.$gravatar_url.'"></td>
+			<td class="'.$god_class.'"><ul>
+				<li>User id : '.$rs->user_id.'</li>
+				<li>Fullname : '.$rs->user_fullname.'</li>
+				<li>Email : '.$rs->user_email.'</li>';
+		if ($is_god) {
+			$output .= '<li>'.T_('Planet author').'<li>';
+		}
+		$output .= '</ul></div></td>';
+		$output .= '<td class="'.$god_class.'">';
+		if ($sites->count()){
+			$output .= '<ul>';
+			while($sites->fetch()){
+				$s_name = '';
+				if ($sites->site_name != "") {
+					$s_name = $sites->site_name.' : ';
+				}
+				$output .= '<li>'.$s_name.'<a href="'.$sites->site_url.'" target="_blank">'.$sites->site_url.'</a>&nbsp;&nbsp;';
+				$output .= '<a href="#" class="del-website" onclick="javascript:removeSite(\''.$sites->site_id.'\', \''.$num_page.'\', \''.$nb_items.'\')"></a>';
+				$output .= '</li>';
+			}
+			$output .= '</ul><br/>';
+		}
+		$output .= '<a class="add-website" href="#" onclick="javascript:addSite(\''.$rs->user_id.'\', \''.$num_page.'\', \''.$nb_items.'\')">'.T_("Add a new website").'</a></td>';
+		$output .= '<td  class="'.$god_class.'" style="text-align: center;">';
+		if (!$is_god) {
+			$output .= '<a href="#" onclick="javascript:toggleUserStatus(\''.$rs->user_id.'\', \''.$num_page.'\', \''.$nb_items.'\')">
+			<img src="meta/icons/action-'.$toggle_status.'.png" title="'.$toggle_msg.'" /></a>';
+		}
+		$output .= '<a href="#" onclick="javascript:profile(\''.$rs->user_id.'\', \''.$num_page.'\', \''.$nb_items.'\')">
+				<img src="meta/icons/action-edit.png" title="'.T_('Update').'" /></a>';
+		if (!$is_god) {
+		$output .= '<a href="#" onclick="javascript:removeUser(\''.$rs->user_id.'\', \''.$num_page.'\', \''.$nb_items.'\')">
+				<img src="meta/icons/action-remove.png" title="'.T_('Delete').'" /></a>';
+		}
+		$output .= '</td></tr>';
+	}
+	$output .= '</table>';
+	return $output;
 }
 ?>

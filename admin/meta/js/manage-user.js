@@ -1,4 +1,19 @@
 $(document).ready(function() {
+	$('#filteruser_form').submit(function() {
+		var data = $('#filteruser_form').serialize();
+		$('#flash-log').css('display','');
+		$('#flash-msg').addClass('ajax-loading');
+		$.ajax({
+			type: "POST",
+			url: "api/",
+			data: 'ajax=user&action=filter&'+data,
+			success: function(msg){
+				$('#flash-msg').removeClass('ajax-loading');
+				$("#users-list").html(msg);
+			}
+		});
+		return false;
+	});
 	$('#adduser_form').submit(function() {
 		var data = $('#adduser_form').serialize();
 		$('#flash-log').css('display','');

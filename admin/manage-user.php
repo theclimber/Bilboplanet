@@ -48,7 +48,49 @@ include_once(dirname(__FILE__).'/sidebar.php');
 
 <div id="add-form" class="button br3px"><a onclick="jQuery('#adduser-field').css('display', '')">
 	<?php echo T_('Add an user'); ?></a>
+</div>
+<div class="button br3px" id="filter-form"><a onclick="jQuery('#filteruser-field').css('display', '')">
+	<?php echo T_('Filter userlist'); ?></a>
 </div></p>
+
+<fieldset id="filteruser-field" style="display:none"><legend><?php echo T_('Filter');?></legend>
+	<br/>
+
+<?php
+
+# Traitement de la liste
+$rs = $core->con->select('SELECT DISTINCT
+		'.$core->prefix.'user.user_id,
+		user_fullname
+	FROM '.$core->prefix.'user
+	ORDER BY user_fullname ASC;');
+$users = array();
+$users['-- '.T_('All').' --'] = 'all';
+while($rs->fetch()) {
+	$users["$rs->user_fullname"] = $rs->user_id;
+}
+
+$status = array();
+$status['-- '.T_('All').' --'] = "all";
+$status[T_('Active user')] = 1;
+$status[T_('Inactive user')] = 0;
+
+echo
+'<form id="filteruser_form">'.
+
+'<label class="required" for="fuser_id">'.T_('User id').' : '.
+form::combo('fuser_id',$users,'', 'input','','').'</label><br /><br />'.
+
+'<label class="required" for="user_status">'.T_('User status').' : '.
+form::combo('user_status',$status,'', 'input','','').'</label><br /><br />';
+
+echo 
+'<div class="button br3px"><input type="submit" name="filter_user" class="valide" value="'.T_('Filter').'" /></div>'.
+'<div class="button br3px close-button"><a class="close" onclick="jQuery(\'#filteruser-field\').css(\'display\', \'none\');updateUserList(0, 30)">'.T_('Close').'</a></div>'.
+'</form>';
+?>
+</fieldset>
+
 
 <fieldset id="adduser-field" style="display:none"><legend><?php echo T_('Add an user');?></legend>
 	<div class="message">

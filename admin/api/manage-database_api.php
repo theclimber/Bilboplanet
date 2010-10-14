@@ -60,6 +60,7 @@ if(isset($_POST['action'])) {
 				}
 			}
 
+			ini_set("memory_limit",'256M');
 			$content = json_encode($JSON_array);
 			$compressed = gzencode($content, 9);
 

@@ -206,7 +206,7 @@ xml:lang="en" lang="en">
 	<meta name="GOOGLEBOT" content="NOSNIPPET" />
 	<link rel="stylesheet" type="text/css" href="meta/css/auth.css"/>
 	<script language="JavaScript" type="text/javascript" src="meta/js/crir.js"></script>
-	<title><?php echo html::escapeHTML($blog_settings->get('planet_title')); ?></title>
+	<title><?php echo html_entity_decode(stripslashes($blog_settings->get('planet_title')), ENT_QUOTES, 'UTF-8'); ?></title>
 </head>
 
 <body id="login" class="auth">

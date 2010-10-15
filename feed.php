@@ -81,7 +81,7 @@ if (isset($_GET) && isset($_GET['type'])) {
 		
 		# Compute date to timestamp format
 		$semaine = time() - 3600*24*7;
-		$title = $blog_settings->get('planet_title')." - Popular";
+		$title = convert_chars(html_entity_decode(stripslashes($blog_settings->get('planet_title')), ENT_QUOTES, 'UTF-8'))." - Popular";
 		$sql = "SELECT
 				".$core->prefix."user.user_id as user_id,
 				user_fullname,
@@ -101,7 +101,7 @@ if (isset($_GET) && isset($_GET['type'])) {
 			LIMIT 0, ".$blog_settings->get('planet_nb_art_flux');
 	}
 	else {
-		$title = $blog_settings->get('planet_title');
+		$title = convert_chars(html_entity_decode(stripslashes($blog_settings->get('planet_title')), ENT_QUOTES, 'UTF-8'));
 		$sql = "SELECT
 				".$core->prefix."user.user_id as user_id,
 				user_fullname,

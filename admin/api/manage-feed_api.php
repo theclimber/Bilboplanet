@@ -303,18 +303,7 @@ function getOutput($sql, $num_page=0, $nb_items=30) {
 	$prev_page = $num_page - 1;
 
 	$rs = $core->con->select($sql);
-	$nb = $rs->count();
-
-	$output .= '<div class="navigation">';
-	if ($prev_page >= 0) {
-		$output .= '<a href="#" onclick="javascript:updateUserList(\''.$prev_page.'\', \''.$nb_items.'\')"
-			class="page_prc">&laquo; '.T_('Previous page').'</a>';
-	}
-	if ($nb >= $next_page * $nb_items) {
-		$output .= '<a href="#" onclick="javascript:updateUserList(\''.$next_page.'\', \''.$nb_items.'\')"
-			class="page_svt">'.T_('Next Page').' &raquo;</a>';
-	}
-	$output .= '</div><!-- fin pagination -->';
+	$output .= showPagination($rs->count(), $num_page, $nb_items, 'updateFeedList');
 
 	$output .= '
 <br />
@@ -380,6 +369,8 @@ function getOutput($sql, $num_page=0, $nb_items=30) {
 			</td></tr>';
 	}
 	$output .= '</table>';
+	$output .= showPagination($rs->count(), $num_page, $nb_items, 'updateFeedList');
+
 	return $output;
 }
 ?>

@@ -64,19 +64,8 @@ if(isset($_POST['action'])) {
 			ORDER by user_fullname
 			ASC LIMIT '.$num_start.','.$nb_items;
 		$rs = $core->con->select($sql);
-		$nb = $rs->count();
 
-		$output .= '<div class="navigation">';
-		if ($prev_page >= 0) {
-			$output .= '<a href="#" onclick="javascript:updateUserList(\''.$prev_page.'\', \''.$nb_items.'\')"
-				class="page_prc">&laquo; '.T_('Previous page').'</a>';
-		}
-		if ($nb >= $next_page * $nb_items) {
-			$output .= '<a href="#" onclick="javascript:updateUserList(\''.$next_page.'\', \''.$nb_items.'\')"
-				class="page_svt">'.T_('Next Page').' &raquo;</a>';
-		}
-		$output .= '</div><!-- fin pagination -->';
-
+		$output .= showPagination($rs->count(), $num_page, $nb_items, 'updateUserList');
 		$output .= '
 <br /><br />
 <table id="userlist" class="table-member">
@@ -151,6 +140,7 @@ if(isset($_POST['action'])) {
 			}
 			$output .= '</td></tr>';
 		}
+		$output .= showPagination($rs->count(), $num_page, $nb_items, 'updateUserList');
 		$output .= '</table>';
 
 		print $output;

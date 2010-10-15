@@ -359,21 +359,9 @@ if(isset($_POST['action'])) {
 
 function getOutput($sql, $num_page=0, $nb_items=30) {
 	global $core, $blog_settings;
-	$next_page = $num_page + 1;
-	$prev_page = $num_page - 1;
 
 	$rs = $core->con->select($sql);
-
-	$output .= '<div class="navigation">';
-	if ($prev_page >= 0) {
-		$output .= '<a href="#" onclick="javascript:updateUserList(\''.$prev_page.'\', \''.$nb_items.'\')"
-			class="page_prc">&laquo; '.T_('Previous page').'</a>';
-	}
-	if ($rs->count() >= $next_page * $nb_items) {
-		$output .= '<a href="#" onclick="javascript:updateUserList(\''.$next_page.'\', \''.$nb_items.'\')"
-			class="page_svt">'.T_('Next Page').' &raquo;</a>';
-	}
-	$output .= '</div><!-- fin pagination -->';
+	$output .= showPagination($rs->count(), $num_page, $nb_items, 'updateUserList');
 
 	$output .= '
 <br />
@@ -448,6 +436,8 @@ function getOutput($sql, $num_page=0, $nb_items=30) {
 		$output .= '</td></tr>';
 	}
 	$output .= '</table>';
+	$output .= showPagination($rs->count(), $num_page, $nb_items, 'updateUserList');
+
 	return $output;
 }
 ?>

@@ -56,4 +56,35 @@ if (isset($_GET['logout'])) {
 	exit;
 }
 
+function showNextButton($next_page, $nb_items, $script) {
+	return '<a href="#" onclick="javascript:'.$script.'(\''.$next_page.'\', \''.$nb_items.'\')" class="page_svt">'.T_('Next Page').' &raquo;</a>';
+}
+
+function showPrevButton($prev_page, $nb_items, $script) {
+	return '<a href="#" onclick="javascript:'.$script.'(\''.$prev_page.'\', \''.$nb_items.'\')" class="page_prc">&laquo; '.T_('Previous page').'</a>';
+}
+
+function showPagination($count, $num_page, $nb_items, $script) {
+	$next_page = $num_page + 1;
+	$prev_page = $num_page - 1;
+
+	$output .= '<div class="navigation">';
+	if($num_page == 0 & $count >= $nb_items) {
+		# if we are on the first page
+		$output .= showNextButton($next_page, $nb_items, $script);
+	} elseif($num_page == 0 & $count< $nb_items) {
+		# we don't show any button
+	} else {
+		if($count == 0 | $count < $nb_items) {
+			# if we are on the last page
+			$output .= showPrevButton($prev_page, $nb_items, $script);
+		} else {
+			$output .= showPrevButton($prev_page, $nb_items, $script);
+			$output .= showNextButton($next_page, $nb_items, $script);
+		}
+	}
+	$output .= '</div><!-- fin pagination -->';
+	return $output;
+}
+
 ?>

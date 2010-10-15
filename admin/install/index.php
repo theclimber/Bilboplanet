@@ -82,8 +82,8 @@ if ($can_install && !empty($_POST))
 	$u_pwd = !empty($_POST['u_pwd']) ? $_POST['u_pwd'] : null;
 	$u_pwd2 = !empty($_POST['u_pwd2']) ? $_POST['u_pwd2'] : null;
 	$u_site = !empty($_POST['u_site']) ? $_POST['u_site'] : null;
-	$p_desc = !empty($_POST['p_desc']) ? htmlentities(stripslashes($_POST['p_desc']), ENT_QUOTES) : null;
-	$p_title = !empty($_POST['p_title']) ? htmlentities(stripslashes($_POST['p_title']), ENT_QUOTES) : null;
+	$p_desc = !empty($_POST['p_desc']) ? htmlentities(stripslashes($_POST['p_desc']), ENT_QUOTES, 'UTF-8') : null;
+	$p_title = !empty($_POST['p_title']) ? htmlentities(stripslashes($_POST['p_title']), ENT_QUOTES, 'UTF-8') : null;
 	$p_lang = !empty($_POST['p_lang']) ? $_POST['p_lang'] : null;
 	define('BP_PROT_PATH',dirname(__FILE__).'/../../.htpasswd');
 	

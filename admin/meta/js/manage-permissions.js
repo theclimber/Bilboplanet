@@ -49,15 +49,22 @@ function toggleUserRole(user_id, num_page, nb_items) {
 		}
 	});
 }
-function toggleUserPermission(perm, user_id, num_page, nb_items) {
+function toggleUserPermission(user_id, num_page, nb_items) {
 	$('#flash-log').css('display','');
 	$('#flash-msg').addClass('ajax-loading');
 	$('#flash-msg').html('Loading');
 
-	value = $('#'+perm+user_id).val()
-	action = 'unset';
-	if($('#'+perm+user_id+':checked').val()) {
-		action = 'set';
+	admin = 'unset';
+	if($('input#admin'+user_id+':checked').val()) {
+		admin = 'set';
+	}
+	config = 'unset';
+	if($('input#config'+user_id+':checked').val()) {
+		config = 'set';
+	}
+	moder = 'unset';
+	if($('input#moder'+user_id+':checked').val()) {
+		moder = 'set';
 	}
 	
 	$.ajax({
@@ -67,8 +74,9 @@ function toggleUserPermission(perm, user_id, num_page, nb_items) {
 			'ajax' : 'permissions',
 			'action' : 'togglePerms',
 			'user_id' : user_id,
-			'perm_action' : action,
-			'perm_value' : value
+			'moder' : moder,
+			'config' : config,
+			'admin' : admin
 			},
 		success: function(msg){
 			$('#flash-msg').removeClass('ajax-loading');

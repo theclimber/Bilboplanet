@@ -22,16 +22,19 @@ if(isset($_POST['action'])) {
 ##########################################################
 	case 'togglePerms':
 		$user_id = urldecode(trim($_POST['user_id']));
+		$admin = (trim($_POST['admin']));
+		$config = (trim($_POST['config']));
+		$moder = (trim($_POST['moder']));
 
 		$manager_perm = array();
-		if (isset($_POST['config'.$user_id])) {
-			$manager_perm[] = $_POST['config'.$user_id];
+		if ($admin == "set") {
+			$manager_perm[] = "administration";
 		}
-		if (isset($_POST['admin'.$user_id])) {
-			$manager_perm[] = $_POST['admin'.$user_id];
+		if ($config == "set") {
+			$manager_perm[] = "configuration";
 		}
-		if (isset($_POST['moder'.$user_id])) {
-			$manager_perm[] = $_POST['moder'.$user_id];
+		if ($moder == "set") {
+			$manager_perm[] = "moderation";
 		}
 
 		if ($user_id == $core->auth->userID()) {
@@ -39,7 +42,7 @@ if(isset($_POST['action'])) {
 		}
 		else {
 			$core->setUserPermissions($user_id, $manager_perm);
-			print '<div class="flash notice">'.sprintf(T_('User %s has new permissions'), $user_id).'</div>';
+			print '<div class="flash notice">'.sprintf(T_('User %s has new permissions : %s'), $user_id, '('.implode(',',$manager_perm).')').'</div>';
 		}
 		break;
 
@@ -135,7 +138,7 @@ if(isset($_POST['action'])) {
 				$output .= form::checkbox('moder'.$rs->user_id, 'moderation', $moder_checked, 'input').
 					'<label class="required'.$moder_class.'" for="moder'.$rs->user_id.'">'.T_('Moderation').
 					'</label><br />';
-				$output .= '<div class="button br3px"><input class="valide" type="submit" name="submit" value="'.T_('Apply').'" /></div>';
+				$output .= '<div class="button br3px"><input class="valide" type="button" name="submit" value="'.T_('Apply').'" onclick="javascript:toggleUserPermission(\''.$rs->user_id.'\', '.$num_page.', '.$nb_items.')" /></div>';
 				$output .= "</form>";
 			}
 			$output .= '</td></tr>';

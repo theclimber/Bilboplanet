@@ -67,7 +67,7 @@ $rs = $core->con->select('SELECT DISTINCT
 $users = array();
 $users['-- '.T_('All').' --'] = 'all';
 while($rs->fetch()) {
-	$users["$rs->user_fullname"] = $rs->user_id;
+	$users["$rs->user_fullname"] = urlencode($rs->user_id);
 }
 
 $status = array();

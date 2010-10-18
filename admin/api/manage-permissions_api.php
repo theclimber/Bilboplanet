@@ -12,8 +12,13 @@ if(isset($_POST['action'])) {
 			print '<div class="flash error">'.T_('Impossible to change your own role').'</div>';
 		}
 		else {
-			$core->setUserRole($user_id, $user_role);
-			print '<div class="flash notice">'.sprintf(T_('User %s is now know as %s'), $user_id, $user_role).'</div>';
+			if (!empty($user_role)) {
+				$core->setUserRole($user_id, $user_role);
+				print '<div class="flash notice">'.sprintf(T_('User %s is now know as %s'), $user_id, $user_role).'</div>';
+			}
+			else {
+				print '<div class="flash error">'.T_('There was a problem during toggling user role').'</div>';
+			}
 		}
 		break;
 
@@ -103,7 +108,7 @@ if(isset($_POST['action'])) {
 					<li>Email : '.$rs->user_email.'</li>
 				</ul></div></td>';
 			$output .= '<td>'.
-				form::combo('role'.$rs->user_id, $roles, $user_perms->{'role'},'','input',false,'onchange="javascript:toggleUserRole(\''.$rs->user_id.'\',\''.$num_page.'\', \''.$nb_items.'\')"')
+				form::combo('role'.urlencode($rs->user_id), $roles, $user_perms->{'role'},'','input',false,'onchange="javascript:toggleUserRole(\''.urlencode($rs->user_id).'\',\''.$num_page.'\', \''.$nb_items.'\')"')
 				.'</td>';
 			$output .= '<td>';
 			if ($user_perms->{'role'} == 'manager') {
@@ -127,18 +132,18 @@ if(isset($_POST['action'])) {
 					$moder_class = ' green';
 					$moder_checked = true;
 				}
-				$output .= '<form id="permissions'.$rs->user_id.'" class="managerPerm">'.
-					form::hidden('user_id',$rs->user_id);
-				$output .= form::checkbox('config'.$rs->user_id, 'configuration', $config_checked, 'input').
-					'<label class="required'.$config_class.'" for="config'.$rs->user_id.'">'.T_('Configuration').
+				$output .= '<form id="permissions'.urlencode($rs->user_id).'" class="managerPerm">'.
+					form::hidden('user_id',urlencode($rs->user_id));
+				$output .= form::checkbox('config'.urlencode($rs->user_id), 'configuration', $config_checked, 'input').
+					'<label class="required'.$config_class.'" for="config'.urlencode($rs->user_id).'">'.T_('Configuration').
 					'</label><br />';
-				$output .= form::checkbox('admin'.$rs->user_id, 'administration', $admin_checked, 'input').
-					'<label class="required'.$admin_class.'" for="admin'.$rs->user_id.'">'.T_('Administration').
+				$output .= form::checkbox('admin'.urlencode($rs->user_id), 'administration', $admin_checked, 'input').
+					'<label class="required'.$admin_class.'" for="admin'.urlencode($rs->user_id).'">'.T_('Administration').
 					'</label><br />';
-				$output .= form::checkbox('moder'.$rs->user_id, 'moderation', $moder_checked, 'input').
-					'<label class="required'.$moder_class.'" for="moder'.$rs->user_id.'">'.T_('Moderation').
+				$output .= form::checkbox('moder'.urlencode($rs->user_id), 'moderation', $moder_checked, 'input').
+					'<label class="required'.$moder_class.'" for="moder'.urlencode($rs->user_id).'">'.T_('Moderation').
 					'</label><br />';
-				$output .= '<div class="button br3px"><input class="valide" type="button" name="submit" value="'.T_('Apply').'" onclick="javascript:toggleUserPermission(\''.$rs->user_id.'\', '.$num_page.', '.$nb_items.')" /></div>';
+				$output .= '<div class="button br3px"><input class="valide" type="button" name="submit" value="'.T_('Apply').'" onclick="javascript:toggleUserPermission(\''.urlencode($rs->user_id).'\', '.$num_page.', '.$nb_items.')" /></div>';
 				$output .= "</form>";
 			}
 			$output .= '</td></tr>';

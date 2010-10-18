@@ -23,7 +23,7 @@ $rs_side = $core->con->select($sql_side);
 
 while ($rs_side->fetch()) {
 	$user_info = array(
-		"id" => $rs_side->f('id'),
+		"id" => urlencode($rs_side->f('id')),
 		"fullname" => $rs_side->f('fullname'),
 		"site_url" => $rs_side->f('site_url')
 		);

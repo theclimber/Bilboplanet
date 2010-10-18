@@ -39,7 +39,7 @@ if(isset($_POST['action'])) {
 # ADD FEED TO SITE
 ##########################################################
 	case 'add':
-		$user_id = trim($_POST['user_id']);
+		$user_id = urldecode(trim($_POST['user_id']));
 		$site_id = trim($_POST['site_id']);
 		$feed_url = check_field('feed_url',trim($_POST['feed_url']), 'url');
 		$feed_name = check_field('feed_name',trim($_POST['feed_name']));
@@ -236,7 +236,7 @@ if(isset($_POST['action'])) {
 # GET FILTERED FEED LIST
 ##########################################################
 	case 'filter':
-		$user_id = trim($_POST['fuser_id']);
+		$user_id = urldecode(trim($_POST['fuser_id']));
 		$feed_status = trim($_POST['feed_status']);
 		$sql_cond = '';
 		if ($user_id != 'all') {

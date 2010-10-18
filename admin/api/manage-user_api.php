@@ -6,7 +6,7 @@ if(isset($_POST['action'])) {
 # GET USER PROFILE
 ##########################################################
 	case 'profile':
-		$user_id = trim($_POST['user_id']);
+		$user_id = urldecode(trim($_POST['user_id']));
 		$rs = $core->con->select("SELECT * FROM ".$core->prefix."user WHERE user_id = '$user_id'");
 		$user = array(
 			"user_id" => $rs->f('user_id'),
@@ -152,7 +152,7 @@ if(isset($_POST['action'])) {
 # TOGGLE USER
 ##########################################################
 	case 'toggle':
-		$user_id = trim($_POST['user_id']);
+		$user_id = urldecode(trim($_POST['user_id']));
 		$user = $core->con->select("SELECT user_status FROM ".$core->prefix."user WHERE user_id = '$user_id'");
 		
 		$cur = $core->con->openCursor($core->prefix.'user');
@@ -170,7 +170,7 @@ if(isset($_POST['action'])) {
 # UPDATE USER
 ##########################################################
 	case 'update':
-		$user_id = trim($_POST['user_id']);
+		$user_id = urldecode(trim($_POST['user_id']));
 		$user = $core->con->select("SELECT * FROM ".$core->prefix."user WHERE user_id = '$user_id'");
 
 		$new_fullname = !empty($_POST['efullname']) ? $_POST['efullname'] : $user->f('user_fullname');
@@ -243,7 +243,7 @@ if(isset($_POST['action'])) {
 # REMOVE USER
 ##########################################################
 	case 'remove':
-		$user_id = trim($_POST['user_id']);
+		$user_id = urldecode(trim($_POST['user_id']));
 		$user_perms = $core->getUserRolePermissions($user_id);
 		if ($user_perms->{'role'} == "god") {
 			print '<div class="flash error">'.T_('You are not allowed to remove a super user').'</div>';
@@ -255,7 +255,7 @@ if(isset($_POST['action'])) {
 			$confirmation .= "<li>".T_('All the posts of the user will be removed')."</li>";
 			$confirmation .= "<li>".T_('All the votes on these posts will be removed')."</li>";
 			$confirmation .= "<li>".T_('All the feeds of this user will be removed')."</li></ul><br/>";
-			$confirmation .= "<form id='removeConfirm_form'><input type='hidden' name='user_id' value='".$user_id."'/>";
+			$confirmation .= "<form id='removeConfirm_form'><input type='hidden' name='user_id' value='".urlencode($user_id)."'/>";
 			$confirmation .= "<div class='button br3px'><input type='reset' class='reset' onclick=\"javascript:$('#flash-msg').html('')\" value='".T_('Reset')."'/></div>&nbsp;&nbsp;";
 			$confirmation .= "<div class='button br3px'><input type='submit' class='valide' name='confirm' value='".T_('Confirm')."'/></div></form></p>";
 			print '<div class="flash error">'.$confirmation.'</div>';
@@ -266,7 +266,7 @@ if(isset($_POST['action'])) {
 # CONFIRM REMOVE USER
 ##########################################################
 	case 'removeConfirm':
-		$user_id = trim($_POST['user_id']);
+		$user_id = urldecode(trim($_POST['user_id']));
 		$user_perms = $core->getUserRolePermissions($user_id);
 		if ($user_perms->{'role'} == "god") {
 			print '<div class="flash error">'.T_('You are not allowed to remove a super user').'</div>';
@@ -290,7 +290,7 @@ if(isset($_POST['action'])) {
 # FILTERED USER LIST RETURN
 ##########################################################
 	case 'filter':
-		$user_id = trim($_POST['fuser_id']);
+		$user_id = urldecode(trim($_POST['fuser_id']));
 		$user_status = trim($_POST['user_status']);
 		$sql_cond = array();
 		if ($user_id != 'all') {
@@ -421,16 +421,16 @@ function getOutput($sql, $num_page=0, $nb_items=30) {
 			}
 			$output .= '</ul><br/>';
 		}
-		$output .= '<a class="add-website" href="#" onclick="javascript:addSite(\''.$rs->user_id.'\', \''.$num_page.'\', \''.$nb_items.'\')">'.T_("Add a new website").'</a></td>';
+		$output .= '<a class="add-website" href="#" onclick="javascript:addSite(\''.urlencode($rs->user_id).'\', \''.$num_page.'\', \''.$nb_items.'\')">'.T_("Add a new website").'</a></td>';
 		$output .= '<td  class="'.$god_class.'" style="text-align: center;">';
 		if (!$is_god) {
-			$output .= '<a href="#" onclick="javascript:toggleUserStatus(\''.$rs->user_id.'\', \''.$num_page.'\', \''.$nb_items.'\')">
+			$output .= '<a href="#" onclick="javascript:toggleUserStatus(\''.urlencode($rs->user_id).'\', \''.$num_page.'\', \''.$nb_items.'\')">
 			<img src="meta/icons/action-'.$toggle_status.'.png" title="'.$toggle_msg.'" /></a>';
 		}
-		$output .= '<a href="#" onclick="javascript:profile(\''.$rs->user_id.'\', \''.$num_page.'\', \''.$nb_items.'\')">
+		$output .= '<a href="#" onclick="javascript:profile(\''.urlencode($rs->user_id).'\', \''.$num_page.'\', \''.$nb_items.'\')">
 				<img src="meta/icons/action-edit.png" title="'.T_('Update').'" /></a>';
 		if (!$is_god) {
-		$output .= '<a href="#" onclick="javascript:removeUser(\''.$rs->user_id.'\', \''.$num_page.'\', \''.$nb_items.'\')">
+		$output .= '<a href="#" onclick="javascript:removeUser(\''.urlencode($rs->user_id).'\', \''.$num_page.'\', \''.$nb_items.'\')">
 				<img src="meta/icons/action-remove.png" title="'.T_('Delete').'" /></a>';
 		}
 		$output .= '</td></tr>';

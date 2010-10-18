@@ -81,7 +81,7 @@ if (isset($_GET)) {
 	}
 	# On recupere le numero du membre
 	if (isset($_GET['user_id']) && !empty($_GET['user_id'])){
-		$params["user_id"] = $_GET['user_id'];
+		$params["user_id"] = urldecode($_GET['user_id']);
 
 		# Complete the SQL query
 		$debut_sql = $debut_sql." AND ".$core->prefix."post.user_id = '".$params["user_id"]."'";

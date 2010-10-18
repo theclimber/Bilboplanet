@@ -60,7 +60,7 @@ if(isset($_POST['action'])) {
 					$error[] = sprintf(T_('The site %s already owns the feed %s'),$rs->f('site_url'), $feed_url['value']);
 				}
 				else {
-					$error[] = sprintf(T_('The feed %s owns to site %s'), $feed_url['value'], $rs->f('site_url'));
+					$error[] = sprintf(T_('The feed %s is owned by site %s'), $feed_url['value'], $rs->f('site_url'));
 				}
 			}
 

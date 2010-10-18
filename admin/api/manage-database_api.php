@@ -72,14 +72,16 @@ if(isset($_POST['action'])) {
 			unlink($snapshot_file);
 			$fp = @fopen($snapshot_file,'wb');
 			if ($fp === false) {
-				throw new Exception(sprintf(T_('Unable to write %s file.'),$snapshot_file));
+				$output = '<div class="flash error">'.sprintf(T_('Unable to write %s file.'),$snapshot_file).'<br />'.T_('Please check you /admin/cache directory permissions').'</div>';
 			}
-			fwrite($fp,$compressed);
-			fclose($fp);
-			chmod($snapshot_file, 0777);
+			else {
+				fwrite($fp,$compressed);
+				fclose($fp);
+				chmod($snapshot_file, 0777);
 
-			$output = '<div class="flash notice">'.T_("A snapshot of your current database was successfully created. Please download the following file and put it in some safe place.").'</div>';
-			$output .= '<p class="file"><a href="cache/'.$filename.'" target="_blank" type="octet-stream">'.$filename.'</a></p>';
+				$output = '<div class="flash notice">'.T_("A snapshot of your current database was successfully created. Please download the following file and put it in some safe place.").'</div>';
+				$output .= '<p class="file"><a href="cache/'.$filename.'" target="_blank" type="octet-stream">'.$filename.'</a></p>';
+			}
 		}
 		else {
 			$output = '<div class="flash error">'.T_("Please select at least one table to export").'</div>';

@@ -155,7 +155,7 @@ if (isset($_GET) && isset($_GET['type'])) {
 	<feed xmlns="http://www.w3.org/2005/Atom">
 	
 		<title><?php echo $title; ?></title>
-		<subtitle type="text"><?php echo $blog_settings->get('planet_desc'); ?></subtitle>
+		<subtitle type="text"><?php echo $planet_desc; ?></subtitle>
 		<updated><?php echo date('c') ?></updated>
 		<id><?php echo $blog_settings->get('planet_url'); ?></id>
 		<author>

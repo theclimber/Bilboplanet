@@ -69,13 +69,13 @@ include_once(dirname(__FILE__).'/sidebar.php');
 		<label for="user_id"><?php echo T_("Filter by user"); ?></label>
 		<select name="user_id" class="userscombo">
 <?php
-$rs = $core->con->select("SELECT user_id, user_fullname FROM ".$core->prefix."user ORDER BY user_fullname ASC");
+$rs = $core->con->select("SELECT user_id, user_fullname FROM ".$core->prefix."user ORDER BY lower(user_fullname) ASC");
 
 while($rs->fetch()) {
-	if($_POST['user_id'] == $rs->user_id) {
-		echo "\t\t".'<option value="'.$rs->user_id.'" selected>'.$rs->user_fullname.'</option>';
+	if($_POST['user_id'] == urlencode($rs->user_id)) {
+		echo "\t\t".'<option value="'.urlencode($rs->user_id).'" selected>'.$rs->user_fullname.'</option>';
 	} else {
-		echo "\t\t".'<option value="'.$rs->user_id.'">'.$rs->user_fullname.'</option>';
+		echo "\t\t".'<option value="'.urlencode($rs->user_id).'">'.$rs->user_fullname.'</option>';
 	}
 	echo "\n";
 }

@@ -143,7 +143,7 @@ function profile(user_id, num_page, nb_items) {
 			
 			$('#user-edit-form #euser_id').val(user.user_id);
 			$('#user-edit-form #euser_id').attr('disabled', 'true');
-			$('#user-edit-form #efullname').val(user.user_fullname);
+			$('#user-edit-form #efullname').val(unescape(user.user_fullname));
 			$('#user-edit-form #eemail').val(user.user_email);
 			var content = $('#user-edit-form form').clone();
 

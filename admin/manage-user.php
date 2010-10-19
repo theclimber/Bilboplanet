@@ -63,11 +63,11 @@ $rs = $core->con->select('SELECT DISTINCT
 		'.$core->prefix.'user.user_id,
 		user_fullname
 	FROM '.$core->prefix.'user
-	ORDER BY user_fullname ASC;');
+	ORDER BY lower(user_fullname) ASC;');
 $users = array();
 $users['-- '.T_('All').' --'] = 'all';
 while($rs->fetch()) {
-	$users["$rs->user_fullname"] = $rs->user_id;
+	$users["$rs->user_fullname"] = urlencode($rs->user_id);
 }
 
 $status = array();

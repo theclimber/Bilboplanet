@@ -33,31 +33,48 @@ function updateUserList(num_page, nb_items) {
 	});
 }
 
-function toggleUserRole(user_id, num_page, nb_items) {
-	$('#flash-log').css('display','');
-	$('#flash-msg').addClass('ajax-loading');
-	$('#flash-msg').html('Loading');
-	user_role = $('#role'+user_id).val()
-	$.ajax({
-		type: "POST",
-		url: "api/",
-		data : {'ajax' : 'permissions', 'action' : 'toggleRole', 'user_id' : encodeURIComponent(user_id), 'user_role' : user_role},
-		success: function(msg){
-			$('#flash-msg').removeClass('ajax-loading');
-			$('#flash-msg').html(msg);
-			updateUserList(num_page, nb_items);
-		}
-	});
-}
-function toggleUserPermission(perm, user_id, num_page, nb_items) {
+function toggleUserRole(nb, user_id, num_page, nb_items) {
 	$('#flash-log').css('display','');
 	$('#flash-msg').addClass('ajax-loading');
 	$('#flash-msg').html('Loading');
 
-	value = $('#'+perm+user_id).val()
-	action = 'unset';
-	if($('#'+perm+user_id+':checked').val()) {
-		action = 'set';
+	//var tagId = user_id;
+	//tagId = replaceAll(tagId, "%", '___SPECIALCHAR___' );
+	//tagId = replaceAll(tagId, '___SPECIALCHAR___', "\\\\%" );
+	user_role = $('#role'+nb).val();
+	//console.debug($('#role'+tagId));
+	//console.debug(user_role);
+	if (user_role != null ) {
+		$.ajax({
+			type: "POST",
+			url: "api/",
+			data : {'ajax' : 'permissions', 'action' : 'toggleRole', 'user_id' : user_id, 'user_role' : user_role},
+			success: function(msg){
+				$('#flash-msg').removeClass('ajax-loading');
+				$('#flash-msg').html(msg);
+				updateUserList(num_page, nb_items);
+			}
+		});
+	} else {
+		alert('Error : user role is undefined. Please report the bug');
+	}
+}
+function toggleUserPermission(nb, user_id, num_page, nb_items) {
+	$('#flash-log').css('display','');
+	$('#flash-msg').addClass('ajax-loading');
+	$('#flash-msg').html('Loading');
+
+	admin = 'unset';
+	if($('input#admin'+nb+':checked').val()) {
+		admin = 'set';
+	}
+	config = 'unset';
+	if($('input#config'+nb+':checked').val()) {
+		config = 'set';
+	}
+	moder = 'unset';
+	if($('input#moder'+nb+':checked').val()) {
+		moder = 'set';
 	}
 	
 	$.ajax({
@@ -67,8 +84,9 @@ function toggleUserPermission(perm, user_id, num_page, nb_items) {
 			'ajax' : 'permissions',
 			'action' : 'togglePerms',
 			'user_id' : user_id,
-			'perm_action' : action,
-			'perm_value' : value
+			'moder' : moder,
+			'config' : config,
+			'admin' : admin
 			},
 		success: function(msg){
 			$('#flash-msg').removeClass('ajax-loading');
@@ -78,3 +96,16 @@ function toggleUserPermission(perm, user_id, num_page, nb_items) {
 	});
 }
 
+function replaceAll(strText, from, to) {
+	var intIndexOfMatch = strText.indexOf( from );
+	// Loop over the string value replacing out each matching
+	// substring.
+	while (intIndexOfMatch != -1){
+		// Relace out the current instance.
+		strText = strText.replace( from, to )
+		// Get the index of any next matching substring.
+		intIndexOfMatch = strText.indexOf( from );
+	}
+	 
+	return strText;
+}

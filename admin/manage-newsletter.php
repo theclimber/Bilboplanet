@@ -137,7 +137,7 @@ if(isset($_POST) && isset($_POST['confirmSubmit'])) {
 }
 
 ### On recupere les informations nécessaires sur les membres actifs seulement
-$sql = "SELECT user_fullname, user_email FROM ".$core->prefix."user WHERE user_status = '1' ORDER BY user_fullname ASC;";
+$sql = "SELECT user_fullname, user_email FROM ".$core->prefix."user WHERE user_status = '1' ORDER BY lower(user_fullname) ASC;";
 $rs = $core->con->select($sql);
 if ($rs) {
 	$nb_rows = ceil($rs->count() / 4); # Calcul du nombre d'élément pour un afficage en 4 colonnes (arrondi à l'entier supérieur)

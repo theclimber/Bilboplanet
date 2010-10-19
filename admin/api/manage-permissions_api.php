@@ -12,8 +12,13 @@ if(isset($_POST['action'])) {
 			print '<div class="flash error">'.T_('Impossible to change your own role').'</div>';
 		}
 		else {
-			$core->setUserRole($user_id, $user_role);
-			print '<div class="flash notice">'.sprintf(T_('User %s is now know as %s'), $user_id, $user_role).'</div>';
+			if (!empty($user_role)) {
+				$core->setUserRole($user_id, $user_role);
+				print '<div class="flash notice">'.sprintf(T_('User %s is now know as %s'), $user_id, $user_role).'</div>';
+			}
+			else {
+				print '<div class="flash error">'.T_('There was a problem during toggling user role').'</div>';
+			}
 		}
 		break;
 
@@ -22,16 +27,19 @@ if(isset($_POST['action'])) {
 ##########################################################
 	case 'togglePerms':
 		$user_id = urldecode(trim($_POST['user_id']));
+		$admin = (trim($_POST['admin']));
+		$config = (trim($_POST['config']));
+		$moder = (trim($_POST['moder']));
 
 		$manager_perm = array();
-		if (isset($_POST['config'.$user_id])) {
-			$manager_perm[] = $_POST['config'.$user_id];
+		if ($admin == "set") {
+			$manager_perm[] = "administration";
 		}
-		if (isset($_POST['admin'.$user_id])) {
-			$manager_perm[] = $_POST['admin'.$user_id];
+		if ($config == "set") {
+			$manager_perm[] = "configuration";
 		}
-		if (isset($_POST['moder'.$user_id])) {
-			$manager_perm[] = $_POST['moder'.$user_id];
+		if ($moder == "set") {
+			$manager_perm[] = "moderation";
 		}
 
 		if ($user_id == $core->auth->userID()) {
@@ -39,7 +47,7 @@ if(isset($_POST['action'])) {
 		}
 		else {
 			$core->setUserPermissions($user_id, $manager_perm);
-			print '<div class="flash notice">'.sprintf(T_('User %s has new permissions'), $user_id).'</div>';
+			print '<div class="flash notice">'.sprintf(T_('User %s has new permissions : %s'), $user_id, '('.implode(',',$manager_perm).')').'</div>';
 		}
 		break;
 
@@ -61,10 +69,11 @@ if(isset($_POST['action'])) {
 			user_email,
 			user_status
 			FROM '.$core->prefix.'user
-			ORDER by user_fullname
+			ORDER by lower(user_fullname)
 			ASC LIMIT '.$num_start.','.$nb_items;
 		$rs = $core->con->select($sql);
 
+		$nb = 0;
 		$output .= showPagination($rs->count(), $num_page, $nb_items, 'updateUserList');
 		$output .= '
 <br /><br />
@@ -100,7 +109,7 @@ if(isset($_POST['action'])) {
 					<li>Email : '.$rs->user_email.'</li>
 				</ul></div></td>';
 			$output .= '<td>'.
-				form::combo('role'.$rs->user_id, $roles, $user_perms->{'role'},'','input',false,'onchange="javascript:toggleUserRole(\''.$rs->user_id.'\',\''.$num_page.'\', \''.$nb_items.'\')"')
+				form::combo('role'.$nb, $roles, $user_perms->{'role'},'','input',false,'onchange="javascript:toggleUserRole('.$nb.', \''.urlencode($rs->user_id).'\',\''.$num_page.'\', \''.$nb_items.'\')"')
 				.'</td>';
 			$output .= '<td>';
 			if ($user_perms->{'role'} == 'manager') {
@@ -124,21 +133,22 @@ if(isset($_POST['action'])) {
 					$moder_class = ' green';
 					$moder_checked = true;
 				}
-				$output .= '<form id="permissions'.$rs->user_id.'" class="managerPerm">'.
-					form::hidden('user_id',$rs->user_id);
-				$output .= form::checkbox('config'.$rs->user_id, 'configuration', $config_checked, 'input').
-					'<label class="required'.$config_class.'" for="config'.$rs->user_id.'">'.T_('Configuration').
+				$output .= '<form id="permissions'.urlencode($rs->user_id).'" class="managerPerm">'.
+					form::hidden('user_id',urlencode($rs->user_id));
+				$output .= form::checkbox('config'.$nb, 'configuration', $config_checked, 'input').
+					'<label class="required'.$config_class.'" for="config'.$nb.'">'.T_('Configuration').
 					'</label><br />';
-				$output .= form::checkbox('admin'.$rs->user_id, 'administration', $admin_checked, 'input').
-					'<label class="required'.$admin_class.'" for="admin'.$rs->user_id.'">'.T_('Administration').
+				$output .= form::checkbox('admin'.$nb, 'administration', $admin_checked, 'input').
+					'<label class="required'.$admin_class.'" for="admin'.$nb.'">'.T_('Administration').
 					'</label><br />';
-				$output .= form::checkbox('moder'.$rs->user_id, 'moderation', $moder_checked, 'input').
-					'<label class="required'.$moder_class.'" for="moder'.$rs->user_id.'">'.T_('Moderation').
+				$output .= form::checkbox('moder'.$nb, 'moderation', $moder_checked, 'input').
+					'<label class="required'.$moder_class.'" for="moder'.$nb.'">'.T_('Moderation').
 					'</label><br />';
-				$output .= '<div class="button br3px"><input class="valide" type="submit" name="submit" value="'.T_('Apply').'" /></div>';
+				$output .= '<div class="button br3px"><input class="valide" type="button" name="submit" value="'.T_('Apply').'" onclick="javascript:toggleUserPermission('.$nb.', \''.urlencode($rs->user_id).'\', '.$num_page.', '.$nb_items.')" /></div>';
 				$output .= "</form>";
 			}
 			$output .= '</td></tr>';
+			$nb = $nb + 1;
 		}
 		$output .= showPagination($rs->count(), $num_page, $nb_items, 'updateUserList');
 		$output .= '</table>';

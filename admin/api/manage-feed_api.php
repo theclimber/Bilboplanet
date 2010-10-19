@@ -39,7 +39,7 @@ if(isset($_POST['action'])) {
 # ADD FEED TO SITE
 ##########################################################
 	case 'add':
-		$user_id = trim($_POST['user_id']);
+		$user_id = urldecode(trim($_POST['user_id']));
 		$site_id = trim($_POST['site_id']);
 		$feed_url = check_field('feed_url',trim($_POST['feed_url']), 'url');
 		$feed_name = check_field('feed_name',trim($_POST['feed_name']));
@@ -60,7 +60,7 @@ if(isset($_POST['action'])) {
 					$error[] = sprintf(T_('The site %s already owns the feed %s'),$rs->f('site_url'), $feed_url['value']);
 				}
 				else {
-					$error[] = sprintf(T_('The feed %s owns to site %s'), $feed_url['value'], $rs->f('site_url'));
+					$error[] = sprintf(T_('The feed %s is owned by site %s'), $feed_url['value'], $rs->f('site_url'));
 				}
 			}
 
@@ -236,7 +236,7 @@ if(isset($_POST['action'])) {
 # GET FILTERED FEED LIST
 ##########################################################
 	case 'filter':
-		$user_id = trim($_POST['fuser_id']);
+		$user_id = urldecode(trim($_POST['fuser_id']));
 		$feed_status = trim($_POST['feed_status']);
 		$sql_cond = '';
 		if ($user_id != 'all') {
@@ -258,7 +258,7 @@ if(isset($_POST['action'])) {
 			FROM '.$core->prefix.'feed, '.$core->prefix.'site
 			WHERE '.$core->prefix.'feed.site_id = '.$core->prefix.'site.site_id'.
 			$sql_cond.' 
-			ORDER by '.$core->prefix.'feed.user_id ASC';
+			ORDER by lower('.$core->prefix.'feed.user_id) ASC';
 
 		print getOutput($sql);
 		break;
@@ -283,7 +283,7 @@ if(isset($_POST['action'])) {
 			feed_trust
 			FROM '.$core->prefix.'feed, '.$core->prefix.'site
 			WHERE '.$core->prefix.'feed.site_id = '.$core->prefix.'site.site_id
-			ORDER by '.$core->prefix.'feed.user_id
+			ORDER by lower('.$core->prefix.'feed.user_id)
 			ASC LIMIT '.$num_start.','.$nb_items;
 
 		print getOutput($sql, $num_page, $nb_items);

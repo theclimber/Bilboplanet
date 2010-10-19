@@ -93,6 +93,15 @@ if (isset($_POST)) {
 							$site_membre = $value[2];
 							$statut_membre = $value[3];
 							$user_id = preg_replace("( )", "_", $nom_membre);
+							$user_id = cleanString($user_id);
+
+							$rs0 = $core->con->select(
+								'SELECT COUNT(1) '.
+								'FROM '.$core->prefix.'user WHERE user_id =\''.$user_id.'\'');
+							if ($rs0->f('nb') > 0) {
+								$output = '<div class="flash error">'.T_("Two users have the same name, impossible to import. Please try again. Username : ".$user_id).'</div>';
+								break;
+							}
 
 							$cur = $core->con->openCursor($core->prefix."user");
 							$cur->user_id = $user_id;
@@ -139,6 +148,7 @@ if (isset($_POST)) {
 							$status_flux = $value[4];
 							$user_id = $tables['membre']['content'][$num_membre][0];
 							$user_id = preg_replace("( )", "_", $user_id);
+							$user_id = cleanString($user_id);
 							# We build the url of flux
 							$parse = @parse_url($url_flux);
 							if (!$parse['scheme']){
@@ -192,6 +202,7 @@ if (isset($_POST)) {
 							$article_score = $value[6];
 							$user_id = $tables['membre']['content'][$num_membre][0];
 							$user_id = preg_replace("( )", "_", $user_id);
+							$user_id = cleanString($user_id);
 							# We build the url of article
 							$parse = @parse_url($article_url);
 							if (!$parse['scheme']){

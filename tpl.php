@@ -18,7 +18,7 @@ $sql_side = "SELECT
 	FROM ".$core->prefix."user, ".$core->prefix."site
 	WHERE ".$core->prefix."user.user_id = ".$core->prefix."site.user_id
 	AND user_status = '1'
-	ORDER BY user_fullname ASC";
+	ORDER BY lower(user_fullname)";
 $rs_side = $core->con->select($sql_side);
 
 while ($rs_side->fetch()) {

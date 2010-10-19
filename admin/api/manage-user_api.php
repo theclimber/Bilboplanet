@@ -65,9 +65,9 @@ if(isset($_POST['action'])) {
 			$user_fullname['value'] = htmlentities($user_fullname['value'],ENT_QUOTES,mb_detect_encoding($user_fullname['value']));
 
 			$rs1 = $core->con->select("SELECT user_id, user_fullname, user_email FROM ".$core->prefix."user
-				WHERE user_id = '".$user_id['value']."'
-				OR user_fullname = '".$user_fullname['value']."'
-				OR user_email = '".$user_email['value']."'");
+				WHERE lower(user_id) = '".strtolower($user_id['value'])."'
+				OR lower(user_fullname) = '".strtolower($user_fullname['value'])."'
+				OR lower(user_email) = '".strtolower($user_email['value'])."'");
 			if ($rs1->count() > 0){
 				if ($rs1->f('user_id') == $user_id['value']) {
 					$error[] = sprintf(T_('The user %s already exists'),$user_id['value']);
@@ -192,9 +192,9 @@ if(isset($_POST['action'])) {
 			$new_fullname['value'] = htmlentities($new_fullname['value'],ENT_QUOTES,mb_detect_encoding($new_fullname['value']));
 
 			$sql = "SELECT user_id, user_fullname, user_email FROM ".$core->prefix."user
-				WHERE user_id != '".$user_id."'
-				AND (user_fullname = '".$new_fullname['value']."'
-				OR user_email = '".$new_email['value']."')";
+				WHERE lower(user_id) != '".strtolower($user_id)."'
+				AND (lower(user_fullname) = '".strtolower($new_fullname['value'])."'
+				OR lower(user_email) = '".strtolower($new_email['value'])."')";
 			$rs1 = $core->con->select($sql);
 			if ($rs1->count() > 0){
 				if ($rs1->f('user_fullname') == $new_fullname['value']) {

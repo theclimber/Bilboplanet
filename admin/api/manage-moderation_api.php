@@ -88,7 +88,7 @@ if(isset($_POST['action'])) {
 # Get user email text
 ##########################################################
 	case 'emailtext':
-		$user_id = $_POST['user_id'];
+		$user_id = urldecode($_POST['user_id']);
 		$post_permalink = $_POST['permalink'];
 
 		if (!empty($user_id)) {
@@ -115,7 +115,7 @@ if(isset($_POST['action'])) {
 		$count = !empty($_POST['nb_items']) ? $_POST['nb_items'] : 20;
 		$filter = "";
 		if (!empty($_POST['user_id'])) {
-			$filter = ' AND '.$core->prefix.'post.user_id = "'.$_POST['user_id'].'" ';
+			$filter = ' AND '.$core->prefix.'post.user_id = "'.urldecode($_POST['user_id']).'" ';
 		}
 		$sql = "SELECT user_fullname, post_pubdate, post_title, post_permalink, post_status, post_id
 			FROM ".$core->prefix."post, ".$core->prefix."user

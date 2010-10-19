@@ -63,10 +63,10 @@ if (isset($_GET) && isset($_GET['page']) && is_numeric(trim($_GET['page']))) {
 
 # Si il y a filtrage sur le membre
 if(isset($_GET['num_membre']) && !empty($_GET['num_membre'])) {
-	$num_membre = trim($_GET['num_membre']);
+	$num_membre = urldecode(trim($_GET['num_membre']));
 }
 elseif(isset($_POST['num_membre']) && trim($_POST['num_membre'])) {
-	$num_membre = trim($_POST['num_membre']);
+	$num_membre = urldecode(trim($_POST['num_membre']));
 }
 if(isset($_GET['status_article']) && !empty($_GET['status_article'])) {
 	$status_article = trim($_GET['status_article']);
@@ -132,9 +132,9 @@ $rs = $core->con->select($sql);
 # Traitement de la liste
 while($rs->fetch()) {
 	if($num_membre == $rs->user_id) {
-		echo '<option value="'.$rs->user_id.'" selected>'.$rs->user_fullname.'</option>';
+		echo '<option value="'.urlencode($rs->user_id).'" selected>'.$rs->user_fullname.'</option>';
 	} else {
-		echo '<option value="'.$rs->user_id.'">'.$rs->user_fullname.'</option>';
+		echo '<option value="'.urlencode($rs->user_id).'">'.$rs->user_fullname.'</option>';
 	}
 }
 
@@ -213,7 +213,7 @@ $sql = "SELECT
 	WHERE ".$core->prefix."post.user_id = ".$core->prefix."user.user_id ";
 
 # Si on filtre un membre
-if($num_membre != '0') $sql .= "AND ".$core->prefix."post.user_id = '$num_membre'"; 
+if($num_membre != '0') $sql .= "AND ".$core->prefix."post.user_id = '".$num_membre."'"; 
 
 #si on filtre un status
 if($status_article != "all" && is_numeric($status_article)) $sql .= " AND ".$core->prefix."post.post_status = '$status_article'";
@@ -271,7 +271,7 @@ while($rs->fetch()) {
 			<input type="submit" class="button br3px" name="submitDelete" value="'.T_('Delete').'" />
 			</center>';
 	if($num_membre != 0 || $nb_items != 10) {
-		echo '<input type="hidden" id="num_membre" name="num_membre" value="'.$num_membre.'" />';
+		echo '<input type="hidden" id="num_membre" name="num_membre" value="'.urlencode($num_membre).'" />';
 		echo '<input type="hidden" id="nb_items" name="nb_items" value="'.$nb_items.'" /></td>';
 		echo '<input type="hidden" id="status_article" name="status_article" value="'.$status_article.'" />';
 	}

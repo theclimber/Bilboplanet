@@ -33,15 +33,15 @@ function updateUserList(num_page, nb_items) {
 	});
 }
 
-function toggleUserRole(user_id, num_page, nb_items) {
+function toggleUserRole(nb, user_id, num_page, nb_items) {
 	$('#flash-log').css('display','');
 	$('#flash-msg').addClass('ajax-loading');
 	$('#flash-msg').html('Loading');
 
-	var tagId = user_id;
-	tagId = replaceAll(tagId, "%", '___SPECIALCHAR___' );
-	tagId = replaceAll(tagId, '___SPECIALCHAR___', "\\\\%" );
-	user_role = $('#role'+tagId).val();
+	//var tagId = user_id;
+	//tagId = replaceAll(tagId, "%", '___SPECIALCHAR___' );
+	//tagId = replaceAll(tagId, '___SPECIALCHAR___', "\\\\%" );
+	user_role = $('#role'+nb).val();
 	//console.debug($('#role'+tagId));
 	//console.debug(user_role);
 	if (user_role != null ) {
@@ -59,21 +59,21 @@ function toggleUserRole(user_id, num_page, nb_items) {
 		alert('Error : user role is undefined. Please report the bug');
 	}
 }
-function toggleUserPermission(user_id, num_page, nb_items) {
+function toggleUserPermission(nb, user_id, num_page, nb_items) {
 	$('#flash-log').css('display','');
 	$('#flash-msg').addClass('ajax-loading');
 	$('#flash-msg').html('Loading');
 
 	admin = 'unset';
-	if($('input#admin'+user_id+':checked').val()) {
+	if($('input#admin'+nb+':checked').val()) {
 		admin = 'set';
 	}
 	config = 'unset';
-	if($('input#config'+user_id+':checked').val()) {
+	if($('input#config'+nb+':checked').val()) {
 		config = 'set';
 	}
 	moder = 'unset';
-	if($('input#moder'+user_id+':checked').val()) {
+	if($('input#moder'+nb+':checked').val()) {
 		moder = 'set';
 	}
 	

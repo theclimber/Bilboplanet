@@ -60,7 +60,7 @@ include_once(dirname(__FILE__).'/sidebar.php');
 		<label for="user_id"><?php echo T_("Filter by user"); ?></label>
 		<select name="user_id" class="userscombo">
 <?php
-$rs = $core->con->select("SELECT user_id, user_fullname FROM ".$core->prefix."user ORDER BY user_fullname ASC");
+$rs = $core->con->select("SELECT user_id, user_fullname FROM ".$core->prefix."user ORDER BY lower(user_fullname) ASC");
 
 while($rs->fetch()) {
 	if($_POST['user_id'] == $rs->user_id) {

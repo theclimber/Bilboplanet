@@ -58,6 +58,9 @@ if(isset($_POST['action'])) {
 			&& $user_password['success'] 
 			&& $user_site['success'])
 		{
+			if(!preg_match('/^[0-9A-Za-z_\-]+$/',$user_id['value'])) {
+				$error[] = T_('Please do not use special chars in user_id field. Allowed chars are only a-z, A-Z and 0-9');
+			}
 			$user_id['value'] = htmlentities($user_id['value'],ENT_QUOTES,mb_detect_encoding($user_id['value']));
 			$user_fullname['value'] = htmlentities($user_fullname['value'],ENT_QUOTES,mb_detect_encoding($user_fullname['value']));
 
@@ -320,7 +323,7 @@ if(isset($_POST['action'])) {
 			user_status
 			FROM '.$core->prefix.'user 
 			'.$where_clause.'
-			ORDER by user_fullname';
+			ORDER by lower(user_fullname)';
 
 		print getOutput($sql);
 		break;
@@ -340,7 +343,7 @@ if(isset($_POST['action'])) {
 			user_email,
 			user_status
 			FROM '.$core->prefix.'user
-			ORDER by user_fullname
+			ORDER by lower(user_fullname)
 			ASC LIMIT '.$num_start.','.$nb_items;
 
 		print getOutput($sql, $num_page, $nb_items);

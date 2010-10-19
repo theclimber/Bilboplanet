@@ -65,7 +65,7 @@ $rs = $core->con->select('SELECT DISTINCT
 		user_fullname
 	FROM '.$core->prefix.'user, '.$core->prefix.'feed
 	WHERE '.$core->prefix.'feed.user_id = '.$core->prefix.'user.user_id
-	ORDER BY user_fullname ASC;');
+	ORDER BY lower(user_fullname) ASC;');
 $users = array();
 $users['-- '.T_('All').' --'] = 'all';
 while($rs->fetch()) {
@@ -110,7 +110,7 @@ $rs = $core->con->select('SELECT DISTINCT
 		user_fullname
 	FROM '.$core->prefix.'user, '.$core->prefix.'site
 	WHERE '.$core->prefix.'site.user_id = '.$core->prefix.'user.user_id
-	ORDER BY user_fullname ASC;');
+	ORDER BY lower(user_fullname) ASC;');
 $users = array();
 $users[T_('-- Choose an user --')] = '';
 while($rs->fetch()) {

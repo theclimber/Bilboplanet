@@ -69,7 +69,7 @@ if(isset($_POST['action'])) {
 			user_email,
 			user_status
 			FROM '.$core->prefix.'user
-			ORDER by user_fullname
+			ORDER by lower(user_fullname)
 			ASC LIMIT '.$num_start.','.$nb_items;
 		$rs = $core->con->select($sql);
 

@@ -258,7 +258,7 @@ if(isset($_POST['action'])) {
 			FROM '.$core->prefix.'feed, '.$core->prefix.'site
 			WHERE '.$core->prefix.'feed.site_id = '.$core->prefix.'site.site_id'.
 			$sql_cond.' 
-			ORDER by '.$core->prefix.'feed.user_id ASC';
+			ORDER by lower('.$core->prefix.'feed.user_id) ASC';
 
 		print getOutput($sql);
 		break;
@@ -283,7 +283,7 @@ if(isset($_POST['action'])) {
 			feed_trust
 			FROM '.$core->prefix.'feed, '.$core->prefix.'site
 			WHERE '.$core->prefix.'feed.site_id = '.$core->prefix.'site.site_id
-			ORDER by '.$core->prefix.'feed.user_id
+			ORDER by lower('.$core->prefix.'feed.user_id)
 			ASC LIMIT '.$num_start.','.$nb_items;
 
 		print getOutput($sql, $num_page, $nb_items);

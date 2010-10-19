@@ -126,7 +126,7 @@ include_once(dirname(__FILE__).'/sidebar.php');
 
 <?php
 # Execution de la requete
-$sql = 'SELECT user_id, user_fullname FROM '.$core->prefix.'user ORDER BY user_fullname ASC;';
+$sql = 'SELECT user_id, user_fullname FROM '.$core->prefix.'user ORDER BY lower(user_fullname) ASC;';
 $rs = $core->con->select($sql);
 
 # Traitement de la liste

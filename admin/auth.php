@@ -33,6 +33,12 @@ if (!empty($_POST['user_id']) && !empty($_POST['user_pwd']))
 {
 	$user_id = !empty($_POST['user_id']) ? $_POST['user_id'] : null;
 	$user_pwd = !empty($_POST['user_pwd']) ? $_POST['user_pwd'] : null;
+
+	$sql = "SELECT user_id FROM ".$core->prefix."user WHERE lower(user_id) = '".strtolower($user_id)."'";
+	$rs = $core->con->select($sql);
+	if(!$rs->isEmpty()) {
+		$user_id = $rs->f('user_id');
+	}
 }
 # If we have COOKIE login informations, go throug auth process
 elseif (isset($_COOKIE['bp_admin']) && strlen($_COOKIE['bp_admin']) == 104)

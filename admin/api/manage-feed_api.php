@@ -49,19 +49,23 @@ if(isset($_POST['action'])) {
 		if ($feed_url['success']
 			&& $feed_name['success'])
 		{
-			$rs = $core->con->select("SELECT
+			$sql = "SELECT
 					".$core->prefix."feed.user_id as user_id,
+					".$core->prefix."site.site_id as site_id,
 					".$core->prefix."site.site_url as site_url
 				FROM ".$core->prefix."feed, ".$core->prefix."site
 				WHERE ".$core->prefix."feed.site_id = ".$core->prefix."site.site_id
-					AND feed_url = '".$site_url['value']."'");
-			if ($rs->count() > 0){
+					AND ".$core->prefix."feed.feed_url = '".$feed_url['value']."'";
+			$rs = $core->con->select($sql);
+			if ($rs->count() == 1){
 				if ($rs->f('site_id') == $site_id) {
-					$error[] = sprintf(T_('The site %s already owns the feed %s'),$rs->f('site_url'), $feed_url['value']);
+					$error[] = sprintf(T_('This user already owns the feed %s'), $feed_url['value']);
 				}
 				else {
 					$error[] = sprintf(T_('The feed %s is owned by site %s'), $feed_url['value'], $rs->f('site_url'));
 				}
+			} elseif ($rs->count() > 1) {
+				$error[] = sprintf(T_('They are already multiple use of feed %s'), $feed_url['value']);
 			}
 
 			if (empty($error)) {

@@ -366,7 +366,11 @@ MESSAGES
 	border-radius: 5px;
 }
 
-.mess { padding-left:24px;}
+.mess {
+	margin:2px 30px;
+	display: block;
+	width: 90%;
+}
 
 
 /* -------------------------------------------------------------

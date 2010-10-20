@@ -407,7 +407,12 @@ function check_url($url){
 		}
 
 		$path .= ( isset ( $url['query'] ) ) ? "?$url[query]" : '';
-		if ( isset ( $url['host'] ) AND $url['host'] != gethostbyname ( $url['host'] ) ){
+		if (isset($url['host'])) {
+			return true;
+		}
+
+		// Curl the url to see if it really exists
+/*		if ( isset ( $url['host'] ) AND $url['host'] != gethostbyname ( $url['host'] ) ){
 			if ( PHP_VERSION >= 6 ){
 				$site = "$url[scheme]://$url[host]:$url[port]$path";
 				$headers = get_headers($site);
@@ -424,7 +429,7 @@ function check_url($url){
 			}
 			$headers = ( is_array ( $headers ) ) ? implode ( "\n", $headers ) : $headers;
 			return ( bool ) preg_match ( '#^HTTP/.*\s+[(200|301|302)]+\s#i', $headers );
-		}
+		}*/
 		return false;
 	} else {
 		return false;

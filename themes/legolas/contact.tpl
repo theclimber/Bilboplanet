@@ -11,11 +11,11 @@
 	<br/>
 	<form method="post">
 		{_Name / Nickname :}<br>
-		<input class="contact" size="30" maxlength="30" type="text" name="nom" value="{$form.name}" /><br>
+		<input class="contact" size="30" maxlength="30" type="text" name="name" value="{$form.name}" /><br>
 		{_Email :}<br>
 		<input class="contact" size="30" maxlength="30" type="text" name="email" value="{$form.email}" /><br>
 		{_Subject :}<br>
-		<input class="contact" size="73" maxlength="96" type="text" name="titre" value="{$form.subject}" /><br>
+		<input class="contact" size="73" maxlength="96" type="text" name="subject" value="{$form.subject}" /><br>
 		{_Content :'}<br>
 		<textarea id="styled" class="contact" type="text" name="content">{$form.content}</textarea><br>
 		{$captcha_html}<br>

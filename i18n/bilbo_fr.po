@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Bilboplanet\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-09-20 14:49+0200\n"
-"PO-Revision-Date: 2010-09-20 14:51+0100\n"
+"PO-Revision-Date: 2010-10-19 20:01+0100\n"
 "Last-Translator: Gregoire de Hemptinne <greg@theclimber.be>\n"
 "Language-Team: French\n"
 "MIME-Version: 1.0\n"
@@ -228,7 +228,7 @@ msgstr "User_id:"
 
 #: admin/auth.php:68
 msgid "To reset your password visit the following address, otherwise just ignore this email and nothing will happen."
-msgstr "Pour  réinitialiser votre mote de passe, visitez l'adresse suivante. Sinon ignore simplement cet email et rien ne se passera"
+msgstr "Pour  réinitialiser votre mote de passe, visitez l'adresse suivante. Sinon ignorez simplement cet email et rien ne se passera"
 
 #: admin/auth.php:75
 #, php-format

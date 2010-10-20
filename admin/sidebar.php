@@ -3,6 +3,7 @@
 	<div class="element">
 		<ul>
 		<li><a href="index.php" class="tips" rel="<?php echo T_('Access the quick summary of the planet');?>." id="dashboardm" ><?=T_('Dashboard');?></a></li>
+		<li><a href="manage-account.php" class="tips" rel="<?php echo T_('Manage your profile account');?>." id="accountm" ><?=T_('Manage your account');?></a></li>
 		</ul>
 	</div>
 

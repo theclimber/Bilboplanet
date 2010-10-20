@@ -224,6 +224,9 @@ table#feedlist tr.auto-disabled, tr.auto-disabled a, tr.auto-disabled a:visited 
 div#bp_pannel a#dashboardm {
 	background-image:url('../icons/television.png');
 }
+div#bp_pannel a#accountm {
+	background-image:url('../icons/account.png');
+}
 div#bp_pannel a#members {
 	background-image:url('../icons/users.png');
 }

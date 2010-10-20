@@ -49,6 +49,13 @@ if(isset($_POST) && isset($_POST['ajax'])) {
 		}
 		require_once(dirname(__FILE__).'/manage-user_api.php');
 		break;
+	case 'account':
+		if (!$core->hasRole('manager')){
+			print 'Permission denied';
+			exit;
+		}
+		require_once(dirname(__FILE__).'/manage-account_api.php');
+		break;
 	case 'site':
 		if (!$core->hasPermission('administration')){
 			print 'Permission denied';

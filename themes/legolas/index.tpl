@@ -3,7 +3,7 @@
 <head>
 	<meta name="description" content="{$planet.desc_meta}" />
 	<meta name="keywords" content="{$planet.keywords}" />
-	<title>{$planet.title}</title>
+	<title>{$params.title}</title>
 
 	<link href="{$planet.url}/themes/{$planet.theme}/css/blueprint/screen.css" rel="stylesheet" type="text/css" />
 	<link href="{$planet.url}/themes/{$planet.theme}/css/core.css" rel="stylesheet" type="text/css" />

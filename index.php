@@ -32,7 +32,9 @@ header('Content-type: text/html; charset=utf-8');
 
 # Valeurs par defaut
 $num_start = 0;
-$params = array();
+$params = array(
+	'title'=>$blog_settings->get('planet_title')
+	);
 
 /* On recupere les infomations des articles */
 $debut_sql = "SELECT 
@@ -75,6 +77,10 @@ if (isset($_GET)) {
 	}
 	if (isset($_GET['post_id']) && !empty($_GET['post_id'])){
 		$params["post_id"] = $_GET['post_id'];
+		$res = $core->con->select("SELECT post_title FROM ".$core->prefix."post WHERE post_id = ".$params["post_id"]);
+		if (!$res->isEmpty) {
+			$params['title'] .= " - ".$res->f('post_title');
+		}
 
 		# Complete the SQL query
 		$debut_sql = $debut_sql." AND ".$core->prefix."post.post_id = '".$params["post_id"]."'";

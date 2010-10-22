@@ -98,7 +98,7 @@ echo
 
 <fieldset id="addfeed-field" style="display:none"><legend><?php echo T_('Add a feed');?></legend>
 	<div class="message">
-		<p><?php echo T_("Manage member's feeds"); ?></p>
+		<p><?php echo T_("Manage member's feeds. Notice that you can only add a feed to a user who has a website. So you first need to create the user and add a site to him"); ?></p>
 	</div><br/>
 
 <?php

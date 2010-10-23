@@ -57,7 +57,7 @@ if(isset($_POST) && isset($_POST['submit'])){
 		if ($name['success'] && $email['success'] && $subject['success'] && $content['success']){
 
 			# Construction du mail
-			$objet = $blog_settings->get('planet_title')." - ".$subject['value'];
+			$objet = "Contact: ".$subject['value'];
 			$msg = T_("Name/Nickname : ").$name['value'];
 			$msg .= "\n".T_("Email : ").$email['value'];
 			$msg .= "\n".T_("Subject : ").$subject['value'];

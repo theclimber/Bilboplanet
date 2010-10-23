@@ -517,20 +517,30 @@ function sendmail ($sender, $recipients, $subject, $message, $type='normal', $re
 	
 	global $blog_settings;
 	
-	$planet_title = html_entity_decode($blog_settings->get('planet_title'), ENT_QUOTES, 'UTF-8');
+	$planet_title = html_entity_decode(stripslashes($blog_settings->get('planet_title')), ENT_QUOTES, 'UTF-8');
+	
+	$subject = html_entity_decode(stripslashes($subject), ENT_QUOTES, 'UTF-8');
 	$subject = "[".$planet_title."] ".$subject;
+	$subject= mb_encode_mimeheader($subject,"UTF-8", "Q", "\n");
+	
+	$message = html_entity_decode(stripslashes($message), ENT_QUOTES, 'UTF-8');
+	
+	$sender = strtolower($sender);
+	$recipients = strtolower($recipients);
 	
 	if (empty($reply_to)){
 		$reply_to = $sender;
 	}
+	$reply_to = strtolower($reply_to);
 	
 	if ($type == 'newsletter') {
-		$headers  = "From: ".$planet_title."<".$sender.">\r\n";
+		$headers  = "From: ".mb_encode_mimeheader($planet_title,"UTF-8", "Q", "\n")." <".$sender.">\r\n";
+		$headers .= "Return-Path: ".$sender."\r\n";
 		$headers .= "Reply-To: ".$reply_to."\r\n";
 		$headers .= "Bcc: ".$recipients."\r\n";
 		$headers .= "MIME-Version: 1.0\r\n";
-		$headers .= "Content-Type: text/html; charset=utf-8\r\n" .
-		$headers .= "Content-Transfer-Encoding: 8bit\r\n\r\n"; 
+		$headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+		$headers .= "Content-Transfer-Encoding: quoted-printable\r\n\r\n"; 
 		$message_content  = "<html>\r\n";
 		$message_content .= "<body>\r\n";
 		$message_content .= $message."\r\n";
@@ -540,7 +550,10 @@ function sendmail ($sender, $recipients, $subject, $message, $type='normal', $re
 	}
 	elseif ($type == 'normal') {
 		$headers  = "From: ".$sender."\r\n";
-		$headers .= "Reply-To: ".$reply_to."\r\n"; 
+		$headers .= "Reply-To: ".$reply_to."\r\n";
+		$headers .= "MIME-Version: 1.0\r\n";
+		$headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+		$headers .= "Content-Transfer-Encoding: quoted-printable\r\n\r\n"; 
 		$message_content = $message;
 	}
 	return mail($recipients, $subject, $message_content, $headers);

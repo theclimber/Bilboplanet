@@ -56,7 +56,6 @@ if(isset($_POST) && isset($_POST['submit'])){
 
 		if ($user_id['success'] && $fullname['success'] && $email['success'] && $url['success'] && $feed['success'] && $choice['success']){
 			# Construction du email
-			#$objet = $blog_settings->get('planet_title')." - ".$choice['value'];
 			$objet = $choice['value'];
 			$msg = T_("Name : ").$user_id['value'];
 			$msg .= "\n".T_("Firstname : ").$fullname['value'];

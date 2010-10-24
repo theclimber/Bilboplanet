@@ -6,16 +6,17 @@
 	<title>{$params.title}</title>
 
 	<link href="{$planet.url}/themes/{$planet.theme}/css/core.css" rel="stylesheet" type="text/css" />
+	<link href="{$planet.url}/themes/{$planet.theme}/css/jquery.fancybox-1.3.2.css" rel="stylesheet" type="text/css" />
 	<link rel="alternate" type="application/rss+xml"  title="RSS"  href="{$planet.url}/feed.php?type=rss" />
 	<link rel="alternate" type="application/atom+xml" title="ATOM" href="{$planet.url}/feed.php?type=atom" />
 	<link rel="icon" type="image/ico" href="{$planet.url}/themes/{$planet.theme}/favicon.png" />
 
 	<script type="text/javascript" src="{$planet.url}/javascript/jquery.js"></script>
+	<script type="text/javascript" src="{$planet.url}/javascript/jquery.easing-1.3.pack.js" ></script>
+	<script type="text/javascript" src="{$planet.url}/javascript/jquery.fancybox-1.3.2.pack.js" ></script>
 
 	<script type="text/javascript" src="{$planet.url}/themes/{$planet.theme}/js/votes.js" ></script>
 	<script type="text/javascript" src="{$planet.url}/themes/{$planet.theme}/js/mobile.js" ></script>
-	<script type="text/javascript" src="{$planet.url}/themes/{$planet.theme}/js/jquery.easing.1.3.js" ></script>
-	<script type="text/javascript" src="{$planet.url}/themes/{$planet.theme}/js/jquery.fancybox-1.2.1.pack.js" ></script>
 
 </head>
 <body>

@@ -305,7 +305,7 @@ closedir($dir_handle);
 
 	'<fieldset><legend><strong>'.T_('Information on the Planet').'</strong></legend>'.
 	'<label>'.T_('Title of the Planet').'<span class="red"> * </span>'.
-	form::field('p_title',30,255,html::escapeHTML($p_title)).'</label>
+	form::field('p_title',30,255,html::escapeHTML($_POST['p_title'])).'</label>
 	<span class="description">'.T_('Fill the title of your planet').'</span>'.
 	'<label>'.T_('Description').' '.
 	form::field('p_desc',30,255,html::escapeHTML($p_desc)).'</label>

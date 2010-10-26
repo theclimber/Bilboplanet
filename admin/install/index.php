@@ -107,6 +107,10 @@ if ($can_install && !empty($_POST))
 		if (empty($u_login)) {
 			throw new Exception(T_('Please fill the username in.'));
 		}
+		if(!preg_match('/^[0-9A-Za-z_\-]+$/',$u_login)) {
+			throw new Exception(T_('Please do not use special chars in user_id field. Allowed chars are only a-z, A-Z and 0-9'));
+		}
+
 		if (!preg_match('/^[A-Za-z0-9@._-]{2,}$/',$u_login)) {
 			throw new Exception(T_('The username has to be formed of minimum 2 characters with letters of numbers'));
 		}

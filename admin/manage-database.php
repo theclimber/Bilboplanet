@@ -144,8 +144,13 @@ if (isset($_POST)) {
 						foreach($table['content'] as $key => $value){
 							$url_flux = $value[0];
 							$num_membre = $value[1];
-							$last_updated = timestamp_to_mysqldatetime($value[3]);
-							$status_flux = $value[4];
+							if ($table["head"][4] == "last_updated") {
+								$last_updated = timestamp_to_mysqldatetime($value[3]);
+								$status_flux = $value[4];
+							} else {
+								$last_updated = timestamp_to_mysqldatetime($value[2]);
+								$status_flux = $value[3];
+							}
 							$user_id = $tables['membre']['content'][$num_membre][0];
 							$user_id = preg_replace("( )", "_", $user_id);
 							$user_id = cleanString($user_id);

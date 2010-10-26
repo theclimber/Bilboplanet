@@ -50,7 +50,7 @@
 			<td >{$captcha_html}</td>
 		</tr>
 		<tr>
-			<td colspan="2"><input type="checkbox" name="ok" value="" />{_I have read and accept the charter}</td>
+			<td colspan="2"><input type="checkbox" name="ok" value="charter" />{_I have read and accept the charter}</td>
 		</tr>
 		<tr>
 			<td  colspan="2" align="center"><br/>

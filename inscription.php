@@ -33,6 +33,7 @@ header('Content-type: text/html; charset=utf-8');
 	
 $flash='';
 session_start();
+print_r($_POST);
 if(isset($_POST) && isset($_POST['submit'])){
 	require_once(dirname(__FILE__).'/inc/lib/recaptchalib.php');
 	$privatekey = "6LdEeQgAAAAAABrweqchK5omdyYS_fUeDqvDRq3Q";
@@ -49,12 +50,13 @@ if(isset($_POST) && isset($_POST['submit'])){
 	$url = check_field('url',trim($_POST['url']),'url');
 	$feed = check_field('flux',trim($_POST['feed']),'feed');
 	$choice = check_field('choice',trim($_POST['choice']),'not_empty');
+	$charter = check_field('charter',trim($_POST['ok']),'not_empty');
 	if (!$captcha->is_valid) {
 		$flash = array('type' => 'error', 'msg' => sprintf(T_("The reCAPTCHA wasn't entered correctly. Go back and try it again. (reCAPTCHA said: %s)"),$captcha->error));
 	} else {
 		$ip = getIP();
 
-		if ($user_id['success'] && $fullname['success'] && $email['success'] && $url['success'] && $feed['success'] && $choice['success']){
+		if ($user_id['success'] && $fullname['success'] && $email['success'] && $url['success'] && $feed['success'] && $choice['success'] && $charter["success"]){
 			# Construction du email
 			$objet = $choice['value'];
 			$msg = T_("Name : ").$user_id['value'];
@@ -94,6 +96,9 @@ if(isset($_POST) && isset($_POST['submit'])){
 			if(!$choice['success']){
 				$flash = array('type' => 'error', 'msg' => $choice['error']);
 			}
+			if(!$charter['success']){
+				$flash = array('type' => 'error', 'msg' => $charter['error']);
+			}
 		}
 	}
 }
@@ -108,16 +113,18 @@ if(!$blog_settings->get('planet_subscription')) {
 else {
 	if (!empty($flash)) {
 		$msg = '<div class="flash '.$flash['type'].'">'.$flash['msg'].'</div>';
-		$msg .= "<div class='informations'><h2 class='informations'>".T_("In case of problem")."</h2>";
-		$msg .= "<p>".sprintf(T_("If you don't recieve any new from the administration team in the 5 days do not hesitate to contact us via %s with this information :"),$blog_settings->get('planet_mail'))."<br /><ul>";
-		$msg .= "<li><b>".T_("Subject")."</b> : ".$blog_settings->get('planet_title') ." - ".$choice['value']."</li>";
-		$msg .= "<li><b>".T_("Username")."</b> : ".$user_id['value']."</li>";
-		$msg .= "<li><b>".T_("Fullname")."</b> : ".$fullname['value']."</li>";
-		$msg .= "<li><b>".T_("Email")."</b> : ".$email['value']."</li>";
-		$msg .= "<li><b>".T_("Website")."</b> : ".$url['value']."</li>";
-		$msg .= "<li><b>".T_("Feed")."</b> : ".$feed['value']."</li>";
-		$msg .= "<li><b>".T_("Choice")."</b> : ".$choice['value']."</li>";
-		$msg .= "</ul></p></div>";
+		if ($flash['type'] != "error") {
+			$msg .= "<div class='informations'><h2 class='informations'>".T_("In case of problem")."</h2>";
+			$msg .= "<p>".sprintf(T_("If you don't recieve any new from the administration team in the 5 days do not hesitate to contact us via %s with this information :"),$blog_settings->get('planet_mail'))."<br /><ul>";
+			$msg .= "<li><b>".T_("Subject")."</b> : ".$blog_settings->get('planet_title') ." - ".$choice['value']."</li>";
+			$msg .= "<li><b>".T_("Username")."</b> : ".$user_id['value']."</li>";
+			$msg .= "<li><b>".T_("Fullname")."</b> : ".$fullname['value']."</li>";
+			$msg .= "<li><b>".T_("Email")."</b> : ".$email['value']."</li>";
+			$msg .= "<li><b>".T_("Website")."</b> : ".$url['value']."</li>";
+			$msg .= "<li><b>".T_("Feed")."</b> : ".$feed['value']."</li>";
+			$msg .= "<li><b>".T_("Choice")."</b> : ".$choice['value']."</li>";
+			$msg .= "</ul></p></div>";
+		}
 		$core->tpl->setVar('flashmsg', $msg);
 		$core->tpl->render('subscription.flash');
 	}

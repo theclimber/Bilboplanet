@@ -72,8 +72,12 @@ try {
 		,20);
 }
 
-if (!isset($locale))
-	$locale = 'en';
+if (!isset($locale)) {
+	$locale = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+	if (!isset($locale)) {
+		$locale = 'en';
+	}
+}
 
 # Check if setting table exist
 $schema = dbSchema::init($core->con);

@@ -21,6 +21,13 @@
 		</ul>
 	</div>
 
+	<!-- BEGIN sidebar.widget -->
+	<div class="sidebar-widget" id="widget{$widget.id}">
+		<h2 class="sidebar-widget" id="widget{$widget.id}">{$widget.title}</h2>
+		{$widget.html}
+	</div>
+	<!-- END sidebar.widget -->
+
 	<div id="userslist">
 		<h2>{$userslist_title}</h2>
 		<ul>
@@ -43,6 +50,7 @@
 			{_Administration}</a></li>
 		</ul>
 	</div>
+
 
 
 

@@ -22,6 +22,12 @@
 			<!-- END sidebar.popular -->
 		</ul>
 
+		<!-- BEGIN sidebar.widget -->
+		<h2 class="sidebar-widget" id="widget{$sidebar-widget.id}">{$sidebar-widget.title}</h2>
+		<div class="sidebar-widget" id="widget{$sidebar-widget.id}">{$sidebar-widget.html}</div>
+		<!-- END sidebar.widget -->
+
+
 		<h2 id="membres">{_Members}</h2>
 		<ul>
 			<!-- BEGIN sidebar.users.list -->
@@ -40,8 +46,6 @@
 			<a href="{$planet.url}/admin" title="{_Admin interface}" rel="nofollow">
 			{_Administration}</a></li>
 		</ul>
-
-
 
 	<p>&nbsp;</p>
 </div>

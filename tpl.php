@@ -32,6 +32,38 @@ while ($rs_side->fetch()) {
 }
 
 #####################
+# RENDER WIDGETS
+#####################
+//TODO : it would be more reliable if we put in the settings table the widgets to load and where
+// if we put a json dict in the database with for each element in the list:
+// * the place where we want to place the widget (sidebar, footer)
+// * the file to load
+// * the order in which is have to load
+// After that we need to check, before loading the tpl, if the widget function is returning a well formatted array
+// * if yes => show it
+// * if not => show an error in the widget place
+
+$widget_path = dirname(__FILE__).'/widgets';
+$widget_files = json_decode($blog_settings->get('planet_widget_files'));
+foreach ($widget_files as $file){
+	if (is_dir($widget_path) && is_file($widget_path.'/'.$file["name"])) {
+		# Build an array of available widgets
+		if ($file["position"] == "sidebar") {
+			require_once($widget_path.'/'.$file["name"]);
+			$wgt = getWidget();
+			$core->tpl->setVar("sidebar-widget", $wgt);
+			$core->tpl->render('sidebar.widget');
+		}
+		if ($file["position"] == "footer") {
+			require_once($widget_path.'/'.$file["name"]);
+			$wgt = getWidget();
+			$core->tpl->setVar("footer-widget", $wgt);
+			$core->tpl->render('footer.widget');
+		}
+	}
+}
+
+#####################
 # RENDER FOOTER
 #####################
 $core->tpl->setVar('footer1', array(

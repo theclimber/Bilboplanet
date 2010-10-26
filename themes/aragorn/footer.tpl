@@ -9,4 +9,10 @@
 	<div class="column3">
 		<a href="{$footer3.url}">{$footer3.text}</a>
 	</div>
+		<!-- BEGIN footer.widget -->
+		<div class="footer-widget" id="widget{$footer-widget.id}">
+			<h2 class="footer-widget" id="widget{$footer-widget.id}">{$footer-widget.title}</h2>
+			{$footer-widget.html}
+		</div>
+		<!-- END footer.widget -->
 </div>

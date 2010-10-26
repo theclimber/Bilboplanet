@@ -27,6 +27,12 @@
 	</div>
 	<!-- END sidebar.alert -->
 
+	<!-- BEGIN sidebar.widget -->
+	<div class="sidebar-widget" id="widget{$sidebar-widget.id}">
+		<h2 class="sidebar-widget" id="widget{$sidebar-widget.id}">{$sidebar-widget.title}</h2>
+		{$sidebar-widget.html}
+	</div>
+	<!-- END sidebar.widget -->
 
 	<div id="feeds">
 		<h2>{_Subscribe}</h2>
@@ -51,7 +57,6 @@
 			<!-- END sidebar.users.list -->
 		</ul>
 	</div>
-
 
 	<p>&nbsp;</p>
 </div>

@@ -1,0 +1,30 @@
+USING WIDGETS
+=============
+
+To activate widgets, this is not yet supported in the interface of the
+bilboplanet 1.0beta version. So you will have to create it manually.
+
+The way to use it is first to create your widget, and then to specify in the
+database where it can find your widget and where it has to be placed
+
+1) Create the widget
+The widgets has to be in the /widget folder. Create a PHP file and in that
+file create a function called "getWidget". This function has to return an array
+with the following form :
+array(
+	"id" => "one_word_name",
+	"title" => "My super widget",
+	"html" => "here you will find the content of your widget"
+);
+
+
+2) Specifying to the database to load it
+Once your widget is ready to be set in production, go to into the bilboplanet database
+and in the table "settings" add an entry called : "planet_widget_files" in which you will
+put data in json format :
+{
+	{"name" : "YourwidgetName.php", "position" : "sidebar"},
+	{"name" : "Yoursecondwidget.php", "position" : "footer"}
+}
+
+Note : there are only two positions supported actually : sidebar and footer

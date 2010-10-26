@@ -47,7 +47,9 @@ if(isset($_POST['action'])) {
 		$error = array();
 
 		if ($feed_url['success']
-			&& $feed_name['success'])
+			&& $feed_name['success']
+			&& !empty($user_id)
+			&& !empty($site_id))
 		{
 			$sql = "SELECT
 					".$core->prefix."feed.user_id as user_id,
@@ -95,6 +97,12 @@ if(isset($_POST['action'])) {
 			}
 			if (!$feed_name['success']) {
 				$error[] = $feed_name['error'];
+			}
+			if (empty($user_id)) {
+				$error[] = T_("Please select the user to you want to add the feed");
+			}
+			if (empty($site_id)) {
+				$error[] = T_("Please select the site to you wand to add the feed");
 			}
 		}
 

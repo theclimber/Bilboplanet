@@ -273,13 +273,13 @@ if ($can_install && $step == 0)
 {
 $lang_path = dirname(__FILE__)."/../../i18n/";
 $dir_handle = @opendir($lang_path) or die("Unable to open $lang_path");
-$p_lang = array();
-$p_lang['en'] = 'en';
+$lang_array = array();
+$lang_array['en'] = 'en';
 while ($file = readdir($dir_handle)){
 	if($file!="." && $file!=".." && $file!=".svn" && $file!=".DS_Store" && $file!=".htaccess" && is_dir($lang_path.$file)){
 		$mo_dir = $lang_path.$file.'/LC_MESSAGES/';
 		if (is_dir($mo_dir) && is_file($mo_dir.'bilbo.mo')){
-			$p_lang[$file] = $file;
+			$lang_array[$file] = $file;
 		}
 	}
 }
@@ -315,7 +315,7 @@ closedir($dir_handle);
 	form::field('p_desc',30,255,html::escapeHTML($p_desc)).'</label>
 	<span class="description">'.T_('Give a description of your planet').'</span>'.
 	'<label>'.T_('Planet Language').' '.
-	form::combo('p_lang',$p_lang).'</label>
+	form::combo('p_lang',$lang_array, $p_lang).'</label>
 	<span class="description">'.T_('Choose your langage').'</span>'.
 	'</fieldset><br/>'.
 	

@@ -58,7 +58,7 @@ if (!dcSystemCheck($core->con,$_e)) {
 }
 
 # Get information and perform install
-$u_email = $u_firstname = $u_name = $u_login = $u_pwd = '';
+$u_email = $u_fullname = $u_login = $u_pwd = '';
 $mail_sent = false;
 $subscription_content = htmlentities(stripslashes('<h2>Description</h2>
 
@@ -76,8 +76,7 @@ $subscription_content = htmlentities(stripslashes('<h2>Description</h2>
 if ($can_install && !empty($_POST))
 {
 	$u_email = !empty($_POST['u_email']) ? $_POST['u_email'] : null;
-	$u_firstname = !empty($_POST['u_firstname']) ? $_POST['u_firstname'] : null;
-	$u_name = !empty($_POST['u_name']) ? $_POST['u_name'] : null;
+	$u_fullname = !empty($_POST['u_fullname']) ? $_POST['u_fullname'] : null;
 	$u_login = !empty($_POST['u_login']) ? $_POST['u_login'] : null;
 	$u_pwd = !empty($_POST['u_pwd']) ? $_POST['u_pwd'] : null;
 	$u_pwd2 = !empty($_POST['u_pwd2']) ? $_POST['u_pwd2'] : null;
@@ -151,7 +150,7 @@ if ($can_install && !empty($_POST))
 		# Create user
 		$cur = $core->con->openCursor($core->prefix.'user');
 		$cur->user_id = (string) $u_login;
-		$cur->user_fullname = (string) $u_firstname.' '.$u_name;
+		$cur->user_fullname = (string) $u_fullname;
 		$cur->user_email = (string) $u_email;
 		$cur->user_pwd = crypt::hmac('BP_MASTER_KEY',$u_pwd);
 		$cur->user_lang = $p_lang;
@@ -184,7 +183,7 @@ if ($can_install && !empty($_POST))
 
 		$blog_settings = new bpSettings($core,'root');
 		
-		$blog_settings->put('author', "$u_firstname $u_name", "string");
+		$blog_settings->put('author', "$u_fullname", "string");
 		$blog_settings->put('author_mail', $u_email, "string");
 		$blog_settings->put('author_id', $u_login, "string");
 		$blog_settings->put('author_site', $u_site, "string");
@@ -293,12 +292,9 @@ closedir($dir_handle);
 	
 	'<form id="install-form" action="index.php" method="post">'.
 	'<fieldset><legend><strong>'.T_('Information of the user').'</strong></legend>'.
-	'<label>'.T_('Firstname').'<span class="red"> * </span>'.
-	form::field('u_firstname',30,255,html::escapeHTML($u_firstname)).'</label>
-	<span class="description">'.T_('Enter your firstname or nickname').'</span>'.
-	'<label>'.T_('Name').' '.
-	form::field('u_name',30,255,html::escapeHTML($u_name)).'</label>
-	<span class="description">'.T_('Enter your name (optional)').'</span>'.
+	'<label>'.T_('Fullname').'<span class="red"> * </span>'.
+	form::field('u_fullname',30,255,html::escapeHTML($u_fullname)).'</label>
+	<span class="description">'.T_('Enter your fullname or the name you want to be displayed').'</span>'.
 	'<label>'.T_('Email').'<span class="red"> * </span>'.
 	form::field('u_email',30,255,html::escapeHTML($u_email)).'</label>
 	<span class="description">'.T_('Enter your email address').'</span>'.

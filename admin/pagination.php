@@ -1,8 +1,7 @@
 <?php
 /******* BEGIN LICENSE BLOCK *****
-* BilboPlanet - Un agrégateur de Flux RSS Open Source en PHP.
 * BilboPlanet - An Open Source RSS feed aggregator written in PHP
-* Copyright (C) 2009 By French Dev Team : Dev BilboPlanet
+* Copyright (C) 2010 By French Dev Team : Dev BilboPlanet
 * Contact : dev@bilboplanet.com
 * Website : www.bilboplanet.com
 * Tracker : redmine.bilboplanet.com

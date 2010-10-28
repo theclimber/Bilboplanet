@@ -1,9 +1,10 @@
 Pour des informations sur l'installation, l'utilisation et la configuration du Bilboplanet, 
 incluant une liste des problèmes déjà connus et des informations de dépannage, référez vous à 
-http://redmine.bilboplanet.com/wiki/bilboplanet
+http://www.bilboplanet.com/documentation.php
 
 Pour poser des questions, n'hésitez pas à passer sur notre forum :
-http://redmine.bilboplanet.com/projects/bilboplanet/boards
+http://www.bilboplanet.com/forum/
+
 
 INSTALLATION AUTOMATIQUE:
 =========================
@@ -13,89 +14,21 @@ Accédez à votre serveur à cette adresse à l'aide d'un navigateur et suivez l
 
 NOTE: Veillez à ce que les dossiers ci-dessous soient accessibles en écriture.
 
-    * /.htpasswd
     * /inc/config.php
-    * /admin/.htaccess
 
 Pour pouvoir utiliser l'installation automatique il est important que ces fichiers soient supprimés avant l'installation.
 Assurez-vous aussi d'avoir une base de donnée vide
 
-
-INSTALLATION MANUELLE:
-======================
-
-Créez une base de données avec 4 tables
-
-CREATE TABLE IF NOT EXISTS `article` (
-  `num_article` int(10) NOT NULL auto_increment,
-  `num_membre` varchar(32) character set utf8 collate utf8_bin NOT NULL default '',
-  `article_pub` int(15) default NULL,
-  `article_titre` varchar(255) default NULL,
-  `article_url` varchar(255) default NULL,
-  `article_content` longtext,
-  `article_statut` int(1) NOT NULL default '1',
-  `article_score` int(20) NOT NULL default '0',
-  PRIMARY KEY  (`num_article`)
-);
-
-CREATE TABLE IF NOT EXISTS `flux` (
-  `num_flux` int(5) NOT NULL auto_increment,
-  `url_flux` char(255) default '',
-  `num_membre` int(5) NOT NULL,
-  `last_updated` int(11) NOT NULL default '0',
-  `status_flux` int(1) NOT NULL default '1',
-  PRIMARY KEY  (`num_flux`,`num_membre`)
-);
-
-CREATE TABLE IF NOT EXISTS `membre` (
-  `num_membre` int(5) NOT NULL auto_increment,
-  `nom_membre` char(50) default '',
-  `email_membre` char(50) NOT NULL default '',
-  `site_membre` char(255) default '',
-  `statut_membre` int(1) default NULL,
-  PRIMARY KEY  (`num_membre`)
-);
-
-CREATE TABLE IF NOT EXISTS `votes` (
-  `num_article` int(10) NOT NULL auto_increment,
-  `vote_ip` varchar(15) NOT NULL default '',
-  PRIMARY KEY  (`num_article`,`vote_ip`)
-);
-
-
-
-Configurez votre fichier /inc/config.php à l'aide du fichier /inc/config.php.default
-Créez un fichier .htaccess pour limiter l'accès à la partie d'administration du site
-      ex: admin/.htaccess
-      AuthUserFile ../.htpasswd
-      AuthGroupFile /dev/null
-      AuthName "Restricted Area..."
-      AuthType Basic
-      <limit GET POST>
-      require valid-user
-      </Limit>
-
-Puis créer un fichier .htpasswd à la racine du site
-      ex: .htpasswd
-      user:md5(password)
-
-Attention, dans un fichier htpasswd il faut que le mot de passe soit hashé en md5. Pour le faire vous pouvez utiliser sous linux la commande htpasswd qui vous permet de le génerer, ou alors vous pouvez aller sur des sites qui vous génèrent le hash automatiquement. Par exemple ici :
-http://www.htaccesstools.com/htpasswd-generator/
-
-
 MISE A JOUR:
 ============
-Pour la mise à jour à partir d'une ancienne version,
-Gardez une copie des fichiers :
-.htpasswd
-.htaccess
-admin/.htaccess
-inc/config.php
 
-Mettez à jour la base de donnée :
+Depuis le Bilboplanet 0.3.2
 
-ALTER TABLE `flux` ADD `last_updated` INT NOT NULL DEFAULT '0';
-ALTER TABLE `flux` ADD `status_flux` INT(1) NOT NULL DEFAULT '1'
+* Exporter les données dans la version 0.3.2
+* Faire une nouvelle installation de la version 1.0
+* Importer les données dans la version 1.0
+* Copier l’ancienne feuille de style dans /themes/gil-galad/css/core.css
+* Mettre à jour les liens vers les fichiers
 
 
 FAQ:

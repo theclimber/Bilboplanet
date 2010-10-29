@@ -3,7 +3,8 @@
 	<span class="searchText">{_You are searching for all the posts with :} <span class="search">{$search_value}</span></span>
 </div>
 <!-- END search.line -->
-<div id="summary">
+<!-- BEGIN summary.block -->
+<div id="top_10">
 	<h3><a name="top">{_Fast access to the last posts of the page}</a></h3>
 	<ul>
 		<!-- BEGIN summary.line -->
@@ -13,22 +14,23 @@
 		<!-- END summary.line -->
 	</ul>
 </div>
-<div id="upper_navigation">
+<!-- END summary.block -->
+<div id="navigation">
 	<!-- BEGIN pagination.up.prev -->
-	<div class="page_previous"><a href="?{$page.params}page={$page.prev}" class="page_prc"> &laquo; {_Previous page}</a></div>
+	<a class="page_prc" href="?{$page.params}page={$page.prev}" class="page_prc"> &laquo; {_Previous page}</a>
 	<!-- END pagination.up.prev -->
 	<!-- BEGIN pagination.up.next -->
-	<div class="paging_next"><a href="?{$page.params}page={$page.next}" class="page_svt">{_Next page} &raquo;</a></div>
+	<a class="page_svt" href="?{$page.params}page={$page.next}" class="page_svt">{_Next page} &raquo;</a>
 	<!-- END pagination.up.next -->
 </div>
 
 <div class="posts-list">
 	<!-- BEGIN post.block -->
-	<div class="post">
+	<div class="article">
 		<div class="separ_article_top"></div>
-		<div class="post_title">
+		<div class="article_nom">
 			<!-- BEGIN post.block.gravatar -->
-			<div class="gravatar">
+			<div class="avatar_article">
 				<a href="{$planet.url}/index.php?user_id={$post.author_id}" title="{_Show user's posts}">
 				<img src="{$gravatar_url}" class="gravatar" /></a>
 			</div>
@@ -38,23 +40,26 @@
 		</div>
 		<!-- BEGIN post.block.votes -->
 		<div class="votes">
+			{$votes.html}
 		</div>
 		<!-- END post.block.votes -->
 		<div class="post_description">{$post.description}</div>
-		<div class="post_content">{$post.content}</div>
+		<div class="contenu_article">{$post.content}</div>
 		<div class="separ_article_bottom"></div>
-		<a href="#top" class="backtop">{_Back to summary}</a>
+		<!-- BEGIN post.backsummary -->
+		<a href="#top" class="retour_sommaire">{_Back to summary}</a>
+		<!-- END post.backsummary -->
 	</div>
 	<!-- ELSE post.block -->
 	{_No posts found}
 	<!-- END post.block -->
 </div>
 
-<div id="lower_navigation">
+<div id="navigation">
 	<!-- BEGIN pagination.low.prev -->
-	<div class="page_previous"><a href="?{$page.params}page={$page.prev}" class="page_prc"> &laquo; {_Previous page}</a></div>
+	<a class="page_prc" href="?{$page.params}page={$page.prev}" class="page_prc"> &laquo; {_Previous page}</a>
 	<!-- END pagination.low.prev -->
 	<!-- BEGIN pagination.low.next -->
-	<div class="paging_next"><a href="?{$page.params}page={$page.next}" class="page_svt">{_Next page} &raquo;</a></div>
+	<a class="page_svt" href="?{$page.params}page={$page.next}" class="page_svt">{_Next page} &raquo;</a>
 	<!-- END pagination.low.next -->
 </div>

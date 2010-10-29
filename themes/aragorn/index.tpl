@@ -20,37 +20,48 @@
 
 </head>
 <body>
-<div id="wrap">
-	<div id="header"><!--header-->
-		<!-- BEGIN search.box -->
-		<div id="search">
-			<form id="form_search" action="index.php" method="get">
-				<!-- BEGIN search.popular -->
-				<input type="hidden" id="popular" name="popular" value="{$params.popular}" />
-				<!-- END search.popular -->
-				<!-- BEGIN search.user_id -->
-				<input type="hidden" id="user_id" name="user_id" value="{$params.user_id}" />
-				<!-- END search.user_id -->
-				<!-- BEGIN search.filter -->
-				<input type="hidden" id="filter" name="filter" value="{$params.filter}" />
-				<!-- END search.filter -->
-				<input type="submit" id="mainmenu_search_btn" value="OK" />
-				<input type="text" id="mainmenu_search" name="search" value="{$search_value}" />
-			</form>
-		</div>
-		<!-- END search.box -->
-		<div id="logo">
-			<h1 id="sitename"><a href="{$planet.url}">{$planet.title}</a></h1>
-			<h2 class="description">{$planet.desc}</h2>
-		</div>
-	</div><!-- end header -->
+<div id="tour">
+<div id="arriere_plan">
+<div id="global">
+<div id="header">
 
-	<div id="main">
-		<!-- ADD MENU HERE -->
-		{!include:'menu.tpl'}
+	<div id="title">
+		<a href="{$planet.url}">{$planet.title}</a>
+		<div id="description_title">{$planet.desc}</div>
+	</div>
 
-		<div id="content">
-			<div id="homeleft">
+	<!-- ADD MENU HERE -->
+	{!include:'menu.tpl'}
+
+	<div id="centre">
+
+		<div class="contenu">
+			<div id="colonne">
+
+				<!-- ADD SIDEBAR HERE -->
+				{!include:'sidebar.tpl'}
+			</div>
+
+			<div id="centre_centre">
+
+				<!-- BEGIN menu.filter -->
+				<div class="tri">
+					<b>Filtrer les articles :&nbsp;&nbsp;&nbsp;&nbsp;</b>
+					<span>
+						<a href="index.php?{$filter_url}filter=day">Articles du jour</a>
+					</span>&nbsp;&nbsp;-&nbsp;&nbsp;  
+					<span>
+						<a href="index.php?{$filter_url}filter=week">Articles de la semaine</a>
+					</span>&nbsp;&nbsp;-&nbsp;&nbsp;
+					<span>
+						<a href="index.php?{$filter_url}filter=month">Articles du mois</a>
+					</span>&nbsp;&nbsp;-&nbsp;&nbsp;
+					<span>
+						<a href="index.php?{$filter_url}">Tous les articles</a>
+					</span>
+				</div><!-- end submenu -->
+				<!-- END menu.filter -->
+
 				<!-- ADD CONTENT HERE -->
 				<!-- BEGIN content.posts -->
 					{!include:'posts.tpl'}
@@ -77,10 +88,6 @@
 				<!-- END content.archives -->
 			</div>
 
-			<div id="homeright">
-				<!-- ADD SIDEBAR HERE -->
-				{!include:'sidebar.tpl'}
-			</div>
 		</div><!-- end content -->
 
 	</div><!-- end main -->
@@ -88,6 +95,9 @@
 <!-- ADD FOOTER HERE -->
 {!include:'footer.tpl'}
 
+</div>
+</div>
+</div>
 </div><!-- end wrap -->
 
 <!-- ADD JAVASCRIPT IMPORT HERE -->

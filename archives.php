@@ -79,6 +79,7 @@ if ($iter > 0) {
 	$core->tpl->render('archives.closure');
 }
 
+$core->tpl->setVar('params', $params);
 $core->tpl->render('content.archives');
 echo $core->tpl->render();
 ?>

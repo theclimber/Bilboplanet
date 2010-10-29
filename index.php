@@ -31,9 +31,11 @@ header('Content-type: text/html; charset=utf-8');
 
 # Valeurs par defaut
 $num_start = 0;
-$params = array(
-	'title'=>$blog_settings->get('planet_title')
-	);
+if (!isset($params)) {
+	$params = array(
+		'title'=>$blog_settings->get('planet_title')
+		);
+}
 
 /* On recupere les infomations des articles */
 $debut_sql = "SELECT 

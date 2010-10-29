@@ -25,6 +25,10 @@
 ?>
 <?php
 
+$params = array(
+	'title'=>$blog_settings->get('planet_title')
+	);
+
 #######################
 # RENDER SIDEBAR
 #######################

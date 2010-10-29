@@ -114,6 +114,7 @@ if($email)		$form_values["email"] = $email['value'];
 if($subject)	$form_values["subject"] = $subject['value'];
 if($content)	$form_values["content"] = $content['value'];
 
+$core->tpl->setVar('params', $params);
 $core->tpl->setVar('captcha_html', $captcha_html);
 $core->tpl->setVar('form', $form_values);
 $core->tpl->render('content.contact');

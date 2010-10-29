@@ -146,6 +146,7 @@ else {
 	if($url)	$form_values["url"] = $url['value'];
 	if($feed)	$form_values["feed"] = $feed['value'];
 
+	$core->tpl->setVar('params', $params);
 	$core->tpl->setVar('form', $form_values);
 	$core->tpl->setVar('subscription_content', $content);
 	$core->tpl->setVar('captcha_html', $captcha_html);

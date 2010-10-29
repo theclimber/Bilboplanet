@@ -102,6 +102,7 @@ $core->tpl->setVar('nb', array(
 	"nb_posts" => getNbPosts($core->con),
 	"nb_votes" => getNbVotes($core->con)
 ));
+$core->tpl->setVar('params', $params);
 $core->tpl->render('content.stats');
 echo $core->tpl->render();
 ?>

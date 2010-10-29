@@ -32,7 +32,6 @@ header('Content-type: text/html; charset=utf-8');
 	
 $flash='';
 session_start();
-print_r($_POST);
 if(isset($_POST) && isset($_POST['submit'])){
 	require_once(dirname(__FILE__).'/inc/lib/recaptchalib.php');
 	$privatekey = "6LdEeQgAAAAAABrweqchK5omdyYS_fUeDqvDRq3Q";

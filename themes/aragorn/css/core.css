@@ -621,14 +621,14 @@ background:#FF6 none repeat scroll 0 0;
 .vote img {
 	border:0;
 }
-.avote span#imgoui {
+.vote span#imgoui {
 	display:block;
 	background:url('../images/oui-light.png') no-repeat;
 	height:18px;
 	width:18px;
 	float:left;
 }
-.avote span#imgnon {
+.vote span#imgnon {
 	float:right;
 	display:block;
 	background:url('../images/warn-light.png') no-repeat;

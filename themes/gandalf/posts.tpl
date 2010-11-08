@@ -46,6 +46,7 @@
 	<!-- BEGIN post.block -->
 	<div class="post">
 		<div class="post_title">
+			<a name="post{$post.id}">&nbsp;</a>
 			<!-- BEGIN post.block.gravatar -->
 			<div class="gravatar">
 				<a href="{$planet.url}/index.php?user_id={$post.author_id}" title="{_Show user's posts}">

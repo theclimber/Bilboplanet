@@ -211,12 +211,14 @@ $(document).ready(function($) {
 			var message = $(document.createElement('div')).addClass('preview_message');
 			var footer = $(document.createElement('div')).addClass('preview_footer');
 			
+			
 			// Construction du footer avec le bouton Close
 			footer.append('<hr />');
 			footer.append(buttonClose);
 			
 			// Construction de la div: assemblage header + message + footer
 			content.append(header).append(message).append(footer);
+			
 			content.fadeIn(4000);
 			preview.after(content);
 			
@@ -225,8 +227,13 @@ $(document).ready(function($) {
 			preview.fadeTo("slow", $options.opacity);
 			
 			// Affichage du contenu du textarea
-			//message.hide().html(textarea.val()).fadeIn(3000);
 			message.hide().html(htmlspecialchars(textarea.val())).fadeIn(6000);
+			
+			// Loop on each tag <code></code> 
+			$('.preview_message').find('code').each(function(){
+				$(this).html($(this).html().replace("/&/&amp,").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"));
+			});
+
 			
 			// Fermeture de la preview lorsque l'on clique sur le bouton close
 			buttonClose.click(function() {

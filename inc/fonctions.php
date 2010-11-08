@@ -670,4 +670,18 @@ function cleanString($toClean) {
 
 	return $toClean;
 }
+
+#---------------------------------------------------#
+# Function to encode html inside <code></code> tags	#
+#---------------------------------------------------#
+function html_encode_code_tags ($html) {
+	
+	preg_match_all("/(<code>)(.*?)(<\/code>)/", $html, $matches, PREG_SET_ORDER);
+	
+	foreach ($matches as $val) {
+		$res = str_replace($val[0], "<code>".htmlentities(stripslashes($val[2]), ENT_QUOTES, 'UTF-8')."</code>", $html);
+	}
+	
+	return $res;	
+}
 ?>

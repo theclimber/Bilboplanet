@@ -25,6 +25,21 @@
 ?><?php
 if(isset($_POST['action'])) {
 	switch (trim($_POST['action'])){
+		
+##########################################################
+# GET SITE INFO
+##########################################################
+	case 'info':
+		$site_id = urldecode(trim($_POST['site_id']));
+		$rs = $core->con->select("SELECT * FROM ".$core->prefix."site WHERE site_id = '$site_id'");
+		$site = array(
+			"site_id" => $rs->f('site_id'),
+			"site_name" => $rs->f('site_name'),
+			"site_url" => $rs->f('site_url'),
+			"site_status" => $rs->f('site_status')
+			);
+		print json_encode($site);
+		break;
 
 ##########################################################
 # ADD SITE TO USER
@@ -64,6 +79,60 @@ if(isset($_POST['action'])) {
 				$cur->insert();
 
 				$output = sprintf(T_("Website %s successfully added to user %s"), $site_url['value'], $user_id);
+			}
+		}
+		else {
+			if (!$site_url['success']) {
+				$error[] = $site_url['error'];
+			}
+			if (!$site_name['success']) {
+				$error[] = $site_name['error'];
+			}
+		}
+
+		if (!empty($error)) {
+			$output .= "<ul>";
+			foreach($error as $value) {
+				$output .= "<li>".$value."</li>";
+			}
+			$output .= "</ul>";
+			print '<div class="flash error">'.$output.'</div>';
+		}
+		else {
+			print '<div class="flash notice">'.$output.'</div>';
+		}
+		break;
+
+##########################################################
+# UPDATE SITE
+##########################################################
+	case 'update':
+		$site_id = trim($_POST['site_id']);
+		$site_url = check_field('site_url',trim($_POST['esite_url']), 'url');
+		$site_name = check_field('site_name',trim($_POST['esite_name']));
+		$error = array();
+
+		if ($site_url['success'] && $site_name['success']) {
+			$rs = $core->con->select("SELECT * FROM ".$core->prefix."site
+				WHERE site_url = '".$site_url['value']."'
+				AND site_id != ".$site_id);
+			if ($rs->count() > 0){
+				if ($rs->f('user_id') == $user_id) {
+					$error[] = sprintf(T_('The user %s already own the website %s'),$user_id, $site_url['value']);
+				}
+				else {
+					$error[] = sprintf(T_('The website %s is owned by user %s'), $site_url['value'], $rs->f('user_id'));
+				}
+			}
+
+			if (empty($error)) {
+				$cur = $core->con->openCursor($core->prefix.'site');
+				$cur->site_url = $site_url['value'];
+				$cur->site_name = $site_name['value'];
+				$cur->modified = array(' NOW() ');
+				$cur->update("WHERE site_id = ".$site_id);
+
+				$output = sprintf(T_("Website %s successfully updated"), $site_url['value']);
 			}
 		}
 		else {

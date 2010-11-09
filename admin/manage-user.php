@@ -186,6 +186,24 @@ form::field('s_url',30,255,html::escapeHTML(""), 'input').'</label>
 ?>
 </div>
 
+<div id="site-edit-form" style="display:none">
+<?php
+echo '<form>'.
+
+'<label for="esite_name">'.T_('Site name').' : '.
+form::field('esite_name',30,255,html::escapeHTML(""), 'input').'</label>
+<span class="description">'.T_('ex: Bilboplanet blog').'</span><br />'.
+
+'<label class="required" for="esite_url">'.T_('Site URL').' : '.
+form::field('esite_url',30,255,html::escapeHTML(""), 'input').'</label>
+<span class="description">'.T_('ex: http://blog.bilboplanet.com').'</span><br />'.
+
+'<div class="button br3px"><input type="button" class="notvalide" name="cancel" onClick="Boxy.get($(\'form.boxform\')).hide()" value="'.T_('Cancel').'"></div>&nbsp;&nbsp;'.
+'<div class="button br3px"><input type="submit" class="valide" name="edit_site" class="edit_site" value="'.T_('Update').'" /></div>'.
+'</form>';
+?>
+</div>
+
 
 <script type="text/javascript" src="meta/js/manage-user.js"></script>
 <script type="text/javascript" src="meta/js/jquery.boxy.js"></script>

@@ -443,6 +443,7 @@ function getOutput($sql, $num_page=0, $nb_items=30) {
 					$s_name = $sites->site_name.' : ';
 				}
 				$output .= '<li>'.$s_name.'<a href="'.$sites->site_url.'" target="_blank">'.$sites->site_url.'</a>&nbsp;&nbsp;';
+				$output .= '<a href="#" class="edit-website" onclick="javascript:editSite(\''.$sites->site_id.'\', \''.$num_page.'\', \''.$nb_items.'\')"></a>';
 				$output .= '<a href="#" class="del-website" onclick="javascript:removeSite(\''.$sites->site_id.'\', \''.$num_page.'\', \''.$nb_items.'\')"></a>';
 				$output .= '</li>';
 			}

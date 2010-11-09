@@ -206,3 +206,43 @@ function addSite(user_id, num_page, nb_items) {
 	});
 	return false;
 }
+
+function editSite(site_id, num_page, nb_items) {
+	$('#flash-log').css('display','');
+	$('#flash-msg').addClass('ajax-loading');
+	$('#flash-msg').html('Loading');
+	$.ajax({
+		type: "POST",
+		url: "api/",
+		data: {'ajax' : 'site', 'action' : 'info', 'site_id' : site_id},
+		dataType: 'json',
+		success: function(site){
+			$('#flash-msg').removeClass('ajax-loading');
+			
+			$('#site-edit-form #esite_name').val(unescape(site.site_name));
+			$('#site-edit-form #esite_url').val(site.site_url);
+			var content = $('#site-edit-form form').clone();
+
+			Boxy.askform(content, function(val) {
+				val['ajax'] = "site";
+				val['action'] = "update";
+				val['site_id'] = site_id;
+				$.ajax({
+					type: "POST",
+					url: "api/",
+					data : val,
+					success: function(msg){
+						$('#site-edit-form #esite_name').val('');
+						$('#site-edit-form #esite_url').val('');
+						updateUserList(num_page, nb_items);
+						$("#flash-msg").html(msg);
+					}
+				});
+			}, {
+				title: "Update "+site.site_name+" site",
+				closeable: true,
+			});
+		}
+	});
+	return false;
+}

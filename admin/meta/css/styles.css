@@ -417,6 +417,11 @@ background-image:url('../icons/action-small-remove.png');
 background-repeat:no-repeat;
 padding-left:16px;
 }
+.edit-website {
+background-image:url('../icons/action-small-edit.png');
+background-repeat:no-repeat;
+padding-left:16px;
+}
 /*
  * Tableaux
  */

@@ -28,12 +28,14 @@ require_once(dirname(__FILE__).'/inc/prepend.php');
 include dirname(__FILE__).'/tpl.php';
 header('Content-type: text/html; charset=utf-8');
 
+$core->tpl->setVar('params', array('title' => '404 Error'));
 $core->tpl->setVar('html', '
+	<div id="content" class="pages">
 	<center>
 	<h3>'.T_('Error 404').'</h3>
 	<img src="themes/'.$blog_settings->get('planet_theme').'/images/404.png">
 	<p>'.T_("Page not found").'</p>
-	</center>');
+	</center></div>');
 $core->tpl->render('content.html');
 echo $core->tpl->render();
 ?>

@@ -246,3 +246,20 @@ function editSite(site_id, num_page, nb_items) {
 	});
 	return false;
 }
+
+function openAdd() {
+	jQuery('#adduser-field').css('display', '');
+}
+
+function closeAdd() {
+	jQuery('#adduser-field').css('display', 'none');
+}
+
+function openFilter() {
+	jQuery('#filteruser-field').css('display', '');
+}
+
+function closeFilter() {
+	jQuery('#filteruser-field').css('display', 'none');
+	updateUserList(0, 30);
+}

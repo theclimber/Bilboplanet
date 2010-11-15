@@ -176,3 +176,20 @@ function edit(feed_id, num_page, nb_items) {
 	});
 	return false;
 }
+
+function openAdd() {
+	jQuery('#addfeed-field').css('display', '');
+}
+
+function closeAdd() {
+	jQuery('#addfeed-field').css('display', 'none');
+}
+
+function openFilter() {
+	jQuery('#filterfeed-field').css('display', '');
+}
+
+function closeFilter() {
+	jQuery('#filterfeed-field').css('display', 'none');
+	updateFeedList(0, 30);
+}

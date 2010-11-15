@@ -45,10 +45,10 @@ include_once(dirname(__FILE__).'/sidebar.php');
 	<div id="flash-msg"><!-- spanner --></div>
 </div>
 
-<div id="add-form" class="button br3px"><a onclick="jQuery('#adduser-field').css('display', '')">
+<div id="add-form" class="button br3px"><a onclick="javascript:openAdd()">
 	<?php echo T_('Add an user'); ?></a>
 </div>
-<div class="button br3px" id="filter-form"><a onclick="jQuery('#filteruser-field').css('display', '')">
+<div class="button br3px" id="filter-form"><a onclick="javascript:openFilter()">
 	<?php echo T_('Filter userlist'); ?></a>
 </div></p>
 
@@ -85,7 +85,7 @@ form::combo('user_status',$status,0, 'input','','').'</label><br /><br />';
 
 echo 
 '<div class="button br3px"><input type="submit" name="filter_user" class="valide" value="'.T_('Filter').'" /></div>'.
-'<div class="button br3px close-button"><a class="close" onclick="jQuery(\'#filteruser-field\').css(\'display\', \'none\');updateUserList(0, 30)">'.T_('Close').'</a></div>'.
+'<div class="button br3px close-button"><a class="close" onclick="javascript:closeFilter()">'.T_('Close').'</a></div>'.
 '</form>';
 ?>
 </fieldset>
@@ -124,7 +124,7 @@ form::field('site',30,255,html::escapeHTML(), 'input').'</label>
 
 '<div class="button br3px"><input type="reset" class="reset" name="reset" onClick="this.form.reset()" value="'.T_('Reset').'"></div>&nbsp;&nbsp;'.
 '<div class="button br3px"><input type="submit" name="add_user" class="add_user" value="'.T_('Add').'" /></div>'.
-'<div class="button br3px close-button"><a class="close" onclick="jQuery(\'#adduser-field\').css(\'display\', \'none\')">'.T_('Close').'</a></div>'.
+'<div class="button br3px close-button"><a class="close" onclick="javascript:closeAdd()">'.T_('Close').'</a></div>'.
 '</form>';
 ?>
 	

@@ -44,10 +44,10 @@ include_once(dirname(__FILE__).'/sidebar.php');
 	<div id="flash-msg"><!-- spanner --></div>
 </div>
 
-<div class="button br3px" id="add-form"><a onclick="jQuery('#addfeed-field').css('display', '')">
+<div class="button br3px" id="add-form"><a onclick="javascript:openAdd()">
 	<?php echo T_('Add a feed'); ?></a>
 </div>
-<div class="button br3px" id="filter-form"><a onclick="jQuery('#filterfeed-field').css('display', '')">
+<div class="button br3px" id="filter-form"><a onclick="javascript:openFilter()">
 	<?php echo T_('Filter feedlist'); ?></a>
 </div></p>
 </p>
@@ -89,7 +89,7 @@ form::combo('feed_status',$status,0, 'input','','').'</label><br /><br />';
 
 echo 
 '<div class="button br3px"><input type="submit" name="filter_feed" class="valide" value="'.T_('Filter').'" /></div>'.
-'<div class="button br3px close-button"><a class="close" onclick="jQuery(\'#filterfeed-field\').css(\'display\', \'none\');updateFeedList(0, 30)">'.T_('Close').'</a></div>'.
+'<div class="button br3px close-button"><a class="close" onclick="javascript:closeFilter()">'.T_('Close').'</a></div>'.
 '</form>';
 ?>
 </fieldset>
@@ -142,7 +142,7 @@ if ($blog_settings->get('planet_moderation')) {
 echo 
 '<div class="button br3px"><input type="reset" class="reset" name="reset" onClick="this.form.reset()" value="'.T_('Reset').'"></div>&nbsp;&nbsp;'.
 '<div class="button br3px"><input type="submit" name="add_feed" class="valide" value="'.T_('Add').'" /></div>'.
-'<div class="button br3px close-button"><a class="close" onclick="jQuery(\'#addfeed-field\').css(\'display\', \'none\')">'.T_('Close').'</a></div>'.
+'<div class="button br3px close-button"><a class="close" onclick="javascript:closeAdd()">'.T_('Close').'</a></div>'.
 '</form>';
 ?>
 </fieldset>

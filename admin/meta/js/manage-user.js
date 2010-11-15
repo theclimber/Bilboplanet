@@ -1,17 +1,8 @@
+this.isfilter=false;
 $(document).ready(function() {
+	this.isfilter=false;
 	$('#filteruser_form').submit(function() {
-		var data = $('#filteruser_form').serialize();
-		$('#flash-log').css('display','');
-		$('#flash-msg').addClass('ajax-loading');
-		$.ajax({
-			type: "POST",
-			url: "api/",
-			data: 'ajax=user&action=filter&'+data,
-			success: function(msg){
-				$('#flash-msg').removeClass('ajax-loading');
-				$("#users-list").html(msg);
-			}
-		});
+		updateFilterList();
 		return false;
 	});
 	$('#adduser_form').submit(function() {
@@ -37,15 +28,34 @@ $(document).ready(function() {
 
 });
 
-function updateUserList(num_page, nb_items) {
+function updateFilterList() {
+	var data = $('#filteruser_form').serialize();
+	$('#flash-log').css('display','');
+	$('#flash-msg').addClass('ajax-loading');
 	$.ajax({
 		type: "POST",
 		url: "api/",
-		data : {'ajax' : 'user', 'action' : 'list', 'num_page': num_page, 'nb_items' : nb_items},
+		data: 'ajax=user&action=filter&'+data,
 		success: function(msg){
+			$('#flash-msg').removeClass('ajax-loading');
 			$("#users-list").html(msg);
 		}
 	});
+}
+
+function updateUserList(num_page, nb_items) {
+	if (this.isfilter) {
+		updateFilterList();
+	} else {
+		$.ajax({
+			type: "POST",
+			url: "api/",
+			data : {'ajax' : 'user', 'action' : 'list', 'num_page': num_page, 'nb_items' : nb_items},
+			success: function(msg){
+				$("#users-list").html(msg);
+			}
+		});
+	}
 }
 
 function toggleUserStatus(user_id, num_page, nb_items) {
@@ -256,10 +266,12 @@ function closeAdd() {
 }
 
 function openFilter() {
+	this.isfilter = true;
 	jQuery('#filteruser-field').css('display', '');
 }
 
 function closeFilter() {
+	this.isfilter = false;
 	jQuery('#filteruser-field').css('display', 'none');
 	updateUserList(0, 30);
 }

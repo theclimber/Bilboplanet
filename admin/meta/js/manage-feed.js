@@ -1,17 +1,8 @@
+this.isfilter = false;
 $(document).ready(function() {
+	this.isfilter=false;
 	$('#filterfeed_form').submit(function() {
-		var data = $('#filterfeed_form').serialize();
-		$('#flash-log').css('display','');
-		$('#flash-msg').addClass('ajax-loading');
-		$.ajax({
-			type: "POST",
-			url: "api/",
-			data: 'ajax=feed&action=filter&'+data,
-			success: function(msg){
-				$('#flash-msg').removeClass('ajax-loading');
-				$("#feed-list").html(msg);
-			}
-		});
+		updateFilterList();
 		return false;
 	});
 	$('#addfeed_form').submit(function() {
@@ -36,15 +27,35 @@ $(document).ready(function() {
 	});
 });
 
-function updateFeedList(num_page, nb_items) {
+
+function updateFilterList() {
+	var data = $('#filterfeed_form').serialize();
+	$('#flash-log').css('display','');
+	$('#flash-msg').addClass('ajax-loading');
 	$.ajax({
 		type: "POST",
 		url: "api/",
-		data : {'ajax' : 'feed', 'action' : 'list', 'num_page': num_page, 'nb_items' : nb_items},
+		data: 'ajax=feed&action=filter&'+data,
 		success: function(msg){
+			$('#flash-msg').removeClass('ajax-loading');
 			$("#feed-list").html(msg);
 		}
 	});
+}
+
+function updateFeedList(num_page, nb_items) {
+	if (this.isfilter) {
+		updateFilterList();
+	} else {
+		$.ajax({
+			type: "POST",
+			url: "api/",
+			data : {'ajax' : 'feed', 'action' : 'list', 'num_page': num_page, 'nb_items' : nb_items},
+			success: function(msg){
+				$("#feed-list").html(msg);
+			}
+		});
+	}
 }
 
 function updateSiteCombo() {
@@ -186,10 +197,12 @@ function closeAdd() {
 }
 
 function openFilter() {
+	this.isfilter = true;
 	jQuery('#filterfeed-field').css('display', '');
 }
 
 function closeFilter() {
+	this.isfilter = false;
 	jQuery('#filterfeed-field').css('display', 'none');
 	updateFeedList(0, 30);
 }

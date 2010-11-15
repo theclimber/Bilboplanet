@@ -290,6 +290,7 @@ if(isset($_POST['action'])) {
 			feed_name,
 			feed_url,
 			feed_status,
+			feed_checked,
 			feed_trust
 			FROM '.$core->prefix.'feed, '.$core->prefix.'site
 			WHERE '.$core->prefix.'feed.site_id = '.$core->prefix.'site.site_id'.
@@ -316,6 +317,7 @@ if(isset($_POST['action'])) {
 			feed_name,
 			feed_url,
 			feed_status,
+			feed_checked,
 			feed_trust
 			FROM '.$core->prefix.'feed, '.$core->prefix.'site
 			WHERE '.$core->prefix.'feed.site_id = '.$core->prefix.'site.site_id
@@ -389,7 +391,9 @@ function getOutput($sql, $num_page=0, $nb_items=30) {
 				<li>'.T_('Site URL : ').'<a href="'.$rs->site_url.'" target="_blank">'.$rs->site_url.'</a></li>
 			</ul></div></td>';
 		$output .= '<td>';
-		$output .=  '<a href="'.$rs->feed_url.'" target="_blank">'.$rs->feed_url.'</a></td>';
+		$output .=  '<a href="'.$rs->feed_url.'" target="_blank" title="'
+			.sprintf('Last checked at %s',mysqldatetime_to_date("d/m/Y H:i",$rs->feed_checked)).'">'
+			.$rs->feed_url.'</a></td>';
 		$output .= '<td style="text-align: center;">';
 
 		if ($blog_settings->get('planet_moderation')) {

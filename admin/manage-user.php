@@ -64,24 +64,24 @@ $rs = $core->con->select('SELECT DISTINCT
 	FROM '.$core->prefix.'user
 	ORDER BY lower(user_fullname) ASC;');
 $users = array();
-$users['-- '.T_('All').' --'] = 'all';
 while($rs->fetch()) {
 	$users["$rs->user_fullname"] = urlencode($rs->user_id);
 }
+$users['-- '.T_('All').' --'] = 'all';
 
 $status = array();
-$status['-- '.T_('All').' --'] = "all";
 $status[T_('Active user')] = 1;
 $status[T_('Inactive user')] = 0;
+$status['-- '.T_('All').' --'] = "all";
 
 echo
 '<form id="filteruser_form">'.
 
 '<label class="required" for="fuser_id">'.T_('User id').' : '.
-form::combo('fuser_id',$users,'', 'input','','').'</label><br /><br />'.
+form::combo('fuser_id',$users,0, 'input','','').'</label><br /><br />'.
 
 '<label class="required" for="user_status">'.T_('User status').' : '.
-form::combo('user_status',$status,'', 'input','','').'</label><br /><br />';
+form::combo('user_status',$status,0, 'input','','').'</label><br /><br />';
 
 echo 
 '<div class="button br3px"><input type="submit" name="filter_user" class="valide" value="'.T_('Filter').'" /></div>'.

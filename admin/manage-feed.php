@@ -66,15 +66,15 @@ $rs = $core->con->select('SELECT DISTINCT
 	WHERE '.$core->prefix.'feed.user_id = '.$core->prefix.'user.user_id
 	ORDER BY lower(user_fullname) ASC;');
 $users = array();
-$users['-- '.T_('All').' --'] = 'all';
 while($rs->fetch()) {
 	$users["$rs->user_fullname"] = urlencode($rs->user_id);
 }
+$users['-- '.T_('All').' --'] = 'all';
 
 $status = array();
-$status['-- '.T_('All').' --'] = "all";
 $status[T_('Active feeds')] = 1;
 $status[T_('Inactive feeds')] = 0;
+$status['-- '.T_('All').' --'] = "all";
 if ($blog_settings->get('auto_feed_disabling')){
 	$status[T_('Auto disabled feeds')] = 2;
 }
@@ -82,10 +82,10 @@ echo
 '<form id="filterfeed_form">'.
 
 '<label class="required" for="fuser_id">'.T_('User id').' : '.
-form::combo('fuser_id',$users,'', 'input','','').'</label><br /><br />'.
+form::combo('fuser_id',$users,0, 'input','','').'</label><br /><br />'.
 
 '<label class="required" for="feed_status">'.T_('Feed status').' : '.
-form::combo('feed_status',$status,'', 'input','','').'</label><br /><br />';
+form::combo('feed_status',$status,0, 'input','','').'</label><br /><br />';
 
 echo 
 '<div class="button br3px"><input type="submit" name="filter_feed" class="valide" value="'.T_('Filter').'" /></div>'.

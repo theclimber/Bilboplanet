@@ -145,13 +145,13 @@ $sql = $debut_sql." ".$fin_sql;
 
 $page_url = '';
 foreach ($params as $key => $val) {
-	if ($key != "page") {
+	if ($key != "page" && $key != "title") {
 		$page_url .= $key."=".$val."&";
 	}
 }
 $filter_url = '';
 foreach ($params as $key => $val) {
-	if ($key != "page" && $key != "filter") {
+	if ($key != "page" && $key != "filter" && $key != "title") {
 		$filter_url .= $key."=".$val."&";
 	}
 }

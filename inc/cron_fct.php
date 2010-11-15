@@ -32,16 +32,11 @@ function finished() {
 }
 
 function update($core, $print=false) {
-	global $log, $blog_settings;
-	$cron_file = dirname(__FILE__).'/cron_running.txt';
+	global $blog_settings;
 	$output = "";
 
 	# Inclusion des fichiers necessaires
 	require_once(dirname(__FILE__).'/lib/simplepie/simplepie.inc');
-
-	# Duree de mise a jour
-	$debut = explode(" ",microtime());
-	$debut = $debut[1]+$debut[0]; 
 
 	# Requete permettant de recuperer la liste des flux a parser
 	$sql = "SELECT
@@ -59,29 +54,46 @@ function update($core, $print=false) {
 			AND site_status = 1
 			AND feed_status = 1
 		ORDER BY feed_checked ASC
-		LIMIT 30";
+		LIMIT 50";
 	$rs = $core->con->select($sql);
-	# Ouverture du fichier de log
-	$file = fopen('../logs/update-'.date("Y-m-d").'.log', 'a');
 
 	# Affichage des logs dans la partie admin
 	$output .= "<fieldset><legend>Log File</legend>
 		<div class='message'><p>Manual Update Log</p></div>";
+	$output .= getItemsFromFeeds($rs, $print);
+	$output .= "</fieldset>";
 
-	# On parcour l'ensemble des flux 
+	# On detruit les fichiers de cache des pages web pour les actualiser
+	$cache_dir = dirname(__FILE__).'/../admin/cache';
+	$dir_handle = @opendir($cache_dir) or die("Unable to open $cache_dir");
+	while ($file = readdir($dir_handle)){
+		if($file!="." && $file!=".." && $file!=".svn" && $file!=".DS_Store" && $file!=".htaccess"){
+			unlink($cache_dir.'/'.$file);
+		}
+	}
+	closedir($dir_handle);
+
+	# On met a jour la date d'update
+	updateDateMaj();
+
+	return $output;
+}
+
+function getItemsFromFeeds ($rs, $print) {
+	global $blog_settings, $core;
+	$cron_file = dirname(__FILE__).'/cron_running.txt';
+
+	# Duree de mise a jour
+	$debut = explode(" ",microtime());
+	$debut = $debut[1]+$debut[0]; 
+
 	$cpt = 0;
 	while ($rs->fetch()) {
 		# On verifie si on n'a pas demandé l'arrêt de l'algo
 		if (file_exists(dirname(__FILE__).'/STOP')) {
-			$log_msg = logMsg("STOP file detected, trying to shut down cron job", $file, 2, $print);
+			$log_msg = logMsg("STOP file detected, trying to shut down cron job", "", 2, $print);
 			if ($print) $output .= $log_msg;
 			break;
-		}
-
-		# Si on est en mode debug
-		if($log == "debug") {
-			$log_msg = logMsg("Analyse du flux ".$rs->feed_url, $file, 4, $print);
-			if ($print) $output .= $log_msg;
 		}
 
 		# On cree un objet SimplePie et on ajuste les parametres de base
@@ -101,20 +113,16 @@ function update($core, $print=false) {
 			# Affichage du message d'erreur
 			$error = $feed->error();
 			if (ereg($rs->feed_url, $error)) {
-				$log_msg = logMsg("Aucun article trouve ".$error, $file, 3, $print);
-				if ($print) $output .= $log_msg;
+				$log_msg = logMsg("Aucun article trouve ".$error, "", 3, $print);
 			} else {
-				$log_msg = logMsg("Aucun article trouve sur $rs->feed_url: ".$error, $file, 3, $print);
-				if ($print) $output .= $log_msg;
+				$log_msg = logMsg("Aucun article trouve sur $rs->feed_url: ".$error, "", 3, $print);
 			}
-
+			if ($print) $output .= $log_msg;
 		} else {
 
-			# On traite chaque item du flux
 			$items = $feed->get_items();
-			$item_permalink = '';
-
 			foreach ($items as $item) {
+
 				# open log file and write activity down
 				$fp = @fopen($cron_file,'wb');
 				if ($fp === false) {
@@ -126,8 +134,6 @@ function update($core, $print=false) {
 				# Analyse the item
 				#####################
 
-				# Permalink
-				$item_permalink = $item->get_permalink();
 				# Content
 				$item_content = strip_script($item->get_content());
 				if (empty($item_content)) {
@@ -139,117 +145,38 @@ function update($core, $print=false) {
 				if(strlen($item_title) > 254) {
 					$item_title = substr($item_title, 0, 254);
 				}
-				# Date
-				$item_date = date('Y-m-d H:i:s',$item->get_date('U'));
+				# Permalink
+				$permalink = $item->get_permalink();
 
 				if (empty($item_content)) {
-					$log_msg = logMsg("Pas de contenu sur $rs->feed_url", $file, 3, $print);
-					if ($print) $output .= $log_msg;
-				} elseif(empty($item_permalink)) {
-					$log_msg = logMsg("Erreur de decoupage du lien ".$item_permalink, $file, 3, $print);
-					if ($print) $output .= $log_msg;
-
-					# Si on est en mode debug
-					if($log == "debug") {
-						$log_msg = logMsg("Url du site: ".$rs->site_url, $file, 4, $print);
-						if ($print) $output .= $log_msg;
-						$log_msg = logMsg("Url du permalink: ".$item_permalink, $file, 4, $print);
-						if ($print) $output .= $log_msg;
-					}
+					$log_msg = logMsg("Pas de contenu sur $rs->feed_url", "", 3, $print);
+				} elseif(empty($permalink)) {
+					$log_msg = logMsg("Erreur de decoupage du lien ".$permalink, "", 3, $print);
 				} else {
-					# Check if item is already in the database
-					$sql = "SELECT
-							post_title,
-							post_content,
-							post_pubdate
-						FROM ".$core->prefix."post
-						WHERE `post_permalink` = '".addslashes($item_permalink)."'";
-					$rs2 = $core->con->select($sql);
-
-					# There is no such permalink, we can insert the new item
-					if($rs2->count() == 0 && $item->get_date('U') < time()) {
-						# Get ID
-						$rs3 = $core->con->select(
-							'SELECT MAX(post_id) '.
-							'FROM '.$core->prefix.'post ' 
-							);
-						$next_post_id = (integer) $rs3->f(0) + 1;
-
-						$cur = $core->con->openCursor($core->prefix.'post');
-						$cur->post_id = $next_post_id;
-						$cur->user_id = $rs->user_id;
-						$cur->feed_id = $rs->feed_id;
-						$cur->post_pubdate = $item_date;
-						$cur->post_permalink = addslashes($item_permalink);
-						$cur->post_title = $item_title;
-						$cur->post_content = $item_content;
-						$cur->post_status = $rs->feed_trust == 1 ? 1 : 2;
-						$cur->created = array(' NOW() ');
-						$cur->modified = array(' NOW() ');
-						$cur->insert();
-
-						$log_msg = logMsg("Article ajoute: ".$item_permalink, $file, 1, $print);
-						if ($print) $output .= $log_msg;
-						$cpt++;
-					} # fin if(!found)
-
-					# If post is already in database, check if update needed
-					elseif($rs->count() == 1) {
-						$title2 = addslashes($rs2->f('post_title'));
-						$content2 = addslashes($rs2->f('post_content'));
-
-						# Si l'article a ete modifie (soit la date, soit le titre, soit le contenu)
-						if($item_date != $rs2->f('post_pubdate') && !empty($item_date)) {
-							# On log si il y a eu des modifications trouvees
-							$log_msg = logMsg("changement de date pour l'article: ".$item_permalink, $file, 2, $print);
-							if ($print) $output .= $log_msg;
-
-							# Update post in database
-							$cur = $core->con->openCursor($core->prefix.'post');
-							$cur->post_pubdate = $item_date;
-							$cur->modified = array('NOW()');
-							$cur->update("WHERE ".$core->prefix."post.post_permalink = '".addslashes($item_permalink)."'");
-							# On informe que tout est ok
-							$log_msg = logMsg("Date mise a jour: ".$item_permalink, $file, 1, $print);
-							if ($print) $output .= $log_msg;
-						}
-						if((!empty($item_title) && strcmp($item_title, $title2) != 0)
-							|| (!empty($item_content) && strcmp($item_content, $content2) != 0)) {
-							if(strcmp($item_title, $title2) != 0) {
-								$log_msg = logMsg("Changement de titre pour l'article: ".$item_permalink, $file, 2, $print);
-								if ($print) $output .= $log_msg;
-
-								# Update post in database
-								$cur = $core->con->openCursor($core->prefix.'post');
-								$cur->post_title = $item_title;
-								$cur->modified = array('NOW()');
-								$cur->update("WHERE ".$core->prefix."post.post_permalink = '".addslashes($item_permalink)."'");
-							}
-							if(strcmp($item_content, $content2) != 0) {
-								$log_msg = logMsg("Changement du contenu pour l'article: ".$item_permalink, $file, 2, $print);
-								if ($print) $output .= $log_msg;
-
-								# Update post in database
-								$cur = $core->con->openCursor($core->prefix.'post');
-								$cur->post_content = $item_content;
-								$cur->modified = array('NOW()');
-								$cur->update("WHERE ".$core->prefix."post.post_permalink = '".addslashes($item_permalink)."'");
-							}
-						} # fin du if($date !=
-						$cpt++;
-					}
+					$log_msg = insertPostToDatabase(
+						$rs,
+						$permalink,
+						$item->get_date("U"),
+						$item_title,
+						$item_content,
+						$print
+					);
+					$cpt++;
 				} # fin du $item->get_content()
+				if ($print) $output .= $log_msg;
 			} # fin du foreach
-			# On fait un reset du foreach
-			reset($items);
 
 			# Le flux a ete mis a jour, on le marque a la derniere date
 			$cur = $core->con->openCursor($core->prefix.'feed');
 			$cur->feed_checked = array('NOW()');
 			$cur->update("WHERE feed_id = '$rs->feed_id'");
+
+			# On fait un reset du foreach
+			reset($items);
+
 		} # fin $feed->error()
-		$feed->__destruct();
 		# Destruction de l'objet feed avant de passer a un autre
+		$feed->__destruct();
 		unset($feed);
 
 		if ($blog_settings->get('auto_feed_disabling')) {
@@ -261,38 +188,128 @@ function update($core, $print=false) {
 				$cur->update("WHERE feed_id = '$rs->feed_id'");
 			}
 		}
-
 	} # fin du while
 
 	# Duree de la mise a jour
 	$fin = explode(" ",microtime());
 	$fin = $fin[1]+$fin[0];
 	$temps_passe = round($fin-$debut,2);
-
-	# Message indiquant la fin de la mise a jour
-	$log_msg = logMsg("$cpt articles mis a jour en $temps_passe secondes", $file, 2, $print);
+	$log_msg = logMsg("$cpt articles mis a jour en $temps_passe secondes", "", 2, $print);
 	if ($print) $output .= $log_msg;
 
-	# Fermeture du fichier de log
-	fclose($file); 
-
-	# On detruit les fichiers de cache des pages web pour les actualiser
-	$cache_dir = dirname(__FILE__).'/../admin/cache';
-	$dir_handle = @opendir($cache_dir) or die("Unable to open $cache_dir");
-	while ($file = readdir($dir_handle)){
-		if($file!="." && $file!=".." && $file!=".svn" && $file!=".DS_Store" && $file!=".htaccess"){
-			unlink($cache_dir.'/'.$file);
-		}
-	}
-	closedir($dir_handle);
-	
-//	exec('cd '.dirname(__FILE__).'/../admin/cache && rm -f *.cache');
-
-	# On met a jour la date d'update
-	updateDateMaj();
-	
-	$output .= "</fieldset>";
 	return $output;
+}
+
+function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_content, $print) {
+	global $log, $core;
+	# Date
+	$item_date = date('Y-m-d H:i:s',$date);
+
+	# Check if item is already in the database
+	$sql = "SELECT
+			user_id,
+			post_title,
+			post_content,
+			post_pubdate
+		FROM ".$core->prefix."post
+		WHERE `post_permalink` = '".addslashes($item_permalink)."'";
+	$rs2 = $core->con->select($sql);
+
+	# There is no such permalink, we can insert the new item
+	if($rs2->count() == 0 && $date < time()) {
+
+		# Check if item is already in the database by title and by user
+		$sql = "SELECT
+				user_id,
+				post_title,
+				post_content,
+				post_pubdate
+			FROM ".$core->prefix."post
+			WHERE user_id = '".$rs->user_id."'
+				AND post_title = '".$item_title."'";
+		$rs4 = $core->con->select($sql);
+
+		if ($rs4->count() == 0) {
+			# Get ID
+			$rs3 = $core->con->select(
+				'SELECT MAX(post_id) '.
+				'FROM '.$core->prefix.'post ' 
+				);
+			$next_post_id = (integer) $rs3->f(0) + 1;
+
+			$cur = $core->con->openCursor($core->prefix.'post');
+			$cur->post_id = $next_post_id;
+			$cur->user_id = $rs->user_id;
+			$cur->feed_id = $rs->feed_id;
+			$cur->post_pubdate = $item_date;
+			$cur->post_permalink = addslashes($item_permalink);
+			$cur->post_title = $item_title;
+			$cur->post_content = $item_content;
+			$cur->post_status = $rs->feed_trust == 1 ? 1 : 2;
+			$cur->created = array(' NOW() ');
+			$cur->modified = array(' NOW() ');
+			$cur->insert();
+
+			return logMsg("Post added: ".$item_permalink, "", 1, $print);
+		} elseif ($rs4->count() == 1) {
+			# Update post permalink in database
+			$cur = $core->con->openCursor($core->prefix.'post');
+			$cur->post_permalink = addslashes($item_permalink);
+			$cur->modified = array('NOW()');
+			$cur->update("WHERE ".$core->prefix."post.user_id = '".$rs->user_id."'
+				AND ".$core->prefix."post.post_title = '".$item_title."'");
+			# On informe que tout est ok
+			return logMsg("Permalink updated : ".$item_permalink, "", 1, $print);
+		} else {
+			return logMsg("Several posts from the same author have the same title", "", 3, $print);
+		}
+	} # fin if(!found)
+
+	# If post is already in database, check if update needed
+	elseif($rs2->count() == 1) {
+		$title2 = addslashes($rs2->f('post_title'));
+		$content2 = addslashes($rs2->f('post_content'));
+
+		# Si l'article a ete modifie (soit la date, soit le titre, soit le contenu)
+		if($item_date != $rs2->f('post_pubdate') && !empty($item_date)) {
+	
+			# Update post in database
+			$cur = $core->con->openCursor($core->prefix.'post');
+			$cur->post_pubdate = $item_date;
+			$cur->modified = array('NOW()');
+			$cur->update("WHERE ".$core->prefix."post.post_permalink = '".addslashes($item_permalink)."'");
+			# On informe que tout est ok
+			return logMsg("Date updated: ".$item_permalink, "", 1, $print);
+		}
+		if((!empty($item_title) && strcmp($item_title, $title2) != 0)
+			|| (!empty($item_content) && strcmp($item_content, $content2) != 0)) {
+			# Update post in database
+			if(strcmp($item_title, $title2) != 0) {
+				$cur = $core->con->openCursor($core->prefix.'post');
+				$cur->modified = array('NOW()');
+				$cur->post_title = $item_title;
+				$cur->update("WHERE ".$core->prefix."post.post_permalink = '".addslashes($item_permalink)."'");
+				$log_msg = logMsg("Changement de titre pour l'article: ".$item_permalink, "", 2, $print);
+				if ($log == "debug") {
+					$log_msg .= logMsg("Old : ".$title2, "", 4, $print);
+					$log_msg .= logMsg("New : ".$item_title, "", 4, $print);
+				}
+			}
+			if(strcmp($item_content, $content2) != 0) {
+				$cur = $core->con->openCursor($core->prefix.'post');
+				$cur->modified = array('NOW()');
+				$cur->post_content = $item_content;
+				$cur->update("WHERE ".$core->prefix."post.post_permalink = '".addslashes($item_permalink)."'");
+				$log_msg = logMsg("Changement du contenu pour l'article: ".$item_permalink, "", 2, $print);
+				if ($log == "debug") {
+					$log_msg .= logMsg("Old : ".$content2, "", 4, $print);
+					$log_msg .= logMsg("New : ".$item_content, "", 4, $print);
+				}
+			}
+			return $log_msg;
+		} # fin du if($date !=
+	}
+	return "";
 }
 
 # Procedure qui log un message a l'ecran et dans un fichier de log
@@ -302,7 +319,7 @@ function update($core, $print=false) {
 # type = 2 : INFO
 # type = 3 : ERROR
 # type = 4 : DEBUG
-function logMsg($message, $fichier, $type=0, $print=false) {
+function logMsg($message, $filename="", $type=0, $print=false) {
 	# On recupere la date
 	$print_style = '';
 	$date_log = '['.date("Y-m-d").' '.date("H:i:s").'] ';
@@ -326,8 +343,17 @@ function logMsg($message, $fichier, $type=0, $print=false) {
 		default:
 			break;
 	}
-	# On log dans le fichier
-	fwrite($fichier, $date_log.$message_type.$message."\n");
+	
+	if ($filename != "") {
+		$file = $filename;
+	}
+	else {
+		# Ouverture du fichier de log
+		$file = fopen(dirname(__FILE__).'/../logs/update-'.date("Y-m-d").'.log', 'a');
+	}
+	fwrite($file, $date_log.$message_type.$message."\n");
+	fclose($file); 
+
 	# On log a l'ecran
 	if ($print)
 		return $print_style.$message."<br/>";

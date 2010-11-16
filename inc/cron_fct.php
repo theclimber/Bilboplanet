@@ -267,8 +267,8 @@ function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_c
 
 	# If post is already in database, check if update needed
 	elseif($rs2->count() == 1) {
-		$title2 = addslashes($rs2->f('post_title'));
-		$content2 = addslashes($rs2->f('post_content'));
+		$title2 = $rs2->f('post_title');
+		$content2 = $rs2->f('post_content');
 
 		# Si l'article a ete modifie (soit la date, soit le titre, soit le contenu)
 		if($item_date != $rs2->f('post_pubdate') && !empty($item_date)) {

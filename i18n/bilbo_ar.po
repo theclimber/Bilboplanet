@@ -1,0 +1,2480 @@
+# Arabic translations for bilboplanet package.
+# Copyright (C) 2010 THE Bilboplanet'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the Bilboplanet package.
+# Amine <amine@linuxac.org>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Bilboplanet 1.0beta\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-10-29 10:55+0200\n"
+"PO-Revision-Date: 2010-11-17 08:13+0100\n"
+"Last-Translator: Grégoire de Hemptinne <greg@theclimber.be>\n"
+"Language-Team: arabic <amine@linuxac.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n == 0 ? 0 : n == 1 ? 1 : n == 2 ? 2 : n >= 3 && n <= 10 ? 3 : n >= 11 && n <= 99 ? 4 : 5;\n"
+
+#: 404.php:33
+msgid "Error 404"
+msgstr "خطأ 404"
+
+#: 404.php:35
+msgid "Page not found"
+msgstr "الصفحة غير موجودة"
+
+#: archives.php:29
+msgid "January"
+msgstr "يناير"
+
+#: archives.php:29
+msgid "February"
+msgstr "فبراير"
+
+#: archives.php:29
+msgid "March"
+msgstr "مارس"
+
+#: archives.php:29
+msgid "April"
+msgstr "أبريل"
+
+#: archives.php:29
+msgid "May"
+msgstr "ماي"
+
+#: archives.php:29
+msgid "June"
+msgstr "يونيو"
+
+#: archives.php:29
+msgid "July"
+msgstr "يوليوز"
+
+#: archives.php:29
+msgid "August"
+msgstr "غشت"
+
+#: archives.php:29
+msgid "September"
+msgstr "شتنبر"
+
+#: archives.php:29
+msgid "October"
+msgstr "أكتوبر"
+
+#: archives.php:29
+msgid "November"
+msgstr "نونبر"
+
+#: archives.php:29
+msgid "December"
+msgstr "دجنبر"
+
+#: contact.php:47
+#: inscription.php:53
+#, php-format
+msgid "The reCAPTCHA wasn't entered correctly. Go back and try it again. (reCAPTCHA said: %s)"
+msgstr "خطأ في ادخال الكباتشا. ارجع للصحفحة السابقة وأعد المحاولة. (reCAPTCHA said: %s)"
+
+#: contact.php:60
+msgid "Name/Nickname : "
+msgstr "الإسم/الإسم المستعار : "
+
+#: contact.php:61
+#: inscription.php:62
+msgid "Email : "
+msgstr "البريد الإلكتروني : "
+
+#: contact.php:62
+msgid "Subject : "
+msgstr "الموضوع : "
+
+#: contact.php:63
+msgid "Content of the message: "
+msgstr "محتوى الرسالة : "
+
+#: contact.php:71
+msgid "Your email has been sent !"
+msgstr "تم إرسال بريدك الإلكتروني !"
+
+#: contact.php:73
+#: inscription.php:75
+#: admin/manage-newsletter.php:134
+msgid "Your request could not be sent for an unknown reason.<br/>Please try again."
+msgstr "طلبك لم يثم ارساله لسبب مجهول.<br/>يرجى المحاولة مرة أخرى."
+
+#: contact.php:95
+#: inscription.php:115
+msgid "In case of problem"
+msgstr "في حالة وجود مشكلة"
+
+#: contact.php:96
+#, php-format
+msgid "If you do not recieve any confirmation from the administration team in the 5 days, do not hesitate to contact us by email at %s"
+msgstr "إذا لم تتلقى أي تأكيد من فريق الإدارة خلال 5 أيام ، لا تترددوا في الاتصال بنا عن طريق البريد الالكتروني %s"
+
+#: feed.php:183
+#, php-format
+msgid "Vote for this post on <a href=\"%s\" title=\"Go on the planet\">%s</a>."
+msgstr "التصويت للمشاركة في <a href=\"%s\" title=\"Aller sur le planet\">%s</a>."
+
+#: feed.php:194
+#, php-format
+msgid "Gravatar of %s"
+msgstr "جأفتار ل %s"
+
+#: inscription.php:60
+msgid "Name : "
+msgstr "الإسم : "
+
+#: inscription.php:61
+msgid "Firstname : "
+msgstr "الإسم الأول : "
+
+#: inscription.php:63
+msgid "Website : "
+msgstr "الموقع : "
+
+#: inscription.php:64
+msgid "Feed : "
+msgstr "التغدية : "
+
+#: inscription.php:65
+msgid "Choice : "
+msgstr "الإختيار : "
+
+#: inscription.php:73
+#: admin/manage-newsletter.php:132
+msgid "Your email has been sent"
+msgstr "تم إرسال بريدك الإلكتروني"
+
+#: inscription.php:116
+#, php-format
+msgid "If you don't recieve any new from the administration team in the 5 days do not hesitate to contact us via %s with this information :"
+msgstr "إذا كنت لا تتلقى أي جديد من فريق الإدارة خلال 5 أيام لا تتردد في الاتصال بنا عبر  %s مع هذه المعلومات :"
+
+#: inscription.php:117
+#: admin/manage-moderation.php:102
+#: admin/manage-newsletter.php:91
+#: admin/manage-newsletter.php:225
+#: admin/manage-selection.php:108
+msgid "Subject"
+msgstr "الموضوع"
+
+#: inscription.php:118
+#: admin/install/index.php:322
+msgid "Username"
+msgstr "إسم المستخدم"
+
+#: inscription.php:119
+#: admin/manage-account.php:65
+#: admin/manage-user.php:107
+#: admin/manage-user.php:147
+#: admin/install/index.php:298
+msgid "Fullname"
+msgstr "الإسم الكامل"
+
+#: inscription.php:120
+#: admin/manage-account.php:69
+#: admin/manage-user.php:111
+#: admin/manage-user.php:151
+#: admin/install/index.php:301
+msgid "Email"
+msgstr "البريد الإلكتروني"
+
+#: inscription.php:121
+#: admin/api/manage-user_api.php:400
+msgid "Website"
+msgstr "الموقع"
+
+#: inscription.php:122
+#: admin/api/manage-feed_api.php:351
+msgid "Feed"
+msgstr "التغدية"
+
+#: inscription.php:123
+msgid "Choice"
+msgstr "الإختيار"
+
+#: mobile.php:111
+#, php-format
+msgid "%d vote(s)"
+msgstr "التصويت %d"
+
+#: tpl.php:99
+msgid "Powered by Bilboplanet"
+msgstr "Powered by Bilboplanet"
+
+#: tpl.php:102
+msgid "Valid CSS - Xhtml"
+msgstr "CSS - Xhtml valide"
+
+#: tpl.php:105
+msgid "Designed by BilboPlanet"
+msgstr "Designed by BilboPlanet"
+
+#: api/votes.php:75
+msgid "Success"
+msgstr "نجاح"
+
+#: api/votes.php:78
+msgid "Error: article number incorrect !"
+msgstr "Erreur : numéro d'article incorrect !"
+
+#: api/votes.php:82
+msgid "Error: you already vote on this post !"
+msgstr "خطأ : قمت بالفعل بالتصويت على هذه المشاركة!"
+
+#: api/votes.php:86
+msgid "Error: refused access"
+msgstr "خطأ : رفض الوصول"
+
+#: admin/auth.php:95
+msgid "Password reset"
+msgstr "تغيير كلمة المرور"
+
+#: admin/auth.php:97
+msgid "Someone has requested to reset the password for the following site and username."
+msgstr "طلب أحد الأشخاص تغيير كلمة المرور للموقع و المستخدمين التاليين."
+
+#: admin/auth.php:98
+msgid "User_id:"
+msgstr "User_id:"
+
+#: admin/auth.php:99
+msgid "To reset your password visit the following address, otherwise just ignore this email and nothing will happen."
+msgstr "لتغيير كلمة المرور الخاصة بك قم بزيارة العنوان التالي ، أو تجاهل هذه الرسالة و لن يحدث شيء."
+
+#: admin/auth.php:106
+#, php-format
+msgid "The e-mail was sent successfully to %s."
+msgstr "تم إرسال البريد الإلكتروني بنجاح ل %s."
+
+#: admin/auth.php:120
+msgid "Your new password"
+msgstr "كلمة المرور الجديدة"
+
+#: admin/auth.php:122
+#: admin/auth.php:270
+#: admin/auth.php:316
+#: admin/install/index.php:350
+#: admin/install/wizard.php:192
+msgid "Username:"
+msgstr "إسم المستخدم:"
+
+#: admin/auth.php:123
+#: admin/auth.php:320
+#: admin/install/index.php:351
+#: admin/install/wizard.php:196
+msgid "Password:"
+msgstr "كلمة المرور:"
+
+#: admin/auth.php:130
+msgid "Your new password is in your mailbox."
+msgstr "كلمة المرور الجديدة موجودة في علبة بريدك."
+
+#: admin/auth.php:162
+msgid "Passwords don't match"
+msgstr "كلمات المرور لا تتطابق"
+
+#: admin/auth.php:166
+msgid "You didn't change your password."
+msgstr "لم تقم بتغير كلمة المرور الخاصة بك."
+
+#: admin/auth.php:216
+msgid "Wrong username or password"
+msgstr "خطأ في اسم المستخدم أو كلمة المرور"
+
+#: admin/auth.php:261
+#: admin/auth.php:284
+msgid "Back to login screen"
+msgstr "عودة إلى شاشة تسجيل الدخول"
+
+#: admin/auth.php:266
+msgid "Request a new password"
+msgstr "طلب كلمة مرور جديدة"
+
+#: admin/auth.php:274
+msgid "Email:"
+msgstr "البريد الإلكتروني:"
+
+#: admin/auth.php:280
+msgid "recover"
+msgstr "استعادة"
+
+#: admin/auth.php:290
+msgid "Change your password"
+msgstr "تغيير كلمة المرور الخاصة بك"
+
+#: admin/auth.php:291
+msgid "New password:"
+msgstr "كلمة المرور الجديدة:"
+
+#: admin/auth.php:294
+msgid "Confirm password:"
+msgstr "تأكيد كلمة المرور:"
+
+#: admin/auth.php:298
+msgid "change"
+msgstr "تغيير"
+
+#: admin/auth.php:310
+msgid "I forgot my password"
+msgstr "نسيت كلمة المرور"
+
+#: admin/auth.php:328
+msgid "Remember my ID on this computer"
+msgstr "تذكرني على هذا الكمبيوتر"
+
+#: admin/auth.php:332
+msgid "login"
+msgstr "تسجيل الدخول"
+
+#: admin/head.php:31
+#: admin/sidebar.php:36
+#: admin/api/manage-permissions_api.php:166
+msgid "Administration"
+msgstr "الإدارة"
+
+#: admin/head.php:48
+msgid "Back on the Bilboplanet"
+msgstr "الرجوع إلى Bilboplanet"
+
+#: admin/head.php:51
+msgid "Logout"
+msgstr "خروج"
+
+#: admin/head.php:52
+#: admin/head.php:58
+msgid "About"
+msgstr "Bilboplanet حول"
+
+#: admin/head.php:60
+msgid "Bilboplanet was developed by"
+msgstr "Bilboplanet was developed by"
+
+#: admin/head.php:68
+msgid "BilboPlanet : Useful links"
+msgstr "BilboPlanet : روابط مفيدة"
+
+#: admin/head.php:71
+msgid "- Official WebSite: "
+msgstr "- الموقع الرسمي :  "
+
+#: admin/head.php:72
+msgid "- Official Forum: "
+msgstr "- المنتدى الرسمي : "
+
+#: admin/head.php:73
+msgid "- Official Documentation: "
+msgstr "- التوثيق الرسمية : "
+
+#: admin/head.php:77
+msgid "What's new in BilboPlanet 1.0"
+msgstr "ما هو الجديد في BilboPlanet 1.0"
+
+#: admin/head.php:80
+msgid "- New administration panel with user permissions, moderation interface for website manager, <br />multiple feed per site, new configuration system, newsletter and optimized dashboard."
+msgstr "- لوحة تحكم جديدة مع ادارة صلاحيات المستخدمين، واجهة التعديل، <br />تغذية متعددة لكل موقع، نظام إعدادات جديد، قائمة بريدية و تحسين لوحة التحكم."
+
+#: admin/head.php:81
+msgid "- Easy templating system allowing you to draw personnalize own Planet"
+msgstr "- نظام قوالب سهل يمنك من تخصيص كوكبك الخاص"
+
+#: admin/head.php:82
+msgid "- New database, new installer, more security, more ajax in admin panel, and a lot of more cool stuff !!"
+msgstr "- قاعدة بيانات جديدة ، مثبت الجديد ، مزيد من الامن ومزيد من ajax في لوحة الادارة ، والكثير من الاشياء الممتعة !!"
+
+#: admin/head.php:88
+#: admin/manage-feed.php:92
+#: admin/manage-feed.php:145
+#: admin/manage-option.php:56
+#: admin/manage-user.php:88
+#: admin/manage-user.php:127
+msgid "Close"
+msgstr "إغلاق"
+
+#: admin/index.php:31
+#: admin/manage-account.php:30
+#: admin/manage-cache.php:30
+#: admin/manage-database.php:30
+#: admin/manage-feed.php:30
+#: admin/manage-logs.php:30
+#: admin/manage-moderation.php:31
+#: admin/manage-newsletter.php:30
+#: admin/manage-option.php:34
+#: admin/manage-permissions.php:30
+#: admin/manage-post.php:30
+#: admin/manage-selection.php:31
+#: admin/manage-update.php:30
+#: admin/manage-user.php:30
+#: admin/manage-useroption.php:31
+msgid "Permission denied"
+msgstr "رفض التصريح"
+
+#: admin/index.php:32
+#: admin/manage-account.php:31
+#: admin/manage-cache.php:31
+#: admin/manage-database.php:31
+#: admin/manage-feed.php:31
+#: admin/manage-logs.php:31
+#: admin/manage-moderation.php:32
+#: admin/manage-newsletter.php:31
+#: admin/manage-option.php:35
+#: admin/manage-permissions.php:31
+#: admin/manage-post.php:31
+#: admin/manage-selection.php:32
+#: admin/manage-update.php:31
+#: admin/manage-user.php:31
+#: admin/manage-useroption.php:32
+msgid "You are not allowed to see this page."
+msgstr "لا يسمح لك لرؤية هذه الصفحة."
+
+#: admin/index.php:33
+#: admin/manage-account.php:32
+#: admin/manage-cache.php:32
+#: admin/manage-database.php:32
+#: admin/manage-feed.php:32
+#: admin/manage-logs.php:32
+#: admin/manage-moderation.php:33
+#: admin/manage-newsletter.php:32
+#: admin/manage-option.php:36
+#: admin/manage-permissions.php:32
+#: admin/manage-post.php:32
+#: admin/manage-selection.php:33
+#: admin/manage-update.php:32
+#: admin/manage-user.php:32
+#: admin/manage-useroption.php:33
+msgid "You can delete your session if you logout : "
+msgstr "يمكنك حذف جلسة العمل الخاصة بك إذا كنت ستسجل الخروج :"
+
+#: admin/index.php:41
+msgid "Latest articles :"
+msgstr "أحذث المقالات :"
+
+#: admin/index.php:69
+#: admin/api/manage-feed_api.php:349
+msgid "User"
+msgstr "المستخدم"
+
+#: admin/index.php:69
+#: admin/manage-post.php:193
+#: admin/api/manage-moderation_api.php:156
+msgid "Title"
+msgstr "العنوان"
+
+#: admin/index.php:91
+msgid "BilboPlanet news - Official Website :"
+msgstr "أخبار BilboPlanet - الموقع الرسمي :"
+
+#: admin/index.php:145
+#: admin/sidebar.php:30
+msgid "Dashboard"
+msgstr "لوحة التحكم"
+
+#: admin/index.php:147
+msgid "Quick summary of the planet"
+msgstr "موجز سريع للكوكب"
+
+#: admin/index.php:156
+msgid "Statistics :"
+msgstr "الإحصاءات :"
+
+#: admin/index.php:161
+#: admin/manage-update.php:102
+msgid "The update is running"
+msgstr "قيد التحديث"
+
+#: admin/index.php:163
+#: admin/manage-update.php:104
+msgid "The update is stopped"
+msgstr "تم إيقاف التحديث"
+
+#: admin/index.php:165
+#: admin/manage-update.php:105
+msgid "The update is disabled"
+msgstr "التحديث معطل"
+
+#: admin/index.php:167
+msgid "The update on loading of index page enabled"
+msgstr "التحديث عند تحميل صفحة الفهرس"
+
+#: admin/index.php:169
+msgid "Current size of the database :"
+msgstr "حجم قاعدة البيانات :"
+
+#: admin/index.php:170
+msgid "Number of articles in the DB :"
+msgstr "عدد من المقالات في قاعدة البيانات :"
+
+#: admin/index.php:171
+msgid "Number of votes in the DB :"
+msgstr "عدد من الأصوات في قاعدة البيانات :"
+
+#: admin/index.php:172
+msgid "Number of members in the DB :"
+msgstr "عدد من الأعضاء في قاعدة البيانات : "
+
+#: admin/index.php:173
+msgid "Number of feeds in the DB :"
+msgstr "عدد التغديات في قاعدة البيانات : "
+
+#: admin/index.php:179
+msgid "System information :"
+msgstr "معلومات النظام :"
+
+#: admin/index.php:181
+msgid "Date server :"
+msgstr "تاريخ الخادم :"
+
+#: admin/index.php:182
+msgid "Operating System :"
+msgstr "نظام التشغيل :"
+
+#: admin/index.php:183
+msgid "PHP version :"
+msgstr "نسخة PHP :"
+
+#: admin/index.php:184
+msgid "MySQL version :"
+msgstr "نسخة MySQL :"
+
+#: admin/index.php:185
+msgid "Server :"
+msgstr "الخادم :"
+
+#: admin/index.php:186
+msgid "Memory :"
+msgstr "الذاكرة :"
+
+#: admin/index.php:187
+msgid "Your BilboPlanet version :"
+msgstr "إصدار BilboPlanet الخاص بك  :"
+
+#: admin/manage-account.php:48
+msgid "Manage account"
+msgstr "إدارة الحساب"
+
+#: admin/manage-account.php:50
+msgid "You can change your profile configuration here"
+msgstr "يمكنك تغيير حسابك الشخصي هنا"
+
+#: admin/manage-account.php:62
+#: admin/manage-feed.php:84
+#: admin/manage-feed.php:122
+#: admin/manage-feed.php:162
+#: admin/manage-user.php:80
+#: admin/manage-user.php:103
+#: admin/manage-user.php:144
+#: admin/manage-user.php:172
+msgid "User id"
+msgstr "User id"
+
+#: admin/manage-account.php:67
+#: admin/manage-user.php:109
+#: admin/manage-user.php:149
+msgid "ex: Jean Dupont"
+msgstr "مثال: اسم.نسب"
+
+#: admin/manage-account.php:71
+#: admin/manage-user.php:113
+#: admin/manage-user.php:153
+msgid "ex: xxx@yyy.zzz"
+msgstr "مثال: xxx@yyy.zzz"
+
+#: admin/manage-account.php:73
+#: admin/manage-user.php:155
+msgid "New password"
+msgstr "كلمة مرور جديدة"
+
+#: admin/manage-account.php:76
+#: admin/manage-user.php:158
+msgid "Confirm new password"
+msgstr "تأكيد كلمة المرور الجديدة"
+
+#: admin/manage-account.php:78
+#: admin/manage-user.php:160
+msgid "You can leave the password field blank if you don't want to change it"
+msgstr "يمكنك ترك حقل كلمة المرور فارغا إذا كنت لا تريد تغييره"
+
+#: admin/manage-account.php:79
+#: admin/manage-feed.php:174
+#: admin/manage-option.php:53
+#: admin/manage-user.php:163
+#: admin/api/manage-feed_api.php:402
+#: admin/api/manage-user_api.php:458
+msgid "Update"
+msgstr "التحديث"
+
+#: admin/manage-cache.php:54
+msgid "The cache files were correctly deleted."
+msgstr "تم حذف ملفات ذاكرة التخزين المؤقت بشكل صحيح."
+
+#: admin/manage-cache.php:65
+msgid "Manage cache"
+msgstr "إدارة التخزين المؤقت"
+
+#: admin/manage-cache.php:67
+msgid "Remove the cache files"
+msgstr "إزالة ملفات ذاكرة التخزين المؤقت"
+
+#: admin/manage-cache.php:71
+msgid "Delete cache"
+msgstr "حذف ذاكرة التخزين المؤقت"
+
+#: admin/manage-cache.php:74
+msgid "The following files were deleted :"
+msgstr "تم حذف الملفات التالية :"
+
+#: admin/manage-database.php:50
+msgid "Your file could not be downloaded"
+msgstr "لا يمكن تحميل الملف"
+
+#: admin/manage-database.php:53
+msgid "Your file could not be imported"
+msgstr "لا يمكن إستيراد الملف"
+
+#: admin/manage-database.php:56
+msgid "Your file doesn't have the right format : "
+msgstr "الملف ليس بالشكل الصحيح :"
+
+#: admin/manage-database.php:60
+msgid "Congratulations! You imported an old data configuration successfully"
+msgstr "تهانينا! تم إستيراد البيانات القديمة بنجاح"
+
+#: admin/manage-database.php:61
+msgid "File name: "
+msgstr "اسم الملف :"
+
+#: admin/manage-database.php:62
+msgid "Size: "
+msgstr "الحجم:"
+
+#: admin/manage-database.php:62
+msgid "Kb"
+msgstr "كيلوبايت"
+
+#: admin/manage-database.php:101
+msgid "Two users have the same name, impossible to import. Please try again. Username : "
+msgstr "اثنين من المستخدمين لها نفس الاسم ، من المستحيل الإستيراد. يرجى المحاولة مرة أخرى. اسم المستخدم :"
+
+#: admin/manage-database.php:139
+msgid "You can not import 'flux' table without importing the 'membres' table"
+msgstr "لا يمكنك استيراد الجدول 'flux' من دون استيراد الجدول 'membres'"
+
+#: admin/manage-database.php:185
+msgid "site_id should not be null for user "
+msgstr "الحقل site_id ينبغي أن لا يكون فارغا لهاذا المستخدم"
+
+#: admin/manage-database.php:191
+msgid "You can not import 'articles' table without importing the 'membres' table"
+msgstr "لا يمكنك استيراد الجدول 'articles' من دون استيراد الجدول 'membres'"
+
+#: admin/manage-database.php:195
+msgid "You can not import 'articles' table without importing the 'flux' table"
+msgstr "لا يمكنك استيراد الجدول 'articles' من دون استيراد الجدول 'flux'"
+
+#: admin/manage-database.php:276
+msgid "The following errors where encountered :"
+msgstr "تم مصادفة الأخطاء التالية :"
+
+#: admin/manage-database.php:301
+msgid "Export planet configuration"
+msgstr "تصدير إعدادات الكوكب"
+
+#: admin/manage-database.php:304
+msgid "Please select the data you want to export"
+msgstr "الرجاء اختيار البيانات التي تريد تصديرها"
+
+#: admin/manage-database.php:305
+msgid "This will export the data to a file that you'll be able to import later on another installation"
+msgstr "هذا سيقوم بتصدير البيانات التي يمكنك إستيرادها لاحقا في تثبيت آخر"
+
+#: admin/manage-database.php:309
+msgid "Exported data"
+msgstr "البيانات المصدرة"
+
+#: admin/manage-database.php:318
+msgid "User table"
+msgstr "جدول المستخدم"
+
+#: admin/manage-database.php:323
+msgid "Site table"
+msgstr "جدول الموقع"
+
+#: admin/manage-database.php:328
+msgid "Feed table"
+msgstr "جدول التغدية"
+
+#: admin/manage-database.php:333
+msgid "Post table"
+msgstr "جدول المشاركة"
+
+#: admin/manage-database.php:338
+msgid "Votes table"
+msgstr "جدول التصويت"
+
+#: admin/manage-database.php:343
+msgid "Permission table"
+msgstr "صلاحيات الجدول"
+
+#: admin/manage-database.php:348
+msgid "Setting table"
+msgstr "وضع الجدول"
+
+#: admin/manage-database.php:352
+msgid "Export"
+msgstr "تصدير"
+
+#: admin/manage-database.php:358
+msgid "Import planet configuration"
+msgstr "استيراد إعدادات الكوكب"
+
+#: admin/manage-database.php:361
+msgid "Please select the file you want to restore."
+msgstr "الرجاء اختيار الملف الذي تريد استعادته."
+
+#: admin/manage-database.php:362
+msgid "TAKE CARE !"
+msgstr "تحذير!"
+
+#: admin/manage-database.php:362
+msgid "If you apply the content of one of this file, this action can not be cancelled"
+msgstr "إذا قمت بتطبيق المضمون إلى واحد من هذه الملفات ، لا يمكن إلغاء هذا العمل"
+
+#: admin/manage-database.php:363
+msgid "This action can take several minutes. Be patient and don't cancel the process during execution"
+msgstr "العملية يمكن أن تستغرق عدة دقائق. المرجوا التحلي بالصبر"
+
+#: admin/manage-database.php:368
+msgid "Imported data"
+msgstr "البيانات المستوردة"
+
+#: admin/manage-database.php:375
+msgid "Select your backup file"
+msgstr "حدد ملف النسخ الاحتياطي"
+
+#: admin/manage-database.php:377
+msgid "Specify the original version of your file"
+msgstr "تحديد النسخة الأصلية من الملف"
+
+#: admin/manage-database.php:382
+msgid "Import"
+msgstr "إستيراد"
+
+#: admin/manage-database.php:386
+msgid "NOTE : to import a backup file, the file needs to have the *.json.gz extension !"
+msgstr "ملاحظة : لإستيراد ملف النسخ الاحتياطي ، الملف يحتاج الى الإمتداد *.json.gz !"
+
+#: admin/manage-feed.php:48
+#: admin/manage-feed.php:98
+msgid "Add a feed"
+msgstr "إضافة تغدية"
+
+#: admin/manage-feed.php:51
+msgid "Filter feedlist"
+msgstr "تصفية قائمة التغديات"
+
+#: admin/manage-feed.php:56
+#: admin/manage-feed.php:91
+#: admin/manage-moderation.php:90
+#: admin/manage-selection.php:81
+#: admin/manage-user.php:55
+#: admin/manage-user.php:87
+msgid "Filter"
+msgstr "تصفية"
+
+#: admin/manage-feed.php:69
+#: admin/manage-feed.php:75
+#: admin/manage-post.php:142
+#: admin/manage-post.php:144
+#: admin/manage-post.php:154
+#: admin/manage-user.php:67
+#: admin/manage-user.php:73
+msgid "All"
+msgstr "الكل"
+
+#: admin/manage-feed.php:76
+msgid "Active feeds"
+msgstr "أنشط التغديات"
+
+#: admin/manage-feed.php:77
+msgid "Inactive feeds"
+msgstr "تغديات غير فعالة"
+
+#: admin/manage-feed.php:79
+msgid "Auto disabled feeds"
+msgstr "تغديات معلة تلقائيا"
+
+#: admin/manage-feed.php:87
+msgid "Feed status"
+msgstr "حالة التغدية"
+
+#: admin/manage-feed.php:100
+msgid "Manage member's feeds. Notice that you can only add a feed to a user who has a website. So you first need to create the user and add a site to him"
+msgstr "إدارة تغديات المستخدمين. لاحظ أنه يمكنك فقط إضافة إلى تغذية المستخدم الذي لديه موقع. لذا تحتاج إلى إنشاء المستخدم أولا وإضافة التغدية له"
+
+#: admin/manage-feed.php:114
+msgid "-- Choose an user --"
+msgstr "-- اختيار مستخدم --"
+
+#: admin/manage-feed.php:125
+msgid "Site id"
+msgstr "Site id"
+
+#: admin/manage-feed.php:126
+msgid "-- Choose an user id --"
+msgstr "-- Choisissez un user id --"
+
+#: admin/manage-feed.php:127
+msgid "Choose the website of the feed"
+msgstr "اختيار موقع للتغذية"
+
+#: admin/manage-feed.php:129
+msgid "Full feed URL"
+msgstr "الرابط الكامل للتغدية"
+
+#: admin/manage-feed.php:131
+msgid "ex: http://blog.bilboplanet.com/feed/atom/"
+msgstr "مثال: http://blog.bilboplanet.com/feed/atom/"
+
+#: admin/manage-feed.php:133
+#: admin/manage-feed.php:165
+msgid "Feed name"
+msgstr "إسم التغدية"
+
+#: admin/manage-feed.php:135
+msgid "ex: gnu/Linux posts"
+msgstr "مثال: مشاركات GNU/Linux"
+
+#: admin/manage-feed.php:138
+msgid "Trusted URL"
+msgstr "عنوان موثوق"
+
+#: admin/manage-feed.php:143
+#: admin/manage-newsletter.php:259
+#: admin/manage-post.php:167
+#: admin/manage-user.php:125
+#: admin/api/manage-feed_api.php:254
+#: admin/api/manage-site_api.php:121
+#: admin/api/manage-user_api.php:286
+msgid "Reset"
+msgstr "إلغاء"
+
+#: admin/manage-feed.php:144
+#: admin/manage-user.php:126
+#: admin/manage-user.php:184
+msgid "Add"
+msgstr "أضف"
+
+#: admin/manage-feed.php:150
+#: admin/sidebar.php:45
+msgid "Manage feeds"
+msgstr "إدارة التغديات"
+
+#: admin/manage-feed.php:152
+msgid "Manage member feed."
+msgstr "إدارة تغذية الأعضاء."
+
+#: admin/manage-feed.php:167
+msgid "ex: GNU/Linux posts"
+msgstr "مثال: مشاركات GNU/Linux"
+
+#: admin/manage-feed.php:169
+msgid "Feed URL"
+msgstr "رابط التغدية"
+
+#: admin/manage-feed.php:171
+msgid "ex: http://blog.bilboplanet.com/feed/"
+msgstr "ex: http://blog.bilboplanet.com/feed/atom/"
+
+#: admin/manage-feed.php:173
+#: admin/manage-moderation.php:108
+#: admin/manage-selection.php:118
+#: admin/manage-user.php:162
+#: admin/manage-user.php:183
+msgid "Cancel"
+msgstr "إلغاء"
+
+#: admin/manage-logs.php:63
+msgid "All the log files"
+msgstr "جميع ملفات السجل"
+
+#: admin/manage-logs.php:65
+msgid "Management planet log files (Advanced users)."
+msgstr "إدارة الملفات سجل الكوكب (للمستخدمين المتقدمين)."
+
+#: admin/manage-logs.php:71
+#: admin/manage-post.php:191
+msgid "Name"
+msgstr "الإسم : "
+
+#: admin/manage-logs.php:72
+#: admin/manage-newsletter.php:247
+#: admin/manage-post.php:196
+#: admin/api/manage-feed_api.php:352
+#: admin/api/manage-moderation_api.php:157
+#: admin/api/manage-user_api.php:401
+msgid "Action"
+msgstr "عمل"
+
+#: admin/manage-logs.php:88
+#: admin/manage-post.php:270
+#: admin/api/manage-feed_api.php:404
+#: admin/api/manage-user_api.php:461
+msgid "Delete"
+msgstr "حذف"
+
+#: admin/manage-logs.php:109
+msgid "Purge all the log files"
+msgstr "تطهير جميع ملفات السجل"
+
+#: admin/manage-moderation.php:48
+#: admin/sidebar.php:88
+msgid "Moderation interface"
+msgstr "واجهة التعديل"
+
+#: admin/manage-moderation.php:50
+msgid "Moderate some posts."
+msgstr "تعديل بعض المشاركات"
+
+#: admin/manage-moderation.php:54
+msgid "The moderation functionnality is disabled. If you want to enable it, please go to the configuration page"
+msgstr "تم تعطيل خاصية التعديل. إذا أردت تفعيلها ، يرجى التوجه إلى صفحة الخصائص"
+
+#: admin/manage-moderation.php:55
+#: admin/sidebar.php:65
+msgid "Planet Configuration"
+msgstr "خصائص الكوكب"
+
+#: admin/manage-moderation.php:55
+msgid "Planet"
+msgstr "الكوكب"
+
+#: admin/manage-moderation.php:66
+#: admin/manage-selection.php:57
+msgid "Elements to display"
+msgstr "عناصر العرض"
+
+#: admin/manage-moderation.php:68
+#: admin/manage-selection.php:59
+msgid "Filter by user"
+msgstr "تصفية عن طريق المستخدمين"
+
+#: admin/manage-moderation.php:103
+#: admin/manage-selection.php:109
+msgid "Moderation of your post"
+msgstr "تحرير المشاركة"
+
+#: admin/manage-moderation.php:105
+#: admin/manage-selection.php:115
+msgid "Comment"
+msgstr "التعليقات"
+
+#: admin/manage-moderation.php:109
+#: admin/manage-newsletter.php:255
+#: admin/manage-post.php:168
+#: admin/manage-selection.php:119
+#: admin/manage-update.php:120
+msgid "Send"
+msgstr "إرسال"
+
+#: admin/manage-newsletter.php:60
+#, php-format
+msgid "You shoud have selected %s"
+msgstr "كان عليك إختيار %s"
+
+#: admin/manage-newsletter.php:87
+#: admin/manage-newsletter.php:218
+msgid "Sender"
+msgstr "المرسل"
+
+#: admin/manage-newsletter.php:89
+#: admin/manage-newsletter.php:198
+msgid "Recipients"
+msgstr "المستلمين"
+
+#: admin/manage-newsletter.php:93
+#: admin/manage-newsletter.php:232
+msgid "Message"
+msgstr "الرسالة"
+
+#: admin/manage-newsletter.php:106
+msgid "Yes"
+msgstr "نعم"
+
+#: admin/manage-newsletter.php:107
+msgid "No"
+msgstr "لا"
+
+#: admin/manage-newsletter.php:149
+msgid "Select all members"
+msgstr "حدد جميع الأعضاء"
+
+#: admin/manage-newsletter.php:202
+msgid "Select recipients of the newsletter"
+msgstr "تحديد المستلمين للقائمة البريدية"
+
+#: admin/manage-newsletter.php:210
+msgid "Content"
+msgstr "المحتوى"
+
+#: admin/manage-newsletter.php:214
+msgid "Complete the informations of the newsletter"
+msgstr "إكمال معلومات القائمة البريدية"
+
+#: admin/manage-newsletter.php:222
+msgid "Default"
+msgstr "الإفتراضي"
+
+#: admin/manage-newsletter.php:251
+#: admin/api/manage-option_api.php:369
+#: admin/api/manage-option_api.php:498
+msgid "Preview"
+msgstr "معاينة"
+
+#: admin/manage-option.php:60
+msgid "Options"
+msgstr "الخيارات"
+
+#: admin/manage-option.php:62
+msgid "Configuration settings Planet."
+msgstr "ضبط إعدادات الكوكب."
+
+#: admin/manage-permissions.php:48
+#: admin/sidebar.php:110
+msgid "Manage user permissions"
+msgstr "إدارة صلاحيات المستخدم"
+
+#: admin/manage-permissions.php:50
+msgid "Check user statuses and configure their permissions"
+msgstr "فحص حالات المستخدمين وإعداد صلاحياتم"
+
+#: admin/manage-post.php:95
+#, php-format
+msgid "The post %s was removed"
+msgstr "المشاركة %s قد تم حذفها"
+
+#: admin/manage-post.php:102
+#, php-format
+msgid "The post %s was changed"
+msgstr "المشاركة %s قد تم تعديلها"
+
+#: admin/manage-post.php:115
+msgid "Filtering of the posts"
+msgstr "تصفية للمشاركات"
+
+#: admin/manage-post.php:117
+msgid "Filter articles"
+msgstr "تصفية التدوينات"
+
+#: admin/manage-post.php:123
+msgid "Posts of the member :"
+msgstr "مشاركات العضو :"
+
+#: admin/manage-post.php:151
+msgid "Post status"
+msgstr "حالة المشاركات"
+
+#: admin/manage-post.php:155
+#: admin/manage-post.php:235
+#: admin/manage-post.php:243
+#: admin/manage-post.php:249
+#: admin/manage-post.php:253
+msgid "inactive"
+msgstr "غير فعال"
+
+#: admin/manage-post.php:156
+#: admin/manage-post.php:234
+#: admin/manage-post.php:239
+#: admin/manage-post.php:244
+#: admin/manage-post.php:254
+msgid "active"
+msgstr "فعال"
+
+#: admin/manage-post.php:157
+#: admin/manage-post.php:237
+#: admin/manage-post.php:246
+#: admin/manage-post.php:252
+#: admin/manage-post.php:255
+msgid "pending"
+msgstr "قيد الإنتظار"
+
+#: admin/manage-post.php:163
+msgid "Number of posts"
+msgstr "عدد المشاركات"
+
+#: admin/manage-post.php:174
+#: admin/manage-post.php:176
+msgid "NOTE: If you delete a post which is too recent, it will be refetched next time the update happen !!"
+msgstr "ملاحظة : إذا قمت بحذف مشاركة حديثة، سيتم إستعادتها ونشرها عند التحديث القادم !!"
+
+#: admin/manage-post.php:192
+#: admin/api/manage-moderation_api.php:154
+msgid "Date"
+msgstr "التاريخ"
+
+#: admin/manage-post.php:194
+msgid "Status"
+msgstr "الحالة"
+
+#: admin/manage-post.php:195
+msgid "Nb votes"
+msgstr "عدد الأصوات"
+
+#: admin/manage-post.php:269
+msgid "Change"
+msgstr "تغيير"
+
+#: admin/manage-post.php:286
+msgid "Show items by : "
+msgstr "إظهار العناصر التي :"
+
+#: admin/manage-selection.php:48
+msgid "Selection of the week"
+msgstr "اختيار الأسبوع"
+
+#: admin/manage-selection.php:50
+#: admin/manage-selection.php:97
+msgid "Make your selection of the week"
+msgstr "تحديد اختيار الأسبوع"
+
+#: admin/manage-selection.php:95
+#, php-format
+msgid "Pool of selectionned posts between %s and %s"
+msgstr "مجال تحديد التدوينات بين %s و %s"
+
+#: admin/manage-selection.php:111
+msgid "Your email address"
+msgstr "عنوان بريدك الإلكتروني"
+
+#: admin/manage-selection.php:113
+msgid "This is your own email"
+msgstr "هذا هو بريدك الخاص"
+
+#: admin/manage-update.php:61
+msgid "The automatical update is disabled "
+msgstr "التحديث الآلي معطل"
+
+#: admin/manage-update.php:66
+msgid "The update can not start : the process is already started (You can force update by deleting the /inc/cron_running.txt file)"
+msgstr "لا يمكن بدأ هذا التحديث : العملية بدأت بالفعل (يمكنك فرض التحديث عن طريق حذف /inc/cron_running.txt file)"
+
+#: admin/manage-update.php:68
+msgid "The automatic update is enabled"
+msgstr "التحديث الآلي مفعل"
+
+#: admin/manage-update.php:76
+msgid "Manual update ..."
+msgstr "دليل التحديث ..."
+
+#: admin/manage-update.php:79
+#, php-format
+msgid "Error while updating : %s"
+msgstr "خطأ أثناء تحديث : %s"
+
+#: admin/manage-update.php:97
+msgid "Automatic update"
+msgstr "تحديث تلقائي"
+
+#: admin/manage-update.php:99
+msgid "System configuration update."
+msgstr "تحديث إعدادات النظام."
+
+#: admin/manage-update.php:108
+msgid "Stop the update algorithm"
+msgstr "إيقاف خوارزمية التحديث "
+
+#: admin/manage-update.php:109
+msgid "Start the update algorithm"
+msgstr "بدء خوارزمية التحديث"
+
+#: admin/manage-update.php:110
+msgid "Start a manual update"
+msgstr "بدأ التحديث اليدوي"
+
+#: admin/manage-update.php:117
+msgid "Enable update on loading of index page"
+msgstr "تفعيل التحديث عند تحميل صفحة الفهرس"
+
+#: admin/manage-update.php:123
+msgid "Setup manual crontab"
+msgstr "تنصيب دليل crontab"
+
+#: admin/manage-update.php:125
+msgid "How to do a manual update ?"
+msgstr "كيفية القيام بالتحديث اليدوي ؟"
+
+#: admin/manage-update.php:128
+msgid "You can setup a manual crontab update by calling automatically every X time the following page :"
+msgstr "يمكنك إعداد عملية تحديث دليل crontab بواسطة استدعاء تلقائيي كل X وقت على الصفحة التالية : "
+
+#: admin/manage-update.php:130
+msgid "This will automatically launch the update and log it into the log files."
+msgstr "هذا سوف يقوم بإطلاق التحديث تلقائيا وتسجيل المعلومات في ملف السجل."
+
+#: admin/manage-user.php:49
+#: admin/manage-user.php:94
+msgid "Add an user"
+msgstr "إضافة مستخدم"
+
+#: admin/manage-user.php:52
+msgid "Filter userlist"
+msgstr "تصفية قائمة المستخدمين"
+
+#: admin/manage-user.php:74
+msgid "Active user"
+msgstr "مستخدم فعال"
+
+#: admin/manage-user.php:75
+msgid "Inactive user"
+msgstr "مستخدم غير فعال"
+
+#: admin/manage-user.php:83
+msgid "User status"
+msgstr "حالة المستخدم"
+
+#: admin/manage-user.php:96
+msgid "To add a new member, fill out the form below."
+msgstr "لإضافة عضو جديد، إملئ الاستمارة أدناه"
+
+#: admin/manage-user.php:105
+msgid "ex: Frankenstein"
+msgstr "مثال: Frankenstein"
+
+#: admin/manage-user.php:115
+#: admin/install/index.php:325
+msgid "Password"
+msgstr "كلمة المرور"
+
+#: admin/manage-user.php:118
+msgid "Confirm password"
+msgstr "تأكيد كلمة المرور"
+
+#: admin/manage-user.php:121
+msgid "Website (Optional)"
+msgstr "الموقع (اختياري)"
+
+#: admin/manage-user.php:123
+msgid "ex: http://www.example.com"
+msgstr "مثال: http://www.example.com"
+
+#: admin/manage-user.php:133
+msgid "List of the users"
+msgstr "قائمة المستخدمين"
+
+#: admin/manage-user.php:135
+msgid "List of members of the Planet"
+msgstr "قائمة أعضاء الكوكب"
+
+#: admin/manage-user.php:175
+msgid "Site name"
+msgstr "إسم الموقع"
+
+#: admin/manage-user.php:177
+msgid "ex: Bilboplanet blog"
+msgstr "مثال: Bilboplanet blog"
+
+#: admin/manage-user.php:179
+msgid "Site URL"
+msgstr "عنوان الموقع"
+
+#: admin/manage-user.php:181
+msgid "ex: http://blog.bilboplanet.com"
+msgstr "مثال: http://blog.bilboplanet.com"
+
+#: admin/manage-useroption.php:63
+#: admin/api/manage-option_api.php:135
+msgid "Modification succeeded"
+msgstr "نجاح التعديل"
+
+#: admin/manage-useroption.php:67
+msgid "Please insert a valid email address"
+msgstr "الرجاء إدخال عنوان بريد إلكتروني صالح"
+
+#: admin/manage-useroption.php:81
+msgid "Users Options"
+msgstr "خيارات المستخدمين"
+
+#: admin/manage-useroption.php:83
+msgid "Configuring user settings."
+msgstr "إعدادات المستخدم."
+
+#: admin/manage-useroption.php:87
+msgid "Contact Name"
+msgstr "إسم المتصل"
+
+#: admin/manage-useroption.php:90
+msgid "Reference contact email"
+msgstr "بريد المتصل"
+
+#: admin/manage-useroption.php:93
+msgid "Author Website"
+msgstr "موقع الكاتب"
+
+#: admin/manage-useroption.php:96
+msgid "Jabber / GoogleTalk"
+msgstr "Jabber / GoogleTalk"
+
+#: admin/manage-useroption.php:99
+msgid "Other Instant Messaging"
+msgstr "تراسلات فورية أخرى"
+
+#: admin/manage-useroption.php:102
+msgid "About Me"
+msgstr "عني"
+
+#: admin/manage-useroption.php:106
+#: admin/api/manage-option_api.php:373
+#: admin/api/manage-permissions_api.php:171
+msgid "Apply"
+msgstr "تطبيق"
+
+#: admin/pagination.php:45
+#: admin/pagination.php:60
+msgid "Next page"
+msgstr "الصفحة التالية"
+
+#: admin/pagination.php:52
+#: admin/pagination.php:59
+#: inc/admin/prepend.php:78
+msgid "Previous page"
+msgstr "الصفحة السابقة"
+
+#: admin/sidebar.php:27
+msgid "Common"
+msgstr "مشترك"
+
+#: admin/sidebar.php:30
+msgid "Access the quick summary of the planet"
+msgstr "الوصول للملخص السريع للكوكب"
+
+#: admin/sidebar.php:31
+msgid "Manage your profile account"
+msgstr "إدارة حسابك الشخصي"
+
+#: admin/sidebar.php:31
+msgid "Manage your account"
+msgstr "إدارة حسابك"
+
+#: admin/sidebar.php:42
+msgid "Manage users"
+msgstr "إدارة المستخدمين"
+
+#: admin/sidebar.php:48
+msgid "Manage posts"
+msgstr "إدارة المشاركات"
+
+#: admin/sidebar.php:51
+msgid "Manage newsletter of the planet"
+msgstr "إدارة القائمة البريدية للكوكب"
+
+#: admin/sidebar.php:51
+msgid "Newsletter"
+msgstr "القائمة البريدية"
+
+#: admin/sidebar.php:58
+#: admin/api/manage-permissions_api.php:163
+msgid "Configuration"
+msgstr "الإعدادات"
+
+#: admin/sidebar.php:62
+msgid "Author configuration"
+msgstr "إعدادات كاتب الكوكب"
+
+#: admin/sidebar.php:62
+msgid "Planet Author"
+msgstr "كاتب الكوكب"
+
+#: admin/sidebar.php:65
+msgid "Planet configuration"
+msgstr "إعدادات الكوكب"
+
+#: admin/sidebar.php:68
+msgid "View logs information"
+msgstr "عرض سجل المعلومات"
+
+#: admin/sidebar.php:68
+msgid "Logs Files"
+msgstr "ملفات السجل"
+
+#: admin/sidebar.php:71
+msgid "Import/Export Planet configuration"
+msgstr "استيراد/تصدير إعدادات كوكب"
+
+#: admin/sidebar.php:71
+msgid "Import/Export"
+msgstr "استيراد/تصدير"
+
+#: admin/sidebar.php:74
+msgid "Clear Planet cache"
+msgstr "تنظيف ذاكرة التخزين المؤقتة للكوكب"
+
+#: admin/sidebar.php:74
+msgid "Clear cache"
+msgstr "تنظيف ذاكرة التخزين المؤقتة"
+
+#: admin/sidebar.php:77
+msgid "Feed fetching system configuration"
+msgstr "إعداد نظام جلب التغدية"
+
+#: admin/sidebar.php:77
+msgid "Feed fetching"
+msgstr "جلب التغدية"
+
+#: admin/sidebar.php:83
+#: admin/sidebar.php:89
+#: admin/api/manage-permissions_api.php:169
+msgid "Moderation"
+msgstr "التعديل"
+
+#: admin/sidebar.php:105
+msgid "System"
+msgstr "النظام"
+
+#: admin/sidebar.php:111
+#: admin/api/manage-permissions_api.php:110
+msgid "Permissions"
+msgstr "الصلاحيات"
+
+#: admin/api/index.php:101
+msgid "bad call, this ajax call does not exist"
+msgstr "إستدعاء سيء، إستدعاء ajax غير موجود"
+
+#: admin/api/manage-account_api.php:58
+#: admin/api/manage-user_api.php:97
+#: admin/api/manage-user_api.php:100
+#: admin/api/manage-user_api.php:225
+#, php-format
+msgid "The user %s already exists"
+msgstr "المستخدم %s مسبقا"
+
+#: admin/api/manage-account_api.php:61
+#: admin/api/manage-user_api.php:228
+#, php-format
+msgid "The email address %s is already in use by %s"
+msgstr "عنوان البريد الإلكتروني %s بالفعل مستخدم من طرف %s"
+
+#: admin/api/manage-account_api.php:75
+#: admin/api/manage-user_api.php:242
+#, php-format
+msgid "User %s successfully updated"
+msgstr "المستخدم %s تم تحديثه بنجاح"
+
+#: admin/api/manage-account_api.php:107
+#: admin/api/manage-database_api.php:95
+#: admin/api/manage-feed_api.php:329
+#: admin/api/manage-moderation_api.php:196
+#: admin/api/manage-permissions_api.php:187
+#: admin/api/manage-selection_api.php:82
+#: admin/api/manage-site_api.php:158
+#: admin/api/manage-user_api.php:380
+msgid "User bad call"
+msgstr "إستدعاء سيء"
+
+#: admin/api/manage-database_api.php:74
+#, php-format
+msgid "Unable to write %s file."
+msgstr "من غير ممكن الكتابة على الملف %s"
+
+#: admin/api/manage-database_api.php:74
+msgid "Please check you /admin/cache directory permissions"
+msgstr "يرجى التحقق من الصلاحيات على المجلد /admin/cache"
+
+#: admin/api/manage-database_api.php:81
+msgid "A snapshot of your current database was successfully created. Please download the following file and put it in some safe place."
+msgstr "تم انشاء نسخة نسخة إحتياطية من قاعدة البيانات. يرجى تحميل الملف التالي ووضعه في مكان آمن."
+
+#: admin/api/manage-database_api.php:86
+msgid "Please select at least one table to export"
+msgstr "الرجاء اختيار جدول واحد على الأقل لتصديره"
+
+#: admin/api/manage-feed_api.php:88
+#, php-format
+msgid "This user already owns the feed %s"
+msgstr "هذا المستخدم يملك بالفعل التغذية %s"
+
+#: admin/api/manage-feed_api.php:91
+#, php-format
+msgid "The feed %s is owned by site %s"
+msgstr "التغدية %s مستخدمة من طرف الموقع %s"
+
+#: admin/api/manage-feed_api.php:94
+#, php-format
+msgid "They are already multiple use of feed %s"
+msgstr "هناك عدة مستخدمين يستخدمون التغدية %s"
+
+#: admin/api/manage-feed_api.php:115
+#, php-format
+msgid "Feed %s was successfully added"
+msgstr "تم إضافة التغدية %s بنجاح"
+
+#: admin/api/manage-feed_api.php:126
+msgid "Please select the user to you want to add the feed"
+msgstr "الرجاء اختيار المستخدم الذي تريد إضافة التغدية له"
+
+#: admin/api/manage-feed_api.php:129
+msgid "Please select the site to you wand to add the feed"
+msgstr "الرجاء اختيار الموقع الذي تريد إضافة التغدية له"
+
+#: admin/api/manage-feed_api.php:172
+#, php-format
+msgid "The feed %s is already used by user %s"
+msgstr "التغدية %s مستخدمة بالفعل من طرف المستخدم %s"
+
+#: admin/api/manage-feed_api.php:182
+#, php-format
+msgid "Feed %s successfully updated"
+msgstr "التغدية %s تحديثها بنجاح"
+
+#: admin/api/manage-feed_api.php:221
+msgid "Feed status toggled"
+msgstr "حالة التغديات المغيرة"
+
+#: admin/api/manage-feed_api.php:239
+msgid "Feed trust changed"
+msgstr "التقة في التغدية المغيرة"
+
+#: admin/api/manage-feed_api.php:248
+#, php-format
+msgid "Are you sure you want to remove feed %s ?"
+msgstr "هل أنت متأكد من أنك تريد إزالة التغدية %s ؟"
+
+#: admin/api/manage-feed_api.php:250
+#: admin/api/manage-site_api.php:117
+#: admin/api/manage-user_api.php:281
+msgid "This action can not be canceled"
+msgstr "لا يمكن إلغاء هذا الإجراء"
+
+#: admin/api/manage-feed_api.php:251
+msgid "All the posts comming from this feed will be removed"
+msgstr "سيتم إزالة كافة المشاركات القادمة من هذه التغذية"
+
+#: admin/api/manage-feed_api.php:255
+#: admin/api/manage-site_api.php:122
+#: admin/api/manage-user_api.php:287
+msgid "Confirm"
+msgstr "تأكيد"
+
+#: admin/api/manage-feed_api.php:268
+#, php-format
+msgid "Delete of feed %s succeeded"
+msgstr "تم حذف التغدية %s بنجاح"
+
+#: admin/api/manage-feed_api.php:350
+msgid "Website(s) user Informations"
+msgstr "معلومات عن موقع المستخدم"
+
+#: admin/api/manage-feed_api.php:362
+msgid "Disable feed"
+msgstr "تعطيل التغذية"
+
+#: admin/api/manage-feed_api.php:366
+#: admin/api/manage-feed_api.php:370
+msgid "Enable feed"
+msgstr "تفعيل التغذية"
+
+#: admin/api/manage-feed_api.php:375
+msgid "Untrust this feed"
+msgstr "عدم الثقة في هذه التغذية"
+
+#: admin/api/manage-feed_api.php:378
+msgid "Trust this feed"
+msgstr "الثقة في هذه التغذية"
+
+#: admin/api/manage-feed_api.php:388
+msgid "Feed name : "
+msgstr "إسم التغدية :"
+
+#: admin/api/manage-feed_api.php:389
+msgid "Site URL : "
+msgstr "عنوان الموقع :"
+
+#: admin/api/manage-moderation_api.php:41
+msgid "The post is already accepted"
+msgstr "تمت الموافقة على "
+
+#: admin/api/manage-moderation_api.php:47
+msgid "Post successfully updated"
+msgstr "تم تحديث التدوينة بنجاح"
+
+#: admin/api/manage-moderation_api.php:84
+msgid "The post is already refused"
+msgstr "التدوينة قد تم رفضها بالفعل"
+
+#: admin/api/manage-moderation_api.php:88
+msgid "Mail could not be send"
+msgstr "لم يتم إرسال البريد"
+
+#: admin/api/manage-moderation_api.php:93
+msgid "Post successfully refused"
+msgstr "تم رفض التدوينة بنجاح"
+
+#: admin/api/manage-moderation_api.php:119
+#, php-format
+msgid "Dear %s,"
+msgstr "عزيزي %s,"
+
+#: admin/api/manage-moderation_api.php:121
+msgid "Dear user,"
+msgstr "عزيزي المستخدم،"
+
+#: admin/api/manage-moderation_api.php:124
+msgid "We took the decision to moderate the following post :"
+msgstr "اتخذنا قرار تعديل المشاركة التالية :"
+
+#: admin/api/manage-moderation_api.php:126
+msgid "The reasons of this moderation are :"
+msgstr "سبب التعديل هو :"
+
+#: admin/api/manage-moderation_api.php:129
+#, php-format
+msgid "Thank you for your contribution on the %s"
+msgstr "شكرا لمساهمتكم في %s"
+
+#: admin/api/manage-moderation_api.php:130
+msgid "Sincerely yours"
+msgstr "مع خالص التقدير"
+
+#: admin/api/manage-moderation_api.php:155
+msgid "Author"
+msgstr "الكاتب"
+
+#: admin/api/manage-moderation_api.php:168
+#: admin/api/manage-moderation_api.php:174
+msgid "Accept"
+msgstr "قبول"
+
+#: admin/api/manage-moderation_api.php:170
+#: admin/api/manage-moderation_api.php:175
+msgid "Refuse"
+msgstr "رفض"
+
+#: admin/api/manage-moderation_api.php:185
+#, php-format
+msgid "%s last posts :"
+msgstr "%s أخر المشاركات :"
+
+#: admin/api/manage-moderation_api.php:191
+msgid "No posts found"
+msgstr "لا توجد مشاركات"
+
+#: admin/api/manage-option_api.php:40
+msgid "The title can not be empty"
+msgstr "لايمكن أن يكون العنوان فارغا"
+
+#: admin/api/manage-option_api.php:106
+msgid "Only numeric value are allowed for number of posts by page"
+msgstr "يسمح فقط بالقيم الرقمية من أجل عدد المشاركات في كل صفحة"
+
+#: admin/api/manage-option_api.php:121
+msgid "Subscription page content can not be empty"
+msgstr "محتوى صفحة التسجيل لا يمكن أن يكون فارغا"
+
+#: admin/api/manage-option_api.php:202
+#: admin/api/manage-option_api.php:405
+msgid "Option"
+msgstr "الخيار"
+
+#: admin/api/manage-option_api.php:203
+#: admin/api/manage-option_api.php:406
+msgid "Value"
+msgstr "القيمة"
+
+#: admin/api/manage-option_api.php:207
+#: admin/api/manage-option_api.php:410
+#: admin/install/index.php:310
+msgid "Title of the Planet"
+msgstr "عنوان الكوكب"
+
+#: admin/api/manage-option_api.php:211
+#: admin/api/manage-option_api.php:414
+msgid "Description of the Planet"
+msgstr "وصف الكوكب"
+
+#: admin/api/manage-option_api.php:215
+#: admin/api/manage-option_api.php:418
+msgid "Graphical theme"
+msgstr "السمة"
+
+#: admin/api/manage-option_api.php:230
+#: admin/api/manage-option_api.php:422
+msgid "Language of the Planet"
+msgstr "لغة الكوكب"
+
+#: admin/api/manage-option_api.php:251
+#: admin/api/manage-option_api.php:426
+msgid "Information message (optional)"
+msgstr "رسالة المعلومات (اختياري)"
+
+#: admin/api/manage-option_api.php:255
+#: admin/api/manage-option_api.php:430
+msgid "Show the contact page"
+msgstr "إظهار صفحة المتصل"
+
+#: admin/api/manage-option_api.php:264
+#: admin/api/manage-option_api.php:439
+msgid "Enable voting"
+msgstr "تفعيل التصويت"
+
+#: admin/api/manage-option_api.php:274
+#: admin/api/manage-option_api.php:444
+msgid "Votes system"
+msgstr "نظام التصويت"
+
+#: admin/api/manage-option_api.php:277
+msgid "yes-no"
+msgstr "نعم-لا"
+
+#: admin/api/manage-option_api.php:277
+msgid "Positive and Negative"
+msgstr "إيجابية وسلبية"
+
+#: admin/api/manage-option_api.php:279
+msgid "yes-warn"
+msgstr "نعم-تحذير"
+
+#: admin/api/manage-option_api.php:279
+msgid "Positive and Warning"
+msgstr "إيجابية وتحذير"
+
+#: admin/api/manage-option_api.php:297
+#: admin/api/manage-option_api.php:453
+msgid "Option of moderation"
+msgstr "خيارات الإعدادات"
+
+#: admin/api/manage-option_api.php:307
+#: admin/api/manage-option_api.php:462
+msgid "Enable avatar"
+msgstr "تفعيل الصور الرمزية"
+
+#: admin/api/manage-option_api.php:310
+msgid "Work with"
+msgstr "العمل مع"
+
+#: admin/api/manage-option_api.php:322
+#: admin/api/manage-option_api.php:471
+msgid "Maintenance mode"
+msgstr "وضع الصيانة"
+
+#: admin/api/manage-option_api.php:331
+#: admin/api/manage-option_api.php:480
+msgid "Log level"
+msgstr "مستوى السجل"
+
+#: admin/api/manage-option_api.php:346
+#: admin/api/manage-option_api.php:484
+msgid "Number of posts by page"
+msgstr "عدد المشاركات في كل صفحة"
+
+#: admin/api/manage-option_api.php:350
+#: admin/api/manage-option_api.php:488
+msgid "Enable subscription"
+msgstr "تمكين الاشتراك"
+
+#: admin/api/manage-option_api.php:361
+#: admin/api/manage-option_api.php:492
+msgid "Subscription page content"
+msgstr "محتوى صفحة الإشتراكات"
+
+#: admin/api/manage-option_api.php:432
+#: admin/api/manage-option_api.php:441
+#: admin/api/manage-option_api.php:455
+#: admin/api/manage-option_api.php:464
+#: admin/api/manage-option_api.php:473
+#: admin/api/manage-option_api.php:490
+msgid "Enable"
+msgstr "تفعيل"
+
+#: admin/api/manage-option_api.php:435
+#: admin/api/manage-option_api.php:449
+#: admin/api/manage-option_api.php:458
+#: admin/api/manage-option_api.php:467
+#: admin/api/manage-option_api.php:476
+#: admin/api/manage-option_api.php:504
+msgid "Disable"
+msgstr "تعطيل"
+
+#: admin/api/manage-option_api.php:514
+msgid "Nothing to do"
+msgstr "لا يوجد ما يفعل"
+
+#: admin/api/manage-permissions_api.php:36
+#: admin/api/manage-permissions_api.php:70
+msgid "Impossible to change your own role"
+msgstr "لا يمكنك تغيير دورك الخاص"
+
+#: admin/api/manage-permissions_api.php:41
+#, php-format
+msgid "User %s is now know as %s"
+msgstr "المستخدم %s معروف الآن ب %s"
+
+#: admin/api/manage-permissions_api.php:44
+msgid "There was a problem during toggling user role"
+msgstr "هناك مشكلة أثناء تغيير دور المستخدم"
+
+#: admin/api/manage-permissions_api.php:74
+#, php-format
+msgid "User %s has new permissions : %s"
+msgstr "المستخدم %s الصلاحيات الجديدة : %s"
+
+#: admin/api/manage-permissions_api.php:107
+#: admin/api/manage-user_api.php:398
+msgid "Avatar"
+msgstr "الصورة الرمزية"
+
+#: admin/api/manage-permissions_api.php:108
+#: admin/api/manage-user_api.php:399
+msgid "User Informations"
+msgstr "معلومات المستخدم"
+
+#: admin/api/manage-permissions_api.php:109
+msgid "Role"
+msgstr "الدور"
+
+#: admin/api/manage-permissions_api.php:114
+msgid "Normal user"
+msgstr "مستخدم عادي"
+
+#: admin/api/manage-permissions_api.php:115
+msgid "Website manager"
+msgstr "مدير الموقع"
+
+#: admin/api/manage-permissions_api.php:116
+msgid "Super user"
+msgstr "المدير"
+
+#: admin/api/manage-site_api.php:43
+#, php-format
+msgid "The user %s already own the website %s"
+msgstr "المستخدم %s بالفعل يملك الموقع %s"
+
+#: admin/api/manage-site_api.php:46
+#, php-format
+msgid "The website %s owns to user %s"
+msgstr "الموقع %s يمتلكه %s"
+
+#: admin/api/manage-site_api.php:66
+#, php-format
+msgid "Website %s successfully added to user %s"
+msgstr "الموقع %s تمت إضافته بنجاح للمستخدم %s"
+
+#: admin/api/manage-site_api.php:106
+msgid "Site status toggled"
+msgstr "حالة الموقع تغيرت"
+
+#: admin/api/manage-site_api.php:115
+#, php-format
+msgid "Are you sure you want to remove site %s ?"
+msgstr "هل أنت متأكد أنك تريد إزالة الموقع %s ؟"
+
+#: admin/api/manage-site_api.php:118
+msgid "All the posts comming from this site will be removed"
+msgstr "سيتم إزالة كافة المشاركات القادمة من هذا الموقع"
+
+#: admin/api/manage-site_api.php:119
+msgid "All the feeds of this site will be removed"
+msgstr "جميع تغديات هذا الموقع سيتم إزالتها"
+
+#: admin/api/manage-site_api.php:139
+#, php-format
+msgid "Delete of site %s succeeded"
+msgstr "الموقع %s حذف بنجاح"
+
+#: admin/api/manage-user_api.php:86
+#: admin/install/index.php:110
+msgid "Please do not use special chars in user_id field. Allowed chars are only a-z, A-Z and 0-9"
+msgstr "يرجى عدم استخدام أحرف خاصة في مجال user_id. الأحرف المسموح بها هي a-z، A-Z و 0-9"
+
+#: admin/api/manage-user_api.php:103
+#, php-format
+msgid "The email address %s is already in use"
+msgstr "عنوان البريد %s سبق إستعماله"
+
+#: admin/api/manage-user_api.php:110
+#, php-format
+msgid "The website %s is already assigned to the user %s"
+msgstr "الموقع %s تم تعيينه سابقا للمستخدم %s"
+
+#: admin/api/manage-user_api.php:145
+#, php-format
+msgid "User %s successfully added"
+msgstr "تم إضافة المستخدم %s بنجاح"
+
+#: admin/api/manage-user_api.php:193
+msgid "User status toggled"
+msgstr "تثبيت وضع المستخدم"
+
+#: admin/api/manage-user_api.php:276
+#: admin/api/manage-user_api.php:299
+msgid "You are not allowed to remove a super user"
+msgstr "لا يسمح لك بإزالة المدير"
+
+#: admin/api/manage-user_api.php:280
+#, php-format
+msgid "Are you sure you want to remove user %s ?"
+msgstr "هل أنت متأكد أنك تريد إزالة المستخدم %s ؟"
+
+#: admin/api/manage-user_api.php:282
+msgid "All the posts of the user will be removed"
+msgstr "جميع مشاراكات هذا العضو ستتم إزالتها"
+
+#: admin/api/manage-user_api.php:283
+msgid "All the votes on these posts will be removed"
+msgstr "كافة الأصوات على هذه المشاركة ستتم إزالتها"
+
+#: admin/api/manage-user_api.php:284
+msgid "All the feeds of this user will be removed"
+msgstr "جميع تغديات هذا المستخدم ستتم إزالتها"
+
+#: admin/api/manage-user_api.php:312
+#, php-format
+msgid "Delete of user %s succeeded"
+msgstr "عملية حذف المستخدم %s تمت بنجاح"
+
+#: admin/api/manage-user_api.php:418
+msgid "Disable user"
+msgstr "تعطيل المستخدم"
+
+#: admin/api/manage-user_api.php:421
+msgid "Enable user"
+msgstr "تفعيل المستخدم"
+
+#: admin/api/manage-user_api.php:434
+msgid "Planet author"
+msgstr "لغة الكوكب"
+
+#: admin/api/manage-user_api.php:451
+msgid "Add a new website"
+msgstr "أضف موقع جديد"
+
+#: admin/install/check.php:34
+#, php-format
+msgid "PHP version is %s (5.0 or earlier needed)."
+msgstr "اصدار PHP هو %s (مطلوب 4.0 فما فوق)"
+
+#: admin/install/check.php:38
+msgid "Multibyte string module (mbstring) is not available."
+msgstr "وحدة mbstring غير متوفرة"
+
+#: admin/install/check.php:42
+msgid "Iconv module is not available."
+msgstr "وحدة Iconv غير متوفرة"
+
+#: admin/install/check.php:46
+msgid "Output control functions are not available."
+msgstr "السيطرة الخاية على الدوال غير متوفرة"
+
+#: admin/install/check.php:50
+msgid "SimpleXML module is not available."
+msgstr "وحدة SimpleXML غير متوفرة"
+
+#: admin/install/check.php:54
+msgid "DOM XML module is not available."
+msgstr "وحدة DOM XML غير متوفرة"
+
+#: admin/install/check.php:59
+msgid "PCRE engine does not support UTF-8 strings."
+msgstr "المحرك PCRE لا يدعم UTF-8"
+
+#: admin/install/check.php:63
+msgid "SPL module is not available."
+msgstr "وحدة SPL غير متوفرة"
+
+#: admin/install/check.php:70
+#, php-format
+msgid "MySQL version is %s (4.1 or earlier needed)."
+msgstr "إصدار MySQL هو %s (مطلوب 4.1 فما فوق)"
+
+#: admin/install/check.php:92
+#, php-format
+msgid "PostgreSQL version is %s (8.0 or earlier needed)."
+msgstr "اصدار PostgreSQL  هو %s (مطلوب8.0 فما فوق)"
+
+#: admin/install/index.php:32
+msgid "No configuration file"
+msgstr "ليس هناك ملف إعدادات"
+
+#: admin/install/index.php:33
+msgid "There is no configuration file, you need to create one. Therefor you can use the wizard to generate a configuration file. Click \"Next\" to go to the setup page."
+msgstr "لا يوجد أي ملف إعدادات ، تحتاج إلى إنشاء واحد. لذلك يمكنك استخدام المعاون لإنشاء ملف التكوين. انقر فوق \"التالي\" للذهاب إلى صفحة التنصيب."
+
+#: admin/install/index.php:34
+msgid "Next"
+msgstr "التالي"
+
+#: admin/install/index.php:50
+msgid "The Bilboplanet is already installed."
+msgstr "تم تثبيت Bilboplanet بالفعل"
+
+#: admin/install/index.php:56
+msgid "The Bilboplanet can not be installed"
+msgstr "لا يمكن أن تثبيت Bilboplanet"
+
+#: admin/install/index.php:92
+#, php-format
+msgid "Unable to read %s file."
+msgstr "غير قادر على قراءة الملف %s"
+
+#: admin/install/index.php:101
+msgid "Please fill the title in."
+msgstr "يرجى ملء العنوان."
+
+#: admin/install/index.php:104
+msgid "Please fill the user email in."
+msgstr "يرجى ملء البريد الإلكتروني للمستخدم"
+
+#: admin/install/index.php:107
+msgid "Please fill the username in."
+msgstr "يرجى ملء إسم المستخدم"
+
+#: admin/install/index.php:114
+msgid "The username has to be formed of minimum 2 characters with letters of numbers"
+msgstr "اسم المستخدم يجب أن يتوفر على حرفان على الأقل مع أحرف و أرقام"
+
+#: admin/install/index.php:117
+msgid "Invalid email address"
+msgstr "عنوان البريد غير صحيح"
+
+#: admin/install/index.php:120
+#: inc/core/class.bp.core.php:408
+msgid "No password given"
+msgstr "لم يتم تحديد أي كلمة مرور"
+
+#: admin/install/index.php:123
+msgid "The passwords don't match"
+msgstr "كلمات المرور لا تتطابق"
+
+#: admin/install/index.php:126
+msgid "The password have to contain minimum 6 characters."
+msgstr "كلمة المرور يجب أن تحتوي على 6 أحرف كحد أدنى"
+
+#: admin/install/index.php:250
+#: admin/install/index.php:264
+msgid "Installation of the Bilboplanet"
+msgstr "تنصيب Bilboplanet"
+
+#: admin/install/index.php:267
+#: admin/install/wizard.php:161
+msgid "Errors:"
+msgstr "الأخطاء:"
+
+#: admin/install/index.php:271
+msgid "The configuration file was successfully created."
+msgstr "تم انشاء ملف الإعدادات بنجاح."
+
+#: admin/install/index.php:291
+msgid "Information on the BilboPlanet"
+msgstr "معلومات عن BilboPlanet"
+
+#: admin/install/index.php:293
+msgid "Thank you for taking somes minutes to answer those questions to help to the configuration of the bilboplanet."
+msgstr "شكرا لأخذ بعض الدقائق للإجابة على هذه الأسئلة للمساعدة على إعداد bilboplanet."
+
+#: admin/install/index.php:294
+msgid "Fields marked with an asterisk are obligatory"
+msgstr "الحقول التي تحمل علامة النجمة واجبة"
+
+#: admin/install/index.php:297
+msgid "Information of the user"
+msgstr "معلومات المستخدم"
+
+#: admin/install/index.php:300
+msgid "Enter your fullname or the name you want to be displayed"
+msgstr "ادخل اسمك الكامل أو الاسم الذي تريد عرضه"
+
+#: admin/install/index.php:303
+msgid "Enter your email address"
+msgstr "أدخل عنوان بريدك الالكتروني"
+
+#: admin/install/index.php:304
+msgid "Website of the user"
+msgstr "الموقع الإلكتروني للمستخدم"
+
+#: admin/install/index.php:306
+msgid "Entre address of your website or blog (optional)"
+msgstr "ادخل عنوان موقعك أومدونتك (اختياري)"
+
+#: admin/install/index.php:309
+msgid "Information on the Planet"
+msgstr "معلومات عن كوكب"
+
+#: admin/install/index.php:312
+msgid "Fill the title of your planet"
+msgstr "إملء عنوان الكوكب الخاص بك"
+
+#: admin/install/index.php:313
+msgid "Description"
+msgstr "الوصف"
+
+#: admin/install/index.php:315
+msgid "Give a description of your planet"
+msgstr "إعطي وصفا للكوكب الخاص بك"
+
+#: admin/install/index.php:316
+msgid "Planet Language"
+msgstr "لغة الكوكب"
+
+#: admin/install/index.php:318
+msgid "Choose your langage"
+msgstr "إختر لغتك"
+
+#: admin/install/index.php:321
+msgid "Administration username and password"
+msgstr "إسم وكلمة مرور الإدارة"
+
+#: admin/install/index.php:322
+#: admin/install/index.php:325
+#: admin/install/index.php:328
+#: admin/install/wizard.php:200
+msgid "Required field"
+msgstr "حقل مطلوب"
+
+#: admin/install/index.php:324
+msgid "Enter your username"
+msgstr "أدخل اسم المستخدم الخاص بك"
+
+#: admin/install/index.php:327
+msgid "Enter your password"
+msgstr "أدخل كلمة مرورك"
+
+#: admin/install/index.php:328
+msgid "Confirm your password"
+msgstr "تأكيد كلمة مرورك"
+
+#: admin/install/index.php:330
+msgid "Re-enter your password for verification"
+msgstr "إعادة إدخال كلمة السر الخاصة بك للتحقق"
+
+#: admin/install/index.php:333
+#: admin/install/wizard.php:204
+msgid "Save"
+msgstr "حفظ"
+
+#: admin/install/index.php:344
+msgid "Install succeeded"
+msgstr "نجح التثبيت"
+
+#: admin/install/index.php:346
+msgid "The Bilboplanet was successfully installed. Here you can find a resume of the configuration"
+msgstr "تم تثبيت Bilboplanet بنجاح. يمكنك العثور هنا على موجر من الإعدادات"
+
+#: admin/install/index.php:348
+msgid "Your account"
+msgstr "حسابك"
+
+#: admin/install/index.php:354
+msgid "Your Bilboplanet"
+msgstr "Bilboplanet خاصتك"
+
+#: admin/install/index.php:356
+msgid "URL of the BilboPlanet:"
+msgstr "رابط BilboPlanet:"
+
+#: admin/install/index.php:357
+msgid "Administration interface:"
+msgstr "واجهة الإدارة"
+
+#: admin/install/index.php:361
+msgid "Go to the administration interface"
+msgstr "الذهاب إلى واجهة الإدارة"
+
+#: admin/install/wizard.php:74
+msgid "The Bilboplanet could not be installed."
+msgstr "لا يمكن تنصيب Bilboplanet"
+
+#: admin/install/wizard.php:80
+msgid "The Bilboplanet is already installed. Please remove the tables in the database before."
+msgstr "تم بالفعل تثبيت Bilboplanet. الرجاء إزالة الجداول في قاعدة البيانات من السابقة."
+
+#: admin/install/wizard.php:86
+#, php-format
+msgid "File %s does not exist."
+msgstr "الملف %s غير موجود"
+
+#: admin/install/wizard.php:91
+#: admin/install/wizard.php:105
+#, php-format
+msgid "Cannot write %s file."
+msgstr "لا يمكن الكتابة في الملف %s"
+
+#: admin/install/wizard.php:142
+msgid "Bilboplanet Install Wizard"
+msgstr "مساعد التنصيب لBilboplanet"
+
+#: admin/install/wizard.php:158
+msgid "Installation wizard of the Bilboplanet"
+msgstr "Assistant d'installation du bilboplanet"
+
+#: admin/install/wizard.php:165
+#, php-format
+msgid "The file <strong>%s</strong> already exists. If you need to reinitialize on of the configuration elements in this file, please remove the configuration file first or <a href=\"%s\">continue the installation</a>."
+msgstr "الملف <strong>%s</strong> موجود بالفعل إذا كنت بحاجة إلى إعادة ضبط الإعدادات في هذا الملف، إحذفه أولا او <a href=\"%s\">اكمل التنصيب</a>."
+
+#: admin/install/wizard.php:170
+msgid ""
+"Welcome to the BilboPlanet. Before you begin, we need some informations concerning the database. You'll need to provide the following information to begin the installation and to create the configuration file.<br /><br />\n"
+"   1. The host of the database.<br/>\n"
+"   2. The name of the database.<br/>\n"
+"   3. Your username to the database.<br/>\n"
+"   4. Your password to the database.<br/>\n"
+"   4. Table prefix for your database.<br/><br/>"
+msgstr ""
+"<h3>مرحبابك في BilboPlanet. قبل أن تبدأ، نحن بحاجة لبعض المعلومات المتعلقة بقاعدة البيانات. ستحتاج إلى توفير المعلومات التالية لبدء التثبيت وإنشاء ملف الإعدادات.</h3>\n"
+"\n"
+"1. مضيف قاعدة البيانات<br/>\n"
+"2. اسم قاعدة البيانات<br/>\n"
+"3. اسم مستخدم قاعدة البيانات<br/>\n"
+"4. كلمة المرور الخاصة بقاعدة البيانات<br/>\n"
+"5. بادئة الجدول لقاعدة البيانات.<br/>"
+
+#: admin/install/wizard.php:184
+msgid "Host of the database"
+msgstr "مضيف قاعدة البيانات:"
+
+#: admin/install/wizard.php:186
+msgid "ex: localhost"
+msgstr "مثال: localhost"
+
+#: admin/install/wizard.php:188
+msgid "Name of the database:"
+msgstr "اسم قاعدة البيانات:"
+
+#: admin/install/wizard.php:190
+msgid "ex: bilboplanet"
+msgstr "مثال: bilboplanet"
+
+#: admin/install/wizard.php:194
+msgid "Your username depends of your provider"
+msgstr "اسم المستخدم الخاص بك يعتمد على مزودك بالخدمة"
+
+#: admin/install/wizard.php:198
+msgid "Your password depends of your provider"
+msgstr "كلمة المرور الخاص بك تعتمد على مزودك بالخدمة"
+
+#: admin/install/wizard.php:200
+msgid "Database Tables Prefix:"
+msgstr "بادئة الجداول لقاعدة البيانات:"
+
+#: admin/install/wizard.php:202
+msgid "bp_ is the default prefix"
+msgstr "البادئة الإفتراضية هي bp_"
+
+#: inc/fonctions.php:41
+msgid "Reading cache"
+msgstr "قراءة ذاكرة التخزين المؤقت"
+
+#: inc/fonctions.php:168
+#, php-format
+msgid "By %s, on %s at %s."
+msgstr "بواسط %s بتاريج %s في %s"
+
+#: inc/fonctions.php:169
+msgid "View post detail"
+msgstr "مشاهدت التدوينة"
+
+#: inc/fonctions.php:192
+msgid "Read more"
+msgstr "اقرأ المزيد"
+
+#: inc/fonctions.php:242
+#: inc/fonctions.php:255
+msgid "Vote yes"
+msgstr "صوت بنعم"
+
+#: inc/fonctions.php:243
+#: inc/fonctions.php:261
+#: inc/fonctions.php:265
+msgid "Vote no"
+msgstr "صوت بلا"
+
+#: inc/fonctions.php:253
+msgid "This post seems pertinent to you"
+msgstr "Cet article vous semble pertinent"
+
+#: inc/fonctions.php:259
+msgid "This post seems not pertinent to you"
+msgstr "Cet article ne vous semble pas pertinent"
+
+#: inc/fonctions.php:263
+msgid "This post should not be here"
+msgstr "هذه المشاركة ينبغي أن لا تكون هنا"
+
+#: inc/fonctions.php:264
+msgid "Are you sure this post should not be on this planet and should be removed?"
+msgstr "هل أنت متأكد من أن هذه المشاركة لا ينبغي لها التواجد بالكوكب  ويجب إزالتها ؟"
+
+#: inc/fonctions.php:287
+#, php-format
+msgid "The field \"%s\" has to be a valid email address"
+msgstr "Le champ \"%s\" doit être une adresse email valide"
+
+#: inc/fonctions.php:293
+#: inc/fonctions.php:299
+#, php-format
+msgid "The field \"%s\" %s has to be a valid URL"
+msgstr "Le champ \"%s\" %s doit être une URL valide"
+
+#: inc/fonctions.php:303
+#, php-format
+msgid "The field \"%s\" %s is not a valid simplepie feed"
+msgstr "Le champ \"%s\" %s n'est pas un flux simplepie valide"
+
+#: inc/fonctions.php:318
+#, php-format
+msgid "The fields %s does not match"
+msgstr "Le champ %s ne correspond pas"
+
+#: inc/fonctions.php:322
+#, php-format
+msgid "The fields %s needs to have 4 characters minimum"
+msgstr "Le champ %s doit contenir 4 caractères minimum"
+
+#: inc/fonctions.php:330
+#, php-format
+msgid "The field \"%s\" is empty"
+msgstr "الحقل \"%s\" فارغ"
+
+#: inc/fonctions.php:491
+msgid " bytes"
+msgstr " bytes"
+
+#: inc/fonctions.php:495
+msgid " Kb"
+msgstr "Ko"
+
+#: inc/fonctions.php:499
+msgid " MB"
+msgstr "Mo"
+
+#: inc/fonctions.php:503
+msgid " GB"
+msgstr "GB"
+
+#: inc/admin/prepend.php:51
+msgid "Database error"
+msgstr "Erreur de base de données"
+
+#: inc/admin/prepend.php:52
+msgid "There seems to be no Session table in your database. Is Bilboplanet completly installed?"
+msgstr "Il semblerait qu'il n'y ait pas de table Session dans votre base de données. Est-ce que le Bilboplanet est complètement installé?"
+
+#: inc/admin/prepend.php:74
+msgid "Next Page"
+msgstr "الصفحة التالية"
+
+#: inc/core/class.bp.auth.php:68
+msgid "administrator"
+msgstr "المدير"
+
+#: inc/core/class.bp.auth.php:69
+msgid "manage their own entries and comments"
+msgstr "إدارة مداخلك وتعليقاتك الخاصة"
+
+#: inc/core/class.bp.auth.php:70
+msgid "publish entries and comments"
+msgstr "publier des entrées et des commentaires"
+
+#: inc/core/class.bp.auth.php:71
+msgid "delete entries and comments"
+msgstr "Supprimer des entrées et des commentaires"
+
+#: inc/core/class.bp.auth.php:72
+msgid "manage all entries and comments"
+msgstr "Gérer toutes les entrées et les commentaires"
+
+#: inc/core/class.bp.auth.php:73
+msgid "manage categories"
+msgstr "إدارة الفئات"
+
+#: inc/core/class.bp.auth.php:74
+msgid "manage their own media items"
+msgstr "Gérer leur propre éléments médias"
+
+#: inc/core/class.bp.auth.php:75
+msgid "manage all media items"
+msgstr "Gérer tous les éléments média"
+
+#: inc/core/class.bp.auth.php:374
+msgid "That user does not exists in the database."
+msgstr "Cet utilisateur n'existe pas dans la base de données"
+
+#: inc/core/class.bp.auth.php:406
+msgid "That key does not exists in the database."
+msgstr "Cette clé n'existe pas dans la base de données"
+
+#: inc/core/class.bp.core.php:400
+#: inc/core/class.bp.core.php:437
+#: inc/core/class.bp.core.php:471
+msgid "You are not an administrator"
+msgstr "Vous n'êtes pas administrateur"
+
+#: inc/core/class.bp.core.php:404
+msgid "No user ID given"
+msgstr "لا هوية للمستخدم المعين"
+
+#: inc/core/class.bp.core.php:637
+msgid "User ID must contain at least 2 characters using letters, numbers or symbols."
+msgstr "يجب على هوية المستخدم أن تحتوي على ما لا يقل عن حرفان باستخدام الحروف والأرقام أو الرموز"
+
+#: inc/core/class.bp.core.php:648
+msgid "Password must contain at least 6 characters."
+msgstr "Le mot de passe doit contenir au minimum 6 caractères"
+
+#: inc/core/class.bp.core.php:654
+msgid "Invalid user language code"
+msgstr "رمز لغة المستخدم غير صالح"
+
+#: inc/core/class.bp.settings.php:77
+msgid "Unable to retrieve settings:"
+msgstr "عاجز عن إسترداد الإعدادات:"
+
+#: inc/core/class.bp.settings.php:139
+#, php-format
+msgid "%s is not a valid setting id"
+msgstr "%s ليس بحقل اعدادات صالح"
+
+#: inc/core/class.dc.modules.php:208
+msgid "Empty module zip file."
+msgstr "ملف الوحدة المضغوط فارغ"
+
+#: inc/core/class.dc.modules.php:213
+msgid "The zip file does not appear to be a valid Bilboplanet module."
+msgstr "هذا الملف المضغوط لا بيدوا انه وحدة صالحة ل Bilboplanet."
+
+#: inc/core/class.dc.modules.php:238
+msgid "An error occurred during module deletion."
+msgstr "حدث خطأ أثناء حذف الوحدة"
+
+#: inc/core/class.dc.modules.php:245
+#, php-format
+msgid "Unable to upgrade \"%s\". (same version)"
+msgstr "لا يمكن التحديث \"%s\". (نفس الإصدار)"
+
+#: inc/core/class.dc.modules.php:251
+msgid "Unable to read new _define.php file"
+msgstr "غير قادر على قراءة الملف الجديد _define.php"
+
+#: inc/core/class.dc.modules.php:315
+#: inc/core/class.dc.modules.php:326
+#: inc/core/class.dc.modules.php:341
+msgid "No such module."
+msgstr "لا توجد أي وحدة بهذا الإسم"
+
+#: inc/core/class.dc.modules.php:319
+msgid "Cannot remove module files"
+msgstr "لا يمكن إزالة ملفات الوحدة"
+
+#: inc/core/class.dc.modules.php:330
+#: inc/core/class.dc.modules.php:334
+msgid "Cannot deactivate plugin."
+msgstr "لا يمكن تعطيل الإضافة"
+
+#: inc/core/class.dc.modules.php:345
+#: inc/core/class.dc.modules.php:349
+msgid "Cannot activate plugin."
+msgstr "لا يمكن تفعيل الإضافة"
+

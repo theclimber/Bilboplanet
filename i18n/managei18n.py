@@ -147,6 +147,8 @@ if __name__ == "__main__":
 			potfile.write(potcontent)
 			potfile.close()
 
+			print "\nFile i18n/themes.pot successfully created"
+
 		elif action == "extract-php":
 			if not os.path.isdir(bilbodir):
 				print "%s is not a directory" % bilbodir
@@ -158,6 +160,7 @@ if __name__ == "__main__":
 			print cmd
 			os.system('cd %s' % bilbodir)
 			os.system(cmd)
+			print "\nFile %s successfully created" % potfile
 
 		elif action == "update-files":
 			if not os.path.isdir(bilbodir):
@@ -183,6 +186,7 @@ if __name__ == "__main__":
 			php = os.path.join(i18ndir,'bilbo.pot')
 			if os.path.isfile(themes) and os.path.isfile(php):
 				os.system('msgcat %s %s -o %s' % (themes,php,potfile))
+				print "File %s successfully created based on themes.pot and bilbo.pot\n" % (potfile)
 			else:
 				print "Themes or PHP has not been extracted"
 				exit()
@@ -196,6 +200,21 @@ if __name__ == "__main__":
 						cmd = "msgmerge -U %s %s" % (pofile,potfile)
 						print cmd
 						os.system(cmd)
+			print "\nPo files updates, you can now work on translations"
+			print "Or you can also run the autotranslate script"
+			print "\nOnce you are finished with translations, \ndon't forget to compile the files\n"
+
+		elif action == "compile":
+			i18ndir = os.path.join(bilbodir,'i18n')
+			for item in os.listdir(i18ndir):
+				if len(item) == 2 and os.path.isdir(os.path.join(i18ndir,item)):
+					pofile = os.path.join(i18ndir,'bilbo_%s.po' % item)
+					mofile = os.path.join(i18ndir,"%s/LC_MESSAGES/bilbo.mo" % item)
+					if os.path.isfile(pofile) and os.path.isfile(mofile):
+						cmd = "msgfmt -c -v -o %s %s" % (mofile,pofile)
+						print cmd
+						os.system(cmd)
+			print "\nThe translations are now compiled and you should see them in the interface\n"
 		
 		elif action == "autotranslate":
 			# autotranslate

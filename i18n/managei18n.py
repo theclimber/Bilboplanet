@@ -127,6 +127,28 @@ class Directory:
 def extract_from_php(path,filename):
 	cmd = "xgettext -kT_gettext -kT_ --from-code utf-8 -d my_project -o i18n/my_project.pot -L PHP --no-wrap -f files.txt"
 
+helpmsg = """\n
+Welcome on the small i18n application of bilboplanet
+====================================================
+
+To run this application you need to use the folowing syntax :
+$ python i18n/managei18n.py [ACTION] [BILBOPLANET DIRECTORY]
+
+The following actions are possition :
+* extract-tpl : this extract all the strings from the themes that are\n
+\t\tin the "themes" directory putting them into the i18n/themes.pot file
+* extract-php : this extract all the strings from the php files of the application
+* update-files : this updated the file i18n/files.txt which contains all the\n
+\t\tphp files that need to be readed for the extraction of strings
+* merge : this merges the strings from the two .pot files (themes, bilbo) and put\n
+\t\tthose strings in the .po files so you can begin translate the strings
+* compile : this generates compiled translations that can be used for the\n
+\t\tapplication. You must run this script before you can see the changes
+* autotranslate : this uses Google-Translate for automatically translate the strings
+\t\tof the selected .po file (this feature does not work yet)
+* help : show this message
+\n\n
+"""
 
 if __name__ == "__main__":
 
@@ -221,13 +243,15 @@ if __name__ == "__main__":
 			print "autotranslate"
 
 		elif action == "help":
-			print 'help'
+			print helpmsg
 		
 		else:
-			print "unknown action"
+			print "unknown action\n"
+			print helpmsg
 			exit()
 	else:
-		print "error"
+		print "unknown action\n"
+		print helpmsg
 		exit()
 
 

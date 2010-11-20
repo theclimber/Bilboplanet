@@ -1,0 +1,42 @@
+I18NMANAGE TRANSLATION SCRIPT
+
+Welcome on the small i18n application of bilboplanet
+====================================================
+
+To run this application you need to use the folowing syntax :
+$ python i18n/managei18n.py [ACTION] [BILBOPLANET DIRECTORY]
+
+The following actions are possition :
+
+	* extract-all : this is the most used action. This action serve to extract
+			all the strings of the application and to add them in the existing
+			po files to let the user work on the translations
+
+	* extract-tpl : this extract all the strings from the themes that are
+			in the "themes" directory putting them into the i18n/themes.pot file
+
+	* extract-php : this extract all the strings from the php files of the application
+
+	* update-files : this updated the file i18n/files.txt which contains all the
+			php files that need to be readed for the extraction of strings
+
+	* merge : this merges the strings from the two .pot files (themes, bilbo) and put
+			those strings in the .po files so you can begin translate the strings
+
+	* compile : this generates compiled translations that can be used for the
+			application. You must run this script before you can see the changes
+
+	* autotranslate : this uses Google-Translate for automatically translate the strings
+			of the selected .po file. NOTE: for this action the syntax is a bit
+			different. Here is an usage example :
+			$ python i18n/managei18n.py autotranslate [PATH_TO_PO_FILE]
+
+	* help : show this message
+
+DEPENDENCIES :
+* Python >= 2.6
+* translate-toolkit (sudo apt-get install translate-toolkit)
+* python-django
+
+Those packages can easely been installed on debian based distributions :
+$ sudo apt-get install python translate-toolkit python-django

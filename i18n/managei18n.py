@@ -1,5 +1,24 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
+#******* BEGIN LICENSE BLOCK *****
+# Copyright (C) 2010 By Gregoire de Hemptinne
+# Contact : greg@theclimber.be
+# Website : www.theclimber.be
+# 
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as
+# published by the Free Software Foundation, either version 3 of the
+# License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+#**** END LICENSE BLOCK *****
 import sys, os
 import re
 from translate.storage import po
@@ -7,16 +26,7 @@ from django.utils import simplejson
 import sys, os, re, urllib
 from htmlentitydefs import name2codepoint
 
-# actions : extract, compile, autotranslate
-# extract on php files
-# extract on tpl files
-# Script avec 5 actions possibles :
-# 1) extract_themes => cree un fichier themes.pot
-# 2) extract_php => cree un fichier bilbo.pot
-# 3) merge => merge les messages dans les fichiers .po
-# 4) autotranslate lang => utilise google-translate pour creer une traduction
-# 5) compile
-
+# This class is just a
 class Position:
 	def __init__(self, filename, line):
 		self.filename = filename
@@ -26,6 +36,7 @@ class Translation:
 	def __init__(self, basedir):
 		self.basedir = basedir
 		self.dictionary = {}
+
 
 	def extract_from_tpl(self,relpath,filename):
 		filepath = os.path.join(self.basedir, relpath)
@@ -294,14 +305,21 @@ def translate_po(file, sl, tl):
 			openfile.save()
 	openfile.save()
 
+def autotranslate(in_pofile):
+	to_lang = re.findall(".*bilbo_(.*)\\.po$",in_pofile)[0]
+	from_lang = "en"
+	print('Translating english to %s' %(to_lang))
+	translate_po(in_pofile, "en", to_lang)
+	print('Translation done')
+
 
 if __name__ == "__main__":
 
 	if len(sys.argv) == 3:
 		action = sys.argv[1]
-		bilbodir = sys.argv[2]
+		bilbodir = os.path.abspath(sys.argv[2])
 
-		if not os.path.isdir(bilbodir):
+		if not action == "autotranslate" and not os.path.isdir(bilbodir):
 			print "%s is not a directory" % bilbodir
 			exit()
 
@@ -326,23 +344,12 @@ if __name__ == "__main__":
 		elif action == "compile":
 			compile(bilbodir)
 
+		elif action == "autotranslate":
+			autotranslate(bilbodir)
+
 		elif action == "help":
 			print helpmsg
 		
-		else:
-			print "unknown action\n"
-			print helpmsg
-			exit()
-
-	elif len(sys.argv) == 5:
-		action = sys.argv[1]
-		if action == "autotranslate":
-			in_pofile = os.path.abspath(sys.argv[2])
-			from_lang = sys.argv[3]
-			to_lang = sys.argv[4]
-			print('Translating %s to %s' %(from_lang,  to_lang))
-			translate_po(in_pofile, from_lang, to_lang)
-			print('Translation done')
 		else:
 			print "unknown action\n"
 			print helpmsg

@@ -207,7 +207,7 @@ $(document).ready(function($) {
 			
 			// Generation des div			
 			var content = $(document.createElement('div')).addClass('preview_div');
-			var header = $(document.createElement('p')).addClass('preview_header').text($options.text.preview+':');;
+			var header = $(document.createElement('p')).addClass('preview_header').text($options.text.preview+':');
 			var message = $(document.createElement('div')).addClass('preview_message');
 			var footer = $(document.createElement('div')).addClass('preview_footer');
 			
@@ -286,5 +286,35 @@ $(document).ready(function($) {
 		}
 
 	});
+	
+	/************************************************/
+	/* Flash Box									*/
+	/************************************************/
+	$.fn.flashmsg = function() {
+		var flash_class = $(this).attr('class');
+		var flash_content = $(this).html();
+		var flash_overlay = $(document.createElement('div')).css({
+			display: 'none'
+		}).attr('class','flash_overlay').attr('id', 'flash_overlay');
+		
+		var flash_box = $(document.createElement('div')).attr('class', 'flash_box').attr('id', 'flash_box').addClass(flash_class);
+		$(flash_box).html('<a class="flash_box_close" id="flash_box_close"></a>\n'+$(this).html());
+
+		$('body').append(flash_overlay).append(flash_box);
+				
+		$('#flash_overlay').fadeIn('fast',function(){
+			$('#flash_box').animate({'top':'160px'},500);
+		});
+		
+		$('#flash_box_close, input[type="button"], input[type="submit"]').click(function(){
+			$('#flash_box').animate({'top':'-200px'},500,function(){
+				$('#flash_overlay').fadeOut('fast');
+				flash_class.empty;
+				flash_content.empty;
+				flash_box.remove();
+				flash_overlay.remove();
+			});
+		});
+	};
 	
 })

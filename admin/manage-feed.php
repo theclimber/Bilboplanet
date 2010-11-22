@@ -140,7 +140,7 @@ if ($blog_settings->get('planet_moderation')) {
 }
 
 echo 
-'<div class="button br3px"><input type="reset" class="reset" name="reset" onClick="this.form.reset()" value="'.T_('Reset').'"></div>&nbsp;&nbsp;'.
+'<div class="button br3px"><input type="reset" class="reset" name="reset" value="'.T_('Reset').'"></div>&nbsp;&nbsp;'.
 '<div class="button br3px"><input type="submit" name="add_feed" class="valide" value="'.T_('Add').'" /></div>'.
 '<div class="button br3px close-button"><a class="close" onclick="jQuery(\'#addfeed-field\').css(\'display\', \'none\')">'.T_('Close').'</a></div>'.
 '</form>';

@@ -136,10 +136,10 @@ if(isset($_POST['action'])) {
 				$output .= "<li>".$value."</li>";
 			}
 			$output .= "</ul>";
-			print '<div class="flash error">'.$output.'</div>';
+			print '<div class="flash_error">'.$output.'</div>';
 		}
 		else {
-			print '<div class="flash notice">'.$output.'</div>';
+			print '<div class="flash_notice">'.$output.'</div>';
 		}
 		break;
 
@@ -196,10 +196,10 @@ if(isset($_POST['action'])) {
 				$output .= "<li>".$value."</li>";
 			}
 			$output .= "</ul>";
-			print '<div class="flash error">'.$output.'</div>';
+			print '<div class="flash_error">'.$output.'</div>';
 		}
 		else {
-			print '<div class="flash notice">'.$output.'</div>';
+			print '<div class="flash_notice">'.$output.'</div>';
 		}
 		break;
 
@@ -218,7 +218,7 @@ if(isset($_POST['action'])) {
 		}
 		$cur->update("WHERE feed_id = '$feed_id'");
 
-		print '<div class="flash notice">'.T_('Feed status toggled').'</div>';
+		print '<div class="flash_notice">'.T_('Feed status toggled').'</div>';
 		break;
 
 ##########################################################
@@ -236,7 +236,7 @@ if(isset($_POST['action'])) {
 		}
 		$cur->update("WHERE feed_id = '$feed_id'");
 
-		print '<div class="flash notice">'.T_('Feed trust changed').'</div>';
+		print '<div class="flash_notice">'.T_('Feed trust changed').'</div>';
 		break;
 
 ##########################################################
@@ -253,19 +253,20 @@ if(isset($_POST['action'])) {
 		$confirmation .= "<form id='removeFeedConfirm_form'><input type='hidden' name='feed_id' value='".$feed_id."'/>";
 		$confirmation .= "<div class='button br3px'><input class='notvalide' type='button' onclick=\"javascript:$('#flash-msg').html('')\" value='".T_('Reset')."'/></div>&nbsp;&nbsp;";
 		$confirmation .= "<div class='button br3px'><input class='valide' type='submit' name='confirm' value='".T_('Confirm')."'/></div></form></p>";
-		print '<div class="flash error">'.$confirmation.'</div>';
+		print '<div class="flash_warning">'.$confirmation.'</div>';
 		break;
 
 ##########################################################
 # CONFIRM REMOVE FEED
 ##########################################################
 	case 'removeConfirm':
+		sleep(1);
 		$feed_id = trim($_POST['feed_id']);
 		$rs2 = $core->con->select("SELECT * FROM ".$core->prefix."feed WHERE feed_id = '$feed_id'");
 		$core->con->execute("DELETE FROM ".$core->prefix."post WHERE feed_id ='$feed_id'");
 		$core->con->execute("DELETE FROM ".$core->prefix."feed WHERE feed_id ='$feed_id'");
 
-		print '<div class="flash notice">'.sprintf(T_("Delete of feed %s succeeded"),$rs2->f('feed_url')).'</div>';
+		print '<div class="flash_notice">'.sprintf(T_("Delete of feed %s succeeded"),$rs2->f('feed_url')).'</div>';
 		break;
 
 ##########################################################
@@ -326,7 +327,7 @@ if(isset($_POST['action'])) {
 		break;
 
 	default:
-		print '<div class="flash error">'.T_('User bad call').'</div>';
+		print '<div class="flash_error">'.T_('User bad call').'</div>';
 		break;
 	}
 } else {

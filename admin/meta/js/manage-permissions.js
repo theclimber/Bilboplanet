@@ -24,7 +24,8 @@ function updateUserList(num_page, nb_items) {
 					success: function(msg){
 						updateUserList();
 						$('#flash-msg').removeClass('ajax-loading');
-						$('#flash-msg').html(msg);
+						$('#flash-log').css('display', 'none');
+						$(msg).flashmsg();
 					}
 				});
 				return false;
@@ -51,7 +52,8 @@ function toggleUserRole(nb, user_id, num_page, nb_items) {
 			data : {'ajax' : 'permissions', 'action' : 'toggleRole', 'user_id' : user_id, 'user_role' : user_role},
 			success: function(msg){
 				$('#flash-msg').removeClass('ajax-loading');
-				$('#flash-msg').html(msg);
+				$('#flash-log').css('display', 'none');
+				$(msg).flashmsg();
 				updateUserList(num_page, nb_items);
 			}
 		});
@@ -90,7 +92,8 @@ function toggleUserPermission(nb, user_id, num_page, nb_items) {
 			},
 		success: function(msg){
 			$('#flash-msg').removeClass('ajax-loading');
-			$('#flash-msg').html(msg);
+			$('#flash-log').css('display', 'none');
+			$(msg).flashmsg();
 			updateUserList(num_page, nb_items);
 		}
 	});

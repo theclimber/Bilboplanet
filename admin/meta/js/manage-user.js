@@ -10,6 +10,7 @@ $(document).ready(function() {
 			success: function(msg){
 				$('#flash-msg').removeClass('ajax-loading');
 				$("#users-list").html(msg);
+				$('#filteruser-field').css('display', 'none');
 			}
 		});
 		return false;
@@ -24,9 +25,12 @@ $(document).ready(function() {
 			url: "api/",
 			data: 'ajax=user&action=add&'+data,
 			success: function(msg){
+				$('#adduser-field').css('display', 'none');
+				$('#adduser_form').find('input[type=text], input[type=password]').val('');
 				updateUserList();
 				$('#flash-msg').removeClass('ajax-loading');
-				$('#flash-msg').html(msg);
+				$('#flash-log').css('display', 'none');
+				$(msg).flashmsg();
 			}
 		});
 		return false;
@@ -58,7 +62,8 @@ function toggleUserStatus(user_id, num_page, nb_items) {
 		data : {'ajax' : 'user', 'action' : 'toggle', 'user_id' : user_id},
 		success: function(msg){
 			$('#flash-msg').removeClass('ajax-loading');
-			$('#flash-msg').html(msg);
+			$('#flash-log').css('display', 'none');
+			$(msg).flashmsg();
 			updateUserList(num_page, nb_items);
 		}
 	});
@@ -73,27 +78,32 @@ function removeUser(user_id, num_page, nb_items) {
 		url: "api/",
 		data : {'ajax' : 'user', 'action' : 'remove', 'user_id' : user_id},
 		success: function(msg){
+			$('#flash-msg').html('');
 			$('#flash-msg').removeClass('ajax-loading');
-			$('#flash-msg').html(msg);
+			$('#flash-log').css('display','none');
+			$(msg).flashmsg();
 			$('#removeConfirm_form').submit(function() {
-				var data = $('#removeConfirm_form').serialize();
 				$('#flash-log').css('display','');
 				$('#flash-msg').addClass('ajax-loading');
 				$('#flash-msg').html('Loading');
+				var data = $('#removeConfirm_form').serialize().split('=');
 				$.ajax({
 					type: "POST",
 					url: "api/",
-					data: 'ajax=user&action=removeConfirm&'+data,
+					data : {'ajax' : 'user', 'action' : 'removeConfirm', 'user_id' : data[1]},
 					success: function(msg){
-						updateUserList(num_page, nb_items);
+						$('#flash-msg').html('');
 						$('#flash-msg').removeClass('ajax-loading');
-						$('#flash-msg').html(msg);
+						$('#flash-log').css('display', 'none');
+						updateUserList(num_page, nb_items);
+						$(msg).flashmsg();
 					}
 				});
 				return false;
 			});
 		}
 	});
+	return false;
 }
 
 function removeSite(site_id, num_page, nb_items) {
@@ -105,21 +115,25 @@ function removeSite(site_id, num_page, nb_items) {
 		url: "api/",
 		data : {'ajax' : 'site', 'action' : 'remove', 'site_id' : site_id},
 		success: function(msg){
+			$('#flash-msg').html('');
 			$('#flash-msg').removeClass('ajax-loading');
-			$('#flash-msg').html(msg);
+			$('#flash-log').css('display','none');
+			$(msg).flashmsg();
 			$('#removeSiteConfirm_form').submit(function() {
-				var data = $('#removeSiteConfirm_form').serialize();
 				$('#flash-log').css('display','');
 				$('#flash-msg').addClass('ajax-loading');
 				$('#flash-msg').html('Loading');
+				var data = $('#removeSiteConfirm_form').serialize().split('=');
 				$.ajax({
 					type: "POST",
 					url: "api/",
-					data: 'ajax=site&action=removeConfirm&'+data,
+					data : {'ajax' : 'site', 'action' : 'removeConfirm', 'site_id' : data[1]},
 					success: function(msg){
-						updateUserList(num_page, nb_items);
+						$('#flash-msg').html('');
 						$('#flash-msg').removeClass('ajax-loading');
-						$('#flash-msg').html(msg);
+						$('#flash-log').css('display','none');
+						updateUserList(num_page, nb_items);
+						$(msg).flashmsg();
 					}
 				});
 				return false;
@@ -138,9 +152,7 @@ function profile(user_id, num_page, nb_items) {
 		url: "api/",
 		data: {'ajax' : 'user', 'action' : 'profile', 'user_id' : user_id},
 		dataType: 'json',
-		success: function(user){
-			$('#flash-msg').removeClass('ajax-loading');
-			
+		success: function(user){			
 			$('#user-edit-form #euser_id').val(user.user_id);
 			$('#user-edit-form #euser_id').attr('disabled', 'true');
 			$('#user-edit-form #efullname').val(unescape(user.user_fullname));
@@ -161,7 +173,9 @@ function profile(user_id, num_page, nb_items) {
 						$('#user-edit-form #efullname').val('');
 						$('#user-edit-form #eemail').val('');
 						updateUserList(num_page, nb_items);
-						$("#flash-msg").html(msg);
+						$('#flash-msg').removeClass('ajax-loading');
+						$('#flash-log').css('display', 'none');
+						$(msg).flashmsg();
 					}
 				});
 			}, {
@@ -194,7 +208,8 @@ function addSite(user_id, num_page, nb_items) {
 			success: function(msg){
 				$('#add-site-form #suser_id').removeAttr('disabled');
 				$('#flash-msg').removeClass('ajax-loading');
-				$("#flash-msg").html(msg);
+				$('#flash-log').css('display', 'none');
+				$(msg).flashmsg();
 				$('#add-site-form #suser_id').removeAttr('disabled');
 				$('#add-site-form #suser_id').val('');
 				updateUserList(num_page, nb_items);

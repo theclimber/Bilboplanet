@@ -110,7 +110,16 @@ include_once(dirname(__FILE__).'/sidebar.php');
 <div id="BP_page" class="page">
 	<div class="inpage">
 
-<?php if (!empty($flash)) echo '<div class="flash '.$flash['type'].'">'.$flash['msg'].'</div>';?>
+<?php
+if (!empty($flash)) {
+	 echo '<script type="text/javascript">
+	$(document).ready(function() {
+		var msg = "<div class=\"flash_'.$flash['type'].'\">'.$flash['msg'].'</div>";
+		$(msg).flashmsg();
+	});
+</script>';
+}
+?>
 
 <fieldset><legend><?php echo T_('Filtering of the posts');?></legend>
 		<div class="message">

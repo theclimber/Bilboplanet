@@ -9,6 +9,7 @@ $(document).ready(function() {
 			data: 'ajax=feed&action=filter&'+data,
 			success: function(msg){
 				$('#flash-msg').removeClass('ajax-loading');
+				$('#flash-log').css('display', 'none');
 				$("#feed-list").html(msg);
 			}
 		});
@@ -24,9 +25,15 @@ $(document).ready(function() {
 			url: "api/",
 			data: 'ajax=feed&action=add&'+data,
 			success: function(msg){
+				$('#addfeed-field').css('display', 'none');
+				$('#addfeed_form').find('input[type=text]').val('');
+				$('#user_id').val('');
+				$('#site_id').val('');
 				updateFeedList();
+				$('#flash-msg').html('');
 				$('#flash-msg').removeClass('ajax-loading');
-				$('#flash-msg').html(msg);
+				$('#flash-log').css('display', 'none');
+				$(msg).flashmsg();
 			}
 		});
 		return false;
@@ -78,8 +85,9 @@ function toggleFeedStatus(feed_id, num_page, nb_items) {
 		data : {'ajax' : 'feed', 'action' : 'toggle', 'feed_id' : feed_id},
 		success: function(msg){
 			$('#flash-msg').removeClass('ajax-loading');
-			$('#flash-msg').html(msg);
+			$('#flash-log').css('display', 'none');
 			updateFeedList(num_page, nb_items);
+			$(msg).flashmsg();
 		}
 	});
 }
@@ -94,8 +102,9 @@ function toggleFeedTrust(feed_id, num_page, nb_items) {
 		data : {'ajax' : 'feed', 'action' : 'change-trust', 'feed_id' : feed_id},
 		success: function(msg){
 			$('#flash-msg').removeClass('ajax-loading');
-			$('#flash-msg').html(msg);
+			$('#flash-log').css('display', 'none');
 			updateFeedList(num_page, nb_items);
+			$(msg).flashmsg();
 		}
 	});
 }
@@ -110,20 +119,23 @@ function removeFeed(feed_id, num_page, nb_items) {
 		data : {'ajax' : 'feed', 'action' : 'remove', 'feed_id' : feed_id},
 		success: function(msg){
 			$('#flash-msg').removeClass('ajax-loading');
-			$('#flash-msg').html(msg);
+			$('#flash-msg').html('');
+			$(msg).flashmsg();
 			$('#removeFeedConfirm_form').submit(function() {
-				var data = $('#removeFeedConfirm_form').serialize();
-				$('#flash-log').css('display','');
+				var data = $('#removeFeedConfirm_form').serialize().split('=');
 				$('#flash-msg').addClass('ajax-loading');
 				$('#flash-msg').html('Loading');
 				$.ajax({
 					type: "POST",
 					url: "api/",
-					data: 'ajax=feed&action=removeConfirm&'+data,
+					data : {'ajax' : 'feed', 'action' : 'removeConfirm', 'feed_id' : data[1]},
 					success: function(msg){
 						updateFeedList(num_page, nb_items);
 						$('#flash-msg').removeClass('ajax-loading');
-						$('#flash-msg').html(msg);
+						$('#flash-msg').html('');
+						$('#flash-log').css('display', 'none');
+						updateFeedList(num_page, nb_items);
+						$(msg).flashmsg();
 					}
 				});
 				return false;
@@ -141,9 +153,7 @@ function edit(feed_id, num_page, nb_items) {
 		url: "api/",
 		data: {'ajax' : 'feed', 'action' : 'get', 'feed_id' : feed_id},
 		dataType: 'json',
-		success: function(feed){
-			$('#flash-msg').removeClass('ajax-loading');
-			
+		success: function(feed){			
 			$('#feed-edit-form #ef_id').val(feed.feed_id);
 			$('#feed-edit-form #ef_user_id').val(feed.user_id);
 			$('#feed-edit-form #ef_user_id').attr('disabled', 'true');
@@ -164,8 +174,10 @@ function edit(feed_id, num_page, nb_items) {
 						$('#feed-edit-form #ef_id').val('');
 						$('#feed-edit-form #ef_name').val('');
 						$('#feed-edit-form #ef_url').val('');
+						$('#flash-msg').removeClass('ajax-loading');
+						$('#flash-log').css('display', 'none');
 						updateFeedList(num_page, nb_items);
-						$("#flash-msg").html(msg);
+						$(msg).flashmsg();
 					}
 				});
 			}, {

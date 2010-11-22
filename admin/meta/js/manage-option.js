@@ -62,7 +62,7 @@ function updateopt() {
 		cache: false,
 		success: function(msg){
 			$('#options-loading').hide();
-			$('#flash-msg').html(msg);
+			$(msg).flashmsg();
 			listopt();
 		}
 	});

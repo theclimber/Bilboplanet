@@ -106,22 +106,17 @@ if(isset($_POST) && isset($_POST['action'])) {
 				$flash[] = array('type' => 'error', 'msg' => T_("Only numeric value are allowed for number of posts by page"));
 			}
 			
-			if (isset($_POST['subscription'])) {
+			if (isset($_POST['subscription']) && !empty($_POST['subscription_content'])) {
 				$blog_settings->put('planet_subscription', '1', "boolean");
+				$subscription_content = htmlentities(stripslashes(trim($_POST['subscription_content'])), ENT_QUOTES, 'UTF-8');
+				$blog_settings->put('planet_subscription_content', $subscription_content, "string");
+			}
+			elseif (isset($_POST['subscription']) && empty($_POST['subscription_content'])){
+				$flash[] = array('type' => 'error', 'msg' => T_("Subscription page content can not be empty"));
 			}
 			else {
 				$blog_settings->put('planet_subscription', '0', "boolean");
 			}
-			
-			if(!empty($_POST['subscription_content'])) {
-				$subscription_content = htmlentities(stripslashes(trim($_POST['subscription_content'])), ENT_QUOTES, 'UTF-8');
-				$blog_settings->put('planet_subscription_content', $subscription_content, "string");
-			}
-			else {
-				$flash[] = array('type' => 'error', 'msg' => T_("Subscription page content can not be empty"));
-			}
-			
-			sleep (2);
 			
 			if (!empty($flash)) {
 				$output = '<ul>';
@@ -129,11 +124,11 @@ if(isset($_POST) && isset($_POST['action'])) {
 					$output .= "<li>".$value['msg']."</li>";
 				}
 				$output .= '</ul>';
-				print '<div class="flash error">'.$output.'</div>';
+				print '<div class="flash_error">'.$output.'</div>';
 			}
 			else {
 				$output = T_("Modification succeeded");
-				print '<div class="flash notice">'.$output.'</div>';
+				print '<div class="flash_notice">'.$output.'</div>';
 			}
 			break;
 ######################################
@@ -164,6 +159,7 @@ if(isset($_POST) && isset($_POST['action'])) {
 			$nb_posts_page = $blog_settings->get('planet_nb_post');
 			$subscription = $blog_settings->get('planet_subscription');
 			$subscription_content = html_entity_decode(stripslashes($blog_settings->get('planet_subscription_content')), ENT_QUOTES, 'UTF-8');
+			#$subscription_content = html_encode_code_tags($subscription_content);
 			
 			# Build an array of available theme
 			$theme_path = dirname(__FILE__)."/../../themes/";
@@ -397,6 +393,7 @@ if(isset($_POST) && isset($_POST['action'])) {
 			$nb_posts_page = $blog_settings->get('planet_nb_post');
 			$subscription = $blog_settings->get('planet_subscription');
 			$subscription_content = html_entity_decode(stripslashes($blog_settings->get('planet_subscription_content')), ENT_QUOTES, 'UTF-8');
+			$subscription_content = html_encode_code_tags($subscription_content);
 			
 			$output = "";
 			$output .= '<table id="tbl1" class="table-news">
@@ -512,6 +509,6 @@ if(isset($_POST) && isset($_POST['action'])) {
 }
 else {
 	$output = T_("Nothing to do");
-	print '<div class="flash notice">'.$output.'</div>';
+	print '<div class="flash_warning">'.$output.'</div>';
 }
 ?>

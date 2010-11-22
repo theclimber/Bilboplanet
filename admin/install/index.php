@@ -197,6 +197,9 @@ if ($can_install && !empty($_POST))
 		$blog_settings->put('planet_url', $planet_url, "string");
 		$blog_settings->put('planet_desc', $p_desc, "string");
 		$blog_settings->put('planet_lang', $p_lang, "string");
+		if($p_lang == "ar") {
+			$blog_settings->put('planet_rtl', '1', "boolean");
+		}
 		$blog_settings->put('planet_version', $p_version, "string");
 		$blog_settings->put('planet_log', 'notice', "string");
 		$blog_settings->put('planet_theme', 'gil-galad', "string");

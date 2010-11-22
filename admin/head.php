@@ -31,6 +31,14 @@
 	<title><?php echo T_('Administration');?> - <?php echo $blog_settings->get('planet_title'); ?></title>
 	<link rel="shortcut icon" type="image/png" href="./meta/icons/fire.png" />
     <link rel="stylesheet" type="text/css" href="meta/css/styles.css" media="all" />
+<?php
+if ($blog_settings->get('planet_rtl')) {
+?>
+    <link rel="stylesheet" type="text/css" href="meta/css/styles-rtl.css" media="all" />
+
+<?php
+}
+?>
     <link rel="stylesheet" type="text/css" href="meta/css/boxy.css" media="all" />
 	<script type="text/javascript" src="meta/js/ed.js"></script>
 	<script type="text/javascript" src="meta/js/jquery-1.4.2.min.js"></script>

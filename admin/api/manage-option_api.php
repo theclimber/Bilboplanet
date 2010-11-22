@@ -49,7 +49,14 @@ if(isset($_POST) && isset($_POST['action'])) {
 			}
 			
 			$blog_settings->put('planet_theme', trim($_POST['theme']), "string");
-			$blog_settings->put('planet_lang', trim($_POST['lang']), "string");
+
+			$lang = trim($_POST['lang']);
+			$blog_settings->put('planet_lang', $lang, "string");
+			if ($lang == 'ar') {
+				$blog_settings->put('planet_rtl', '1', 'boolean');
+			} else {
+				$blog_settings->put('planet_rtl', '0', 'boolean');
+			}
 
 			if (!empty($_POST['msg_info'])) {
 				$msg_info = htmlentities(stripslashes(trim($_POST['msg_info'])), ENT_QUOTES, 'UTF-8');

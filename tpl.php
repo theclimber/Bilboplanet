@@ -28,6 +28,19 @@
 $params = array(
 	'title'=>$blog_settings->get('planet_title')
 	);
+#######################
+# RENDER MENU
+#######################
+if ($blog_settings->get('planet_vote')) {
+	$core->tpl->render('menu.votes');
+}
+if ($blog_settings->get('planet_contact_page')) {
+	$core->tpl->render('menu.contact');
+}
+if ($blog_settings->get('planet_subscription')) {
+	$core->tpl->render('menu.subscription');
+}
+
 
 #######################
 # RENDER SIDEBAR

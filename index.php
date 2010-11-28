@@ -78,9 +78,21 @@ if (isset($_GET)) {
 	}
 	if (isset($_GET['post_id']) && !empty($_GET['post_id'])){
 		$params["post_id"] = $_GET['post_id'];
-		$res = $core->con->select("SELECT post_title FROM ".$core->prefix."post WHERE post_id = ".$params["post_id"]);
+		$res = $core->con->select("SELECT post_title, post_permalink FROM ".$core->prefix."post WHERE post_id = ".$params["post_id"]);
 		if (!$res->isEmpty) {
 			$params['title'] .= " - ".$res->f('post_title');
+		}
+		if (isset($_GET['go']) &&
+			!empty($_GET['go']) &&
+			$_GET['go'] == "external" &&
+			!$res->isEmpty()){
+				if($blog_settings->get('planet_ganalytics')) {
+					ga(
+						$blog_settings->get('planet_ganalytics'),
+						'/post_id/'.$params['post_id'],
+						$res->post_title);
+				}
+				http::redirect($res->post_permalink);
 		}
 
 		# Complete the SQL query

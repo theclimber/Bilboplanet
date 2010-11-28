@@ -25,6 +25,30 @@
 ?>
 <?php
 #----------------------------------#
+#   Fonction Goolge Analytics      #
+#----------------------------------#
+
+function ga($gaid,$url,$name) {
+	global $blog_settings;
+	$var_utmac=$gaid; //enter the new urchin code
+	$var_utmhn=$blog_settings->get('planet_url'); //enter your domain
+	$var_utmn=rand(1000000000,9999999999);//random request number
+	$var_cookie=rand(10000000,99999999);//random cookie number
+	$var_random=rand(1000000000,2147483647); //number under 2147483647
+	$var_today=time(); //today
+	$var_referer=$_SERVER['HTTP_REFERER']; //referer url
+
+	$var_uservar=$blog_settings->get('planet_title')." - ".$name." - ".$type; //enter your own user defined variable
+	$var_utmp=$url; //this example adds a fake page request to the (fake) rss directory (the viewer IP to check for absolute unique RSS readers)
+
+	$urchinUrl='http://www.google-analytics.com/__utm.gif?utmwv=1&utmn='.$var_utmn.'&utmsr=-&utmsc=-&utmul=-&utmje=0&utmfl=-&utmdt=-&utmhn='.$var_utmhn.'&utmr='.$var_referer.'&utmp='.$var_utmp.'&utmac='.$var_utmac.'&utmcc=__utma%3D'.$var_cookie.'.'.$var_random.'.'.$var_today.'.'.$var_today.'.'.$var_today.'.2%3B%2B__utmb%3D'.$var_cookie.'%3B%2B__utmc%3D'.$var_cookie.'%3B%2B__utmz%3D'.$var_cookie.'.'.$var_today.'.2.2.utmccn%3D(direct)%7Cutmcsr%3D(direct)%7Cutmcmd%3D(none)%3B%2B__utmv%3D'.$var_cookie.'.'.$var_uservar.'%3B';
+
+	$handle = fopen ($urchinUrl, "r");
+	$test = fgets($handle);
+	fclose($handle);
+}
+
+#----------------------------------#
 #   Fonction de gestion du cache   #
 #----------------------------------#
 
@@ -153,11 +177,19 @@ function showPosts($rs, $tpl, $search_value="", $strip_tags=false) {
 
 	while($rs->fetch()){
 
+		$post_permalink = $rs->permalink;
+		if ($blog_settings->get('internal_links')) {
+			$post_permalink = $blog_settings->get('planet_url').
+				"/index.php?post_id=".$rs->post_id.
+				"&go=external";
+			print $post_permalink;
+		}
+
 		$post = array(
 			"id" => $rs->post_id,
 			"date" => mysqldatetime_to_date("d/m/Y",$rs->pubdate),
 			"hour" => mysqldatetime_to_date("H:i",$rs->pubdate),
-			"permalink" => urldecode($rs->permalink),
+			"permalink" => urldecode($post_permalink),
 			"title" => html_entity_decode($rs->title, ENT_QUOTES, 'UTF-8'),
 			"content" => html_entity_decode($rs->content, ENT_QUOTES, 'UTF-8'),
 			"author_id" => $rs->user_id,

@@ -25,6 +25,14 @@
 ?><?php
 if(isset($_POST) && isset($_POST['action'])) {
 	
+
+	// TODO : Ajouter le support de 2 options:
+	//  planet_ganalytics : qui est l'id pour un compte google-analytics 
+	//		(s'il est inséré, alors google-analytics est activé)
+	//  internal_links : booléen qui permet d'orienter le surfeur sur le
+	//		planet a chaque lien (compteur de clics)
+
+
 	switch (trim($_POST['action'])){
 ######################################
 # Update Options

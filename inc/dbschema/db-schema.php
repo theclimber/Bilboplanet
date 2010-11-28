@@ -71,6 +71,8 @@ $_s->post
 	->post_content	('text',		255,true, null)
 	->post_status	('smallint',	0,	false, 1)
 	->post_score	('integer',		0,	false, 0)
+	->post_nbview	('integer',		0,	false, 0)
+	->last_viewed	('timestamp',	0,	true, null)
 	->created		('timestamp',	0,	true, 'now()')
 	->modified		('timestamp',	0,	true, 'now()')
 	

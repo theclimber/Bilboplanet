@@ -182,7 +182,6 @@ function showPosts($rs, $tpl, $search_value="", $strip_tags=false) {
 			$post_permalink = $blog_settings->get('planet_url').
 				"/index.php?post_id=".$rs->post_id.
 				"&go=external";
-			print $post_permalink;
 		}
 
 		$post = array(

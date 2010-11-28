@@ -78,15 +78,27 @@ if (isset($_GET)) {
 	}
 	if (isset($_GET['post_id']) && !empty($_GET['post_id'])){
 		$params["post_id"] = $_GET['post_id'];
-		$res = $core->con->select("SELECT post_title, post_permalink FROM ".$core->prefix."post WHERE post_id = ".$params["post_id"]);
+		$res = $core->con->select(
+			"SELECT
+				post_title, post_permalink, post_nbview
+			FROM ".$core->prefix."post WHERE post_id = ".$params["post_id"]);
 		if (!$res->isEmpty) {
 			$params['title'] .= " - ".$res->f('post_title');
 		}
+
+		# Update the number of viewed times
+		$cur = $core->con->openCursor($core->prefix.'post');
+		$cur->post_nbview = $res->post_nbview + 1;
+		$cur->last_viewed = array('NOW()');
+		$cur->update("WHERE post_id = '".$params['post_id']."'");
+
 		if (isset($_GET['go']) &&
 			!empty($_GET['go']) &&
 			$_GET['go'] == "external" &&
-			!$res->isEmpty()){
+			!$res->isEmpty() &&
+			$blog_settings->get('internal_links')){
 				if($blog_settings->get('planet_ganalytics')) {
+					# If google analytics is activated, launch request
 					ga(
 						$blog_settings->get('planet_ganalytics'),
 						'/post_id/'.$params['post_id'],

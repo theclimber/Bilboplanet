@@ -38,6 +38,7 @@ header('Content-type: text/html; charset=utf-8');
 
 # On recupere les infomations des articles
 $sql = "SELECT
+			".$core->prefix."post.post_id as post_id,
 			user_fullname as fullname,
 			post_pubdate as pubdate,
 			post_title,
@@ -54,6 +55,7 @@ $iter = 0;
 while ($rs->fetch()) {
 	$current_month = date('n', mysqldatetime_to_timestamp($rs->pubdate));
 	$post = array(
+			"post_id" => $rs->post_id,
 			"permalink" => $rs->permalink,
 			"fullname" => $rs->fullname,
 			"title" => htmlspecialchars_decode($rs->post_title),

@@ -61,6 +61,16 @@
 					{$html}
 				<!-- END content.html -->
 
+				<!-- BEGIN content.404 -->
+				<div id="content" class="pages">
+					<center>
+					<h3>{$error.title}</h3>
+					<img src="themes/{$planet.theme}/images/404.png">
+					<p>{$error.text}</p>
+					</center>
+				</div>
+				<!-- END content.404 -->
+
 				<!-- BEGIN content.subscription -->
 					{!include:'subscription.tpl'}
 				<!-- END content.subscription -->

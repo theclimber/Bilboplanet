@@ -29,13 +29,11 @@ include dirname(__FILE__).'/tpl.php';
 header('Content-type: text/html; charset=utf-8');
 
 $core->tpl->setVar('params', array('title' => '404 Error'));
-$core->tpl->setVar('html', '
-	<div id="content" class="pages">
-	<center>
-	<h3>'.T_('Error 404').'</h3>
-	<img src="themes/'.$blog_settings->get('planet_theme').'/images/404.png">
-	<p>'.T_("Page not found").'</p>
-	</center></div>');
-$core->tpl->render('content.html');
+$error = array(
+	"title" => T_('404 Error'),
+	"text" => T_("Page not found")
+);
+$core->tpl->setVar("error", $error);
+$core->tpl->render('content.404');
 echo $core->tpl->render();
 ?>

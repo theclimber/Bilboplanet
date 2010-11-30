@@ -70,7 +70,7 @@ if (isset($_GET)) {
 		$params["search"] = $_GET['search'];
 
 		# Complete the SQL query
-		$search_value = addslashes(trim($_GET['search']));
+		$search_value = mysql_real_escape_string($_GET['search']);
 		$debut_sql = $debut_sql." AND (".$core->prefix."post.post_title LIKE '%$search_value%'
 			OR ".$core->prefix."post.post_permalink LIKE '%$search_value%'
 			OR ".$core->prefix."post.post_content LIKE '%$search_value%'

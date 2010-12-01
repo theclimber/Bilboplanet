@@ -121,7 +121,6 @@ if (isset($_GET) && isset($_GET['type'])) {
 	
 	# Execute SQL request
 	$post_list = $core->con->select($sql);
-	$liste_articles = mysql_query(trim($sql)) or die("Error with request $sql : ".mysql_error());
 	$planet_desc = convert_chars(html_entity_decode(stripslashes($blog_settings->get('planet_desc')), ENT_QUOTES, 'UTF-8'));
 	
 	# Head of XML document

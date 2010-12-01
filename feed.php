@@ -42,6 +42,9 @@ function convert_chars($string) {
 
 # Function to split string only on space char
 function split_space ($string, $len) {
+	if (empty($string)) {
+		return 0;
+	}
 	
 	$search_space = substr($string, $len, 1);
 	while ($search_space != " ") {

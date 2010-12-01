@@ -176,8 +176,14 @@ if (isset($_GET) && isset($_GET['type'])) {
 		$titre = convert_iso_special_html_char(html_entity_decode(html_entity_decode($post_list->post_title, ENT_QUOTES, 'UTF-8'), ENT_QUOTES, 'UTF-8'));
 		$nom = convert_iso_special_html_char(html_entity_decode(html_entity_decode($post_list->user_fullname, ENT_QUOTES, 'UTF-8'), ENT_QUOTES, 'UTF-8'));
 		$item = convert_iso_special_html_char(html_entity_decode(html_entity_decode($post_list->post_content, ENT_QUOTES, 'UTF-8'), ENT_QUOTES, 'UTF-8'));
+
 		$url = $post_list->post_permalink;
-		
+		if ($blog_settings->get('internal_links')) {
+			$url = $blog_settings->get('planet_url').
+				"/index.php?post_id=".$rs->post_id.
+				"&go=external";
+		}
+
 		# Other link
 		$links =  '<br/><i>'.sprintf('Original post of <a href="%s" title="Visit the source">%s</a>.',$url, $nom);
 		$links .= '<br/>'.sprintf(T_('Vote for this post on <a href="%s" title="Go on the planet">%s</a>.'),$blog_settings->get('planet_url'), $blog_settings->get('planet_title')).'</i>';

@@ -52,6 +52,18 @@ function short_str( $str, $len, $cut = true ) {
 	}
 }
 
+function uuid($key = null, $prefix = '') {
+	$key = ($key == null)? uniqid(rand()) : $key;
+	$chars = md5($key);
+	$uuid  = substr($chars,0,8) . '-';
+	$uuid .= substr($chars,8,4) . '-';
+	$uuid .= substr($chars,12,4) . '-';
+	$uuid .= substr($chars,16,4) . '-';
+	$uuid .= substr($chars,20,12);
+
+	return $prefix . $uuid;
+}
+
 # Check content of $_GET
 if (isset($_GET) && isset($_GET['type'])) {
 	if ($_GET['type']=="rss"){
@@ -149,13 +161,18 @@ if (isset($_GET) && isset($_GET['type'])) {
 	}
 	elseif($_GET['type']=="atom") {
 	#Header of Atom Content
+		$authority = parse_url($blog_settings->get('planet_url'));
+		$authority = $authority['host'];
+
 ?>
 	<feed xmlns="http://www.w3.org/2005/Atom">
 	
 		<title><?php echo $title; ?></title>
 		<subtitle type="text"><?php echo $planet_desc; ?></subtitle>
 		<updated><?php echo date('c') ?></updated>
-		<id><?php echo $blog_settings->get('planet_url'); ?></id>
+		<id>tag:<?php 
+		echo $authority.','.date('Y').':'.$blog_settings->get('planet_url');
+		?></id>
 		<author>
 			<name><?php echo $blog_settings->get('author'); ?></name>
 			<email><?php echo strtolower($blog_settings->get('author_mail')); ?></email>
@@ -179,55 +196,56 @@ if (isset($_GET) && isset($_GET['type'])) {
 		$url = $post_list->post_permalink;
 		if ($blog_settings->get('internal_links')) {
 			$url = $blog_settings->get('planet_url').
-				"/index.php?post_id=".$rs->post_id.
+				"/index.php?post_id=".$post_list->post_id.
 				"&go=external";
 		}
+	$id = uuid($url, 'urn:uuid:');
 
-		# Other link
-		$links =  '<br/><i>'.sprintf('Original post of <a href="%s" title="Visit the source">%s</a>.',$url, $nom);
-		$links .= '<br/>'.sprintf(T_('Vote for this post on <a href="%s" title="Go on the planet">%s</a>.'),$blog_settings->get('planet_url'), $blog_settings->get('planet_title')).'</i>';
+	# Other link
+	$links =  '<br/><i>'.sprintf('Original post of <a href="%s" title="Visit the source">%s</a>.',$url, $nom);
+	$links .= '<br/>'.sprintf(T_('Vote for this post on <a href="%s" title="Go on the planet">%s</a>.'),$blog_settings->get('planet_url'), $blog_settings->get('planet_title')).'</i>';
+	
+	# Remove html tag to post content
+	$desc = strip_tags($item);
+	# Split string only on space char
+	$desc = short_str($desc, 300, false);
+	
+	# Gravatar
+	if($blog_settings->get('planet_avatar')) {
+		$gravatar_email = strtolower($post_list->user_email);
+		$gravatar_url = "http://www.gravatar.com/avatar.php?gravatar_id=".md5($gravatar_email)."&amp;default=".urlencode($blog_settings->get('planet_url')."themes/".$blog_settings->get('planet_theme')."/images/gravatar.png")."&amp;size=40";
+		$gravatar = '<img src="'.$gravatar_url.'" alt="'.sprintf(T_('Gravatar of %s'),$post_list->user_fullname).'" class="gravatar" />';
+	}
+
+	if ($_GET['type']=="rss"){
+		# Display item content
+		echo "\t\t\t<item>\n";
+		echo "\t\t\t\t<title>".$nom." : ".$titre."</title>\n";
+		echo "\t\t\t\t<link>".htmlentities($url)."</link>\n";
+		echo "\t\t\t\t<pubDate>".date("r", strtotime($post_list->post_pubdate))."</pubDate>\n";
+		echo "\t\t\t\t<dc:creator>".$nom."</dc:creator>\n";
+		echo "\t\t\t\t<description><![CDATA[".$desc."]]></description>\n";
+		echo "\t\t\t\t<guid isPermaLink=\"true\">".htmlentities($url)."</guid>\n";
 		
-		# Remove html tag to post content
-		$desc = strip_tags($item);
-		# Split string only on space char
-		$desc = short_str($desc, 300, false);
-		
-		# Gravatar
 		if($blog_settings->get('planet_avatar')) {
-			$gravatar_email = strtolower($post_list->user_email);
-			$gravatar_url = "http://www.gravatar.com/avatar.php?gravatar_id=".md5($gravatar_email)."&amp;default=".urlencode($blog_settings->get('planet_url')."themes/".$blog_settings->get('planet_theme')."/images/gravatar.png")."&amp;size=40";
-			$gravatar = '<img src="'.$gravatar_url.'" alt="'.sprintf(T_('Gravatar of %s'),$post_list->user_fullname).'" class="gravatar" />';
+			echo "\t\t\t\t<content:encoded><![CDATA[".$item."<p>".$gravatar.$links."</p>"."]]></content:encoded>\n";
+		} else {
+			echo "\t\t\t\t<content:encoded><![CDATA[".$item."<p>".$links."</p>"."]]></content:encoded>\n";
 		}
-
-		if ($_GET['type']=="rss"){
-			# Display item content
-			echo "\t\t\t<item>\n";
-			echo "\t\t\t\t<title>".$nom." : ".$titre."</title>\n";
-			echo "\t\t\t\t<link>".$url."</link>\n";
-			echo "\t\t\t\t<pubDate>".date("r", strtotime($post_list->post_pubdate))."</pubDate>\n";
-			echo "\t\t\t\t<dc:creator>".$nom."</dc:creator>\n";
-			echo "\t\t\t\t<description><![CDATA[".$desc."]]></description>\n";
-			echo "\t\t\t\t<guid isPermaLink=\"true\">".$url."</guid>\n";
-			
-			if($blog_settings->get('planet_avatar')) {
-				echo "\t\t\t\t<content:encoded><![CDATA[".$item."<p>".$gravatar.$links."</p>"."]]></content:encoded>\n";
-			} else {
-				echo "\t\t\t\t<content:encoded><![CDATA[".$item."<p>".$links."</p>"."]]></content:encoded>\n";
-			}
-			
-			# End of Item
-			echo "\t\t\t</item>\n"; 
-		}
-		elseif($_GET['type']=="atom") {
-			# Affichage du contenu de l'item
-			echo "\t\t<entry>\n";
-			echo "\t\t\t<id>".$url."</id>\n";
+		
+		# End of Item
+		echo "\t\t\t</item>\n"; 
+	}
+	elseif($_GET['type']=="atom") {
+		# Affichage du contenu de l'item
+		echo "\t\t<entry>\n";
+		echo "\t\t\t<id>".$id."</id>\n";
 			echo "\t\t\t<title>".$nom." : ".$titre."</title>\n";
 			echo "\t\t\t<updated>".date("c", strtotime($post_list->post_pubdate))."</updated>\n";
 			echo "\t\t\t<author>\n";
 			echo "\t\t\t\t<name>".$nom."</name>\n";
 			echo "\t\t\t</author>\n";
-			echo "\t\t\t<link rel=\"alternate\" href=\"".$url."\" />\n";
+			echo "\t\t\t<link href=\"".htmlentities($url)."\" rel=\"alternate\" type=\"text/html\" title=\"".$titre."\" />\n";
 			echo "\t\t\t<summary type=\"html\">".str_replace(array("\r\n", "\r", "\n"), " ", $desc)."</summary>\n";
 			if($blog_settings->get('planet_avatar')) {
 				echo "\t\t\t<content type=\"html\"><![CDATA[".$item."<p>".$gravatar.$links."</p>"."]]></content>\n";

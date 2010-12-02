@@ -97,10 +97,11 @@ if (isset($_GET)) {
 			$_GET['go'] == "external" &&
 			!$res->isEmpty() &&
 			$blog_settings->get('internal_links')){
-				if($blog_settings->get('planet_ganalytics')) {
+				$ga = $blog_settings->get('planet_ganalytics');
+				if(!empty($ga)) {
 					# If google analytics is activated, launch request
 					ga(
-						$blog_settings->get('planet_ganalytics'),
+						$ga,
 						'/post_id/'.$params['post_id'],
 						$res->post_title);
 				}

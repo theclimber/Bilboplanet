@@ -41,18 +41,15 @@ function convert_chars($string) {
 }
 
 # Function to split string only on space char
-function split_space ($string, $len) {
-	if (empty($string)) {
-		return 0;
+function short_str( $str, $len, $cut = true ) {
+	if ( strlen( $str ) <= $len ) {
+		return $str;
 	}
-	
-	$search_space = substr($string, $len, 1);
-	while ($search_space != " ") {
-		$len = $len - 1;
-		$search_space = substr($string, $len, 1);
+	if ($cut) {
+		return substr( $str, 0, $len );
+	} else {
+		return substr( $str, 0, strrpos( substr( $str, 0, $len ), ' ' ) ) . ' [...]';
 	}
-
-	return $len;
 }
 
 # Check content of $_GET
@@ -193,7 +190,7 @@ if (isset($_GET) && isset($_GET['type'])) {
 		# Remove html tag to post content
 		$desc = strip_tags($item);
 		# Split string only on space char
-		$desc = substr($desc, 0, split_space($desc, 300))." [...]";
+		$desc = short_str($desc, 300, false);
 		
 		# Gravatar
 		if($blog_settings->get('planet_avatar')) {

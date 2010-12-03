@@ -76,9 +76,15 @@ if (!is_file(BP_CONFIG_PATH))
 }
 
 require BP_CONFIG_PATH;
+if (BP_DBENCRYPTED_PASSWORD == 1) {
+	$dbpassword = base64_decode(BP_DBPASSWORD);
+}
+else {
+	$dbpassword = BP_DBPASSWORD;
+}
 
 try {
-	$core = new bpCore(BP_DBDRIVER,BP_DBHOST,BP_DBNAME,BP_DBUSER,base64_decode(BP_DBPASSWORD),BP_DBPREFIX,BP_DBPERSIST);
+	$core = new bpCore(BP_DBDRIVER,BP_DBHOST,BP_DBNAME,BP_DBUSER,$dbpassword,BP_DBPREFIX,BP_DBPERSIST);
 } catch (Exception $e) {
 	__error($e->getMessage()
 		,$e->getCode() == 0 ?

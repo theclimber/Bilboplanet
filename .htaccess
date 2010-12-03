@@ -2,11 +2,13 @@ SetEnv PHP_VER 5
 
 ErrorDocument 404 /404.php
 
-Options +FollowSymLinks
-RewriteEngine On
-RewriteBase /
-RewriteRule ^feed/(.*)$ feed.php?type=$1
-RewriteRule ^post/(.*)$  index.php?post_id=$1
+<IfModule mod_rewrite.c>
+	Options +FollowSymLinks
+	RewriteEngine On
+	RewriteBase /
+	RewriteRule ^feed/(.*)$ feed.php?type=$1
+	RewriteRule ^post/(.*)$  index.php?post_id=$1
+</IfModule>
 
 
 

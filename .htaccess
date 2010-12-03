@@ -2,5 +2,13 @@ SetEnv PHP_VER 5
 
 ErrorDocument 404 /404.php
 
+Options +FollowSymLinks
+RewriteEngine On
+RewriteBase /
+RewriteRule ^feed/(.*)$ feed.php?type=$1
+RewriteRule ^post/(.*)$  index.php?post_id=$1
+
+
+
 # Forcer l'encodage en UTF8 pour les personnes n'ayant pas accès à la configuration apache
 # AddDefaultCharset UTF-8

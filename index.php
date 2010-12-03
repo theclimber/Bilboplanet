@@ -102,8 +102,8 @@ if (isset($_GET)) {
 					# If google analytics is activated, launch request
 					ga(
 						$ga,
-						'/post_id/'.$params['post_id'],
-						$res->post_title);
+						'/post/'.$params['post_id'],
+						'post:'.$params['post_id']);
 				}
 				http::redirect($res->post_permalink);
 		}

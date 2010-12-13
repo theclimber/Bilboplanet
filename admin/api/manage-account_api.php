@@ -33,11 +33,8 @@ if(isset($_POST['action'])) {
 		$user_id = $core->auth->userID();
 		$user = $core->con->select("SELECT * FROM ".$core->prefix."user WHERE user_id = '$user_id'");
 
-		$new_fullname = !empty($_POST['efullname']) ? $_POST['efullname'] : $user->f('user_fullname');
-		$new_email = !empty($_POST['eemail']) ? $_POST['eemail'] : $user->f('user_email');
-
-		$new_fullname = check_field('fullname',$new_fullname);
-		$new_email = check_field('email',$new_email,'email');
+		$new_fullname = check_field(T_('Fullname'), trim($_POST['efullname']));
+		$new_email = check_field(T_('Email'), trim($_POST['eemail']), 'email');
 		$new_password = check_field('password', array("password" => trim($_POST['password']), "password2" => trim($_POST['password2'])), 'password', false);
 
 		$error = array();

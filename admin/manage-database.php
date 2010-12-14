@@ -52,8 +52,12 @@ if (isset($_POST)) {
 		elseif ($_FILES["imported_file"]["error"] > 0){
 			$output = '<div class="flash error">'.T_('Your file could not be imported').'<br />'.$_FILES["imported_file"]["error"].'</div>';
 		}
-		elseif( $_FILES["imported_file"]["type"] != 'application/x-gzip'){
-			$output = '<div class="flash error">'.T_("Your file doesn't have the right format : ").'<br />'.$_FILES["imported_file"]["type"].'</div>';
+		elseif($_FILES["imported_file"]["type"] != 'application/x-gzip' ||
+			$_FILES["imported_file"]["type"] != 'application/gzip' ||
+			$_FILES["imported_file"]["type"] != 'application/gzipped' ||
+			$_FILES["imported_file"]["type"] != 'application/gzip-compressed'){
+				$output = '<div class="flash error">'.T_("Your file doesn't have the right format : ")
+					.'<br />'.$_FILES["imported_file"]["type"].'</div>';
 		}
 		else {
 			$errors = array();

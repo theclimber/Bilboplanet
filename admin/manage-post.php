@@ -106,18 +106,13 @@ if(isset($_POST) && isset($_POST['num']) && isset($_POST['statut'])) {
 include_once(dirname(__FILE__).'/head.php');
 include_once(dirname(__FILE__).'/sidebar.php');
 ?>
-
+<script type="text/javascript" src="meta/js/manage-post.js"></script>
 <div id="BP_page" class="page">
 	<div class="inpage">
 
 <?php
 if (!empty($flash)) {
-	 echo '<script type="text/javascript">
-	$(document).ready(function() {
-		var msg = "<div class=\"flash_'.$flash['type'].'\">'.$flash['msg'].'</div>";
-		$(msg).flashmsg();
-	});
-</script>';
+	echo '<div id="post_flash" class="flash_'.$flash['type'].'" style="display:none;">'.$flash['msg'].'</div>';
 }
 ?>
 

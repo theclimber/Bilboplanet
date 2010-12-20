@@ -54,10 +54,10 @@ if(isset($_POST['action'])) {
 				$output .= "<li>".$value."</li>";
 			}
 			$output .= "</ul>";
-			print '<div class="flash error">'.$output.'</div>';
+			print '<div class="flash_error">'.$output.'</div>';
 		}
 		else {
-			print '<div class="flash notice">'.$output.'</div>';
+			print '<div class="flash_notice">'.$output.'</div>';
 		}
 		break;
 
@@ -94,6 +94,8 @@ if(isset($_POST['action'])) {
 				}
 			}
 		}
+		
+		sleep (2);
 
 		if (!empty($error)) {
 			$output .= "<ul>";
@@ -101,10 +103,10 @@ if(isset($_POST['action'])) {
 				$output .= "<li>".$value."</li>";
 			}
 			$output .= "</ul>";
-			print '<div class="flash error">'.$output.'</div>';
+			print '<div class="flash_error">'.$output.'</div>';
 		}
 		else {
-			print '<div class="flash notice">'.$output.'</div>';
+			print '<div class="flash_notice">'.$output.'</div>';
 		}
 		break;
 
@@ -193,7 +195,7 @@ if(isset($_POST['action'])) {
 		break;
 
 	default:
-		print '<div class="flash error">'.T_('User bad call').'</div>';
+		print '<div class="flash_warning">'.T_('User bad call').'</div>';
 		break;
 	}
 } else {

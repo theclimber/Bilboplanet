@@ -168,10 +168,10 @@ if(isset($_POST['action'])) {
 				$output .= "<li>".$value."</li>";
 			}
 			$output .= "</ul>";
-			print '<div class="flash error">'.$output.'</div>';
+			print '<div class="flash_error">'.$output.'</div>';
 		}
 		else {
-			print '<div class="flash notice">'.$output.'</div>';
+			print '<div class="flash_notice">'.$output.'</div>';
 		}
 		break;
 
@@ -190,7 +190,7 @@ if(isset($_POST['action'])) {
 		}
 		$cur->update("WHERE user_id = '$user_id'");
 
-		print '<div class="flash notice">'.T_('User status toggled').'</div>';
+		print '<div class="flash_notice">'.T_('User status toggled').'</div>';
 		break;
 
 ##########################################################
@@ -259,10 +259,10 @@ if(isset($_POST['action'])) {
 				$output .= "<li>".$value."</li>";
 			}
 			$output .= "</ul>";
-			print '<div class="flash error">'.$output.'</div>';
+			print '<div class="flash_error">'.$output.'</div>';
 		}
 		else {
-			print '<div class="flash notice">'.$output.'</div>';
+			print '<div class="flash_notice">'.$output.'</div>';
 		}
 		break;
 
@@ -273,7 +273,7 @@ if(isset($_POST['action'])) {
 		$user_id = urldecode(trim($_POST['user_id']));
 		$user_perms = $core->getUserRolePermissions($user_id);
 		if ($user_perms->{'role'} == "god") {
-			print '<div class="flash error">'.T_('You are not allowed to remove a super user').'</div>';
+			print '<div class="flash_error">'.T_('You are not allowed to remove a super user').'</div>';
 		}
 		else {
 			$user = $core->con->select("SELECT user_fullname as fullname FROM ".$core->prefix."user WHERE user_id = '$user_id'");
@@ -283,9 +283,9 @@ if(isset($_POST['action'])) {
 			$confirmation .= "<li>".T_('All the votes on these posts will be removed')."</li>";
 			$confirmation .= "<li>".T_('All the feeds of this user will be removed')."</li></ul><br/>";
 			$confirmation .= "<form id='removeConfirm_form'><input type='hidden' name='user_id' value='".urlencode($user_id)."'/>";
-			$confirmation .= "<div class='button br3px'><input type='reset' class='reset' onclick=\"javascript:$('#flash-msg').html('')\" value='".T_('Reset')."'/></div>&nbsp;&nbsp;";
+			$confirmation .= "<div class='button br3px'><input type='button' class='reset' value='".T_('Reset')."'/></div>&nbsp;&nbsp;";
 			$confirmation .= "<div class='button br3px'><input type='submit' class='valide' name='confirm' value='".T_('Confirm')."'/></div></form></p>";
-			print '<div class="flash error">'.$confirmation.'</div>';
+			print '<div class="flash_warning">'.$confirmation.'</div>';
 		}
 		break;
 
@@ -293,10 +293,11 @@ if(isset($_POST['action'])) {
 # CONFIRM REMOVE USER
 ##########################################################
 	case 'removeConfirm':
+		sleep(1);
 		$user_id = urldecode(trim($_POST['user_id']));
 		$user_perms = $core->getUserRolePermissions($user_id);
 		if ($user_perms->{'role'} == "god") {
-			print '<div class="flash error">'.T_('You are not allowed to remove a super user').'</div>';
+			print '<div class="flash_error">'.T_('You are not allowed to remove a super user').'</div>';
 		}
 		else {
 			$user = $core->con->select("SELECT user_fullname as fullname FROM ".$core->prefix."user WHERE user_id = '$user_id'");
@@ -309,7 +310,8 @@ if(isset($_POST['action'])) {
 			$core->con->execute("DELETE FROM ".$core->prefix."site WHERE user_id ='$user_id'");
 			$core->con->execute("DELETE FROM ".$core->prefix."permissions WHERE user_id = '$user_id'");
 			$core->con->execute("DELETE FROM ".$core->prefix."user WHERE user_id = '$user_id'");
-			print '<div class="flash notice">'.sprintf(T_("Delete of user %s succeeded"),$user->f('fullname')).'</div>';
+			
+			print '<div class="flash_notice">'.sprintf(T_("Delete of user %s succeeded"),$user->f('fullname')).'</div>';
 		}
 		break;
 
@@ -377,7 +379,7 @@ if(isset($_POST['action'])) {
 # DEFAULT RETURN
 ##########################################################
 	default:
-		print '<div class="flash error">'.T_('User bad call').'</div>';
+		print '<div class="flash_error">'.T_('User bad call').'</div>';
 		break;
 	}
 } else {

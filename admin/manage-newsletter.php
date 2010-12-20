@@ -104,23 +104,23 @@ if(isset($_POST) && isset($_POST['submitNewsletter'])) {
 		$confirmation .= '<input type="hidden" name="subject" value="'.htmlspecialchars($subject['value']).'" />';
 		$confirmation .= '<input type="hidden" name="message" value="'.htmlspecialchars($message['value']).'" />';
 		$confirmation .= '&nbsp;&nbsp;<input type="submit" class="button br3px" name="confirmSubmit" value="'.T_('Yes').'" />';
-		$confirmation .= '&nbsp;&nbsp;<input type="submit" class="button br3px" name="reset" value="'.T_('No').'" />';
+		$confirmation .= '&nbsp;&nbsp;<input type="button" class="button br3px" name="reset" value="'.T_('No').'" />';
 		$confirmation .= '</form>';
 		$confirmation .= '</p>';
-		$flash[] = array('type' => 'notice', 'msg' => $confirmation);
+		$flash['warning'][] = addslashes($confirmation);
 	}
 	else {
 		if(!$sender['success']) {
-			$flash[] = array('type' => 'error', 'msg' => $sender['error']);
+			$flash['error'][] = htmlspecialchars($sender['error']);
 		}
 		if(!$recipients['success']) {
-			$flash[] = array('type' => 'error', 'msg' => $recipients['error']);
+			$flash['error'][] = htmlspecialchars($recipients['error']);
 		}
 		if(!$subject['success']) {
-			$flash[] = array('type' => 'error', 'msg' => $subject['error']);
+			$flash['error'][] = htmlspecialchars($subject['error']);
 		}
 		if(!$message['success']) {
-			$flash[] = array('type' => 'error', 'msg' => $message['error']);
+			$flash['error'][] = htmlspecialchars($message['error']);
 		}		
 	}
 }
@@ -129,9 +129,9 @@ if(isset($_POST) && isset($_POST['submitNewsletter'])) {
 if(isset($_POST) && isset($_POST['confirmSubmit'])) {
 	$envoi = sendmail($_POST['sender'], $_POST['recipients'], $_POST['subject'], $_POST['message'], 'newsletter');	
 	if($envoi) {
-		$flash[] = array('type' => 'notice', 'msg' => T_("Your email has been sent"));
+		$flash['notice'][] = T_("Your email has been sent");
 	} else {
-		$flash[] = array('type' => 'error', 'msg' => T_("Your request could not be sent for an unknown reason.<br/>Please try again."));
+		$flash['error'][] = T_("Your request could not be sent for an unknown reason.<br/>Please try again.");
 	}
 }
 
@@ -187,9 +187,19 @@ include_once(dirname(__FILE__).'/sidebar.php');
 	<div class="inpage">
     	<?php
 		if (!empty($flash)) {
-			foreach ($flash as $value) {
-				echo '<div class="flash '.$value['type'].'">'.$value['msg'].'</div>';
+			$msg = '<ul>';
+			foreach(array_keys($flash) as $key => $msg_type) {
+				foreach(array_keys($flash[$msg_type]) as $key_msg) {
+					$msg .= '<li>'.$flash[$msg_type][$key_msg].'</li>';
+				}
 			}
+			$msg .= '</ul>';
+			echo '<script type="text/javascript">
+	$(document).ready(function() {
+		var msg = "<div class=\"flash_'.$msg_type.'\">'.$msg.'</div>";
+		$(msg).flashmsg();
+	});
+</script>';
 		}
 		?>
 		<form name="newsletter_form" id="newsletter_form" method="POST">

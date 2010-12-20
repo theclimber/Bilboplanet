@@ -873,6 +873,7 @@ div.flash {
 }
 #flash-msg.ajax-loading {
 	margin: 10px 5px;
+	padding-left: 28px;
 	width:95%;
 	background: url(../icons/spinner.gif) no-repeat;
 	background-color: #eaeaea;
@@ -1335,4 +1336,60 @@ p.clear {
 	border:1px solid #cdcdcd;
 	color:#585858;
 	background:#E1E1E1;
+}
+/* Flash Box */
+.flash_overlay{
+	background:transparent url(../icons/overlay.png) repeat top left;
+	position:fixed;
+	top:0px;
+	bottom:0px;
+	left:0px;
+	right:0px;
+	z-index:100;
+}
+.flash_box{
+	position:fixed;
+	top:-200px;
+	left:30%;
+	right:30%;
+	background-color:#fff;
+	color:#7F7F7F;
+	padding:20px;
+	border:2px solid #ccc;
+	-moz-border-radius: 20px;
+	-webkit-border-radius:20px;
+	-khtml-border-radius:20px;
+	-moz-box-shadow: 0 1px 5px #333;
+	-webkit-box-shadow: 0 1px 5px #333;
+	z-index:101;
+}
+.flash_box.flash_error{
+    background: url(../icons/false.png) 8px no-repeat;
+	background-color: #ffe3e3;
+	border-color: #dd0000;
+	color: #550000;
+	padding-left: 30px;
+}
+.flash_box.flash_notice{
+    background: url(../icons/true.png) 8px no-repeat;
+	background-color: #dfffdf;
+	border-color: #9fcf9f;
+	color: #005f00;
+	padding-left: 30px;
+}
+.flash_box.flash_warning{
+	background: url(../icons/warn.png) 8px no-repeat;
+	background-color: #FFEBC1;
+	border-color: #FDBF3B;
+	color: #A6750C;
+	padding-left: 30px;
+}
+a.flash_box_close{
+	float:right;
+	width:26px;
+	height:26px;
+	background:transparent url(../icons/cancel.png) repeat top left;
+	margin-top:-30px;
+	margin-right:-30px;
+	cursor:pointer;
 }

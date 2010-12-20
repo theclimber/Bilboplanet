@@ -35,36 +35,43 @@ if ($core->auth->sessionExists()):
 	}
 
 $email = $planet_author_mail = $blog_settings->get('author_mail');
+$url = $planet_author_site = $blog_settings->get('author_site');
 $planet_author = $blog_settings->get('author');
-$planet_author_site = $blog_settings->get('author_site');
 $planet_author_jabber = $blog_settings->get('author_jabber');
 $planet_author_im = $blog_settings->get('author_im');
-$planet_author_about=$blog_settings->get('author_about');
-$flash='';
+$planet_author_about = $blog_settings->get('author_about');
+$flash = array();
 
 # On verifie que le formulaire est bien saisie
 if(isset($_POST) && isset($_POST['submit'])) {
 	# On recupere les infos
 	$email = check_field('email',trim($_POST['email']),'email');
+	$url = check_field('url',trim($_POST['url']), 'url');
 	$planet_author = trim($_POST['planet_author']);
-	$planet_author_site = trim($_POST['planet_author_site']);
 	$planet_author_jabber = trim($_POST['planet_author_jabber']);
 	$planet_author_im = trim($_POST['planet_author_im']);
 	$planet_author_about = htmlentities(trim($_POST['planet_author_about']));
 
-	if ($email['success']){
+	if ($email['success'] && $url['success']){
 		$email = $email['value'];
+		$url = $url['value'];
 		$blog_settings->put('author', $planet_author, "string");
 		$blog_settings->put('author_mail', $email, "string");
-		$blog_settings->put('author_site', $planet_author_site, "string");
+		$blog_settings->put('author_site', $url, "string");
 		$blog_settings->put('author_jabber', $planet_author_jabber, "string");
 		$blog_settings->put('author_im', $planet_author_im, "string");
 		$blog_settings->put('author_about', $planet_author_about, "string");
-		$flash = array('type' => 'notice', 'msg' => T_("Modification succeeded"));
+		$flash['notice'][] = T_("Modification succeeded");
 	}
 	else {
-		$email = $planet_author_mail;
-		$flash = array('type' => 'error', 'msg' => T_("Please insert a valid email address"));
+		if(!$email['success']) {
+			$flash['error'][] = htmlspecialchars(sprintf(T_('The field "%s" has to be a valid email address'),T_('Reference contact email')));
+			$email = $planet_author_mail;
+		}
+		if(!$url['success']) {
+			$flash['error'][] = htmlspecialchars(sprintf(T_('The field "%s" %s has to be a valid URL'),T_('Author website'),$url['value']));
+			$url = $planet_author_site;
+		}
 	}
 }
 
@@ -74,9 +81,23 @@ include_once(dirname(__FILE__).'/sidebar.php');
 
 <div id="BP_page" class="page">
 	<div class="inpage">
-	
-<?php if (!empty($flash)) echo '<div class="flash '.$flash['type'].'">'.$flash['msg'].'</div>'; ?>
-
+    	<?php
+		if (!empty($flash)) {
+			$msg = '<ul>';
+			foreach(array_keys($flash) as $key => $msg_type) {
+				foreach(array_keys($flash[$msg_type]) as $key_msg) {
+					$msg .= '<li>'.$flash[$msg_type][$key_msg].'</li>';
+				}
+			}
+			$msg .= '</ul>';
+			echo '<script type="text/javascript">
+	$(document).ready(function() {
+		var msg = "<div class=\"flash_'.$msg_type.'\">'.$msg.'</div>";
+		$(msg).flashmsg();
+	});
+</script>';
+		}
+		?>
 <fieldset>
 	<legend><?php echo T_('Users Options');?></legend>
 	<div class="message">
@@ -91,7 +112,7 @@ include_once(dirname(__FILE__).'/sidebar.php');
 		<input type="text" name="email" size="60" class="input" value="<?php echo $email; ?>" /><br /><br />
 
 		<?php echo T_('Author Website');?><br />
-		<input type="text" name="planet_author_site" class="input" size="60" value="<?php echo $planet_author_site; ?>" /><br /><br />
+		<input type="text" name="url" class="input" size="60" value="<?php echo $url ?>" /><br /><br />
 
 		<?php echo T_('Jabber / GoogleTalk');?><br />
 		<input type="text" name="planet_author_jabber" class="input" size="60" value="<?php echo $planet_author_jabber; ?>" /><br /><br />

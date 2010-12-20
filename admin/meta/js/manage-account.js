@@ -10,7 +10,8 @@ $(document).ready(function() {
 			data: 'ajax=account&action=update&'+data,
 			success: function(msg){
 				$('#flash-msg').removeClass('ajax-loading');
-				$("#flash-msg").html(msg);
+				$('#flash-log').css('display', 'none');
+				$(msg).flashmsg();
 			}
 		});
 		return false;

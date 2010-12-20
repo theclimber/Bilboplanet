@@ -15,7 +15,8 @@ function accept(post_id, nom) {
 				$("#action"+post_id)[0].removeAttribute('class','ajax-loading');
 				$("#action"+post_id).html('<span id="action' + post_id + '"><img src="meta/icons/true-light.png" title="Accepter" /> <a href="javascript:refuse(' + post_id + ', \'' + nom + '\', \'' + href + '\')"><img src="meta/icons/warn.png" title="Refuser" /></a></span>');
 				$('#flash-msg').removeClass('ajax-loading');
-				$("#flash-msg").html(msg);
+				$('#flash-log').css('display', 'none');
+				$(msg).flashmsg();
 			}
 		});
 	}, {
@@ -55,7 +56,8 @@ function refuse(post_id, user_id, permalink) {
 						$("#action"+post_id)[0].removeAttribute('class','ajax-loading');
 						$("#action"+post_id).html('<span id="action'+post_id+'"><a href="javascript:accept('+post_id+', \'' + user_id + '\')"><img src="meta/icons/true.png" title="Accepter" /></a> <img src="meta/icons/warn-light.png" title="Refuser" /></span>');
 						$('#flash-msg').removeClass('ajax-loading');
-						$("#flash-msg").html(msg);
+						$('#flash-log').css('display', 'none');
+						$(msg).flashmsg();
 					}
 				});
 			}, {

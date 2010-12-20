@@ -60,7 +60,14 @@ include_once(dirname(__FILE__).'/sidebar.php');
 echo '<div id="BP_page" class="page">
 	 <div class="inpage">';
 
-if (!empty($flash)) echo '<div class="flash notice">'.$flash.'</div>';
+if (!empty($flash)) {
+	 echo '<script type="text/javascript">
+	$(document).ready(function() {
+		var msg = "<div class=\"flash_notice\">'.$flash.'</div>";
+		$(msg).flashmsg();
+	});
+</script>';
+}
 
 echo '<fieldset><legend>'.T_('Manage cache').'</legend>
 		<div class="message">

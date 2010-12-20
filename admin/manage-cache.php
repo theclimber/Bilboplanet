@@ -51,38 +51,39 @@ if(isset($_POST) && isset($_POST['action'])) {
 	}
 	closedir($dir_handle);
 	# Message d'information
-	$flash = T_('The cache files were correctly deleted.');
+	$flash = array( 'type' => 'notice', 'msg' => T_('The cache files were correctly deleted.'));
 }
 
 include_once(dirname(__FILE__).'/head.php');
 include_once(dirname(__FILE__).'/sidebar.php');
+?>
+<script type="text/javascript" src="meta/js/manage-cache.js"></script>
+<div id="BP_page" class="page">
+	 <div class="inpage">
 
-echo '<div id="BP_page" class="page">
-	 <div class="inpage">';
-
+<?php
 if (!empty($flash)) {
-	 echo '<script type="text/javascript">
-	$(document).ready(function() {
-		var msg = "<div class=\"flash_notice\">'.$flash.'</div>";
-		$(msg).flashmsg();
-	});
-</script>';
+	echo '<div id="post_flash" class="flash_'.$flash['type'].'" style="display:none;">'.$flash['msg'].'</div>';
 }
-
-echo '<fieldset><legend>'.T_('Manage cache').'</legend>
-		<div class="message">
-			<p>'.T_('Remove the cache files').'</p>
-		</div><br />';
-echo '<center><form method="POST">
-	<input type="hidden" name="action" value="del">
-	<div class="button br3px"><input type="submit" class="reset" value="'.T_('Delete cache').'"/></div></form></center>';
+echo '
+<fieldset>
+	<legend>'.T_('Manage cache').'</legend>
+	<div class="message">
+		<p>'.T_('Remove the cache files').'</p>
+	</div>
+	<br />
+	<center>
+		<form method="POST">
+			<input type="hidden" name="action" value="del">
+			<div class="button br3px"><input type="submit" class="reset" value="'.T_('Delete cache').'"/></div>
+		</form>
+	</center>';
 
 if ($_POST['action']) {
 	echo T_('The following files were deleted :')."<br /><pre>";
 	echo $files;
 	echo "</pre>";
 }
-
 
 echo '</fieldset>';
 

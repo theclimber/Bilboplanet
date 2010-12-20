@@ -224,6 +224,7 @@ if ($can_install && !empty($_POST))
 		$blog_settings->put('planet_timezone',$default_tz, "string");
 		$blog_settings->put('planet_maint','0', "boolean");
 		$blog_settings->put('auto_feed_disabling','0', "boolean");
+		$blog_settings->put('internal_links','1', "boolean");
 		
 		$step = 1;
 	}

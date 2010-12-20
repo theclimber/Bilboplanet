@@ -101,24 +101,64 @@ function getNbUsers($con) {
 function getNbFeeds($con) {
 	global $core;
 	$sql = 'SELECT COUNT(1) as nb FROM '.$core->prefix.'user, '.$core->prefix.'feed WHERE '.$core->prefix.'user.user_id = '.$core->prefix.'feed.user_id AND '.$core->prefix.'user.user_status = 1';
-	$rs = $con->select($sql);
+	$rs = $core->con->select($sql);
 	return $rs->f('nb');
 }
 
 # Fonction qui retourne le nombre d'articles
-function getNbPosts($con) {
+function getNbPosts($con, $user_id = null) {
 	global $core;
-	$sql = 'SELECT COUNT(1) as nb FROM '.$core->prefix.'post WHERE post_status = 1';
-	$rs = $con->select($sql);
+	if (isset($user_id)) {
+		$sql = 'SELECT COUNT(1) as nb FROM '.$core->prefix.'post WHERE post_status = 1 AND user_id = \''.$user_id.'\'';
+	} else {
+		$sql = 'SELECT COUNT(1) as nb FROM '.$core->prefix.'post WHERE post_status = 1';
+	}
+	$rs = $core->con->select($sql);
 	return $rs->f('nb');
 }
 
 # Fonction qui retourne le nombre de votes
-function getNbVotes($con) {
+function getNbVotes($con, $user_id = null) {
 	global $core;
-	$sql = 'SELECT COUNT(1) as nb FROM '.$core->prefix.'votes';
-	$rs = $con->select($sql);
+	if (isset($user_id)) {
+		$sql = "SELECT
+				".$core->prefix."user.user_id as user_id,
+				SUM(post_score) AS nb
+			FROM ".$core->prefix."post, ".$core->prefix."user, ".$core->prefix."site 
+			WHERE
+				".$core->prefix."site.user_id = ".$core->prefix."user.user_id
+				AND ".$core->prefix."user.user_id = ".$core->prefix."post.user_id
+				AND ".$core->prefix."user.user_id = '".$user_id."'
+				AND user_status = 1
+			GROUP BY user_id";
+	} else {
+		$sql = 'SELECT COUNT(1) as nb FROM '.$core->prefix.'votes';
+	}
+	$rs = $core->con->select($sql);
 	return $rs->f('nb');
+}
+
+function getUserSite($user_id) {
+	global $core;
+	$sql = "SELECT site_url
+		FROM ".$core->prefix."site
+		WHERE user_id = '".$user_id."'";
+	$rs = $core->con->select($sql);
+
+	$sites = array();
+	while ($rs->fetch()) {
+		$sites[] = $rs->site_url;
+	}
+	return $sites;
+}
+function getFeedSite($feed_id) {
+	global $core;
+	$sql = "SELECT site_url
+		FROM ".$core->prefix."site, ".$core->prefix."feed
+		WHERE ".$core->prefix."feed.site_id = ".$core->prefix."site.site_id
+			AND ".$core->prefix."feed.feed_id = ".$feed_id;
+	$rs = $core->con->select($sql);
+	return $rs->f('site_url');
 }
 
 #-----------------------#
@@ -194,6 +234,11 @@ function showPosts($rs, $tpl, $search_value="", $strip_tags=false) {
 			"author_id" => $rs->user_id,
 			"author_fullname" => $rs->user_fullname,
 			"author_email" => $rs->user_email,
+			"nbview" => $rs->nbview,
+			"last_viewed" => mysqldatetime_to_date('d/m/Y H:i',$rs->last_viewed),
+			"user_votes" => getNbVotes(null,$rs->user_id),
+			"user_posts" => getNbPosts(null,$rs->user_id),
+			"post_site" => getFeedSite($rs->feed_id)
 			);
 
 		$post['description'] = sprintf(T_('By %s, on %s at %s.'),'<a href="'.$blog_settings->get('planet_url').'/index.php?user_id='.$rs->user_id.'">'.$rs->user_fullname.'</a>',$post["date"],$post["hour"]);

@@ -46,6 +46,9 @@ $debut_sql = "SELECT
 		post_title		as title,
 		post_permalink	as permalink,
 		post_content	as content,
+		post_nbview		as nbview,
+		last_viewed		as last_viewed,
+		feed_id			as feed_id,
 		SUBSTRING(post_content,1,400) as short_content,
 		".$core->prefix."post.post_id		as post_id,
 		post_score		as score

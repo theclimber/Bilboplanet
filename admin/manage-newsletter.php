@@ -183,6 +183,7 @@ include_once(dirname(__FILE__).'/head.php');
 include_once(dirname(__FILE__).'/sidebar.php');
 ?>
 <!-- Début de la page -->
+<script type="text/javascript" src="meta/js/manage-newsletter.js"></script>
 <div id="BP_page" class="page">
 	<div class="inpage">
     	<?php
@@ -194,12 +195,7 @@ include_once(dirname(__FILE__).'/sidebar.php');
 				}
 			}
 			$msg .= '</ul>';
-			echo '<script type="text/javascript">
-	$(document).ready(function() {
-		var msg = "<div class=\"flash_'.$msg_type.'\">'.$msg.'</div>";
-		$(msg).flashmsg();
-	});
-</script>';
+			echo '<div id="post_flash" class="flash_'.$msg_type.'" style="display:none;">'.$msg.'</div>';
 		}
 		?>
 		<form name="newsletter_form" id="newsletter_form" method="POST">

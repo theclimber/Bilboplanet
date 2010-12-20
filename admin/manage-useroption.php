@@ -34,9 +34,9 @@ if ($core->auth->sessionExists()):
 		exit;
 	}
 
-$email = $planet_author_mail = $blog_settings->get('author_mail');
-$url = $planet_author_site = $blog_settings->get('author_site');
-$planet_author = $blog_settings->get('author');
+$planet_author_mail = $email = $blog_settings->get('author_mail');
+$planet_author_site = $url = $blog_settings->get('author_site');
+$planet_author = $author = $blog_settings->get('author');
 $planet_author_jabber = $blog_settings->get('author_jabber');
 $planet_author_im = $blog_settings->get('author_im');
 $planet_author_about = $blog_settings->get('author_about');
@@ -45,19 +45,20 @@ $flash = array();
 # On verifie que le formulaire est bien saisie
 if(isset($_POST) && isset($_POST['submit'])) {
 	# On recupere les infos
-	$email = check_field('email',trim($_POST['email']),'email');
-	$url = check_field('url',trim($_POST['url']), 'url');
-	$planet_author = trim($_POST['planet_author']);
+	$email = check_field(T_('Reference contact email'), trim($_POST['planet_author_mail']), 'email');
+	$url = check_field(T_('Author Website'), trim($_POST['planet_author_site']), 'url');
+	$author = check_field(T_('Contact Name'), trim($_POST['planet_author']), 'not_empty');
 	$planet_author_jabber = trim($_POST['planet_author_jabber']);
 	$planet_author_im = trim($_POST['planet_author_im']);
 	$planet_author_about = htmlentities(trim($_POST['planet_author_about']));
 
-	if ($email['success'] && $url['success']){
-		$email = $email['value'];
-		$url = $url['value'];
+	if ($email['success'] && $url['success'] && $author['success']){
+		$planet_author_mail = $email['value'];
+		$planet_author_site = $url['value'];
+		$planet_author = $author['value'];
 		$blog_settings->put('author', $planet_author, "string");
-		$blog_settings->put('author_mail', $email, "string");
-		$blog_settings->put('author_site', $url, "string");
+		$blog_settings->put('author_mail', $planet_author_mail, "string");
+		$blog_settings->put('author_site', $planet_author_site, "string");
 		$blog_settings->put('author_jabber', $planet_author_jabber, "string");
 		$blog_settings->put('author_im', $planet_author_im, "string");
 		$blog_settings->put('author_about', $planet_author_about, "string");
@@ -65,12 +66,13 @@ if(isset($_POST) && isset($_POST['submit'])) {
 	}
 	else {
 		if(!$email['success']) {
-			$flash['error'][] = htmlspecialchars(sprintf(T_('The field "%s" has to be a valid email address'),T_('Reference contact email')));
-			$email = $planet_author_mail;
+			$flash['error'][] = htmlspecialchars($email['error']);
 		}
 		if(!$url['success']) {
-			$flash['error'][] = htmlspecialchars(sprintf(T_('The field "%s" %s has to be a valid URL'),T_('Author website'),$url['value']));
-			$url = $planet_author_site;
+			$flash['error'][] = htmlspecialchars($url['error']);
+		}
+		if(!$author['success']) {
+			$flash['error'][] = htmlspecialchars($author['error']);
 		}
 	}
 }
@@ -78,7 +80,7 @@ if(isset($_POST) && isset($_POST['submit'])) {
 include_once(dirname(__FILE__).'/head.php');
 include_once(dirname(__FILE__).'/sidebar.php');
 ?>
-
+<script type="text/javascript" src="meta/js/manage-useroption.js"></script>
 <div id="BP_page" class="page">
 	<div class="inpage">
     	<?php
@@ -90,12 +92,7 @@ include_once(dirname(__FILE__).'/sidebar.php');
 				}
 			}
 			$msg .= '</ul>';
-			echo '<script type="text/javascript">
-	$(document).ready(function() {
-		var msg = "<div class=\"flash_'.$msg_type.'\">'.$msg.'</div>";
-		$(msg).flashmsg();
-	});
-</script>';
+			echo '<div id="post_flash" class="flash_'.$msg_type.'" style="display:none;">'.$msg.'</div>';
 		}
 		?>
 <fieldset>
@@ -109,10 +106,10 @@ include_once(dirname(__FILE__).'/sidebar.php');
 		<input type="text" name="planet_author" size="60" class="input" value="<?php echo $planet_author; ?>" /><br /><br />
 
 		<?php echo T_('Reference contact email');?><br />
-		<input type="text" name="email" size="60" class="input" value="<?php echo $email; ?>" /><br /><br />
+		<input type="text" name="planet_author_mail" size="60" class="input" value="<?php echo $planet_author_mail; ?>" /><br /><br />
 
 		<?php echo T_('Author Website');?><br />
-		<input type="text" name="url" class="input" size="60" value="<?php echo $url ?>" /><br /><br />
+		<input type="text" name="planet_author_site" class="input" size="60" value="<?php echo $planet_author_site; ?>" /><br /><br />
 
 		<?php echo T_('Jabber / GoogleTalk');?><br />
 		<input type="text" name="planet_author_jabber" class="input" size="60" value="<?php echo $planet_author_jabber; ?>" /><br /><br />
@@ -123,8 +120,7 @@ include_once(dirname(__FILE__).'/sidebar.php');
 		<?php echo T_('About Me');?><br />
 		<textarea type="text" name="planet_author_about" class="cadre_about" rows="10" value="<?php echo $planet_author_about; ?>" /><?php echo $planet_author_about; ?></textarea><br /><br />
 
-
-		<div class="button"><input type='submit' class="valide" name="submit" value="<?php echo T_('Apply');?>"/></div>
+		<div class="button"><input type="submit" class="valide" name="submit" value="<?php echo T_('Apply'); ?>"/></div>
 	</form>
 </fieldset>
 

@@ -37,4 +37,3 @@ Pour les personne ayant des problèmes d'encodage des caractères, et n'ayant pa
 décommentez la 23ième ligne du fichier .htaccess à la racine du Planet : 
       AddDefaultCharset UTF-8
 
-

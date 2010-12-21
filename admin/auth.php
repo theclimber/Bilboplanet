@@ -31,7 +31,7 @@ $blog_settings = new bpSettings($core, 'root');
 if (isset($_GET['came_from']) && !empty($_GET['came_from'])){
 	$came_from = $_GET['came_from'];
 }
-if (isset($_POST['came_from']) && !empty($_POST['came_from'])){
+elseif (isset($_POST['came_from']) && !empty($_POST['came_from'])){
 	$came_from = $_POST['came_from'];
 } else {
 	$came_from = 'index.php';

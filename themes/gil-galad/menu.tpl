@@ -3,7 +3,7 @@
 			<!-- BEGIN menu.votes -->
 			<li><a class="a_header" href="{$planet.url}/?popular=true">{_Top 10}</a></li>
 			<li><a class="a_header" href="{$planet.url}/stats.php">{_Statistics}</a></li>
-			<!--END menu.votes -->
+			<!-- END menu.votes -->
 			<!-- BEGIN menu.subscription -->
 			<li><a class="a_header" href="{$planet.url}/inscription.php">{_Registration}</a></li>
 			<!-- END menu.subscription -->

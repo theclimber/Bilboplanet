@@ -1355,7 +1355,7 @@ msgstr "Website URL"
 #: admin/manage-user.php:181
 #: admin/manage-user.php:199
 #, fuzzy
-msgid "ex: http://blog.bilboplanet.com"
+msgid "ex: http://www.bilboplanet.com"
 msgstr "bv: bilboplanet"
 
 #: admin/manage-feed.php:48
@@ -1414,8 +1414,8 @@ msgid "Full feed URL"
 msgstr "Volledige URL van de feed"
 
 #: admin/manage-feed.php:131
-msgid "ex: http://blog.bilboplanet.com/feed/atom/"
-msgstr "ex: http://blog.bilboplanet.com/feed/atom/"
+msgid "ex: http://www.bilboplanet.com/feed/atom/"
+msgstr "ex: http://www.bilboplanet.com/feed/atom/"
 
 #: admin/manage-feed.php:133
 #: admin/manage-feed.php:165
@@ -1452,7 +1452,7 @@ msgstr "Feed:"
 
 #: admin/manage-feed.php:171
 #, fuzzy
-msgid "ex: http://blog.bilboplanet.com/feed/"
+msgid "ex: http://www.bilboplanet.com/feed/"
 msgstr "bv: bilboplanet"
 
 #: admin/manage-moderation.php:48

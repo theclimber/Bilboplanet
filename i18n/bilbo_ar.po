@@ -1320,8 +1320,8 @@ msgstr "عنوان الموقع"
 
 #: admin/manage-user.php:181
 #: admin/manage-user.php:199
-msgid "ex: http://blog.bilboplanet.com"
-msgstr "مثال: http://blog.bilboplanet.com"
+msgid "ex: http://www.bilboplanet.com"
+msgstr "مثال: http://www.bilboplanet.com"
 
 #: admin/manage-feed.php:48
 #: admin/manage-feed.php:98
@@ -1373,8 +1373,8 @@ msgid "Full feed URL"
 msgstr "عنوان الخلاصة الكامل"
 
 #: admin/manage-feed.php:131
-msgid "ex: http://blog.bilboplanet.com/feed/atom/"
-msgstr "مثال: http://blog.bilboplanet.com/feed/atom/"
+msgid "ex: http://www.bilboplanet.com/feed/atom/"
+msgstr "مثال: http://www.bilboplanet.com/feed/atom/"
 
 #: admin/manage-feed.php:133
 #: admin/manage-feed.php:165
@@ -1407,8 +1407,8 @@ msgid "Feed URL"
 msgstr "عنوان الخلاصة"
 
 #: admin/manage-feed.php:171
-msgid "ex: http://blog.bilboplanet.com/feed/"
-msgstr "ex: http://blog.bilboplanet.com/feed/atom/"
+msgid "ex: http://www.bilboplanet.com/feed/"
+msgstr "ex: http://www.bilboplanet.com/feed/atom/"
 
 #: admin/manage-moderation.php:48
 #: admin/sidebar.php:88

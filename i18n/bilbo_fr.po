@@ -1320,8 +1320,8 @@ msgstr "Adresse du site"
 
 #: admin/manage-user.php:181
 #: admin/manage-user.php:199
-msgid "ex: http://blog.bilboplanet.com"
-msgstr "ex: http://blog.bilboplanet.com"
+msgid "ex: http://www.bilboplanet.com"
+msgstr "ex: http://www.bilboplanet.com"
 
 #: admin/manage-feed.php:48
 #: admin/manage-feed.php:98
@@ -1373,8 +1373,8 @@ msgid "Full feed URL"
 msgstr "URL complète du flux"
 
 #: admin/manage-feed.php:131
-msgid "ex: http://blog.bilboplanet.com/feed/atom/"
-msgstr "ex: http://blog.bilboplanet.com/feed/atom/"
+msgid "ex: http://www.bilboplanet.com/feed/atom/"
+msgstr "ex: http://www.bilboplanet.com/feed/atom/"
 
 #: admin/manage-feed.php:133
 #: admin/manage-feed.php:165
@@ -1407,8 +1407,8 @@ msgid "Feed URL"
 msgstr "URL du flux"
 
 #: admin/manage-feed.php:171
-msgid "ex: http://blog.bilboplanet.com/feed/"
-msgstr "ex: http://blog.bilboplanet.com/feed/atom/"
+msgid "ex: http://www.bilboplanet.com/feed/"
+msgstr "ex: http://www.bilboplanet.com/feed/atom/"
 
 #: admin/manage-moderation.php:48
 #: admin/sidebar.php:88
@@ -3162,7 +3162,7 @@ msgstr "%s derniers articles :"
 #~ "francophone : Dev BilboPlanet<br />&nbsp;&nbsp;&nbsp;* Contact : "
 #~ "dev@bilboplanet.com<br />&nbsp;&nbsp;&nbsp;* site web : www.bilboplanet."
 #~ "com<br />&nbsp;&nbsp;&nbsp;* Tracker : redmine.bilboplanet.com<br />&nbsp;"
-#~ "&nbsp;&nbsp;* Blog : blog.bilboplanet.com<br /><br />Developper: Grégoire "
+#~ "&nbsp;&nbsp;* Blog : www.bilboplanet.com<br /><br />Developper: Grégoire "
 #~ "de Hemptine & Thomas Bourcey"
 #~ msgid "Nombre d'articles aujourd'hui :"
 #~ msgstr "Nombre d'articles aujourd'hui :"

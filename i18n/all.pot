@@ -1159,7 +1159,7 @@ msgid "Full feed URL"
 msgstr ""
 
 #: admin/manage-feed.php:131
-msgid "ex: http://blog.bilboplanet.com/feed/atom/"
+msgid "ex: http://www.bilboplanet.com/feed/atom/"
 msgstr ""
 
 #: admin/manage-feed.php:133 admin/manage-feed.php:165
@@ -1196,7 +1196,7 @@ msgid "Feed URL"
 msgstr ""
 
 #: admin/manage-feed.php:171
-msgid "ex: http://blog.bilboplanet.com/feed/"
+msgid "ex: http://www.bilboplanet.com/feed/"
 msgstr ""
 
 #: admin/manage-feed.php:173 admin/manage-moderation.php:108
@@ -1562,7 +1562,7 @@ msgid "Site URL"
 msgstr ""
 
 #: admin/manage-user.php:181 admin/manage-user.php:199
-msgid "ex: http://blog.bilboplanet.com"
+msgid "ex: http://www.bilboplanet.com"
 msgstr ""
 
 #: admin/manage-useroption.php:63 admin/api/manage-option_api.php:135

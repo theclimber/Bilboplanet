@@ -298,7 +298,7 @@ if(isset($_POST['action'])) {
 			$sql_cond.' 
 			ORDER by lower('.$core->prefix.'feed.user_id) ASC';
 
-		print getOutput($sql);
+		print getOutput($sql, -1);
 		break;
 
 ##########################################################

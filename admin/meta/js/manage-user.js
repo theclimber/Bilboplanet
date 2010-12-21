@@ -42,7 +42,6 @@ function updateFilterList() {
 		success: function(msg){
 			$('#flash-msg').removeClass('ajax-loading');
 			$("#users-list").html(msg);
-			$('#filteruser-field').css('display', 'none');
 		}
 	});
 }

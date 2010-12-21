@@ -351,7 +351,7 @@ if(isset($_POST['action'])) {
 			'.$where_clause.'
 			ORDER by lower(user_fullname)';
 
-		print getOutput($sql);
+		print getOutput($sql, -1);
 		break;
 
 ##########################################################

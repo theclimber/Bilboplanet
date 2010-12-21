@@ -83,7 +83,9 @@ function showPagination($count, $num_page, $nb_items, $script) {
 	$prev_page = $num_page - 1;
 
 	$output .= '<div class="navigation">';
-	if($num_page == 0 & $count >= $nb_items) {
+	if($num_page == -1) {
+		# this page has no next or previous page
+	} elseif($num_page == 0 & $count >= $nb_items) {
 		# if we are on the first page
 		$output .= showNextButton($next_page, $nb_items, $script);
 	} elseif($num_page == 0 & $count< $nb_items) {

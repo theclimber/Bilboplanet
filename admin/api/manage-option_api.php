@@ -5,7 +5,7 @@
 * Contact : dev@bilboplanet.com
 * Website : www.bilboplanet.com
 * Tracker : redmine.bilboplanet.com
-* Blog : www.bilboplanet.com
+* Blog : blog.bilboplanet.com
 * 
 *
 * This program is free software: you can redistribute it and/or modify
@@ -25,14 +25,6 @@
 ?><?php
 if(isset($_POST) && isset($_POST['action'])) {
 	
-
-	// TODO : Ajouter le support de 2 options:
-	//  planet_ganalytics : qui est l'id pour un compte google-analytics 
-	//		(s'il est inséré, alors google-analytics est activé)
-	//  internal_links : booléen qui permet d'orienter le surfeur sur le
-	//		planet a chaque lien (compteur de clics)
-
-
 	switch (trim($_POST['action'])){
 ######################################
 # Update Options
@@ -121,6 +113,18 @@ if(isset($_POST) && isset($_POST['action'])) {
 				$flash[] = array('type' => 'error', 'msg' => T_("Only numeric value are allowed for number of posts by page"));
 			}
 			
+			if (!empty($_POST['ganalytics'])) {
+				$ganalytics = $_POST['ganalytics'];
+				$blog_settings->put('planet_ganalytics', $ganalytics, "string");
+			}
+			
+			if (isset($_POST['internal_links'])) {
+				$blog_settings->put('internal_links', '1', "boolean");
+			}
+			else {
+				$blog_settings->put('internal_links', '0', "boolean");
+			}
+			
 			if (isset($_POST['subscription']) && !empty($_POST['subscription_content'])) {
 				$blog_settings->put('planet_subscription', '1', "boolean");
 				$subscription_content = htmlentities(stripslashes(trim($_POST['subscription_content'])), ENT_QUOTES, 'UTF-8');
@@ -175,6 +179,8 @@ if(isset($_POST) && isset($_POST['action'])) {
 			$subscription = $blog_settings->get('planet_subscription');
 			$subscription_content = html_entity_decode(stripslashes($blog_settings->get('planet_subscription_content')), ENT_QUOTES, 'UTF-8');
 			#$subscription_content = html_encode_code_tags($subscription_content);
+			$ganalytics = $blog_settings->get('planet_ganalytics');
+			$internal_links = $blog_settings->get('internal_links');
 			
 			# Build an array of available theme
 			$theme_path = dirname(__FILE__)."/../../themes/";
@@ -358,7 +364,20 @@ if(isset($_POST) && isset($_POST['action'])) {
 			<td><input id="cadre_options" class="input field" type="text" name="nb_posts_page" value="'.$nb_posts_page.'" /></td>
 		</tr>
 		<tr>
-			<td>'.T_('Enable subscription').'</td>';
+			<td>'.T_('Google Analytics id').'</td>
+			<td><input id="cadre_options" class="input field" type="text" name="ganalytics" value="'.$ganalytics.'" /></td>
+		</tr>
+		<tr>
+			<td>'.T_('Enable Internal links').'</td>';
+			if($internal_links) {
+				$output .= '<td><input type="checkbox" class="input field" id="internal_links" name="internal_links" checked /></td>';
+			}
+			else {
+				$output .= '<td><input type="checkbox" class="input field" id="internal_links" name="internal_links" /></td>';
+			}
+			$output .= '</tr>
+			<tr>
+				<td>'.T_('Enable subscription').'</td>';
 			if($subscription) {
 				$output .= '<td><input type="checkbox" class="input field" id="subscription" name="subscription" checked onclick="javascript:subscription_state(\'options-form\');" /></td>';
 			}
@@ -409,6 +428,8 @@ if(isset($_POST) && isset($_POST['action'])) {
 			$subscription = $blog_settings->get('planet_subscription');
 			$subscription_content = html_entity_decode(stripslashes($blog_settings->get('planet_subscription_content')), ENT_QUOTES, 'UTF-8');
 			$subscription_content = html_encode_code_tags($subscription_content);
+			$ganalytics = $blog_settings->get('planet_ganalytics');
+			$internal_links = $blog_settings->get('internal_links');
 			
 			$output = "";
 			$output .= '<table id="tbl1" class="table-news">
@@ -496,6 +517,24 @@ if(isset($_POST) && isset($_POST['action'])) {
 				<td>'.T_('Number of posts by page').'</td>
 				<td>'.$nb_posts_page.'</td>
 			</tr>
+			<tr>
+				<td>'.T_('Google Analytics id').'</td>';
+				if (empty($ganalytics)) {
+					$output .= '<td>'.T_('Disable').'</td>';
+				}
+				else {
+					$output .= '<td>'.$ganalytics.'</td>';
+				}
+			$output .= '</tr>
+			<tr>
+				<td>'.T_('Enable Internal links').'</td>';
+				if($internal_links) {
+					$output .= '<td>'.T_('Enable').'</td>';
+				}
+				else {
+					$output .= '<td>'.T_('Disable').'</td>';
+				}
+				$output .= '</tr>
 			<tr>
 				<td>'.T_('Enable subscription').'</td>';
 				if($subscription) {

@@ -5,7 +5,7 @@
 * Contact : dev@bilboplanet.com
 * Website : www.bilboplanet.com
 * Tracker : redmine.bilboplanet.com
-* Blog : blog.bilboplanet.com
+* Blog : www.bilboplanet.com
 * 
 *
 * This program is free software: you can redistribute it and/or modify
@@ -178,7 +178,7 @@ form::field('s_name',30,255,html::escapeHTML(""), 'input').'</label>
 
 '<label class="required" for="s_url">'.T_('Site URL').' : '.
 form::field('s_url',30,255,html::escapeHTML(""), 'input').'</label>
-<span class="description">'.T_('ex: http://blog.bilboplanet.com').'</span><br />'.
+<span class="description">'.T_('ex: http://www.bilboplanet.com').'</span><br />'.
 
 '<div class="button br3px"><input type="button" class="notvalide" name="cancel" onClick="Boxy.get($(\'form.boxform\')).hide()" value="'.T_('Cancel').'"></div>&nbsp;&nbsp;'.
 '<div class="button br3px"><input type="submit" name="add_site" class="valide" value="'.T_('Add').'" /></div>'.
@@ -196,7 +196,7 @@ form::field('esite_name',30,255,html::escapeHTML(""), 'input').'</label>
 
 '<label class="required" for="esite_url">'.T_('Site URL').' : '.
 form::field('esite_url',30,255,html::escapeHTML(""), 'input').'</label>
-<span class="description">'.T_('ex: http://blog.bilboplanet.com').'</span><br />'.
+<span class="description">'.T_('ex: http://www.bilboplanet.com').'</span><br />'.
 
 '<div class="button br3px"><input type="button" class="notvalide" name="cancel" onClick="Boxy.get($(\'form.boxform\')).hide()" value="'.T_('Cancel').'"></div>&nbsp;&nbsp;'.
 '<div class="button br3px"><input type="submit" class="valide" name="edit_site" class="edit_site" value="'.T_('Update').'" /></div>'.

@@ -5,7 +5,7 @@
 * Contact : dev@bilboplanet.com
 * Website : www.bilboplanet.com
 * Tracker : redmine.bilboplanet.com
-* Blog : blog.bilboplanet.com
+* Blog : www.bilboplanet.com
 * 
 *
 * This program is free software: you can redistribute it and/or modify

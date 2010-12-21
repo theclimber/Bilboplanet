@@ -82,7 +82,7 @@ function showArticleSummary($con){
 function showBlogLastArticles() {
 	$content = '';
 	$feed = new SimplePie();
-	$feed->set_feed_url(array('http://bilboplanet.com/blog/feed/'));
+	$feed->set_feed_url(array('http://bilboplanet.com/feed/'));
 	$feed->set_cache_duration (600);
 	$feed->enable_xml_dump(isset($_GET['xmldump']) ? true : false);
 	$success = $feed->init();

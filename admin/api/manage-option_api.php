@@ -116,6 +116,8 @@ if(isset($_POST) && isset($_POST['action'])) {
 			if (!empty($_POST['ganalytics'])) {
 				$ganalytics = $_POST['ganalytics'];
 				$blog_settings->put('planet_ganalytics', $ganalytics, "string");
+			} else {
+				$blog_settings->put('planet_ganalytics', '', "string");
 			}
 			
 			if (isset($_POST['internal_links'])) {
@@ -149,6 +151,57 @@ if(isset($_POST) && isset($_POST['action'])) {
 				$output = T_("Modification succeeded");
 				print '<div class="flash_notice">'.$output.'</div>';
 			}
+
+			############
+			# Add post values for statusNet
+			############
+			# Needed options :
+			# * statusnet host
+			# * statusnet username
+			# * statusnet password
+			# * status message formating
+			# * enable/disable publishing new posts
+
+			# statusnet_host :
+			if (!empty($_POST['statusnet_host'])) {
+				$host = $_POST['statusnet_host'];
+				$blog_settings->put('statusnet_host', $host, "string");
+			} else {
+				$blog_settings->put('statusnet_host', '', "string");
+			}
+
+			# statusnet_username :
+			if (!empty($_POST['statusnet_username'])) {
+				$username = stripslashes(trim($_POST['statusnet_username']));;
+				$blog_settings->put('statusnet_username', $username, "string");
+			} else {
+				$blog_settings->put('statusnet_username', '', "string");
+			}
+
+			# statusnet_password :
+			if (!empty($_POST['statusnet_password'])) {
+				$passw = stripslashes(trim($_POST['statusnet_password']));
+				$blog_settings->put('statusnet_password', $passw, "string");
+			} else {
+				$blog_settings->put('statusnet_password', '', "string");
+			}
+
+			# statusnet_post_format :
+			if (!empty($_POST['statusnet_post_format'])) {
+				$format = stripslashes(trim($_POST['statusnet_post_format']));
+			} else {
+				$format = stripslashes(trim('['.$blog_settings->get('planet_title').'] %s'));;
+			}
+			$blog_settings->put('statusnet_post_format', $format, "string");
+
+			# statusnet enable/disable posts :
+			if (isset($_POST['statusnet_auto_post'])) {
+				$blog_settings->put('statusnet_auto_post', '1', "boolean");
+			}
+			else {
+				$blog_settings->put('statusnet_auto_post', '0', "boolean");
+			}
+
 			break;
 ######################################
 # Get Options
@@ -181,6 +234,15 @@ if(isset($_POST) && isset($_POST['action'])) {
 			#$subscription_content = html_encode_code_tags($subscription_content);
 			$ganalytics = $blog_settings->get('planet_ganalytics');
 			$internal_links = $blog_settings->get('internal_links');
+
+			# statusnet options :
+			$statusnet = array(
+				'host' => $blog_settings->get('statusnet_host'),
+				'username' => stripslashes($blog_settings->get('statusnet_username')),
+				'password' => stripslashes($blog_settings->get('statusnet_password')),
+				'post_format' => stripslashes($blog_settings->get('statusnet_post_format')),
+				'auto_post' => $blog_settings->get('statusnet_auto_post')
+				);
 			
 			# Build an array of available theme
 			$theme_path = dirname(__FILE__)."/../../themes/";
@@ -375,8 +437,42 @@ if(isset($_POST) && isset($_POST['action'])) {
 			else {
 				$output .= '<td><input type="checkbox" class="input field" id="internal_links" name="internal_links" /></td>';
 			}
-			$output .= '</tr>
-			<tr>
+			$output .= '</tr>';
+			############
+			# Add post values for statusNet
+			############
+
+			# statusnet_host :
+			$output .= '<tr><td>'.T_('Planet statusnet host (ex: http://identi.ca)').'</td>';
+			$output .= '<td><input id="cadre_options" class="input field" type="text" name="statusnet_host" value="'.$statusnet['host'].'" /></td>';
+			$output .= '</tr>';
+
+			# statusnet_username :
+			$output .= '<tr><td>'.T_('Planet statusnet username').'</td>';
+			$output .= '<td><input id="cadre_options" class="input field" type="text" name="statusnet_username" value="'.$statusnet['username'].'" /></td>';
+			$output .= '</tr>';
+
+			# statusnet_password :
+			$output .= '<tr><td>'.T_('Planet statusnet password').'</td>';
+			$output .= '<td><input id="cadre_options" class="input field" type="password" name="statusnet_password" value="'.$statusnet['password'].'" /></td>';
+			$output .= '</tr>';
+
+			# statusnet_post_format :
+			$output .= '<tr><td>'.T_('Statusnet messages format').'</td>';
+			$output .= '<td><input id="cadre_options" class="input field" type="text" name="statusnet_post_format" value="'.$statusnet['post_format'].'" /> '.T_('(ex: "[Site name] %s" where "%s" is the title of the post)').'</td>';
+			$output .= '</tr>';
+
+			# statusnet_auto_post :
+			$output .= '<tr><td>'.T_('Statusnet activate automatique post').'</td>';
+			if($statusnet['auto_post']) {
+				$output .= '<td><input type="checkbox" class="input field" id="statusnet_auto_post" name="statusnet_auto_post" checked /></td>';
+			} else {
+				$output .= '<td><input type="checkbox" class="input field" id="statusnet_auto_post" name="statusnet_auto_post" /></td>';
+			}
+			$output .= '</tr>';
+
+
+			$output .= '<tr>
 				<td>'.T_('Enable subscription').'</td>';
 			if($subscription) {
 				$output .= '<td><input type="checkbox" class="input field" id="subscription" name="subscription" checked onclick="javascript:subscription_state(\'options-form\');" /></td>';
@@ -384,8 +480,8 @@ if(isset($_POST) && isset($_POST['action'])) {
 			else {
 				$output .= '<td><input type="checkbox" class="input field" id="subscription" name="subscription" onclick="javascript:subscription_state(\'options-form\');" /></td>';
 			}
-		$output .= '</tr>
-	</table>
+		//	$output .= '</tr>';
+			$output .= '</table>
 	<br />
 	<div id="subscription_content" style="display:none;">
 		'.T_('Subscription page content').'
@@ -430,6 +526,15 @@ if(isset($_POST) && isset($_POST['action'])) {
 			$subscription_content = html_encode_code_tags($subscription_content);
 			$ganalytics = $blog_settings->get('planet_ganalytics');
 			$internal_links = $blog_settings->get('internal_links');
+
+			# statusnet options :
+			$statusnet = array(
+				'host' => $blog_settings->get('statusnet_host'),
+				'username' => stripslashes($blog_settings->get('statusnet_username')),
+				'password' => stripslashes($blog_settings->get('statusnet_password')),
+				'post_format' => stripslashes($blog_settings->get('statusnet_post_format')),
+				'auto_post' => $blog_settings->get('statusnet_auto_post')
+				);
 			
 			$output = "";
 			$output .= '<table id="tbl1" class="table-news">
@@ -462,16 +567,16 @@ if(isset($_POST) && isset($_POST['action'])) {
 			<tr>
 				<td>'.T_('Show the contact page').'</td>';
 				if($contact) {
-					$output .= '<td>'.T_('Enable').'</td>';
+					$output .= '<td>'.T_('Enabled').'</td>';
 				}
 				else {
-					$output .= '<td>'.T_('Disable').'</td>';
+					$output .= '<td>'.T_('Disabled').'</td>';
 				}
 			$output .= '</tr>
 			<tr>
 				<td>'.T_('Enable voting').'</td>';
 				if($votes) {
-					$output .= '<td>'.T_('Enable').'</td>
+					$output .= '<td>'.T_('Enabled').'</td>
 					</tr>
 					<tr>
 						<td>'.T_('Votes system').'</td>
@@ -479,34 +584,34 @@ if(isset($_POST) && isset($_POST['action'])) {
 					</tr>';
 				}
 				else {
-					$output .= '<td>'.T_('Disable').'</td>
+					$output .= '<td>'.T_('Disabled').'</td>
 					</tr>';
 				}
 			$output .= '<tr>
 				<td>'.T_('Option of moderation').'</td>';
 				if($moderation) {
-					$output .= '<td>'.T_('Enable').'</td>';
+					$output .= '<td>'.T_('Enabled').'</td>';
 				}
 				else {
-					$output .= '<td>'.T_('Disable').'</td>';
+					$output .= '<td>'.T_('Disabled').'</td>';
 				}
 			$output .= '</tr>
 			<tr>
 				<td>'.T_('Enable avatar').'</td>';
 				if ($avatar) {
-					$output .= '<td>'.T_('Enable').'</td>';
+					$output .= '<td>'.T_('Enabled').'</td>';
 				}
 				else {
-					$output .= '<td>'.T_('Disable').'</td>';
+					$output .= '<td>'.T_('Disabled').'</td>';
 				}
 			$output .= '</tr>
 			<tr>
 				<td>'.T_('Maintenance mode').'</td>';
 				if($maintenance) {
-					$output .= '<td>'.T_('Enable').'</td>';
+					$output .= '<td>'.T_('Enabled').'</td>';
 				}
 				else {
-					$output .= '<td>'.T_('Disable').'</td>';
+					$output .= '<td>'.T_('Disabled').'</td>';
 				}
 			$output .= '</tr>
 			<tr>
@@ -520,7 +625,7 @@ if(isset($_POST) && isset($_POST['action'])) {
 			<tr>
 				<td>'.T_('Google Analytics id').'</td>';
 				if (empty($ganalytics)) {
-					$output .= '<td>'.T_('Disable').'</td>';
+					$output .= '<td>'.T_('Disabled').'</td>';
 				}
 				else {
 					$output .= '<td>'.$ganalytics.'</td>';
@@ -529,16 +634,45 @@ if(isset($_POST) && isset($_POST['action'])) {
 			<tr>
 				<td>'.T_('Enable Internal links').'</td>';
 				if($internal_links) {
-					$output .= '<td>'.T_('Enable').'</td>';
+					$output .= '<td>'.T_('Enabled').'</td>';
 				}
 				else {
-					$output .= '<td>'.T_('Disable').'</td>';
+					$output .= '<td>'.T_('Disabled').'</td>';
 				}
-				$output .= '</tr>
-			<tr>
+				$output .= '</tr>';
+
+				############
+				# Add post values for statusNet
+				############
+
+				# statusnet_host :
+				$output .= '<tr><td>'.T_('Planet statusnet host (ex: http://identi.ca)').'</td>';
+				$output .= '<td>'.$statusnet['host'].'</td>';
+				$output .= '</tr>';
+
+				# statusnet_username :
+				$output .= '<tr><td>'.T_('Planet statusnet username').'</td>';
+				$output .= '<td>'.$statusnet['username'].'</td>';
+				$output .= '</tr>';
+
+				# statusnet_post_format :
+				$output .= '<tr><td>'.T_('Statusnet messages format').'</td>';
+				$output .= '<td>'.$statusnet['post_format'].'</td>';
+				$output .= '</tr>';
+
+				# statusnet_auto_post :
+				$output .= '<tr><td>'.T_('Statusnet activate automatic post').'</td>';
+				if($statusnet['auto_post']) {
+					$output .= '<td>'.T_('Enabled').'</td>';
+				} else {
+					$output .= '<td>'.T_('Disabled').'</td>';
+				}
+				$output .= '</tr>';
+
+				$output .= '<tr>
 				<td>'.T_('Enable subscription').'</td>';
 				if($subscription) {
-					$output .= '<td>'.T_('Enable').'</td>
+					$output .= '<td>'.T_('Enabled').'</td>
 				<tr>
 					<td>'.T_('Subscription page content').'</td>
 						<td>
@@ -552,7 +686,7 @@ if(isset($_POST) && isset($_POST['action'])) {
 				</tr>';
 				}
 				else {
-					$output .= '<td>'.T_('Disable').'</td>';
+					$output .= '<td>'.T_('Disabled').'</td>';
 				}
 			$output .= '</tr>
 			</table>';

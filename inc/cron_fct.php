@@ -249,6 +249,8 @@ function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_c
 			$cur->created = array(' NOW() ');
 			$cur->modified = array(' NOW() ');
 			$cur->insert();
+			
+			postNewsOnSocialNetwork($item_title, $next_post_id);
 
 			return logMsg("Post added: ".$item_permalink, "", 1, $print);
 		} elseif ($rs4->count() == 1) {
@@ -310,6 +312,24 @@ function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_c
 		} # fin du if($date !=
 	}
 	return "";
+}
+
+function postNewsOnSocialNetwork($title, $post_id) {
+	global $blog_settings;
+	$post_url = $blog_settings->get('planet_url').'/?post_id='.$post_id;
+	$formating = $blog_settings->get('statusnet_post_format');
+	$title_length = 140 - strlen($post_url) - strlen($formating);
+	$short_title = substr($title,0,$title_length)."...";
+
+	$short_msg = sprintf($formating, $short_title.' '.$post_url);
+
+	if ($blog_settings->get('statusnet_auto_post')) {
+		postToStatusNet(
+			$blog_settings->get('statusnet_host'),
+			$blog_settings->get('statusnet_username'),
+			$blog_settings->get('statusnet_password'),
+			$short_msg);
+	}
 }
 
 # Procedure qui log un message a l'ecran et dans un fichier de log

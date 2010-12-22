@@ -48,6 +48,45 @@ function ga($gaid,$url,$name) {
 	fclose($handle);
 }
 
+#---------------------------------------------------#
+#   Fonction de publication sur les sites sociaux   #
+#---------------------------------------------------#
+
+/**
+ * @param hostname : this must be a valid hostname url like "http://identi.ca"
+ * @param username : your statusnet username
+ * @param password : your statusnet password
+ * @param message : the message you want to post
+ */
+function postToStatusNet($hostname,$username,$password,$message){
+	if (!empty($hostname)) {
+		$host = $hostname."/api/statuses/update.xml?status=".urlencode(stripslashes(urldecode($message)));
+
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, $host);
+		curl_setopt($ch, CURLOPT_VERBOSE, 1);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch, CURLOPT_USERPWD, "$username:$password");
+		curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
+		curl_setopt($ch, CURLOPT_POST, 1);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, array('Expect:'));
+
+		$result = curl_exec($ch);
+		// Look at the returned header
+		$resultArray = curl_getinfo($ch);
+
+		curl_close($ch);
+
+		if($resultArray['http_code'] == "200") {
+			$statusnet_status='OK'; }
+		else $statusnet_status = "KO : error code :".$resultArray['http_code'].").";
+	} else {
+		$statusnet_status = T_("Error : the statusnet account is not properly configured. The given hostname is empty.");
+	}
+	return $statusnet_status;
+}
+
+
 #----------------------------------#
 #   Fonction de gestion du cache   #
 #----------------------------------#

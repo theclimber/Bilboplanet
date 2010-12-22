@@ -36,18 +36,24 @@ include_once(dirname(__FILE__).'/head.php');
 include_once(dirname(__FILE__).'/sidebar.php');
 include_once(dirname(__FILE__).'/../inc/cron_fct.php');
 
-$flash = '';
+$flash = array();
 $update = false;
 $index_update = $blog_settings->get('planet_index_update');
 
 if(isset($_POST) && isset($_POST['submit'])) {
 	if ($_POST['index_update'] == "on") {
-		$blog_settings->put('planet_index_update','1', "boolean");
-		$index_update = '1';
+		if (!$index_update) {
+			$blog_settings->put('planet_index_update','1', "boolean");
+			$flash[] = T_('Enable update on loading of index page: Enable');
+					$index_update = '1';
+		}
 	}
 	else {
-		$blog_settings->put('planet_index_update','0', "boolean");
-		$index_update = '0';
+		if ($index_update) {
+			$blog_settings->put('planet_index_update','0', "boolean");
+			$flash[] = T_('Enable update on loading of index page: Disable');
+			$index_update = '0';
+		}
 	}
 
 	if (isset($_POST['action']) && !empty($_POST['action'])){
@@ -58,14 +64,14 @@ if(isset($_POST) && isset($_POST['submit'])) {
 			}
 			fwrite($fp,time());
 			fclose($fp);
-			$flash = T_("The automatical update is disabled ").$result;
+			$flash[] = T_("The automatical update is disabled ").$result;
 			header("Location: ./gestion-update.php");
 		}
 		elseif ($_POST['action'] == '1') {
 			if (get_cron_running())
-				$error = T_('The update can not start : the process is already started (You can force update by deleting the /inc/cron_running.txt file)');
+				$error[] = T_('The update can not start : the process is already started (You can force update by deleting the /inc/cron_running.txt file)');
 			else
-				$flash = T_('The automatic update is enabled');
+				$flash[] = T_('The automatic update is enabled');
 			unlink(dirname(__FILE__).'/../inc/STOP');
 			header("Location: ./gestion-update.php");
 		}
@@ -73,10 +79,10 @@ if(isset($_POST) && isset($_POST['submit'])) {
 			$update = true;
 			try{
 				$update_logs = update($core, true);
-				$flash = T_("Manual update ...");
+				$flash[] = T_("Manual update ...");
 			}
 			catch(Exception $e){
-				$error = sprintf(T_('Error while updating : %s'), $e->getMessage());
+				$error[] = sprintf(T_('Error while updating : %s'), $e->getMessage());
 			}
 		}
 	}
@@ -84,15 +90,27 @@ if(isset($_POST) && isset($_POST['submit'])) {
 }
 
 ?>
-
+<script type="text/javascript" src="meta/js/manage-update.js"></script>
 <div id="BP_page" class="page">
 	<div class="inpage">
+	<div id="flash-log" style="display:none;">
+		<div id="flash-msg"><!-- spanner --></div>
+	</div>
 	
 <?php 
-if (!empty($flash))
-	echo '<div class="flash notice">'.$flash.'</div>';
-elseif (!empty($error))
-	echo '<div class="flash error">'.$error.'</div>';
+if (!empty($flash)) {
+	$msg = '<ul>';
+	foreach ($flash as $value) {
+		$msg .= '<li>'.$value.'</li>';
+	}
+	echo '<div id="post_flash" class="flash_notice" style="display:none;" >'.$msg.'</div>';
+}
+elseif (!empty($error)) {
+	foreach ($error as $value) {
+		$msg .= '<li>'.$value.'</li>';
+	}
+	echo '<div id="post_flash" class="flash_error" style="display:none;" >'.$value.'</div>';
+}
 ?>
 <fieldset><legend><?php echo T_('Automatic update');?></legend>
 	<div class="message">
@@ -104,7 +122,7 @@ else
 	echo '<div id="BP_stopupdate">'.T_('The update is stopped').'</div><br />';
 if (file_exists(dirname(__FILE__).'/../inc/STOP')) echo '<div id="BP_disableupdate">'.T_('The update is disabled').'</div><br />';
 ?>
-<form method="POST">
+<form id="form_manage-update" method="POST">
 	<label for="stop_update"><input id="stop_update" type="radio" name="action" value="3" /> <?php echo T_('Stop the update algorithm');?></label><br />
 	<label for="start_update"><input id="start_update" type="radio" name="action" value="1" /> <?php echo T_('Start the update algorithm');?></label><br />
 	<label for="manual_update"><input id="manual_update" type="radio" name="action" value="2" /> <?php echo T_('Start a manual update');?><br /></label><br />

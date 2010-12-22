@@ -44,26 +44,26 @@ if (isset($_POST)) {
 # IMPORT DATABASE VERSION
 ##########################################################
 	if(isset($_POST['importform'])){
+		$flash = array();
 		$imported_version = (string) trim($_POST['import_version']);
 		# On recupere les infos
 		if(!is_uploaded_file($_FILES['imported_file']['tmp_name']) ){
-			$output = '<div class="flash error">'.T_('Your file could not be downloaded').'</div>';
+			$flash['error'][] = T_('Your file could not be downloaded');
 		}
 		elseif ($_FILES["imported_file"]["error"] > 0){
-			$output = '<div class="flash error">'.T_('Your file could not be imported').'<br />'.$_FILES["imported_file"]["error"].'</div>';
+			$flash['error'][] = T_('Your file could not be imported').'<br />'.$_FILES["imported_file"]["error"];
 		}
 		elseif($_FILES["imported_file"]["type"] != 'application/x-gzip' ||
 			$_FILES["imported_file"]["type"] != 'application/gzip' ||
 			$_FILES["imported_file"]["type"] != 'application/gzipped' ||
 			$_FILES["imported_file"]["type"] != 'application/gzip-compressed'){
-				$output = '<div class="flash error">'.T_("Your file doesn't have the right format : ")
-					.'<br />'.$_FILES["imported_file"]["type"].'</div>';
+				$flash['error'][] = T_("Your file doesn't have the right format : ").'<br />'.$_FILES["imported_file"]["type"];
 		}
 		else {
-			$errors = array();
 			$response = T_('Congratulations! You imported an old data configuration successfully')."<br/>";
 			$response .= T_("File name: ") . $_FILES["imported_file"]["name"] . "<br />";
 			$response .= T_("Size: ") . ($_FILES["imported_file"]["size"] / 1024)." ".T_("Kb")."<br />";
+			$flash['notice'][] = $response;
 			$gzfile = file_get_contents($_FILES['imported_file']['tmp_name'], FILE_USE_INCLUDE_PATH);
 			$content = my_gzdecode($gzfile);
 			$tables = json_decode($content, true);
@@ -102,7 +102,7 @@ if (isset($_POST)) {
 								'SELECT COUNT(1) '.
 								'FROM '.$core->prefix.'user WHERE user_id =\''.$user_id.'\'');
 							if ($rs0->f('nb') > 0) {
-								$output = '<div class="flash error">'.T_("Two users have the same name, impossible to import. Please try again. Username : ".$user_id).'</div>';
+								$flash['error'][] = T_("Two users have the same name, impossible to import. Please try again. Username : ".$user_id);
 								break;
 							}
 
@@ -140,7 +140,7 @@ if (isset($_POST)) {
 						break;
 					case "flux":
 						if (empty($tables['membre']['content'])) {
-							$errors[] = T_("You can not import 'flux' table without importing the 'membres' table");
+							$flash['error'][] = T_("You can not import 'flux' table without importing the 'membres' table");
 							break;
 						}
 						$core->con->execute("TRUNCATE TABLE `".$core->prefix."feed`");
@@ -186,17 +186,17 @@ if (isset($_POST)) {
 								$cur->modified = array(' NOW() ');
 								$cur->insert();
 							} else {
-								$errors[] = T_("site_id should not be null for user ".$user_id );
+								$flash['warning'][] = T_("site_id should not be null for user ".$user_id );
 							}
 						}
 						break;
 					case "article":
 						if (empty($tables['membre']['content'])) {
-							$errors[] = T_("You can not import 'articles' table without importing the 'membres' table");
+							$flash['error'][] = T_("You can not import 'articles' table without importing the 'membres' table");
 							break;
 						}
 						if (empty($tables['flux']['content'])) {
-							$errors[] = T_("You can not import 'articles' table without importing the 'flux' table");
+							$flash['error'][] = T_("You can not import 'articles' table without importing the 'flux' table");
 							break;
 						}
 						$core->con->execute("TRUNCATE TABLE `".$core->prefix."post`");
@@ -268,21 +268,10 @@ if (isset($_POST)) {
 						$blog_settings->put('planet_index_update', $config['BP_INDEX_UPDATE'], "boolean");
 						break;
 					}
-#					$flash = array('type' => 'notice', 'msg' => $response);
 				}
 				else {
-					$errors = 'Forbidden';
+					$flash['error'][] = T_('Forbidden');
 				}
-			}
-			#$flash = array('type' => 'notice', 'msg' => $response);
-			$output = '<div class="flash notice">'.$response.'</div>';
-			if (count($errors) > 0) {
-				$error_msg = T_("The following errors where encountered :")."<br/><ul>";
-				foreach ($errors as $msg) {
-					$error_msg .= "<li>".$msg."</li>\n";
-				}
-				$error_msg .= "</ul>";
-				$output = '<div class="flash error">'.$error_msg.'</div>';
 			}
 		}
 	}
@@ -292,14 +281,28 @@ if (isset($_POST)) {
 include_once(dirname(__FILE__).'/head.php');
 include_once(dirname(__FILE__).'/sidebar.php');
 ?>
-
+<script type="text/javascript" src="meta/js/manage-database.js"></script>
 <div id="BP_page" class="page">
 	<div class="inpage">
 	
 <?php
-if (!empty($output)) {
-	echo $output;
-#	echo '<div class="flash '.$flash['type'].'">'.$flash['msg'].'</div>';
+if (!empty($flash)) {
+	$msg = '<ul>';
+	if(count(array_keys($flash['error'])) > 0) {
+		$msg_type = 'error';
+	}
+	elseif (count(array_keys($flash['warning'])) > 0 ) {
+		$msg_type = 'warning';
+		$msg .= T_('Import successfully with warning :').'<br />';
+	}
+	else {
+		$msg_type = 'notice';
+	}
+	foreach(array_keys($flash[$msg_type]) as $key_msg) {
+		$msg .= '<li>'.$flash[$msg_type][$key_msg].'</li>';
+	}
+	$msg .= '</ul>';
+	echo '<div id="post_flash" class="flash_'.$msg_type.'" style="display:none;">'.$msg.'</div>';
 }
 ?>
 <fieldset><legend><?php echo T_('Export planet configuration');?></legend>

@@ -463,7 +463,7 @@ if(isset($_POST) && isset($_POST['action'])) {
 			$output .= '</tr>';
 
 			# statusnet_auto_post :
-			$output .= '<tr><td>'.T_('Statusnet activate automatique post').'</td>';
+			$output .= '<tr><td>'.T_('Statusnet activate automatic post').'</td>';
 			if($statusnet['auto_post']) {
 				$output .= '<td><input type="checkbox" class="input field" id="statusnet_auto_post" name="statusnet_auto_post" checked /></td>';
 			} else {

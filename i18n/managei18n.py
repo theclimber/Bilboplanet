@@ -63,8 +63,9 @@ class Translation:
 		themes_path = os.path.join(self.basedir, "themes")
 		for theme in os.listdir(themes_path):
 			# We are in the right directory
-			relpath = 'themes/%s' % theme
-			self.extract_from_tpl(relpath, 'index.tpl')
+			if theme != "index.php":
+				relpath = 'themes/%s' % theme
+				self.extract_from_tpl(relpath, 'index.tpl')
 	
 	def gettext_header(self):
 		return """# SOME DESCRIPTIVE TITLE.
@@ -169,7 +170,7 @@ The following actions are possition :
 * autotranslate : this uses Google-Translate for automatically translate the strings
 \t\tof the selected .po file. NOTE: for this action the syntax is a bit\n
 \t\tdifferent. Here is an usage example :
-\t\t$ python i18n/managei18n.py [PATH_TO_PO_FILE] [FROM_LANG] [TO_LANG]
+\t\t$ python i18n/managei18n.py autotranslate [PATH_TO_PO_FILE]
 * help : show this message
 \n\n
 """

@@ -53,10 +53,11 @@ if (isset($_POST)) {
 		elseif ($_FILES["imported_file"]["error"] > 0){
 			$flash['error'][] = T_('Your file could not be imported').'<br />'.$_FILES["imported_file"]["error"];
 		}
-		elseif($_FILES["imported_file"]["type"] != 'application/x-gzip' ||
+/*strcmp($_FILES["imported_file"]["type"],"application/x-gzip")!=0 ||
 			$_FILES["imported_file"]["type"] != 'application/gzip' ||
 			$_FILES["imported_file"]["type"] != 'application/gzipped' ||
-			$_FILES["imported_file"]["type"] != 'application/gzip-compressed'){
+			$_FILES["imported_file"]["type"] != 'application/gzip-compressed'*/
+		elseif(strpos($_FILES["imported_file"]["type"],"gzip") === false){
 				$flash['error'][] = T_("Your file doesn't have the right format : ").'<br />'.$_FILES["imported_file"]["type"];
 		}
 		else {

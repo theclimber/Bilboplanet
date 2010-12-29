@@ -263,7 +263,7 @@ function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_c
 			# On informe que tout est ok
 			return logMsg("Permalink updated : ".$item_permalink, "", 1, $print);
 		} else {
-			return logMsg("Several posts from the same author have the same title", "", 3, $print);
+			return logMsg("Several posts from the same author have the same title but not the same permalink : ".$item_permalink." (Do not know it we need to update or to add the idem)", "", 3, $print);
 		}
 	} # fin if(!found)
 

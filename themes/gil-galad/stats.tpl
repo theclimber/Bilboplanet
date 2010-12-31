@@ -4,7 +4,9 @@
 		<li>{_Number of members :} {$nb.nb_users}</li>
 		<li>{_Number of feeds :} {$nb.nb_feeds}</li>
 		<li>{_Number of posts :} {$nb.nb_posts}</li>
-		<li>{_Number of votes :} {$nb.nb_votes}</li>
+<!-- BEGIN stats.votes.resume -->
+		<li>{_Number of votes :} {$nb_votes}</li>
+<!-- END stats.votes.resume -->
 	</ul>
 
 	<h2>{_List of the most active members}</h2>

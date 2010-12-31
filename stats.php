@@ -94,13 +94,15 @@ if ($blog_settings->get('planet_vote')) {
 	}
 
 	$core->tpl->render('stats.votes');
+
+	$core->tpl->setVar('nb_votes', getNbVotes($core->con));
+	$core->tpl->render('stats.votes.resume');
 }
 
 $core->tpl->setVar('nb', array(
 	"nb_users" => getNbUsers($core->con),
 	"nb_feeds" => getNbFeeds($core->con),
-	"nb_posts" => getNbPosts($core->con),
-	"nb_votes" => getNbVotes($core->con)
+	"nb_posts" => getNbPosts($core->con)
 ));
 $core->tpl->setVar('params', $params);
 $core->tpl->render('content.stats');

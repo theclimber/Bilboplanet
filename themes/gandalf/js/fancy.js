@@ -13,10 +13,7 @@ function getExtension(str) {
 
 $(document).ready(function() {
 	var allPageTags = new Array();
-	var allPageTags=document.getElementsByClassName("contenu_article");
-	if(allPageTags.length == '0') {
-		var allPageTags=document.getElementsByClassName("post_content");
-	}
+	var allPageTags=document.getElementsByClassName("post_content");
 	for (i=0; i<allPageTags.length; i++) {
 		var allImgTags = new Array();
 		allImgTags = allPageTags[i].getElementsByTagName("img");

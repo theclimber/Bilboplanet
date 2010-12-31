@@ -13,7 +13,9 @@
 
 	<script type="text/javascript" src="{$planet.url}/javascript/jquery.js"></script>
 	<script type="text/javascript" src="{$planet.url}/javascript/jquery.easing-1.3.pack.js" ></script>
-	<script type="text/javascript" src="{$planet.url}/javascript/jquery.fancybox-1.3.2.pack.js" ></script>
+<!-- BEGIN js.import -->
+<script type="text/javascript" src="{$planet.url}/{$js_file}"></script>
+<!-- END js.import -->
 
 	<script type="text/javascript" src="{$planet.url}/themes/{$planet.theme}/js/votes.js" ></script>
 	<script type="text/javascript" src="{$planet.url}/themes/{$planet.theme}/js/mobile.js" ></script>
@@ -111,8 +113,7 @@
 </div><!-- end wrap -->
 
 <!-- ADD JAVASCRIPT IMPORT HERE -->
-<!-- BEGIN js.import -->
-<script type="text/javascript" src="{$planet.url}/{$js_file}"></script>
-<!-- END js.import -->
+<script type="text/javascript" src="{$planet.url}/themes/{$planet.theme}/js/jquery.fancybox-1.3.2.pack.js" ></script>
+<script type="text/javascript" src="{$planet.url}/themes/{$planet.theme}/js/fancy.js"></script>
 </body>
 </html>

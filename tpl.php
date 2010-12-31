@@ -125,7 +125,6 @@ if (!isset($scripts)) {
 	$scripts = array();
 }
 
-$scripts[] = "javascript/fancy.js";
 foreach ($scripts as $js) {
 	$core->tpl->setVar('js_file', $js);
 	$core->tpl->render('js.import');

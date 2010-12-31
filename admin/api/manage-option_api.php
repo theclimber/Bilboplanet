@@ -139,18 +139,6 @@ if(isset($_POST) && isset($_POST['action'])) {
 				$blog_settings->put('planet_subscription', '0', "boolean");
 			}
 			
-			if (!empty($flash)) {
-				$output = '<ul>';
-				foreach($flash as $value) {
-					$output .= "<li>".$value['msg']."</li>";
-				}
-				$output .= '</ul>';
-				print '<div class="flash_error">'.$output.'</div>';
-			}
-			else {
-				$output = T_("Modification succeeded");
-				print '<div class="flash_notice">'.$output.'</div>';
-			}
 
 			############
 			# Add post values for statusNet
@@ -164,24 +152,25 @@ if(isset($_POST) && isset($_POST['action'])) {
 
 			# statusnet_host :
 			if (!empty($_POST['statusnet_host'])) {
-				$host = $_POST['statusnet_host'];
-				$blog_settings->put('statusnet_host', $host, "string");
+				$statusnet_host = $_POST['statusnet_host'];
+
+				$blog_settings->put('statusnet_host', $statusnet_host, "string");
 			} else {
 				$blog_settings->put('statusnet_host', '', "string");
 			}
 
 			# statusnet_username :
 			if (!empty($_POST['statusnet_username'])) {
-				$username = stripslashes(trim($_POST['statusnet_username']));;
-				$blog_settings->put('statusnet_username', $username, "string");
+				$statusnet_username = stripslashes(trim($_POST['statusnet_username']));;
+				$blog_settings->put('statusnet_username', $statusnet_username, "string");
 			} else {
 				$blog_settings->put('statusnet_username', '', "string");
 			}
 
 			# statusnet_password :
 			if (!empty($_POST['statusnet_password'])) {
-				$passw = stripslashes(trim($_POST['statusnet_password']));
-				$blog_settings->put('statusnet_password', $passw, "string");
+				$statusnet_passw = stripslashes(trim($_POST['statusnet_password']));
+				$blog_settings->put('statusnet_password', $statusnet_passw, "string");
 			} else {
 				$blog_settings->put('statusnet_password', '', "string");
 			}
@@ -190,16 +179,62 @@ if(isset($_POST) && isset($_POST['action'])) {
 			if (!empty($_POST['statusnet_post_format'])) {
 				$format = stripslashes(trim($_POST['statusnet_post_format']));
 			} else {
-				$format = stripslashes(trim('['.$blog_settings->get('planet_title').'] %s'));;
+				$format = stripslashes(trim('[%(author)s] %(title)s'));;
 			}
 			$blog_settings->put('statusnet_post_format', $format, "string");
 
 			# statusnet enable/disable posts :
 			if (isset($_POST['statusnet_auto_post'])) {
-				$blog_settings->put('statusnet_auto_post', '1', "boolean");
+				
+				if (!isset($statusnet_host)) {
+					$statusnet_host = '';
+				}
+				if (!isset($statusnet_username)) {
+					$statusnet_username = '';
+				}
+				if(!isset($statusnet_passw)){
+					$statusnet_passw = '';
+				}
+
+				$config_url = $statusnet_host."/api/statusnet/config.json";
+				$ch = curl_init();
+				curl_setopt($ch, CURLOPT_URL, $config_url);
+				curl_setopt($ch, CURLOPT_VERBOSE, 1);
+				curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+				curl_setopt($ch, CURLOPT_USERPWD, $statusnet_username.":".$statusnet_passw);
+				curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
+				curl_setopt($ch, CURLOPT_GET, 1);
+				curl_setopt($ch, CURLOPT_HTTPHEADER, array('Expect:'));
+
+				$result = json_decode(curl_exec($ch));
+				// Look at the returned header
+				$resultArray = curl_getinfo($ch);
+
+				curl_close($ch);
+
+				if($resultArray['http_code'] == "200") {
+					$blog_settings->put('statusnet_textlimit',$result->site->textlimit,"integer");
+					$blog_settings->put('statusnet_auto_post', '1', "boolean");
+				}
+				else {
+					$flash[] = array('type' => 'error', 'msg' => T_("Impossible to reach statusnet server : the service could not be activated"));
+				}
 			}
 			else {
 				$blog_settings->put('statusnet_auto_post', '0', "boolean");
+			}
+
+			if (!empty($flash)) {
+				$output = '<ul>';
+				foreach($flash as $value) {
+					$output .= "<li>".$value['msg']."</li>";
+				}
+				$output .= '</ul>';
+				print '<div class="flash_error">'.$output.'</div>';
+			}
+			else {
+				$output = T_("Modification succeeded");
+				print '<div class="flash_notice">'.$output.'</div>';
 			}
 
 			break;
@@ -443,8 +478,8 @@ if(isset($_POST) && isset($_POST['action'])) {
 			############
 
 			# statusnet_host :
-			$output .= '<tr><td>'.T_('Planet statusnet host (ex: http://identi.ca)').'</td>';
-			$output .= '<td><input id="cadre_options" class="input field" type="text" name="statusnet_host" value="'.$statusnet['host'].'" /></td>';
+			$output .= '<tr><td>'.T_('Planet statusnet host').'</td>';
+			$output .= '<td><input id="cadre_options" class="input field" type="text" name="statusnet_host" value="'.$statusnet['host'].'" /> '.T_('(ex: http://identi.ca)').'</td>';
 			$output .= '</tr>';
 
 			# statusnet_username :
@@ -459,7 +494,7 @@ if(isset($_POST) && isset($_POST['action'])) {
 
 			# statusnet_post_format :
 			$output .= '<tr><td>'.T_('Statusnet messages format').'</td>';
-			$output .= '<td><input id="cadre_options" class="input field" type="text" name="statusnet_post_format" value="'.$statusnet['post_format'].'" /> '.T_('(ex: "[Site name] %s" where "%s" is the title of the post)').'</td>';
+			$output .= '<td><input id="cadre_options" class="input field" type="text" name="statusnet_post_format" value="'.$statusnet['post_format'].'" /> '.T_('(ex: "[Site name] %(author)s %(title)s" where "%(author)s" is the author of the post and "%(title)s is the title")').'</td>';
 			$output .= '</tr>';
 
 			# statusnet_auto_post :

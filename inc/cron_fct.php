@@ -41,6 +41,7 @@ function update($core, $print=false) {
 	# Requete permettant de recuperer la liste des flux a parser
 	$sql = "SELECT
 			".$core->prefix."feed.user_id as user_id,
+			user_fullname,
 			feed_id,
 			feed_url,
 			site_url,
@@ -250,7 +251,7 @@ function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_c
 			$cur->modified = array(' NOW() ');
 			$cur->insert();
 			
-			postNewsOnSocialNetwork($item_title, $next_post_id);
+			postNewsOnSocialNetwork($item_title, $rs->user_fullname, $next_post_id);
 
 			return logMsg("Post added: ".$item_permalink, "", 1, $print);
 		} elseif ($rs4->count() == 1) {
@@ -314,21 +315,28 @@ function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_c
 	return "";
 }
 
-function postNewsOnSocialNetwork($title, $post_id) {
+function postNewsOnSocialNetwork($title, $author, $post_id) {
 	global $blog_settings;
 	$post_url = $blog_settings->get('planet_url').'/?post_id='.$post_id;
 	$formating = $blog_settings->get('statusnet_post_format');
-	$title_length = 140 - strlen($post_url) - strlen($formating);
-	$short_title = substr($title,0,$title_length)."...";
+	$textlimit = $blog_settings->get('statusnet_textlimit');
 
-	$short_msg = sprintf($formating, $short_title.' '.$post_url);
+//	$title_length = $textlimit - strlen($post_url) - strlen($formating);
+//	$short_title = substr($title,0,$title_length)."...";
+
+	$content = sprintfn($formating, array(
+		"title" => $title,
+		"author" => $author));
+	$content_max_length = $textlimit - strlen($post_url) - 4;
+	$short_message = substr($content,0,$content_max_length)."...";
+	$status = $short_message.' '.$post_url;
 
 	if ($blog_settings->get('statusnet_auto_post')) {
 		postToStatusNet(
 			$blog_settings->get('statusnet_host'),
 			$blog_settings->get('statusnet_username'),
 			$blog_settings->get('statusnet_password'),
-			$short_msg);
+			$status);
 	}
 }
 

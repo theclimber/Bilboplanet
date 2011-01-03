@@ -126,7 +126,7 @@ if (isset($_GET)) {
 	}
 
 	# If there is a filter call
-	if (isset($_GET['filter']) && !empty($_GET['filter']) && !isset($_GET['popular'])) {
+	if (isset($_GET['filter']) && !empty($_GET['filter'])) {
 		$params["filter"] = trim($_GET['filter']);
 
 		# Complete the SQL query

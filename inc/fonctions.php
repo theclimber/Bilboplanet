@@ -305,6 +305,9 @@ function showPosts($rs, $tpl, $search_value="", $strip_tags=false) {
 		$post = array(
 			"id" => $rs->post_id,
 			"date" => mysqldatetime_to_date("d/m/Y",$rs->pubdate),
+			"day" => mysqldatetime_to_date("d",$rs->pubdate),
+			"month" => mysqldatetime_to_date("m",$rs->pubdate),
+			"year" => mysqldatetime_to_date("Y",$rs->pubdate),
 			"hour" => mysqldatetime_to_date("H:i",$rs->pubdate),
 			"permalink" => urldecode($post_permalink),
 			"title" => html_entity_decode($rs->title, ENT_QUOTES, 'UTF-8'),
@@ -332,7 +335,7 @@ function showPosts($rs, $tpl, $search_value="", $strip_tags=false) {
 		# Gravatar
 		if($gravatar) {
 			$gravatar_email = strtolower($post['author_email']);
-			$tpl->setVar('gravatar_url', "http://www.gravatar.com/avatar.php?gravatar_id=".md5($gravatar_email)."&default=".urlencode($blog_settings->get('planet_url')."/themes/".$blog_settings->get('planet_theme')."/images/gravatar.png")."&size=40");
+			$tpl->setVar('gravatar_url', "http://www.gravatar.com/avatar.php?gravatar_id=".md5($gravatar_email)."&default=".urlencode($blog_settings->get('planet_url')."/themes/".$blog_settings->get('planet_theme')."/images/gravatar.png"));
 
 			$tpl->render('post.block.gravatar');
 		}
@@ -392,7 +395,7 @@ function afficheVotes($nb_votes, $num_article) {
 	if (checkVote($core->con, getIP(), $num_article)) {
 
 		# Si le visiteur a deja vote
-		$text .= '<span id="vote'.$num_article.'" class="avote">'.$score.' '.$vote.'.<br/>
+		$text .= '<span id="vote'.$num_article.'" class="avote">'.$score.' '.$vote.'.
 				<span id="imgoui" title="'.T_('Vote yes').'"></span>
 				<span id="imgnon" title="'.T_('Vote no').'"></span>';
 		$text .= '</span>';
@@ -403,7 +406,7 @@ function afficheVotes($nb_votes, $num_article) {
 		$ip = getIP();
 		$token = md5($ip.$num_article);
 		# On affiche le bouton de vote
-		$text .= '<span id="vote'.$num_article.'" class="vote">'.$score.' '.$vote.'<br/>
+		$text .= '<span id="vote'.$num_article.'" class="vote">'.$score.' '.$vote.'
 				<a href="#blackhole" title="'.T_('This post seems pertinent to you').'" id="aoui'.$num_article.'" 
 				onclick="javascript:vote('."'$num_article','$token', 'positif'".');" >
 				<span id="imgoui" title="'.T_('Vote yes').'"></span></a>';

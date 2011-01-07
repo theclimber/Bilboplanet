@@ -127,8 +127,10 @@ else {
 		$core->tpl->render('subscription.flash');
 	}
 
-	$content = html_entity_decode(stripslashes($blog_settings->get('planet_subscription_content')), ENT_QUOTES, 'UTF-8');
-	$content = html_encode_code_tags($content);
+	$content = $blog_settings->get('planet_subscription_content');
+	$content = stripslashes($content);
+	$content = html_entity_decode($content, ENT_QUOTES, 'UTF-8');
+	$content = code_htmlentities($content, 'code', 'pre');
 
 	require_once(dirname(__FILE__).'/inc/lib/recaptchalib.php');
 	$publickey = "6LdEeQgAAAAAACLccbiO8TNaptSmepfMFEDL3hj2";

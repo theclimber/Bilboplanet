@@ -832,7 +832,7 @@ function cleanString($toClean) {
 # Function to encode html inside <code></code> tags	#
 #---------------------------------------------------#
 function html_encode_code_tags ($html) {
-	
+
 	if (preg_match_all("/(<code>)(.*?)(<\/code>)/", $html, $matches, PREG_SET_ORDER)) {
 	
 		foreach ($matches as $val) {
@@ -843,5 +843,32 @@ function html_encode_code_tags ($html) {
 	}
 	
 	return $html;
+}
+
+function code_htmlentities ($html, $tag1, $tag2) {
+	$split1 = preg_split('(<'.$tag1.'>)', $html, -1, PREG_SPLIT_NO_EMPTY);
+	$result = array();
+
+	# Pour chaque element on test si on trouve une fin de balise
+	foreach ($split1 as $el) {
+		$split2 = preg_split('(<\/'.$tag1.'>)', $el, -1, PREG_SPLIT_NO_EMPTY);
+		if (count($split2) == 2) {
+			# si la longueur du tableau est de 2, c'est qu'il y avait une balise
+			# l'element avec une valise est le premier des deux
+			$result[] = '<'.$tag2.'>'.htmlentities(stripslashes($split2[0])).'</'.$tag2.'>';
+			$result[] = $split2[1];
+		}
+		else {
+			# s'il n'y a pas de balise, alors on ajoute simplement l'element au tableau
+			$result[] = $el;
+		}
+	}
+
+	# Maintenant que le texte est transforme en tableau, on l'affiche element par element
+	$output = "";
+	foreach($result as $el) {
+		$output .= $el;
+	}
+	return $output;
 }
 ?>

@@ -266,7 +266,6 @@ if(isset($_POST) && isset($_POST['action'])) {
 			$nb_posts_page = $blog_settings->get('planet_nb_post');
 			$subscription = $blog_settings->get('planet_subscription');
 			$subscription_content = html_entity_decode(stripslashes($blog_settings->get('planet_subscription_content')), ENT_QUOTES, 'UTF-8');
-			#$subscription_content = html_encode_code_tags($subscription_content);
 			$ganalytics = $blog_settings->get('planet_ganalytics');
 			$internal_links = $blog_settings->get('internal_links');
 
@@ -558,7 +557,8 @@ if(isset($_POST) && isset($_POST['action'])) {
 			$nb_posts_page = $blog_settings->get('planet_nb_post');
 			$subscription = $blog_settings->get('planet_subscription');
 			$subscription_content = html_entity_decode(stripslashes($blog_settings->get('planet_subscription_content')), ENT_QUOTES, 'UTF-8');
-			$subscription_content = html_encode_code_tags($subscription_content);
+//			$subscription_content = html_encode_code_tags($subscription_content);
+			$subscription_content = code_htmlentities($subscription_content, 'code', 'code');
 			$ganalytics = $blog_settings->get('planet_ganalytics');
 			$internal_links = $blog_settings->get('internal_links');
 

@@ -291,7 +291,11 @@ $(document).ready(function($) {
 	/* Flash Box									*/
 	/************************************************/
 	$.fn.flashmsg = function() {
+		var autoclose = false;
 		var flash_class = $(this).attr('class');
+		if (flash_class == 'flash_notice') {
+			var autoclose = true;
+		}
 		var flash_content = $(this).html();
 		var flash_overlay = $(document.createElement('div')).css({
 			display: 'none'
@@ -304,9 +308,23 @@ $(document).ready(function($) {
 				
 		$('#flash_overlay').fadeIn('fast',function(){
 			$('#flash_box').animate({'top':'160px'},500);
+			//If autoclose = true (flasbox class = flash_notice) then define a timer (3 seconds) to close flashbox
+			if(autoclose) {
+				setTimeout(function() {$('#flash_box_close').click();} , 3000);
+			}
 		});
 		
-		$('#flash_box_close, input[type="button"], input[type="submit"]').click(function(){
+		$(document).keypress(function(e) {
+			// Disable default action on keypress
+			e.preventDefault();
+			// If keypress = ESC or keypress = ENTER
+			if (e.keyCode == '27' || e.keyCode == '13') {
+					// Close flash box
+					$('#flash_box_close').click();
+			}
+		});
+	
+		$('#flash_box_close, #flash_overlay, input[type="button"], input[type="submit"]').click(function(){
 			$('#flash_box').animate({'top':'-200px'},500,function(){
 				$('#flash_overlay').fadeOut('fast');
 				flash_class.empty;

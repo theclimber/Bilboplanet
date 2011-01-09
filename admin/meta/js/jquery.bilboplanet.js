@@ -308,23 +308,28 @@ $(document).ready(function($) {
 				
 		$('#flash_overlay').fadeIn('fast',function(){
 			$('#flash_box').animate({'top':'160px'},500);
-			//If autoclose = true (flasbox class = flash_notice) then define a timer (3 seconds) to close flashbox
+			//If autoclose = true (flashbox class = flash_notice) then define a timer (3 seconds) to close flashbox
 			if(autoclose) {
 				setTimeout(function() {$('#flash_box_close').click();} , 3000);
 			}
 		});
-		
+
+		// Simulate click on div #flash_box_close when press ESC or ENTER on keyboard
 		$(document).keypress(function(e) {
-			// Disable default action on keypress
-			e.preventDefault();
-			// If keypress = ESC or keypress = ENTER
-			if (e.keyCode == '27' || e.keyCode == '13') {
-					// Close flash box
+			if ($('#flash_overlay').length != 0) {
+				if ( e.keyCode == '27' || e.keyCode == '13') {
 					$('#flash_box_close').click();
+					if ( e.keyCode == '13') {
+						return false;
+					}
+					else {
+						return true;
+					}
+				}
 			}
 		});
-	
-		$('#flash_box_close, #flash_overlay, input[type="button"], input[type="submit"]').click(function(){
+		
+		$('#flash_box_close, #flash_overlay, #flash_box, input[type="button"], input[type="submit"]').click(function(){
 			$('#flash_box').animate({'top':'-200px'},500,function(){
 				$('#flash_overlay').fadeOut('fast');
 				flash_class.empty;

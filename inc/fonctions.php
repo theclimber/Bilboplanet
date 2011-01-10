@@ -709,8 +709,8 @@ function sendmail ($sender, $recipients, $subject, $message, $type='normal', $re
 		$headers .= "Reply-To: ".$reply_to."\r\n";
 		$headers .= "MIME-Version: 1.0\r\n";
 		$headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
-		$headers .= "Content-Transfer-Encoding: quoted-printable\r\n\r\n"; 
-		$message_content = $message;
+		$headers .= "Content-Transfer-Encoding: base64\r\n\r\n"; 
+		$message_content = base64_encode($message);
 	}
 	return mail($recipients, $subject, $message_content, $headers);
 }

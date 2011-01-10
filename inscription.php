@@ -130,7 +130,7 @@ else {
 	$content = $blog_settings->get('planet_subscription_content');
 	$content = stripslashes($content);
 	$content = html_entity_decode($content, ENT_QUOTES, 'UTF-8');
-	$content = code_htmlentities($content, 'code', 'pre');
+	$content = code_htmlentities($content, 'code', 'code', 1);
 
 	require_once(dirname(__FILE__).'/inc/lib/recaptchalib.php');
 	$publickey = "6LdEeQgAAAAAACLccbiO8TNaptSmepfMFEDL3hj2";

@@ -146,6 +146,12 @@ if (function_exists('phpversion')){
 		<div class="message">
 			<p><?php echo T_('Quick summary of the planet');?></p>
 		</div>
+
+<?php
+if (file_exists(dirname(__FILE__).'/install')) {
+	echo '<div id="flash-msg" style="background:red;" class="error">'.T_('WARNING : please remove /admin/install folder').'</div>';
+}
+?>
 		
 <div id="dashboard">
 	<div class="box-container-left">

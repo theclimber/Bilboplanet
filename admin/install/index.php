@@ -45,13 +45,13 @@ $err = '';
 
 # Check if bilboplanet is already installed
 $schema = dbSchema::init($core->con);
-if (in_array($core->prefix.'flux',$schema->getTables())) {
+if (in_array($core->prefix.'feed',$schema->getTables())) {
 	$can_install = false;
 	$err = T_('The Bilboplanet is already installed.');
 }
 
 # Check system capabilites
-if (!dcSystemCheck($core->con,$_e)) {
+if ($can_install && !dcSystemCheck($core->con,$_e)) {
 	$can_install = false;
 	$err = T_('The Bilboplanet can not be installed').'<ul><li>'.implode('</li><li>',$_e).'</li></ul>';
 }

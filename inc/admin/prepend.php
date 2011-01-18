@@ -24,6 +24,21 @@
 ***** END LICENSE BLOCK *****/
 ?><?php
 
+if (isset($_SERVER['BP_CONFIG_PATH'])) {
+	define('BP_CONFIG_PATH',$_SERVER['BP_CONFIG_PATH']);
+} elseif (isset($_SERVER['REDIRECT_BP_CONFIG_PATH'])) {
+	define('BP_CONFIG_PATH',$_SERVER['REDIRECT_BP_CONFIG_PATH']);
+} else {
+	define('BP_CONFIG_PATH',dirname(__FILE__).'/../config.php');
+}
+
+if (!is_file(BP_CONFIG_PATH))
+{
+	$url = 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'].$_SERVER['REQUEST_URI']."../admin/install/";
+	header("Location: ".$url,TRUE,302);
+	exit();
+}
+
 require_once dirname(__FILE__).'/../prepend.php';
 // HTTP/1.1
 header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');

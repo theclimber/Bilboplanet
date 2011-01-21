@@ -100,12 +100,13 @@ if (isset($_GET)) {
 			$_GET['go'] == "external" &&
 			!$res->isEmpty() &&
 			$blog_settings->get('internal_links')){
-				$ga = $blog_settings->get('planet_ganalytics');
-				if(!empty($ga)) {
+				$root_url = $blog_settings->get('planet_url');
+				$analytics = $blog_settings->get('planet_analytics');
+				if(!empty($analytics)) {
 					# If google analytics is activated, launch request
-					ga(
-						$ga,
-						'/post/'.$params['post_id'],
+					analyze (
+						$analytics,
+						$root_url.'/post/'.$params['post_id'],
 						'post:'.$params['post_id']);
 				}
 				http::redirect($res->post_permalink);
@@ -123,6 +124,9 @@ if (isset($_GET)) {
 	}
 	if (isset($_GET['popular']) && !empty($_GET['popular'])){
 		$params['popular'] = $_GET['popular'];
+		if (!isset($_GET['filter'])) {
+			$_GET['filter'] = 'week';
+		}
 	}
 
 	# If there is a filter call
@@ -161,6 +165,7 @@ if (isset($_GET)) {
 
 if (array_key_exists('popular', $params)){
 	# Complete the SQL query
+	$debut_sql = $debut_sql." AND post_score > 0";
 	$fin_sql = " ORDER BY post_score DESC LIMIT $num_start,".$blog_settings->get('planet_nb_post');
 }
 else {

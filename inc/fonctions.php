@@ -24,9 +24,60 @@
 ***** END LICENSE BLOCK *****/
 ?>
 <?php
+
 #----------------------------------#
-#   Fonction Goolge Analytics      #
+#   Fonction Analytics             #
 #----------------------------------#
+function analyze($analytics,$purl,$name, $html = 1) {
+	global $blog_settings;
+
+	if ($analytics == "google-analytics") {
+		$aid = $blog_settings->get('planet_ganalytics');
+		ga($aid,$purl,$name);
+	}
+	elseif($analytics == "piwik"){
+		$aid = $blog_settings->get('piwik_id');
+		piwik_analytics($aid,$purl,$name, $html);
+	}
+}
+function piwik_analytics($aid,$purl,$name, $html = 1) {
+	require_once(dirname(__FILE__).'/lib/PiwikTracker.php');
+	global $blog_settings;
+
+	PiwikTracker::$URL = $blog_settings->get('piwik_url');
+
+	session_start();
+	$screen_resolution = "1024x768";
+	if (!isset($_SESSION[iterate]) && $html) {
+		if(!isset($_COOKIE["users_resolution"])){
+			//means cookie is not found set it using Javascript
+			$_SESSION[iterate]=1;
+?><script language="javascript"><!--
+	writeCookie();
+	function writeCookie() {
+		var the_cookie = "user_resolution="+ screen.width +"x"+ screen.height;
+		document.cookie=the_cookie
+		location ='<?php echo $_SERVER['PHP_SELF'];?>';
+	}
+//--></script><?php
+		} else{
+			$screen_resolution = $_COOKIE["users_resolution"];
+		}
+	} else{
+		$screen_resolution = $_COOKIE["users_resolution"];
+	}
+	$screen_resolution = preg_split('x',$screen_resolution);
+
+	$t = new PiwikTracker( $idSite = $aid, $blog_settings->get('piwik_url'));
+	// Optional tracking
+	$t->setUserAgent($_SERVER['HTTP_USER_AGENT']);
+	$t->setBrowserLanguage(substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2));
+	$t->setLocalTime( date("H:i:s") );
+	$t->setResolution( $screen_resolution[0], $screen_resolution[1] );
+	// Mandatory
+	$t->setUrl( $url = $purl );
+	$t->doTrackPageView($name);
+}
 
 function ga($gaid,$url,$name) {
 	global $blog_settings;

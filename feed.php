@@ -278,8 +278,8 @@ if (isset($_GET) && isset($_GET['type'])) {
 }
 else http::redirect($blog_settings->get('planet_url')."/feed.php?type=rss");
 
-$ga = $blog_settings->get('planet_ganalytics');
-if(!empty($ga)) {
-	ga($ga,'/feed/'.$_GET['type'],T_('Feed'));
+$analytics = $blog_settings->get('planet_analytics');
+if(!empty($analytics)) {
+	analyze($analytics,'/feed/'.$_GET['type'],T_('Feed'),0);
 }
 ?>

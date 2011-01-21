@@ -113,11 +113,29 @@ if(isset($_POST) && isset($_POST['action'])) {
 				$flash[] = array('type' => 'error', 'msg' => T_("Only numeric value are allowed for number of posts by page"));
 			}
 			
+			if (!empty($_POST['planet_analytics'])) {
+				$planet_analytics = $_POST['planet_analytics'];
+				$blog_settings->put('planet_analytics', $planet_analytics, "string");
+			} else {
+				$blog_settings->put('planet_analytics', '', "string");
+			}
 			if (!empty($_POST['ganalytics'])) {
 				$ganalytics = $_POST['ganalytics'];
 				$blog_settings->put('planet_ganalytics', $ganalytics, "string");
 			} else {
 				$blog_settings->put('planet_ganalytics', '', "string");
+			}
+			if (!empty($_POST['piwik_url'])) {
+				$piwik_url = $_POST['piwik_url'];
+				$blog_settings->put('piwik_url', $piwik_url, "string");
+			} else {
+				$blog_settings->put('piwik_url', '', "string");
+			}
+			if (!empty($_POST['piwik_id'])) {
+				$piwik_id = $_POST['piwik_id'];
+				$blog_settings->put('piwik_id', $piwik_id, "integer");
+			} else {
+				$blog_settings->put('piwik_id', '', "integer");
 			}
 			
 			if (isset($_POST['internal_links'])) {
@@ -266,7 +284,10 @@ if(isset($_POST) && isset($_POST['action'])) {
 			$nb_posts_page = $blog_settings->get('planet_nb_post');
 			$subscription = $blog_settings->get('planet_subscription');
 			$subscription_content = html_entity_decode(stripslashes($blog_settings->get('planet_subscription_content')), ENT_QUOTES, 'UTF-8');
+			$planet_analytics = $blog_settings->get('planet_analytics');
 			$ganalytics = $blog_settings->get('planet_ganalytics');
+			$piwik_url = $blog_settings->get('piwik_url');
+			$piwik_id = $blog_settings->get('piwik_id');
 			$internal_links = $blog_settings->get('internal_links');
 
 			# statusnet options :
@@ -460,8 +481,34 @@ if(isset($_POST) && isset($_POST['action'])) {
 			<td><input id="cadre_options" class="input field" type="text" name="nb_posts_page" value="'.$nb_posts_page.'" /></td>
 		</tr>
 		<tr>
+			<td>'.T_('Analytics engine').'</td>
+			<td>';
+			$selected = array('google' => '', 'piwik' => '', 'disabled' => '');
+			if ($planet_analytics == "google-analytics") {
+				$selected['google'] = 'selected';
+			} elseif ($planet_analytics == 'piwik') {
+				$selected['piwik'] = 'selected';
+			} else {
+				$selected['disabled'] = 'selected';
+			}
+			$output .= '
+				<select name="planet_analytics" class="field">
+					<option value="google-analytics" '.$selected['google'].'>'.T_('Google-Analytics').'</option>
+					<option value="piwik" '.$selected['piwik'].'>'.T_('Piwik').'</option>
+					<option value="disabled" '.$selected['disabled'].'>'.T_('Disabled').'</option>
+				</select>
+			</td>
+		<tr>
 			<td>'.T_('Google Analytics id').'</td>
 			<td><input id="cadre_options" class="input field" type="text" name="ganalytics" value="'.$ganalytics.'" /></td>
+		</tr>
+		<tr>
+			<td>'.T_('Piwik site URL').'</td>
+			<td><input id="cadre_options" class="input field" type="text" name="piwik_url" value="'.$piwik_url.'" /></td>
+		</tr>
+		<tr>
+			<td>'.T_('Piwik site id').'</td>
+			<td><input id="cadre_options" class="input field" type="text" name="piwik_id" value="'.$piwik_id.'" /></td>
 		</tr>
 		<tr>
 			<td>'.T_('Enable Internal links').'</td>';
@@ -560,6 +607,9 @@ if(isset($_POST) && isset($_POST['action'])) {
 //			$subscription_content = html_encode_code_tags($subscription_content);
 			$subscription_content = code_htmlentities($subscription_content, 'code', 'code');
 			$ganalytics = $blog_settings->get('planet_ganalytics');
+			$planet_analytics = $blog_settings->get('planet_analytics');
+			$piwik_url = $blog_settings->get('piwik_url');
+			$piwik_id = $blog_settings->get('piwik_id');
 			$internal_links = $blog_settings->get('internal_links');
 
 			# statusnet options :
@@ -658,13 +708,30 @@ if(isset($_POST) && isset($_POST['action'])) {
 				<td>'.$nb_posts_page.'</td>
 			</tr>
 			<tr>
+				<td>'.T_('Planet Analytics Engine').'</td>';
+				if (empty($planet_analytics)) {
+					$output .= '<td>'.T_('Disabled').'</td>';
+				}
+				else {
+					$output .= '<td>'.$planet_analytics.'</td>';
+				}
+			$output .= '</tr>
+			<tr>
 				<td>'.T_('Google Analytics id').'</td>';
 				if (empty($ganalytics)) {
-					$output .= '<td>'.T_('Disabled').'</td>';
+					$output .= '<td></td>';
 				}
 				else {
 					$output .= '<td>'.$ganalytics.'</td>';
 				}
+			$output .= '</tr>
+			<tr>
+				<td>'.T_('Piwik URL').'</td>';
+			$output .= '<td>'.$piwik_url.'</td>';
+			$output .= '</tr>
+			<tr>
+				<td>'.T_('Piwik Site ID').'</td>';
+			$output .= '<td>'.$piwik_id.'</td>';
 			$output .= '</tr>
 			<tr>
 				<td>'.T_('Enable Internal links').'</td>';

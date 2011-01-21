@@ -157,6 +157,13 @@ if (isset($_GET) && isset($_GET['type'])) {
 			<language><?php echo $blog_settings->get('planet_lang'); ?></language>
 			<generator>Bilboplanet v<?php echo str_replace(array("\r\n", "\r", "\n"), null, $blog_settings->get('planet_version')); ?></generator>
 			<webMaster><?php echo strtolower($blog_settings->get('author_mail'))." (".$blog_settings->get('author').")"; ?></webMaster>
+			<image>
+				<url><?php echo $blog_settings->get('planet_url').'/themes/'.$blog_settings->get('planet_theme').'/images/logo.png';?></url>
+				<title><?php echo $title; ?></title>
+				<link><?php echo $blog_settings->get('planet_url'); ?></link>
+				<description><?php echo $planet_desc;?></description>
+			</image>
+
 <?php 
 	}
 	elseif($_GET['type']=="atom") {
@@ -170,6 +177,8 @@ if (isset($_GET) && isset($_GET['type'])) {
 		<title><?php echo $title; ?></title>
 		<subtitle type="text"><?php echo $planet_desc; ?></subtitle>
 		<updated><?php echo date('c') ?></updated>
+		<icon><?php echo $blog_settings->get('planet_url').'/themes/'.$blog_settings->get('planet_theme').'/favicon.ico';?></icon>
+		<logo><?php echo $blog_settings->get('planet_url').'/themes/'.$blog_settings->get('planet_theme').'/images/logo.png';?></logo>
 		<id>tag:<?php 
 		echo $authority.','.date('Y').':'.$blog_settings->get('planet_url');
 		?></id>

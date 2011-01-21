@@ -4,3 +4,4 @@ inc/update.txt
 admin/cache/*
 admin/mysql/snapshot/*
 logs/*
+themes/planetlibre

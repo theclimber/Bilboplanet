@@ -883,12 +883,12 @@ function cleanString($toClean) {
 # Function to encode html inside <code></code> tags	#
 #---------------------------------------------------#
 function code_htmlentities ($html, $tag1, $tag2, $return = 0) {
-	$split1 = preg_split('(<'.$tag1.'[^>]*>)', $html, -1, PREG_SPLIT_NO_EMPTY);
+	$split1 = preg_split('(<'.$tag1.'[^>]*>)', $html, -1);
 	$result = array();
 
 	# Pour chaque element on test si on trouve une fin de balise
 	foreach ($split1 as $el) {
-		$split2 = preg_split('(<\/'.$tag1.'>)', $el, -1, PREG_SPLIT_NO_EMPTY);
+		$split2 = preg_split('(<\/'.$tag1.'[^>]*>)', $el, -1);
 		if (count($split2) == 2) {
 			# si la longueur du tableau est de 2, c'est qu'il y avait une balise
 			# l'element avec une valise est le premier des deux

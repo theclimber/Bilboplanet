@@ -95,21 +95,23 @@ if (isset($_GET)) {
 		$cur->last_viewed = array('NOW()');
 		$cur->update("WHERE post_id = '".$params['post_id']."'");
 
-		$root_url = $blog_settings->get('planet_url');
-		$analytics = $blog_settings->get('planet_analytics');
-		if(!empty($analytics)) {
-			# If google analytics is activated, launch request
-			analyze (
-				$analytics,
-				$root_url.'/post/'.$params['post_id'],
-				'post:'.$params['post_id']);
-		}
-
 		if (isset($_GET['go']) &&
 			$_GET['go'] == "external" &&
 			!$res->isEmpty() &&
 			$blog_settings->get('internal_links')){
-				http::redirect($res->post_permalink);
+
+			$root_url = $blog_settings->get('planet_url');
+			$analytics = $blog_settings->get('planet_analytics');
+
+			if(!empty($analytics)) {
+				# If google analytics is activated, launch request
+				analyze (
+					$analytics,
+					$root_url.'/post/'.$params['post_id'],
+					'post:'.$params['post_id'],
+					$res->post_permalink);
+			}
+			http::redirect($res->post_permalink);
 		}
 
 		# Complete the SQL query

@@ -24,6 +24,12 @@
 ***** END LICENSE BLOCK *****/
 ?>
 <?php
+if (!isset($styles)) {
+	$styles = array();
+}
+if (!isset($scripts)) {
+	$scripts = array();
+}
 
 $params = array(
 	'title'=>$blog_settings->get('planet_title')
@@ -88,18 +94,28 @@ while ($rs_side->fetch()) {
 $widget_path = dirname(__FILE__).'/widgets';
 $widget_files = json_decode($blog_settings->get('planet_widget_files'));
 foreach ($widget_files as $file){
-	if (is_dir($widget_path) && is_file($widget_path.'/'.$file["name"])) {
+	if (is_dir($widget_path) && is_file($widget_path.'/'.$file->{'name'})) {
 		# Build an array of available widgets
-		if ($file["position"] == "sidebar") {
-			require_once($widget_path.'/'.$file["name"]);
-			$wgt = getWidget();
-			$core->tpl->setVar("sidebar-widget", $wgt);
+		require_once($widget_path.'/'.$file->{'name'});
+		$wgt = getWidget();
+		foreach ($wgt['styles'] as $sty) {
+			$styles[] = $sty;
+		}
+		foreach ($wgt['scripts'] as $spt) {
+			$scripts[] = $spt;
+		}
+		if ($file->{'position'} == "sidebar") {
+			$core->tpl->setVar("sidebar-widget", array(
+				'title' => $wgt['title'],
+				'html' => $wgt['html'],
+				'id' => $wgt['id']));
 			$core->tpl->render('sidebar.widget');
 		}
-		if ($file["position"] == "footer") {
-			require_once($widget_path.'/'.$file["name"]);
-			$wgt = getWidget();
-			$core->tpl->setVar("footer-widget", $wgt);
+		if ($file->{"position"} == "footer") {
+			$core->tpl->setVar("footer-widget", array(
+				'title' => $wgt['title'],
+				'html' => $wgt['html'],
+				'id' => $wgt['id']));
 			$core->tpl->render('footer.widget');
 		}
 	}
@@ -118,13 +134,20 @@ $core->tpl->setVar('footer3', array(
 	'text' => T_('Designed by BilboPlanet'),
 	'url' => 'http://www.bilboplanet.com'));
 
+
+######################
+# RENDER STYLES
+######################
+foreach ($styles as $css) {
+	$core->tpl->setVar('css_file', $css);
+	$core->tpl->render('css.import');
+}
+
+
+
 ######################
 # RENDER JAVASCRIPT
 ######################
-if (!isset($scripts)) {
-	$scripts = array();
-}
-
 foreach ($scripts as $js) {
 	$core->tpl->setVar('js_file', $js);
 	$core->tpl->render('js.import');

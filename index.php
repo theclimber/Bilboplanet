@@ -109,7 +109,8 @@ if (isset($_GET)) {
 						$root_url.'/post/'.$params['post_id'],
 						'post:'.$params['post_id']);
 				}
-				http::redirect($res->post_permalink);
+				header("Location: $res->post_permalink");
+#				http::redirect($res->post_permalink);
 		}
 
 		# Complete the SQL query

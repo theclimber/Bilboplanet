@@ -22,9 +22,9 @@ array(
 Once your widget is ready to be set in production, go to into the bilboplanet database
 and in the table "settings" add an entry called : "planet_widget_files" in which you will
 put data in json format :
-{
+[
 	{"name" : "YourwidgetName.php", "position" : "sidebar"},
 	{"name" : "Yoursecondwidget.php", "position" : "footer"}
-}
+]
 
 Note : there are only two positions supported actually : sidebar and footer

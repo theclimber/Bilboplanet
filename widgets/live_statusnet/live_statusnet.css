@@ -1,0 +1,30 @@
+.tweet {
+	background: #bdf6be;
+	margin: 4px 0;
+	padding: 8px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+}
+.tweet img {
+	float: left;
+	margin: 0 8px 4px 0;
+}
+.tweet .text {
+	margin: 0;
+}
+.tweet .time a {
+	font-size: 80%;
+	color: #888;
+	white-space: nowrap;
+	text-decoration: none;
+}
+.tweet .time a:hover {
+	text-decoration: underline;
+}
+#twitterSearch .tweet {
+	min-height: 24px;
+}
+#twitterSearch .tweet .text {
+	margin-left: 32px;
+}
+

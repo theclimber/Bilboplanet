@@ -110,7 +110,8 @@ if (isset($_GET)) {
 					'post:'.$params['post_id'],
 					$res->post_permalink);
 			}
-			http::redirect($res->post_permalink);
+			$post_url = stripslashes($res->post_permalink);
+			http::redirect($post_url);
 		}
 
 		# Complete the SQL query

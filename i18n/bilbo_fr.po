@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Bilboplanet\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-10-29 10:55+0200\n"
-"PO-Revision-Date: 2011-02-02 14:25+0100\n"
+"PO-Revision-Date: 2011-02-02 14:31+0100\n"
 "Last-Translator: Grégoire de Hemptinne <greg@theclimber.be>\n"
 "Language-Team: French\n"
 "Language: \n"
@@ -129,7 +129,7 @@ msgstr "Envoyer"
 #: themes/legolas/contact.tpl:10
 #: themes/gil-galad/contact.tpl:10
 msgid "You can contact the administration team with the form below:"
-msgstr "Vous pouvez contactez les administrateurs via le formulaire ci-dessous:"
+msgstr "Vous pouvez contacter les administrateurs via le formulaire ci-dessous:"
 
 #: themes/gandalf/stats.tpl:2
 #: themes/aragorn/stats.tpl:2

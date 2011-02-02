@@ -51,18 +51,18 @@
 
 				<!-- BEGIN menu.filter -->
 				<div class="tri">
-					<b>Filtrer les articles :&nbsp;&nbsp;&nbsp;&nbsp;</b>
+					<b>{_Filter posts} :&nbsp;&nbsp;&nbsp;&nbsp;</b>
 					<span>
-						<a href="index.php?{$filter_url}filter=day">Articles du jour</a>
+						<a href="index.php?{$filter_url}filter=day">{_Posts of the day}</a>
 					</span>&nbsp;&nbsp;-&nbsp;&nbsp;  
 					<span>
-						<a href="index.php?{$filter_url}filter=week">Articles de la semaine</a>
+						<a href="index.php?{$filter_url}filter=week">{_Posts of the week}</a>
 					</span>&nbsp;&nbsp;-&nbsp;&nbsp;
 					<span>
-						<a href="index.php?{$filter_url}filter=month">Articles du mois</a>
+						<a href="index.php?{$filter_url}filter=month">{_Posts of the month}</a>
 					</span>&nbsp;&nbsp;-&nbsp;&nbsp;
 					<span>
-						<a href="index.php?{$filter_url}">Tous les articles</a>
+						<a href="index.php?{$filter_url}">{_All the posts}</a>
 					</span>
 				</div><!-- end submenu -->
 				<!-- END menu.filter -->

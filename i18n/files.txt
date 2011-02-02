@@ -9,13 +9,14 @@ contact.php
 index.php
 widgets/sidebar-widget.php
 widgets/tmp.php
+widgets/live_statusnet/live_statusnet.php
 api/votes.php
 api/index.php
 inc/fonctions.php
-inc/config2.php
 inc/cron.php
 inc/config.php
 inc/prepend.php
+inc/generate_sitemap.php
 inc/core_error.php
 inc/cron_fct.php
 inc/index.php

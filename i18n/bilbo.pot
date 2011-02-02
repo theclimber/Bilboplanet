@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-23 10:11+0100\n"
+"POT-Creation-Date: 2011-02-02 14:20+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,15 +17,15 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: tpl.php:112
+#: tpl.php:128
 msgid "Powered by Bilboplanet"
 msgstr ""
 
-#: tpl.php:115
+#: tpl.php:131
 msgid "Valid CSS - Xhtml"
 msgstr ""
 
-#: tpl.php:118
+#: tpl.php:134
 msgid "Designed by BilboPlanet"
 msgstr ""
 
@@ -157,7 +157,7 @@ msgstr ""
 msgid "Website"
 msgstr ""
 
-#: inscription.php:122 feed.php:274 admin/api/manage-feed_api.php:354
+#: inscription.php:122 feed.php:284 admin/api/manage-feed_api.php:354
 msgid "Feed"
 msgstr ""
 
@@ -170,12 +170,12 @@ msgstr ""
 msgid "%d vote(s)"
 msgstr ""
 
-#: feed.php:206
+#: feed.php:215
 #, php-format
 msgid "Vote for this post on <a href=\"%s\" title=\"Go on the planet\">%s</a>."
 msgstr ""
 
-#: feed.php:217
+#: feed.php:226
 #, php-format
 msgid "Gravatar of %s"
 msgstr ""
@@ -217,94 +217,94 @@ msgstr ""
 msgid "Error: refused access"
 msgstr ""
 
-#: inc/fonctions.php:84
+#: inc/fonctions.php:140
 msgid "Error : the statusnet account is not properly configured. The given hostname is empty."
 msgstr ""
 
-#: inc/fonctions.php:104
+#: inc/fonctions.php:198
 msgid "Reading cache"
 msgstr ""
 
-#: inc/fonctions.php:283
+#: inc/fonctions.php:380
 #, php-format
 msgid "By %s, on %s at %s."
 msgstr ""
 
-#: inc/fonctions.php:284
+#: inc/fonctions.php:381
 msgid "View post detail"
 msgstr ""
 
-#: inc/fonctions.php:307
+#: inc/fonctions.php:404
 msgid "Read more"
 msgstr ""
 
-#: inc/fonctions.php:357 inc/fonctions.php:370
+#: inc/fonctions.php:454 inc/fonctions.php:467
 msgid "Vote yes"
 msgstr ""
 
-#: inc/fonctions.php:358 inc/fonctions.php:376 inc/fonctions.php:380
+#: inc/fonctions.php:455 inc/fonctions.php:473 inc/fonctions.php:477
 msgid "Vote no"
 msgstr ""
 
-#: inc/fonctions.php:368
+#: inc/fonctions.php:465
 msgid "This post seems pertinent to you"
 msgstr ""
 
-#: inc/fonctions.php:374
+#: inc/fonctions.php:471
 msgid "This post seems not pertinent to you"
 msgstr ""
 
-#: inc/fonctions.php:378
+#: inc/fonctions.php:475
 msgid "This post should not be here"
 msgstr ""
 
-#: inc/fonctions.php:379
+#: inc/fonctions.php:476
 msgid "Are you sure this post should not be on this planet and should be removed?"
 msgstr ""
 
-#: inc/fonctions.php:402
+#: inc/fonctions.php:499
 #, php-format
 msgid "The field \"%s\" has to be a valid email address"
 msgstr ""
 
-#: inc/fonctions.php:408 inc/fonctions.php:414
+#: inc/fonctions.php:505 inc/fonctions.php:511
 #, php-format
 msgid "The field \"%s\" %s has to be a valid URL"
 msgstr ""
 
-#: inc/fonctions.php:418
+#: inc/fonctions.php:515
 #, php-format
 msgid "The field \"%s\" %s is not a valid simplepie feed"
 msgstr ""
 
-#: inc/fonctions.php:433
+#: inc/fonctions.php:530
 #, php-format
 msgid "The fields %s does not match"
 msgstr ""
 
-#: inc/fonctions.php:437
+#: inc/fonctions.php:534
 #, php-format
 msgid "The fields %s needs to have 4 characters minimum"
 msgstr ""
 
-#: inc/fonctions.php:445
+#: inc/fonctions.php:542
 #, php-format
 msgid "The field \"%s\" is empty"
 msgstr ""
 
-#: inc/fonctions.php:606
+#: inc/fonctions.php:703
 msgid " bytes"
 msgstr ""
 
-#: inc/fonctions.php:610
+#: inc/fonctions.php:707
 msgid " Kb"
 msgstr ""
 
-#: inc/fonctions.php:614
+#: inc/fonctions.php:711
 msgid " MB"
 msgstr ""
 
-#: inc/fonctions.php:618
+#: inc/fonctions.php:715
 msgid " GB"
 msgstr ""
 
@@ -420,19 +420,19 @@ msgstr ""
 msgid "That key does not exists in the database."
 msgstr ""
 
-#: inc/admin/prepend.php:51
+#: inc/admin/prepend.php:66
 msgid "Database error"
 msgstr ""
 
-#: inc/admin/prepend.php:52
+#: inc/admin/prepend.php:67
 msgid "There seems to be no Session table in your database. Is Bilboplanet completly installed?"
 msgstr ""
 
-#: inc/admin/prepend.php:74
+#: inc/admin/prepend.php:89
 msgid "Next Page"
 msgstr ""
 
-#: inc/admin/prepend.php:78 admin/pagination.php:52 admin/pagination.php:59
+#: inc/admin/prepend.php:93 admin/pagination.php:52 admin/pagination.php:59
 msgid "Previous page"
 msgstr ""
 
@@ -969,8 +969,8 @@ msgstr ""
 msgid "Default"
 msgstr ""
 
-#: admin/manage-newsletter.php:257 admin/api/manage-option_api.php:495
-#: admin/api/manage-option_api.php:683
+#: admin/manage-newsletter.php:257 admin/api/manage-option_api.php:576
+#: admin/api/manage-option_api.php:785
 msgid "Preview"
 msgstr ""
 
@@ -1019,75 +1019,79 @@ msgstr ""
 msgid "Quick summary of the planet"
 msgstr ""
 
-#: admin/index.php:156
+#: admin/index.php:152
+msgid "WARNING : please remove /admin/install folder"
+msgstr ""
+
+#: admin/index.php:162
 msgid "Statistics :"
 msgstr ""
 
-#: admin/index.php:161 admin/manage-update.php:120
+#: admin/index.php:167 admin/manage-update.php:120
 msgid "The update is running"
 msgstr ""
 
-#: admin/index.php:163 admin/manage-update.php:122
+#: admin/index.php:169 admin/manage-update.php:122
 msgid "The update is stopped"
 msgstr ""
 
-#: admin/index.php:165 admin/manage-update.php:123
+#: admin/index.php:171 admin/manage-update.php:123
 msgid "The update is disabled"
 msgstr ""
 
-#: admin/index.php:167
+#: admin/index.php:173
 msgid "The update on loading of index page enabled"
 msgstr ""
 
-#: admin/index.php:169
+#: admin/index.php:175
 msgid "Current size of the database :"
 msgstr ""
 
-#: admin/index.php:170
+#: admin/index.php:176
 msgid "Number of articles in the DB :"
 msgstr ""
 
-#: admin/index.php:171
+#: admin/index.php:177
 msgid "Number of votes in the DB :"
 msgstr ""
 
-#: admin/index.php:172
+#: admin/index.php:178
 msgid "Number of members in the DB :"
 msgstr ""
 
-#: admin/index.php:173
+#: admin/index.php:179
 msgid "Number of feeds in the DB :"
 msgstr ""
 
-#: admin/index.php:179
+#: admin/index.php:185
 msgid "System information :"
 msgstr ""
 
-#: admin/index.php:181
+#: admin/index.php:187
 msgid "Date server :"
 msgstr ""
 
-#: admin/index.php:182
+#: admin/index.php:188
 msgid "Operating System :"
 msgstr ""
 
-#: admin/index.php:183
+#: admin/index.php:189
 msgid "PHP version :"
 msgstr ""
 
-#: admin/index.php:184
+#: admin/index.php:190
 msgid "MySQL version :"
 msgstr ""
 
-#: admin/index.php:185
+#: admin/index.php:191
 msgid "Server :"
 msgstr ""
 
-#: admin/index.php:186
+#: admin/index.php:192
 msgid "Memory :"
 msgstr ""
 
-#: admin/index.php:187
+#: admin/index.php:193
 msgid "Your BilboPlanet version :"
 msgstr ""
 
@@ -1103,7 +1107,7 @@ msgstr ""
 msgid "Contact Name"
 msgstr ""
 
-#: admin/manage-useroption.php:65 admin/api/manage-option_api.php:151
+#: admin/manage-useroption.php:65 admin/api/manage-option_api.php:254
 msgid "Modification succeeded"
 msgstr ""
 
@@ -1127,7 +1131,7 @@ msgstr ""
 msgid "About Me"
 msgstr ""
 
-#: admin/manage-useroption.php:123 admin/api/manage-option_api.php:499
+#: admin/manage-useroption.php:123 admin/api/manage-option_api.php:580
 #: admin/api/manage-permissions_api.php:171
 msgid "Apply"
 msgstr ""
@@ -1152,139 +1156,139 @@ msgstr ""
 msgid "Your file could not be imported"
 msgstr ""
 
-#: admin/manage-database.php:60
+#: admin/manage-database.php:61
 msgid "Your file doesn't have the right format : "
 msgstr ""
 
-#: admin/manage-database.php:63
+#: admin/manage-database.php:64
 msgid "Congratulations! You imported an old data configuration successfully"
 msgstr ""
 
-#: admin/manage-database.php:64
+#: admin/manage-database.php:65
 msgid "File name: "
 msgstr ""
 
-#: admin/manage-database.php:65
+#: admin/manage-database.php:66
 msgid "Size: "
 msgstr ""
 
-#: admin/manage-database.php:65
+#: admin/manage-database.php:66
 msgid "Kb"
 msgstr ""
 
-#: admin/manage-database.php:105
+#: admin/manage-database.php:106
 msgid "Two users have the same name, impossible to import. Please try again. Username : "
 msgstr ""
 
-#: admin/manage-database.php:143
+#: admin/manage-database.php:144
 msgid "You can not import 'flux' table without importing the 'membres' table"
 msgstr ""
 
-#: admin/manage-database.php:189
+#: admin/manage-database.php:190
 msgid "site_id should not be null for user "
 msgstr ""
 
-#: admin/manage-database.php:195
+#: admin/manage-database.php:196
 msgid "You can not import 'articles' table without importing the 'membres' table"
 msgstr ""
 
-#: admin/manage-database.php:199
+#: admin/manage-database.php:200
 msgid "You can not import 'articles' table without importing the 'flux' table"
 msgstr ""
 
-#: admin/manage-database.php:273
+#: admin/manage-database.php:274
 msgid "Forbidden"
 msgstr ""
 
-#: admin/manage-database.php:296
+#: admin/manage-database.php:297
 msgid "Import successfully with warning :"
 msgstr ""
 
-#: admin/manage-database.php:308
+#: admin/manage-database.php:309
 msgid "Export planet configuration"
 msgstr ""
 
-#: admin/manage-database.php:311
+#: admin/manage-database.php:312
 msgid "Please select the data you want to export"
 msgstr ""
 
-#: admin/manage-database.php:312
+#: admin/manage-database.php:313
 msgid "This will export the data to a file that you'll be able to import later on another installation"
 msgstr ""
 
-#: admin/manage-database.php:316
+#: admin/manage-database.php:317
 msgid "Exported data"
 msgstr ""
 
-#: admin/manage-database.php:325
+#: admin/manage-database.php:326
 msgid "User table"
 msgstr ""
 
-#: admin/manage-database.php:330
+#: admin/manage-database.php:331
 msgid "Site table"
 msgstr ""
 
-#: admin/manage-database.php:335
+#: admin/manage-database.php:336
 msgid "Feed table"
 msgstr ""
 
-#: admin/manage-database.php:340
+#: admin/manage-database.php:341
 msgid "Post table"
 msgstr ""
 
-#: admin/manage-database.php:345
+#: admin/manage-database.php:346
 msgid "Votes table"
 msgstr ""
 
-#: admin/manage-database.php:350
+#: admin/manage-database.php:351
 msgid "Permission table"
 msgstr ""
 
-#: admin/manage-database.php:355
+#: admin/manage-database.php:356
 msgid "Setting table"
 msgstr ""
 
-#: admin/manage-database.php:359
+#: admin/manage-database.php:360
 msgid "Export"
 msgstr ""
 
-#: admin/manage-database.php:365
+#: admin/manage-database.php:366
 msgid "Import planet configuration"
 msgstr ""
 
-#: admin/manage-database.php:368
+#: admin/manage-database.php:369
 msgid "Please select the file you want to restore."
 msgstr ""
 
-#: admin/manage-database.php:369
+#: admin/manage-database.php:370
 msgid "TAKE CARE !"
 msgstr ""
 
-#: admin/manage-database.php:369
+#: admin/manage-database.php:370
 msgid "If you apply the content of one of this file, this action can not be cancelled"
 msgstr ""
 
-#: admin/manage-database.php:370
+#: admin/manage-database.php:371
 msgid "This action can take several minutes. Be patient and don't cancel the process during execution"
 msgstr ""
 
-#: admin/manage-database.php:375
+#: admin/manage-database.php:376
 msgid "Imported data"
 msgstr ""
 
-#: admin/manage-database.php:382
+#: admin/manage-database.php:383
 msgid "Select your backup file"
 msgstr ""
 
-#: admin/manage-database.php:384
+#: admin/manage-database.php:385
 msgid "Specify the original version of your file"
 msgstr ""
 
-#: admin/manage-database.php:389
+#: admin/manage-database.php:390
 msgid "Import"
 msgstr ""
 
-#: admin/manage-database.php:393
+#: admin/manage-database.php:394
 msgid "NOTE : to import a backup file, the file needs to have the *.json.gz extension !"
 msgstr ""
 
@@ -1775,8 +1779,8 @@ msgstr ""
 msgid "Information on the Planet"
 msgstr ""
 
-#: admin/install/index.php:314 admin/api/manage-option_api.php:286
-#: admin/api/manage-option_api.php:548
+#: admin/install/index.php:314 admin/api/manage-option_api.php:341
+#: admin/api/manage-option_api.php:633
 msgid "Title of the Planet"
 msgstr ""
 
@@ -2064,143 +2068,186 @@ msgstr ""
 msgid "Only numeric value are allowed for number of posts by page"
 msgstr ""
 
-#: admin/api/manage-option_api.php:136
+#: admin/api/manage-option_api.php:154
 msgid "Subscription page content can not be empty"
 msgstr ""
 
-#: admin/api/manage-option_api.php:281 admin/api/manage-option_api.php:543
+#: admin/api/manage-option_api.php:238
+msgid "Impossible to reach statusnet server : the service could not be activated"
+msgstr ""
+
+#: admin/api/manage-option_api.php:336 admin/api/manage-option_api.php:628
 msgid "Option"
 msgstr ""
 
-#: admin/api/manage-option_api.php:282 admin/api/manage-option_api.php:544
+#: admin/api/manage-option_api.php:337 admin/api/manage-option_api.php:629
 msgid "Value"
 msgstr ""
 
-#: admin/api/manage-option_api.php:290 admin/api/manage-option_api.php:552
+#: admin/api/manage-option_api.php:345 admin/api/manage-option_api.php:637
 msgid "Description of the Planet"
 msgstr ""
 
-#: admin/api/manage-option_api.php:294 admin/api/manage-option_api.php:556
+#: admin/api/manage-option_api.php:349 admin/api/manage-option_api.php:641
 msgid "Graphical theme"
 msgstr ""
 
-#: admin/api/manage-option_api.php:309 admin/api/manage-option_api.php:560
+#: admin/api/manage-option_api.php:364 admin/api/manage-option_api.php:645
 msgid "Language of the Planet"
 msgstr ""
 
-#: admin/api/manage-option_api.php:330 admin/api/manage-option_api.php:564
+#: admin/api/manage-option_api.php:385 admin/api/manage-option_api.php:649
 msgid "Information message (optional)"
 msgstr ""
 
-#: admin/api/manage-option_api.php:334 admin/api/manage-option_api.php:568
+#: admin/api/manage-option_api.php:389 admin/api/manage-option_api.php:653
 msgid "Show the contact page"
 msgstr ""
 
-#: admin/api/manage-option_api.php:343 admin/api/manage-option_api.php:577
+#: admin/api/manage-option_api.php:398 admin/api/manage-option_api.php:662
 msgid "Enable voting"
 msgstr ""
 
-#: admin/api/manage-option_api.php:353 admin/api/manage-option_api.php:582
+#: admin/api/manage-option_api.php:408 admin/api/manage-option_api.php:667
 msgid "Votes system"
 msgstr ""
 
-#: admin/api/manage-option_api.php:356
+#: admin/api/manage-option_api.php:411
 msgid "yes-no"
 msgstr ""
 
-#: admin/api/manage-option_api.php:356
+#: admin/api/manage-option_api.php:411
 msgid "Positive and Negative"
 msgstr ""
 
-#: admin/api/manage-option_api.php:358
+#: admin/api/manage-option_api.php:413
 msgid "yes-warn"
 msgstr ""
 
-#: admin/api/manage-option_api.php:358
+#: admin/api/manage-option_api.php:413
 msgid "Positive and Warning"
 msgstr ""
 
-#: admin/api/manage-option_api.php:376 admin/api/manage-option_api.php:591
+#: admin/api/manage-option_api.php:431 admin/api/manage-option_api.php:676
 msgid "Option of moderation"
 msgstr ""
 
-#: admin/api/manage-option_api.php:386 admin/api/manage-option_api.php:600
+#: admin/api/manage-option_api.php:441 admin/api/manage-option_api.php:685
 msgid "Enable avatar"
 msgstr ""
 
-#: admin/api/manage-option_api.php:389
+#: admin/api/manage-option_api.php:444
 msgid "Work with"
 msgstr ""
 
-#: admin/api/manage-option_api.php:401 admin/api/manage-option_api.php:609
+#: admin/api/manage-option_api.php:456 admin/api/manage-option_api.php:694
 msgid "Maintenance mode"
 msgstr ""
 
-#: admin/api/manage-option_api.php:410 admin/api/manage-option_api.php:618
+#: admin/api/manage-option_api.php:465 admin/api/manage-option_api.php:703
 msgid "Log level"
 msgstr ""
 
-#: admin/api/manage-option_api.php:425 admin/api/manage-option_api.php:622
+#: admin/api/manage-option_api.php:480 admin/api/manage-option_api.php:707
 msgid "Number of posts by page"
 msgstr ""
 
-#: admin/api/manage-option_api.php:429 admin/api/manage-option_api.php:626
-msgid "Google Analytics id"
+#: admin/api/manage-option_api.php:484
+msgid "Analytics engine"
 msgstr ""
 
-#: admin/api/manage-option_api.php:433 admin/api/manage-option_api.php:635
-msgid "Enable Internal links"
+#: admin/api/manage-option_api.php:496
+msgid "Google-Analytics"
 msgstr ""
 
-#: admin/api/manage-option_api.php:446 admin/api/manage-option_api.php:649
-msgid "Planet statusnet host (ex: http://identi.ca)"
+#: admin/api/manage-option_api.php:497
+msgid "Piwik"
 msgstr ""
 
-#: admin/api/manage-option_api.php:451 admin/api/manage-option_api.php:654
-msgid "Planet statusnet username"
-msgstr ""
-
-#: admin/api/manage-option_api.php:456
-msgid "Planet statusnet password"
-msgstr ""
-
-#: admin/api/manage-option_api.php:461 admin/api/manage-option_api.php:659
-msgid "Statusnet messages format"
-msgstr ""
-
-#: admin/api/manage-option_api.php:462
-#, php-format
-msgid "(ex: \"[Site name] %s\" where \"%s\" is the title of the post)"
-msgstr ""
-
-#: admin/api/manage-option_api.php:466 admin/api/manage-option_api.php:664
-msgid "Statusnet activate automatic post"
-msgstr ""
-
-#: admin/api/manage-option_api.php:476 admin/api/manage-option_api.php:673
-msgid "Enable subscription"
-msgstr ""
-
-#: admin/api/manage-option_api.php:487 admin/api/manage-option_api.php:677
-msgid "Subscription page content"
-msgstr ""
-
-#: admin/api/manage-option_api.php:570 admin/api/manage-option_api.php:579
-#: admin/api/manage-option_api.php:593 admin/api/manage-option_api.php:602
-#: admin/api/manage-option_api.php:611 admin/api/manage-option_api.php:637
-#: admin/api/manage-option_api.php:666 admin/api/manage-option_api.php:675
-msgid "Enabled"
-msgstr ""
-
-#: admin/api/manage-option_api.php:573 admin/api/manage-option_api.php:587
-#: admin/api/manage-option_api.php:596 admin/api/manage-option_api.php:605
-#: admin/api/manage-option_api.php:614 admin/api/manage-option_api.php:628
-#: admin/api/manage-option_api.php:640 admin/api/manage-option_api.php:668
-#: admin/api/manage-option_api.php:689
+#: admin/api/manage-option_api.php:498 admin/api/manage-option_api.php:658
+#: admin/api/manage-option_api.php:672 admin/api/manage-option_api.php:681
+#: admin/api/manage-option_api.php:690 admin/api/manage-option_api.php:699
+#: admin/api/manage-option_api.php:713 admin/api/manage-option_api.php:742
+#: admin/api/manage-option_api.php:770 admin/api/manage-option_api.php:791
 msgid "Disabled"
 msgstr ""
 
-#: admin/api/manage-option_api.php:699
+#: admin/api/manage-option_api.php:502 admin/api/manage-option_api.php:720
+msgid "Google Analytics id"
+msgstr ""
+
+#: admin/api/manage-option_api.php:506
+msgid "Piwik site URL"
+msgstr ""
+
+#: admin/api/manage-option_api.php:510
+msgid "Piwik site id"
+msgstr ""
+
+#: admin/api/manage-option_api.php:514 admin/api/manage-option_api.php:737
+msgid "Enable Internal links"
+msgstr ""
+
+#: admin/api/manage-option_api.php:527
+msgid "Planet statusnet host"
+msgstr ""
+
+#: admin/api/manage-option_api.php:528
+msgid "(ex: http://identi.ca)"
+msgstr ""
+
+#: admin/api/manage-option_api.php:532 admin/api/manage-option_api.php:756
+msgid "Planet statusnet username"
+msgstr ""
+
+#: admin/api/manage-option_api.php:537
+msgid "Planet statusnet password"
+msgstr ""
+
+#: admin/api/manage-option_api.php:542 admin/api/manage-option_api.php:761
+msgid "Statusnet messages format"
+msgstr ""
+
+#: admin/api/manage-option_api.php:543
+msgid "(ex: \"[Site name] %(author)s %(title)s\" where \"%(author)s\" is the author of the post and \"%(title)s is the title\")"
+msgstr ""
+
+#: admin/api/manage-option_api.php:547 admin/api/manage-option_api.php:766
+msgid "Statusnet activate automatic post"
+msgstr ""
+
+#: admin/api/manage-option_api.php:557 admin/api/manage-option_api.php:775
+msgid "Enable subscription"
+msgstr ""
+
+#: admin/api/manage-option_api.php:568 admin/api/manage-option_api.php:779
+msgid "Subscription page content"
+msgstr ""
+
+#: admin/api/manage-option_api.php:655 admin/api/manage-option_api.php:664
+#: admin/api/manage-option_api.php:678 admin/api/manage-option_api.php:687
+#: admin/api/manage-option_api.php:696 admin/api/manage-option_api.php:739
+#: admin/api/manage-option_api.php:768 admin/api/manage-option_api.php:777
+msgid "Enabled"
+msgstr ""
+
+#: admin/api/manage-option_api.php:711
+msgid "Planet Analytics Engine"
+msgstr ""
+
+#: admin/api/manage-option_api.php:729
+msgid "Piwik URL"
+msgstr ""
+
+#: admin/api/manage-option_api.php:733
+msgid "Piwik Site ID"
+msgstr ""
+
+#: admin/api/manage-option_api.php:751
+msgid "Planet statusnet host (ex: http://identi.ca)"
+msgstr ""
+
+#: admin/api/manage-option_api.php:801
 msgid "Nothing to do"
 msgstr ""
 

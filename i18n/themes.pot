@@ -34,10 +34,10 @@ msgstr ""
 msgid "Back to top"
 msgstr ""
 
-#: themes/gandalf/menu.tpl:7
-#: themes/aragorn/menu.tpl:5
-#: themes/legolas/menu.tpl:7
-#: themes/gil-galad/menu.tpl:5
+#: themes/gandalf/menu.tpl:8
+#: themes/aragorn/menu.tpl:6
+#: themes/legolas/menu.tpl:8
+#: themes/gil-galad/menu.tpl:6
 msgid "Statistics"
 msgstr ""
 
@@ -56,7 +56,9 @@ msgid "Name / Nickname :"
 msgstr ""
 
 #: themes/gandalf/menu.tpl:26
+#: themes/aragorn/index.tpl:59
 #: themes/legolas/posts.tpl:8
+#: themes/gil-galad/index.tpl:59
 msgid "Posts of the week"
 msgstr ""
 
@@ -166,14 +168,14 @@ msgstr ""
 msgid "To add or remove your website from the planet, just fill this form in :"
 msgstr ""
 
-#: themes/gandalf/stats.tpl:21
-#: themes/gandalf/stats.tpl:42
-#: themes/aragorn/stats.tpl:21
-#: themes/aragorn/stats.tpl:42
-#: themes/legolas/stats.tpl:21
-#: themes/legolas/stats.tpl:42
-#: themes/gil-galad/stats.tpl:21
-#: themes/gil-galad/stats.tpl:42
+#: themes/gandalf/stats.tpl:23
+#: themes/gandalf/stats.tpl:44
+#: themes/aragorn/stats.tpl:23
+#: themes/aragorn/stats.tpl:44
+#: themes/legolas/stats.tpl:23
+#: themes/legolas/stats.tpl:44
+#: themes/gil-galad/stats.tpl:23
+#: themes/gil-galad/stats.tpl:44
 msgid "Visit the website"
 msgstr ""
 
@@ -184,6 +186,11 @@ msgstr ""
 msgid "Subscribe your blog to the planet"
 msgstr ""
 
+#: themes/aragorn/index.tpl:54
+#: themes/gil-galad/index.tpl:54
+msgid "Filter posts"
+msgstr ""
+
 #: themes/gandalf/contact.tpl:15
 #: themes/aragorn/contact.tpl:15
 #: themes/legolas/contact.tpl:15
@@ -191,14 +198,14 @@ msgstr ""
 msgid "Email :"
 msgstr ""
 
-#: themes/gandalf/stats.tpl:14
-#: themes/gandalf/stats.tpl:35
-#: themes/aragorn/stats.tpl:14
-#: themes/aragorn/stats.tpl:35
-#: themes/legolas/stats.tpl:14
-#: themes/legolas/stats.tpl:35
-#: themes/gil-galad/stats.tpl:14
-#: themes/gil-galad/stats.tpl:35
+#: themes/gandalf/stats.tpl:16
+#: themes/gandalf/stats.tpl:37
+#: themes/aragorn/stats.tpl:16
+#: themes/aragorn/stats.tpl:37
+#: themes/legolas/stats.tpl:16
+#: themes/legolas/stats.tpl:37
+#: themes/gil-galad/stats.tpl:16
+#: themes/gil-galad/stats.tpl:37
 msgid "Website"
 msgstr ""
 
@@ -268,10 +275,10 @@ msgstr ""
 msgid "Subscribe / Unsubscribe"
 msgstr ""
 
-#: themes/gandalf/stats.tpl:36
-#: themes/aragorn/stats.tpl:36
-#: themes/legolas/stats.tpl:36
-#: themes/gil-galad/stats.tpl:36
+#: themes/gandalf/stats.tpl:38
+#: themes/aragorn/stats.tpl:38
+#: themes/legolas/stats.tpl:38
+#: themes/gil-galad/stats.tpl:38
 msgid "Total of votes"
 msgstr ""
 
@@ -315,7 +322,9 @@ msgid "Fast access to the last posts of the page"
 msgstr ""
 
 #: themes/gandalf/menu.tpl:29
+#: themes/aragorn/index.tpl:62
 #: themes/legolas/posts.tpl:11
+#: themes/gil-galad/index.tpl:62
 msgid "Posts of the month"
 msgstr ""
 
@@ -346,14 +355,14 @@ msgstr ""
 msgid "Website URL"
 msgstr ""
 
-#: themes/gandalf/stats.tpl:13
-#: themes/gandalf/stats.tpl:34
-#: themes/aragorn/stats.tpl:13
-#: themes/aragorn/stats.tpl:34
-#: themes/legolas/stats.tpl:13
-#: themes/legolas/stats.tpl:34
-#: themes/gil-galad/stats.tpl:13
-#: themes/gil-galad/stats.tpl:34
+#: themes/gandalf/stats.tpl:15
+#: themes/gandalf/stats.tpl:36
+#: themes/aragorn/stats.tpl:15
+#: themes/aragorn/stats.tpl:36
+#: themes/legolas/stats.tpl:15
+#: themes/legolas/stats.tpl:36
+#: themes/gil-galad/stats.tpl:15
+#: themes/gil-galad/stats.tpl:36
 msgid "Name"
 msgstr ""
 
@@ -371,10 +380,10 @@ msgstr ""
 msgid "Back to summary"
 msgstr ""
 
-#: themes/gandalf/stats.tpl:15
-#: themes/aragorn/stats.tpl:15
-#: themes/legolas/stats.tpl:15
-#: themes/gil-galad/stats.tpl:15
+#: themes/gandalf/stats.tpl:17
+#: themes/aragorn/stats.tpl:17
+#: themes/legolas/stats.tpl:17
+#: themes/gil-galad/stats.tpl:17
 msgid "Qtity of posts"
 msgstr ""
 
@@ -414,7 +423,9 @@ msgid "Contact"
 msgstr ""
 
 #: themes/gandalf/menu.tpl:23
+#: themes/aragorn/index.tpl:56
 #: themes/legolas/posts.tpl:5
+#: themes/gil-galad/index.tpl:56
 msgid "Posts of the day"
 msgstr ""
 
@@ -467,10 +478,10 @@ msgstr ""
 msgid "Content :'"
 msgstr ""
 
-#: themes/gandalf/stats.tpl:7
-#: themes/aragorn/stats.tpl:7
-#: themes/legolas/stats.tpl:7
-#: themes/gil-galad/stats.tpl:7
+#: themes/gandalf/stats.tpl:8
+#: themes/aragorn/stats.tpl:8
+#: themes/legolas/stats.tpl:8
+#: themes/gil-galad/stats.tpl:8
 msgid "Number of votes :"
 msgstr ""
 
@@ -516,17 +527,22 @@ msgstr ""
 msgid "User's website"
 msgstr ""
 
-#: themes/gandalf/stats.tpl:10
-#: themes/aragorn/stats.tpl:10
-#: themes/legolas/stats.tpl:10
-#: themes/gil-galad/stats.tpl:10
+#: themes/aragorn/index.tpl:65
+#: themes/gil-galad/index.tpl:65
+msgid "All the posts"
+msgstr ""
+
+#: themes/gandalf/stats.tpl:12
+#: themes/aragorn/stats.tpl:12
+#: themes/legolas/stats.tpl:12
+#: themes/gil-galad/stats.tpl:12
 msgid "List of the most active members"
 msgstr ""
 
-#: themes/gandalf/stats.tpl:30
-#: themes/aragorn/stats.tpl:30
-#: themes/legolas/stats.tpl:30
-#: themes/gil-galad/stats.tpl:30
+#: themes/gandalf/stats.tpl:32
+#: themes/aragorn/stats.tpl:32
+#: themes/legolas/stats.tpl:32
+#: themes/gil-galad/stats.tpl:32
 msgid "List of the best ranked members"
 msgstr ""
 

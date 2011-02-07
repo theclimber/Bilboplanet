@@ -82,7 +82,7 @@ if (isset($_GET)) {
 			OR ".$core->prefix."user.user_fullname LIKE '%$search_value%')";
 	}
 	if (isset($_GET['post_id']) && !empty($_GET['post_id'])){
-		$params["post_id"] = $_GET['post_id'];
+		$params["post_id"] = intval($_GET['post_id']);
 		$res = $core->con->select(
 			"SELECT
 				post_title, post_permalink, post_nbview

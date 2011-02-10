@@ -97,7 +97,7 @@ if(isset($_POST) && isset($_POST['submitNewsletter'])) {
 	if($sender['success'] && $recipients['success'] && $subject['success'] && $message['success']) {
 		$confirmation .= '<p>';
 		$confirmation .= '<form name="NewsletterConfirm" method="POST">';
-		$confirmation .= '&nbsp;&nbsp;<u>Are you sure you want to send this newsletter?</u>';
+		$confirmation .= '&nbsp;&nbsp;<u>'.T_('Are you sure you want to send this newsletter?').'</u>';
 		$confirmation .= '<br /><br />';
 		$confirmation .= '<input type="hidden" name="sender" value="'.htmlspecialchars($sender['value']).'" />';
 		$confirmation .= '<input type="hidden" name="recipients" value="'.htmlspecialchars($recipients['value']).'" />';
@@ -107,7 +107,7 @@ if(isset($_POST) && isset($_POST['submitNewsletter'])) {
 		$confirmation .= '&nbsp;&nbsp;<input type="button" class="button br3px" name="reset" value="'.T_('No').'" />';
 		$confirmation .= '</form>';
 		$confirmation .= '</p>';
-		$flash['warning'][] = addslashes($confirmation);
+		$flash['warning'][] = $confirmation;
 	}
 	else {
 		if(!$sender['success']) {

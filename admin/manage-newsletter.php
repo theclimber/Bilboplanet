@@ -95,6 +95,7 @@ $message = (isset($_POST['newsletter_message'])) ? check_field(T_('Message'),cle
 ### On verifie que le formulaire est bien saisie
 if(isset($_POST) && isset($_POST['submitNewsletter'])) {
 	if($sender['success'] && $recipients['success'] && $subject['success'] && $message['success']) {
+		$msg = htmlspecialchars(preg_replace('/\n/', '<br/>',$message['value']));
 		$confirmation .= '<p>';
 		$confirmation .= '<form name="NewsletterConfirm" method="POST">';
 		$confirmation .= '&nbsp;&nbsp;<u>'.T_('Are you sure you want to send this newsletter?').'</u>';
@@ -102,7 +103,7 @@ if(isset($_POST) && isset($_POST['submitNewsletter'])) {
 		$confirmation .= '<input type="hidden" name="sender" value="'.htmlspecialchars($sender['value']).'" />';
 		$confirmation .= '<input type="hidden" name="recipients" value="'.htmlspecialchars($recipients['value']).'" />';
 		$confirmation .= '<input type="hidden" name="subject" value="'.htmlspecialchars($subject['value']).'" />';
-		$confirmation .= '<input type="hidden" name="message" value="'.htmlspecialchars($message['value']).'" />';
+		$confirmation .= '<input type="hidden" name="message" value="'.$msg.'" />';
 		$confirmation .= '&nbsp;&nbsp;<input type="submit" class="button br3px" name="confirmSubmit" value="'.T_('Yes').'" />';
 		$confirmation .= '&nbsp;&nbsp;<input type="button" class="button br3px" name="reset" value="'.T_('No').'" />';
 		$confirmation .= '</form>';

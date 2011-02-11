@@ -174,8 +174,8 @@ if(isset($_POST['action'])) {
 			$output .= '</td></tr>';
 			$nb = $nb + 1;
 		}
-		$output .= showPagination($rs->count(), $num_page, $nb_items, 'updateUserList');
 		$output .= '</table>';
+		$output .= showPagination($rs->count(), $num_page, $nb_items, 'updateUserList');
 
 		print $output;
 		break;

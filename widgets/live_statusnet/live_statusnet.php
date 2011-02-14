@@ -35,7 +35,7 @@ function getWidget() {
 
 	$html = '<div id="statusnetUserTimeline" class="tweets"></div>';
 	$html .= "<script type=\"text/javascript\">
-		$('#statusnetUserTimeline').liveTwitter('planetlibre', {limit: 5, rate: 5000, refresh: true, mode: 'home_timeline', service:'status.planet-libre.org', showAuthor: true}, function(divName, count) {
+		$('#statusnetUserTimeline').liveTwitter('planetlibre', {limit: 5, rate: 30000, refresh: true, mode: 'home_timeline', service:'status.planet-libre.org', showAuthor: true}, function(divName, count) {
 			if (show_notice_at_start) {
 				for (var i = 0; i < count; i++) {
 					var newTw = this.container.children[i].textContent;

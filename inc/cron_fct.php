@@ -204,7 +204,11 @@ function getItemsFromFeeds ($rs, $print) {
 function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_content, $print) {
 	global $log, $core;
 	# Date
-	$item_date = date('Y-m-d H:i:s',$date);
+	if (!$date) {
+		$item_date = date('Y-m-d H:i:s',time());
+	} else {
+		$item_date = date('Y-m-d H:i:s',$date);
+	}
 
 	# Check if item is already in the database
 	$sql = "SELECT
@@ -227,7 +231,8 @@ function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_c
 				post_pubdate
 			FROM ".$core->prefix."post
 			WHERE user_id = '".$rs->user_id."'
-				AND post_title = '".$item_title."'";
+				AND post_title = '".$item_title."'.
+				AND post_pubdate = '".$item_date."'";
 		$rs4 = $core->con->select($sql);
 
 		if ($rs4->count() == 0) {
@@ -254,7 +259,8 @@ function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_c
 			postNewsOnSocialNetwork($item_title, $rs->user_fullname, $next_post_id);
 
 			return logMsg("Post added: ".$item_permalink, "", 1, $print);
-		} elseif ($rs4->count() == 1) {
+		}
+		elseif ($rs4->count() == 1) {
 			# Update post permalink in database
 			$cur = $core->con->openCursor($core->prefix.'post');
 			$cur->post_permalink = addslashes($item_permalink);
@@ -263,7 +269,8 @@ function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_c
 				AND ".$core->prefix."post.post_title = '".$item_title."'");
 			# On informe que tout est ok
 			return logMsg("Permalink updated : ".$item_permalink, "", 1, $print);
-		} else {
+		}
+		else {
 			return logMsg("Several posts from the same author have the same title but not the same permalink : ".$item_permalink." (Do not know it we need to update or to add the idem)", "", 3, $print);
 		}
 	} # fin if(!found)
@@ -274,7 +281,7 @@ function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_c
 		$content2 = $rs2->f('post_content');
 
 		# Si l'article a ete modifie (soit la date, soit le titre, soit le contenu)
-		if($item_date != $rs2->f('post_pubdate') && !empty($item_date)) {
+		if($item_date != $rs2->f('post_pubdate') && !empty($date)) {
 	
 			# Update post in database
 			$cur = $core->con->openCursor($core->prefix.'post');

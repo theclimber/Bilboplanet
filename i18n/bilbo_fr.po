@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Bilboplanet\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-10-29 10:55+0200\n"
-"PO-Revision-Date: 2011-02-02 14:31+0100\n"
+"PO-Revision-Date: 2011-02-14 15:39+0100\n"
 "Last-Translator: Grégoire de Hemptinne <greg@theclimber.be>\n"
 "Language-Team: French\n"
 "Language: \n"
@@ -25,8 +25,8 @@ msgstr ""
 #: themes/legolas/posts.tpl:85
 #: themes/gil-galad/posts.tpl:23
 #: themes/gil-galad/posts.tpl:63
-#: admin/pagination.php:45
-#: admin/pagination.php:60
+#: admin/pagination.php:46
+#: admin/pagination.php:61
 msgid "Next page"
 msgstr "Page suivante"
 
@@ -118,7 +118,7 @@ msgstr "Participer"
 #: themes/gil-galad/contact.tpl:24
 #: admin/manage-post.php:172
 #: admin/manage-moderation.php:109
-#: admin/manage-newsletter.php:261
+#: admin/manage-newsletter.php:262
 #: admin/manage-selection.php:119
 #: admin/manage-update.php:138
 msgid "Send"
@@ -303,8 +303,8 @@ msgstr "Total des votes"
 #: themes/gil-galad/posts.tpl:20
 #: themes/gil-galad/posts.tpl:60
 #: inc/admin/prepend.php:93
-#: admin/pagination.php:52
-#: admin/pagination.php:59
+#: admin/pagination.php:53
+#: admin/pagination.php:60
 msgid "Previous page"
 msgstr "Page précédente"
 
@@ -359,7 +359,7 @@ msgstr "Membres"
 #: admin/manage-post.php:171
 #: admin/manage-user.php:125
 #: admin/manage-feed.php:143
-#: admin/manage-newsletter.php:265
+#: admin/manage-newsletter.php:266
 #: admin/api/manage-feed_api.php:254
 #: admin/api/manage-user_api.php:286
 #: admin/api/manage-site_api.php:190
@@ -385,7 +385,7 @@ msgstr "Site URL"
 #: themes/legolas/stats.tpl:36
 #: themes/gil-galad/stats.tpl:15
 #: themes/gil-galad/stats.tpl:36
-#: admin/manage-post.php:195
+#: admin/manage-post.php:215
 #: admin/manage-logs.php:71
 msgid "Name"
 msgstr "Nom"
@@ -676,13 +676,13 @@ msgid "Choice : "
 msgstr "Choix : "
 
 #: inscription.php:73
-#: admin/manage-newsletter.php:132
+#: admin/manage-newsletter.php:133
 msgid "Your email has been sent"
 msgstr "Votre email a bien été envoyé"
 
 #: inscription.php:75
 #: contact.php:73
-#: admin/manage-newsletter.php:134
+#: admin/manage-newsletter.php:135
 msgid "Your request could not be sent for an unknown reason.<br/>Please try again."
 msgstr "Votre demande n'a pas pu être envoyée pour une raison inconnue.<br/>Merci de réessayer"
 
@@ -699,7 +699,7 @@ msgstr "Si vous n'avez pas reçu de confirmation de la part de l'équipe d'admin
 #: inscription.php:117
 #: admin/manage-moderation.php:102
 #: admin/manage-newsletter.php:91
-#: admin/manage-newsletter.php:231
+#: admin/manage-newsletter.php:232
 #: admin/manage-selection.php:108
 msgid "Subject"
 msgstr "Sujet"
@@ -1095,26 +1095,26 @@ msgid "Post status"
 msgstr "Statut de l'article"
 
 #: admin/manage-post.php:159
-#: admin/manage-post.php:239
-#: admin/manage-post.php:247
+#: admin/manage-post.php:235
+#: admin/manage-post.php:243
+#: admin/manage-post.php:249
 #: admin/manage-post.php:253
-#: admin/manage-post.php:257
 msgid "inactive"
 msgstr "inactif"
 
 #: admin/manage-post.php:160
-#: admin/manage-post.php:238
-#: admin/manage-post.php:243
-#: admin/manage-post.php:248
-#: admin/manage-post.php:258
+#: admin/manage-post.php:234
+#: admin/manage-post.php:239
+#: admin/manage-post.php:244
+#: admin/manage-post.php:254
 msgid "active"
 msgstr "actif"
 
 #: admin/manage-post.php:161
-#: admin/manage-post.php:241
-#: admin/manage-post.php:250
-#: admin/manage-post.php:256
-#: admin/manage-post.php:259
+#: admin/manage-post.php:237
+#: admin/manage-post.php:246
+#: admin/manage-post.php:252
+#: admin/manage-post.php:255
 msgid "pending"
 msgstr "en attente"
 
@@ -1130,27 +1130,27 @@ msgstr "Liste des articles"
 msgid "NOTE: If you delete a post which is too recent, it will be refetched next time the update happen !!"
 msgstr "NOTE: Si vous supprimez un article trop récent, il sera récupéré et republié lors de la prochaine mise à jour !!"
 
-#: admin/manage-post.php:196
+#: admin/manage-post.php:216
 #: admin/api/manage-moderation_api.php:156
 msgid "Date"
 msgstr "Date"
 
-#: admin/manage-post.php:197
+#: admin/manage-post.php:217
 #: admin/index.php:69
 #: admin/api/manage-moderation_api.php:158
 msgid "Title"
 msgstr "Titre"
 
-#: admin/manage-post.php:198
+#: admin/manage-post.php:218
 msgid "Status"
 msgstr "Statut"
 
-#: admin/manage-post.php:199
+#: admin/manage-post.php:219
 msgid "Nb votes"
 msgstr "Nb votes"
 
-#: admin/manage-post.php:200
-#: admin/manage-newsletter.php:253
+#: admin/manage-post.php:220
+#: admin/manage-newsletter.php:254
 #: admin/manage-logs.php:72
 #: admin/api/manage-feed_api.php:355
 #: admin/api/manage-user_api.php:403
@@ -1158,18 +1158,18 @@ msgstr "Nb votes"
 msgid "Action"
 msgstr "Action"
 
-#: admin/manage-post.php:273
+#: admin/manage-post.php:269
 msgid "Change"
 msgstr "Modifier"
 
-#: admin/manage-post.php:274
+#: admin/manage-post.php:270
 #: admin/manage-logs.php:88
 #: admin/api/manage-feed_api.php:409
 #: admin/api/manage-user_api.php:464
 msgid "Delete"
 msgstr "Supprimer"
 
-#: admin/manage-post.php:290
+#: admin/manage-post.php:286
 msgid "Show items by : "
 msgstr "Afficher les articles par :"
 
@@ -1557,49 +1557,53 @@ msgid "You shoud have selected %s"
 msgstr "Vous auriez du selectionner %s"
 
 #: admin/manage-newsletter.php:87
-#: admin/manage-newsletter.php:224
+#: admin/manage-newsletter.php:225
 msgid "Sender"
 msgstr "Expéditeur"
 
 #: admin/manage-newsletter.php:89
-#: admin/manage-newsletter.php:204
+#: admin/manage-newsletter.php:205
 msgid "Recipients"
 msgstr "Destinataires"
 
 #: admin/manage-newsletter.php:93
-#: admin/manage-newsletter.php:238
+#: admin/manage-newsletter.php:239
 msgid "Message"
 msgstr "Message"
 
-#: admin/manage-newsletter.php:106
+#: admin/manage-newsletter.php:101
+msgid "Are you sure you want to send this newsletter?"
+msgstr "Êtes-vous sûr de vouloir envoyer cette newsletter?"
+
+#: admin/manage-newsletter.php:107
 msgid "Yes"
 msgstr "Oui"
 
-#: admin/manage-newsletter.php:107
+#: admin/manage-newsletter.php:108
 msgid "No"
 msgstr "Non"
 
-#: admin/manage-newsletter.php:149
+#: admin/manage-newsletter.php:150
 msgid "Select all members"
 msgstr "Sélectionner tous les utilisateurs"
 
-#: admin/manage-newsletter.php:208
+#: admin/manage-newsletter.php:209
 msgid "Select recipients of the newsletter"
 msgstr "Sélectionner les destinataires de la newsletter"
 
-#: admin/manage-newsletter.php:216
+#: admin/manage-newsletter.php:217
 msgid "Content"
 msgstr "Contenu"
 
-#: admin/manage-newsletter.php:220
+#: admin/manage-newsletter.php:221
 msgid "Complete the informations of the newsletter"
 msgstr "Complétez les informations de la newsletter"
 
-#: admin/manage-newsletter.php:228
+#: admin/manage-newsletter.php:229
 msgid "Default"
 msgstr "Par défaut"
 
-#: admin/manage-newsletter.php:257
+#: admin/manage-newsletter.php:258
 #: admin/api/manage-option_api.php:576
 #: admin/api/manage-option_api.php:785
 msgid "Preview"

@@ -63,7 +63,7 @@ class Translation:
 		themes_path = os.path.join(self.basedir, "themes")
 		for theme in os.listdir(themes_path):
 			# We are in the right directory
-			if theme != "index.php":
+			if theme != "index.php" and theme != "planetlibre":
 				relpath = 'themes/%s' % theme
 				self.extract_from_tpl(relpath, 'index.tpl')
 	

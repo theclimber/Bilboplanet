@@ -20,7 +20,7 @@ msgstr ""
 "#-#-#-#-#  bilbo.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-02 14:20+0100\n"
+"POT-Creation-Date: 2011-02-14 15:38+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,7 +33,7 @@ msgstr ""
 #: themes/aragorn/posts.tpl:23 themes/aragorn/posts.tpl:63
 #: themes/legolas/posts.tpl:42 themes/legolas/posts.tpl:85
 #: themes/gil-galad/posts.tpl:23 themes/gil-galad/posts.tpl:63
-#: admin/pagination.php:45 admin/pagination.php:60
+#: admin/pagination.php:46 admin/pagination.php:61
 msgid "Next page"
 msgstr ""
 
@@ -105,7 +105,7 @@ msgstr ""
 #: themes/legolas/subscription.tpl:58 themes/legolas/contact.tpl:24
 #: themes/gil-galad/subscription.tpl:58 themes/gil-galad/contact.tpl:24
 #: admin/manage-post.php:172 admin/manage-moderation.php:109
-#: admin/manage-newsletter.php:261 admin/manage-selection.php:119
+#: admin/manage-newsletter.php:262 admin/manage-selection.php:119
 #: admin/manage-update.php:138
 msgid "Send"
 msgstr ""
@@ -231,7 +231,7 @@ msgstr ""
 #: themes/aragorn/posts.tpl:20 themes/aragorn/posts.tpl:60
 #: themes/legolas/posts.tpl:39 themes/legolas/posts.tpl:82
 #: themes/gil-galad/posts.tpl:20 themes/gil-galad/posts.tpl:60
-#: inc/admin/prepend.php:93 admin/pagination.php:52 admin/pagination.php:59
+#: inc/admin/prepend.php:93 admin/pagination.php:53 admin/pagination.php:60
 msgid "Previous page"
 msgstr ""
 
@@ -272,7 +272,7 @@ msgstr ""
 #: themes/legolas/subscription.tpl:57 themes/legolas/contact.tpl:22
 #: themes/gil-galad/subscription.tpl:57 themes/gil-galad/contact.tpl:22
 #: admin/manage-post.php:171 admin/manage-user.php:125
-#: admin/manage-feed.php:143 admin/manage-newsletter.php:265
+#: admin/manage-feed.php:143 admin/manage-newsletter.php:266
 #: admin/api/manage-feed_api.php:254 admin/api/manage-user_api.php:286
 #: admin/api/manage-site_api.php:190
 msgid "Reset"
@@ -291,7 +291,7 @@ msgstr ""
 #: themes/aragorn/stats.tpl:15 themes/aragorn/stats.tpl:36
 #: themes/legolas/stats.tpl:15 themes/legolas/stats.tpl:36
 #: themes/gil-galad/stats.tpl:15 themes/gil-galad/stats.tpl:36
-#: admin/manage-post.php:195 admin/manage-logs.php:71
+#: admin/manage-post.php:215 admin/manage-logs.php:71
 msgid "Name"
 msgstr ""
 
@@ -528,11 +528,11 @@ msgstr ""
 msgid "Choice : "
 msgstr ""
 
-#: inscription.php:73 admin/manage-newsletter.php:132
+#: inscription.php:73 admin/manage-newsletter.php:133
 msgid "Your email has been sent"
 msgstr ""
 
-#: inscription.php:75 contact.php:73 admin/manage-newsletter.php:134
+#: inscription.php:75 contact.php:73 admin/manage-newsletter.php:135
 msgid ""
 "Your request could not be sent for an unknown reason.<br/>Please try again."
 msgstr ""
@@ -549,7 +549,7 @@ msgid ""
 msgstr ""
 
 #: inscription.php:117 admin/manage-moderation.php:102
-#: admin/manage-newsletter.php:91 admin/manage-newsletter.php:231
+#: admin/manage-newsletter.php:91 admin/manage-newsletter.php:232
 #: admin/manage-selection.php:108
 msgid "Subject"
 msgstr ""
@@ -909,21 +909,21 @@ msgstr ""
 msgid "Post status"
 msgstr ""
 
-#: admin/manage-post.php:159 admin/manage-post.php:239
-#: admin/manage-post.php:247 admin/manage-post.php:253
-#: admin/manage-post.php:257
+#: admin/manage-post.php:159 admin/manage-post.php:235
+#: admin/manage-post.php:243 admin/manage-post.php:249
+#: admin/manage-post.php:253
 msgid "inactive"
 msgstr ""
 
-#: admin/manage-post.php:160 admin/manage-post.php:238
-#: admin/manage-post.php:243 admin/manage-post.php:248
-#: admin/manage-post.php:258
+#: admin/manage-post.php:160 admin/manage-post.php:234
+#: admin/manage-post.php:239 admin/manage-post.php:244
+#: admin/manage-post.php:254
 msgid "active"
 msgstr ""
 
-#: admin/manage-post.php:161 admin/manage-post.php:241
-#: admin/manage-post.php:250 admin/manage-post.php:256
-#: admin/manage-post.php:259
+#: admin/manage-post.php:161 admin/manage-post.php:237
+#: admin/manage-post.php:246 admin/manage-post.php:252
+#: admin/manage-post.php:255
 msgid "pending"
 msgstr ""
 
@@ -941,39 +941,39 @@ msgid ""
 "time the update happen !!"
 msgstr ""
 
-#: admin/manage-post.php:196 admin/api/manage-moderation_api.php:156
+#: admin/manage-post.php:216 admin/api/manage-moderation_api.php:156
 msgid "Date"
 msgstr ""
 
-#: admin/manage-post.php:197 admin/index.php:69
+#: admin/manage-post.php:217 admin/index.php:69
 #: admin/api/manage-moderation_api.php:158
 msgid "Title"
 msgstr ""
 
-#: admin/manage-post.php:198
+#: admin/manage-post.php:218
 msgid "Status"
 msgstr ""
 
-#: admin/manage-post.php:199
+#: admin/manage-post.php:219
 msgid "Nb votes"
 msgstr ""
 
-#: admin/manage-post.php:200 admin/manage-newsletter.php:253
+#: admin/manage-post.php:220 admin/manage-newsletter.php:254
 #: admin/manage-logs.php:72 admin/api/manage-feed_api.php:355
 #: admin/api/manage-user_api.php:403 admin/api/manage-moderation_api.php:159
 msgid "Action"
 msgstr ""
 
-#: admin/manage-post.php:273
+#: admin/manage-post.php:269
 msgid "Change"
 msgstr ""
 
-#: admin/manage-post.php:274 admin/manage-logs.php:88
+#: admin/manage-post.php:270 admin/manage-logs.php:88
 #: admin/api/manage-feed_api.php:409 admin/api/manage-user_api.php:464
 msgid "Delete"
 msgstr ""
 
-#: admin/manage-post.php:290
+#: admin/manage-post.php:286
 msgid "Show items by : "
 msgstr ""
 
@@ -1329,47 +1329,51 @@ msgstr ""
 msgid "You shoud have selected %s"
 msgstr ""
 
-#: admin/manage-newsletter.php:87 admin/manage-newsletter.php:224
+#: admin/manage-newsletter.php:87 admin/manage-newsletter.php:225
 msgid "Sender"
 msgstr ""
 
-#: admin/manage-newsletter.php:89 admin/manage-newsletter.php:204
+#: admin/manage-newsletter.php:89 admin/manage-newsletter.php:205
 msgid "Recipients"
 msgstr ""
 
-#: admin/manage-newsletter.php:93 admin/manage-newsletter.php:238
+#: admin/manage-newsletter.php:93 admin/manage-newsletter.php:239
 msgid "Message"
 msgstr ""
 
-#: admin/manage-newsletter.php:106
-msgid "Yes"
+#: admin/manage-newsletter.php:101
+msgid "Are you sure you want to send this newsletter?"
 msgstr ""
 
 #: admin/manage-newsletter.php:107
+msgid "Yes"
+msgstr ""
+
+#: admin/manage-newsletter.php:108
 msgid "No"
 msgstr ""
 
-#: admin/manage-newsletter.php:149
+#: admin/manage-newsletter.php:150
 msgid "Select all members"
 msgstr ""
 
-#: admin/manage-newsletter.php:208
+#: admin/manage-newsletter.php:209
 msgid "Select recipients of the newsletter"
 msgstr ""
 
-#: admin/manage-newsletter.php:216
+#: admin/manage-newsletter.php:217
 msgid "Content"
 msgstr ""
 
-#: admin/manage-newsletter.php:220
+#: admin/manage-newsletter.php:221
 msgid "Complete the informations of the newsletter"
 msgstr ""
 
-#: admin/manage-newsletter.php:228
+#: admin/manage-newsletter.php:229
 msgid "Default"
 msgstr ""
 
-#: admin/manage-newsletter.php:257 admin/api/manage-option_api.php:576
+#: admin/manage-newsletter.php:258 admin/api/manage-option_api.php:576
 #: admin/api/manage-option_api.php:785
 msgid "Preview"
 msgstr ""

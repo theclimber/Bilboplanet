@@ -182,27 +182,6 @@ if($num_membre == "0") {
 
 <?php
 
-# FIXME : check if this request is used !
-# Execution de la requete
-#$sql = "SELECT * FROM ".$core->prefix."post ORDER BY post_pubdate ASC LIMIT $num_start,$nb_items;";
-#$rs = $core->con->select($sql);
-
-include(dirname(__FILE__).'/pagination.php');
-?><br /><br />
-<table id="tbl1" class="table-news">
-		<thead>
-			<tr>
-				<th class="tc1 tcr" scope="col"><?php echo T_('Name');?></th>
-				<th class="tc2" scope="col"><?php echo T_('Date');?></th>
-				<th class="tc3" scope="col"><?php echo T_('Title');?></th>
-				<th class="tc4" scope="col" ><?php echo T_('Status');?></th>
-				<th class="tc5" scope="col"><?php echo T_('Nb votes');?></th>
-				<th class="tc6 tcr" scope="col"><?php echo T_('Action');?></th>
-			</tr>
-		</thead>
-
-<?php
-
 # Debut de la requete
 $sql = "SELECT
 		post_id,
@@ -226,6 +205,23 @@ $sql .= "ORDER by pubdate DESC LIMIT $num_start,$nb_items";
 
 # Execution de la requete
 $rs = $core->con->select($sql);
+$nb = $rs->count();
+
+include(dirname(__FILE__).'/pagination.php');
+?><br /><br />
+<table id="tbl1" class="table-news">
+		<thead>
+			<tr>
+				<th class="tc1 tcr" scope="col"><?php echo T_('Name');?></th>
+				<th class="tc2" scope="col"><?php echo T_('Date');?></th>
+				<th class="tc3" scope="col"><?php echo T_('Title');?></th>
+				<th class="tc4" scope="col" ><?php echo T_('Status');?></th>
+				<th class="tc5" scope="col"><?php echo T_('Nb votes');?></th>
+				<th class="tc6 tcr" scope="col"><?php echo T_('Action');?></th>
+			</tr>
+		</thead>
+
+<?php
 
 /* Traitement de la liste */
 while($rs->fetch()) {

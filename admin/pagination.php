@@ -36,6 +36,7 @@ if (isset($num_membre) && $num_membre != 0){
 if (isset($nb_items) && $nb_items > 0){
 	$params = $params."nb_items=".$nb_items."&";
 }
+global $nb;
 
 # Affichage des liens permettant de changer de page
 if($num_page == 0) {

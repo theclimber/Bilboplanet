@@ -86,7 +86,8 @@ if (isset($_GET)) {
 		$res = $core->con->select(
 			"SELECT
 				post_title, post_permalink, post_nbview
-			FROM ".$core->prefix."post WHERE post_id = ".$params["post_id"]);
+			FROM ".$core->prefix."post WHERE post_id = ".$params["post_id"]."
+				AND post_status = 1");
 		if (!$res->isEmpty) {
 			$params['title'] .= " - ".$res->f('post_title');
 		}

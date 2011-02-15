@@ -231,7 +231,7 @@ function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_c
 				post_pubdate
 			FROM ".$core->prefix."post
 			WHERE user_id = '".$rs->user_id."'
-				AND post_title = '".$item_title."'.
+				AND post_title = '".$item_title."'
 				AND post_pubdate = '".$item_date."'";
 		$rs4 = $core->con->select($sql);
 

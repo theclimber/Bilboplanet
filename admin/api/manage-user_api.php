@@ -34,7 +34,7 @@ if(isset($_POST['action'])) {
 		$rs = $core->con->select("SELECT * FROM ".$core->prefix."user WHERE user_id = '$user_id'");
 		$user = array(
 			"user_id" => $rs->f('user_id'),
-			"user_fullname" => $rs->f('user_fullname'),
+			"user_fullname" => html_entity_decode(stripslashes($rs->f('user_fullname')), ENT_QUOTES, 'UTF-8'),
 			"user_email" => $rs->f('user_email'),
 			"user_lang" => $rs->f('user_lang'),
 			"user_status" => $rs->f('user_status')
@@ -430,7 +430,7 @@ function getOutput($sql, $num_page=0, $nb_items=30) {
 		$output .= '<tr class="line '.$status.'"><td class="'.$god_class.'" style="text-align: center;"><img src="'.$gravatar_url.'"></td>
 			<td class="'.$god_class.'"><ul>
 				<li>User id : '.$rs->user_id.'</li>
-				<li>Fullname : '.$rs->user_fullname.'</li>
+				<li>Fullname : '.html_entity_decode(stripslashes($rs->user_fullname), ENT_QUOTES, 'UTF-8').'</li>
 				<li>Email : '.$rs->user_email.'</li>';
 		if ($is_god) {
 			$output .= '<li>'.T_('Planet author').'<li>';

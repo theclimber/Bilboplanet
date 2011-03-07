@@ -113,7 +113,8 @@ form::field('email',30,255,html::escapeHTML(""), 'input').'</label>
 <span class="description">'.T_('ex: xxx@yyy.zzz').'</span><br />'.
 
 '<label class="required" for="password">'.T_('Password').' : '.
-form::password('password',30,255, '', 'input').'</label><br />'.
+form::password('password',30,255, '', 'input').'</label>
+<span class="description">'.T_('Minimum 4 chars').'</span><br />'.
 
 '<label class="required" for="password2">'.T_('Confirm password').' : '.
 form::password('password2',30,255, '', 'input').'</label><br />'.

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Bilboplanet\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-10-29 10:55+0200\n"
-"PO-Revision-Date: 2011-02-14 15:39+0100\n"
+"PO-Revision-Date: 2011-03-07 14:03+0100\n"
 "Last-Translator: Grégoire de Hemptinne <greg@theclimber.be>\n"
 "Language-Team: French\n"
 "Language: \n"
@@ -357,7 +357,7 @@ msgstr "Membres"
 #: themes/gil-galad/subscription.tpl:57
 #: themes/gil-galad/contact.tpl:22
 #: admin/manage-post.php:171
-#: admin/manage-user.php:125
+#: admin/manage-user.php:126
 #: admin/manage-feed.php:143
 #: admin/manage-newsletter.php:266
 #: admin/api/manage-feed_api.php:254
@@ -460,7 +460,7 @@ msgstr "Articles du jour"
 #: inscription.php:119
 #: admin/manage-account.php:65
 #: admin/manage-user.php:107
-#: admin/manage-user.php:147
+#: admin/manage-user.php:148
 #: admin/install/index.php:302
 #: admin/api/manage-account_api.php:36
 msgid "Fullname"
@@ -712,7 +712,7 @@ msgstr "Nom d'utilisateur"
 #: inscription.php:120
 #: admin/manage-account.php:69
 #: admin/manage-user.php:111
-#: admin/manage-user.php:151
+#: admin/manage-user.php:152
 #: admin/install/index.php:305
 #: admin/api/manage-account_api.php:37
 msgid "Email"
@@ -1184,8 +1184,8 @@ msgstr "Gérer votre compte utilisateur"
 #: admin/manage-account.php:62
 #: admin/manage-user.php:80
 #: admin/manage-user.php:103
-#: admin/manage-user.php:144
-#: admin/manage-user.php:172
+#: admin/manage-user.php:145
+#: admin/manage-user.php:173
 #: admin/manage-feed.php:84
 #: admin/manage-feed.php:122
 #: admin/manage-feed.php:162
@@ -1194,34 +1194,34 @@ msgstr "id utilisateur"
 
 #: admin/manage-account.php:67
 #: admin/manage-user.php:109
-#: admin/manage-user.php:149
+#: admin/manage-user.php:150
 msgid "ex: Jean Dupont"
 msgstr "ex: Jean Dupont"
 
 #: admin/manage-account.php:71
 #: admin/manage-user.php:113
-#: admin/manage-user.php:153
+#: admin/manage-user.php:154
 msgid "ex: xxx@yyy.zzz"
 msgstr "ex: xxx@yyy.zzz"
 
 #: admin/manage-account.php:73
-#: admin/manage-user.php:155
+#: admin/manage-user.php:156
 msgid "New password"
 msgstr "Nouveau mot de passe"
 
 #: admin/manage-account.php:76
-#: admin/manage-user.php:158
+#: admin/manage-user.php:159
 msgid "Confirm new password"
 msgstr "Confirmation nouveau mot de passe"
 
 #: admin/manage-account.php:78
-#: admin/manage-user.php:160
+#: admin/manage-user.php:161
 msgid "You can leave the password field blank if you don't want to change it"
 msgstr "Vous pouvez laisser le champ mot de passe vide si vous ne souhaitez pas le changer"
 
 #: admin/manage-account.php:79
-#: admin/manage-user.php:163
-#: admin/manage-user.php:202
+#: admin/manage-user.php:164
+#: admin/manage-user.php:203
 #: admin/manage-feed.php:174
 #: admin/manage-option.php:53
 #: admin/api/manage-feed_api.php:407
@@ -1269,7 +1269,7 @@ msgid "User status"
 msgstr "Statut utilisateur"
 
 #: admin/manage-user.php:88
-#: admin/manage-user.php:127
+#: admin/manage-user.php:128
 #: admin/manage-feed.php:92
 #: admin/manage-feed.php:145
 #: admin/head.php:96
@@ -1290,58 +1290,62 @@ msgstr "ex: Frankenstein"
 msgid "Password"
 msgstr "Mot de passe"
 
-#: admin/manage-user.php:118
+#: admin/manage-user.php:117
+msgid "Minimum 4 chars"
+msgstr "Minimum 4 caractères"
+
+#: admin/manage-user.php:119
 msgid "Confirm password"
 msgstr "Confirmation mot de passe"
 
-#: admin/manage-user.php:121
+#: admin/manage-user.php:122
 msgid "Website (Optional)"
-msgstr "Site web (factulatif)"
+msgstr "Site web (facultatif)"
 
-#: admin/manage-user.php:123
+#: admin/manage-user.php:124
 msgid "ex: http://www.example.com"
 msgstr "ex: http://www.example.com ou http://planet.example.com"
 
-#: admin/manage-user.php:126
-#: admin/manage-user.php:184
+#: admin/manage-user.php:127
+#: admin/manage-user.php:185
 #: admin/manage-feed.php:144
 msgid "Add"
 msgstr "Ajouter"
 
-#: admin/manage-user.php:133
+#: admin/manage-user.php:134
 msgid "List of the users"
 msgstr "Liste des utilisateurs"
 
-#: admin/manage-user.php:135
+#: admin/manage-user.php:136
 msgid "List of members of the Planet"
 msgstr "Liste des membres du Planet"
 
-#: admin/manage-user.php:162
-#: admin/manage-user.php:183
-#: admin/manage-user.php:201
+#: admin/manage-user.php:163
+#: admin/manage-user.php:184
+#: admin/manage-user.php:202
 #: admin/manage-feed.php:173
 #: admin/manage-moderation.php:108
 #: admin/manage-selection.php:118
 msgid "Cancel"
 msgstr "Annuler"
 
-#: admin/manage-user.php:175
-#: admin/manage-user.php:193
+#: admin/manage-user.php:176
+#: admin/manage-user.php:194
 msgid "Site name"
 msgstr "Nom du site"
 
-#: admin/manage-user.php:177
-#: admin/manage-user.php:195
+#: admin/manage-user.php:178
+#: admin/manage-user.php:196
 msgid "ex: Bilboplanet blog"
 msgstr "ex: Bilboplanet"
 
-#: admin/manage-user.php:179
-#: admin/manage-user.php:197
+#: admin/manage-user.php:180
+#: admin/manage-user.php:198
 msgid "Site URL"
 msgstr "Adresse du site"
 
-#: admin/manage-user.php:181
-#: admin/manage-user.php:199
+#: admin/manage-user.php:182
+#: admin/manage-user.php:200
 msgid "ex: http://www.bilboplanet.com"
 msgstr "ex: http://www.bilboplanet.com"
 
@@ -2783,7 +2787,7 @@ msgstr "Langue du Planet"
 #: admin/api/manage-option_api.php:385
 #: admin/api/manage-option_api.php:649
 msgid "Information message (optional)"
-msgstr "Message d'information (factulatif)"
+msgstr "Message d'information (facultatif)"
 
 #: admin/api/manage-option_api.php:389
 #: admin/api/manage-option_api.php:653

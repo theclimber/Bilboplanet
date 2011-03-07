@@ -20,7 +20,7 @@ msgstr ""
 "#-#-#-#-#  bilbo.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-07 14:01+0100\n"
+"POT-Creation-Date: 2011-03-07 15:00+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1763,20 +1763,63 @@ msgid "Enable update on loading of index page"
 msgstr ""
 
 #: admin/manage-update.php:141
-msgid "Setup manual crontab"
+msgid "Setup feed update"
 msgstr ""
 
 #: admin/manage-update.php:143
-msgid "How to do a manual update ?"
+msgid "How to configure the update of the feeds ?"
 msgstr ""
 
 #: admin/manage-update.php:146
+msgid "How does it work?"
+msgstr ""
+
+#: admin/manage-update.php:147
+msgid ""
+"The update algorithm can work on several ways. The optimal solution that "
+"consumes less ressources and will give you the best results is clearly to "
+"setup a cron update manually into your server. But here you'll find a short "
+"explanation of the several methods :"
+msgstr ""
+
+#: admin/manage-update.php:149
+msgid ""
+"The first intuitive way is to use this page to update manually the feeds of "
+"your database by clicking on the 'Start a manual update' option in the menu "
+"above. This means that it will update all your feeds only once."
+msgstr ""
+
+#: admin/manage-update.php:150
+msgid ""
+"The second solution is to click on the 'Start the update algorithm' in the "
+"form. This will enable a PHP script which will fetch your feeds. This can be "
+"done but needs some special PHP libraries on your web server that may not be "
+"installed. This solution can be used but we advise you to check sometimes if "
+"the update engine is still alive (it can be killed after a time)"
+msgstr ""
+
+#: admin/manage-update.php:151
+msgid ""
+"Another intuitive way to configure the update of your feeds is by enabling "
+"update on index page loading. This means that all your feeds will be updated "
+"whenever people connect to your site. This is a good manner to deal with the "
+"update but can slightly slow down your site."
+msgstr ""
+
+#: admin/manage-update.php:152
+msgid ""
+"The optimal solution as said before it to configure manually the crontab of "
+"your server to enable the update. To configure a cron manually you'll find "
+"some advice here under."
+msgstr ""
+
+#: admin/manage-update.php:156
 msgid ""
 "You can setup a manual crontab update by calling automatically every X time "
 "the following page :"
 msgstr ""
 
-#: admin/manage-update.php:148
+#: admin/manage-update.php:158
 msgid ""
 "This will automatically launch the update and log it into the log files."
 msgstr ""

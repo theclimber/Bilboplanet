@@ -21,7 +21,7 @@ body {
 	font-family: "Lucida Grande", Verdana, Arial, "Bitstream Vera Sans", sans-serif;
 	font-size: 11px;
 }
-ol, ul {list-style: none;}
+/*ol, ul {padding: 5px;}*/
 blockquote, q {quotes: none;}
 small {font-size: 0.8em;}
 a, label {cursor: pointer !important;} /* Oblige le pointer, car le framework enlève automatiquement les href */
@@ -93,6 +93,7 @@ table#userlist tr.line:hover {
 }
 table#userlist ul {
 	padding:0px;
+	margin: 0 10px;
 }
 table#userlist li {
 	padding: 0px;
@@ -120,6 +121,7 @@ table#feedlist tr.line:hover {
 }
 table#feedlist ul {
 	padding:0px;
+	margin: 0 10px;
 }
 table#feedlist li {
 	padding: 0px;
@@ -200,7 +202,7 @@ table#feedlist tr.auto-disabled, tr.auto-disabled a, tr.auto-disabled a:visited 
 #bp_pannel h2.selected {background-position:0% -43px;}
 #bp_pannel .element {padding: 5px;}
 #bp_pannel .message {margin: 5px 0px;}
-#bp_pannel ul {padding-bottom: 7px;}
+#bp_pannel ul {list-style: none;padding-bottom: 7px;}
 #bp_pannel li a {
 	display: block;
 	height: 22px;
@@ -1336,6 +1338,17 @@ p.clear {
 	border:1px solid #cdcdcd;
 	color:#585858;
 	background:#E1E1E1;
+}
+#exportform ul {
+	list-style:none;
+}
+.help h2 {
+	text-decoration: underline;
+	padding : 5px;
+}
+.help ul {
+	padding: 5px;
+	margin: 0 12px;
 }
 /* Flash Box */
 .flash_overlay{

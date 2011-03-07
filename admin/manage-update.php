@@ -138,14 +138,24 @@ echo '<label for="enable_on_index"><input id="enable_on_index" type="checkbox" n
 <div class="button br3px"><input name="submit" type="submit" class="valide" value="<?php echo T_('Send');?>" /></div>
 </form>
 </fieldset>
-<fieldset><legend><?=T_('Setup manual crontab');?></legend>
+<fieldset><legend><?=T_('Setup feed update');?></legend>
 		<div class="message">
-			<p><?php echo T_('How to do a manual update ?');?></p>
+			<p><?php echo T_('How to configure the update of the feeds ?');?></p>
 		</div><br />
+<div class="help">
+<h2><?php echo T_('How does it work?'); ?></h2>
+<p><?php echo T_("The update algorithm can work on several ways. The optimal solution that consumes less ressources and will give you the best results is clearly to setup a cron update manually into your server. But here you'll find a short explanation of the several methods :"); ?>
+<ul>
+	<li><?php echo T_("The first intuitive way is to use this page to update manually the feeds of your database by clicking on the 'Start a manual update' option in the menu above. This means that it will update all your feeds only once."); ?></li>
+	<li><?php echo T_("The second solution is to click on the 'Start the update algorithm' in the form. This will enable a PHP script which will fetch your feeds. This can be done but needs some special PHP libraries on your web server that may not be installed. This solution can be used but we advise you to check sometimes if the update engine is still alive (it can be killed after a time)"); ?></li>
+	<li><?php echo T_("Another intuitive way to configure the update of your feeds is by enabling update on index page loading. This means that all your feeds will be updated whenever people connect to your site. This is a good manner to deal with the update but can slightly slow down your site."); ?></li>
+	<li><?php echo T_("The optimal solution as said before it to configure manually the crontab of your server to enable the update. To configure a cron manually you'll find some advice here under."); ?></li>
+</ul></p>
+</div>
 		
 <p><?php echo T_('You can setup a manual crontab update by calling automatically every X time the following page :'); ?><br/>
-<b><?php echo $blog_settings->get('planet_url')."/inc/update_manual.php"; ?></b></p><br />
-<p><?php echo T_('This will automatically launch the update and log it into the log files.'); ?></p>
+<b><?php echo $blog_settings->get('planet_url')."/inc/update_manual.php"; ?></b><br />
+<?php echo T_('This will automatically launch the update and log it into the log files.'); ?></p>
 </fieldset>
 <?php
 if($update) {

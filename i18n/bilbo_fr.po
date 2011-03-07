@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Bilboplanet\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-10-29 10:55+0200\n"
-"PO-Revision-Date: 2011-03-07 14:03+0100\n"
+"PO-Revision-Date: 2011-03-07 15:07+0100\n"
 "Last-Translator: Grégoire de Hemptinne <greg@theclimber.be>\n"
 "Language-Team: French\n"
 "Language: \n"
@@ -1992,18 +1992,42 @@ msgid "Enable update on loading of index page"
 msgstr "Activer la mise à jour au chargement de la page d'index"
 
 #: admin/manage-update.php:141
-msgid "Setup manual crontab"
-msgstr "Installer un crontab manuellement"
+msgid "Setup feed update"
+msgstr "Configurer la mise à jour des flux"
 
 #: admin/manage-update.php:143
-msgid "How to do a manual update ?"
-msgstr "Comment faire une mise à jour manuelle?"
+msgid "How to configure the update of the feeds ?"
+msgstr "Comment configurer la mise à jour des flux?"
 
 #: admin/manage-update.php:146
+msgid "How does it work?"
+msgstr "Comment ça marche?"
+
+#: admin/manage-update.php:147
+msgid "The update algorithm can work on several ways. The optimal solution that consumes less ressources and will give you the best results is clearly to setup a cron update manually into your server. But here you'll find a short explanation of the several methods :"
+msgstr "L'algorithme de mise à jour peut fonctionner de plusieurs manières. La solution optimale qui consomme le moins de ressources et donnera les meilleurs résultats est clairement l'installation manuelle d'un cron sur votre serveur. Cependant vous trouverez ici une petite explication sur les différentes méthodes existantes :"
+
+#: admin/manage-update.php:149
+msgid "The first intuitive way is to use this page to update manually the feeds of your database by clicking on the 'Start a manual update' option in the menu above. This means that it will update all your feeds only once."
+msgstr "La première solution intuitive est d'utiliser cette page pour mettre à jour manuellement les flux de la base de donnée en cliquant sur l'option \"Démarrer une mise à jour manuelle\" dans le menu ci-dessus. Ca signifie que ça va mettre à jour vos flux une fois seulement."
+
+#: admin/manage-update.php:150
+msgid "The second solution is to click on the 'Start the update algorithm' in the form. This will enable a PHP script which will fetch your feeds. This can be done but needs some special PHP libraries on your web server that may not be installed. This solution can be used but we advise you to check sometimes if the update engine is still alive (it can be killed after a time)"
+msgstr "La seconde solution est de cliquer sur \"Démarrer l'algorithme de mise à jour\" dans le formulaire. Ceci va activer un script PHP qui va récupérer vos flux. Cette solution peut être utilisée mais utilise quelques librairies spéciales PHP que vous n'avez pas nécessairement sur votre serveur. De plus, si vous utilisez cette solution, veuillez à vérifier de temps en temps que la mise à jour fonctionne toujours. Elle se désactive parfois toute seule (le process peut être tué)."
+
+#: admin/manage-update.php:151
+msgid "Another intuitive way to configure the update of your feeds is by enabling update on index page loading. This means that all your feeds will be updated whenever people connect to your site. This is a good manner to deal with the update but can slightly slow down your site."
+msgstr "Une autre possibilité intuitive c'est de configurer la mise à jour au chargement de la page d'index (voir checkbox ci-dessus). Ceci signifie que la mise à jour sera activité à la visite de votre site. C'est une solution souvent utilisée mais qui peut gêner légèrement l'expérience utilisateur sur votre site."
+
+#: admin/manage-update.php:152
+msgid "The optimal solution as said before it to configure manually the crontab of your server to enable the update. To configure a cron manually you'll find some advice here under."
+msgstr "La solution optimale, comme expliqué plus haut, est de configurer manuellement le crontab de votre serveur pour activer la mise à jour. Pour configurer un cron manuellement vous pourrez trouver quelques conseils ci-dessous."
+
+#: admin/manage-update.php:156
 msgid "You can setup a manual crontab update by calling automatically every X time the following page :"
 msgstr "Vous pouvez mettre en place un crontab manuellement en appellant tous les X temps la page suivante : "
 
-#: admin/manage-update.php:148
+#: admin/manage-update.php:158
 msgid "This will automatically launch the update and log it into the log files."
 msgstr "Ceci va automatiquement lancer la mise à jour et logger les informations dans les fichiers de log."
 
@@ -3116,6 +3140,10 @@ msgstr "Refuser"
 msgid "%s last posts :"
 msgstr "%s derniers articles :"
 
+#~ msgid "Setup manual crontab"
+#~ msgstr "Installer un crontab manuellement"
+#~ msgid "How to do a manual update ?"
+#~ msgstr "Comment faire une mise à jour manuelle?"
 #~ msgid "Error 404"
 #~ msgstr "Erreur 404"
 #~ msgid "Please insert a valid email address"

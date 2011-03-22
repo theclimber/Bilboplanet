@@ -433,7 +433,7 @@ function getOutput($sql, $num_page=0, $nb_items=30) {
 				<li>Fullname : '.html_entity_decode(stripslashes($rs->user_fullname), ENT_QUOTES, 'UTF-8').'</li>
 				<li>Email : '.$rs->user_email.'</li>';
 		if ($is_god) {
-			$output .= '<li>'.T_('Planet author').'<li>';
+			$output .= '<li>'.T_('Planet author').'</li>';
 		}
 		$output .= '</ul></div></td>';
 		$output .= '<td class="'.$god_class.'">';

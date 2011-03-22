@@ -64,7 +64,7 @@ if (isset($_SERVER['BP_CONFIG_PATH'])) {
 	define('BP_CONFIG_PATH',$_SERVER['BP_CONFIG_PATH']);
 } elseif (isset($_SERVER['REDIRECT_BP_CONFIG_PATH'])) {
 	define('BP_CONFIG_PATH',$_SERVER['REDIRECT_BP_CONFIG_PATH']);
-} else {
+} elseif (!defined('BP_CONFIG_PATH')) {
 	define('BP_CONFIG_PATH',dirname(__FILE__).'/config.php');
 }
 

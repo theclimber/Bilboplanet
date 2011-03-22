@@ -210,7 +210,7 @@ include_once(dirname(__FILE__).'/sidebar.php');
                    </p>
                 </div>
                 <br />
-				<? echo $checkbox_recipients; ?>
+				<?php echo $checkbox_recipients; ?>
             </fieldset>
             <fieldset>
                 <legend>
@@ -226,7 +226,7 @@ include_once(dirname(__FILE__).'/sidebar.php');
 				<input type="text" name="newsletter_sender" size="60" class="input" value="<?php if($sender) echo $sender['value'];?>" /><br />
 				<div class="comment">
 					<p>
-						<?echo T_('Default').": ".$blog_settings->get('author_mail');?>
+						<?php echo T_('Default').": ".$blog_settings->get('author_mail');?>
 					</p>
 				</div>
                 <?php echo T_('Subject') . ":";?><br />

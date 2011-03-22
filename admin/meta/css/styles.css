@@ -185,7 +185,7 @@ table#feedlist tr.auto-disabled, tr.auto-disabled a, tr.auto-disabled a:visited 
  Barre utilisateur
 */
 #BP_userbar {float: right;margin: 0px 5px;}
-#BP_userbar li {float: left;margin: 0px 0px 0px 5px;}
+#BP_userbar li {list-style:none;float: left;margin: 0px 0px 0px 5px;}
 /*
  Pannel de navigation
 */

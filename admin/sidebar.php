@@ -24,11 +24,11 @@
 ***** END LICENSE BLOCK *****/
 ?>
 <div id="bp_pannel">
-	<h2 class="toggler headbar bdinbox"><?php echo T_('Common');?></h2>
+	<h2 class="toggler headbar bdinbox"><?php echo T_('Common'); ?></h2>
 	<div class="element">
 		<ul>
-		<li><a href="index.php" class="tips" rel="<?php echo T_('Access the quick summary of the planet');?>." id="dashboardm" ><?=T_('Dashboard');?></a></li>
-		<li><a href="manage-account.php" class="tips" rel="<?php echo T_('Manage your profile account');?>." id="accountm" ><?=T_('Manage your account');?></a></li>
+		<li><a href="index.php" class="tips" rel="<?php echo T_('Access the quick summary of the planet');?>." id="dashboardm" ><?php echo T_('Dashboard');?></a></li>
+		<li><a href="manage-account.php" class="tips" rel="<?php echo T_('Manage your profile account');?>." id="accountm" ><?php echo T_('Manage your account');?></a></li>
 		</ul>
 	</div>
 
@@ -39,16 +39,16 @@
 		<li>
 			</li>
 			<li>
-				<a href="manage-user.php" class="tips" rel="<?php echo T_('Manage users');?>." id="members" ><?=T_('Manage users');?></a>
+				<a href="manage-user.php" class="tips" rel="<?php echo T_('Manage users');?>." id="members" ><?php echo T_('Manage users');?></a>
 			</li>
 			<li>
-				<a href="manage-feed.php" class="tips" rel="<?php echo T_('Manage feeds');?>." id="feed" ><?=T_('Manage feeds');?></a>
+				<a href="manage-feed.php" class="tips" rel="<?php echo T_('Manage feeds');?>." id="feed" ><?php echo T_('Manage feeds');?></a>
 			</li>
 			<li>
-				<a href="manage-post.php" class="tips" rel="<?php echo T_('Manage posts');?>." id="articles" ><?=T_('Manage posts');?></a>
+				<a href="manage-post.php" class="tips" rel="<?php echo T_('Manage posts');?>." id="articles" ><?php echo T_('Manage posts');?></a>
 			</li>
             <li>
-            	<a href="manage-newsletter.php" class="tips" rel="<?php echo T_('Manage newsletter of the planet');?>." id="newsletter" ><?=T_('Newsletter');?></a>
+            	<a href="manage-newsletter.php" class="tips" rel="<?php echo T_('Manage newsletter of the planet');?>." id="newsletter" ><?php echo T_('Newsletter');?></a>
 			</li>
 		</ul>
 	</div>
@@ -59,22 +59,22 @@
 	<div class="element">
 		<ul>
 			<li>
-				<a href="manage-useroption.php" class="tips" rel="<?php echo T_('Author configuration');?>." id="users" ><?=T_('Planet Author');?></a>
+				<a href="manage-useroption.php" class="tips" rel="<?php echo T_('Author configuration');?>." id="users" ><?php echo T_('Planet Author');?></a>
 			</li>
 			<li>
-				<a href="manage-option.php" class="tips" rel="<?php echo T_('Planet Configuration');?>." id="planet" ><?=T_('Planet configuration');?></a>
+				<a href="manage-option.php" class="tips" rel="<?php echo T_('Planet Configuration');?>." id="planet" ><?php echo T_('Planet configuration');?></a>
 			</li>
 			<li>
-				<a href="manage-logs.php" class="tips" rel="<?php echo T_('View logs information');?>." id="logs" ><?=T_('Logs Files');?></a>
+				<a href="manage-logs.php" class="tips" rel="<?php echo T_('View logs information');?>." id="logs" ><?php echo T_('Logs Files');?></a>
 			</li>
 			<li>
-				<a href="manage-database.php" class="tips" rel="<?php echo T_('Import/Export Planet configuration');?>." id="database" ><?=T_('Import/Export');?></a>
+				<a href="manage-database.php" class="tips" rel="<?php echo T_('Import/Export Planet configuration');?>." id="database" ><?php echo T_('Import/Export');?></a>
 			</li>
 			<li>
-				<a href="manage-cache.php" class="tips" rel="<?php echo T_('Clear Planet cache');?>." id="cache" ><?=T_('Clear cache');?></a>
+				<a href="manage-cache.php" class="tips" rel="<?php echo T_('Clear Planet cache');?>." id="cache" ><?php echo T_('Clear cache');?></a>
 			</li>
 			<li>
-				<a href="manage-update.php" class="tips" rel="<?php echo T_('Feed fetching system configuration');?>." id="config" ><?=T_('Feed fetching');?></a>
+				<a href="manage-update.php" class="tips" rel="<?php echo T_('Feed fetching system configuration');?>." id="config" ><?php echo T_('Feed fetching');?></a>
 			</li>
 	</div>
 <?php endif; ?>
@@ -86,14 +86,14 @@
 			<li>
 				<a href="manage-moderation.php" class="tips" rel="
 					<?php echo T_('Moderation interface');?>." id="moderation" >
-					<?=T_('Moderation');?></a>
+					<?php echo T_('Moderation');?></a>
 			</li>
 <?php
 /*
 			<li>
 				<a href="manage-selection.php" class="tips" rel="
 					<?php echo T_('Make your selection of the week');?>." id="selection" >
-					<?=T_('Selection of the week');?></a>
+					<?php echo T_('Selection of the week');?></a>
 			</li>
 */
 ?>
@@ -108,7 +108,7 @@
 			<li>
 				<a href="manage-permissions.php" class="tips" rel="
 					<?php echo T_('Manage user permissions');?>." id="permissions" >
-					<?=T_('Permissions');?></a>
+					<?php echo T_('Permissions');?></a>
 			</li>
 		</ul>
 	</div>

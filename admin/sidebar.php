@@ -42,6 +42,9 @@
 				<a href="manage-user.php" class="tips" rel="<?php echo T_('Manage users');?>." id="members" ><?php echo T_('Manage users');?></a>
 			</li>
 			<li>
+				<a href="manage-pendinguser.php" class="tips" rel="<?php echo T_('Pending users');?>." id="pendinguser" ><?php echo T_('Pending users');?></a>
+			</li>
+			<li>
 				<a href="manage-feed.php" class="tips" rel="<?php echo T_('Manage feeds');?>." id="feed" ><?php echo T_('Manage feeds');?></a>
 			</li>
 			<li>

@@ -232,6 +232,9 @@ div#bp_pannel a#accountm {
 div#bp_pannel a#members {
 	background-image:url('../icons/users.png');
 }
+div#bp_pannel a#pendinguser {
+	background-image:url('../icons/contact-new.png');
+}
 div#bp_pannel a#feed {
 	background-image:url('../icons/feed.png');
 }

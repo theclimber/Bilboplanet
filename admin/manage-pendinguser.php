@@ -42,22 +42,14 @@ include_once(dirname(__FILE__).'/sidebar.php');
 		<div id="flash-log" style="display:none;">
 			<div id="flash-msg"><!-- spanner --></div>
 		</div>
-
-<?php
-
-
-?>
-
-<fieldset><legend><?php echo T_('List of pending users');?></legend>
-		<div class="message">
-			<p><?php echo T_('List of pending users for the Planet');?></p>
-		</div>
-<div id="pendinguser-list"></div>
-</fieldset>
-
-
-<script type="text/javascript" src="meta/js/manage-pendinguser.js"></script>
-
+		<fieldset>
+			<legend><?php echo T_('List of pending users');?></legend>
+			<div class="message">
+				<p><?php echo T_('List of pending users for the Planet');?></p>
+			</div>
+			<div id="pendinguser-list"></div>
+	</fieldset>
+	<script type="text/javascript" src="meta/js/manage-pendinguser.js"></script>
 <?php
 include(dirname(__FILE__).'/footer.php');
 

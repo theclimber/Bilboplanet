@@ -6,7 +6,7 @@
 * Website : www.bilboplanet.com
 * Tracker : redmine.bilboplanet.com
 * Blog : www.bilboplanet.com
-* 
+*
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License as
@@ -87,6 +87,11 @@
 				<a href="manage-moderation.php" class="tips" rel="
 					<?php echo T_('Moderation interface');?>." id="moderation" >
 					<?php echo T_('Moderation');?></a>
+			</li>
+			<li>
+				<a href="manage-tagging.php" class="tips" rel="
+					<?php echo T_('Tag the last posts');?>." id="tagging">
+					<?php echo T_('Tagging');?></a>
 			</li>
 <?php
 /*

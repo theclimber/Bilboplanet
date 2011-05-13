@@ -6,7 +6,7 @@
 * Website : www.bilboplanet.com
 * Tracker : redmine.bilboplanet.com
 * Blog : www.bilboplanet.com
-* 
+*
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License as
@@ -23,11 +23,11 @@
 *
 ***** END LICENSE BLOCK *****/
 ?>
-<?php 
+<?php
 if(isset($_POST) && isset($_POST['ajax'])) {
 	# Inclusion des fonctions
 	require_once(dirname(__FILE__).'/../../inc/admin/prepend.php');
-	
+
 	if (!$core->auth->sessionExists() && !$core->hasRole('manager')){
 		print 'Permission denied';
 		exit;
@@ -75,6 +75,13 @@ if(isset($_POST) && isset($_POST['ajax'])) {
 			exit;
 		}
 		require_once(dirname(__FILE__).'/manage-moderation_api.php');
+		break;
+	case 'tagging':
+		if (!$core->hasPermission('moderation')){
+			print 'Permission denied';
+			exit;
+		}
+		require_once(dirname(__FILE__).'/manage-tagging_api.php');
 		break;
 	case 'selection':
 		if (!$core->hasPermission('moderation')){

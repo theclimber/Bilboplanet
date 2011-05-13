@@ -265,6 +265,9 @@ div#bp_pannel a#permissions {
 div#bp_pannel a#moderation {
 	background-image:url('../icons/warn.png');
 }
+div#bp_pannel a#tagging {
+	background-image:url('../icons/tagging.png');
+}
 div#bp_pannel a#selection {
 	background-image:url('../icons/ordered.png');
 }
@@ -305,7 +308,7 @@ div#bp_pannel a#selection {
 	margin-bottom: 5px;
 }
 #BP_page .comment p {
-	font-style : italic; 
+	font-style : italic;
 	color: #6e6e6e;
 }
 #BP_page fieldset {
@@ -337,7 +340,7 @@ Le WYSIWYG
 	display:block;
 	padding: 3px 2px;
 }
-	
+
 #BP_page .editor {
 font-family: verdana, arial, sans-serif;
 font-size:13px;
@@ -351,7 +354,7 @@ padding: 2px;
 }
 #BP_page .buttoned:hover {
 opacity:.60;
-filter: alpha(opacity=60); 
+filter: alpha(opacity=60);
 -moz-opacity: .60;
 }
 #BP_page .ed {
@@ -600,6 +603,13 @@ table#post-list {
 table#post-list img {
 	border : 0px;
 }
+table#post-list div.tag-line {
+    margin : 10px 5px;
+}
+table#post-list span.tag {
+	padding : 0px 5px;
+    margin: 0px 5px;
+}
 table#post-list h3{
 	font-weight: bold;
 }
@@ -746,7 +756,7 @@ table#list-articles tr.selected {
 }
 
 #boxes #about {
-	background-color:#ffffff;  
+	background-color:#ffffff;
 	border:1px solid #666;
 	-moz-border-radius: 4px;
 	-khtml-border-radius: 4px;
@@ -861,7 +871,7 @@ body, #BP_page, #bp_pannel, #BP_page {
 .acp .logout { background-image: url('../icons/door_open_in.png');}
 
 /*
- Flash & error messages 
+ Flash & error messages
  */
 #errorExplanation, div.flash, .nodata, .warning {
     padding:5px 8px 5px 30px;
@@ -905,7 +915,7 @@ div.flash.warning {
 	/* width:98%; */
 }
 #errorExplanation ul {font-size: 1.0em;}
-/* 
+/*
  * DashBoard
  */
 #dashboard {width: 99%;padding: 10px;}
@@ -1171,7 +1181,7 @@ input.inputURL {
 	border-top-color: #e4e4e4;
 	margin-top: 10px;
 }
- 
+
 #export_res {
 	overflow: auto;
 }
@@ -1187,7 +1197,7 @@ input.inputURL {
 	background-image:url(../icons/download.png);
 	background-repeat: no-repeat;
 }
- 
+
 #export_res.ajax-loading {
 	padding: 20px 0;
 	background: url(../icons/spinner.gif) no-repeat center;
@@ -1203,7 +1213,7 @@ input.inputURL {
 	border-top-color: #e4e4e4;
 	margin-top: 10px;
 }
- 
+
 #import_res {
 	overflow: auto;
 }
@@ -1219,7 +1229,7 @@ input.inputURL {
 	background-image:url(../icons/download.png);
 	background-repeat: no-repeat;
 }
- 
+
 #import_res.ajax-loading {
 	padding: 20px 0;
 	background: url(../icons/spinner.gif) no-repeat center;
@@ -1294,7 +1304,7 @@ p.clear {
 }
 
 .preview_message ul li {
-	list-style-type: disc; 
+	list-style-type: disc;
 }
 
 .preview_message code {
@@ -1317,7 +1327,7 @@ p.clear {
 * html .preview_div {
 	position:absolute;
 	margin-top:60px;
-	top:expression(( (ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop)) + 'px'); 
+	top:expression(( (ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop)) + 'px');
 	right:expression(( (ignoreMe2 = document.documentElement.scrollLeft ? document.documentElement.scrollLeft : document.body.scrollLeft)) + 'px');
 }
 * html #overlay {
@@ -1326,7 +1336,7 @@ p.clear {
 	right:0;
 }
 
-#options-loading {  
+#options-loading {
 	float:right;
 	background:url(../icons/spinner.gif) no-repeat 1px;
 	height:28px;

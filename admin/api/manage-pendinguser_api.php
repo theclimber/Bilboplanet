@@ -22,19 +22,20 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 *
 ***** END LICENSE BLOCK *****/
-?><?php
+?>
+<?php
 if(isset($_POST['action'])) {
 	switch (trim($_POST['action'])){
-
+		
 ##########################################################
-# USERS PENDING LIST RETURN
+# LIST PENDING USER
 ##########################################################
 	case 'list':
 		$num_page = !empty($_POST['num_page']) ? $_POST['num_page'] : 0;
 		$nb_items = !empty($_POST['nb_items']) ? $_POST['nb_items'] : 30;
 		$num_start = $num_page * $nb_items;
 
-		# On recupere les informtions sur les membres
+		# Build SQL query
 		$sql = 'SELECT
 			puser_id,
 			user_fullname,
@@ -50,23 +51,67 @@ if(isset($_POST['action'])) {
 		break;
 		
 ##########################################################
+# Email Text
+##########################################################
+	case 'emailText':
+		$userfullname = urldecode(trim($_POST['userfullname']));
+		$feedurl = urldecode(trim($_POST['feedurl']));
+		
+		if (!empty($userfullname)) {
+			$output = sprintf(T_("Dear %s,"), $userfullname);
+		} else {
+			$output = T_("Dear user,");
+		}
+		
+		$output .= "\n\n";
+		$output .= T_('We took the decision to refuse your subscription for the following feed: ')."\n";
+		$output .= "\t- ".$feedurl."\n";
+		$output .= "\n";
+		$output .= T_('The reasons of this refusal are :')."\n";
+		$output .= "\t- "."\n";
+		$output .= "\t- "."\n";
+		$output .= "\t- "."\n";
+		$output .= "\n\n";
+		$output .= T_('Regards,')."\n";
+		$output .= html_entity_decode(stripslashes($blog_settings->get('planet_title')), ENT_QUOTES, 'UTF-8');
+		
+		print $output;
+
+		break;		
+
+##########################################################
 # REFUSE PENDING USER
 ##########################################################
 	case 'refuse':
-		$puserid = trim($_POST['puserid']);
-		$rs = $core->con->select("SELECT puser_id, user_fullname, user_email, site_url, feed_url FROM ".$core->prefix."pending_user WHERE puser_id = '$puserid'");
-		$confirmation = '<p>'.T_('Are you sure you want to refuse this subscription?').'
-			<ul>
-				<li>'.T_('User id').': '.$rs->f('puser_id').'</li>
-				<li>'.T_('Fullname').': '.$rs->f('user_fullname').'</li>
-				<li>'.T_('Email').': '.$rs->f('user_email').'</li>
-				<li>'.T_('Website').': '.$rs->f('site_url').'</li>
-				<li>'.T_('Feed').': '.$rs->f('feed_url').'</li>				
-			</ul><br />';
-		$confirmation .= '<form id="refuseSubscription" method="POST"><input type="hidden" name="p_userid" value="'.$puserid.'"/>';
-		$confirmation .= "<div class='button br3px'><input class='reset' type='button' value='".T_('Reset')."'/></div>&nbsp;&nbsp;";
-		$confirmation .= "<div class='button br3px'><input class='valide' type='submit' name='confirm' value='".T_('Confirm')."'/></div></form></p>";
-		print '<div class="flash_warning">'.$confirmation.'</div>';
+		$puserid = urldecode(trim($_POST['puserid']));
+		$useremail = urldecode(trim($_POST['useremail']));
+		
+		$from = $blog_settings->get('author_mail');
+		$to = $userfullname.', '.$from;
+		$reply_to = $from;
+		
+		$subject = html_entity_decode(stripslashes($_POST['subject']), ENT_QUOTES, 'UTF-8');
+		$content = html_entity_decode(stripslashes($_POST['content']), ENT_QUOTES, 'UTF-8');
+		
+		if (!sendmail($from, $to, $subject, $content, 'normal', $reply_to)) {
+			$error[] = T_("Mail could not be send");
+		} else {
+			$core->con->execute("DELETE FROM ".$core->prefix."pending_user WHERE puser_id = '.$puserid.'");
+			$output = T_("Subscription successfully refused");
+		}
+		
+		if (!empty($error)) {
+			$output .= "<ul>";
+			foreach($error as $value) {
+				$output .= "<li>".$value."</li>";
+			}
+			$output .= "</ul>";
+			print '<div class="flash_error">'.$output.'</div>';
+		}
+		else {
+			print '<div class="flash_notice">'.$output.'</div>';
+		}
+		
 		break;
 		
 ##########################################################
@@ -123,11 +168,11 @@ function getOutput($sql, $num_page=0, $nb_items=30) {
 				</ul>
 			</td>';
 		$output .= '<td style="text-align: center;">
-				<a href="#" onclick="javascript:refusePendingUser(\''.urlencode($rs->puser_id).'\')" >
+				<a href="#" onclick="javascript:refusePendingUser(\''.urlencode($rs->puser_id).'\',\''.urlencode($rs->feed_url).'\',\''.urlencode($rs->user_email).'\',\''.urlencode($rs->user_fullname).'\')" >
 					<img src="meta/icons/action-remove.png" title="'.T_("Refuse").'"/>
 				</a>
 				&nbsp;&nbsp;
-				<a href="#" onclick="javascript:acceptPendingUser('.urlencode($rs->puser_id).')" >
+				<a href="#" onclick="javascript:acceptPendingUser(\''.urlencode($rs->puser_id).'\',\''.urlencode($rs->feed_url).'\',\''.urlencode($rs->user_email).'\',\''.urlencode($rs->user_fullname).'\')" >
 					<img src="meta/icons/action-add.png" title="'.T_("Accept").'"/>
 				</a>
 			</td>';
@@ -139,3 +184,4 @@ function getOutput($sql, $num_page=0, $nb_items=30) {
 	return $output;
 }
 ?>
+

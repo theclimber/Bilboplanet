@@ -49,6 +49,33 @@ include_once(dirname(__FILE__).'/sidebar.php');
 			</div>
 			<div id="pendinguser-list"></div>
 	</fieldset>
+	
+	<div id="refuse-subscription-form" style="display:none">
+	<?php
+	echo '<form>'.form::hidden('from',$core->auth->getInfo('user_email')).
+	'<label class="required" for="subject">'.T_('Subject').' : <br />'.
+	form::field('subject',30,255,html::escapeHTML(T_("Refuse subscription")), 'input').'</label><br />'.
+	'<label class="required" for="content">'.T_('Comment').' : <br />'.
+	form::textArea('content',80,14,html::escapeHTML(""), 'input').'</label><br />'.
+	'<div class="button"><input type="button" class="cancel" name="cancel" onClick="Boxy.get($(\'form.boxform\')).hide()" value="'.T_('Cancel').'"></div>'.
+	'<div class="button"><input type="submit" name="send" class="add_site" value="'.T_('Send').'" /></div>'.
+	'</form>';
+	?>
+	</div>
+	
+	<div id="accept-subscription-form" style="display:none">
+	<?php
+	echo '<form>'.form::hidden('from',$core->auth->getInfo('user_email')).
+	'<label class="required" for="subject">'.T_('Subject').' : <br />'.
+	form::field('subject',30,255,html::escapeHTML(T_("Refuse subscription")), 'input').'</label><br />'.
+	'<label class="required" for="content">'.T_('Comment').' : <br />'.
+	form::textArea('content',80,14,html::escapeHTML(""), 'input').'</label><br />'.
+	'<div class="button"><input type="button" class="cancel" name="cancel" onClick="Boxy.get($(\'form.boxform\')).hide()" value="'.T_('Cancel').'"></div>'.
+	'<div class="button"><input type="submit" name="send" class="add_site" value="'.T_('Send').'" /></div>'.
+	'</form>';
+	?>
+	</div>
+	
 	<script type="text/javascript" src="meta/js/manage-pendinguser.js"></script>
 <?php
 include(dirname(__FILE__).'/footer.php');

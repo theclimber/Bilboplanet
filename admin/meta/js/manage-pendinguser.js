@@ -2,7 +2,6 @@ $(document).ready(function() {
 	$("#pendinguser-list").ready( function() {
 		updatePendingUserList();
 	});
-
 });
 
 function updatePendingUserList(num_page, nb_items) {
@@ -16,19 +15,33 @@ function updatePendingUserList(num_page, nb_items) {
 	});
 }
 
-function refusePendingUser(pUserId) {
-	$('#flash-log').css('display','')
+function refusePendingUser(pUserId, feedUrl, userEmail, userFullname) {
+	$('#flash-log').css('display','');
 	$('#flash-msg').addClass('ajax-loading');
 	$('#flash-msg').html('Loading');
 	$.ajax({
 		type: "POST",
 		url: "api/",
-		data : {'ajax' : 'pendinguser', 'action': 'refuse', 'puserid': pUserId},
+		data : {'ajax' : 'pendinguser', 'action': 'emailText', 'userfullname': userFullname, 'feedurl': feedUrl},
 		success: function(msg){
-			$('#flash-msg').html('');
-			$('#flash-msg').removeClass('ajax-loading');
-			$('#flash-log').css('display','none');
-			$(msg).flashmsg();
+			$('#refuse-subscription-form #content').text(msg);
+			var content = $('#refuse-subscription-form form').clone();
+			Boxy.askform(content, function(val) {
+				$.ajax({
+					type: "POST",
+					url: "api/",
+					data : {'ajax' : 'pendinguser', 'action': 'refuse', 'puserid': pUserId, 'useremail': userEmail},
+					success: function(msg){
+						$('#flash-msg').html('');
+						$('#flash-log').css('display','');
+						$('#flash-msg').removeClass('ajax-loading');
+						updatePendingUserList();
+						$(msg).flashmsg();
+					}
+				});
+			return false;
+			});
 		}
-	});					
+	});
+	return false;
 }

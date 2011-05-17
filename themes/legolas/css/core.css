@@ -265,7 +265,7 @@ border:1px solid #C00000;
 color:#FFFFFF;
 font-size:20px;
 margin:16px;
-padding:5px 5px 5px 10px;	
+padding:5px 5px 5px 10px;
 }
 ul.no_bullet {
 	list-style: none;
@@ -305,4 +305,16 @@ display:block;
 background:url('../images/warn-light.png') no-repeat;
 height:18px;
 width:18px;
+}
+div.post_description div.tag-line {
+    margin : 5px 5px;
+}
+div.post_description span.post-tag {
+	margin: 0px 5px;
+    padding: 0px 6px 1px 6px;
+	background: #edbe59;
+	-moz-border-radius: 8px;
+	-khtml-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	border-radius: 8px;
 }

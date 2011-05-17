@@ -43,7 +43,13 @@
 			{$votes.html}
 		</div>
 		<!-- END post.block.votes -->
-		<div class="post_description">{$post.description}</div>
+		<div class="post_description">{$post.description}
+			<div class="tag-line">
+			<!-- BEGIN post.tags -->
+				<span class="post-tag">{$post_tag}</span>
+			<!-- END post.tags -->
+			</div>
+		</div>
 		<div class="contenu_article">{$post.content}</div>
 		<div class="separ_article_bottom"></div>
 		<!-- BEGIN post.backsummary -->

@@ -130,7 +130,7 @@ if(isset($_POST['action'])) {
 		$list .= '<tr class="title">';
 		$list .= '<th>'.T_('Date').'</td>';
 		$list .= '<th>'.T_('Title').'</td>';
-		$list .= '<th style="text-align:center;">'.T_('Action').'</td></tr></thead>';
+		$list .= '</tr></thead>';
 
 
 		$rs = $core->con->select($sql);
@@ -155,8 +155,8 @@ if(isset($_POST['action'])) {
 
 				$list .= '<tr id="line'.$rs->post_id.'" class="'.$status.'">';
 				$list .= '<td>'.mysqldatetime_to_date("d/m/Y", $rs->post_pubdate).'</td>';
-                $list .= '<td>'.$post_title.'<br /><div class="tag-line">'.$tags.'</div></td>';
-				$list .= '<td style="text-align:center;"><span id="action'.$rs->post_id.'">'.$action.'</span></td></tr>';
+                $list .= '<td>'.$post_title.'<br /><div class="tag-line">'.$tags;
+                $list .= ' <span id="action'.$rs->post_id.'">'.$action.'</span></div></td></tr>';
 			}
 			$list .= "</table>";
 			$content = '<h3>'.sprintf(T_('%s last posts :'), $count).'</h3><br/>';

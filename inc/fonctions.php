@@ -6,7 +6,7 @@
 * Website : www.bilboplanet.com
 * Tracker : redmine.bilboplanet.com
 * Blog : www.bilboplanet.com
-* 
+*
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License as
@@ -85,7 +85,7 @@ function piwik_analytics($aid,$purl,$name, $go, $html = 1) {
 		location ='<?php echo $go;?>';
 	}
 //--></script>
-<?php 
+<?php
 		} else{
 			$screen_resolution = $_COOKIE["piwik_user_resolution"];
 		}
@@ -280,7 +280,7 @@ function getNbVotes($con, $user_id = null) {
 		$sql = "SELECT
 				".$core->prefix."user.user_id as user_id,
 				SUM(post_score) AS nb
-			FROM ".$core->prefix."post, ".$core->prefix."user, ".$core->prefix."site 
+			FROM ".$core->prefix."post, ".$core->prefix."user, ".$core->prefix."site
 			WHERE
 				".$core->prefix."site.user_id = ".$core->prefix."user.user_id
 				AND ".$core->prefix."user.user_id = ".$core->prefix."post.user_id
@@ -315,6 +315,19 @@ function getFeedSite($feed_id) {
 			AND ".$core->prefix."feed.feed_id = ".$feed_id;
 	$rs = $core->con->select($sql);
 	return $rs->f('site_url');
+}
+function getPostTags($post_id) {
+	global $core;
+	$sql = "SELECT tag_id
+		FROM ".$core->prefix."post_tag
+		WHERE post_id = ".$post_id.";";
+	$rs = $core->con->select($sql);
+
+	$tags = array();
+	while($rs->fetch()){
+		$tags[] = $rs->tag_id;
+	}
+	return $tags;
 }
 
 #-----------------------#
@@ -426,6 +439,13 @@ function showPosts($rs, $tpl, $search_value="", $strip_tags=false) {
 			$post['content'] .= strip_tags($post['content'])."&nbsp;[...]".
 				'<br /><a href="'.$post['permalink'].'" title="'.$post['title'].'">'.T_('Read more').'</a>';
 		}
+		$post_tags = getPostTags($rs->post_id);
+		if (!empty($post_tags)){
+			foreach ($post_tags as $tag) {
+				$tpl->setVar('post_tag', $tag);
+				$tpl->render('post.tags');
+			}
+		}
 		if ($rs->count()>1) {
 			$tpl->render('post.backsummary');
 		}
@@ -456,9 +476,9 @@ function showPostsSummary($rs, $tpl) {
 }
 
 function afficheVotes($nb_votes, $num_article) {
-	
+
 	global $blog_settings, $core;
-		
+
 	# On met un s a vote si il le faut
 	$vote = "vote";
 	if($nb_votes > 1) $vote = "votes";
@@ -485,7 +505,7 @@ function afficheVotes($nb_votes, $num_article) {
 		$token = md5($ip.$num_article);
 		# On affiche le bouton de vote
 		$text .= '<span id="vote'.$num_article.'" class="vote">'.$score.' '.$vote.'
-				<a href="#blackhole" title="'.T_('This post seems pertinent to you').'" id="aoui'.$num_article.'" 
+				<a href="#blackhole" title="'.T_('This post seems pertinent to you').'" id="aoui'.$num_article.'"
 				onclick="javascript:vote('."'$num_article','$token', 'positif'".');" >
 				<span id="imgoui" title="'.T_('Vote yes').'"></span></a>';
 
@@ -748,25 +768,25 @@ function my_gzdecode($string) {
 #---------------------#
 
 function sendmail ($sender, $recipients, $subject, $message, $type='normal', $reply_to='') {
-	
+
 	global $blog_settings;
-	
+
 	$planet_title = html_entity_decode(stripslashes($blog_settings->get('planet_title')), ENT_QUOTES, 'UTF-8');
-	
+
 	$subject = html_entity_decode(stripslashes($subject), ENT_QUOTES, 'UTF-8');
 	$subject = "[".$planet_title."] ".$subject;
 	$subject= mb_encode_mimeheader($subject,"UTF-8", "Q", "\n");
-	
+
 	$message = html_entity_decode(stripslashes($message), ENT_QUOTES, 'UTF-8');
-	
+
 	$sender = strtolower($sender);
 	$recipients = strtolower($recipients);
-	
+
 	if (empty($reply_to)){
 		$reply_to = $sender;
 	}
 	$reply_to = strtolower($reply_to);
-	
+
 	if ($type == 'newsletter') {
 		$headers  = "From: ".mb_encode_mimeheader($planet_title,"UTF-8", "Q", "\n")." <".$sender.">\r\n";
 		$headers .= "Return-Path: ".$sender."\r\n";
@@ -774,7 +794,7 @@ function sendmail ($sender, $recipients, $subject, $message, $type='normal', $re
 		$headers .= "Bcc: ".$recipients."\r\n";
 		$headers .= "MIME-Version: 1.0\r\n";
 		$headers .= "Content-Type: text/html; charset=UTF-8\r\n";
-		$headers .= "Content-Transfer-Encoding: quoted-printable\r\n\r\n"; 
+		$headers .= "Content-Transfer-Encoding: quoted-printable\r\n\r\n";
 		$message_content  = "<html>\r\n";
 		$message_content .= "<body>\r\n";
 		$message_content .= $message."\r\n";
@@ -787,7 +807,7 @@ function sendmail ($sender, $recipients, $subject, $message, $type='normal', $re
 		$headers .= "Reply-To: ".$reply_to."\r\n";
 		$headers .= "MIME-Version: 1.0\r\n";
 		$headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
-		$headers .= "Content-Transfer-Encoding: base64\r\n\r\n"; 
+		$headers .= "Content-Transfer-Encoding: base64\r\n\r\n";
 		$message_content = base64_encode($message);
 	}
 	return mail($recipients, $subject, $message_content, $headers);

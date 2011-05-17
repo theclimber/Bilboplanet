@@ -61,6 +61,11 @@
 			<!-- END post.block.votes -->
 			<div class="post_description">
 				<h3>{$post.description}</h3>
+				<div class="tag-line">
+				<!-- BEGIN post.tags -->
+					<span class="post-tag">{$post_tag}</span>
+				<!-- END post.tags -->
+				</div>
 			</div>
 		</div>
 
@@ -80,7 +85,7 @@
 			<p>{_You can search to find other articles.}</p>
 		</div>
 	</div>
-	<!-- END post.block -->	
+	<!-- END post.block -->
 </div>
 
 <div class="navigation">

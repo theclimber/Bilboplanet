@@ -6,7 +6,7 @@
 * Website : www.bilboplanet.com
 * Tracker : redmine.bilboplanet.com
 * Blog : www.bilboplanet.com
-* 
+*
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License as
@@ -752,11 +752,23 @@ span.highlight {
 
 h2#informations_title
 {
-padding-top:9px;	
+padding-top:9px;
 }
 .votes {
 	display:block;
 	float:right;
 	margin-top:-10px;
 	width:42px;
+}
+div.post_description div.tag-line {
+    margin : 5px 5px;
+}
+div.post_description span.post-tag {
+	margin: 0px 5px;
+    padding: 0px 6px 1px 6px;
+	background: #edbe59;
+	-moz-border-radius: 8px;
+	-khtml-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	border-radius: 8px;
 }

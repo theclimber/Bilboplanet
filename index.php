@@ -6,7 +6,7 @@
 * Website : www.bilboplanet.com
 * Tracker : redmine.bilboplanet.com
 * Blog : www.bilboplanet.com
-* 
+*
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License as
@@ -38,7 +38,7 @@ if (!isset($params)) {
 }
 
 /* On recupere les infomations des articles */
-$debut_sql = "SELECT 
+$debut_sql = "SELECT
 		".$core->prefix."user.user_id		as user_id,
 		user_fullname	as user_fullname,
 		user_email		as user_email,
@@ -52,7 +52,7 @@ $debut_sql = "SELECT
 		SUBSTRING(post_content,1,400) as short_content,
 		".$core->prefix."post.post_id		as post_id,
 		post_score		as score
-	FROM ".$core->prefix."post, ".$core->prefix."user
+    FROM ".$core->prefix."post, ".$core->prefix."user
 	WHERE ".$core->prefix."user.user_id = ".$core->prefix."post.user_id
 	AND post_status = '1'
 	AND user_status = '1'
@@ -68,6 +68,45 @@ if (isset($_GET)) {
 		}
 		$num_start = $params["page"] * $blog_settings->get('planet_nb_post');
 	}
+	if (isset($_GET['tags'])) {
+		$patterns = array( '/, /', '/ ,/');
+		$replacement = array(',', ',');
+		$tags = urldecode($_GET['tags']);
+		$tags = preg_replace($patterns, $replacement, $tags);
+		$tags = preg_split('/,/',$tags, -1, PREG_SPLIT_NO_EMPTY);
+
+		$sql_tags = "(";
+		foreach ($tags as $key=>$tag) {
+			$sql_tags .= $core->prefix."post_tag.tag_id = '".$tag."'";
+			$or = ($key == count($tags)-1) ? "" : " OR ";
+			$sql_tags .= $or;
+		}
+		$sql_tags .= ")";
+
+		$debut_sql = "SELECT DISTINCT
+                ".$core->prefix."user.user_id		as user_id,
+                user_fullname	as user_fullname,
+                user_email		as user_email,
+                post_pubdate	as pubdate,
+                post_title		as title,
+                post_permalink	as permalink,
+                post_content	as content,
+                post_nbview		as nbview,
+                last_viewed		as last_viewed,
+				feed_id			as feed_id,
+				SUBSTRING(post_content,1,400) as short_content,
+				".$core->prefix."post.post_id		as post_id,
+                post_score		as score
+            FROM ".$core->prefix."post, ".$core->prefix."user, ".$core->prefix."post_tag
+            WHERE ".$core->prefix."user.user_id = ".$core->prefix."post.user_id
+            AND ".$core->prefix."post.post_id = ".$core->prefix."post_tag.post_id
+			AND ".$sql_tags."
+            AND post_status = '1'
+            AND user_status = '1'
+            AND post_score > '".$blog_settings->get('planet_votes_limit')."'";
+
+    }
+
 	# Si le lecteur a fait une recherche
 	if (isset($_GET['search']) && !empty($_GET['search'])){
 		$params["search"] = $_GET['search'];

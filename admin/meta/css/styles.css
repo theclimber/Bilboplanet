@@ -604,11 +604,16 @@ table#post-list img {
 	border : 0px;
 }
 table#post-list div.tag-line {
-    margin : 10px 5px;
+    margin : 5px 5px;
 }
 table#post-list span.tag {
-	padding : 0px 5px;
-    margin: 0px 5px;
+	margin: 0px 5px;
+    padding: 0px 6px 1px 6px;
+	background: #edbe59;
+	-moz-border-radius: 8px;
+	-khtml-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	border-radius: 8px;
 }
 table#post-list h3{
 	font-weight: bold;

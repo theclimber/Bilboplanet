@@ -259,12 +259,12 @@ function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_c
 			$sql4 = "SELECT tag_id
 				FROM ".$core->prefix."feed_tag
 				WHERE feed_id = ".$rs->feed_id.";";
-			$rs4 = $core->con->select($sql4);
-			while ($rs4->fetch()) {
-				$cur2 = $core->con->openCurseor($core->prefix.'post_tag');
-				$cur->post_id = $next_post_id;
-				$cur->tag_id = $rs4->tag_id;
-				$cur->insert();
+			$rs5 = $core->con->select($sql4);
+			while ($rs5->fetch()) {
+				$cur2 = $core->con->openCursor($core->prefix.'post_tag');
+				$cur2->post_id = $next_post_id;
+				$cur2->tag_id = $rs5->tag_id;
+				$cur2->insert();
 			}
 
 			postNewsOnSocialNetwork($item_title, $rs->user_fullname, $next_post_id);

@@ -476,7 +476,7 @@ function getOutput($sql, $num_page=0, $nb_items=30) {
 			$tags .= '<span class="tag">'.$rs2->tag_id.'
 				<a href="javascript:rm_tag('.$num_page.','.$nb_items.',\''.$rs->feed_id.'\', \''.$rs2->tag_id.'\')">x</a></span>';
 		}
-		$tag_action = '<a href="javascript:add_tags('.$num_page.','.$nb_items.','.$rs->feed_id.', \''.$rs->feed_name.'\')">';
+        $tag_action = '<a href="javascript:add_tags('.$num_page.','.$nb_items.','.$rs->feed_id.', \''.htmlspecialchars($rs->feed_name).'\')">';
 		$tag_action .= '<img src="meta/icons/add_tag.png" title="'.T_('Tag feed').'" /></a>';
 
 		# Affichage de la ligne de tableau

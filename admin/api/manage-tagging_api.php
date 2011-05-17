@@ -150,7 +150,7 @@ if(isset($_POST['action'])) {
 				$post_title = decode_strip($rs->post_title, 100);
 				$post_title = '<a href="'.$rs->post_permalink.'" target="_blank">'.$post_title.'</a>';
 
-                $action = '<a href="javascript:add_tags('.$rs->post_id.', \''.$rs->post_title.'\')">';
+				$action = '<a href="javascript:add_tags('.$rs->post_id.', \''.htmlspecialchars($rs->post_title).'\')">';
                 $action .= '<img src="meta/icons/add_tag.png" title="'.T_('Tag post').'" /></a>';
 
 				$list .= '<tr id="line'.$rs->post_id.'" class="'.$status.'">';

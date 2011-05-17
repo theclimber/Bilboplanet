@@ -603,10 +603,10 @@ table#post-list {
 table#post-list img {
 	border : 0px;
 }
-table#post-list div.tag-line {
+div.tag-line {
     margin : 5px 5px;
 }
-table#post-list span.tag {
+div.tag-line span.tag {
 	margin: 0px 5px;
     padding: 0px 6px 1px 6px;
 	background: #edbe59;

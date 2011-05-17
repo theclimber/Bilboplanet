@@ -6,7 +6,7 @@
 * Website : www.bilboplanet.com
 * Tracker : redmine.bilboplanet.com
 * Blog : www.bilboplanet.com
-* 
+*
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License as
@@ -86,7 +86,7 @@ function getItemsFromFeeds ($rs, $print) {
 
 	# Duree de mise a jour
 	$debut = explode(" ",microtime());
-	$debut = $debut[1]+$debut[0]; 
+	$debut = $debut[1]+$debut[0];
 
 	$cpt = 0;
 	while ($rs->fetch()) {
@@ -239,7 +239,7 @@ function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_c
 			# Get ID
 			$rs3 = $core->con->select(
 				'SELECT MAX(post_id) '.
-				'FROM '.$core->prefix.'post ' 
+				'FROM '.$core->prefix.'post '
 				);
 			$next_post_id = (integer) $rs3->f(0) + 1;
 
@@ -255,7 +255,18 @@ function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_c
 			$cur->created = array(' NOW() ');
 			$cur->modified = array(' NOW() ');
 			$cur->insert();
-			
+
+			$sql4 = "SELECT tag_id
+				FROM ".$core->prefix."feed_tag
+				WHERE feed_id = ".$rs->feed_id.";";
+			$rs4 = $core->con->select($sql4);
+			while ($rs4->fetch()) {
+				$cur2 = $core->con->openCurseor($core->prefix.'post_tag');
+				$cur->post_id = $next_post_id;
+				$cur->tag_id = $rs4->tag_id;
+				$cur->insert();
+			}
+
 			postNewsOnSocialNetwork($item_title, $rs->user_fullname, $next_post_id);
 
 			return logMsg("Post added: ".$item_permalink, "", 1, $print);
@@ -282,7 +293,7 @@ function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_c
 
 		# Si l'article a ete modifie (soit la date, soit le titre, soit le contenu)
 		if($item_date != $rs2->f('post_pubdate') && !empty($date)) {
-	
+
 			# Update post in database
 			$cur = $core->con->openCursor($core->prefix.'post');
 			$cur->post_pubdate = $item_date;
@@ -378,7 +389,7 @@ function logMsg($message, $filename="", $type=0, $print=false) {
 		default:
 			break;
 	}
-	
+
 	if ($filename != "") {
 		$file = $filename;
 	}
@@ -387,7 +398,7 @@ function logMsg($message, $filename="", $type=0, $print=false) {
 		$file = fopen(dirname(__FILE__).'/../logs/update-'.date("Y-m-d").'.log', 'a');
 	}
 	fwrite($file, $date_log.$message_type.$message."\n");
-	fclose($file); 
+	fclose($file);
 
 	# On log a l'ecran
 	if ($print)

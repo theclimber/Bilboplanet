@@ -164,7 +164,7 @@ function edit(feed_id, num_page, nb_items) {
 		url: "api/",
 		data: {'ajax' : 'feed', 'action' : 'get', 'feed_id' : feed_id},
 		dataType: 'json',
-		success: function(feed){			
+		success: function(feed){
 			$('#feed-edit-form #ef_id').val(feed.feed_id);
 			$('#feed-edit-form #ef_user_id').val(feed.user_id);
 			$('#feed-edit-form #ef_user_id').attr('disabled', 'true');
@@ -217,4 +217,49 @@ function closeFilter() {
 	this.isfilter = false;
 	jQuery('#filterfeed-field').css('display', 'none');
 	updateFeedList(0, 30);
+}
+
+function rm_tag(num_page, nb_items, feed_id, tag) {
+	$('#flash-log').css('display','');
+	$('#flash-msg').addClass('ajax-loading');
+	$('#flash-msg').html('Loading');
+    $.ajax({
+        type: "POST",
+        url: "api/",
+        data : {'ajax' : 'feed', 'action' : 'rm_tag', 'feed_id' : feed_id, 'tag' : tag},
+        success: function(msg){
+            $("#tag_action"+feed_id)[0].removeAttribute('class','ajax-loading');
+            $('#flash-msg').removeClass('ajax-loading');
+            $('#flash-msg').html('');
+            $('#flash-log').css('display', 'none');
+			updateFeedList(num_page, nb_items);
+            $(msg).flashmsg();
+        }
+    });
+}
+
+function add_tags(num_page, nb_items, feed_id, feed_name) {
+    var content = $('#tag-feed-form form').clone();
+
+    Boxy.askform(content, function(val) {
+        $('#flash-log').css('display','');
+        $('#flash-msg').addClass('ajax-loading');
+        $("#flash-msg").html('Sending');
+        $("#tag_action"+feed_id)[0].setAttribute('class','ajax-loading');
+		var data = content.serialize().split('=');
+        $.ajax({
+            type: "POST",
+            url: "api/",
+			data : {'ajax' : 'feed', 'action' : 'add_tags', 'feed_id' : feed_id, 'tags' : data[1]},
+            success: function(msg){
+                $("#tag_action"+feed_id)[0].removeAttribute('class','ajax-loading');
+                $('#flash-msg').removeClass('ajax-loading');
+                $('#flash-log').css('display', 'none');
+                $(msg).flashmsg();
+				updateFeedList(num_page, nb_items);
+            }
+        });
+    }, {
+        title: "Tagging : " + feed_name,
+    });
 }

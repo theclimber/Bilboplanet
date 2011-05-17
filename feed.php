@@ -6,7 +6,7 @@
 * Website : www.bilboplanet.com
 * Tracker : redmine.bilboplanet.com
 * Blog : www.bilboplanet.com
-* 
+*
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License as
@@ -30,13 +30,13 @@ require_once(dirname(__FILE__).'/inc/prepend.php');
 
 # Function to convert specific char for RSS feed
 function convert_chars($string) {
-	
+
 	$string_convert = $string;
-	
+
 	$string_convert = str_replace('&','&#x26;', $string_convert);
 	$string_convert = str_replace('<','&#x3C;', $string_convert);
 	$string_convert = str_replace('>','&#x3E;', $string_convert);
-	
+
 	return $string_convert;
 }
 
@@ -80,16 +80,16 @@ if (isset($_GET) && isset($_GET['type'])) {
 
 	# Get informations about posts
 	if (isset($_GET["popular"]) && !empty($_GET['popular'])){
-		
+
 		# Encode specific char
 		$params .= "&popular=true";
 		if ($_GET['type'] == "rss") {
 			$params = convert_chars($params);
-		} 
+		}
 		elseif ($_GET['type'] == "atom") {
 			$params = str_replace("&", "&amp;", $params);
 		}
-		
+
 		# Compute date to timestamp format
 		$semaine = time() - 3600*24*7;
 		$title = convert_chars(html_entity_decode(stripslashes($blog_settings->get('planet_title')), ENT_QUOTES, 'UTF-8'))." - Popular";
@@ -108,10 +108,9 @@ if (isset($_GET) && isset($_GET['type'])) {
 			AND user_status = '1'
 			AND post_score > '0'
 			AND post_pubdate > ".$semaine."
-			ORDER BY post_score DESC 
+			ORDER BY post_score DESC
 			LIMIT 0, ".$blog_settings->get('planet_nb_art_flux');
-	}
-	else {
+	} else {
 		$title = convert_chars(html_entity_decode(stripslashes($blog_settings->get('planet_title')), ENT_QUOTES, 'UTF-8'));
 		$sql = "SELECT
 				".$core->prefix."user.user_id as user_id,
@@ -130,14 +129,14 @@ if (isset($_GET) && isset($_GET['type'])) {
 			." ORDER BY post_pubdate DESC
 			LIMIT 0, ".$blog_settings->get('planet_nb_art_flux');
 	}
-	
+
 	# Execute SQL request
 	$post_list = $core->con->select($sql);
 	$planet_desc = convert_chars(html_entity_decode(stripslashes($blog_settings->get('planet_desc')), ENT_QUOTES, 'UTF-8'));
-	
+
 	# Head of XML document
 	echo '<?xml version="1.0" encoding="UTF-8" ?>'."\n";
-	
+
 	if ($_GET['type']=="rss"){
 	# Header of RSS 2.0 content
 ?>
@@ -164,7 +163,7 @@ if (isset($_GET) && isset($_GET['type'])) {
 				<description><?php echo $planet_desc;?></description>
 			</image>
 
-<?php 
+<?php
 	}
 	elseif($_GET['type']=="atom") {
 	#Header of Atom Content
@@ -173,13 +172,13 @@ if (isset($_GET) && isset($_GET['type'])) {
 
 ?>
 	<feed xmlns="http://www.w3.org/2005/Atom">
-	
+
 		<title><?php echo $title; ?></title>
 		<subtitle type="text"><?php echo $planet_desc; ?></subtitle>
 		<updated><?php echo date('c') ?></updated>
 		<icon><?php echo $blog_settings->get('planet_url').'/themes/'.$blog_settings->get('planet_theme').'/favicon.ico';?></icon>
 		<logo><?php echo $blog_settings->get('planet_url').'/themes/'.$blog_settings->get('planet_theme').'/images/logo.png';?></logo>
-		<id>tag:<?php 
+		<id>tag:<?php
 		echo $authority.','.date('Y').':'.$blog_settings->get('planet_url');
 		?></id>
 		<author>
@@ -192,8 +191,8 @@ if (isset($_GET) && isset($_GET['type'])) {
 		<generator uri="http://www.bilboplanet.com" version="<?php echo str_replace(array("\r\n", "\r", "\n"), null, $blog_settings->get('planet_version')); ?>">
 			Bilboplanet
 		</generator>
-		
-<?php 
+
+<?php
 	}
 
 	while ($post_list->fetch()) {
@@ -213,12 +212,12 @@ if (isset($_GET) && isset($_GET['type'])) {
 	# Other link
 	$links =  '<br/><i>'.sprintf('Original post of <a href="%s" title="Visit the source">%s</a>.',$url, $nom);
 	$links .= '<br/>'.sprintf(T_('Vote for this post on <a href="%s" title="Go on the planet">%s</a>.'),$blog_settings->get('planet_url'), $blog_settings->get('planet_title')).'</i>';
-	
+
 	# Remove html tag to post content
 	$desc = strip_tags($item);
 	# Split string only on space char
 	$desc = short_str($desc, 300, false);
-	
+
 	# Gravatar
 	if($blog_settings->get('planet_avatar')) {
 		$gravatar_email = strtolower($post_list->user_email);
@@ -235,15 +234,15 @@ if (isset($_GET) && isset($_GET['type'])) {
 		echo "\t\t\t\t<dc:creator>".$nom."</dc:creator>\n";
 		echo "\t\t\t\t<description><![CDATA[".$desc."]]></description>\n";
 		echo "\t\t\t\t<guid isPermaLink=\"true\">".htmlentities($url)."</guid>\n";
-		
+
 		if($blog_settings->get('planet_avatar')) {
 			echo "\t\t\t\t<content:encoded><![CDATA[".$item."<p>".$gravatar.$links."</p>"."]]></content:encoded>\n";
 		} else {
 			echo "\t\t\t\t<content:encoded><![CDATA[".$item."<p>".$links."</p>"."]]></content:encoded>\n";
 		}
-		
+
 		# End of Item
-		echo "\t\t\t</item>\n"; 
+		echo "\t\t\t</item>\n";
 	}
 	elseif($_GET['type']=="atom") {
 		# Affichage du contenu de l'item

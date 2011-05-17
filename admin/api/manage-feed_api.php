@@ -6,7 +6,7 @@
 * Website : www.bilboplanet.com
 * Tracker : redmine.bilboplanet.com
 * Blog : www.bilboplanet.com
-* 
+*
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License as
@@ -156,10 +156,10 @@ if(isset($_POST['action'])) {
 
 		$new_name = check_field('Feed name',$new_name);
 		$new_url = check_field('Feed url',$new_url,'feed');
-		
+
 		$error = array();
 
-		if ($new_name['success'] 
+		if ($new_name['success']
 			&& $new_url['success'])
 		{
 			#FIXME : check if this line is needed (also used in user_api)
@@ -209,7 +209,7 @@ if(isset($_POST['action'])) {
 	case 'toggle':
 		$feed_id = trim($_POST['feed_id']);
 		$feed = $core->con->select("SELECT feed_status FROM ".$core->prefix."feed WHERE feed_id = '$feed_id'");
-		
+
 		$cur = $core->con->openCursor($core->prefix.'feed');
 		if($feed->f('feed_status') == 1) {
 			$cur->feed_status = 0;
@@ -227,7 +227,7 @@ if(isset($_POST['action'])) {
 	case 'change-trust':
 		$feed_id = trim($_POST['feed_id']);
 		$feed = $core->con->select("SELECT feed_trust FROM ".$core->prefix."feed WHERE feed_id = '$feed_id'");
-		
+
 		$cur = $core->con->openCursor($core->prefix.'feed');
 		if($feed->f('feed_trust') == 1) {
 			$cur->feed_trust = 0;
@@ -269,6 +269,87 @@ if(isset($_POST['action'])) {
 		print '<div class="flash_notice">'.sprintf(T_("Delete of feed %s succeeded"),$rs2->f('feed_url')).'</div>';
 		break;
 
+
+##########################################################
+# Remove tag on post
+##########################################################
+	case 'rm_tag':
+		$feed_id = $_POST['feed_id'];
+        $tag = $_POST['tag'];
+        $error = array();
+
+		$sql = "SELECT tag_id
+			FROM ".$core->prefix."feed_tag
+            WHERE feed_id = ".$feed_id."
+            AND tag_id = '".$tag."';";
+		$rs = $core->con->select($sql);
+        if ($rs->count() == 0) {
+            $error[] = T_("The tag you want to remove doesn't exist on this feed");
+        } else {
+		    $core->con->execute(
+                "DELETE FROM ".$core->prefix."feed_tag WHERE feed_id = '$feed_id'
+                    AND tag_id = '".$tag."'");
+            $output = T_("The tag was successfuly removed");
+        }
+
+		if (!empty($error)) {
+			$output .= "<ul>";
+			foreach($error as $value) {
+				$output .= "<li>".$value."</li>";
+			}
+			$output .= "</ul>";
+			print '<div class="flash_error">'.$output.'</div>';
+		}
+		else {
+			print '<div class="flash_notice">'.$output.'</div>';
+		}
+		break;
+
+##########################################################
+# Add tags to feed
+##########################################################
+	case 'add_tags':
+		$feed_id = $_POST['feed_id'];
+        $patterns = array( '/, /', '/ ,/');
+        $replacement = array(',', ',');
+        $tags = urldecode($_POST['tags']);
+        $tags = preg_replace($patterns, $replacement, $tags);
+        $tags = preg_split('/,/',$tags, -1, PREG_SPLIT_NO_EMPTY);
+
+		$sql = "SELECT tag_id
+			FROM ".$core->prefix."feed_tag
+            WHERE feed_id = ".$feed_id.";";
+		$rs = $core->con->select($sql);
+
+		while($rs->fetch()){
+            if (in_array($rs->tag_id, $tags)) {
+                $key = array_keys($tags, $rs->tag_id);
+                unset($tags[$key]);
+            }
+        }
+
+        $output .= T_("Tags added : ");
+        foreach($tags as $tag) {
+            $cur = $core->con->openCursor($core->prefix.'feed_tag');
+            $cur->feed_id = $feed_id;
+            $cur->tag_id = $tag;
+            $cur->insert();
+            $output .= $tag.",";
+        }
+
+		if (!empty($error)) {
+			$output .= "<ul>";
+			foreach($error as $value) {
+				$output .= "<li>".$value."</li>";
+			}
+			$output .= "</ul>";
+			print '<div class="flash_error">'.$output.'</div>';
+		}
+		else {
+			print '<div class="flash_notice">'.$output.'</div>';
+		}
+		break;
+
 ##########################################################
 # GET FILTERED FEED LIST
 ##########################################################
@@ -295,7 +376,7 @@ if(isset($_POST['action'])) {
 			feed_trust
 			FROM '.$core->prefix.'feed, '.$core->prefix.'site
 			WHERE '.$core->prefix.'feed.site_id = '.$core->prefix.'site.site_id'.
-			$sql_cond.' 
+			$sql_cond.'
 			ORDER by lower('.$core->prefix.'feed.user_id) ASC';
 
 		print getOutput($sql, -1);
@@ -372,7 +453,7 @@ function getOutput($sql, $num_page=0, $nb_items=30) {
 			$toggle_status = 'enable';
 			$toggle_msg = T_('Enable feed');
 		}
-		
+
 		if($rs->feed_trust) {
 			$toggle_trust = 'untrust';
 			$trust_msg = T_('Untrust this feed');
@@ -385,6 +466,19 @@ function getOutput($sql, $num_page=0, $nb_items=30) {
 		$gravatar_email = strtolower($user->f('user_email'));
 		$gravatar_url = "http://www.gravatar.com/avatar.php?gravatar_id=".md5($gravatar_email)."&default=".urlencode($blog_settings->get('planet_url')."/themes/".$blog_settings->get('planet_theme')."/images/gravatar.png")."&size=40";
 
+		# Get tags from feed
+		$sql2 = "SELECT tag_id
+			FROM ".$core->prefix."feed_tag
+			WHERE feed_id = ".$rs->feed_id.";";
+		$rs2 = $core->con->select($sql2);
+		$tags = "";
+		while($rs2->fetch()) {
+			$tags .= '<span class="tag">'.$rs2->tag_id.'
+				<a href="javascript:rm_tag('.$num_page.','.$nb_items.',\''.$rs->feed_id.'\', \''.$rs2->tag_id.'\')">x</a></span>';
+		}
+		$tag_action = '<a href="javascript:add_tags('.$num_page.','.$nb_items.','.$rs->feed_id.', \''.$rs->feed_name.'\')">';
+		$tag_action .= '<img src="meta/icons/add_tag.png" title="'.T_('Tag feed').'" /></a>';
+
 		# Affichage de la ligne de tableau
 		$output .= '<tr class="line '.$status.'"><td><img src="'.$gravatar_url.'" /><br />'.$rs->user_id.'</td>
 			<td><ul>
@@ -394,7 +488,8 @@ function getOutput($sql, $num_page=0, $nb_items=30) {
 		$output .= '<td>';
 		$output .=  '<a href="'.$rs->feed_url.'" target="_blank" title="'
 			.sprintf('Last checked at %s',mysqldatetime_to_date("d/m/Y H:i",$rs->feed_checked)).'">'
-			.$rs->feed_url.'</a></td>';
+			.$rs->feed_url.'</a>';
+		$output .= '<div class="tag-line">'.$tags.' <span id="tag_action'.$rs->feed_id.'">'.$tag_action.'</span></div></td>';
 		$output .= '<td style="text-align: center;">';
 
 		if ($blog_settings->get('planet_moderation')) {

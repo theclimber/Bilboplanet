@@ -6,7 +6,7 @@
 * Website : www.bilboplanet.com
 * Tracker : redmine.bilboplanet.com
 * Blog : www.bilboplanet.com
-* 
+*
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License as
@@ -87,7 +87,7 @@ form::combo('fuser_id',$users,0, 'input','','').'</label><br /><br />'.
 '<label class="required" for="feed_status">'.T_('Feed status').' : '.
 form::combo('feed_status',$status,0, 'input','','').'</label><br /><br />';
 
-echo 
+echo
 '<div class="button br3px"><input type="submit" name="filter_feed" class="valide" value="'.T_('Filter').'" /></div>'.
 '<div class="button br3px close-button"><a class="close" onclick="javascript:closeFilter()">'.T_('Close').'</a></div>'.
 '</form>';
@@ -139,7 +139,7 @@ if ($blog_settings->get('planet_moderation')) {
 	form::combo('feed_trust',array('true' => '1', 'false' => '0'),'true', 'input').'</label><br /><br />';
 }
 
-echo 
+echo
 '<div class="button br3px"><input type="reset" class="reset" name="reset" value="'.T_('Reset').'"></div>&nbsp;&nbsp;'.
 '<div class="button br3px"><input type="submit" name="add_feed" class="valide" value="'.T_('Add').'" /></div>'.
 '<div class="button br3px close-button"><a class="close" onclick="javascript:closeAdd()">'.T_('Close').'</a></div>'.
@@ -176,10 +176,24 @@ form::field('ef_url',30,255,html::escapeHTML(""), 'input').'</label>
 ?>
 </div>
 
+<div id="tag-feed-form" style="display:none">
+<?php
+echo '<form>'.
+
+'<label class="required" for="content">'.T_('Tags').' : <br />'.
+form::field('tags',30,255,html::escapeHTML(""), 'input').'</label><br/>
+<span class="description"><i>'.T_('Comma separated tags (ex: linux,web,event)').'</i></span><br /><br />'.
+
+'<div class="button"><input type="button" class="cancel" name="cancel" onClick="Boxy.get($(\'form.boxform\')).hide()" value="'.T_('Cancel').'"></div>'.
+'<div class="button"><input type="submit" name="send" class="add_site" value="'.T_('Send').'" /></div>'.
+'</form>';
+?>
+</div>
+
 
 <script type="text/javascript" src="meta/js/manage-feed.js"></script>
 <script type="text/javascript" src="meta/js/jquery.boxy.js"></script>
-<?php 
+<?php
 include(dirname(__FILE__).'/footer.php');
 finCache();
 else:

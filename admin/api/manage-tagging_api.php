@@ -151,7 +151,7 @@ if(isset($_POST['action'])) {
 				$post_title = '<a href="'.$rs->post_permalink.'" target="_blank">'.$post_title.'</a>';
 
                 $action = '<a href="javascript:add_tags('.$rs->post_id.', \''.$rs->post_title.'\')">';
-                $action .= '<img src="meta/icons/add_tag.png" title="'.T_('Refuse').'" /></a>';
+                $action .= '<img src="meta/icons/add_tag.png" title="'.T_('Tag post').'" /></a>';
 
 				$list .= '<tr id="line'.$rs->post_id.'" class="'.$status.'">';
 				$list .= '<td>'.mysqldatetime_to_date("d/m/Y", $rs->post_pubdate).'</td>';

@@ -17,14 +17,14 @@
 <!-- END summary.block -->
 <div id="navigation">
 	<!-- BEGIN pagination.up.prev -->
-	<a class="page_prc" href="?{$page.params}page={$page.prev}" class="page_prc"> &laquo; {_Previous page}</a>
+	<a class="page_prc" href="javascript:prev_page()" class="page_prc"> &laquo; {_Previous page}</a>
 	<!-- END pagination.up.prev -->
 	<!-- BEGIN pagination.up.next -->
-	<a class="page_svt" href="?{$page.params}page={$page.next}" class="page_svt">{_Next page} &raquo;</a>
+	<a class="page_svt" href="javascript:next_page()" class="page_svt">{_Next page} &raquo;</a>
 	<!-- END pagination.up.next -->
 </div>
 
-<div class="posts-list">
+<div id="posts-list">
 	<!-- BEGIN post.block -->
 	<div class="article">
 		<div class="separ_article_top"></div>
@@ -63,9 +63,9 @@
 
 <div id="navigation">
 	<!-- BEGIN pagination.low.prev -->
-	<a class="page_prc" href="?{$page.params}page={$page.prev}" class="page_prc"> &laquo; {_Previous page}</a>
+	<a class="page_prc" href="javascript:prev_page()" class="page_prc"> &laquo; {_Previous page}</a>
 	<!-- END pagination.low.prev -->
 	<!-- BEGIN pagination.low.next -->
-	<a class="page_svt" href="?{$page.params}page={$page.next}" class="page_svt">{_Next page} &raquo;</a>
+	<a class="page_svt" href="javascript:next_page()" class="page_svt">{_Next page} &raquo;</a>
 	<!-- END pagination.low.next -->
 </div>

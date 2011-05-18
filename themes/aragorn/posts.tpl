@@ -24,7 +24,7 @@
 	<!-- END pagination.up.next -->
 </div>
 
-<div class="posts-list">
+<div id="posts-list">
 	<!-- BEGIN post.block -->
 	<div class="article">
 		<div class="separ_article_top"></div>

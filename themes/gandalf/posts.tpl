@@ -42,7 +42,7 @@
 	<!-- END pagination.up.next -->
 </div>
 
-<div class="posts-list">
+<div id="posts-list">
 	<!-- BEGIN post.block -->
 	<div class="post">
 		<div class="post_title">

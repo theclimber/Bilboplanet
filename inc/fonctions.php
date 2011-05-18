@@ -376,9 +376,123 @@ function convert_iso_special_html_char($string) {
 	return str_replace($search, $replace, $string);
 }
 
+function getArrayFromList($list) {
+	$patterns = array( '/, /', '/ ,/');
+	$replacement = array(',', ',');
+	$list = urldecode($list);
+	$list = preg_replace($patterns, $replacement, $list);
+	$array = preg_split('/,/',$list, -1, PREG_SPLIT_NO_EMPTY);
+	return $array;
+}
+
 #--------------------------#
 #   Fonction d'affichage   #
 #--------------------------#
+function generate_SQL(
+		$num_start = 0,
+		$nb_items = null,
+		$users = array(),
+		$tags = array(),
+		$search = null,
+		$period = null,
+		$popular = false)
+	{
+	global $blog_settings, $core;
+	if (!isset($nb_items)) {
+		$nb_items = $blog_settings->get('planet_nb_post');
+	}
+
+	$debut_sql = "SELECT DISTINCT
+			".$core->prefix."user.user_id		as user_id,
+			user_fullname	as user_fullname,
+			user_email		as user_email,
+			post_pubdate	as pubdate,
+			post_title		as title,
+			post_permalink	as permalink,
+			post_content	as content,
+			post_nbview		as nbview,
+			last_viewed		as last_viewed,
+			feed_id			as feed_id,
+			SUBSTRING(post_content,1,400) as short_content,
+			".$core->prefix."post.post_id		as post_id,
+			post_score		as score
+		FROM ".$core->prefix."post, ".$core->prefix."user, ".$core->prefix."post_tag
+		WHERE ".$core->prefix."user.user_id = ".$core->prefix."post.user_id
+		AND post_status = '1'
+		AND user_status = '1'
+		AND post_score > '".$blog_settings->get('planet_votes_limit')."'";
+
+	if (!empty($users)) {
+		$sql_users = "(";
+		foreach ($users as $key=>$user) {
+			$sql_users .= $core->prefix."post.user_id = '".$user."'";
+			$or = ($key == count($users)-1) ? "" : " OR ";
+			$sql_users .= $or;
+		}
+		$sql_users .= ")";
+		$debut_sql .= ' AND '.$sql_users.' ';
+	}
+
+	if (!empty($tags)) {
+		$sql_tags = "(";
+		foreach ($tags as $key=>$tag) {
+			$sql_tags .= $core->prefix."post_tag.tag_id = '".$tag."'";
+			$or = ($key == count($tags)-1) ? "" : " OR ";
+			$sql_tags .= $or;
+		}
+		$sql_tags .= ")";
+		$debut_sql .= " AND ".$core->prefix."post.post_id = ".$core->prefix."post_tag.post_id";
+		$debut_sql .= ' AND '.$sql_tags.' ';
+	}
+
+	if (isset($search) && !empty($search)){
+		# Complete the SQL query
+		$debut_sql = $debut_sql." AND (".$core->prefix."post.post_title LIKE '%$search%'
+			OR ".$core->prefix."post.post_permalink LIKE '%$search%'
+			OR ".$core->prefix."post.post_content LIKE '%$search%'
+			OR ".$core->prefix."user.user_fullname LIKE '%$search%')";
+	}
+
+	if (isset($period) && !empty($period)) {
+		# Complete the SQL query
+		$now = mktime(0, 0, 0, date("m",time()), date("d",time()), date("Y",time()));
+		$day = date('Y-m-d', $now).' 00:00:00';
+		$week = date('Y-m-d', $now - 3600*24*7).' 00:00:00';
+		$month = date('Y-m-d', $now - 3600*24*31).' 00:00:00';
+		$filter_class = array(
+			"day" => "",
+			"week" => "",
+			"month" => "");
+		switch($period) {
+		case "day"		:
+			$debut_sql = $debut_sql." AND post_pubdate > '".$day."'";
+			break;
+		case "week"		:
+			$debut_sql = $debut_sql." AND post_pubdate > '".$week."'";
+			break;
+		case "month"	:
+			$debut_sql = $debut_sql." AND post_pubdate > '".$month."'";
+			break;
+		default			:
+			$debut_sql = $debut_sql." AND post_pubdate > '".$week."'";
+			break;
+		}
+	}
+
+	if ($popular){
+		# Complete the SQL query
+		$debut_sql = $debut_sql." AND post_score > 0";
+		$fin_sql = " ORDER BY post_score DESC
+			LIMIT $num_start,".$nb_items;
+	}
+	else {
+		$fin_sql = " ORDER BY post_pubdate DESC
+			LIMIT $num_start,".$nb_items;
+	}
+	$sql = $debut_sql." ".$fin_sql;
+
+	return $sql;
+}
 
 function showPosts($rs, $tpl, $search_value="", $strip_tags=false) {
 	global $blog_settings;

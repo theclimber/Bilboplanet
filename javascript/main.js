@@ -42,7 +42,7 @@ function arrayToString(array) {
 function updatePostList() {
 	this.filtering = true;
 	$('#filter-status').attr('style', '');
-	var main_div = "centre_centre";
+	var main_div = "body";
 	$('div#'+main_div).fadeTo('slow', 0.5, function(){});
 	$.ajax({
 		type: "POST",
@@ -61,7 +61,6 @@ function updatePostList() {
 		success: function(msg){
 			$('div#'+main_div).html(msg);
 			$('div#'+main_div).fadeTo('slow', 1, function(){});
-//			console.debug(msg.posts);
 		}
 	});
 }
@@ -86,19 +85,29 @@ function prev_page() {
 }
 function add_tag(tag) {
 	this.page = 0;
-	this.tags.push(tag);
-	updatePostList();
-	var taglist = '';
-	jQuery.each(this.tags, function(i, tag) {
-		taglist += '<span class="tag"><a href="#" onclick="javascript:rm_tag(\''+tag+'\')">'+tag+'</a></span>';
+	var already_exists = false;
+	jQuery.each(this.tags, function(i, val) {
+		if (val == tag) {
+			already_exists = true;
+		}
 	});
-	$('#filter-tags-content').html(taglist);
-	$('#filter-tags').attr('style', '');
+	if (!already_exists) {
+		this.tags.push(tag);
+		updatePostList();
+		var taglist = '';
+		jQuery.each(this.tags, function(i, val) {
+			taglist += '<span class="tag"><a href="#" onclick="javascript:rm_tag(\''+val+'\')">'+val+'</a></span>';
+		});
+		$('#filter-page').attr('style', 'display:none;');
+		$('#filter-tags-content').html(taglist);
+		$('#filter-tags').attr('style', '');
+	}
 }
 function rm_tag(tag) {
 	this.page = 0;
 	this.tags.pop(tag);
 	updatePostList();
+	$('#filter-page').attr('style', 'display:none;');
 	if (this.tags.length == 0) {
 		$('#filter-tags').attr('style', 'display:none;');
 	} else {
@@ -112,19 +121,29 @@ function rm_tag(tag) {
 }
 function add_user(user) {
 	this.page = 0;
-	this.users.push(user);
-	updatePostList();
-	var userlist = '';
-	jQuery.each(this.users, function(i, user) {
-		userlist += '<span class="user"><a href="#" onclick="javascript:rm_user(\''+user+'\')">'+user+'</a></span>';
+	var already_exists = false;
+	jQuery.each(this.users, function(i, val) {
+		if (val == user) {
+			already_exists = true;
+		}
 	});
-	$('#filter-users-content').html(userlist);
-	$('#filter-users').attr('style', '');
+	if (!already_exists) {
+		this.users.push(user);
+		updatePostList();
+		var userlist = '';
+		jQuery.each(this.users, function(i, val) {
+			userlist += '<span class="user"><a href="#" onclick="javascript:rm_user(\''+val+'\')">'+val+'</a></span>';
+		});
+		$('#filter-page').attr('style', 'display:none;');
+		$('#filter-users-content').html(userlist);
+		$('#filter-users').attr('style', '');
+	}
 }
 function rm_user(user) {
 	this.page = 0;
 	this.users.pop(user);
 	updatePostList();
+	$('#filter-page').attr('style', 'display:none;');
 	if (this.users.length == 0) {
 		$('#filter-users').attr('style', 'display:none;');
 	} else {
@@ -140,6 +159,7 @@ function add_search(search) {
 	this.page = 0;
 	this.search = search;
 	updatePostList();
+	$('#filter-page').attr('style', 'display:none;');
 	$('#filter-search-content').html(search+' <a href="#" onclick="javascript:clear_search()">(x)</a>');
 	$('#filter-search').attr('style', '');
 }
@@ -147,12 +167,14 @@ function clear_search() {
 	this.search = '';
 	this.page = 0;
 	updatePostList();
+	$('#filter-page').attr('style', 'display:none;');
 	$('#filter-search').attr('style', 'display:none');
 }
 function set_period(period) {
 	this.page = 0;
 	this.period = period;
 	updatePostList();
+	$('#filter-page').attr('style', 'display:none;');
 	$('#filter-period-content').html(period+' <a href="#" onclick="javascript:rm_period()">(x)</a>');
 	$('#filter-period').attr('style', '');
 }
@@ -160,6 +182,7 @@ function rm_period() {
 	this.page = 0;
 	this.period = '';
 	updatePostList();
+	$('#filter-page').attr('style', 'display:none;');
 	$('#filter-period').attr('style', 'display:none');
 }
 function set_nb_items(nb) {
@@ -167,6 +190,7 @@ function set_nb_items(nb) {
 	this.nb_items = nb;
 	updatePostList();
 	var html = '';
+	$('#filter-page').attr('style', 'display:none;');
 	if (nb != 10) {
 		html += '<a href="#" onclick="javascript:set_nb_items(10)">10</a>, '
 	} else {

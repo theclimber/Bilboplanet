@@ -36,15 +36,14 @@
 <!-- END summary.block -->
 <div id="upper_navigation">
 	<!-- BEGIN pagination.up.prev -->
-	<div class="paging_previous button"><a href="?{$page.params}page={$page.prev}" class="page_prc"> &laquo; {_Previous page}</a></div>
+	<div class="paging_previous button"><a href="#" onclick="javascript:prev_page()" class="page_prc"> &laquo; {_Previous page}</a></div>
 	<!-- END pagination.up.prev -->
 	<!-- BEGIN pagination.up.next -->
-	<div class="paging_next button"><a href="?{$page.params}page={$page.next}" class="page_svt">{_Next page} &raquo;</a></div>
+	<div class="paging_next button"><a href="#" onclick="javascript:next_page()" class="page_svt">{_Next page} &raquo;</a></div>
 	<!-- END pagination.up.next -->
 </div>
 
 <div id="posts-list">
-<!-- BEGIN post.list -->
 	<!-- BEGIN post.block -->
 	<div class="post">
 		<div class="separ_article_top"></div>
@@ -52,7 +51,7 @@
 			<a name="post{$post.id}">&nbsp;</a>
 			<!-- BEGIN post.block.gravatar -->
 			<div class="gravatar">
-				<a href="{$planet.url}/index.php?user_id={$post.author_id}" title="{_Show user's posts}">
+				<a href="javascript:add_user('{$post.author_id}')" title="{_Show user's posts}">
 				<img src="{$gravatar_url}&size=40" class="gravatar" /></a>
 			</div>
 			<!-- END post.block.gravatar -->
@@ -68,7 +67,7 @@
 		<div class="post_description">{$post.description}
 			<div class="tag-line">
 			<!-- BEGIN post.tags -->
-				<span class="post-tag">{$post_tag}</span>
+				<span class="tag">{$post_tag}</span>
 			<!-- END post.tags -->
 			</div>
 		</div>
@@ -82,14 +81,13 @@
 	<!-- ELSE post.block -->
 	{_No posts found}
 	<!-- END post.block -->
-<!-- END post.list -->
 </div>
 
 <div id="lower_navigation">
 	<!-- BEGIN pagination.low.prev -->
-	<div class="paging_previous button"><a href="?{$page.params}page={$page.prev}" class="page_prc"> &laquo; {_Previous page}</a></div>
+	<div class="paging_previous button"><a href="#" onclick="javascript:prev_page()" class="page_prc"> &laquo; {_Previous page}</a></div>
 	<!-- END pagination.low.prev -->
 	<!-- BEGIN pagination.low.next -->
-	<div class="paging_next button"><a href="?{$page.params}page={$page.next}" class="page_svt">{_Next page} &raquo;</a></div>
+	<div class="paging_next button"><a href="#" onclick="javascript=next_page()" class="page_svt">{_Next page} &raquo;</a></div>
 	<!-- END pagination.low.next -->
 </div>

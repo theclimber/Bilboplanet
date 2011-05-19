@@ -26,14 +26,13 @@
 </div>
 
 <div id="posts-list">
-<!-- BEGIN post.list -->
 	<!-- BEGIN post.block -->
 	<div class="article">
 		<div class="separ_article_top"></div>
 		<div class="article_nom">
 			<!-- BEGIN post.block.gravatar -->
 			<div class="avatar_article">
-				<a href="{$planet.url}/index.php?user_id={$post.author_id}" title="{_Show user's posts}">
+				<a href="#" onclick="javascript:add_user('{$post.author_id}')" title="{_Show user's posts}">
 				<img src="{$gravatar_url}&size=40" class="gravatar" /></a>
 			</div>
 			<!-- END post.block.gravatar -->
@@ -61,7 +60,6 @@
 	<!-- ELSE post.block -->
 	{_No posts found}
 	<!-- END post.block -->
-<!-- END post.list -->
 </div>
 
 <div id="navigation">

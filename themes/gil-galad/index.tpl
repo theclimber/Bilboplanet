@@ -47,7 +47,7 @@
 				{!include:'sidebar.tpl'}
 			</div>
 
-			<div id="centre_centre">
+			<div id="body">
 
 				<!-- ADD CONTENT HERE -->
 				<!-- BEGIN content.posts -->

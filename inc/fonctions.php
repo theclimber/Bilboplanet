@@ -526,7 +526,9 @@ function showPosts($rs, $tpl, $search_value="", $strip_tags=false) {
 			"post_site" => getFeedSite($rs->feed_id)
 			);
 
-		$post['description'] = sprintf(T_('By %s, on %s at %s.'),'<a href="'.$blog_settings->get('planet_url').'/index.php?user_id='.$rs->user_id.'">'.$rs->user_fullname.'</a>',$post["date"],$post["hour"]);
+		$post['description'] = sprintf(T_('By %s, on %s at %s.'),
+			'<a href="#" onclick="javascript:add_user(\''.$rs->user_id.'\')">'.$rs->user_fullname.'</a>',
+			$post["date"],$post["hour"]);
 		$post['description'].= ' <a href="'.$blog_settings->get('planet_url').'/index.php?post_id='.$rs->post_id.'" title="'.$post['title'].'">'.T_("View post detail").'</a>';
 		if (!empty($search_value)){
 			# Format the occurences of the search request in the posts list

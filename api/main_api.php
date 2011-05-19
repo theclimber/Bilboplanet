@@ -95,7 +95,6 @@ if(isset($_POST['action'])) {
 		} else {
 			$tpl = showPosts($rs, $tpl, $search_value, false);
 		}
-		$tpl->render('post.list');
 
 		$result = array(
 			"posts" => $tpl->render('content.posts'),

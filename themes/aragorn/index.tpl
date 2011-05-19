@@ -23,6 +23,7 @@
 	<script type="text/javascript" src="{$planet.url}/themes/{$planet.theme}/js/votes.js" ></script>
 	<script type="text/javascript" src="{$planet.url}/themes/{$planet.theme}/js/mobile.js" ></script>
 
+
 </head>
 <body>
 <div id="tour">
@@ -47,7 +48,7 @@
 				{!include:'sidebar.tpl'}
 			</div>
 
-			<div id="centre_centre">
+			<div id="body">
 
 				<!-- ADD CONTENT HERE -->
 				<!-- BEGIN content.posts -->

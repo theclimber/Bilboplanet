@@ -12,45 +12,27 @@
 		<!-- ELSE summary.line -->
 		<div class="no_posts">
 		<p>{_No posts found}</p>
-		<p>{_You can search to find other articles.}</p>
-		<div id="search_no_posts">
-			<form id="form_search" action="index.php" method="get">
-				<!-- BEGIN search.popular -->
-				<input type="hidden" id="popular" name="popular" value="{$params.popular}" />
-				<!-- END search.popular -->
-				<!-- BEGIN search.user_id -->
-				<input type="hidden" id="user_id" name="user_id" value="{$params.user_id}" />
-				<!-- END search.user_id -->
-				<!-- BEGIN search.filter -->
-				<input type="hidden" id="filter" name="filter" value="{$params.filter}" />
-				<!-- END search.filter -->
-				<input type="text" id="search_no_posts_search" name="search" value="{$search_value}" />
-				<input type="submit" id="search_no_posts_button" value="OK" />
-			</form>
-		</div>
-		</div>
 		<!-- END summary.line -->
 	</ul>
 </div>
 <!-- END summary.block -->
 <div class="navigation">
 	<!-- BEGIN pagination.up.prev -->
-	<div class="page_previous"><a href="?{$page.params}page={$page.prev}" class="page_prc"> &laquo; {_Previous page}</a></div>
+	<div class="page_previous"><a href="javascript:prev_page()" class="page_prc"> &laquo; {_Previous page}</a></div>
 	<!-- END pagination.up.prev -->
 	<!-- BEGIN pagination.up.next -->
-	<div class="paging_next"><a href="?{$page.params}page={$page.next}" class="page_svt">{_Next page} &raquo;</a></div>
+	<div class="paging_next"><a href="javascript:next_page()" class="page_svt">{_Next page} &raquo;</a></div>
 	<!-- END pagination.up.next -->
 </div>
 
 <div id="posts-list">
-<!-- BEGIN post.list -->
 	<!-- BEGIN post.block -->
 	<div class="post">
 		<div class="post_title">
 			<a name="post{$post.id}">&nbsp;</a>
 			<!-- BEGIN post.block.gravatar -->
 			<div class="gravatar">
-				<a href="{$planet.url}/index.php?user_id={$post.author_id}" title="{_Show user's posts}">
+				<a href="javascript:add_user('{$post.author_id}')" title="{_Show user's posts}">
 				<img src="{$gravatar_url}&size=40" class="gravatar" /></a>
 			</div>
 			<!-- END post.block.gravatar -->
@@ -64,7 +46,7 @@
 				<h3>{$post.description}</h3>
 				<div class="tag-line">
 				<!-- BEGIN post.tags -->
-					<span class="post-tag">{$post_tag}</span>
+					<span class="tag"><a href="javascript:add_tag('{$post_tag}')">{$post_tag}</a></span>
 				<!-- END post.tags -->
 				</div>
 			</div>
@@ -87,14 +69,13 @@
 		</div>
 	</div>
 	<!-- END post.block -->
-<!-- END post.list -->
 </div>
 
 <div class="navigation">
 	<!-- BEGIN pagination.low.prev -->
-	<div class="page_previous"><a href="?{$page.params}page={$page.prev}" class="page_prc"> &laquo; {_Previous page}</a></div>
+	<div class="page_previous"><a href="javascript:prev_page()" class="page_prc"> &laquo; {_Previous page}</a></div>
 	<!-- END pagination.low.prev -->
 	<!-- BEGIN pagination.low.next -->
-	<div class="paging_next"><a href="?{$page.params}page={$page.next}" class="page_svt">{_Next page} &raquo;</a></div>
+	<div class="paging_next"><a href="javascript:next_page()" class="page_svt">{_Next page} &raquo;</a></div>
 	<!-- END pagination.low.next -->
 </div>

@@ -225,7 +225,7 @@ div#right {
 	top: 0;
 	right: 0;
 }
-div#homeleft  {
+div#body  {
 	width: 740px;
 }
 div#homeright {
@@ -315,7 +315,6 @@ div.post_description div.tag-line {
 #filter-status{
 position:relative;
 width:180px;
-padding-left:21px;
 font-size:11px;
 padding-bottom:13px;
 padding-right:21px;

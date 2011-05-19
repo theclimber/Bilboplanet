@@ -14,20 +14,20 @@
 	<div id="filter-status">
 		<h2 id="filter-title">{_Page status}</h2>
 		<div id="filter-nb-items">{_Number of items :} <span id="filter-nb-items-content">
-			<a href="#" onclick="javascript:set_nb_items(10)">10</a>, 
-			<a href="#" onclick="javascript:set_nb_items(15)">15</a>, 
+			<a href="#" onclick="javascript:set_nb_items(10)">10</a>,
+			<a href="#" onclick="javascript:set_nb_items(15)">15</a>,
 			<a href="#" onclick="javascript:set_nb_items(20)">20</a>
 			</span></div>
-		<div id="filter-page" style="display:none">{_Page :} 
+		<div id="filter-page" style="display:none">{_Page :}
 			<span id="filter-page-content"></span></div>
-		<div id="filter-search" style="display:none">{_Searching with :} 
+		<div id="filter-search" style="display:none">{_Searching with :}
 			<span id="filter-search-content"></span></div>
-		<div id="filter-period" style="display:none">{_Period of posts :} 
+		<div id="filter-period" style="display:none">{_Period of posts :}
 			<span id="filter-period-content"></span></div>
 		<div id="filter-popular" style="display:none">{_In popular tags}</div>
-		<div id="filter-tags" style="display:none">{_Tagged with :} 
+		<div id="filter-tags" style="display:none">{_Tagged with :}
 			<span id="filter-tags-content"></span></div>
-		<div id="filter-users" style="display:none">{_Written by :} 
+		<div id="filter-users" style="display:none">{_Written by :}
 			<span id="filter-users-content"></span></div>
 	</div>
 
@@ -51,7 +51,7 @@
 		<h2 id="membres">{_Members}</h2>
 		<ul>
 			<!-- BEGIN sidebar.users.list -->
-			<li><a href="{$planet.url}/index.php?user_id={$user.id}" title="{_See members posts}">
+			<li><a href="#" onclick="javascript:add_user('{$user.id}')" title="{_See members posts}">
 			<img src="{$planet.url}/themes/{$planet.theme}/images/ico-external.gif" alt="feed" /></a>
 			<a href="{$user.site_url}" title="{_User's website}" target="_blank">{$user.fullname}</a></li>
 			<!-- END sidebar.users.list -->

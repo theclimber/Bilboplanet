@@ -225,7 +225,7 @@ width:936px;
 }
 
 /* HOMELEFT */
-#homeleft {
+#body {
 width:655px;
 float:left;
 margin:0px 21px 10px 20px;
@@ -453,7 +453,7 @@ font-size:14px;
 color:#333
 }
 
-#wrap #search_no_posts_search {
+#wrap #search_text2 {
 border:1px #DCDCDC solid;
 height:19px;
 width:85%;
@@ -582,8 +582,8 @@ div.post_description div.tag-line {
 #filter-status{
 position:relative;
 width:180px;
-padding-left:21px;
-font-size:11px;
+padding-left:10px;
+font-size:12px;
 padding-bottom:13px;
 padding-right:21px;
 text-align:left;

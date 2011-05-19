@@ -56,7 +56,7 @@
 		{!include:'menu.tpl'}
 
 		<div id="content">
-			<div id="homeleft">
+			<div id="body">
 				<!-- ADD CONTENT HERE -->
 				<!-- BEGIN content.posts -->
 					{!include:'posts.tpl'}

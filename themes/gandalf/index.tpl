@@ -30,7 +30,7 @@
 	<div id="header"><!--header-->
 		<!-- BEGIN search.box -->
 		<div id="search">
-			<form id="form_search" action="index.php" method="get">
+			<form id="search_form" action="index.php" method="get">
 				<!-- BEGIN search.popular -->
 				<input type="hidden" id="popular" name="popular" value="{$params.popular}" />
 				<!-- END search.popular -->
@@ -41,7 +41,7 @@
 				<input type="hidden" id="filter" name="filter" value="{$params.filter}" />
 				<!-- END search.filter -->
 				<input type="submit" id="mainmenu_search_btn" value="OK" />
-				<input type="text" id="mainmenu_search" name="search"  value="{$search_value}" />
+				<input type="text" id="search_text" name="search"  value="{$search_value}" />
 			</form>
 		</div>
 		<!-- END search.box -->

@@ -25,6 +25,7 @@
 </div>
 
 <div id="posts-list">
+<!-- BEGIN post.list -->
 	<!-- BEGIN post.block -->
 	<div class="article">
 		<div class="separ_article_top"></div>
@@ -59,6 +60,7 @@
 	<!-- ELSE post.block -->
 	{_No posts found}
 	<!-- END post.block -->
+<!-- END post.list -->
 </div>
 
 <div id="navigation">

@@ -2,16 +2,16 @@
 <div id="submenu">
 	<ul>
 		<li class="{$filter.day}">
-			<a href="index.php?{$filter_url}filter=day">{_Posts of the day}</a>
+			<a href="#" onclick="javascript:set_period('day')">{_Posts of the day}</a>
 		</li>
 		<li class="{$filter.week}">
-			<a href="index.php?{$filter_url}filter=week">{_Posts of the week}</a>
+			<a href="#" onclick="javascript:set_period('week')">{_Posts of the week}</a>
 		</li>
 		<li class="{$filter.month}">
-			<a href="index.php?{$filter_url}filter=month">{_Posts of the month}</a>
+			<a href="#" onclick="javascript:set_period('month')">{_Posts of the month}</a>
 		</li>
 		<li>
-			<a href="index.php?{$filter_url}">{_All posts}</a>
+			<a href="#" onclick="javascript:rm_period()">{_All posts}</a>
 		</li>
 	</ul>
 </div><!-- end submenu -->
@@ -44,6 +44,7 @@
 </div>
 
 <div id="posts-list">
+<!-- BEGIN post.list -->
 	<!-- BEGIN post.block -->
 	<div class="post">
 		<div class="separ_article_top"></div>
@@ -81,6 +82,7 @@
 	<!-- ELSE post.block -->
 	{_No posts found}
 	<!-- END post.block -->
+<!-- END post.list -->
 </div>
 
 <div id="lower_navigation">

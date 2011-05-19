@@ -3,6 +3,7 @@
 	<span class="searchText">{_You are searching for all the posts with :} <span class="search">{$search_value}</span></span>
 </div>
 <!-- END search.line -->
+
 <!-- BEGIN summary.block -->
 <div id="top_10">
 	<h3><a name="top">{_Fast access to the last posts of the page}</a></h3>
@@ -25,6 +26,7 @@
 </div>
 
 <div id="posts-list">
+<!-- BEGIN post.list -->
 	<!-- BEGIN post.block -->
 	<div class="article">
 		<div class="separ_article_top"></div>
@@ -46,7 +48,7 @@
 		<div class="post_description">{$post.description}
 			<div class="tag-line">
 			<!-- BEGIN post.tags -->
-				<span class="post-tag">{$post_tag}</span>
+				<span class="tag"><a href="#" onclick="javascript:add_tag('{$post_tag}')">{$post_tag}</a></span>
 			<!-- END post.tags -->
 			</div>
 		</div>
@@ -59,6 +61,7 @@
 	<!-- ELSE post.block -->
 	{_No posts found}
 	<!-- END post.block -->
+<!-- END post.list -->
 </div>
 
 <div id="navigation">

@@ -49,26 +49,25 @@
 
 			<div id="centre_centre">
 
-				<!-- BEGIN menu.filter -->
-				<div class="tri">
-					<b>{_Filter posts} :&nbsp;&nbsp;&nbsp;&nbsp;</b>
-					<span>
-						<a href="index.php?{$filter_url}filter=day">{_Posts of the day}</a>
-					</span>&nbsp;&nbsp;-&nbsp;&nbsp;  
-					<span>
-						<a href="index.php?{$filter_url}filter=week">{_Posts of the week}</a>
-					</span>&nbsp;&nbsp;-&nbsp;&nbsp;
-					<span>
-						<a href="index.php?{$filter_url}filter=month">{_Posts of the month}</a>
-					</span>&nbsp;&nbsp;-&nbsp;&nbsp;
-					<span>
-						<a href="index.php?{$filter_url}">{_All the posts}</a>
-					</span>
-				</div><!-- end submenu -->
-				<!-- END menu.filter -->
-
 				<!-- ADD CONTENT HERE -->
 				<!-- BEGIN content.posts -->
+					<!-- BEGIN menu.filter -->
+					<div class="tri">
+						<b>{_Filter posts} :&nbsp;&nbsp;&nbsp;&nbsp;</b>
+						<span>
+							<a href="#" onclick="javascript:set_period('day')">{_Posts of the day}</a>
+						</span>&nbsp;&nbsp;-&nbsp;&nbsp;
+						<span>
+							<a href="#" onclick="javascript:set_period('week')">{_Posts of the week}</a>
+						</span>&nbsp;&nbsp;-&nbsp;&nbsp;
+						<span>
+							<a href="#" onclick="javascript:set_period('month')">{_Posts of the month}</a>
+						</span>&nbsp;&nbsp;-&nbsp;&nbsp;
+						<span>
+							<a href="#" onclick="javascript:rm_period()">{_All the posts}</a>
+						</span>
+					</div><!-- end submenu -->
+					<!-- END menu.filter -->
 					{!include:'posts.tpl'}
 				<!-- END content.posts -->
 

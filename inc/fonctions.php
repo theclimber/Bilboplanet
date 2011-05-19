@@ -321,11 +321,11 @@ function getPostTags($post_id) {
 	$sql = "SELECT tag_id
 		FROM ".$core->prefix."post_tag
 		WHERE post_id = ".$post_id.";";
-	$rs = $core->con->select($sql);
+	$res = $core->con->select($sql);
 
 	$tags = array();
-	while($rs->fetch()){
-		$tags[] = $rs->tag_id;
+	while($res->fetch()){
+		$tags[] = $res->tag_id;
 	}
 	return $tags;
 }
@@ -499,7 +499,6 @@ function showPosts($rs, $tpl, $search_value="", $strip_tags=false) {
 	$gravatar = $blog_settings->get('planet_avatar');
 
 	while($rs->fetch()){
-
 		$post_permalink = $rs->permalink;
 		if ($blog_settings->get('internal_links')) {
 			$post_permalink = $blog_settings->get('planet_url').

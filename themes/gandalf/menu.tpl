@@ -11,7 +11,7 @@
 			<!-- END menu.subscription -->
 			<li><a href="{$planet.url}/archives.php">{_Archives}</a></li>
 			<!-- BEGIN menu.contact -->
-			<li><a href="{$planet.url}/contact.php">{_Contact}</a></li>	
+			<li><a href="{$planet.url}/contact.php">{_Contact}</a></li>
 			<!-- END menu.contact -->
 		</ul>
 	</div><!-- end mainmenu -->
@@ -20,16 +20,16 @@
 	<div id="submenu">
 		<ul>
 			<li class="{$filter.day}">
-				<a class="first" href="index.php?{$filter_url}filter=day">{_Posts of the day}</a>
+				<a class="first" href="#" onclick="javascript:set_period('day')">{_Posts of the day}</a>
 			</li>
 			<li class="{$filter.week}">
-				<a class="filter" href="index.php?{$filter_url}filter=week">{_Posts of the week}</a>
+				<a class="filter" href="#" onclick="javascript:set_period('week')">{_Posts of the week}</a>
 			</li>
 			<li class="{$filter.month}">
-				<a class="filter" href="index.php?{$filter_url}filter=month">{_Posts of the month}</a>
+				<a class="filter" href="#" onclick="javascript:set_period('month')">{_Posts of the month}</a>
 			</li>
 			<li>
-				<a class="filter" href="index.php?{$filter_url}">{_All posts}</a>
+				<a class="filter" href="#"  onclick="javascript:rm_period()">{_All posts}</a>
 			</li>
 		</ul>
 	</div><!-- end submenu -->

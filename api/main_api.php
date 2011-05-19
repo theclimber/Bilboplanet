@@ -59,10 +59,35 @@ if(isset($_POST['action'])) {
 			$search_value,
 			$period,
 			$popular);
+		//print $sql;
+		//exit;
 		$rs = $core->con->select($sql);
 
 		$tpl = new Hyla_Tpl(dirname(__FILE__).'/../themes/'.$blog_settings->get('planet_theme').'/');
-		$tpl->importFile('posts', 'posts.tpl');
+		$tpl->importFile('index', 'index.tpl');
+
+		if($num_page == 0 & $rs->count()>= $nb_items) {
+			# if we are on the first page
+			$tpl->render('pagination.up.next');
+			$tpl->render('pagination.low.next');
+		} elseif($num_page == 0 & $rs->count()< $nb_items) {
+			# we don't show any button
+		} else {
+			if($rs->count() == 0 | $rs->count() < $nb_items) {
+				# if we are on the last page
+				$tpl->render('pagination.up.prev');
+				$tpl->render('pagination.low.prev');
+			} else {
+				$tpl->render('pagination.up.prev');
+				$tpl->render('pagination.up.next');
+				$tpl->render('pagination.low.prev');
+				$tpl->render('pagination.low.next');
+			}
+		}
+		$tpl->render('menu.filter');
+
+		$tpl = showPostsSummary($rs, $tpl);
+		$tpl->render('summary.block');
 
 		# Liste des articles
 		if (isset($popular) && !empty($popular)) {
@@ -70,9 +95,10 @@ if(isset($_POST['action'])) {
 		} else {
 			$tpl = showPosts($rs, $tpl, $search_value, false);
 		}
+		$tpl->render('post.list');
 
 		$result = array(
-			"posts" => $tpl->render('post.block'),
+			"posts" => $tpl->render('content.posts'),
 			"nb_items" => $nb_items,
 			"page" => $page,
 			"users" => $users,
@@ -81,7 +107,6 @@ if(isset($_POST['action'])) {
 			);
 #		print json_encode($result);
 		print $result['posts'];
-
 		break;
 ##########################################################
 # DEFAULT RETURN

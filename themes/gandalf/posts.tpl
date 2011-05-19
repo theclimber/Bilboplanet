@@ -43,6 +43,7 @@
 </div>
 
 <div id="posts-list">
+<!-- BEGIN post.list -->
 	<!-- BEGIN post.block -->
 	<div class="post">
 		<div class="post_title">
@@ -86,6 +87,7 @@
 		</div>
 	</div>
 	<!-- END post.block -->
+<!-- END post.list -->
 </div>
 
 <div class="navigation">

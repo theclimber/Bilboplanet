@@ -309,6 +309,7 @@ if (isset($_GET) && isset($_GET['popular']) && !empty($_GET['popular'])) {
 else {
 	$core->tpl = showPosts($rs, $core->tpl, $search_value, false);
 }
+$core->tpl->render('post.list');
 $core->tpl->render("content.posts");
 
 # Show result

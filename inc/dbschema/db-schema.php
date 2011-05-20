@@ -88,6 +88,7 @@ $_s->feed
 	->feed_checked	('timestamp',	0,	true, null)
 	->feed_status	('smallint',	0,	false, 1)
 	->feed_trust	('smallint',	0,	false, 0)
+	->feed_comment	('smallint',	0,	false, 0)
 	->created		('timestamp',	0,	true, 'now()')
 	->modified		('timestamp',	0,	true, 'now()')
 
@@ -108,6 +109,18 @@ $_s->post_tag
 	->created		('timestamp',	0,	true, 'now()')
 
 	->primary('pk_post_tag', 'tag_id', 'post_id')
+	;
+
+$_s->post_comment
+	->comment_id	('integer',		0, false)
+	->post_id		('integer',		0, false)
+	->user_fullname	('varchar',		128,false)
+	->user_email	('varchar',		128,false)
+	->user_site		('text',		0,	false)
+	->created		('timestamp',	0,	true, 'now()')
+	->modified		('timestamp',	0,	true, 'now()')
+
+	->primary('pk_post_comment', 'tag_id', 'post_id')
 	;
 
 $_s->site

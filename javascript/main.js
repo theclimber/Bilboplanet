@@ -1,20 +1,21 @@
 this.page = 0;
 this.nb_items = 10;
-this.search = '';
-this.popular = 0;
+this.search = getUrlParameter('search');
+this.popular = getUrlParameter('popular');
 this.tags = new Array();
 this.users = new Array();
 this.period = '';
-this.filtering = false;
 $(document).ready(function() {
-	this.page = 0;
+	this.page = getUrlParameter('num_page');
 	this.nb_items = 10;
-	this.search = '';
-	this.popular = 0;
+	this.search = getUrlParameter('search');
+	this.popular = getUrlParameter('popular');
+	if (this.popular == 'true') {
+		$('#filter-popular').attr('style', '');
+	}
 	this.tags = new Array();
 	this.users = new Array();
 	this.period = '';
-	this.filtering = false;
 
 	$('#search_form').submit(function() {
 		var data = $('#search_form').serializeArray();
@@ -23,10 +24,20 @@ $(document).ready(function() {
 				add_search(field.value);
 			}
 		});
-		//$('#search_text').val('');
 		return false;
 	});
+
 });
+
+function getUrlParameter(name) {
+	var searchString = location.search.substring(1).split('&');
+	for (var i = 0; i < searchString.length; i++) {
+		var parameter = searchString[i].split('=');
+		if(name == parameter[0])
+			return parameter[1];
+	}
+	return '';
+}
 
 function arrayToString(array) {
 	var string = '';
@@ -40,7 +51,6 @@ function arrayToString(array) {
 }
 
 function updatePostList() {
-	this.filtering = true;
 	$('#filter-status').attr('style', '');
 	var main_div = "body";
 	$('div#'+main_div).fadeTo('slow', 0.5, function(){});

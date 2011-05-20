@@ -1,0 +1,7 @@
+Add user_id to tags :
+
+ALTER TABLE `bp_post_tag` ADD `user_id` VARCHAR( 64 ) NOT NULL ,
+ADD `created` DATETIME NOT NULL
+
+
+

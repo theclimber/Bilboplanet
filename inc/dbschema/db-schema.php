@@ -6,7 +6,7 @@
 * Website : www.bilboplanet.com
 * Tracker : redmine.bilboplanet.com
 * Blog : www.bilboplanet.com
-* 
+*
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License as
@@ -29,7 +29,7 @@ if (!($_s instanceof dbStruct)) {
 }
 
 /* Tables
- * Utilisation : (type, length, nullable, default value) 
+ * Utilisation : (type, length, nullable, default value)
 -------------------------------------------------------- */
 $_s->user
 	->user_id		('varchar',		64,	false)
@@ -75,7 +75,7 @@ $_s->post
 	->last_viewed	('timestamp',	0,	true, null)
 	->created		('timestamp',	0,	true, 'now()')
 	->modified		('timestamp',	0,	true, 'now()')
-	
+
 	->primary('pk_post','post_id')
 	;
 
@@ -104,6 +104,8 @@ $_s->feed_tag
 $_s->post_tag
 	->tag_id		('varchar',		255, false)
 	->post_id		('integer',		0, false)
+	->user_id		('varchar',		64,	false)
+	->created		('timestamp',	0,	true, 'now()')
 
 	->primary('pk_post_tag', 'tag_id', 'post_id')
 	;
@@ -156,7 +158,7 @@ $_s->session
 	->ses_time	('integer',	0,	false,	0)
 	->ses_start	('integer',	0,	false,	0)
 	->ses_value	('text',		0,	false)
-	
+
 	->primary('pk_session','ses_id')
 	;
 

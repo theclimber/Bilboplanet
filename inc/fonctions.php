@@ -395,7 +395,8 @@ function generate_SQL(
 		$tags = array(),
 		$search = null,
 		$period = null,
-		$popular = false)
+		$popular = false,
+		$post_id = null)
 	{
 	global $blog_settings, $core;
 	if (!isset($nb_items)) {
@@ -421,6 +422,11 @@ function generate_SQL(
 		AND post_status = '1'
 		AND user_status = '1'
 		AND post_score > '".$blog_settings->get('planet_votes_limit')."'";
+
+	if (isset($post_id) && !empty($post_id)) {
+		$sql = $debut_sql." AND ".$core->prefix."post.post_id = '".$post_id."'";
+		return $sql;
+	}
 
 	if (!empty($users)) {
 		$sql_users = "(";

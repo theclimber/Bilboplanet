@@ -90,11 +90,7 @@ if(isset($_POST['action'])) {
 		$tpl->render('summary.block');
 
 		# Liste des articles
-		if (isset($popular) && !empty($popular)) {
-			$tpl = showPosts($rs, $tpl, $search_value, true);
-		} else {
-			$tpl = showPosts($rs, $tpl, $search_value, false);
-		}
+		$tpl = showPosts($rs, $tpl, $search_value, $popular);
 
 		$result = array(
 			"posts" => $tpl->render('content.posts'),

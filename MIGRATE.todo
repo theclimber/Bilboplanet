@@ -5,9 +5,23 @@ ALTER TABLE `bp_post_tag` ADD `user_id` VARCHAR( 64 ) NOT NULL ,
 ADD `created` DATETIME NOT NULL
 ---------------------------
 
-Add to feed if it can be commented : 
+Add to feed if it can be commented :
 
 ---------------------------
 ALTER TABLE `bp_feed` ADD `feed_comment` SMALLINT NOT NULL
 ---------------------------
 
+Add post_comment table :
+
+-----------------
+CREATE TABLE IF NOT EXISTS `bp2_post_comment` (
+  `comment_id` int(11) NOT NULL,
+  `post_id` int(11) NOT NULL,
+  `user_fullname` varchar(128) COLLATE utf8_bin NOT NULL,
+  `user_email` varchar(128) COLLATE utf8_bin NOT NULL,
+  `user_site` longtext COLLATE utf8_bin NOT NULL,
+  `created` datetime DEFAULT '1970-01-01 00:00:00',
+  `modified` datetime DEFAULT '1970-01-01 00:00:00',
+  PRIMARY KEY (`comment_id`)
+)
+-----------------

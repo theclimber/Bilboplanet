@@ -1,39 +1,11 @@
-Pour des informations sur l'installation, l'utilisation et la configuration du Bilboplanet, 
-incluant une liste des problèmes déjà connus et des informations de dépannage, référez vous à 
-http://www.bilboplanet.com/documentation.php
+INSTALL
+=======
 
-Pour poser des questions, n'hésitez pas à passer sur notre forum :
-http://www.bilboplanet.com/forum/
+Pour toute information ou documentation, référez-vous à notre site web
+http://www.bilboplanet.com sur lequel vous trouverez les informations les plus
+à jour.
 
+Une grande quantité d'informations est aussi disponible sur notre wiki à
+l'adresse http://wiki.bilboplanet.com
 
-INSTALLATION AUTOMATIQUE:
-=========================
-
-Placez tous les fichiers du package dans un repertoire accessible depuis votre serveur. 
-Accédez à votre serveur à cette adresse à l'aide d'un navigateur et suivez les instructions.
-
-NOTE: Veillez à ce que les dossiers ci-dessous soient accessibles en écriture.
-
-    * /inc/config.php
-
-Pour pouvoir utiliser l'installation automatique il est important que ces fichiers soient supprimés avant l'installation.
-Assurez-vous aussi d'avoir une base de donnée vide
-
-MISE A JOUR:
-============
-
-Depuis le Bilboplanet 0.3.2
-
-* Exporter les données dans la version 0.3.2
-* Faire une nouvelle installation de la version 1.0
-* Importer les données dans la version 1.0
-* Copier l’ancienne feuille de style dans /themes/gil-galad/css/core.css
-* Mettre à jour les liens vers les fichiers
-
-
-FAQ:
-====
-Pour les personne ayant des problèmes d'encodage des caractères, et n'ayant pas accès au serveur apache, 
-décommentez la 23ième ligne du fichier .htaccess à la racine du Planet : 
-      AddDefaultCharset UTF-8
 

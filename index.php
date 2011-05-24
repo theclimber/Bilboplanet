@@ -138,6 +138,8 @@ $sql = generate_SQL(
 	$period,
 	$popular,
 	$post_id);
+#print $sql;
+#exit;
 
 $page_url = '';
 foreach ($params as $key => $val) {

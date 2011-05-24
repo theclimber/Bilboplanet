@@ -26,6 +26,9 @@
 			<span id="filter-tags-content"></span></div>
 		<div id="filter-users" style="display:none">{_Written by :}
 			<span id="filter-users-content"></span></div>
+		<div id="filter-feed" style="display:none">
+			<a id="filter-feed" href="feed.php?type=atom">{_Parametrized feed}</a>
+			</div>
 	</div>
 
 	<div id="feeds">

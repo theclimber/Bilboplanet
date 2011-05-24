@@ -120,7 +120,7 @@ $_s->post_comment
 	->created		('timestamp',	0,	true, 'now()')
 	->modified		('timestamp',	0,	true, 'now()')
 
-	->primary('pk_post_comment', 'tag_id', 'post_id')
+	->primary('pk_post_comment', 'comment_id')
 	;
 
 $_s->site

@@ -40,6 +40,7 @@ $(document).ready(function() {
 
 });
 
+
 function getUrlParameter(name) {
 	var searchString = location.search.substring(1).split('&');
 	for (var i = 0; i < searchString.length; i++) {
@@ -54,7 +55,7 @@ function arrayToString(array) {
 	var string = '';
 	for (var i = 0; i < array.length; i++) {
 		string += array[i];
-		if (i <= array.length -1) {
+		if (i < array.length -1) {
 			string += ',';
 		}
 	}
@@ -82,6 +83,7 @@ function updatePostList() {
 		success: function(msg){
 			$('div#'+main_div).html(msg);
 			$('div#'+main_div).fadeTo('slow', 1, function(){});
+			updateFeedList();
 		}
 	});
 }
@@ -228,4 +230,30 @@ function set_nb_items(nb) {
 		html += '20';
 	}
 	$('#filter-nb-items-content').html(html);
+}
+
+function updateFeedList() {
+	var feedlink = 'http://localhost/~greg/bilboplanet/';
+	feedlink += getFeedURL();
+	$('a#filter-feed').attr('href',feedlink);
+	if (this.tags.length > 0 || this.users.length > 0) {
+		$('div#filter-feed').attr('style', '');
+	} else {
+		$('div#filter-feed').attr('style', 'display:none;');
+	}
+}
+function getFeedURL() {
+	var feed_params = 'feed.php?type=atom';
+	if (this.tags.length > 0) {
+		var tag_list = 'tags='+arrayToString(this.tags);
+		feed_params += '&'+tag_list;
+	}
+	if (this.users.length > 0) {
+		var user_list = 'users='+arrayToString(this.users);
+		feed_params += '&'+user_list;
+	}
+	if (this.popular) {
+		feed_params += '&popular=true';
+	}
+	return feed_params;
 }

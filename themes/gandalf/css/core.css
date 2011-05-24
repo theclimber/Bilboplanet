@@ -609,3 +609,9 @@ span.user {
 	-webkit-border-radius: 8px;
 	border-radius: 8px;
 }
+
+div#filter-feed {
+	background: url('../images/ico-feed.gif') no-repeat;
+	padding-left : 25px;
+	margin: 5px;
+}

@@ -403,6 +403,11 @@ function generate_SQL(
 		$nb_items = $blog_settings->get('planet_nb_post');
 	}
 
+	$tables = $core->prefix."post, ".$core->prefix."user";
+	if (!empty($tags)) {
+		$tables .= ", ".$core->prefix."post_tag";
+	}
+
 	$debut_sql = "SELECT DISTINCT
 			".$core->prefix."user.user_id		as user_id,
 			user_fullname	as user_fullname,
@@ -417,7 +422,7 @@ function generate_SQL(
 			SUBSTRING(post_content,1,400) as short_content,
 			".$core->prefix."post.post_id		as post_id,
 			post_score		as score
-		FROM ".$core->prefix."post, ".$core->prefix."user, ".$core->prefix."post_tag
+		FROM ".$tables."
 		WHERE ".$core->prefix."user.user_id = ".$core->prefix."post.user_id
 		AND post_status = '1'
 		AND user_status = '1'
@@ -487,7 +492,11 @@ function generate_SQL(
 
 	if ($popular){
 		# Complete the SQL query
-		$debut_sql = $debut_sql." AND post_score > 0";
+		$debut_sql .= " AND post_score > 0 ";
+		if (!isset($period) || empty($period)) {
+			$week = time() - 3600*24*7;
+			$debut_sql .= "AND post_pubdate > ".$week;
+		}
 		$fin_sql = " ORDER BY post_score DESC
 			LIMIT $num_start,".$nb_items;
 	}
@@ -765,7 +774,7 @@ function check_url($url){
 	// GET Query (optional)
 	$urlregex .= "(\?[a-z+&\$_.-][a-z0-9;:@/&%=+\$_.-]*)?";
 	// ANCHOR (optional)
-	$urlregex .= "(#[a-z_.-][a-z0-9+\$_.-]*)?\$";
+	#$urlregex .= "(#[a-z_.-][a-z0-9+\$_.-]*)?\$";
 
 	// check
 	if (eregi($urlregex, $url)) {

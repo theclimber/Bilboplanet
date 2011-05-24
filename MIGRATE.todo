@@ -14,7 +14,7 @@ ALTER TABLE `bp_feed` ADD `feed_comment` SMALLINT NOT NULL
 Add post_comment table :
 
 -----------------
-CREATE TABLE IF NOT EXISTS `bp2_post_comment` (
+CREATE TABLE IF NOT EXISTS `bp_post_comment` (
   `comment_id` int(11) NOT NULL,
   `post_id` int(11) NOT NULL,
   `user_fullname` varchar(128) COLLATE utf8_bin NOT NULL,

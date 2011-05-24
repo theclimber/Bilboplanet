@@ -27,6 +27,17 @@ $(document).ready(function() {
 		return false;
 	});
 
+	$.ajax({
+		type: "POST",
+		url: "api/",
+		data: {
+			'ajax' : 'main',
+			'action' : 'fetch'
+		},
+		success: function(msg){
+		}
+	});
+
 });
 
 function getUrlParameter(name) {

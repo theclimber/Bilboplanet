@@ -226,24 +226,4 @@ $core->tpl->render("content.posts");
 # Show result
 echo $core->tpl->render();
 
-##################
-# UPDATE ALGO
-##################
-$cron_file = dirname(__FILE__).'/inc/cron_running.txt';
-$dodo_interval = 250;
-if (!file_exists(dirname(__FILE__).'/STOP') && $blog_settings->get('planet_index_update')) {
-	$fp = fopen($cron_file, "rb");
-	$contents = fread($fp, filesize($cron_file));
-	$next = (int) $contents + $dodo_interval;
-	if ($next <= time()) {
-		require_once(dirname(__FILE__).'/inc/cron_fct.php');
-		$fp = @fopen($cron_file,'wb');
-		if ($fp === false) {
-			throw new Exception(sprintf(__('Cannot write %s file.'),$fichier));
-		}
-		fwrite($fp,time());
-		fclose($fp);
-		update($core);
-	}
-}
 ?>

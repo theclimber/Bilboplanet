@@ -74,10 +74,15 @@ if (isset($_GET) && isset($_GET['type'])) {
 		header('Content-Type: application/atom+xml; charset=UTF-8');
 		$params = "feed.php?type=atom";
 	}
-	$tags = !empty($_GET['tags']) ? getArrayFromList($_GET['tags']) : array();
-	$users = !empty($_GET['users']) ? getArrayFromList($_GET['users']) : array();
-	# Get the period
-	$period = !empty($_GET['period']) ? trim($_GET['period']) : '';
+
+	$tags = array();
+	$users = array();
+	$period = '';
+//	if ($blog_settings->get('accept_tagged_feeds')) {
+		$tags = !empty($_GET['tags']) ? getArrayFromList($_GET['tags']) : array();
+		$users = !empty($_GET['users']) ? getArrayFromList($_GET['users']) : array();
+		$period = !empty($_GET['period']) ? trim($_GET['period']) : '';
+//	}
 	# Order by most popular
 	$popular = !empty($_GET['popular']) ? true : false;
 

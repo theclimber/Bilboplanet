@@ -6,7 +6,7 @@
 * Website : www.bilboplanet.com
 * Tracker : redmine.bilboplanet.com
 * Blog : www.bilboplanet.com
-* 
+*
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License as
@@ -56,7 +56,7 @@ if ($blog_settings->get('planet_rtl')) {
 	<span class="ctitle"><a class="tips" title="<?php echo $blog_settings->get('planet_title'); ?>" rel="<?php echo T_('Back on the Bilboplanet');?>" href="<?php echo $blog_settings->get('planet_url'); ?>" target="_blank"><?php echo T_('Back on the Bilboplanet');?></a></span>
 	</p>
 	<ul id="BP_userbar">
-		<li><a id="BP_Logout" href="#" rel="?logout" class="button minbutton br3px"><?php echo T_('Logout');?></a></li>
+		<li><a id="BP_Logout" href="#" rel="?logout=<?php echo $blog_settings->get('planet_url'); ?>" class="button minbutton br3px"><?php echo T_('Logout');?></a></li>
 		<li><a id="BP_About" href="#about" name="modal" class="button minbutton br3px"><?php echo T_('About');?></a></li>
 	</ul>
 	<hr class="clear" />
@@ -79,15 +79,6 @@ if ($blog_settings->get('planet_rtl')) {
 					<li><?php echo T_('- Official WebSite: ');?><a href="http://www.bilboplanet.com" target="_blank">http://www.bilboplanet.com</a></li>
 					<li><?php echo T_('- Official Forum: ');?><a href="http://www.bilboplanet.com/forum" target="_blank">http://www.bilboplanet.com/forum</a></li>
 					<li><?php echo T_('- Official Documentation: ');?><a href="http://www.bilboplanet.com/documentation.php" target="_blank">http://www.bilboplanet.com/documentation.php</a></li>
-				</ul>
-			</p>
-			<br />
-			<h3><?php echo T_("What's new in BilboPlanet 1.0");?></h3>
-			<p>
-				<ul>
-					<li><?php echo T_('- New administration panel with user permissions, moderation interface for website manager, <br />multiple feed per site, new configuration system, newsletter and optimized dashboard.');?></li>
-					<li><?php echo T_('- Easy templating system allowing you to draw personnalize own Planet');?></li>
-					<li><?php echo T_('- New database, new installer, more security, more ajax in admin panel, and a lot of more cool stuff !!');?></li>
 				</ul>
 			</p>
 			<br />

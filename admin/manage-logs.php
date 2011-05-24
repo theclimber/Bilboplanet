@@ -6,7 +6,7 @@
 * Website : www.bilboplanet.com
 * Tracker : redmine.bilboplanet.com
 * Blog : www.bilboplanet.com
-* 
+*
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License as
@@ -23,7 +23,7 @@
 *
 ***** END LICENSE BLOCK *****/
 ?>
-<?php 
+<?php
 require_once(dirname(__FILE__).'/../inc/admin/prepend.php');
 if ($core->auth->sessionExists()):
 	if (!$core->hasRole('manager') | !$core->hasPermission('configuration')){
@@ -59,12 +59,12 @@ if(isset($_POST) && isset($_POST['nom']) && isset($_POST['path']) && isset($_POS
 
 <div id="BP_page" class="page">
 	<div class="inpage">
-	
+
 <fieldset><legend><?php echo T_('All the log files');?></legend>
 		<div class="message">
 			<p><?php echo T_('Management planet log files (Advanced users).');?></p>
 		</div><br/>
-		
+
 <center><table class="table-log">
 <thead>
 <tr>
@@ -100,7 +100,7 @@ closedir($dir_handle);
 </center>
 <br />&nbsp;
 <p>
-<?php 
+<?php
 
 echo '<center><form method="POST">
 	<input type="hidden" name="nom" value="all"/>
@@ -112,6 +112,6 @@ echo '</fieldset>';
 include(dirname(__FILE__).'/footer.php');
 else:
 	$page_url = urlencode(http::getHost().$_SERVER['REQUEST_URI']);
-	http::redirect('auth.php?came_from='.$page_url);
+	http::redirect('../auth.php?came_from='.$page_url);
 endif;
 ?>

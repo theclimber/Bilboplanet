@@ -24,48 +24,22 @@
 ***** END LICENSE BLOCK *****/
 ?>
 <?php
-
-# Inclusion des fonctions
-require_once(dirname(__FILE__).'/../inc/admin/prepend.php');
-
-# Check Session
+/* Inclusion du fichier de configuration */
+require_once(dirname(__FILE__).'/../inc/user/prepend.php');
 if ($core->auth->sessionExists()):
-	if (!$core->hasRole('manager') | !$core->hasPermission('configuration')){
+	if (!$core->hasRole('user')){
 		__error(T_("Permission denied"),
 			T_('You are not allowed to see this page.')
 			.' '.T_('You can delete your session if you logout : ').'<a href="?logout">Logout</a>');
 		exit;
 	}
 
-include_once(dirname(__FILE__).'/head.php');
-include_once(dirname(__FILE__).'/sidebar.php');
-?>
-<!-- Javascript -->
-<script type="text/javascript" src="meta/js/manage-option.js"></script>
-<!-- End Of Javascript -->
+include_once(dirname(__FILE__).'/header.php');
 
-<div id="BP_page" class="page">
-	<div class="inpage">
-		<div id="flash-log" style="display:none;">
-			<div id="flash-msg"><!-- spanner --></div>
-		</div>
-		<div id="options-button-update" class="button br3px">
-			<?php echo '<a class="edit" href="#" title="'.T_('Update').'" onclick="javascript:formopt();">'.T_('Update').'</a>';?>
-		</div>
-		<div id="options-button-close"  class="button br3px">
-			<?php echo '<a class="close-button" href="#" title="'.T_('Close').'" onclick="javascript:listopt();">'.T_('Close').'</a>';?>
-		</div>
-		<br /><br />
-		<fieldset>
-			<legend><?php echo T_('Options');?></legend>
-				<div class="message">
-					<p><?php echo T_('Configuration settings Planet.');?></p>
-				</div>
-			<br />
-			<div id="options-list" style="display:none;"><!-- List --></div>
-			<div id="options-form" style="display:none;"><!-- Form To Update --></div>
-		</fieldset>
-<?php include(dirname(__FILE__).'/footer.php');
+echo "brol";
+
+include(dirname(__FILE__).'/footer.php');
+
 else:
 	$page_url = urlencode(http::getHost().$_SERVER['REQUEST_URI']);
 	http::redirect('../auth.php?came_from='.$page_url);

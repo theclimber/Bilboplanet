@@ -6,7 +6,7 @@
 * Website : www.bilboplanet.com
 * Tracker : redmine.bilboplanet.com
 * Blog : www.bilboplanet.com
-* 
+*
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License as
@@ -25,7 +25,7 @@
 ?>
 <?php
 
-require dirname(__FILE__).'/../inc/admin/prepend.php';
+require dirname(__FILE__).'/inc/admin/prepend.php';
 $blog_settings = new bpSettings($core, 'root');
 
 if (isset($_GET['came_from']) && !empty($_GET['came_from'])){
@@ -91,17 +91,17 @@ if ($recover && !empty($_POST['user_id']) && !empty($_POST['user_email']))
 	try
 	{
 		$recover_key = $core->auth->setRecoverKey($user_id,$user_email);
-		
+
 		$subject = mail::B64Header('Bilboplanet'.T_('Password reset'));
 		$message =
 		T_('Someone has requested to reset the password for the following site and username.')."\n\n".
 		$page_url."\n".T_('User_id:').' '.$user_id."\n\n".
 		T_('To reset your password visit the following address, otherwise just ignore this email and nothing will happen.')."\n".
 		$page_url.'?akey='.$recover_key;
-		
+
 		$headers[] = 'From: bilboplanet@'.$_SERVER['HTTP_HOST'];
 		$headers[] = 'Content-Type: text/plain; charset=UTF-8;';
-		
+
 		mail::sendMail($user_email,$subject,$message,$headers);
 		$msg = sprintf(T_('The e-mail was sent successfully to %s.'),$user_email);
 	}
@@ -116,16 +116,16 @@ elseif ($akey)
 	try
 	{
 		$recover_res = $core->auth->recoverUserPassword($akey);
-		
+
 		$subject = mb_encode_mimeheader('Bilboplanet '.T_('Your new password'),'UTF-8','B');
 		$message =
 		T_('Username:').' '.$recover_res['user_id']."\n".
 		T_('Password:').' '.$recover_res['new_pass']."\n\n".
 		preg_replace('/\?(.*)$/','',$page_url);
-		
+
 		$headers[] = 'From: bilboplanet@'.$_SERVER['HTTP_HOST'];
 		$headers[] = 'Content-Type: text/plain; charset=UTF-8;';
-		
+
 		mail::sendMail($recover_res['user_email'],$subject,$message,$headers);
 		$msg = T_('Your new password is in your mailbox.');
 	}
@@ -150,36 +150,36 @@ elseif ($change_pwd and $data = unserialize(base64_decode($_POST['login_data']))
 			$check_user = $core->auth->checkUser($user_id,null,$user_key) === true;
 		}
 	}
-	
+
 	try
 	{
 		if (!$core->auth->allowPassChange() || !$check_user) {
 			$change_pwd = false;
 			throw new Exception();
 		}
-		
+
 		if ($_POST['new_pwd'] != $_POST['new_pwd_c']) {
 			throw new Exception(T_("Passwords don't match"));
 		}
-		
+
 		if ($core->auth->checkUser($user_id,$_POST['new_pwd']) === true) {
 			throw new Exception(T_("You didn't change your password."));
 		}
-		
+
 		$cur = $core->con->openCursor($core->prefix.'user');
 		$cur->user_change_pwd = 0;
 		$cur->user_pwd = $_POST['new_pwd'];
 		$core->updUser($core->auth->userID(),$cur);
-		
+
 		$core->session->start();
 		$_SESSION['sess_user_id'] = $user_id;
 		$_SESSION['sess_browser_uid'] = http::browserUID('BP_MASTER_KEY');
-		
+
 		if (!empty($data['user_remember']))
 		{
 			setcookie('bp_admin',$data['cookie_admin'],strtotime('+15 days'),'','');
 		}
-		
+
 		http::redirect($came_from);
 	}
 	catch (Exception $e)
@@ -192,16 +192,16 @@ elseif ($user_id !== null && ($user_pwd !== null || $user_key !== null))
 {
 	# We check the user
 	$check_user = $core->auth->checkUser($user_id,$user_pwd,$user_key) === true;
-	
+
 	$cookie_admin = http::browserUID('BP_MASTER_KEY'.$user_id.
 		crypt::hmac('BP_MASTER_KEY',$user_pwd)).bin2hex(pack('a32',$user_id));
-	
+
 	if ($check_user)
 	{
 		$core->session->start();
 		$_SESSION['sess_user_id'] = $user_id;
 		$_SESSION['sess_browser_uid'] = http::browserUID('BP_MASTER_KEY');
-		
+
 		if (!empty($_POST['user_remember'])) {
 			setcookie('bp_admin',$cookie_admin,strtotime('+15 days'),'','');
 		}
@@ -235,8 +235,8 @@ xml:lang="en" lang="en">
 	<meta name="MSSmartTagsPreventParsing" content="TRUE" />
 	<meta name="ROBOTS" content="NOARCHIVE,NOINDEX,NOFOLLOW" />
 	<meta name="GOOGLEBOT" content="NOSNIPPET" />
-	<link rel="stylesheet" type="text/css" href="meta/css/auth.css"/>
-	<script language="JavaScript" type="text/javascript" src="meta/js/crir.js"></script>
+	<link rel="stylesheet" type="text/css" href="admin/meta/css/auth.css"/>
+	<script language="JavaScript" type="text/javascript" src="admin/meta/js/crir.js"></script>
 	<title><?php echo html_entity_decode(stripslashes($blog_settings->get('planet_title')), ENT_QUOTES, 'UTF-8'); ?></title>
 </head>
 
@@ -245,7 +245,7 @@ xml:lang="en" lang="en">
 <!--<h1 id="title"<?php echo $blog_settings->get('planet_url'); ?>"><?php echo html::escapeHTML($blog_settings->get('planet_title')); ?></h1>-->
 <h1 id="title">BilboPlanet</h1>
 <h2 id="admin">Administration</h2>
-<div id="login-body" > 
+<div id="login-body" >
 
 <form action="auth.php" method="post" id="login-form">
 <?php
@@ -269,18 +269,18 @@ elseif ($recover)
 	'<div class="field">'.
 	'<label>'.T_('Username:').'</label><div class=""><span class="input">'.
 	form::field(array('user_id'),20,32,html::escapeHTML($user_id),'text',1).'</span></div></div>'.
-	
+
 	'<div class="field">'.
 	'<label>'.T_('Email:').'</label><div class=""><span class="input">'.
 	form::field(array('user_email'),20,255,html::escapeHTML($user_email),'text',2).'</span></div></div>'.
-	
-	
+
+
 	'<div class="field">'.
 	'<span class="label">&nbsp;</span>'.
 	'<div class=""><button type="submit" tabindex="3"/><span>'.T_('recover').'</span></button>'.
 	form::hidden(array('recover'),1).'</div></div>'.
 
-	
+
 	'<span class="label">&nbsp;</span><a style="" href="auth.php">'.T_('Back to login screen').'</a>';
 
 }
@@ -290,11 +290,11 @@ elseif ($change_pwd)
 	'<fieldset><legend>'.T_('Change your password').'</legend>'.
 	'<p><label>'.T_('New password:').' '.
 	form::password(array('new_pwd'),20,255,'','',1).'</label></p>'.
-	
+
 	'<p><label>'.T_('Confirm password:').' '.
 	form::password(array('new_pwd_c'),20,255,'','',2).'</label></p>'.
 	'</fielset>'.
-	
+
 	'<p><input type="submit" value="'.T_('change').'" />'.
 	form::hidden('login_data',$login_data).'</p>';
 }
@@ -315,23 +315,23 @@ else
 			'<div class="field">'.
 			'<label>'.T_('Username:').'</label><div class=""><span class="input">'.
 			form::field(array('user_id'),2,32,html::escapeHTML($user_id),'text',1).'</span></div></div>'.
-			
+
 			'<div class="field">'.
 			'<label>'.T_('Password:').'</label><div class=""><span class="input">'.
 			form::password(array('user_pwd'),2,255,'','text',2,'','id=login_password').''.
 			$passw_change.'</span></div></div>'.
-			
+
 			'<div class="checkbox">'.
 			'<span class="label">&nbsp;</span>'.
 			'<label for="checkbox1" style="float:left; padding:0; padding-left: 24px; margin:1px; width:300px;">'.
 			form::checkbox(array('user_remember'),1,'','crirHiddenJS',3,'','id="checkbox1"').''.
 			T_('Remember my ID on this computer').'</label></div>'.
-			
+
 			'<div class="field">'.
 			'<span class="label">&nbsp;</span>'.
 			'<div class=""><button type="submit" tabindex="4"/><span>'.T_('login').'</span></button></div>'.
 			'</div>';
-		
+
 		if (!empty($_REQUEST['blog'])) {
 			echo form::hidden('blog',html::escapeHTML($_REQUEST['blog']));
 		}

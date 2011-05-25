@@ -874,3 +874,23 @@ div#filter-feed {
 	padding-left : 25px;
 	margin: 5px;
 }
+div#userMenu {
+	padding: 5px 0;
+/*	background: #000;
+	color: #FFF;*/
+	width: 100%;
+	display: block;
+	position: relative;
+    font-family: Arial, Serif;
+    font-size: 11px;
+}
+div#userMenu a, div#userMenu a:hover, div#userMenu a:visited {
+	color: #000;
+}
+div#userMenu a:hover {
+	text-decoration: underline;
+}
+div#loginBox {
+	margin: 0 15px;;
+	display: inline;
+}

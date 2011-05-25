@@ -244,7 +244,7 @@ xml:lang="en" lang="en">
 
 <!--<h1 id="title"<?php echo $blog_settings->get('planet_url'); ?>"><?php echo html::escapeHTML($blog_settings->get('planet_title')); ?></h1>-->
 <h1 id="title">BilboPlanet</h1>
-<h2 id="admin">Administration</h2>
+<h2 id="admin">User interface</h2>
 <div id="login-body" >
 
 <form action="auth.php" method="post" id="login-form">

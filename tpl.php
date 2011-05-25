@@ -52,6 +52,9 @@ if ($core->auth->sessionExists() ) {
 	'username' => $core->auth->userID()
 		);
 	$core->tpl->setVar('login', $login);
+	if ($core->hasRole('manager')) {
+		$core->tpl->render('page.loginadmin');
+	}
 	$core->tpl->render('page.loginbox');
 }
 

@@ -521,8 +521,6 @@ function generate_SQL(
 		WHERE ".$where_clause;
 	$sql = $debut_sql." ".$fin_sql;
 
-	print $sql;
-	exit;
 	return $sql;
 }
 

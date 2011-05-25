@@ -408,8 +408,7 @@ function generate_SQL(
 		$tables .= ", ".$core->prefix."post_tag";
 	}
 
-	$debut_sql = "SELECT DISTINCT
-			".$core->prefix."user.user_id		as user_id,
+	$select = $core->prefix."user.user_id		as user_id,
 			user_fullname	as user_fullname,
 			user_email		as user_email,
 			post_pubdate	as pubdate,
@@ -421,15 +420,18 @@ function generate_SQL(
 			feed_id			as feed_id,
 			SUBSTRING(post_content,1,400) as short_content,
 			".$core->prefix."post.post_id		as post_id,
-			post_score		as score
-		FROM ".$tables."
-		WHERE ".$core->prefix."user.user_id = ".$core->prefix."post.user_id
+			post_score		as score";
+	$where_clause = $core->prefix."user.user_id = ".$core->prefix."post.user_id
 		AND post_status = '1'
 		AND user_status = '1'
 		AND post_score > '".$blog_settings->get('planet_votes_limit')."'";
 
 	if (isset($post_id) && !empty($post_id)) {
-		$sql = $debut_sql." AND ".$core->prefix."post.post_id = '".$post_id."'";
+		$where_clause .= " AND ".$core->prefix."post.post_id = '".$post_id."'";
+		$sql = "SELECT DISTINCT
+				".$select."
+			FROM ".$tables."
+			WHERE ".$where_clause;
 		return $sql;
 	}
 
@@ -441,7 +443,7 @@ function generate_SQL(
 			$sql_users .= $or;
 		}
 		$sql_users .= ")";
-		$debut_sql .= ' AND '.$sql_users.' ';
+		$where_clause .= ' AND '.$sql_users.' ';
 	}
 
 	if (!empty($tags)) {
@@ -452,13 +454,13 @@ function generate_SQL(
 			$sql_tags .= $or;
 		}
 		$sql_tags .= ")";
-		$debut_sql .= " AND ".$core->prefix."post.post_id = ".$core->prefix."post_tag.post_id";
-		$debut_sql .= ' AND '.$sql_tags.' ';
+		$where_clause .= " AND ".$core->prefix."post.post_id = ".$core->prefix."post_tag.post_id";
+		$where_clause .= ' AND '.$sql_tags.' ';
 	}
 
 	if (isset($search) && !empty($search)){
 		# Complete the SQL query
-		$debut_sql = $debut_sql." AND (".$core->prefix."post.post_title LIKE '%$search%'
+		$where_clause .= " AND (".$core->prefix."post.post_title LIKE '%$search%'
 			OR ".$core->prefix."post.post_permalink LIKE '%$search%'
 			OR ".$core->prefix."post.post_content LIKE '%$search%'
 			OR ".$core->prefix."user.user_fullname LIKE '%$search%')";
@@ -476,36 +478,51 @@ function generate_SQL(
 			"month" => "");
 		switch($period) {
 		case "day"		:
-			$debut_sql = $debut_sql." AND post_pubdate > '".$day."'";
+			$where_clause .= " AND post_pubdate > '".$day."'";
 			break;
 		case "week"		:
-			$debut_sql = $debut_sql." AND post_pubdate > '".$week."'";
+			$where_clause .= " AND post_pubdate > '".$week."'";
 			break;
 		case "month"	:
-			$debut_sql = $debut_sql." AND post_pubdate > '".$month."'";
+			$where_clause .= " AND post_pubdate > '".$month."'";
 			break;
 		default			:
-			$debut_sql = $debut_sql." AND post_pubdate > '".$week."'";
+			$where_clause .= " AND post_pubdate > '".$week."'";
 			break;
 		}
 	}
 
 	if ($popular){
+		$max = $core->con->select("SELECT
+			MAX(post_nbview) as max_view,
+			MAX(post_score) as max_score
+			FROM ".$core->prefix."post");
+		$max_view = $max->f('max_view');
+		$max_score = $max->f('max_score');
 		# Complete the SQL query
-		$debut_sql .= " AND post_score > 0 ";
+		$select .= ",
+			post_score/".$max_score." + post_nbview/".$max_view." as total_score";
+		$where_clause .= " AND post_score > 0 ";
 		if (!isset($period) || empty($period)) {
 			$week = time() - 3600*24*7;
-			$debut_sql .= "AND post_pubdate > ".$week;
+			$where_clause .= "AND post_pubdate > ".$week;
 		}
-		$fin_sql = " ORDER BY post_score DESC
+		$fin_sql = " ORDER BY total_score DESC
 			LIMIT $num_start,".$nb_items;
 	}
 	else {
 		$fin_sql = " ORDER BY post_pubdate DESC
 			LIMIT $num_start,".$nb_items;
 	}
+
+	$debut_sql = "SELECT DISTINCT
+			".$select."
+		FROM ".$tables."
+		WHERE ".$where_clause;
 	$sql = $debut_sql." ".$fin_sql;
 
+	print $sql;
+	exit;
 	return $sql;
 }
 

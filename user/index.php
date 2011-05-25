@@ -34,11 +34,38 @@ if ($core->auth->sessionExists()):
 		exit;
 	}
 
-include_once(dirname(__FILE__).'/header.php');
+$core->tpl->importFile('index','index.tpl', dirname(__FILE__).'/tpl/');
+$core->tpl->setVar('planet', array(
+	"url"	=>	$blog_settings->get('planet_url'),
+	"theme"	=>	$blog_settings->get('planet_theme'),
+	"title"	=>	$blog_settings->get('planet_title'),
+	"desc"	=>	$blog_settings->get('planet_desc'),
+	"keywords"	=>	$blog_settings->get('planet_keywords'),
+	"desc_meta"	=>	$blog_settings->get('planet_desc_meta'),
+	"msg_info" => $blog_settings->get('planet_msg_info'),
+));
+$menu_selected =  array(
+	'profile'=>'',
+	'write' => '',
+	'tribes' => '');
+$page = 'profile';
 
-echo "brol";
+if (isset($_GET)) {
+	# if user want to read a unique post
+	if (isset($_GET['page']) && !empty($_GET['page'])){
+		$page = trim($_GET['page']);
+	}
+}
 
-include(dirname(__FILE__).'/footer.php');
+$menu_selected[$page] = "selected";
+$core->tpl->setVar('title', 'User dashboard');
+
+$tpl = new Hyla_Tpl(dirname(__FILE__).'/tpl/');
+$tpl->importFile($page, $page.'.tpl');
+$core->tpl->setVar('html', $tpl->render());
+$core->tpl->setVar('menu', $menu_selected);
+echo $core->tpl->render();
+
 
 else:
 	$page_url = urlencode(http::getHost().$_SERVER['REQUEST_URI']);

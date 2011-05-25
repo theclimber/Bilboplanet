@@ -1,0 +1,75 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+div#wrapper {
+	padding: 0px;
+	margin: 0 auto;
+	height: 100%;
+}
+
+div#sideMenu {
+	width: 300px;
+	height: 100%;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+div#sideMenu ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+div#sideMenu li {
+	padding: 1.5em 1em 1.5em 1em;
+	line-height: 35px;
+	vertical-align: center;
+	height: 35px;
+	font-size: 2em;
+	background: #e3ecf3;
+	width: 215px;
+	color: #4180b1;
+}
+div#sideMenu li:hover {
+	background: #cce3f4;
+	color: #224d6f;
+}
+div#sideMenu li.selected {
+	background: url(../images/menu_arrow2.png) no-repeat;
+	width: 250px;
+	color: #224d6f;
+}
+div#sideMenu span {
+	height: 25px;
+	padding-left: 40px;
+}
+div#sideMenu span#profile {
+	background: url(../images/home.png) no-repeat;
+}
+div#sideMenu span#write {
+	background: url(../images/write.png) no-repeat;
+}
+div#sideMenu span#tribes {
+	background: url(../images/tribes.png) no-repeat;
+}
+div#sideMenu span#logout {
+	background: url(../images/logout.png) no-repeat;
+}
+div#mainContent {
+	position: absolute;
+	top: 0px;
+	left: 300px;
+	margin-top: 20px;
+	background: red:
+}
+
+div.button {
+	padding: 5px;
+	background-color: #D2D6CB;
+	-moz-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	font-size: 12px;
+	text-align: center;
+}

@@ -396,7 +396,8 @@ function generate_SQL(
 		$search = null,
 		$period = null,
 		$popular = false,
-		$post_id = null)
+		$post_id = null,
+		$post_status = 1)
 	{
 	global $blog_settings, $core;
 	if (!isset($nb_items)) {
@@ -420,11 +421,15 @@ function generate_SQL(
 			feed_id			as feed_id,
 			SUBSTRING(post_content,1,400) as short_content,
 			".$core->prefix."post.post_id		as post_id,
-			post_score		as score";
+			post_score		as score,
+			post_status		as status";
 	$where_clause = $core->prefix."user.user_id = ".$core->prefix."post.user_id
-		AND post_status = '1'
 		AND user_status = '1'
 		AND post_score > '".$blog_settings->get('planet_votes_limit')."'";
+
+	if ($post_status <= 1) {
+		$where_clause .= " AND post_status = '".$post_status."' ";
+	}
 
 	if (isset($post_id) && !empty($post_id)) {
 		$where_clause .= " AND ".$core->prefix."post.post_id = '".$post_id."'";

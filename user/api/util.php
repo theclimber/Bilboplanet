@@ -1,38 +1,59 @@
 <?php
 
 function render_page ($page) {
-	global $core;
+	global $core, $blog_settings;
 	$user_id = $core->auth->userID();
 	$user_settings = new bpSettings($core, $user_id);
 
 	$tpl = new Hyla_Tpl(dirname(__FILE__).'/../tpl/');
 	$tpl->importFile($page, $page.'.tpl');
+	$tpl->setVar('planet', array(
+		"url"	=>	$blog_settings->get('planet_url'),
+		"theme"	=>	$blog_settings->get('planet_theme'),
+		"title"	=>	$blog_settings->get('planet_title'),
+		"desc"	=>	$blog_settings->get('planet_desc'),
+		"keywords"	=>	$blog_settings->get('planet_keywords'),
+		"desc_meta"	=>	$blog_settings->get('planet_desc_meta'),
+		"msg_info" => $blog_settings->get('planet_msg_info'),
+	));
 
 	switch($page) {
 	case 'dashboard':
 		$sql = generate_SQL(
 			0,
 			10,
-			array($user_id));
-		//$sql = "SELECT * FROM ".$core->prefix."post
-		//	WHERE user_id = '".$user_id."' LIMIT 0, 10";
-		//	return $sql;
+			array($user_id),
+			array(),
+			'',
+			'',
+			false,
+			null,
+			2);
 		$rs = $core->con->select($sql);
 		while ($rs->fetch()) {
+			$status = "";
+			if (!$rs->status) {
+				$status = "disabled";
+			}
 			$post = array(
 				'id' => $rs->post_id,
 				'title' => html_entity_decode($rs->title, ENT_QUOTES, 'UTF-8'),
 				'permalink' => $rs->permalink,
 				'pubdate' => $rs->pubdate,
-				"date" => mysqldatetime_to_date("d/m/Y",$rs->pubdate)
+				"date" => mysqldatetime_to_date("d/m/Y",$rs->pubdate),
+				"status" => $status
 				);
 			$rs2 = $core->con->select("SELECT tag_id FROM ".$core->prefix."post_tag
 				WHERE post_id = ".$rs->post_id);
+			$tpl->setVar('post', $post);
 			while ($rs2->fetch()) {
 				$tpl->setVar('tag', $rs2->tag_id);
+				$tpl->setVar('post_id', $rs->post_id);
 				$tpl->render('userpost.tags');
 			}
-			$tpl->setVar('post', $post);
+			if (!$rs->status) {
+				$tpl->render('userpost.action');
+			}
 			$tpl->render('userpost.item');
 		}
 

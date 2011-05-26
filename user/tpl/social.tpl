@@ -31,3 +31,4 @@
 		</p>
 	</form>
 </div>
+<script type="text/javascript" src="{$planet.url}/user/tpl/js/social.js" ></script>

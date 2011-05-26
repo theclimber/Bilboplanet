@@ -78,6 +78,10 @@ li.user-post {
 	margin: 7px 0;
 	list-style: none;
 }
+div.user-post-list li.disabled {
+	background-color : #bababa;
+	color: #ededed;
+}
 li.user-post span.tag-line {
 	margin-left: 60px;
 }
@@ -103,7 +107,9 @@ div#mainContent .dashbox {
 	-webkit-border-radius: 20px;
 	border-radius: 20px;
 }
-
+table.boxy-wrapper {
+	width: 500px;
+}
 
 /******************************
  * Les formulaires

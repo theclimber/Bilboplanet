@@ -6,8 +6,8 @@
 	<title>{$planet.title} - {$title}</title>
 
 	<link href="{$planet.url}/user/tpl/css/blueprint/screen.css" rel="stylesheet" type="text/css" />
-	<link href="{$planet.url}/user/tpl/css/jquery.fancybox-1.3.2" rel="stylesheet" type="text/css" />
 	<link href="{$planet.url}/user/tpl/css/core.css" rel="stylesheet" type="text/css" />
+	<link href="{$planet.url}/user/tpl/css/boxy.css" rel="stylesheet" type="text/css" />
 
 	<script type="text/javascript" src="{$planet.url}/javascript/jquery.js"></script>
 	<script type="text/javascript" src="{$planet.url}/user/tpl/js/main.js" ></script>

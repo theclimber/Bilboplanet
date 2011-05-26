@@ -8,6 +8,7 @@
 	<link href="{$planet.url}/themes/{$planet.theme}/css/blueprint/screen.css" rel="stylesheet" type="text/css" />
 	<link href="{$planet.url}/themes/{$planet.theme}/css/jquery.fancybox-1.3.2" rel="stylesheet" type="text/css" />
 	<link href="{$planet.url}/themes/{$planet.theme}/css/core.css" rel="stylesheet" type="text/css" />
+	<link href="{$planet.url}/themes/{$planet.theme}/css/boxy.css" rel="stylesheet" type="text/css" />
 <!-- BEGIN css.import -->
 	<link href="{$planet.url}/{$css_file}" rel="stylesheet" type="text/css" />
 <!-- END css.import -->
@@ -17,6 +18,7 @@
 	<link rel="icon" type="image/ico" href="{$planet.url}/themes/{$planet.theme}/favicon.png" />
 
 	<script type="text/javascript" src="{$planet.url}/javascript/jquery.js"></script>
+	<script type="text/javascript" src="{$planet.url}/javascript/jquery.boxy.js"></script>
 	<script type="text/javascript" src="{$planet.url}/javascript/jquery.easing-1.3.pack.js" ></script>
 <!-- BEGIN js.import -->
 <script type="text/javascript" src="{$planet.url}/{$js_file}"></script>
@@ -130,6 +132,16 @@
 		<a href="#" onclick="javascript:close_popup();" id="close_popup">{_Close} x</a>
 	</div>
 	<div class="popup-content"></div>
+</div>
+<div id="tag-post-form" style="display:none">
+<form>
+	<label class="required" for="tags">{_Tags}</label>
+	<input type="text" id="tags" name="tags" value=""><br/>
+	<span class="description">{_Comma separated tags (ex: linux,web,event)}</span>
+	<div class="button">
+		<input type="submit" name="apply" class="add_tags" value="{_Apply}" />
+	</div>
+</form>
 </div>
 
 <!-- ADD FOOTER HERE -->

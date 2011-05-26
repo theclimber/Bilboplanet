@@ -41,6 +41,27 @@ if(isset($_POST) && isset($_POST['ajax'])) {
 		}
 		require_once(dirname(__FILE__).'/main_api.php');
 		break;
+	case 'account':
+		if (!$core->hasRole('user')){
+			print 'Permission denied';
+			exit;
+		}
+		require_once(dirname(__FILE__).'/account_api.php');
+		break;
+	case 'tagging':
+		if (!$core->hasRole('user')){
+			print 'Permission denied';
+			exit;
+		}
+		require_once(dirname(__FILE__).'/tagging_api.php');
+		break;
+	case 'post':
+		if (!$core->hasRole('user')){
+			print 'Permission denied';
+			exit;
+		}
+		require_once(dirname(__FILE__).'/post_api.php');
+		break;
 	default:
 		print '<div class="flash error">'.T_('bad call, this ajax call does not exist').'</div>';
 		break;

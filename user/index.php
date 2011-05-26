@@ -45,10 +45,12 @@ $core->tpl->setVar('planet', array(
 	"msg_info" => $blog_settings->get('planet_msg_info'),
 ));
 $menu_selected =  array(
-	'profile'=>'',
+	'dashboard' => '',
+	'profile'=> '',
+	'social' => '',
 	'write' => '',
 	'tribes' => '');
-$page = 'profile';
+$page = 'dashboard';
 
 if (isset($_GET)) {
 	# if user want to read a unique post
@@ -60,9 +62,7 @@ if (isset($_GET)) {
 $menu_selected[$page] = "selected";
 $core->tpl->setVar('title', 'User dashboard');
 
-$tpl = new Hyla_Tpl(dirname(__FILE__).'/tpl/');
-$tpl->importFile($page, $page.'.tpl');
-$core->tpl->setVar('html', $tpl->render());
+$core->tpl->setVar('html', render_page($page));
 $core->tpl->setVar('menu', $menu_selected);
 echo $core->tpl->render();
 

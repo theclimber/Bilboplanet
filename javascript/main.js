@@ -257,3 +257,19 @@ function getFeedURL() {
 	}
 	return feed_params;
 }
+
+function popup(url) {
+	var width = $(window).width() * 0.9;
+	var height = $(window).height() * 0.9;
+	$('div#popup').attr('style', 'z-index:1000;width:'+width+'px;height:'+height+'px;');
+	var iframe_w = width;
+	var iframe_h = height - 20;
+	$('div#popup .popup-content').html('<iframe '
+		+'src="'+url+'" '
+		+'style="width:'+iframe_w+'px;height:'+iframe_h+'px">'
+	);
+}
+function close_popup() {
+	$('div#popup .popup-content').html('');
+	$('div#popup').attr('style', 'display:none;');
+}

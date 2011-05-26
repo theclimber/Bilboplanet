@@ -9,24 +9,24 @@
 	<link href="{$planet.url}/user/tpl/css/jquery.fancybox-1.3.2" rel="stylesheet" type="text/css" />
 	<link href="{$planet.url}/user/tpl/css/core.css" rel="stylesheet" type="text/css" />
 
-	<link rel="icon" type="image/ico" href="{$planet.url}/themes/{$planet.theme}/favicon.png" />
 	<script type="text/javascript" src="{$planet.url}/javascript/jquery.js"></script>
-
+	<script type="text/javascript" src="{$planet.url}/user/tpl/js/main.js" ></script>
 </head>
 <body>
+
 <div id="wrapper">
 	<div id="sideMenu">
 		<ul>
+			<li id="dashboard" class="{$menu.dashboard}"><span class="menuItem" id="dashboard">{_Dashboard}</span></li>
 			<li id="profile" class="{$menu.profile}"><span class="menuItem" id="profile">{_Profile}</span></li>
+			<li id="social" class="{$menu.social}"><span class="menuItem" id="social">{_Social}</span></li>
 			<li id="write" class="{$menu.write}"><span class="menuItem" id="write">{_Write or share}</span></li>
-			<li id="tribes" class="{$menu.tribes}"><span class="menuItem" id="tribes">{_Tribes}</span></li>
-			<li id="logout" class="{$menu.tribes}"><span class="menuItem" id="logout">{_Logout}</span></li>
+			<li id="tribes" class="{$menu.tribes}" style="display:none"><span class="menuItem" id="tribes">{_Tribes}</span></li>
 		</ul>
 	</div>
 	<div id="mainContent">
 	{$html}
 	</div>
 </div>
-<script type="text/javascript" src="{$planet.url}/user/tpl/js/main.js" ></script>
 </body>
 </html>

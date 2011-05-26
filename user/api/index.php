@@ -26,7 +26,7 @@
 <?php
 if(isset($_POST) && isset($_POST['ajax'])) {
 	# Inclusion des fonctions
-	require_once(dirname(__FILE__).'/../../inc/admin/prepend.php');
+	require_once(dirname(__FILE__).'/../../inc/user/prepend.php');
 
 	if (!$core->auth->sessionExists() && !$core->hasRole('user')){
 		print 'Permission denied';

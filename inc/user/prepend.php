@@ -39,6 +39,7 @@ if (!is_file(BP_CONFIG_PATH))
 	exit();
 }
 
+require_once dirname(__FILE__).'/../../user/api/util.php';
 require_once dirname(__FILE__).'/../prepend.php';
 // HTTP/1.1
 header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');

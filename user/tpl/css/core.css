@@ -1,16 +1,20 @@
-body {
+div#wrapper {
+	height: 100%;
 	margin: 0;
 	padding: 0;
+	font-size: 0.9em;
+	background: #eee;
+	color: #777;
 }
-div#wrapper {
-	padding: 0px;
-	margin: 0 auto;
-	height: 100%;
-}
+
+/*****************************
+ * La sidebar
+ * ****************************/
 
 div#sideMenu {
 	width: 300px;
 	height: 100%;
+	text-shadow: 1px 1px 0 #fff;
 	position: absolute;
 	top: 0px;
 	left: 0px;
@@ -22,12 +26,12 @@ div#sideMenu ul {
 }
 div#sideMenu li {
 	padding: 1.5em 1em 1.5em 1em;
-	line-height: 35px;
+	line-height: 50px;
 	vertical-align: center;
-	height: 35px;
+	height: 50px;
 	font-size: 2em;
 	background: #e3ecf3;
-	width: 215px;
+	width: 220px;
 	color: #4180b1;
 }
 div#sideMenu li:hover {
@@ -38,13 +42,17 @@ div#sideMenu li.selected {
 	background: url(../images/menu_arrow2.png) no-repeat;
 	width: 250px;
 	color: #224d6f;
+	padding: 1.25em 1em;
 }
 div#sideMenu span {
 	height: 25px;
 	padding-left: 40px;
 }
+div#sideMenu span#dashboard {
+	background: url(../images/dashboard.png) no-repeat;
+}
 div#sideMenu span#profile {
-	background: url(../images/home.png) no-repeat;
+	background: url(../images/profile.png) no-repeat;
 }
 div#sideMenu span#write {
 	background: url(../images/write.png) no-repeat;
@@ -52,15 +60,98 @@ div#sideMenu span#write {
 div#sideMenu span#tribes {
 	background: url(../images/tribes.png) no-repeat;
 }
-div#sideMenu span#logout {
-	background: url(../images/logout.png) no-repeat;
+div#sideMenu span#social {
+	background: url(../images/social.png) no-repeat;
 }
+
+/*******************************
+ * main content
+ * ******************************/
 div#mainContent {
 	position: absolute;
 	top: 0px;
 	left: 300px;
 	margin-top: 20px;
-	background: red:
+	font-size: 1.2em;
+}
+li.user-post {
+	margin: 7px 0;
+	list-style: none;
+}
+li.user-post span.tag-line {
+	margin-left: 60px;
+}
+span.tag a, span.user a {
+	color:#000;
+}
+span.tag {
+	margin: 0px 5px;
+    padding: 0px 6px 1px 6px;
+	background: #edbe59;
+	-moz-border-radius: 8px;
+	-khtml-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	border-radius: 8px;
+}
+div#mainContent .dashbox {
+	padding: 20px;
+	border: 1px solid #fff;
+	-moz-box-shadow: -1px -1px 0 #ddd, -1px -1px 0 #ddd inset;
+	-webkit-box-shadow: -1px -1px 0 #ddd, -1px -1px 0 #ddd inset;
+	box-shadow: -1px -1px 0 #ddd, -1px -1px 0 #ddd inset;
+	-moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
+	border-radius: 20px;
+}
+
+
+/******************************
+ * Les formulaires
+ * ****************************/
+form {
+	padding: 20px;
+	border: 1px solid #fff;
+	-moz-box-shadow: -1px -1px 0 #ddd, -1px -1px 0 #ddd inset;
+	-webkit-box-shadow: -1px -1px 0 #ddd, -1px -1px 0 #ddd inset;
+	box-shadow: -1px -1px 0 #ddd, -1px -1px 0 #ddd inset;
+	-moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
+	border-radius: 20px;
+}
+input, select, textarea { 
+    /*déjà en inline-block*/ 
+    width: 250px;
+    padding: 4px;
+ /*   vertical-align: top;*/
+	border: 1px solid #aaa;
+	background: #f2f2f2;
+	
+	-moz-box-shadow: -1px -1px 0 #ddd, -1px -1px 0 #ddd inset;
+	-webkit-box-shadow: -1px -1px 0 #ddd, -1px -1px 0 #ddd inset;
+	box-shadow: -1px -1px 0 #ddd, -1px -1px 0 #ddd inset;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+}
+textarea { 
+    width: 450px; 
+    height: 15em; 
+} 
+label { 
+    display: inline-block; 
+    width: 100px; 
+    margin-right: 20px;
+   /* vertical-align: bottom;*/
+    text-align: right;
+}
+label.textarea { 
+	vertical-align: top;
+}
+input#apply { 
+	width: 100px;
+}
+span.description {
+	margin-left: 120px;
 }
 
 div.button {

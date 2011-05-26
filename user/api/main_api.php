@@ -29,11 +29,7 @@ if(isset($_POST['action'])) {
 
 	case 'page':
 		$page = $_POST['page'];
-
-		$tpl = new Hyla_Tpl(dirname(__FILE__).'/../tpl/');
-		$tpl->importFile($page, $page.'.tpl');
-
-		print $tpl->render();
+		print render_page($page);
 		break;
 
 ##########################################################
@@ -46,4 +42,5 @@ if(isset($_POST['action'])) {
 } else {
 	print 'forbidden';
 }
+
 ?>

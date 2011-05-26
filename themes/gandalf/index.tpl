@@ -139,6 +139,14 @@
 
 </div><!-- end wrap -->
 
+
+<div id="popup" style="display:none">
+	<div class="window-bar">
+		<a href="#" onclick="javascript:close_popup();" id="close_popup">{_Close} x</a>
+	</div>
+	<div class="content"></div>
+</div>
+
 <!-- ADD JAVASCRIPT IMPORT HERE -->
 <script type="text/javascript" src="{$planet.url}/themes/{$planet.theme}/js/jquery.fancybox-1.3.2.pack.js" ></script>
 <script type="text/javascript" src="{$planet.url}/themes/{$planet.theme}/js/fancy.js"></script>

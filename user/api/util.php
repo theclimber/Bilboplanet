@@ -38,6 +38,7 @@ function render_page ($page) {
 			$post = array(
 				'id' => $rs->post_id,
 				'title' => html_entity_decode($rs->title, ENT_QUOTES, 'UTF-8'),
+				'title2' => htmlspecialchars($rs->title),
 				'permalink' => $rs->permalink,
 				'pubdate' => $rs->pubdate,
 				"date" => mysqldatetime_to_date("d/m/Y",$rs->pubdate),

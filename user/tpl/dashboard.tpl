@@ -23,7 +23,7 @@
 				<!-- BEGIN userpost.tags -->
 					<span class="tag" onclick="javascript:rm_tag('{$post_id}', '{$tag}')">{$tag}</span>
 				<!-- END userpost.tags -->
-				<a href="javascript:add_tags('{$post.id}','{$post.title}')"><img title="{_Add tag}" src="tpl/images/add_tag.png"></a>
+				<a href="javascript:add_tags('{$post.id}','{$post.title2}')"><img title="{_Add tag}" src="tpl/images/add_tag.png"></a>
 				</span>
 			</li>
 		<!-- ELSE userpost.item -->

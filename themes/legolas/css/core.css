@@ -362,10 +362,6 @@ div#userMenu a, div#userMenu a:hover, div#userMenu a:visited {
 div#userMenu a:hover {
 	text-decoration: underline;
 }
-div#loginBox {
-	margin: 0 15px;;
-	display: inline;
-}
 div#popup {
 	position: absolute;
 	left: 64px;
@@ -380,4 +376,41 @@ div#popup .window-bar {
 	padding: 2px 5px 2px 0;
 	text-align: right;
 	background-color: #E3ECF3;
+}
+div#loginBox {
+	cursor: pointer;
+	display: inline-block;
+	height: 10px;
+	padding: 7px 15px 2px;
+	vertical-align: top;
+	white-space: nowrap;
+	font-weight: bold;
+	margin: 0 50px;;
+}
+div#loginBox span#login-dropdown {
+	background: url('../images/sprite-icons.png') no-repeat scoll -79px -68px transparent;
+	display: inline-block;
+	height: 7px;
+	margin-left: 1px;
+	margin-top: 8px;
+	vertical-align: top;
+	width: 7px;
+}
+div#loginBox:hover, div#loginBox.open{
+	background: #333;
+}
+div#loginForm {
+	background: #333;
+	position: absolute;
+	top: 30px;
+	right: 10px;
+	margin: 0 50px;
+	padding: 20px;
+	border: 1px solid #fff;
+	-moz-box-shadow: -1px -1px 0 #ddd, -1px -1px 0 #ddd inset;
+	-webkit-box-shadow: -1px -1px 0 #ddd, -1px -1px 0 #ddd inset;
+	box-shadow: -1px -1px 0 #ddd, -1px -1px 0 #ddd inset;
+	-moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
+	border-radius: 20px;
 }

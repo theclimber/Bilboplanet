@@ -205,6 +205,19 @@ elseif ($user_id !== null && ($user_pwd !== null || $user_key !== null))
 		if (!empty($_POST['user_remember'])) {
 			setcookie('bp_admin',$cookie_admin,strtotime('+15 days'),'','');
 		}
+
+		$rs = $core->con->select('SELECT user_token, user_id, user_fullname, user_pwd
+			FROM '.$core->prefix.'user WHERE user_id="'.$user_id.'"');
+		# if no token exists, create one
+		$rs->extend('rsExtUser');
+		if ($rs->user_token == '') {
+			$salt = $blog_settings->get('planet_salt') ;
+			$token = sha1($rs->user_pwd.$rs->user_fullname.$salt.$rs->user_id);
+			$curt = $core->con->openCursor($core->prefix.'user');
+			$curt->user_token = $token;
+			$curt->modified = array(' NOW() ');
+			$curt->update("WHERE user_id='".$rs->user_id."'");
+		}
 		http::redirect($came_from);
 	}
 	else

@@ -42,3 +42,16 @@ Add column to post :
 * post_comment (boolean)
 
 
+===================================
+Options to add in settings :
+===================================
+1) pour ROOT
+* accept_public_tagged_feed (pour accepter ou refuser la possibilité d'accéder aux flux taggés)
+* accept_user_tagged_feed (pour accepter les flux taggés à tous les utilisateurs)
+=> si ces deux valuers sont négatives, alors seuls les tribes sont acceptés
+
+* allow_feed_modification (tagging et comment)
+* allow_post_modification (tagging et comment)
+* allow_tagging_everything
+
+* planet_salt (du sel pour créer les tokens)

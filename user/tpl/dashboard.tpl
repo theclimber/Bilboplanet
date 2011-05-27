@@ -19,6 +19,7 @@
 				</span>
 			</td>
 			<td class="action">
+				<!-- BEGIN userpost.action.activate -->
 				<span class="action">
 					<!-- BEGIN userpost.action -->
 					<a id="action-post{$post.id}" href="javascript:add_post('{$post.id}')">
@@ -33,6 +34,7 @@
 				<span class="action">
 					<a href="javascript:add_tags('{$post.id}','{$post.title2}')"><img title="{_Add tag}" src="tpl/images/add_tag.png"></a>
 				</span>
+				<!-- END userpost.action.activate -->
 			</td>
 			</tr>
 		<!-- ELSE userpost.item -->

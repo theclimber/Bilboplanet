@@ -529,7 +529,7 @@ function generate_SQL(
 }
 
 function showPosts($rs, $tpl, $search_value="", $strip_tags=false) {
-	global $blog_settings;
+	global $blog_settings, $core;
 	$gravatar = $blog_settings->get('planet_avatar');
 
 	while($rs->fetch()){
@@ -592,6 +592,14 @@ function showPosts($rs, $tpl, $search_value="", $strip_tags=false) {
 			foreach ($post_tags as $tag) {
 				$tpl->setVar('post_tag', $tag);
 				$tpl->render('post.tags');
+			}
+		}
+		if ($blog_settings->get('allow_post_modification')) {
+			if($core->auth->userID() == $rs->user_id) {
+				$tpl->render('post.action.tags');
+			}
+			if($blog_settings->get('allow_tagging_everything')) {
+				$tpl->render('post.action.tags');
 			}
 		}
 		if ($rs->count()>1) {

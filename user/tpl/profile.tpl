@@ -43,6 +43,7 @@
 				</span>
 			</td>
 			<td class="action">
+				<!-- BEGIN userfeed.action.activate -->
 				<span class="action">
 				<!-- BEGIN userfeed.action -->
 				<a id="action-{$feed.id}" href="javascript:allow_comments('{$feed.id}')">
@@ -57,6 +58,7 @@
 				<span class="action">
 					<a href="javascript:add_feed_tags('{$feed.id}')"><img title="{_Add tag}" src="tpl/images/add_tag.png"></a>
 				</span>
+				<!-- END userfeed.action.activate -->
 			</td>
 			</tr>
 		<!-- ELSE userfeed.item -->

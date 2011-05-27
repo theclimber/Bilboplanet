@@ -78,11 +78,23 @@ if (isset($_GET) && isset($_GET['type'])) {
 	$tags = array();
 	$users = array();
 	$period = '';
-//	if ($blog_settings->get('accept_tagged_feeds')) {
+	$tribe_id = '';
+	if ($blog_settings->get('accept_public_tagged_feeds')) {
 		$tags = !empty($_GET['tags']) ? getArrayFromList($_GET['tags']) : array();
 		$users = !empty($_GET['users']) ? getArrayFromList($_GET['users']) : array();
 		$period = !empty($_GET['period']) ? trim($_GET['period']) : '';
-//	}
+	}
+	elseif ($blog_settings->get('accept_user_tagged_feeds')) {
+		$user_token = !empty($_GET['token']) ? trim($_GET['token']) : '';
+		if ($core->hasRole('user') || $core->hasRole('user',$token)){
+			$tags = !empty($_GET['tags']) ? getArrayFromList($_GET['tags']) : array();
+			$users = !empty($_GET['users']) ? getArrayFromList($_GET['users']) : array();
+			$period = !empty($_GET['period']) ? trim($_GET['period']) : '';
+		}
+	} else {
+		$tribe_id = !empty($_GET['tribe_id']) ? trim($_GET['tribe_id']) : '';
+	}
+
 	# Order by most popular
 	$popular = !empty($_GET['popular']) ? true : false;
 

@@ -292,3 +292,19 @@ function toggle_login_dropdown(position, url) {
 		$("div#loginForm").attr('style', 'z-index: -100;display:none');
 	}
 }
+function tag_post(post_id, post_title) {
+    var content = $('#tag-post-form form').clone();
+    Boxy.askform(content, function(val) {
+		var data = content.serialize().split('=');
+        $.ajax({
+            type: "POST",
+            url: "user/api/",
+			data : {'ajax' : 'tagging', 'action' : 'add_tags', 'post_id' : post_id, 'tags' : data[1]},
+            success: function(msg){
+                updatePostList();
+            }
+        });
+    }, {
+        title: "Tagging : " + post_title,
+    });
+}

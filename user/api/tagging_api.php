@@ -32,6 +32,10 @@ if(isset($_POST['action'])) {
 	case 'rm_tag':
 		$post_id = $_POST['post_id'];
         $tag = $_POST['tag'];
+		if (!$blog_settings->get('allow_post_modification')) {
+			print 'forbidden';
+			exit;
+		}
         $error = array();
 
 		$sql = "SELECT tag_id
@@ -68,7 +72,10 @@ if(isset($_POST['action'])) {
 	case 'add_tags':
 		$post_id = $_POST['post_id'];
 		$user_id = $core->auth->userID();
-		print $user_id;
+		if (!$blog_settings->get('allow_post_modification')) {
+			print 'forbidden';
+			exit;
+		}
 		$patterns = array( '/, /', '/ ,/');
 		$replacement = array(',', ',');
 		$tags = urldecode($_POST['tags']);
@@ -118,6 +125,10 @@ if(isset($_POST['action'])) {
 		$feed_id = $_POST['feed_id'];
         $tag = $_POST['tag'];
         $error = array();
+		if (!$blog_settings->get('allow_feed_modification')) {
+			print 'forbidden';
+			exit;
+		}
 
 		$sql = "SELECT tag_id
 			FROM ".$core->prefix."feed_tag
@@ -151,6 +162,10 @@ if(isset($_POST['action'])) {
 ##########################################################
 	case 'add_feed_tags':
 		$feed_id = $_POST['feed_id'];
+		if (!$blog_settings->get('allow_feed_modification')) {
+			print 'forbidden';
+			exit;
+		}
         $patterns = array( '/, /', '/ ,/');
         $replacement = array(',', ',');
         $tags = urldecode($_POST['tags']);

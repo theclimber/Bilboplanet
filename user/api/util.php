@@ -55,6 +55,9 @@ function render_page ($page) {
 			if (!$rs->status) {
 				$tpl->render('userpost.action');
 			}
+			if ($blog_settings->get('allow_post_modification')) {
+				$tpl->render('userpost.action.activate');
+			}
 			$tpl->render('userpost.item');
 		}
 
@@ -91,6 +94,9 @@ function render_page ($page) {
 				$tpl->setVar('tag', $rs_tags->tag_id);
 				$tpl->setVar('feed_id', $rs_feed->feed_id);
 				$tpl->render('userfeed.tags');
+			}
+			if ($blog_settings->get('allow_feed_modification')) {
+				$tpl->render('userfeed.action.activate');
 			}
 			$tpl->render('userfeed.item');
 		}

@@ -48,6 +48,9 @@
 				<!-- BEGIN post.tags -->
 					<span class="tag"><a href="javascript:add_tag('{$post_tag}')">{$post_tag}</a></span>
 				<!-- END post.tags -->
+				<!-- BEGIN post.action.tags -->
+				<a href="javascript:tag_post('{$post.id}','{$post.title}')"><img title="{_Add tag}" src="user/tpl/images/add_tag.png"></a>
+				<!-- END post.action.tags -->
 				</div>
 			</div>
 		</div>

@@ -21,6 +21,10 @@
 			<span class="description">{_Comma separated tags (ex: linux,web,event)}</span>
 		</p>
 		<p>
+			<label for="comments">{_Allow comments}</label>
+			<input type="checkbox" id="comments" checked>
+		</p>
+		<p>
 			<input type="submit" id="apply" class="button" value="{_Publish}">
 		</p>
 	</form>

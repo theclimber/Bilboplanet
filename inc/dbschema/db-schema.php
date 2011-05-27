@@ -70,6 +70,7 @@ $_s->post
 	->post_title		('text',	0,	true, null)
 	->post_content	('text',		255,true, null)
 	->post_status	('smallint',	0,	false, 1)
+	->post_comment	('smallint',	0,	false, 1)
 	->post_score	('integer',		0,	false, 0)
 	->post_nbview	('integer',		0,	false, 0)
 	->last_viewed	('timestamp',	0,	true, null)
@@ -111,12 +112,14 @@ $_s->post_tag
 	->primary('pk_post_tag', 'tag_id', 'post_id')
 	;
 
-$_s->post_comment
+$_s->comment
 	->comment_id	('integer',		0, false)
-	->post_id		('integer',		0, false)
+	->post_id		('integer',		0, true, null)
+	->tribe_id		('integer',		0, true, null)
 	->user_fullname	('varchar',		128,false)
 	->user_email	('varchar',		128,false)
 	->user_site		('text',		0,	false)
+	->content		('text',		255,true, null)
 	->created		('timestamp',	0,	true, 'now()')
 	->modified		('timestamp',	0,	true, 'now()')
 
@@ -175,6 +178,19 @@ $_s->session
 	->primary('pk_session','ses_id')
 	;
 
+$_s->tribe
+	->tribe_id		('integer',		0, false)
+	->user_id		('integer',		0, false)
+	->public		('smallint',	0,	false, 0)
+	->tribe_comment	('smallint',	0,	false, 0)
+	->search_text	('text',		0,	false)
+	->tags			('text',		0,	false)
+	->users			('text',		0,	false)
+	->created		('timestamp',	0,	true, 'now()')
+	->modified		('timestamp',	0,	true, 'now()')
+
+	->primary('pk_tribe', 'tribe_id')
+	;
 
 /* References indexes
 -------------------------------------------------------- */

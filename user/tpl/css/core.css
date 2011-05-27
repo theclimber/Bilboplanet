@@ -106,6 +106,7 @@ div#mainContent .dashbox {
 	-moz-border-radius: 20px;
 	-webkit-border-radius: 20px;
 	border-radius: 20px;
+	background: #9aadbc;
 }
 table.boxy-wrapper {
 	width: 500px;
@@ -123,15 +124,16 @@ form {
 	-moz-border-radius: 20px;
 	-webkit-border-radius: 20px;
 	border-radius: 20px;
+	background: #9aadbc;
 }
-input, select, textarea { 
-    /*déjà en inline-block*/ 
+input, select, textarea {
+    /*déjà en inline-block*/
     width: 250px;
     padding: 4px;
  /*   vertical-align: top;*/
 	border: 1px solid #aaa;
 	background: #f2f2f2;
-	
+
 	-moz-box-shadow: -1px -1px 0 #ddd, -1px -1px 0 #ddd inset;
 	-webkit-box-shadow: -1px -1px 0 #ddd, -1px -1px 0 #ddd inset;
 	box-shadow: -1px -1px 0 #ddd, -1px -1px 0 #ddd inset;
@@ -139,21 +141,21 @@ input, select, textarea {
 	-webkit-border-radius: 10px;
 	border-radius: 10px;
 }
-textarea { 
-    width: 450px; 
-    height: 15em; 
-} 
-label { 
-    display: inline-block; 
-    width: 100px; 
+textarea {
+    width: 450px;
+    height: 15em;
+}
+label {
+    display: inline-block;
+    width: 100px;
     margin-right: 20px;
    /* vertical-align: bottom;*/
     text-align: right;
 }
-label.textarea { 
+label.textarea {
 	vertical-align: top;
 }
-input#apply { 
+input#apply {
 	width: 100px;
 }
 span.description {

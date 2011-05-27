@@ -111,6 +111,87 @@ if(isset($_POST['action'])) {
 		}
 		break;
 
+##########################################################
+# Remove tag on feed
+##########################################################
+	case 'rm_feed_tag':
+		$feed_id = $_POST['feed_id'];
+        $tag = $_POST['tag'];
+        $error = array();
+
+		$sql = "SELECT tag_id
+			FROM ".$core->prefix."feed_tag
+            WHERE feed_id = ".$feed_id."
+            AND tag_id = '".$tag."';";
+		$rs = $core->con->select($sql);
+        if ($rs->count() == 0) {
+            $error[] = T_("The tag you want to remove doesn't exist on this feed");
+        } else {
+		    $core->con->execute(
+                "DELETE FROM ".$core->prefix."feed_tag WHERE feed_id = '$feed_id'
+                    AND tag_id = '".$tag."'");
+            $output = T_("The tag was successfuly removed");
+        }
+
+		if (!empty($error)) {
+			$output .= "<ul>";
+			foreach($error as $value) {
+				$output .= "<li>".$value."</li>";
+			}
+			$output .= "</ul>";
+			print '<div class="flash_error">'.$output.'</div>';
+		}
+		else {
+			print '<div class="flash_notice">'.$output.'</div>';
+		}
+		break;
+
+##########################################################
+# Add tags to feed
+##########################################################
+	case 'add_feed_tags':
+		$feed_id = $_POST['feed_id'];
+        $patterns = array( '/, /', '/ ,/');
+        $replacement = array(',', ',');
+        $tags = urldecode($_POST['tags']);
+        $tags = preg_replace($patterns, $replacement, $tags);
+        $tags = preg_split('/,/',$tags, -1, PREG_SPLIT_NO_EMPTY);
+
+		$sql = "SELECT tag_id
+			FROM ".$core->prefix."feed_tag
+            WHERE feed_id = ".$feed_id.";";
+		$rs = $core->con->select($sql);
+
+		while($rs->fetch()){
+            if (in_array($rs->tag_id, $tags)) {
+                $key = array_keys($tags, $rs->tag_id);
+                unset($tags[$key]);
+            }
+        }
+
+        $output .= T_("Tags added : ");
+        foreach($tags as $tag) {
+            $cur = $core->con->openCursor($core->prefix.'feed_tag');
+            $cur->feed_id = $feed_id;
+            $cur->tag_id = $tag;
+            $cur->insert();
+            $output .= $tag.",";
+        }
+
+		if (!empty($error)) {
+			$output .= "<ul>";
+			foreach($error as $value) {
+				$output .= "<li>".$value."</li>";
+			}
+			$output .= "</ul>";
+			print '<div class="flash_error">'.$output.'</div>';
+		}
+		else {
+			print '<div class="flash_notice">'.$output.'</div>';
+		}
+		break;
+
+
 	default:
 		print '<div class="flash_warning">'.T_('User bad call').'</div>';
 		break;

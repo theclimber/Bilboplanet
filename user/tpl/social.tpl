@@ -10,6 +10,10 @@
 			</select>
 		</p>
 		<p>
+			<label for="comments">{_Allow comments on my feeds}</label>
+			<input type="checkbox" id="comments" {$checked.comments}>
+		</p>
+		<p>
 			<label for="twitter">{_Share on twitter}</label>
 			<input type="checkbox" id="twitter" {$checked.twitter}>
 		</p>

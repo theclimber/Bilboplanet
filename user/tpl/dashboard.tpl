@@ -3,33 +3,42 @@
 	<span class="tooltip">{_Welcome on the new user interface of the Bilboplanet.
 		Here you'll be able to tag your posts and to remove them if you want.}</span>
 	<div class="user-post-list dashbox">
-		<ul>
+		<h2>{_Your latest posts}</h2>
+		<table>
 		<!-- BEGIN userpost.item -->
-			<li class="user-post {$post.status}" id="{$post.id}">
-				<span class="pubdate">{$post.date}</span> : 
-				<span class="post-title"><a href="{$post.permalink}">{$post.title}</a> 
+			<tr class="user-post {$post.status}" id="{$post.id}">
+			<td class="element">
+				<span class="pubdate">{$post.date}</span> :
+				<span class="post-title"><a href="{$post.permalink}">{$post.title}</a>
 
-				<!-- BEGIN userpost.action -->
-				<a id="action-post{$post.id}" href="javascript:add_post('{$post.id}')">
-					<img title="{_Accept post}" src="tpl/images/post-accept.png">
-				</a>
-				<!-- ELSE userpost.action -->
-				<a id="action-post{$post.id}" href="javascript:rm_post('{$post.id}')">
-					<img title="{_Remove post}" src="tpl/images/post-refuse.png">
-				</a>
-				<!-- END userpost.action -->
 				</span><br/>
 				<span class="tag-line">
 				<!-- BEGIN userpost.tags -->
 					<span class="tag" onclick="javascript:rm_tag('{$post_id}', '{$tag}')">{$tag}</span>
 				<!-- END userpost.tags -->
-				<a href="javascript:add_tags('{$post.id}','{$post.title2}')"><img title="{_Add tag}" src="tpl/images/add_tag.png"></a>
 				</span>
-			</li>
+			</td>
+			<td class="action">
+				<span class="action">
+					<!-- BEGIN userpost.action -->
+					<a id="action-post{$post.id}" href="javascript:add_post('{$post.id}')">
+						<img title="{_Accept post}" src="tpl/images/post-refuse.png">
+					</a>
+					<!-- ELSE userpost.action -->
+					<a id="action-post{$post.id}" href="javascript:rm_post('{$post.id}')">
+						<img title="{_Remove post}" src="tpl/images/post-accept.png">
+					</a>
+					<!-- END userpost.action -->
+				</span>
+				<span class="action">
+					<a href="javascript:add_tags('{$post.id}','{$post.title2}')"><img title="{_Add tag}" src="tpl/images/add_tag.png"></a>
+				</span>
+			</td>
+			</tr>
 		<!-- ELSE userpost.item -->
-			<li>{_No post found}</li>
+			<tr><td colspan=2>{_No post found}</td></tr>
 		<!-- END userpost.item -->
-		</ul>
+		</table>
 	</div>
 </div>
 <div id="tag-post-form" style="display:none">

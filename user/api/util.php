@@ -68,6 +68,32 @@ function render_page ($page) {
 			'user_email' => $rs->f('user_email')
 			);
 		$tpl->setVar('user', $user);
+
+		$rs_feed = $core->con->select("SELECT * FROM ".$core->prefix."feed
+			WHERE user_id ='".$user_id."'");
+		while ($rs_feed->fetch()) {
+			$status = "";
+			if (!$rs_feed->feed_status) {
+				$status = "disabled";
+			}
+			$feed = array(
+				"status" => $status,
+				"id" => $rs_feed->feed_id,
+				"url" => $rs_feed->feed_url,
+				);
+			$tpl->setVar('feed', $feed);
+			if (!$rs_feed->feed_comment) {
+				$tpl->render('userfeed.action');
+			}
+			$rs_tags = $core->con->select("SELECT tag_id FROM ".$core->prefix."feed_tag
+				WHERE feed_id=".$rs_feed->feed_id);
+			while($rs_tags->fetch()) {
+				$tpl->setVar('tag', $rs_tags->tag_id);
+				$tpl->setVar('feed_id', $rs_feed->feed_id);
+				$tpl->render('userfeed.tags');
+			}
+			$tpl->render('userfeed.item');
+		}
 		break;
 	case 'social':
 		$newsletter_options = array(
@@ -94,6 +120,7 @@ function render_page ($page) {
 			$tpl->render('newsletter.option');
 		}
 		$checked = array(
+			"comments" => $user_settings->get('comments'),
 			"twitter" => $user_settings->get('twitter_share'),
 			"facebook" => $user_settings->get('facebook_share'),
 			"statusnet" => $user_settings->get('statusnet_share')

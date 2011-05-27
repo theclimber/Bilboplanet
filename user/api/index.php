@@ -48,6 +48,13 @@ if(isset($_POST) && isset($_POST['ajax'])) {
 		}
 		require_once(dirname(__FILE__).'/account_api.php');
 		break;
+	case 'feed':
+		if (!$core->hasRole('user')){
+			print 'Permission denied';
+			exit;
+		}
+		require_once(dirname(__FILE__).'/feed_api.php');
+		break;
 	case 'tagging':
 		if (!$core->hasRole('user')){
 			print 'Permission denied';

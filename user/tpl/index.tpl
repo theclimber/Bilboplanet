@@ -19,8 +19,8 @@
 		<ul>
 			<li id="dashboard" class="{$menu.dashboard}"><span class="menuItem" id="dashboard">{_Dashboard}</span></li>
 			<li id="profile" class="{$menu.profile}"><span class="menuItem" id="profile">{_Profile}</span></li>
-			<li id="social" class="{$menu.social}"><span class="menuItem" id="social">{_Social}</span></li>
-			<li id="write" class="{$menu.write}"><span class="menuItem" id="write">{_Write or share}</span></li>
+			<li id="social" class="{$menu.social}" style="display:none"><span class="menuItem" id="social">{_Social}</span></li>
+			<li id="write" class="{$menu.write}" style="display:none"><span class="menuItem" id="write">{_Write or share}</span></li>
 			<li id="tribes" class="{$menu.tribes}" style="display:none"><span class="menuItem" id="tribes">{_Tribes}</span></li>
 		</ul>
 	</div>

@@ -38,6 +38,18 @@ $(document).ready(function() {
 		}
 	});
 
+	$('div#loginBox span#dropdown').click(function() {
+		var form_status = $('div#loginBox').attr('status');
+		if (form_status == 'open') {
+			$('div#loginBox').attr('status', 'close');
+			$('div#loginBox').attr('class', 'close');
+			toggle_login_dropdown('close');
+		} else {
+			$('div#loginBox').attr('class', 'open');
+			$('div#loginBox').attr('status', 'open');
+			toggle_login_dropdown('open');
+		}
+	});
 });
 
 
@@ -272,4 +284,11 @@ function popup(url) {
 function close_popup() {
 	$('div#popup .popup-content').html('');
 	$('div#popup').attr('style', 'display:none;');
+}
+function toggle_login_dropdown(position, url) {
+	if (position == 'open') {
+		$("div#loginForm").attr('style', 'z-index: 100;');
+	} else {
+		$("div#loginForm").attr('style', 'z-index: -100;display:none');
+	}
 }

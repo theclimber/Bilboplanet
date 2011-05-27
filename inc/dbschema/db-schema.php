@@ -64,7 +64,6 @@ $_s->pending_user
 $_s->post
 	->post_id		('integer',		0,	false)
 	->user_id		('varchar',		64,	false)
-	->feed_id		('integer',		0,	false)
 	->post_pubdate	('timestamp',	0,	false, 'now()')
 	->post_permalink	('text',	0,	true, null)
 	->post_title		('text',	0,	true, null)

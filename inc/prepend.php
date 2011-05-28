@@ -138,6 +138,43 @@ if (in_array($core->prefix.'setting', $schema->getTables())) {
 		"desc_meta"	=>	$blog_settings->get('planet_desc_meta'),
 		"msg_info" => $blog_settings->get('planet_msg_info'),
 	));
+
+
+	if ($core->auth->sessionExists()) {
+		# If we have a session we launch it now
+		try {
+			if (!$core->auth->checkSession())
+			{
+				# Avoid loop caused by old cookie
+				$p = $core->session->getCookieParameters(false,-600);
+				$p[3] = '/';
+				call_user_func_array('setcookie',$p);
+
+				http::redirect($blog_settings->get('planet_url').'/auth.php');
+				//http::redirect('auth.php');
+			}
+		} catch (Exception $e) {
+			__error(T_('Database error')
+				,T_('There seems to be no Session table in your database. Is Bilboplanet completly installed?')
+				,20);
+		}
+	}
+
+	# Logout
+	if (isset($_GET['logout'])) {
+		$core->session->destroy();
+		if (isset($_COOKIE['bp_admin'])) {
+			unset($_COOKIE['bp_admin']);
+			setcookie('bp_admin',false,-600,'','');
+		}
+		if (!empty($_GET['logout'])) {
+			http::redirect($_GET['logout']);
+		}
+		else {
+			http::redirect($blog_settings->get('planet_url'));
+		}
+		exit;
+	}
 }
 
 
@@ -157,43 +194,6 @@ $locales_dir = dirname(__FILE__).'/../i18n';
 T_bindtextdomain($textdomain, $locales_dir);
 T_bind_textdomain_codeset($textdomain, 'UTF-8');
 T_textdomain($textdomain);
-
-
-if ($core->auth->sessionExists()) {
-	# If we have a session we launch it now
-	try {
-		if (!$core->auth->checkSession())
-		{
-			# Avoid loop caused by old cookie
-			$p = $core->session->getCookieParameters(false,-600);
-			$p[3] = '/';
-			call_user_func_array('setcookie',$p);
-
-			http::redirect($blog_settings->get('planet_url').'/auth.php');
-			//http::redirect('auth.php');
-		}
-	} catch (Exception $e) {
-		__error(T_('Database error')
-			,T_('There seems to be no Session table in your database. Is Bilboplanet completly installed?')
-			,20);
-	}
-}
-
-# Logout
-if (isset($_GET['logout'])) {
-	$core->session->destroy();
-	if (isset($_COOKIE['bp_admin'])) {
-		unset($_COOKIE['bp_admin']);
-		setcookie('bp_admin',false,-600,'','');
-	}
-	if (!empty($_GET['logout'])) {
-		http::redirect($_GET['logout']);
-	}
-	else {
-		http::redirect($blog_settings->get('planet_url'));
-	}
-	exit;
-}
 
 function __error($summary,$message,$code=0)
 {

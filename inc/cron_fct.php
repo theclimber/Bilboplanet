@@ -160,7 +160,8 @@ function getItemsFromFeeds ($rs, $print) {
 						$item->get_date("U"),
 						$item_title,
 						$item_content,
-						$print
+						$print,
+						$rs->feed_id
 					);
 					$cpt++;
 				} # fin du $item->get_content()
@@ -201,7 +202,7 @@ function getItemsFromFeeds ($rs, $print) {
 	return $output;
 }
 
-function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_content, $print) {
+function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_content, $print, $feed_id) {
 	global $log, $core;
 	# Date
 	if (!$date) {
@@ -246,7 +247,6 @@ function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_c
 			$cur = $core->con->openCursor($core->prefix.'post');
 			$cur->post_id = $next_post_id;
 			$cur->user_id = $rs->user_id;
-			$cur->feed_id = $rs->feed_id;
 			$cur->post_pubdate = $item_date;
 			$cur->post_permalink = addslashes($item_permalink);
 			$cur->post_title = $item_title;
@@ -258,7 +258,7 @@ function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_c
 
 			$sql4 = "SELECT tag_id
 				FROM ".$core->prefix."feed_tag
-				WHERE feed_id = ".$rs->feed_id.";";
+				WHERE feed_id = ".$feed_id.";";
 			$rs5 = $core->con->select($sql4);
 			while ($rs5->fetch()) {
 				$cur2 = $core->con->openCursor($core->prefix.'post_tag');

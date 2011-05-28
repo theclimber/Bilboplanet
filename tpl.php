@@ -24,6 +24,7 @@
 ***** END LICENSE BLOCK *****/
 ?>
 <?php
+
 if (!isset($styles)) {
 	$styles = array();
 }

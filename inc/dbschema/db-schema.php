@@ -194,7 +194,6 @@ $_s->tribe
 /* References indexes
 -------------------------------------------------------- */
 $_s->post->index	('idx_post_user_id', 'btree', 'user_id');
-$_s->post->index	('idx_post_feed_id', 'btree', 'feed_id');
 $_s->feed->index	('idx_feed_user_id', 'btree', 'user_id');
 $_s->feed->index	('idx_feed_site_id', 'btree', 'site_id');
 $_s->site->index	('idx_site_user_id', 'btree', 'user_id');
@@ -204,7 +203,6 @@ $_s->setting->index	('idx_setting_user_id', 'btree', 'user_id');
 /* Foreign keys
 	-------------------------------------------------------- */
 $_s->post->reference('fk_post_user', 'user_id', 'user', 'user_id', 'cascade', 'cascade');
-$_s->post->reference('fk_post_feed', 'feed_id', 'feed', 'feed_id', 'cascade', 'cascade');
 $_s->feed->reference('fk_feed_user', 'user_id', 'user', 'user_id', 'cascade', 'cascade');
 $_s->feed->reference('fk_feed_site', 'site_id', 'site', 'site_id', 'cascade', 'cascade');
 $_s->site->reference('fk_site_user', 'user_id', 'user', 'user_id', 'cascade', 'cascade');

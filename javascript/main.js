@@ -50,6 +50,27 @@ $(document).ready(function() {
 			toggle_login_dropdown('open');
 		}
 	});
+	$("form.comment-form").submit(function() {
+		var id = $(this).attr('postid');
+		data = {
+				'ajax' : 'comment',
+				'action' : 'post_comment',
+				'post_id' : id
+			};
+		$.each($(this).serializeArray(), function(i, field) {
+			data[field['name']]=field['value'];
+		});
+		data['content'] = $('textarea#comment_text_'+id).attr('value');
+		$.ajax({
+			type: "POST",
+			url: "api/",
+			data: data,
+			success: function(msg){
+				updatePostList();
+			}
+		});
+		return false;
+	})
 });
 
 

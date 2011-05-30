@@ -34,6 +34,13 @@ if(isset($_POST) && isset($_POST['ajax'])) {
 	}*/
 
 	switch(trim($_POST['ajax'])) {
+	case 'comment':
+	if (!$blog_settings->get('allow_post_comments')){
+			print 'Permission denied';
+			exit;
+		}
+		require_once(dirname(__FILE__).'/comment_api.php');
+		break;
 	case 'main':
 	/*	if (!$core->hasRole('manager')){
 			print 'Permission denied';

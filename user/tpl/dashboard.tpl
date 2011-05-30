@@ -34,6 +34,16 @@
 				<span class="action">
 					<a href="javascript:add_tags('{$post.id}','{$post.title2}')"><img title="{_Add tag}" src="tpl/images/add_tag.png"></a>
 				</span>
+				<!-- BEGIN userpost.action.nocomment -->
+				<span class="action">
+					<a href="javascript:toggle_post_comments('{$post.id}',0)"><img title="{_Disable comments on post}" src="tpl/images/comment.png"></a>
+				</span>
+				<!-- END userpost.action.nocomment -->
+				<!-- BEGIN userpost.action.comment -->
+				<span class="action">
+					<a href="javascript:toggle_post_comments('{$post.id}',1)"><img title="{_Allow comments on post}" src="tpl/images/nocomment.png"></a>
+				</span>
+				<!-- END userpost.action.comment -->
 				<!-- END userpost.action.activate -->
 			</td>
 			</tr>

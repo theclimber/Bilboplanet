@@ -55,6 +55,11 @@ function render_page ($page) {
 			if (!$rs->status) {
 				$tpl->render('userpost.action');
 			}
+			if ($rs->comment) {
+				$tpl->render('userpost.action.nocomment');
+			} else {
+				$tpl->render('userpost.action.comment');
+			}
 			if ($blog_settings->get('allow_post_modification')) {
 				$tpl->render('userpost.action.activate');
 			}

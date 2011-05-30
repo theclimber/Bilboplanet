@@ -44,3 +44,16 @@ function add_post(post_id) {
         }
     });
 }
+function toggle_post_comments(post_id, comment_status) {
+    $.ajax({
+        type: "POST",
+        url: "api/",
+        data : {'ajax' : 'post',
+			'action' : 'comment',
+			'post_id' : post_id,
+			'status': comment_status},
+        success: function(msg){
+            updatePage('dashboard');
+        }
+    });
+}

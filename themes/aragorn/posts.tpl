@@ -51,9 +51,58 @@
 			<!-- BEGIN post.action.tags -->
 			<a href="javascript:tag_post('{$post.id}','{$post.title}')"><img title="{_Add tag}" src="user/tpl/images/add_tag.png"></a>
 			<!-- END post.action.tags -->
+			<!-- BEGIN post.action.comment -->
+			<a href="javascript:toggle_post_comments('{$post.id}', 1)"><img title="{_Allow comments}" src="user/tpl/images/comment.png"></a>
+			<!-- END post.action.comment -->
+			<!-- BEGIN post.action.uncomment -->
+			<a href="javascript:toggle_post_comments('{$post.id}', 0)"><img title="{_Disable comments}" src="user/tpl/images/nocomment.png"></a>
+			<!-- END post.action.uncomment -->
 			</div>
 		</div>
 		<div class="contenu_article">{$post.content}</div>
+		<!-- BEGIN post.comment.block -->
+		<div class="comment-block post{$comments.post_id}">
+			<div class="comment-list">
+			<ul>
+				<!-- BEGIN post.comment.element -->
+				<li class="comment" id="comments-{$comment.id}">
+					<span class="comment-author">{$comment.user_fullname_link}</span>
+					<span class="comment-pubdate">{$comment.pubdate}</span>
+					<span class="comment-content">{$comment.content}</span>
+				</li>
+				<!-- ELSE post.comment.element -->
+				<li class="comment">{_No comments yet}</li>
+				<!-- END post.comment.element -->
+			</ul>
+			</div>
+			<hr />
+			<div class="comment-form">
+				<form class="comment-form" post="{$post.id}">
+					<p>
+						<label for="user_fullname">{_Fullname}</label>
+						<input type="text" id="user_fullname" name="user_fullname" value="">
+					</p>
+					<p>
+						<label for="user_email">{_E-mail}</label>
+						<input type="e-mail" id="user_email" name="user_email" value="">
+					</p>
+					<p>
+						<label for="user_site">{_Website}</label>
+						<input type="text" id="user_site" name="user_site" value="">
+					</p>
+					<p>
+						<textarea id="post_content"></textarea><br/>
+						<span class="description">{_Here you'll find some help concerning the syntax :}
+							<a href="#">Wiki syntax</a></span>
+					</p>
+					<p>
+						<input type="submit" id="apply" class="button" value="{_Publish}">
+					</p>
+				</form>
+			</div>
+		</div>
+		<!-- END post.comment.block -->
+
 		<div class="separ_article_bottom"></div>
 		<!-- BEGIN post.backsummary -->
 		<a href="#top" class="retour_sommaire">{_Back to summary}</a>

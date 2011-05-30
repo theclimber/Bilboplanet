@@ -596,11 +596,12 @@ function showPosts($rs, $tpl, $search_value="", $strip_tags=false) {
 			}
 		}
 		if ($blog_settings->get('allow_post_modification')) {
-			if($core->auth->userID() == $rs->user_id) {
-				$tpl->render('post.action.tags');
-			}
 			if($blog_settings->get('allow_tagging_everything')) {
 				$tpl->render('post.action.tags');
+			} else {
+				if($core->auth->userID() == $rs->user_id) {
+					$tpl->render('post.action.tags');
+				}
 			}
 		}
 		if ($blog_settings->get('allow_post_comments')) {

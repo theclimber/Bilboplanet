@@ -6,6 +6,7 @@ $(document).ready(function() {
 });
 
 function updatePage(id) {
+	$('div#mainContent').fadeTo('fast', 0.1, function(){});
 	$.ajax({
 		type: "POST",
 		url: "api/",
@@ -15,7 +16,6 @@ function updatePage(id) {
 			'page' : id
 		},
 		success: function(msg){
-			$('div#mainContent').fadeTo('fast', 0.1, function(){});
 			$('#sideMenu li').attr('class', '');
 			$('#sideMenu li#'+id).attr('class', 'selected');
 			$('div#mainContent').html(msg);

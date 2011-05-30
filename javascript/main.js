@@ -308,3 +308,17 @@ function tag_post(post_id, post_title) {
         title: "Tagging : " + post_title,
     });
 }
+
+function toggle_post_comments(post_id, comment_status) {
+    $.ajax({
+        type: "POST",
+        url: "user/api/",
+        data : {'ajax' : 'post',
+			'action' : 'comment',
+			'post_id' : post_id,
+			'status': comment_status},
+        success: function(msg){
+            updatePostList();
+        }
+    });
+}

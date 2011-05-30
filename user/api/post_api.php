@@ -87,6 +87,49 @@ if(isset($_POST['action'])) {
 		print $output;
 		break;
 
+##########################################################
+# MANAGE COMMENTS ON POST
+##########################################################
+	case 'comment':
+		$post_id = $_POST['post_id'];
+		$status = $_POST['status'];
+		$user_id = $core->auth->userID();
+
+		$sql = "SELECT post_status, post_comment, post_id, user_id
+			FROM ".$core->prefix."post
+			WHERE post_id = ".$post_id;
+		$rs = $core->con->select($sql);
+		if ($rs->f('user_id') == $user_id || $core->hasRole('manager')) {
+			if ($rs->count() > 0){
+				if ($rs->f('post_comment') == $status) {
+					$error[] = T_('Nothing to do');
+				}
+				else {
+					$cur = $core->con->openCursor($core->prefix."post");
+					$cur->post_comment = $status;
+					$cur->update("WHERE post_id = $post_id");
+					$output = T_("Feed successfully updated");
+				}
+			}
+		} else {
+			$error[] = T_('Forbidden');
+		}
+
+		if (!empty($error)) {
+			$output .= "<ul>";
+			foreach($error as $value) {
+				$output .= "<li>".$value."</li>";
+			}
+			$output .= "</ul>";
+			print '<div class="flash_error">'.$output.'</div>';
+		}
+		else {
+			print '<div class="flash_notice">'.$output.'</div>';
+		}
+		break;
+
+
+
 	default:
 		print '<div class="flash_warning">'.T_('User bad call').'</div>';
 		break;

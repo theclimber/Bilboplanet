@@ -180,7 +180,9 @@ $_s->session
 $_s->tribe
 	->tribe_id		('integer',		0, false)
 	->user_id		('integer',		0, false)
+	->order			('integer',		0, true, 100)
 	->public		('smallint',	0,	false, 0)
+	->name			('varchar',		128,false)
 	->tribe_comment	('smallint',	0,	false, 0)
 	->search_text	('text',		0,	false)
 	->tags			('text',		0,	false)

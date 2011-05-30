@@ -27,7 +27,7 @@ if(isset($_POST['action'])) {
 	switch (trim($_POST['action'])){
 
 ##########################################################
-# UPDATE ACCOUNT
+# MANAGE COMMENTS ON FEED
 ##########################################################
 	case 'comment':
 		$user_id = $core->auth->userID();

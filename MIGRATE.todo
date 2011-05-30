@@ -51,7 +51,8 @@ Options to add in settings :
 => si ces deux valuers sont négatives, alors seuls les tribes sont acceptés
 
 * allow_feed_modification (tagging et comment)
-* allow_post_modification (tagging et comment)
+* allow_post_modification (tagging)
+* allow_post_comment (commenting)
 * allow_tagging_everything
 
 * planet_salt (du sel pour créer les tokens)

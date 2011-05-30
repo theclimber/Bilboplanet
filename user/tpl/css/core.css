@@ -30,16 +30,18 @@ div#sideMenu li {
 	vertical-align: center;
 	height: 50px;
 	font-size: 2em;
-	background: #e3ecf3;
-	width: 220px;
+	/*background: #e3ecf3;*/
+	background: url(../images/menu_bg2.png) repeat-y;
+	width: 250px;
 	color: #4180b1;
 }
 div#sideMenu li:hover {
-	background: #cce3f4;
+	background: url(../images/menu_bg_hover2.png) repeat-y;
+	/*background: #cce3f4;*/
 	color: #224d6f;
 }
 div#sideMenu li.selected {
-	background: url(../images/menu_arrow2.png) no-repeat;
+	background: url(../images/menu_arrow5.png) no-repeat;
 	width: 250px;
 	color: #224d6f;
 	padding: 1.25em 1em;

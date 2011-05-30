@@ -421,7 +421,8 @@ function generate_SQL(
 			SUBSTRING(post_content,1,400) as short_content,
 			".$core->prefix."post.post_id		as post_id,
 			post_score		as score,
-			post_status		as status";
+			post_status		as status,
+			post_comment	as comment";
 	$where_clause = $core->prefix."user.user_id = ".$core->prefix."post.user_id
 		AND user_status = '1'
 		AND post_score > '".$blog_settings->get('planet_votes_limit')."'";
@@ -601,6 +602,41 @@ function showPosts($rs, $tpl, $search_value="", $strip_tags=false) {
 			if($blog_settings->get('allow_tagging_everything')) {
 				$tpl->render('post.action.tags');
 			}
+		}
+		if ($blog_settings->get('allow_post_comments')) {
+			if($core->auth->userID() == $rs->user_id || $core->hasRole('manager')) {
+				if ($rs->comment) {
+					$tpl->render('post.action.uncomment');
+				} else {
+					$tpl->render('post.action.comment');
+				}
+			}
+		}
+		if ($blog_settings->get('allow_post_comments') && $rs->comment == 1) {
+			$sql = "SELECT * FROM ".$core->prefix."comment
+				WHERE post_id=".$rs->post_id;
+	//		print $sql;
+	//		exit;
+			$rs_comment = $core->con->select($sql);
+			while ($rs_comment->fetch()) {
+				$fullname = $rs_comment->user_fullname;
+				if (!empty($rs_comment->user_site)) {
+					$fullname = '<a href="'.$rs_comment->user_site.'">'.$fullname.'</a>';
+				}
+				$content = $core->wikiTransform($rs_comment->content);
+				$comment = array(
+					"id" => $rs_comment->comment_id,
+					"post_id" => $rs_comment->post_id,
+					"user_fullname_link" => $fullname,
+					"user_fullname" => $rs_comment->user_fullname,
+					"user_site" => $rs_comment->user_site,
+					"content" => $content,
+					"pubdate" => mysqldatetime_to_date("d/m/Y",$rs_comment->created)
+					);
+				$tpl->setVar("comment", $comment);
+				$tpl->render('post.comment.element');
+			}
+			$tpl->render('post.comment.block');
 		}
 		if ($rs->count()>1) {
 			$tpl->render('post.backsummary');

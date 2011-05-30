@@ -46,6 +46,7 @@ function update($core, $print=false) {
 			feed_url,
 			site_url,
 			feed_trust,
+			feed_comment,
 			feed_checked
 		FROM ".$core->prefix."feed, ".$core->prefix."site, ".$core->prefix."user
 		WHERE
@@ -252,6 +253,7 @@ function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_c
 			$cur->post_title = $item_title;
 			$cur->post_content = $item_content;
 			$cur->post_status = $rs->feed_trust == 1 ? 1 : 2;
+			$cur->post_comment = $rs->feed_comment;
 			$cur->created = array(' NOW() ');
 			$cur->modified = array(' NOW() ');
 			$cur->insert();

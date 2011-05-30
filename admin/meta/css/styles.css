@@ -703,8 +703,8 @@ table#list-articles tr.selected {
 .table-member .tc6 {width:210px;text-align:center;}
 .table-member .tc7 {width:50px;text-align:center;}
 .table-member .tc8 {width:40%;text-align:center;}
-.table-member .tc9 {width:50%;text-align:center;}
-.table-member .tc10 {width:10%;text-align:center;}
+.table-member .tc9 {width:45%;text-align:center;}
+.table-member .tc10 {width:15%;text-align:center;}
 .table-member .tc11 {width:25%;text-align:center;}
 .table-member td, .table-member th {
 	text-align: left;

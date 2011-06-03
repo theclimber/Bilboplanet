@@ -149,7 +149,7 @@ if (function_exists('phpversion')){
 
 <?php
 if (file_exists(dirname(__FILE__).'/install')) {
-	echo '<div id="flash-msg" style="background:red;" class="error">'.T_('WARNING : please remove /admin/install folder').'</div>';
+	echo '<div class="message_install"><p>'.T_('WARNING : please remove /admin/install folder for maximum security').'</p></div>';
 }
 ?>
 

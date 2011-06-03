@@ -1421,3 +1421,18 @@ a.flash_box_close{
 	margin-right:-30px;
 	cursor:pointer;
 }
+.message_install {
+	border-style: solid;
+	border-width: 1px;
+	padding: 3px 5px;
+    background-color: #FF6161;
+    border-color: #FF0000;
+    color: #222222;
+    text-transform: uppercase;
+    font-weight:bold;
+    line-height: 14px;
+    margin: 15px 0;
+}
+.message_install p {
+    margin: 2px 0;
+}

@@ -67,7 +67,7 @@ include_once(dirname(__FILE__).'/sidebar.php');
 	<?php
 	echo '<form>'.form::hidden('from',$core->auth->getInfo('user_email')).
 	'<label class="required" for="subject">'.T_('Subject').' : <br />'.
-	form::field('subject',30,255,html::escapeHTML(T_("Refuse subscription")), 'input').'</label><br />'.
+	form::field('subject',30,255,html::escapeHTML(T_("Accept subscription")), 'input').'</label><br />'.
 	'<label class="required" for="content">'.T_('Comment').' : <br />'.
 	form::textArea('content',80,14,html::escapeHTML(""), 'input').'</label><br />'.
 	'<div class="button"><input type="button" class="cancel" name="cancel" onClick="Boxy.get($(\'form.boxform\')).hide()" value="'.T_('Cancel').'"></div>'.

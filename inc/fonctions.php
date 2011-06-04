@@ -937,19 +937,19 @@ function addPendingUser ($user_id, $user_fullname, $user_email, $url, $feed, $la
 		
 	if ($rs0->count() > 0){
 		if ($rs0->f('puser_id') == $user_id) {
-			$error[] = sprintf(T_('A registration request have already sent with this username: %s'), $user_id);
+			$error[] = sprintf(T_('A registration request have been already sent with this username: %s'), $user_id);
 		}
 		if ($rs0->f('user_fullname') == $user_fullname) {
-			$error[] = sprintf(T_('A registration request have already sent with this fullname: %s'), $user_fullname);
+			$error[] = sprintf(T_('A registration request have been already sent with this fullname: %s'), $user_fullname);
 		}
 		if ($rs0->f('user_email') == $user_email) {
-			$error[] = sprintf(T_('A registration request have already sent with this email adress: %s'), $user_email);
+			$error[] = sprintf(T_('A registration request have been already sent with this email adress: %s'), $user_email);
 		}
 		if ($rs0->f('site_url') == $url) {
-			$error[] = sprintf(T_('A registration request have already sent with this website: %s'), $url);
+			$error[] = sprintf(T_('A registration request have been already sent with this website: %s'), $url);
 		}
 		if ($rs0->f('feed_url') == $feed) {
-			$error[] = sprintf(T_('A registration request have already sent with this Feed URL: %s'), $feed);
+			$error[] = sprintf(T_('A registration request have been already sent with this Feed URL: %s'), $feed);
 		}
 	}
 	

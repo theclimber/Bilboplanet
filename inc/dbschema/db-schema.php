@@ -53,6 +53,7 @@ $_s->pending_user
 	->user_pwd		('varchar',		255,true)
 	->user_lang		('varchar',		5,	true, null)
 	->licence		('varchar',		255,true, null)
+	->site_url		('text',		0,	false)
 	->feed_url		('text',		0,	false)
 	->feed_tags		('text',		0,	false)
 	->created		('timestamp',	0,	true, 'now()')

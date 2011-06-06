@@ -232,6 +232,9 @@ div#bp_pannel a#accountm {
 div#bp_pannel a#members {
 	background-image:url('../icons/users.png');
 }
+div#bp_pannel a#pendinguser {
+	background-image:url('../icons/contact-new.png');
+}
 div#bp_pannel a#feed {
 	background-image:url('../icons/feed.png');
 }
@@ -1391,20 +1394,30 @@ p.clear {
 	-webkit-box-shadow: 0 1px 5px #333;
 	z-index:101;
 }
-.flash_box.flash_error{
+.flash_box.flash_error {
     background: url(../icons/false.png) 8px no-repeat;
 	background-color: #ffe3e3;
 	border-color: #dd0000;
 	color: #550000;
 	padding-left: 30px;
 }
-.flash_box.flash_notice{
+
+.flash_box.flash_error ul {
+	margin-left: 15px;
+}
+
+.flash_box.flash_notice {
     background: url(../icons/true.png) 8px no-repeat;
 	background-color: #dfffdf;
 	border-color: #9fcf9f;
 	color: #005f00;
 	padding-left: 30px;
 }
+
+.flash_box.flash_notice ul {
+	margin-left: 15px;
+}
+
 .flash_box.flash_warning{
 	background: url(../icons/warn.png) 8px no-repeat;
 	background-color: #FFEBC1;
@@ -1412,6 +1425,11 @@ p.clear {
 	color: #A6750C;
 	padding-left: 30px;
 }
+
+.flash_box.flash_warning ul {
+	margin-left: 15px;
+}
+
 a.flash_box_close{
 	float:right;
 	width:26px;

@@ -218,6 +218,8 @@ if ($can_install && !empty($_POST))
 		$blog_settings->put('planet_moderation', '1', "boolean");
 		$blog_settings->put('planet_subscription', '1', "boolean");
 		$blog_settings->put('planet_subscription_content', $subscription_content, "string");
+		$blog_settings->put('planet_subscription_accept', "Default text when accept subscription", "string");
+		$blog_settings->put('planet_subscription_refuse', "Default text when refuse subscription", "string");
 		$blog_settings->put('planet_mail_error','1', "boolean");
 
 		# Advanced configuration

@@ -152,7 +152,7 @@ function add_tag(tag) {
 		updatePostList();
 		var taglist = '';
 		jQuery.each(this.tags, function(i, val) {
-			taglist += '<span class="tag"><a href="#" onclick="javascript:rm_tag(\''+val+'\')">'+val+'</a></span>';
+			taglist += '<span class="tag"><a href="#" onclick="javascript:rm_tag(\''+val+'\')">'+val+' x</a></span>';
 		});
 		$('#filter-page').attr('style', 'display:none;');
 		$('#filter-tags-content').html(taglist);

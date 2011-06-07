@@ -179,9 +179,9 @@ $_s->session
 	;
 
 $_s->tribe
-	->tribe_id		('integer',		0, false)
-	->user_id		('integer',		0, false)
-	->order			('integer',		0, true, 100)
+	->tribe_id		('varchar',		64,	true)
+	->user_id		('varchar',		64,	true)
+	->ordering		('integer',		0, true, 100)
 	->public		('smallint',	0,	false, 0)
 	->name			('varchar',		128,false)
 	->tribe_comment	('smallint',	0,	false, 0)

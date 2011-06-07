@@ -69,6 +69,9 @@ class bpCore
 	*/
 	public function __construct($driver, $host, $db, $user, $password, $prefix, $persist)
 	{
+		if ($driver == "sqlite") {
+			$db = dirname(__FILE__).'/../'.$db.'.sqlite';
+		}
 		$this->con = dbLayer::init($driver,$host,$db,$user,$password,$persist);
 
 		# define weak_locks for mysql

@@ -6,7 +6,7 @@
 * Website : www.bilboplanet.com
 * Tracker : redmine.bilboplanet.com
 * Blog : www.bilboplanet.com
-* 
+*
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License as
@@ -66,14 +66,14 @@ if (!empty($_POST))
 		} catch (Exception $e) {
 			throw new Exception('<p>' . T_($e->getMessage()) . '</p>');
 		}
-		
+
 		# Checks system capabilites
 		require dirname(__FILE__).'/check.php';
 		if (!dcSystemCheck($con,$_e)) {
 			$can_install = false;
 			throw new Exception('<p>'.T_('The Bilboplanet could not be installed.').'</p><ul><li>'.implode('</li><li>',$_e).'</li></ul>');
 		}
-		
+
 		# Check if bilboplanet is already installed
 		$schema = dbSchema::init($con);
 		if (in_array($DBPREFIX.'feed',$schema->getTables())) {
@@ -90,11 +90,12 @@ if (!empty($_POST))
 		if (!is_writable(dirname(BP_CONFIG_PATH))) {
 			throw new Exception(sprintf(T_('Cannot write %s file.'),BP_CONFIG_PATH));
 		}
-		
+
 		# Creates config.php file
 		$full_conf = file_get_contents($config_in);
 		writeConfigValue('BP_DBHOST',$DBHOST,$full_conf);
 		writeConfigValue('BP_DBUSER',$DBUSER,$full_conf);
+		writeConfigValue('BP_DBDRIVER',$DBDRIVER,$full_conf);
 		writeConfigValue('BP_DBPASSWORD',$DBPASSWORD,$full_conf);
 		writeConfigValue('BP_DBNAME',$DBNAME,$full_conf);
 		writeConfigValue('BP_DBPREFIX',strtolower($DBPREFIX),$full_conf);
@@ -177,9 +178,8 @@ echo
 
 '<form action="wizard.php" method="post">'.
 
-#'<p><label class="required" title="'.T_('Required field').'">'.T_('Database type:').' '.
-#form::combo('DBDRIVER',array('MySQL'=>'mysql','PosqtgreSQL'=>'pgsql','SQLite'=>'sqlite'), '', 'input').'</label></p>'.
-#form::combo('feed_status',$status,'', 'input','','').'</label><br /><br />';
+'<p><label class="required" title="'.T_('Required field').'">'.T_('Database type:').' '.
+form::combo('DBDRIVER',array('MySQL'=>'mysql','PosqtgreSQL'=>'pgsql','SQLite'=>'sqlite'), '', 'input').'</label></p>'.
 
 '<label>'.T_('Host of the database').' '.
 form::field('DBHOST',30,255,html::escapeHTML($DBHOST)).'</label>

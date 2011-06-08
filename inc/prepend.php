@@ -43,6 +43,7 @@ $__autoload['bpAuth']				= dirname(__FILE__).'/core/class.bp.auth.php';
 $__autoload['dcError']				= dirname(__FILE__).'/core/class.dc.error.php';
 $__autoload['dcModules']			= dirname(__FILE__).'/core/class.dc.modules.php';
 $__autoload['bpSettings']			= dirname(__FILE__).'/core/class.bp.settings.php';
+$__autoload['bpTribes']				= dirname(__FILE__).'/core/class.bp.tribes.php';
 $__autoload['dcRestServer']			= dirname(__FILE__).'/core/class.dc.rest.php';
 
 require_once(dirname(__FILE__).'/lib/gettext/gettext.inc');

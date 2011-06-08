@@ -180,7 +180,7 @@ $_s->session
 
 $_s->tribe
 	->tribe_id		('varchar',		64,	true)
-	->user_id		('varchar',		64,	false, null)
+	->user_id		('varchar',		64,	true)
 	->ordering		('integer',		0, true, 100)
 	->visibility	('smallint',	0,	false, 0)
 	->tribe_name	('varchar',		128,false)

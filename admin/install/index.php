@@ -82,6 +82,8 @@ if ($can_install && !empty($_POST))
 	$u_site = !empty($_POST['u_site']) ? $_POST['u_site'] : null;
 	$p_desc = !empty($_POST['p_desc']) ? htmlentities(stripslashes($_POST['p_desc']), ENT_QUOTES, 'UTF-8') : null;
 	$p_title = !empty($_POST['p_title']) ? htmlentities(stripslashes($_POST['p_title']), ENT_QUOTES, 'UTF-8') : null;
+	$p_tribe = !empty($_POST['p_tribe']) ? stripslashes($_POST['p_tribe']) : null;
+	$main_tribe_id = cleanString($p_tribe);
 	$p_lang = !empty($_POST['p_lang']) ? $_POST['p_lang'] : null;
 	define('BP_PROT_PATH',dirname(__FILE__).'/../../.htpasswd');
 
@@ -99,6 +101,9 @@ if ($can_install && !empty($_POST))
 		# Check user information
 		if (empty($p_title)) {
 			throw new Exception(T_('Please fill the title in.'));
+		}
+		if (empty($p_tribe)) {
+			throw new Exception(T_('Please give a name to your main tribe.'));
 		}
 		if (empty($u_email)) {
 			throw new Exception(T_('Please fill the user email in.'));
@@ -197,6 +202,7 @@ if ($can_install && !empty($_POST))
 		$blog_settings->put('planet_url', $planet_url, "string");
 		$blog_settings->put('planet_desc', $p_desc, "string");
 		$blog_settings->put('planet_lang', $p_lang, "string");
+		$blog_settings->put('planet_main_tribe', $main_tribe_id, "string");
 		if($p_lang == "ar") {
 			$blog_settings->put('planet_rtl', '1', "boolean");
 		}
@@ -237,6 +243,10 @@ if ($can_install && !empty($_POST))
 		$base_string = sha1(time().$u_fullname.$u_email.$u_pwd.'~'.microtime(TRUE).$default_tz);
 		$salt = substr($base_string, rand(0, strlen($base_string)), 32);
 		$blog_settings->put('planet_salt',$salt, "string");
+
+		$tribes = new bpTribes($core,null);
+		$empty_array = array('with' => array(), 'without' => array());
+		$tribes->put($main_tribe_id,$p_tribe,$empty_array,$empty_array,$empty_array,-1,'public',true);
 
 		$step = 1;
 	}
@@ -329,6 +339,9 @@ closedir($dir_handle);
 	'<label>'.T_('Description').' '.
 	form::field('p_desc',30,255,html_entity_decode(addslashes(html::escapeHTML($p_desc)))).'</label>
 	<span class="description">'.T_('Give a description of your planet').'</span>'.
+	'<label>'.T_('Name of your main feed').'<span class="red"> * </span>'.
+	form::field('p_tribe',30,255,html_entity_decode(addslashes(html::escapeHTML($p_tribe)))).'</label>
+	<span class="description">'.T_('This will become your main tribe').'</span>'.
 	'<label>'.T_('Planet Language').' '.
 	form::combo('p_lang',$lang_array, $p_lang).'</label>
 	<span class="description">'.T_('Choose your langage').'</span>'.

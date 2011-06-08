@@ -32,15 +32,16 @@ dcSettings provides blog settings management. This class instance exists as
 dcBlog $settings property. You should create a new settings instance when
 updating another blog settings.
 */
-class bpSettings
+class bpTribes
 {
 	protected $con;		///< <b>connection</b> Database connection object
 	protected $table;		///< <b>string</b> Permission table name
 	protected $user_id;		///< <b>string</b> User ID
+	protected $current_tribe;
 
-	protected $settings = array();		///< <b>array</b> Associative settings array
-	protected $global_settings = array();	///< <b>array</b> Global settings array
-	protected $local_settings = array();	///< <b>array</b> Local settings array
+	protected $tribes = array();		///< <b>array</b> Associative settings array
+	protected $global_tribes = array();	///< <b>array</b> Global settings array
+	protected $local_tribes = array();	///< <b>array</b> Local settings array
 
 	/**
 	Object constructor. Retrieves blog settings and puts them in $settings
@@ -49,15 +50,62 @@ class bpSettings
 	@param	core		<b>bpCore</b>		bpCore object
 	@param	user_id	<b>string</b>		User ID
 	*/
-	public function __construct(&$core,$user_id)
+	public function __construct(&$core,$user_id,$current=null)
 	{
 		$this->con =& $core->con;
 		$this->table = $core->prefix.'tribe';
 		$this->prefix = $core->prefix;
 		$this->user_id =& $user_id;
-		$settings = new bpSettings($core, 'root');
 
 		$this->getTribes();
+		if (isset($current)) {
+			$this->current_tribe = $this->tribes[$current];
+		}
+	}
+
+	public function set($id) {
+		if (has_key($this->tribes, $id)) {
+			$this->current_tribe = $this->tribes[$id];
+		} else {
+			$empty_array = array('with' => array(), 'without' => array());
+			$this->tribes[$id] = array(
+				'id'		=> $id,
+				'owner'		=> $this->user_id,
+				'name'		=> '',
+				'search'	=> $empty_array,
+				'tags'		=> $empty_array,
+				'users'		=> $empty_array,
+				'visibility'=> 0,
+				'global'	=> 0
+			);
+		}
+	}
+
+	public function addToTribe ($type, $list, $method='with') {
+		$patterns = array( '/, /', '/ ,/');
+		$replacement = array(',', ',');
+		$list = urldecode($list);
+		$list = preg_replace($patterns, $replacement, $list);
+		$list = preg_split('/,/',$list, -1, PREG_SPLIT_NO_EMPTY);
+
+		foreach ($list as $el) {
+			$this->current_tribe[$type][$method][] = $el;
+		}
+	}
+
+	public function rmFromTribe ($type, $list, $method='with') {
+		$patterns = array( '/, /', '/ ,/');
+		$replacement = array(',', ',');
+		$list = urldecode($list);
+		$list = preg_replace($patterns, $replacement, $list);
+		$list = preg_split('/,/',$list, -1, PREG_SPLIT_NO_EMPTY);
+
+		foreach ($list as $el) {
+			$index = array_keys($this->current_tribe[$type][$method], $el);
+			if (isset($index)) {
+				unset($this->current_tribe[$type][$method][$index]);
+			}
+		}
 	}
 
 	private function getTribes()
@@ -72,13 +120,13 @@ class bpSettings
 					visibility
 				FROM ".$this->table."
 				WHERE user_id = '".$this->con->escape($this->user_id)."'
-				OR visibility = 1,
+				OR visibility = 1
 				ORDER BY ordering DESC ";
 
 		try {
 			$rs = $this->con->select($strReq);
 		} catch (Exception $e) {
-			trigger_error(T_('Unable to retrieve settings:').' '.$this->con->error(), E_USER_ERROR);
+			throw new Exception(T_('Unable to retrieve tribes:').' '.$this->con->error(), E_USER_ERROR);
 		}
 
 		while ($rs->fetch())
@@ -93,7 +141,7 @@ class bpSettings
 
 			$array = $rs->user_id ? 'local' : 'global';
 
-			$this->{$array.'_tribes'}[$id] = array(
+			$this->{$array.'_tribes'}[$tribe_id] = array(
 				'id'		=> $tribe_id,
 				'owner'		=> $tribe_owner,
 				'name'		=> $tribe_name,
@@ -132,26 +180,27 @@ class bpSettings
 	@param	visibility	<b>string</b>		Tribe visibility public or private
 	@param	global		<b>boolean</b>		Setting is global
 	*/
-	public function put($id,$name,$user_id,$search,$tags,$users,$ordering=100,$visibility=false,$global=false)
+	public function put($id,$name,$search,$tags,$users,$ordering=100,$visibility='private',$global=false)
 	{
 		if (!preg_match('/^[a-zA-Z][a-zA-Z0-9_]+$/',$id)) {
 			throw new Exception(sprintf(T_('%s is not a valid tribe id'),$id));
 		}
 
+		$public = $visibility == 'public' ? 1 : 0;
+
 		$cur = $this->con->openCursor($this->table);
-		if ($global) {
-			$cur->user_id = $user_id;
+		if (!$global) {
+			$cur->user_id = $this->user_id;
 		}
 		$cur->ordering = $ordering;
-		$cur->visibility = $visibility;
+		$cur->visibility = $public;
 		$cur->tribe_name = $name;
 		$cur->tribe_search = json_encode($search);
 		$cur->tribe_tags = json_encode($tags);
 		$cur->tribe_users = json_encode($users);
-		$cur->created = array('NOW ()');
-		$cur->modified = array('NOW ()');
+		$cur->modified = array(' NOW() ');
 
-		if ($this->settingExists($id,$global))
+		if ($this->tribeExists($id,$global))
 		{
 			if ($global) {
 				$where = 'WHERE user_id IS NULL ';
@@ -165,6 +214,7 @@ class bpSettings
 		{
 			$cur->tribe_id = $id;
 			$cur->user_id = $global ? null : $this->user_id;
+			$cur->created = array(' NOW() ');
 
 			$cur->insert();
 		}
@@ -215,6 +265,11 @@ class bpSettings
 	public function dumpGlobalTribes()
 	{
 		return $this->global_tribes;
+	}
+
+	public function dumpLocalTribes()
+	{
+		return $this->local_tribes;
 	}
 
 	public function getTribePosts(

@@ -50,7 +50,7 @@ class bpTribes
 	@param	core		<b>bpCore</b>		bpCore object
 	@param	user_id	<b>string</b>		User ID
 	*/
-	public function __construct(&$core,$user_id,$current=null)
+	public function __construct(&$core,$user_id=null,$current=null)
 	{
 		$this->con =& $core->con;
 		$this->table = $core->prefix.'tribe';
@@ -63,7 +63,59 @@ class bpTribes
 		}
 	}
 
-	public function set($id) {
+	public function setUser($user_id) {
+		$this->user_id = $user_id;
+
+		foreach ($this->local_tribes as $id => $v) {
+			unset($this->tribes[$id]);
+		}
+		$this->local_tribes = array();
+
+		$strReq = "SELECT
+					tribe_id,
+					user_id,
+					tribe_name,
+					tribe_search,
+					tribe_tags,
+					tribe_users,
+					visibility
+				FROM ".$this->table."
+				WHERE user_id = '".$this->con->escape($this->user_id)."'
+				ORDER BY ordering DESC ";
+
+		try {
+			$rs = $this->con->select($strReq);
+		} catch (Exception $e) {
+			throw new Exception(T_('Unable to retrieve tribes:').' '.$this->con->error(), E_USER_ERROR);
+		}
+
+		while ($rs->fetch())
+		{
+			$tribe_id		= $rs->tribe_id;
+			$tribe_owner	= $rs->user_id;
+			$tribe_name		= $rs->tribe_name;
+			$tribe_search	= json_decode($rs->tribe_search, true);
+			$tribe_tags		= json_decode($rs->tribe_tags, true);
+			$tribe_users	= json_decode($rs->tribe_users, true);
+			$tribe_visibility = $rs->tribe_visibility ? true : false;
+
+			$this->local_tribes[$tribe_id] = array(
+				'id'		=> $tribe_id,
+				'owner'		=> $tribe_owner,
+				'name'		=> $tribe_name,
+				'search'	=> $tribe_search,
+				'tags'		=> $tribe_tags,
+				'users'		=> $tribe_users,
+				'visibility'=> $tribe_visibility,
+				'global'	=> $rs->user_id == ''
+			);
+			$this->tribes[$id] = $v;
+		}
+
+		return true;
+	}
+
+	public function setTribe($id) {
 		if (has_key($this->tribes, $id)) {
 			$this->current_tribe = $this->tribes[$id];
 		} else {
@@ -272,7 +324,23 @@ class bpTribes
 		return $this->local_tribes;
 	}
 
-	public function getTribePosts(
+	public function getCurrentTribePopularPosts(
+		$nb_items,
+		$num_start = 0) {
+		$tribe_id = $this->current_tribe['id'];
+		$period = $this->current_tribe['period'];
+		return $this->getTribePosts($tribe_id, $nb_items, $num_start, $period, true);
+	}
+
+	public function getCurrentTribePosts(
+		$nb_items,
+		$num_start = 0) {
+		$tribe_id = $this->current_tribe['id'];
+		$period = $this->current_tribe['period'];
+		return $this->getTribePosts($tribe_id, $nb_items, $num_start, $period);
+	}
+
+	protected function getTribePosts(
 			$tribe_id,
 			$nb_items,
 			$num_start = 0,

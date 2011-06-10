@@ -7,3 +7,4 @@ logs/*
 sitemap.xml
 themes/planetlibre
 planet-libre_logo.png
+*.sqlite

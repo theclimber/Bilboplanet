@@ -53,42 +53,12 @@ if (!isset($params)) {
 if (isset($_GET)) {
 	# if user want to read a unique post
 	if (isset($_GET['post_id']) && !empty($_GET['post_id'])){
-		$params["post_id"] = intval($_GET['post_id']);
-		$res = $core->con->select(
-			"SELECT
-				post_title, post_permalink, post_nbview
-			FROM ".$core->prefix."post WHERE post_id = ".$params["post_id"]."
-				AND post_status = 1");
-		if (!$res->isEmpty) {
-			$params['title'] .= " - ".$res->f('post_title');
+		$post_id = intval($_GET['post_id']);
+		$params = '';
+		if (isset($_GET['go']) && $_GET['go'] == "external"){
+			$params = "&go=external";
 		}
-
-		# Update the number of viewed times
-		$cur = $core->con->openCursor($core->prefix.'post');
-		$cur->post_nbview = $res->post_nbview + 1;
-		$cur->last_viewed = array('NOW()');
-		$cur->update("WHERE post_id = '".$params['post_id']."'");
-
-		$post_id = $params['post_id'];
-
-		if (isset($_GET['go']) &&
-			$_GET['go'] == "external" &&
-			!$res->isEmpty() &&
-			$blog_settings->get('internal_links')){
-			$root_url = $blog_settings->get('planet_url');
-			$analytics = $blog_settings->get('planet_analytics');
-
-			if(!empty($analytics)) {
-				# If google analytics is activated, launch request
-				analyze (
-					$analytics,
-					$root_url.'/post/'.$params['post_id'],
-					'post:'.$params['post_id'],
-					$res->post_permalink);
-			}
-			$post_url = stripslashes($res->post_permalink);
-			http::redirect($post_url);
-		}
+		http::redirect($blog_settings->get('planet_url').'/post.php?id='.$post_id.$params);
 	}
 	else {
 		if (isset($_GET['page']) && is_numeric(trim($_GET['page']))) {
@@ -190,24 +160,22 @@ $core->tpl->render('menu.filter');
 #######################
 # RENDER PAGINATION
 #######################
-if (!isset($_GET['post_id']) | empty($_GET['post_id'])){
-	if($params["page"] == 0 & $rs->count()>=10) {
-		# if we are on the first page
-		$core->tpl->render('pagination.up.next');
-		$core->tpl->render('pagination.low.next');
-	} elseif($params["page"] == 0 & $rs->count()<10) {
-		# we don't show any button
+if($params["page"] == 0 & $rs->count()>=10) {
+	# if we are on the first page
+	$core->tpl->render('pagination.up.next');
+	$core->tpl->render('pagination.low.next');
+} elseif($params["page"] == 0 & $rs->count()<10) {
+	# we don't show any button
+} else {
+	if($rs->count() == 0 | $rs->count() < 10) {
+		# if we are on the last page
+		$core->tpl->render('pagination.up.prev');
+		$core->tpl->render('pagination.low.prev');
 	} else {
-		if($rs->count() == 0 | $rs->count() < 10) {
-			# if we are on the last page
-			$core->tpl->render('pagination.up.prev');
-			$core->tpl->render('pagination.low.prev');
-		} else {
-			$core->tpl->render('pagination.up.prev');
-			$core->tpl->render('pagination.up.next');
-			$core->tpl->render('pagination.low.prev');
-			$core->tpl->render('pagination.low.next');
-		}
+		$core->tpl->render('pagination.up.prev');
+		$core->tpl->render('pagination.up.next');
+		$core->tpl->render('pagination.low.prev');
+		$core->tpl->render('pagination.low.next');
 	}
 }
 
@@ -215,10 +183,8 @@ if (!isset($_GET['post_id']) | empty($_GET['post_id'])){
 # RENDER POST LIST
 ######################
 
-if (!isset($_GET['post_id']) | empty($_GET['post_id'])){
-	$core->tpl = showPostsSummary($rs, $core->tpl);
-	$core->tpl->render('summary.block');
-}
+$core->tpl = showPostsSummary($rs, $core->tpl);
+$core->tpl->render('summary.block');
 
 # Liste des articles
 $core->tpl = showPosts($rs, $core->tpl, $search_value, $popular);

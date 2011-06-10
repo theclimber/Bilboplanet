@@ -176,6 +176,7 @@ if (in_array($core->prefix.'setting', $schema->getTables())) {
 		}
 		exit;
 	}
+
 }
 
 

@@ -48,7 +48,9 @@ class bpCore
 	public $wiki2xhtml;	///< <b>wiki2xhtml</b>		wiki2xhtml object
 	public $plugins;	///< <b>dcModules</b>		dcModules object
 	public $media;		///< <b>dcMedia</b>			dcMedia object
-	public $rest;		///< <b>dcRestServer</b>		dcRestServer object
+	public $rest;		///< <b>dcRestServer</b>	dcRestServer object
+
+	public $tribes;		///< <b>array</b> Associative settings array
 
 	private $versions = null;
 	private $formaters = array();
@@ -91,6 +93,12 @@ class bpCore
 		# Create the Hyla_Tpl object
 		$this->tpl = new Hyla_Tpl();
 		$this->tpl->setL10nCallback('T_');
+
+		if ($this->auth->sessionExists()) {
+			$this->tribes = new bpTribes($this, $this->auth->userID());
+		} else {
+			$this->tribes = new bpTribes($this);
+		}
 	}
 
 	private function authInstance()

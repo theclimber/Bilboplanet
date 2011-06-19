@@ -31,7 +31,7 @@ if (!is_file($rc_path)) {
 	require_once(dirname(__FILE__).'/i18n.php');
 	$summary = T_('No configuration file');
 	$message = T_('There is no configuration file, you need to create one. Therefor you can use the wizard to generate a configuration file. Click "Next" to go to the setup page.');
-	$message2 = '<a href="wizard.php"><div class="next">'.T_('Next').' &rarr;</div></a>';
+	$message2 = '<a href="wizard.php"><div class="next">'.T_('Next').'</div></a>';
 	$code = 0;
 	include dirname(__FILE__).'/../../inc/core_error.php';
 	exit;

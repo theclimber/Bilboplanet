@@ -122,10 +122,12 @@ header('Content-Type: text/html; charset=utf-8');
 				-khtml-border-radius:6px ;
 				-o-border-radius:6px ;
 				padding:3px 10px 4px 12px;
-				width:50px;
 				float:right;
 				margin-right:10px;
 				margin-top:10px;
+			}
+			.next:after {
+			content: " →";
 			}
 		</style>
 	</head>

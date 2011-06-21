@@ -90,10 +90,6 @@ class bpCore
 
 		$this->rest = new dcRestServer($this);
 
-		# Create the Hyla_Tpl object
-		$this->tpl = new Hyla_Tpl();
-		$this->tpl->setL10nCallback('T_');
-
 		if ($this->auth->sessionExists()) {
 			$this->tribes = new bpTribes($this, $this->auth->userID());
 		} else {

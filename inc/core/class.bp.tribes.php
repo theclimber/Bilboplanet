@@ -115,7 +115,7 @@ class bpTribes
 		return true;
 	}
 
-	public function setTribe($id) {
+	public function setCurrentTribe($id) {
 		if (has_key($this->tribes, $id)) {
 			$this->current_tribe = $this->tribes[$id];
 		} else {
@@ -349,37 +349,15 @@ class bpTribes
 			$post_status = null)
 		{
 
-		$sql = generate_SQL($tribe_id, $nb_items, $period, $popular, $post_status);
+		$sql = $this->generateSQL($tribe_id, $nb_items, $period, $popular, $post_status);
 		$rs = $this->con->select($sql);
 		$post_list = array();
 
 		while($rs->fetch()){
+			$post = new bpPost($rs->post_id);
 
-			$post = array(
-				"id" => $rs->post_id,
-				"date" => mysqldatetime_to_date("d/m/Y",$rs->pubdate),
-				"day" => mysqldatetime_to_date("d",$rs->pubdate),
-				"month" => mysqldatetime_to_date("m",$rs->pubdate),
-				"year" => mysqldatetime_to_date("Y",$rs->pubdate),
-				"hour" => mysqldatetime_to_date("H:i",$rs->pubdate),
-				"permalink" => urldecode($post_permalink),
-				"title" => html_entity_decode($rs->title, ENT_QUOTES, 'UTF-8'),
-				"content" => html_entity_decode($rs->content, ENT_QUOTES, 'UTF-8'),
-				"author_id" => $rs->user_id,
-				"author_fullname" => $rs->user_fullname,
-				"author_email" => $rs->user_email,
-				"nbview" => $rs->nbview,
-				"last_viewed" => mysqldatetime_to_date('d/m/Y H:i',$rs->last_viewed),
-				"user_votes" => getNbVotes(null,$rs->user_id),
-				"user_posts" => getNbPosts(null,$rs->user_id)
-				);
-
-			foreach ($this->tribes[$tribe_id]['search']['with'] as $key=>$value) {
-				# Format the occurences of the search request in the posts list
-				$post['content'] = $this->split_balise($value, '<span class="search_content">'.$value.'</span>', $post['content'], 'str_ireplace', 1);
-				# Format the occurences of the search request in the posts title
-				$post['title'] = $this->split_balise($value, '<span class="search_title">'.$value.'</span>', $post['title'], 'str_ireplace', 1);
-			}
+			# Ajout des balises <span class="search"> autour des mots recherchés
+			$post->setSearchWith($this->tribes[$tribe_id]['search']['with']);
 
 			$post_list[$rs->post_id] = $post;
 		}
@@ -387,7 +365,7 @@ class bpTribes
 		return $post_list;
 	}
 
-	private function generate_SQL(
+	private function generateSQL(
 			$tribe_id,
 			$nb_items,
 			$num_start = 0,
@@ -405,19 +383,7 @@ class bpTribes
 			$tables .= ", ".$this->prefix."post_tag";
 		}
 
-		$select = $this->prefix."user.user_id		as user_id,
-				user_fullname	as user_fullname,
-				user_email		as user_email,
-				post_pubdate	as pubdate,
-				post_title		as title,
-				post_permalink	as permalink,
-				post_content	as content,
-				post_nbview		as nbview,
-				last_viewed		as last_viewed,
-				".$this->prefix."post.post_id		as post_id,
-				post_score		as score,
-				post_status		as status,
-				post_comment	as comment";
+		$select = $this->prefix."post.post_id		as post_id";
 		$where_clause = $this->prefix."user.user_id = ".$this->prefix."post.user_id
 			AND user_status = '1'";
 
@@ -560,12 +526,5 @@ class bpTribes
 		}
 		return $where_clause;
 	}
-
-	private function split_balise($de, $par, $txt, $fct, $flag = 1){
-		global $arg;
-		$arg = compact('de', 'par', 'fct', 'flag');
-		return preg_replace_callback('#((?:(?!<[/a-z]).)*)([^>]*>|$)#si', "mon_rplc_callback", $txt);
-	}
-
 }
 ?>

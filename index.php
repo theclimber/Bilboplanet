@@ -29,7 +29,6 @@ require_once(dirname(__FILE__).'/inc/prepend.php');
 $scripts = array();
 $scripts[] = "javascript/main.js";
 $scripts[] = "javascript/jquery.boxy.js";
-include dirname(__FILE__).'/tpl.php';#
 header('Content-type: text/html; charset=utf-8');
 
 # Valeurs par defaut
@@ -127,11 +126,11 @@ $page_vars = array(
 	"prev" => $params["page"]-1,
 	"params" => $page_url
 );
-$core->tpl->setVar('search_value', $search_value);
 $core->tpl->setVar('params', $params);
 $core->tpl->setVar('page', $page_vars);
 $core->tpl->setVar('filter_url', $filter_url);
 
+$core->tpl->setVar('search_value', $search_value);
 $core->tpl->render('search.box');
 if (isset($_GET)) {
 	if (isset($_GET['filter']) && !empty($_GET['filter'])){

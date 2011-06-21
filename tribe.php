@@ -26,67 +26,53 @@
 <?php
 # Inclusion des fonctions
 require_once(dirname(__FILE__).'/inc/prepend.php');
-include dirname(__FILE__).'/tpl.php';#
-header('Content-type: text/html; charset=utf-8');
 
 $tribe_id = $blog_settings->get('planet_main_tribe');
 $tags = '';
 $users = '';
 $search = '';
 
-# Verification du contenu du get
+# Customizing the tribe
 if (isset($_GET)) {
-	# if user want to read a unique post
+	# if user want to read a unique tribe
 	if (isset($_GET['id']) && !empty($_GET['id'])){
-		$tribe_id = intval($_GET['id']);
+		$tribe_id = $_GET['id'];
+		$core->tribes->setCurrentTribe($tribe_id);
+	}
+	if (isset($_GET['tags'])) {
+		$tags = $_GET['tags'];
+		$core->tribes->setCurrentTags($tags);
+	}
+	if (isset($_GET['users'])) {
+		$users = $_GET['users'];
+		$core->tribes->setCurrentUsers($users);
+	}
+	if (isset($_GET['search'])) {
+		$search = $_GET['search'];
+		$core->tribes->setCurrentSearch($search);
 	}
 }
-$core->tribes->setCurrentTribe($tribe_id);
-$core->tribes->setCurrentTags($tags);
-$core->tribes->setCurrentUsers($users);
-$core->tribes->setCurrentSearch($search);
-
-$posts = $core->tribes->getCurrentTribePosts(10);
-
-#TODO : finish this code
 
 
-$page_url = '';
-foreach ($params as $key => $val) {
-	if ($key != "page" && $key != "title") {
-		$page_url .= $key."=".$val."&";
+$view = new TribeView($core);
+# Customizing the view
+if (isset($_GET)) {
+	if (isset($_GET['page']) && is_numeric($_GET['page'])) {
+		$view->setPage($_GET['page']);
+	}
+	if (isset($_GET['nbitems']) && is_numeric($_GET['nbitems'])) {
+		$view->setNbItems($_GET['nbitems']);
+	}
+	if (isset($_GET['popular']) {
+		$view->setPopular();
+	}
+	if (isset($_GET['filter']) &&
+		in_array($_GET['filter'], array('day', 'week', 'month', 'all'))) {
+		$view->setPeriod($_GET['filter']);
 	}
 }
-$filter_url = '';
-foreach ($params as $key => $val) {
-	if ($key != "page" && $key != "filter" && $key != "title") {
-		$filter_url .= $key."=".$val."&";
-	}
-}
-$page_vars = array(
-	"next" => $params["page"]+1,
-	"prev" => $params["page"]-1,
-	"params" => $page_url
-);
-$core->tpl->setVar('search_value', $search_value);
-$core->tpl->setVar('params', $params);
-$core->tpl->setVar('page', $page_vars);
-$core->tpl->setVar('filter_url', $filter_url);
 
-$core->tpl->render('search.box');
+# Print result on screen
+$view->render();
 
-# Executing sql querry
-$rs = $core->con->select($sql);
-
-######################
-# RENDER POST
-######################
-
-# Liste des articles
-$core->tpl = showPosts($rs, $core->tpl, $search_value, $popular);
-$core->tpl->render("content.posts");
-
-# Show result
-echo $core->tpl->render();
 ?>
-

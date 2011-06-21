@@ -245,38 +245,6 @@ function finCache() {
 #   Fonction de statistiques   #
 #------------------------------#
 
-# Fonction qui retourne le nombre d'articles
-function getNbPosts($con, $user_id = null) {
-	global $core;
-	if (isset($user_id)) {
-		$sql = 'SELECT COUNT(1) as nb FROM '.$core->prefix.'post WHERE post_status = 1 AND user_id = \''.$user_id.'\'';
-	} else {
-		$sql = 'SELECT COUNT(1) as nb FROM '.$core->prefix.'post WHERE post_status = 1';
-	}
-	$rs = $core->con->select($sql);
-	return $rs->f('nb');
-}
-
-# Fonction qui retourne le nombre de votes
-function getNbVotes($con, $user_id = null) {
-	global $core;
-	if (isset($user_id)) {
-		$sql = "SELECT
-				".$core->prefix."user.user_id as user_id,
-				SUM(post_score) AS nb
-			FROM ".$core->prefix."post, ".$core->prefix."user, ".$core->prefix."site
-			WHERE
-				".$core->prefix."site.user_id = ".$core->prefix."user.user_id
-				AND ".$core->prefix."user.user_id = ".$core->prefix."post.user_id
-				AND ".$core->prefix."user.user_id = '".$user_id."'
-				AND user_status = 1
-			GROUP BY user_id";
-	} else {
-		$sql = 'SELECT COUNT(1) as nb FROM '.$core->prefix.'votes';
-	}
-	$rs = $core->con->select($sql);
-	return $rs->f('nb');
-}
 
 function getUserSite($user_id) {
 	global $core;

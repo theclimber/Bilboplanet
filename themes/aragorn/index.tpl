@@ -134,10 +134,6 @@
 					{!include:'contact.tpl'}
 				<!-- END content.contact -->
 
-				<!-- BEGIN content.stats -->
-					{!include:'stats.tpl'}
-				<!-- END content.stats -->
-
 				<!-- BEGIN content.archives -->
 					{!include:'archives.tpl'}
 				<!-- END content.archives -->

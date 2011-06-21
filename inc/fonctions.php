@@ -245,22 +245,6 @@ function finCache() {
 #   Fonction de statistiques   #
 #------------------------------#
 
-# Fonction qui retourne le nombre de membres
-function getNbUsers($con) {
-	global $core;
-	$sql = 'SELECT COUNT(1) as nb FROM '.$core->prefix.'user WHERE user_status = 1';
-	$rs = $con->select($sql);
-	return $rs->f('nb');
-}
-
-# Fonction qui retourne le nombre de flux
-function getNbFeeds($con) {
-	global $core;
-	$sql = 'SELECT COUNT(1) as nb FROM '.$core->prefix.'user, '.$core->prefix.'feed WHERE '.$core->prefix.'user.user_id = '.$core->prefix.'feed.user_id AND '.$core->prefix.'user.user_status = 1';
-	$rs = $core->con->select($sql);
-	return $rs->f('nb');
-}
-
 # Fonction qui retourne le nombre d'articles
 function getNbPosts($con, $user_id = null) {
 	global $core;

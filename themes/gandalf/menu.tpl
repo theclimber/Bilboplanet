@@ -5,7 +5,6 @@
 			<!-- BEGIN menu.votes -->
 			<li><a href="{$planet.url}/?popular=true">{_Top 10}</a></li>
 			<!-- END menu.votes -->
-			<li><a href="{$planet.url}/stats.php">{_Statistics}</a></li>
 			<!-- BEGIN menu.subscription -->
 			<li><a href="{$planet.url}/inscription.php">{_Registration}</a></li>
 			<!-- END menu.subscription -->

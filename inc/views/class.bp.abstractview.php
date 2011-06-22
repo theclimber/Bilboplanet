@@ -27,6 +27,9 @@
 abstract class AbstractView
 {
 	protected $tpl;
+	protected $prefix;
+	protected $con;
+	protected $core;
 	protected $styles = array();
 	protected $scripts = array();
 	protected $search;
@@ -52,6 +55,7 @@ abstract class AbstractView
 	# RENDER SIDEBAR
 	#######################
 	protected function renderSidebar() {
+		global $blog_settings;
 		if ($blog_settings->get('planet_msg_info')) {
 			$this->tpl->render('sidebar.alert');
 		}
@@ -85,6 +89,7 @@ abstract class AbstractView
 	# RENDER MENU
 	#######################
 	protected function renderMenu() {
+		global $blog_settings;
 		if ($blog_settings->get('planet_vote')) {
 			$this->tpl->render('menu.votes');
 		}
@@ -131,6 +136,7 @@ abstract class AbstractView
 	# RENDER FOOTER
 	#####################
 	protected function renderFooter() {
+		global $blog_settings;
 		$this->tpl->setVar('footer1', array(
 			'text' => T_('Powered by Bilboplanet'),
 			'url' => 'http://www.bilboplanet.com'));
@@ -154,8 +160,12 @@ abstract class AbstractView
 	// * if yes => show it
 	// * if not => show an error in the widget place
 	protected function renderWidgets() {
+		global $blog_settings;
 		$widget_path = dirname(__FILE__).'/widgets';
-		$widget_files = json_decode($blog_settings->get('planet_widget_files'));
+		$widget_files = array();
+		if ($blog_settings->get('planet_widget_files')) {
+			$widget_files = json_decode($blog_settings->get('planet_widget_files'));
+		}
 		foreach ($widget_files as $file){
 			if (is_dir($widget_path) && is_file($widget_path.'/'.$file->{'name'})) {
 				# Build an array of available widgets

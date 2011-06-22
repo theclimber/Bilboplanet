@@ -43,7 +43,7 @@
 			<div class="votes">{$votes.html}</div>
 			<!-- END post.block.votes -->
 			<div class="post_description">
-				<h3>{$post.description}</h3>
+				<h3>{$post.day}/{$post.month}/{$post.year} {$post.hour} </h3>
 				<div class="tag-line">
 				<!-- BEGIN post.tags -->
 					<span class="tag"><a href="javascript:add_tag('{$post_tag}')">{$post_tag}</a></span>

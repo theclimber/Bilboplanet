@@ -28,33 +28,51 @@
 require_once(dirname(__FILE__).'/inc/prepend.php');
 
 $tribe_id = $blog_settings->get('planet_main_tribe');
-$tags = '';
-$users = '';
-$search = '';
+$witags = '';
+$wiusers = '';
+$wisearch = '';
+$wotags = '';
+$wousers = '';
+$wosearch = '';
 
 # Customizing the tribe
 if (isset($_GET)) {
 	# if user want to read a unique tribe
 	if (isset($_GET['id']) && !empty($_GET['id'])){
 		$tribe_id = $_GET['id'];
-		$core->tribes->setCurrentTribe($tribe_id);
 	}
-	if (isset($_GET['tags'])) {
-		$tags = $_GET['tags'];
-		$core->tribes->setCurrentTags($tags);
+	if (isset($_GET['witags'])) {
+		$witags = $_GET['witags'];
 	}
-	if (isset($_GET['users'])) {
-		$users = $_GET['users'];
-		$core->tribes->setCurrentUsers($users);
+	if (isset($_GET['wiusers'])) {
+		$wiusers = $_GET['wiusers'];
 	}
-	if (isset($_GET['search'])) {
-		$search = $_GET['search'];
-		$core->tribes->setCurrentSearch($search);
+	if (isset($_GET['wisearch'])) {
+		$wisearch = $_GET['wisearch'];
 	}
+	if (isset($_GET['wotags'])) {
+		$wotags = $_GET['wotags'];
+	}
+	if (isset($_GET['wousers'])) {
+		$wousers = $_GET['wousers'];
+	}
+	if (isset($_GET['wosearch'])) {
+		$wosearch = $_GET['wosearch'];
+	}
+
 }
 
+$core->tribes->setCurrentTribe($tribe_id);
+
+$core->tribes->setCurrentTags($witags, 'with');
+$core->tribes->setCurrentUsers($wiusers, 'with');
+$core->tribes->setCurrentSearch($wisearch, 'with');
+$core->tribes->setCurrentTags($wotags, 'without');
+$core->tribes->setCurrentUsers($wousers, 'without');
+$core->tribes->setCurrentSearch($wosearch, 'without');
 
 $view = new TribeView($core);
+
 # Customizing the view
 if (isset($_GET)) {
 	if (isset($_GET['page']) && is_numeric($_GET['page'])) {
@@ -63,7 +81,7 @@ if (isset($_GET)) {
 	if (isset($_GET['nbitems']) && is_numeric($_GET['nbitems'])) {
 		$view->setNbItems($_GET['nbitems']);
 	}
-	if (isset($_GET['popular']) {
+	if (isset($_GET['popular'])) {
 		$view->setPopular();
 	}
 	if (isset($_GET['filter']) &&

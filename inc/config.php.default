@@ -3,7 +3,7 @@
 @ini_set('display_errors', 1);
 
 # Sets which PHP errors are reported (E_ALL, E_NOTICE, E_WARNING, E_ERROR, E_PARSE, E_STRICT or 0 to disabled)
-error_reporting(E_ERROR);
+error_reporting(E_ALL);
 
 #---------------------------------------#
 #	Database configuration				#

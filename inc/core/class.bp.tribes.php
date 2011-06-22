@@ -50,20 +50,20 @@ class bpTribes
 	@param	core		<b>bpCore</b>		bpCore object
 	@param	user_id	<b>string</b>		User ID
 	*/
-	public function __construct(&$core,$user_id=null,$current=null)
+	public function __construct(&$core,$user_id=null)
 	{
 		$this->con =& $core->con;
 		$this->table = $core->prefix.'tribe';
 		$this->prefix = $core->prefix;
-		$this->user_id =& $user_id;
+		$this->user_id = $user_id;
 
 		$this->getTribes();
-		if (isset($current)) {
-			$this->current_tribe = $this->tribes[$current];
-		}
 	}
 
 	public function setUser($user_id) {
+		if ($this->user_id == $user_id | $user_id == '') {
+			throw new Exception(T_('User is unknown'));
+		}
 		$this->user_id = $user_id;
 
 		foreach ($this->local_tribes as $id => $v) {
@@ -89,15 +89,14 @@ class bpTribes
 			throw new Exception(T_('Unable to retrieve tribes:').' '.$this->con->error(), E_USER_ERROR);
 		}
 
-		while ($rs->fetch())
-		{
+		while ($rs->fetch()) {
 			$tribe_id		= $rs->tribe_id;
 			$tribe_owner	= $rs->user_id;
 			$tribe_name		= $rs->tribe_name;
 			$tribe_search	= json_decode($rs->tribe_search, true);
 			$tribe_tags		= json_decode($rs->tribe_tags, true);
 			$tribe_users	= json_decode($rs->tribe_users, true);
-			$tribe_visibility = $rs->tribe_visibility ? true : false;
+			$tribe_visibility = $rs->visibility ? true : false;
 
 			$this->local_tribes[$tribe_id] = array(
 				'id'		=> $tribe_id,
@@ -109,16 +108,13 @@ class bpTribes
 				'visibility'=> $tribe_visibility,
 				'global'	=> $rs->user_id == ''
 			);
-			$this->tribes[$id] = $v;
+			 $this->tribes[$tribe_id] = $this->local_tribes[$tribe_id];
 		}
-
 		return true;
 	}
 
 	public function setCurrentTribe($id) {
-		if (has_key($this->tribes, $id)) {
-			$this->current_tribe = $this->tribes[$id];
-		} else {
+		if (!array_key_exists($id, $this->tribes)) {
 			$empty_array = array('with' => array(), 'without' => array());
 			$this->tribes[$id] = array(
 				'id'		=> $id,
@@ -131,9 +127,23 @@ class bpTribes
 				'global'	=> 0
 			);
 		}
+		$this->current_tribe = $this->tribes[$id];
 	}
 
-	public function addToTribe ($type, $list, $method='with') {
+	public function setCurrentTags($tags, $method='with') {
+		$this->addToCurrentTribe('tags',$tags, $method);
+	}
+	public function setCurrentUsers($users, $method='with') {
+		$this->addToCurrentTribe('users',$users, $method);
+	}
+	public function setCurrentSearch($search, $method='with') {
+		$this->addToCurrentTribe('search',$search, $method);
+	}
+
+	private function addToCurrentTribe ($type, $list, $method='with') {
+		if (!in_array($method, array('with', 'without'))) {
+			throw new Exception(T_('Bad method to add tags'));
+		}
 		$patterns = array( '/, /', '/ ,/');
 		$replacement = array(',', ',');
 		$list = urldecode($list);
@@ -145,7 +155,7 @@ class bpTribes
 		}
 	}
 
-	public function rmFromTribe ($type, $list, $method='with') {
+	private function rmFromCurrentTribe ($type, $list, $method='with') {
 		$patterns = array( '/, /', '/ ,/');
 		$replacement = array(',', ',');
 		$list = urldecode($list);
@@ -158,6 +168,26 @@ class bpTribes
 				unset($this->current_tribe[$type][$method][$index]);
 			}
 		}
+	}
+
+	public function getCurrentSearchWith() {
+		return $this->current_tribe['search']['with'];
+	}
+
+	public function getCurrentSearchWithout() {
+		return $this->current_tribe['search']['without'];
+	}
+
+	public function getCurrentName() {
+		return $this->current_tribe['name'];
+	}
+
+	public function getCurrentTags() {
+		return $this->current_tribe['tags'];
+	}
+
+	public function getCurrentUsers() {
+		return $this->current_tribe['users'];
 	}
 
 	private function getTribes()
@@ -189,7 +219,7 @@ class bpTribes
 			$tribe_search	= json_decode($rs->tribe_search, true);
 			$tribe_tags		= json_decode($rs->tribe_tags, true);
 			$tribe_users	= json_decode($rs->tribe_users, true);
-			$tribe_visibility = $rs->tribe_visibility ? true : false;
+			$tribe_visibility = $rs->visibility ? true : false;
 
 			$array = $rs->user_id ? 'local' : 'global';
 
@@ -326,47 +356,33 @@ class bpTribes
 
 	public function getCurrentTribePopularPosts(
 		$nb_items,
-		$num_start = 0) {
-		$tribe_id = $this->current_tribe['id'];
-		$period = $this->current_tribe['period'];
-		return $this->getTribePosts($tribe_id, $nb_items, $num_start, $period, true);
+		$num_start = 0,
+		$period = null) {
+		return $this->getCurrentTribePosts($nb_items, $num_start, $period, true);
 	}
 
 	public function getCurrentTribePosts(
 		$nb_items,
-		$num_start = 0) {
-		$tribe_id = $this->current_tribe['id'];
-		$period = $this->current_tribe['period'];
-		return $this->getTribePosts($tribe_id, $nb_items, $num_start, $period);
-	}
+		$num_start = 0,
+		$period = null,
+		$popular = false,
+		$post_status = null)
+	{
 
-	protected function getTribePosts(
-			$tribe_id,
-			$nb_items,
-			$num_start = 0,
-			$period = null,
-			$popular = false,
-			$post_status = null)
-		{
-
-		$sql = $this->generateSQL($tribe_id, $nb_items, $period, $popular, $post_status);
+		$sql = $this->generateSQL($nb_items, 0, $period, $popular, $post_status);
 		$rs = $this->con->select($sql);
 		$post_list = array();
 
 		while($rs->fetch()){
-			$post = new bpPost($rs->post_id);
-
+			$post = new bpPost($this->con, $this->prefix, $rs->post_id);
 			# Ajout des balises <span class="search"> autour des mots recherchés
-			$post->setSearchWith($this->tribes[$tribe_id]['search']['with']);
-
+			$post->setSearchWith($this->current_tribe['search']['with']);
 			$post_list[$rs->post_id] = $post;
 		}
-
 		return $post_list;
 	}
 
 	private function generateSQL(
-			$tribe_id,
 			$nb_items,
 			$num_start = 0,
 			$period = null,
@@ -378,12 +394,8 @@ class bpTribes
 			throw new Exception(sprintf(T_('%s must be and integer'),$id));
 		}
 
-		$tables = $this->prefix."post, ".$this->prefix."user";
-		if (!empty($tags)) {
-			$tables .= ", ".$this->prefix."post_tag";
-		}
-
 		$select = $this->prefix."post.post_id		as post_id";
+		$tables = $this->prefix."post, ".$this->prefix."user";
 		$where_clause = $this->prefix."user.user_id = ".$this->prefix."post.user_id
 			AND user_status = '1'";
 
@@ -393,17 +405,18 @@ class bpTribes
 			$where_clause .= " AND post_status = '1' ";
 		}
 
-		$users = $this->tribes[$tribe_id]['users'];
+		$users = $this->current_tribe['users'];
 		if (!empty($users)) {
 			$where_clause .= $this->__getUsersClause($users);
 		}
 
-		$tags = $this->tribes[$tribe_id]['tags'];
+		$tags = $this->current_tribe['tags'];
 		if (!empty($tags)) {
+			$tables .= ", ".$this->prefix."post_tag";
 			$where_clause .= $this->__getTagsClause($tags);
 		}
 
-		$search = $this->tribes[$tribe_id]['search'];
+		$search = $this->current_tribe['search'];
 		if (isset($search) && !empty($search)){
 			$where_clause .= $this->__getSearchClause($search);
 		}
@@ -445,12 +458,16 @@ class bpTribes
 	}
 
 	private function __getWithWithoutClause($array,$compare) {
+		if (!count($array['with']) && !count($array['without'])) {
+			return '';
+		}
+
 		$where_clause = ' ';
 		if (count($array['with']) > 0) {
 			$sql_with = "(";
 			foreach ($array['with'] as $key=>$value) {
 				$sql_with .= $compare." = '".$value."'";
-				$or = ($key == count($array)-1) ? "" : " OR ";
+				$or = ($key == count($array['with'])-1) ? "" : " OR ";
 				$sql_with .= $or;
 			}
 			$sql_with .= ")";
@@ -461,7 +478,7 @@ class bpTribes
 			$sql_without = "(";
 			foreach ($array['without'] as $key=>$value) {
 				$sql_without .= $compare." != '".$value."'";
-				$and = ($key == count($array)-1) ? "" : " AND ";
+				$and = ($key == count($array['without'])-1) ? "" : " AND ";
 				$sql_without .= $and;
 			}
 			$sql_without .= ")";
@@ -476,8 +493,12 @@ class bpTribes
 	}
 
 	private function __getTagsClause($tags) {
-		$where_clause .= " AND ".$this->prefix."post.post_id = ".$this->prefix."post_tag.post_id";
-		$where_clause .= $this->__getWithWithoutClause($tags, $this->prefix.'post_tag.tag_id');
+		$where_clause = '';
+		$with_without = $this->__getWithWithoutClause($tags, $this->prefix.'post_tag.tag_id');
+		if ($with_without != '') {
+			$where_clause = " AND ".$this->prefix."post.post_id = ".
+				$this->prefix."post_tag.post_id ".$with_without;
+		}
 		return $where_clause;
 	}
 

@@ -42,19 +42,20 @@ class bpPost
 	protected $nbviews;
 	protected $score;
 
-	protected $post_tags = array();
+	protected $tags = array();
 
-	public function __construct(&$core,$post_id)
+	public function __construct(&$con, $prefix,$post_id)
 	{
-		$this->con =& $core->con;
-		$this->table = $core->prefix.'post';
-		$this->prefix = $core->prefix;
+		$this->con =& $con;
+		$this->table = $prefix.'post';
+		$this->prefix = $prefix;
+		$this->post_id = $post_id;
 		$this->getPost();
 	}
 
 	private function getPost()
 	{
-		$select = $core->prefix."user.user_id		as user_id,
+		$select = $this->prefix."user.user_id		as user_id,
 				post_pubdate	as pubdate,
 				post_title		as title,
 				post_permalink	as permalink,
@@ -64,10 +65,10 @@ class bpPost
 				".$this->table.".post_id		as post_id,
 				post_score		as score,
 				post_status		as status,
-				post_comment	as comment";
+				post_comment	as post_comment";
 		$tables = $this->table.", ".$this->prefix."user, ".$this->prefix."post_tag";
 		$where_clause = $this->prefix."user.user_id = ".$this->table.".user_id";
-		$where_clause .= " AND ".$core->prefix."post.post_id = '".$post_id."'";
+		$where_clause .= " AND ".$this->prefix."post.post_id = '".$this->post_id."'";
 
 		$strReq = "SELECT ".$select."
 			FROM ".$tables."
@@ -84,14 +85,14 @@ class bpPost
 		$this->title = html_entity_decode($rs->f('title'), ENT_QUOTES, 'UTF-8');
 		$this->content = html_entity_decode($rs->f('content'), ENT_QUOTES, 'UTF-8');
 
-		$this->author = new bpUser($rs->f('user_id'));
+		$this->author = new bpUser($this->con, $this->prefix, $rs->f('user_id'));
 		$this->nbviews = $rs->f('nbview');
 		$this->last_viewed = $rs->f('last_viewed');
 		$this->score = $rs->f('score');
-		$this->allow_comments = $rs->f('comments');
+		$this->allow_comments = $rs->f('post_comment');
 		$this->status = $rs->f('status');
 
-		$sql_tags = "SELECT * FROM ".$this->prefix."post_tags WHERE post_id = ".$this->post_id;
+		$sql_tags = "SELECT * FROM ".$this->prefix."post_tag WHERE post_id = ".$this->post_id;
 		$rs2 = $this->con->select($sql_tags);
 		while ($rs2->fetch()) {
 			$this->tags[] = $rs2->tag_id;
@@ -100,7 +101,8 @@ class bpPost
 		return true;
 	}
 
-	public getPermalink() {
+	public function getPermalink() {
+		global $blog_settings;
 		$post_permalink = $this->permalink;
 		if ($blog_settings->get('internal_links')) {
 			$post_permalink = $blog_settings->get('planet_url').
@@ -110,32 +112,32 @@ class bpPost
 		return $post_permalink;
 	}
 
-	public getPubdateDay() {
-		return getPubdateFormat('d');
+	public function getPubdateDay() {
+		return $this->getPubdateFormat('d');
 	}
-	public getPubdateMonth() {
-		return getPubdateFormat('m');
+	public function getPubdateMonth() {
+		return $this->getPubdateFormat('m');
 	}
-	public getPubdateYear() {
-		return getPubdateFormat('Y');
+	public function getPubdateYear() {
+		return $this->getPubdateFormat('Y');
 	}
-	public getPubdateHour() {
-		return getPubdateFormat('H:i');
+	public function getPubdateHour() {
+		return $this->getPubdateFormat('H:i');
 	}
-	public getPubdate() {
-		return getPubdateFormat('d/m/Y');
+	public function getPubdate() {
+		return $this->getPubdateFormat('d/m/Y');
 	}
-	protected getLatestViewedFormat($format) {
-		return  getDateFormat($format,$this->latest_viewed)
+	public function getLatestViewedFormat($format) {
+		return  $this->getDateFormat($format,$this->last_viewed);
 	}
-	protected getPubdateFormat($format) {
-		return  getDateFormat($format,$this->timestamp)
+	protected function getPubdateFormat($format) {
+		return  $this->getDateFormat($format,$this->timestamp);
 	}
-	protected getDateFormat($format, $timestamp) {
-		return  mysqldatetime_to_date($format,$timestamp)
+	protected function getDateFormat($format, $timestamp) {
+		return mysqldatetime_to_date($format,$timestamp);
 	}
 
-	public function setSearchWith(searchs) {
+	public function setSearchWith($searchs) {
 		foreach ($searchs as $key=>$value) {
 			# Format the occurences of the search request in the posts list
 			$this->content = $this->split_balise($value, '<span class="search_content">'.$value.'</span>', $this->content, 'str_ireplace', 1);
@@ -144,10 +146,45 @@ class bpPost
 		}
 	}
 
+	public function setStripTags() {
+		$this->content = substr($this->content, 200);
+		$this->content .= strip_tags($this->content)."&nbsp;[...]".
+			'<br /><a href="'.$this->getPermalink().'" title="'
+				.$this->getTitle().'">'.T_('Read more').'</a>';
+	}
+
 	private function split_balise($de, $par, $txt, $fct, $flag = 1){
 		global $arg;
 		$arg = compact('de', 'par', 'fct', 'flag');
 		return preg_replace_callback('#((?:(?!<[/a-z]).)*)([^>]*>|$)#si', "mon_rplc_callback", $txt);
+	}
+
+	public function getTitle() {
+		return $this->title;
+	}
+
+	public function getContent() {
+		return $this->content;
+	}
+
+	public function getNbViews() {
+		return $this->nbviews;
+	}
+
+	public function getAuthor() {
+		return $this->author;
+	}
+
+	public function getScore() {
+		return $this->score;
+	}
+
+	public function getTags() {
+		return $this->tags;
+	}
+
+	public function allowComments() {
+		return $this->allow_comments;
 	}
 }
 ?>

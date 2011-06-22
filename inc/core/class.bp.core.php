@@ -90,11 +90,7 @@ class bpCore
 
 		$this->rest = new dcRestServer($this);
 
-		if ($this->auth->sessionExists()) {
-			$this->tribes = new bpTribes($this, $this->auth->userID());
-		} else {
-			$this->tribes = new bpTribes($this);
-		}
+		$this->tribes = new bpTribes($this);
 	}
 
 	private function authInstance()

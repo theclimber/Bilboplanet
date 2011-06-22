@@ -11,6 +11,5 @@ ErrorDocument 404 /404.php
 </IfModule>
 
 
-
 # Forcer l'encodage en UTF8 pour les personnes n'ayant pas accès à la configuration apache
 # AddDefaultCharset UTF-8

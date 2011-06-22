@@ -37,11 +37,11 @@ class bpUser
 	protected $user_token;
 	protected $user_lang;
 
-	public function __construct(&$core,$user_id)
+	public function __construct(&$con, $prefix,$user_id)
 	{
-		$this->con =& $core->con;
-		$this->table = $core->prefix.'user';
-		$this->prefix = $core->prefix;
+		$this->con =& $con;
+		$this->table = $prefix.'user';
+		$this->prefix = $prefix;
 		$this->user_id =& $user_id;
 
 		$this->getUser();
@@ -90,5 +90,16 @@ class bpUser
 		return $rs->f('nb');
 	}
 
+	public function getId() {
+		return $this->user_id;
+	}
+
+	public function getFullname() {
+		return $this->user_fullname;
+	}
+
+	public function getEmail() {
+		return $this->user_email;
+	}
 }
 ?>

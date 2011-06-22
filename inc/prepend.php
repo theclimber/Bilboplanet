@@ -45,6 +45,8 @@ $__autoload['dcModules']			= dirname(__FILE__).'/core/class.dc.modules.php';
 $__autoload['bpSettings']			= dirname(__FILE__).'/core/class.bp.settings.php';
 $__autoload['bpTribes']				= dirname(__FILE__).'/core/class.bp.tribes.php';
 $__autoload['dcRestServer']			= dirname(__FILE__).'/core/class.dc.rest.php';
+$__autoload['bpPost']				= dirname(__FILE__).'/core/class.bp.post.php';
+$__autoload['bpUser']				= dirname(__FILE__).'/core/class.bp.user.php';
 
 require_once(dirname(__FILE__).'/lib/gettext/gettext.inc');
 require_once(dirname(__FILE__).'/fonctions.php');
@@ -52,6 +54,12 @@ require_once(dirname(__FILE__).'/fonctions.php');
 // Import Hyla Tpl lib
 #require_once dirname(__FILE__).'/lib/hyla_tpl/hyla_tpl.class.php';
 $__autoload['Hyla_Tpl']				= dirname(__FILE__).'/lib/hyla_tpl/hyla_tpl.class.php';
+
+# Import views
+$__autoload['AbstractView']			= dirname(__FILE__).'/views/class.bp.abstractview.php';
+$__autoload['TribeView']			= dirname(__FILE__).'/views/class.bp.tribeview.php';
+$__autoload['PostView']				= dirname(__FILE__).'/views/class.bp.postview.php';
+$__autoload['GenericView']			= dirname(__FILE__).'/views/class.bp.genericview.php';
 
 mb_internal_encoding('UTF-8');
 
@@ -129,7 +137,7 @@ if (in_array($core->prefix.'setting', $schema->getTables())) {
 	$log = $blog_settings->get('planet_log');
 
 	# Add the global values needed in template
-	$core->tpl->importFile('index','index.tpl', dirname(__FILE__).'/../themes/'.$blog_settings->get('planet_theme'));
+	/*$core->tpl->importFile('index','index.tpl', dirname(__FILE__).'/../themes/'.$blog_settings->get('planet_theme'));
 	$core->tpl->setVar('planet', array(
 		"url"	=>	$blog_settings->get('planet_url'),
 		"theme"	=>	$blog_settings->get('planet_theme'),
@@ -138,7 +146,7 @@ if (in_array($core->prefix.'setting', $schema->getTables())) {
 		"keywords"	=>	$blog_settings->get('planet_keywords'),
 		"desc_meta"	=>	$blog_settings->get('planet_desc_meta'),
 		"msg_info" => $blog_settings->get('planet_msg_info'),
-	));
+	));*/
 
 
 	if ($core->auth->sessionExists()) {
@@ -159,6 +167,9 @@ if (in_array($core->prefix.'setting', $schema->getTables())) {
 				,T_('There seems to be no Session table in your database. Is Bilboplanet completly installed?')
 				,20);
 		}
+
+		# We can set the user to the tribe
+		$core->tribes->setUser($core->auth->userID());
 	}
 
 	# Logout
@@ -188,7 +199,7 @@ putenv('LANGUAGE='.$locale);
 #putenv('LANG='.$locale);
 putenv('LC_ALL='.$locale);
 putenv('LC_MESSAGES='.$locale);
-T_setlocale('LANGUAGE='.$locale);
+//T_setlocale(LANGUAGE,$locale);
 T_setlocale(LC_ALL, $locale);
 T_setlocale(LC_CTYPE, $locale);
 

@@ -72,6 +72,8 @@ $core->tribes->setCurrentUsers($wousers, 'without');
 $core->tribes->setCurrentSearch($wosearch, 'without');
 
 $view = new TribeView($core);
+$view->addJavascript('javascript/main.js');
+$view->addJavascript('javascript/jquery.boxy.js');
 
 # Customizing the view
 if (isset($_GET)) {

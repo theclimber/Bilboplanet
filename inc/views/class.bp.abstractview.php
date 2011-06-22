@@ -42,15 +42,6 @@ abstract class AbstractView
 		$this->scripts[] = $js;
 	}
 
-	public function setSearch($search) {
-		$this->search = $search;
-	}
-
-	protected function renderSearchBox() {
-		$this->tpl->setVar('search_value', $this->search);
-		$this->tpl->render('search.box');
-	}
-
 	#######################
 	# RENDER SIDEBAR
 	#######################
@@ -196,7 +187,6 @@ abstract class AbstractView
 	}
 
 	protected function renderGlobals() {
-		$this->renderSearchBox();
 		$this->renderSidebar();
 		$this->renderMenu();
 		$this->renderStyles();

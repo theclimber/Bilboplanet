@@ -369,7 +369,7 @@ class bpTribes
 		$post_status = null)
 	{
 
-		$sql = $this->generateSQL($nb_items, 0, $period, $popular, $post_status);
+		$sql = $this->generateSQL($nb_items, $num_start, $period, $popular, $post_status);
 		$rs = $this->con->select($sql);
 		$post_list = array();
 
@@ -512,7 +512,7 @@ class bpTribes
 					OR ".$this->prefix."post.post_permalink LIKE '%$value%'
 					OR ".$this->prefix."post.post_content LIKE '%$value%'
 					OR ".$this->prefix."user.user_fullname LIKE '%$value%')";
-				$or = ($key == count($array)-1) ? "" : " OR ";
+				$or = ($key == count($search['with'])-1) ? "" : " OR ";
 				$sql_search .= ' '.$or;
 			}
 			$sql_search .= ')';

@@ -26,41 +26,20 @@
 <?php
 # Inclusion des fonctions
 require_once(dirname(__FILE__).'/inc/prepend.php');
-$scripts = array();
-$scripts[] = "javascript/main.js";
-$scripts[] = "javascript/jquery.boxy.js";
-include dirname(__FILE__).'/tpl.php';#
-header('Content-type: text/html; charset=utf-8');
 
 # Verification du contenu du get
 if (isset($_GET)) {
 	# if user want to read a unique post
 	if (isset($_GET['id']) && !empty($_GET['id'])){
-		$params["id"] = intval($_GET['id']);
-		$res = $core->con->select(
-			"SELECT
-				post_title, post_permalink, post_nbview
-			FROM ".$core->prefix."post WHERE post_id = ".$params["id"]."
-				AND post_status = 1");
-		if (!$res->isEmpty) {
-			$params['title'] .= " - ".$res->f('post_title');
+		$post = new bpPost($core->con, $core->prefix, intval($_GET['id']));
 
-			# Update the number of viewed times
-			$cur = $core->con->openCursor($core->prefix.'post');
-			$cur->post_nbview = $res->post_nbview + 1;
-			$cur->last_viewed = array('NOW()');
-			$cur->update("WHERE post_id = '".$params['id']."'");
-#######################
-# RENDER FILTER MENU
-#######################
-$core->tpl->render('menu.filter');
-
-			$id = $params['id'];
-
-			if (isset($_GET['go']) &&
+		if($post->canRead()) {
+			if (
+				isset($_GET['go']) &&
 				$_GET['go'] == "external" &&
-				!$res->isEmpty() &&
-				$blog_settings->get('internal_links')){
+				$blog_settings->get('internal_links')
+			){
+
 				$root_url = $blog_settings->get('planet_url');
 				$analytics = $blog_settings->get('planet_analytics');
 
@@ -68,64 +47,19 @@ $core->tpl->render('menu.filter');
 					# If google analytics is activated, launch request
 					analyze (
 						$analytics,
-						$root_url.'/post/'.$params['id'],
-						'post:'.$params['id'],
-						$res->post_permalink);
+						$root_url.'/post/'.$post->getId(),
+						'post:'.$this->getId,
+						$post->getPermalink());
 				}
-				$post_url = stripslashes($res->post_permalink);
-				http::redirect($post_url);
+				http::redirect(stripslashes($post->getPermalink));
+			} else {
+				$view = new PostView($core);
+				$view->addJavascript('javascript/main.js');
+				$view->addJavascript('javascript/jquery.boxy.js');
+				# Print result on screen
+				$view->render();
 			}
 		}
-
 	}
 }
-
-# Terminaison de la commande SQL
-$sql = generate_SQL(
-	$num_start,
-	10,
-	$users,
-	$tags,
-	$search_value,
-	$period,
-	$popular,
-	$id);
-
-$page_url = '';
-foreach ($params as $key => $val) {
-	if ($key != "page" && $key != "title") {
-		$page_url .= $key."=".$val."&";
-	}
-}
-$filter_url = '';
-foreach ($params as $key => $val) {
-	if ($key != "page" && $key != "filter" && $key != "title") {
-		$filter_url .= $key."=".$val."&";
-	}
-}
-$page_vars = array(
-	"next" => $params["page"]+1,
-	"prev" => $params["page"]-1,
-	"params" => $page_url
-);
-$core->tpl->setVar('search_value', $search_value);
-$core->tpl->setVar('params', $params);
-$core->tpl->setVar('page', $page_vars);
-$core->tpl->setVar('filter_url', $filter_url);
-
-$core->tpl->render('search.box');
-
-# Executing sql querry
-$rs = $core->con->select($sql);
-
-######################
-# RENDER POST
-######################
-
-# Liste des articles
-$core->tpl = showPosts($rs, $core->tpl, $search_value, $popular);
-$core->tpl->render("content.posts");
-
-# Show result
-echo $core->tpl->render();
 ?>

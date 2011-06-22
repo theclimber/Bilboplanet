@@ -142,8 +142,24 @@ class bpPost
 			# Format the occurences of the search request in the posts list
 			$this->content = $this->split_balise($value, '<span class="search_content">'.$value.'</span>', $this->content, 'str_ireplace', 1);
 			# Format the occurences of the search request in the posts title
-			$this->title = $this->split_balise($value, '<span class="search_title">'.$value.'</span>', $this->title, 'str_ireplace', 1);
+			//$this->title = $this->split_balise($value, '<span class="search_title">'.$value.'</span>', $this->title, 'str_ireplace', 1);
 		}
+	}
+
+	public function canRead() {
+		if ($this->status == 1) {
+			return true;
+		}
+		return false;
+	}
+
+	public function updateView() {
+		# Update the number of viewed times
+		$cur = $this->con->openCursor($this->prefix.'post');
+		$cur->post_nbview = $this->nbviews + 1;
+		$cur->last_viewed = array('NOW()');
+		$cur->update("WHERE post_id = '".$this->id."'");
+		$this->nbviews += 1;
 	}
 
 	public function setStripTags() {
@@ -175,6 +191,10 @@ class bpPost
 		return $this->author;
 	}
 
+	public function getId() {
+		return $this->id;
+	}
+
 	public function getScore() {
 		return $this->score;
 	}
@@ -185,6 +205,14 @@ class bpPost
 
 	public function allowComments() {
 		return $this->allow_comments;
+	}
+
+	public function getShortTitle() {
+		$max_title_length = 100;
+		if (strlen($this->title) > $max_title_length)
+			return substr($this->title,0,$max_title_length)."...";
+		else
+			return $this->title;
 	}
 }
 ?>

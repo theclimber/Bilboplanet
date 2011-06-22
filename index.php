@@ -130,23 +130,6 @@ $core->tpl->setVar('params', $params);
 $core->tpl->setVar('page', $page_vars);
 $core->tpl->setVar('filter_url', $filter_url);
 
-$core->tpl->setVar('search_value', $search_value);
-$core->tpl->render('search.box');
-if (isset($_GET)) {
-	if (isset($_GET['filter']) && !empty($_GET['filter'])){
-		$core->tpl->setVar("filter", $filter_class);
-		$core->tpl->render('search.filter');
-	}
-	if (isset($_GET['user_id']) && !empty($_GET['user_id'])){
-		$core->tpl->render('search.user_id');
-	}
-	if (isset($_GET['popular']) && !empty($_GET['popular'])){
-		$core->tpl->render('search.popular');
-	}
-	if (isset($_GET['search']) && !empty($_GET['search'])){
-		$core->tpl->render('search.line');
-	}
-}
 
 # Executing sql querry
 $rs = $core->con->select($sql);
@@ -156,38 +139,12 @@ $rs = $core->con->select($sql);
 #######################
 $core->tpl->render('menu.filter');
 
-#######################
-# RENDER PAGINATION
-#######################
-if($params["page"] == 0 & $rs->count()>=10) {
-	# if we are on the first page
-	$core->tpl->render('pagination.up.next');
-	$core->tpl->render('pagination.low.next');
-} elseif($params["page"] == 0 & $rs->count()<10) {
-	# we don't show any button
-} else {
-	if($rs->count() == 0 | $rs->count() < 10) {
-		# if we are on the last page
-		$core->tpl->render('pagination.up.prev');
-		$core->tpl->render('pagination.low.prev');
-	} else {
-		$core->tpl->render('pagination.up.prev');
-		$core->tpl->render('pagination.up.next');
-		$core->tpl->render('pagination.low.prev');
-		$core->tpl->render('pagination.low.next');
-	}
-}
 
 ######################
 # RENDER POST LIST
 ######################
 
-$core->tpl = showPostsSummary($rs, $core->tpl);
-$core->tpl->render('summary.block');
 
-# Liste des articles
-$core->tpl = showPosts($rs, $core->tpl, $search_value, $popular);
-$core->tpl->render("content.posts");
 
 # Show result
 echo $core->tpl->render();

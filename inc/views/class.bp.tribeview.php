@@ -28,9 +28,9 @@ include_once (dirname(__FILE__).'/class.bp.abstractview.php');
 class TribeView extends AbstractView
 {
 	protected $tribe;
-	protected $page;
-	protected $period;
-	protected $nbitems;
+	protected $page = 0;
+	protected $period = null;
+	protected $nbitems = 10;
 	protected $popular = false;
 
 	public function __construct(&$core)
@@ -55,8 +55,7 @@ class TribeView extends AbstractView
 			"keywords"	=>	$blog_settings->get('planet_keywords'),
 			"desc_meta"	=>	$blog_settings->get('planet_desc_meta'),
 			"msg_info" => $blog_settings->get('planet_msg_info')
-	));
-
+		));
 	}
 
 
@@ -64,7 +63,7 @@ class TribeView extends AbstractView
 		$this->page = $page;
 	}
 
-	public function setPeriodFilter($period) {
+	public function setPeriod($period) {
 		$this->period = $period;
 	}
 
@@ -80,7 +79,6 @@ class TribeView extends AbstractView
 	# RENDER FILTER MENU
 	#######################
 	protected function renderPeriodFilter() {
-		$this->tpl->setVar('filter_url', '&'.$this->period);
 		$this->tpl->render('menu.filter');
 	}
 
@@ -88,15 +86,14 @@ class TribeView extends AbstractView
 	# RENDER PAGINATION
 	#######################
 	protected function renderNavigation($count) {
-		$this->tpl->setVar('page', '&'.$this->page);
-		if($this->page == 0 & $count>= $this->nbitems) {
+		if($this->page == 0 && $count >= $this->nbitems) {
 			# if we are on the first page
 			$this->tpl->render('pagination.up.next');
 			$this->tpl->render('pagination.low.next');
-			} elseif($this->page == 0 & $count< $nbitems) {
+		} elseif($this->page == 0 && $count< $this->nbitems) {
 			# we don't show any button
 		} else {
-			if($rs->count() == 0 | $count < $nbitems) {
+			if($count == 0 || $count < $this->nbitems) {
 				# if we are on the last page
 				$this->tpl->render('pagination.up.prev');
 				$this->tpl->render('pagination.low.prev');
@@ -110,9 +107,13 @@ class TribeView extends AbstractView
 	}
 
 	protected function renderTribe() {
-		$posts = $this->tribe->getCurrentTribePosts(10);
+		$posts = $this->tribe->getCurrentTribePosts(
+			$this->nbitems,
+			$this->page * $this->nbitems,
+			$this->period,
+			$this->popular
+			);
 		$this->tpl = $this->showPosts($posts, $this->tpl, $this->popular);
-		$this->tpl->render("content.posts");
 		return count($posts);
 	}
 
@@ -211,28 +212,18 @@ class TribeView extends AbstractView
 				$tpl->render('post.backsummary');
 			}
 			$tpl->render('post.block');
-		}
-		return $tpl;
-	}
 
-	# Fonction qui affiche le sommaire rapide d'une liste d'article
-	private function showPostsSummary($rs, $tpl) {
-		while($rs->fetch()){
-			$max_title_length = 100;
-			$title = html_entity_decode($rs->title, ENT_QUOTES, 'UTF-8');
-			if (strlen($title) > $max_title_length)
-				$show = substr($title,0,$max_title_length)."...";
-			else
-				$show = $title;
 
+			# Render summary
 			$line = array(
-				"date" => mysqldatetime_to_date("d/m/Y",$rs->pubdate),
-				"title" => $title,
-				"short_title" => $show,
-				"url" => "#post".$rs->post_id);
+				"date" => $post->getPubdate(),
+				"title" => $post->getTitle(),
+				"short_title" => $post->getShortTitle(),
+				"url" => "#post".$id);
 			$tpl->setVar('summary', $line);
 			$tpl->render('summary.line');
 		}
+		$this->tpl->render('summary.block');
 		return $tpl;
 	}
 
@@ -285,12 +276,27 @@ class TribeView extends AbstractView
 		return $text;
 	}
 
+	protected function renderSearchBox() {
+		$with = $this->tribe->getCurrentSearchWith();
+		$without = $this->tribe->getCurrentSearchWithout();
+		if (count($with) > 0 || count($without) > 0) {
+			$s_with = $with[0];
+			$this->tpl->setVar('search_value',$s_with);
+			$this->tpl->render('search.box');
+			$this->tpl->render('search.line');
+		} else {
+			$this->tpl->render('search.box');
+		}
+	}
+
 	public function render() {
 		header('Content-type: text/html; charset=utf-8');
 		$this->renderGlobals();
-		$nbposts = $this->renderTribe();
-		$this->renderNavigation($nbposts);
+		$nbitems = $this->renderTribe();
+		$this->renderNavigation($nbitems);
 		$this->renderPeriodFilter();
+		$this->renderSearchBox();
+		$this->tpl->render("content.posts");
 		echo $this->tpl->render();
 	}
 }

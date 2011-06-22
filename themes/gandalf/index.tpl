@@ -71,15 +71,6 @@
 		<!-- BEGIN search.box -->
 		<div id="search">
 			<form id="search_form" action="index.php" method="get">
-				<!-- BEGIN search.popular -->
-				<input type="hidden" id="popular" name="popular" value="{$params.popular}" />
-				<!-- END search.popular -->
-				<!-- BEGIN search.user_id -->
-				<input type="hidden" id="user_id" name="user_id" value="{$params.user_id}" />
-				<!-- END search.user_id -->
-				<!-- BEGIN search.filter -->
-				<input type="hidden" id="filter" name="filter" value="{$params.filter}" />
-				<!-- END search.filter -->
 				<input type="submit" id="mainmenu_search_btn" value="OK" />
 				<input type="text" id="search_text" name="search"  value="{$search_value}" />
 			</form>

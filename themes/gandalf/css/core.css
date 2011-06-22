@@ -178,6 +178,10 @@ width:175px;
 padding:5px;
 font-size:12px;
 }
+.search_content {
+	font-weight: bold;
+	color: red;
+}
 #mainmenu_search_btn {
 border:1px #DCDCDC solid;
 height:27px;

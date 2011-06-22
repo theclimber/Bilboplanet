@@ -31,7 +31,6 @@ class PostView extends AbstractView
 	public function __construct(&$core, $post)
 	{
 		$this->core =& $core;
-		$this->theme =& $theme;
 		$this->post = $post;
 
 		# Create the Hyla_Tpl object

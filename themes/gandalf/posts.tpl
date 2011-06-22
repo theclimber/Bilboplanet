@@ -16,12 +16,17 @@
 	</ul>
 </div>
 <!-- END summary.block -->
+
 <div class="navigation">
 	<!-- BEGIN pagination.up.prev -->
-	<div class="page_previous"><a href="javascript:prev_page()" class="page_prc"> &laquo; {_Previous page}</a></div>
+	<div class="page_previous">
+		<a href="javascript:prev_page()" class="page_prc"> &laquo; {_Previous page}</a>
+	</div>
 	<!-- END pagination.up.prev -->
 	<!-- BEGIN pagination.up.next -->
-	<div class="paging_next"><a href="javascript:next_page()" class="page_svt">{_Next page} &raquo;</a></div>
+	<div class="paging_next">
+		<a href="javascript:next_page()" class="page_svt">{_Next page} &raquo;</a>
+	</div>
 	<!-- END pagination.up.next -->
 </div>
 

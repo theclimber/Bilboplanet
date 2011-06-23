@@ -192,7 +192,7 @@ class bpPost
 	}
 
 	public function getId() {
-		return $this->id;
+		return $this->post_id;
 	}
 
 	public function getScore() {
@@ -213,6 +213,28 @@ class bpPost
 			return substr($this->title,0,$max_title_length)."...";
 		else
 			return $this->title;
+	}
+
+	public function getPostArray() {
+		$post_array = array(
+			"id"				=> $this->post_id,
+			"date"				=> $this->getPubdate(),
+			"day"				=> $this->getPubdateDay(),
+			"month"				=> $this->getPubdateMonth(),
+			"year"				=> $this->getPubdateYear(),
+			"hour"				=> $this->getPubdateHour(),
+			"permalink"			=> $this->getPermalink(),
+			"title"				=> $this->getTitle(),
+			"content"			=> $this->getContent(),
+			"author_id"			=> $this->getAuthor()->getId(),
+			"author_fullname"	=> $this->getAuthor()->getFullname(),
+			"author_email"		=> $this->getAuthor()->getEmail(),
+			"author_votes"		=> $this->getAuthor()->getUserVotes(),
+			"author_posts"		=> $this->getAuthor()->getNbPosts(),
+			"nbview"			=> $this->getNbViews(),
+			"last_viewed"		=> $this->getLatestViewedFormat('d/m/Y H:i')
+			);
+		return $post_array;
 	}
 }
 ?>

@@ -26,18 +26,19 @@
 
 class GenericView extends AbstractView
 {
-	protected $page;
 
 	public function __construct(&$core, $page)
 	{
+		global $blog_settings;
 		$this->core =& $core;
-		$this->theme =& $theme;
+		$this->prefix = $core->prefix;
+		$this->con = $core->con;
 		$this->page = $page;
 
 		# Create the Hyla_Tpl object
 		$this->tpl = new Hyla_Tpl();
 		$this->tpl->setL10nCallback('T_');
-		$this->tpl->importFile('index','index.tpl', dirname(__FILE__).'/../themes/'.$blog_settings->get('planet_theme'));
+		$this->tpl->importFile('index','index.tpl', dirname(__FILE__).'/../../themes/'.$blog_settings->get('planet_theme'));
 		$this->tpl->setVar('planet', array(
 			"url"	=>	$blog_settings->get('planet_url'),
 			"theme"	=>	$blog_settings->get('planet_theme'),
@@ -49,10 +50,74 @@ class GenericView extends AbstractView
 		));
 	}
 
-	public function renderPage() {
+	protected function renderContactPage() {
+		require_once(dirname(__FILE__).'/../lib/recaptchalib.php');
+		$publickey = "6LdEeQgAAAAAACLccbiO8TNaptSmepfMFEDL3hj2";
+		$captcha_html = recaptcha_get_html($publickey);
+
+		$form_values = array(
+			"name" => "",
+			"email" => "",
+			"subject" => "",
+			"content" => "",
+		);
+
+		$this->tpl->setVar('captcha_html', $captcha_html);
+		$this->tpl->setVar('form', $form_values);
+		$this->tpl->render('content.contact');
+	}
+
+	protected function renderSubscribePage() {
+		global $blog_settings;
+		if(!$blog_settings->get('planet_subscription')) {
+			$content = "<img src=\"themes/".$blog_settings->get('planet_theme')."/images/closed.png\" />";
+			$this->tpl->setVar('html', $content);
+			$this->tpl->render('content.html');
+			exit;
+		} else {
+			$content = $blog_settings->get('planet_subscription_content');
+			$content = stripslashes($content);
+			$content = html_entity_decode($content, ENT_QUOTES, 'UTF-8');
+			$content = code_htmlentities($content, 'code', 'code', 1);
+
+			require_once(dirname(__FILE__).'/../lib/recaptchalib.php');
+			$publickey = "6LdEeQgAAAAAACLccbiO8TNaptSmepfMFEDL3hj2";
+			$captcha_html = recaptcha_get_html($publickey);
+
+			$form_values = array(
+				"user_id" => "",
+				"fullname" => "",
+				"email" => "",
+				"url" => "",
+				"feed" => "",
+			);
+
+			$this->tpl->setVar('form', $form_values);
+			$this->tpl->setVar('subscription_content', $content);
+			$this->tpl->setVar('captcha_html', $captcha_html);
+			$this->tpl->render('content.subscription');
+		}
+	}
+
+	protected function render404Page() {
+		$this->tpl->setVar('params', array('title' => '404 Error'));
+		$error = array(
+			"title" => T_('404 Error'),
+			"text" => T_("Page not found")
+		);
+		$this->tpl->setVar("error", $error);
+		$this->tpl->render('content.404');
+	}
+
+	protected function renderPage() {
+		$this->{'render'.ucfirst($this->page).'Page'}();
 	}
 
 	public function render() {
+		header('Content-type: text/html; charset=utf-8');
+		$this->renderGlobals();
+		$this->renderPage();
+		echo $this->tpl->render();
 	}
 }
 ?>

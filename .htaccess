@@ -3,11 +3,14 @@ SetEnv PHP_VER 5
 ErrorDocument 404 /404.php
 
 <IfModule mod_rewrite.c>
-	Options +FollowSymLinks
+#	Options +FollowSymLinks
 	RewriteEngine On
-	RewriteBase /
+	RewriteBase /~greg/bilboplanet/
 	RewriteRule ^feed/(.*)$ feed.php?type=$1
-	RewriteRule ^post/(.*)$  index.php?post_id=$1
+	RewriteRule ^post/(.*)$  index.php?page=post&id=$1
+	RewriteRule ^tribe/(.*)$  index.php?page=tribe&id=$1
+	RewriteRule ^contact/(.*)$  index.php?page=contact&$1
+	RewriteRule ^subscribe/(.*)$  index.php?page=subscribe&$1
 </IfModule>
 
 

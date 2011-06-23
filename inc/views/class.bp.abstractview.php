@@ -33,6 +33,7 @@ abstract class AbstractView
 	protected $styles = array();
 	protected $scripts = array();
 	protected $search;
+	protected $page;
 
 	public function addStylesheet($css) {
 		$this->styles[] = $css;
@@ -117,6 +118,11 @@ abstract class AbstractView
 	# RENDER JAVASCRIPT
 	######################
 	protected function renderJavascript() {
+		global $blog_settings;
+		$page_js = dirname(__FILE__).'/themes/'.$blog_settings->get('planet_theme').'/js/'.$this->page.'.js';
+		if (file_exists($page_js)) {
+			$this->addJavascript('themes/'.$blog_settings->get('planet_theme').'/js/'.$this->page.'.js');
+		}
 		foreach ($this->scripts as $js) {
 			$this->tpl->setVar('js_file', $js);
 			$this->tpl->render('js.import');
@@ -184,6 +190,124 @@ abstract class AbstractView
 				}
 			}
 		}
+	}
+
+	protected function renderSinglePost($post, $isAlone = true) {
+		global $blog_settings;
+		$this->tpl->setVar('post', $post->getPostArray());
+
+		# Gravatar
+		if($blog_settings->get('planet_avatar')) {
+			$gravatar_email = strtolower($post->getAuthor()->getEmail());
+			$this->tpl->setVar('gravatar_url', "http://www.gravatar.com/avatar.php?gravatar_id=".
+				md5($gravatar_email)."&default=".
+				urlencode($blog_settings->get('planet_url').
+				"/themes/".$blog_settings->get('planet_theme')."/images/gravatar.png"));
+			$this->tpl->render('post.block.gravatar');
+		}
+
+		if ($blog_settings->get('planet_vote')) {
+		$votes = array("html" => $this->afficheVotes($post->getScore(), $post->getId()));
+			$this->tpl->setVar('votes', $votes);
+			$this->tpl->render('post.block.votes');
+		}
+		foreach ($post->getTags() as $tag) {
+			$this->tpl->setVar('post_tag', $tag);
+			$this->tpl->render('post.tags');
+		}
+		if ($blog_settings->get('allow_post_modification')) {
+			if($blog_settings->get('allow_tagging_everything')) {
+				$this->tpl->render('post.action.tags');
+			} else {
+				if($this->core->auth->userID() == $post->getAuthor()->getId()) {
+					$this->tpl->render('post.action.tags');
+				}
+			}
+		}
+		if ($blog_settings->get('allow_post_comments')) {
+		if($this->core->auth->userID() == $post->getAuthor()->getId() || $this->core->hasRole('manager')) {
+			if ($post->allowComments()) {
+					$this->tpl->render('post.action.uncomment');
+				} else {
+					$this->tpl->render('post.action.comment');
+				}
+			}
+		}
+		if ($blog_settings->get('allow_post_comments') && $post->allowComments()) {
+			$sql = "SELECT * FROM ".$this->prefix."comment
+				WHERE post_id=".$id;
+			$rs_comment = $this->con->select($sql);
+			while ($rs_comment->fetch()) {
+				$fullname = $rs_comment->user_fullname;
+				if (!empty($rs_comment->user_site)) {
+					$fullname = '<a href="'.$rs_comment->user_site.'">'.$fullname.'</a>';
+				}
+				$content = $this->core->wikiTransform($rs_comment->content);
+				$comment = array(
+					"id" => $rs_comment->comment_id,
+					"post_id" => $rs_comment->post_id,
+					"user_fullname_link" => $fullname,
+					"user_fullname" => $rs_comment->user_fullname,
+					"user_site" => $rs_comment->user_site,
+					"content" => $content,
+					"pubdate" => mysqldatetime_to_date("d/m/Y",$rs_comment->created)
+					);
+				$this->tpl->setVar("comment", $comment);
+				$this->tpl->render('post.comment.element');
+			}
+			$this->tpl->render('post.comment.block');
+		}
+		if (!$isAlone) {
+			$this->tpl->render('post.backsummary');
+		}
+		$this->tpl->render('post.block');
+	}
+
+	private function afficheVotes($nb_votes, $num_article) {
+		global $blog_settings;
+		# On met un s a vote si il le faut
+		$vote = "vote";
+		if($nb_votes > 1) $vote = "votes";
+
+		# Score du vote en fonction du system
+		$score = $nb_votes;
+		if($blog_settings->get('planet_votes_system') != "yes-no" && $score < 0)
+			$score = 0;
+
+		# Bouton de vote
+		$text =  '';
+		if (checkVote($this->con, getIP(), $num_article)) {
+
+			# Si le visiteur a deja vote
+			$text .= '<span id="vote'.$num_article.'" class="avote">'.$score.' '.$vote.'.
+					<span id="imgoui" title="'.T_('Vote yes').'"></span>
+					<span id="imgnon" title="'.T_('Vote no').'"></span>';
+			$text .= '</span>';
+
+		} else {
+
+			# Si il n'a jamais vote, on construit le token
+			$ip = getIP();
+			$token = md5($ip.$num_article);
+			# On affiche le bouton de vote
+			$text .= '<span id="vote'.$num_article.'" class="vote">'.$score.' '.$vote.'
+					<a href="#blackhole" title="'.T_('This post seems pertinent to you').'" id="aoui'.$num_article.'"
+					onclick="javascript:vote('."'$num_article','$token', 'positif'".');" >
+					<span id="imgoui" title="'.T_('Vote yes').'"></span></a>';
+
+			# En fonciton du systeme de vote
+			if($blog_settings->get('planet_votes_system') == "yes-no") {
+				$text .= '<a href="#blackhole" title="'.T_('This post seems not pertinent to you').'" id="anon'.$num_article.'"
+					onclick="javascript:vote('."'$num_article','$token', 'negatif'".');" >
+					<span id="imgnon" title="'.T_('Vote no').'"></span></a>';
+			} else {
+				$text .= '<a href="#blackhole" title="'.T_('This post should not be here').'" id="anon'.$num_article.'"
+					onclick="if(confirm(\''.T_('Are you sure this post should not be on this planet and should be removed?').'\')) '."{ vote('$num_article','$token', 'negatif');}".' " >
+					<span id="imgnon" title="'.T_('Vote no').'"></span></a>';
+			}
+			$text .= "</span>";
+		}
+		return $text;
 	}
 
 	protected function renderGlobals() {

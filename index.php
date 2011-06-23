@@ -26,127 +26,151 @@
 <?php
 # Inclusion des fonctions
 require_once(dirname(__FILE__).'/inc/prepend.php');
-$scripts = array();
-$scripts[] = "javascript/main.js";
-$scripts[] = "javascript/jquery.boxy.js";
-header('Content-type: text/html; charset=utf-8');
+$notFound = false;
 
-# Valeurs par defaut
-$num_start = 0;
-$nb_items = $blog_settings->get('planet_nb_post');
-$popular = false;
-$period = null;
-$users = array();
-$tags = array();
-$page = 0;
-$search_value = null;
-$post_id = null;
-
-if (!isset($params)) {
-	$params = array(
-		'title'=>$blog_settings->get('planet_title')
-		);
-}
-
-# Verification du contenu du get
 if (isset($_GET)) {
+	if (isset($_GET['page']) &&
+		in_array($_GET['page'], array(
+			'contact',
+			'subscribe'
+		)))
+	{
+		$view = new GenericView($core, $_GET['page']);
+		$view->addJavascript('javascript/functions.js');
+		$view->render();
+	} elseif (isset($_GET['page']) &&
+		in_array($_GET['page'], array(
+			'tribe',
+			'post'
+		)))
+	{
+		if ($_GET['page'] == 'tribe') {
+			tribeController();
+		}
+
+		if ($_GET['page'] == 'post') {
+			postController();
+		}
+	} else {
+		$notFound = true;
+	}
+}
+
+if ($notFound) {
+	$view = new GenericView($core, '404');
+	$view->render();
+}
+
+function tribeController() {
+	global $blog_settings, $core;
+
+	$tribe_id = $blog_settings->get('planet_main_tribe');
+	$witags = '';
+	$wiusers = '';
+	$wisearch = '';
+	$wotags = '';
+	$wousers = '';
+	$wosearch = '';
+
+	# Customizing the tribe
+	if (isset($_GET)) {
+		# if user want to read a unique tribe
+		if (isset($_GET['id']) && !empty($_GET['id'])){
+			$tribe_id = $_GET['id'];
+		}
+		if (isset($_GET['witags'])) {
+			$witags = $_GET['witags'];
+		}
+		if (isset($_GET['wiusers'])) {
+			$wiusers = $_GET['wiusers'];
+		}
+		if (isset($_GET['wisearch'])) {
+			$wisearch = $_GET['wisearch'];
+		}
+		if (isset($_GET['wotags'])) {
+			$wotags = $_GET['wotags'];
+		}
+		if (isset($_GET['wousers'])) {
+			$wousers = $_GET['wousers'];
+		}
+		if (isset($_GET['wosearch'])) {
+			$wosearch = $_GET['wosearch'];
+		}
+
+	}
+
+	$core->tribes->setCurrentTribe($tribe_id);
+
+	$core->tribes->setCurrentTags($witags, 'with');
+	$core->tribes->setCurrentUsers($wiusers, 'with');
+	$core->tribes->setCurrentSearch($wisearch, 'with');
+	$core->tribes->setCurrentTags($wotags, 'without');
+	$core->tribes->setCurrentUsers($wousers, 'without');
+	$core->tribes->setCurrentSearch($wosearch, 'without');
+
+	$view = new TribeView($core);
+	$view->addJavascript('javascript/main.js');
+	$view->addJavascript('javascript/jquery.boxy.js');
+
+	# Customizing the view
+	if (isset($_GET)) {
+		if (isset($_GET['page']) && is_numeric($_GET['page'])) {
+			$view->setPage($_GET['page']);
+		}
+		if (isset($_GET['nbitems']) && is_numeric($_GET['nbitems'])) {
+			$view->setNbItems($_GET['nbitems']);
+		}
+		if (isset($_GET['popular'])) {
+			$view->setPopular();
+		}
+		if (isset($_GET['filter']) &&
+			in_array($_GET['filter'], array('day', 'week', 'month', 'all'))) {
+			$view->setPeriod($_GET['filter']);
+		}
+	}
+
+	# Print result on screen
+	$view->render();
+}
+
+function postController() {
+	global $blog_settings, $core, $notFound;
+
 	# if user want to read a unique post
-	if (isset($_GET['post_id']) && !empty($_GET['post_id'])){
-		$post_id = intval($_GET['post_id']);
-		$params = '';
-		if (isset($_GET['go']) && $_GET['go'] == "external"){
-			$params = "&go=external";
-		}
-		http::redirect($blog_settings->get('planet_url').'/post.php?id='.$post_id.$params);
-	}
-	else {
-		if (isset($_GET['page']) && is_numeric(trim($_GET['page']))) {
-			$params["page"] = trim($_GET['page']);
-			if ($params["page"] < 1) {
-				$params["page"] = 0;
+	if (isset($_GET['id']) && !empty($_GET['id'])){
+		$post = new bpPost($core->con, $core->prefix, intval($_GET['id']));
+
+		if($post->canRead()) {
+			if (
+				isset($_GET['go']) &&
+				$_GET['go'] == "external" &&
+				$blog_settings->get('internal_links')
+			){
+
+				$root_url = $blog_settings->get('planet_url');
+				$analytics = $blog_settings->get('planet_analytics');
+
+				if(!empty($analytics)) {
+					# If google analytics is activated, launch request
+					analyze (
+						$analytics,
+						$root_url.'/post/'.$post->getId(),
+						'post:'.$this->getId,
+						$post->getPermalink());
+				}
+				http::redirect(stripslashes($post->getPermalink));
+			} else {
+				$view = new PostView($core, $post);
+				$view->addJavascript('javascript/main.js');
+				$view->addJavascript('javascript/jquery.boxy.js');
+				# Print result on screen
+				$view->render();
 			}
-			$num_start = $params["page"] * $nb_items;
+		} else {
+			$notFound = true;
 		}
-		if (isset($_GET['tags'])) {
-			$params["tags"] = $_GET['tags'];
-			$tags = !empty($_GET['tags']) ? getArrayFromList($_GET['tags']) : array();
-		}
-		# Si le lecteur a fait une recherche
-		if (isset($_GET['search']) && !empty($_GET['search'])){
-			$params["search"] = $_GET['search'];
-			$search_value = $_GET['search'];
-		}
-		# On recupere le numero du membre
-		if (isset($_GET['user_id']) && !empty($_GET['user_id'])){
-			$params["user_id"] = urldecode($_GET['user_id']);
-			$users = !empty($_GET['user_id']) ? getArrayFromList($_GET['user_id']) : array();
-		}
-		if (isset($_GET['popular']) && !empty($_GET['popular'])){
-			$params['popular'] = $_GET['popular'];
-			$popular = true;
-		}
-		# If there is a filter call
-		if (isset($_GET['filter']) && !empty($_GET['filter'])) {
-			$params["filter"] = trim($_GET['filter']);
-			$period = trim($_GET['filter']);
-			$filter_class = array(
-				"day" => "",
-				"week" => "",
-				"month" => "");
-			$filter_class[$period] = "selected";
-		}
+	} else {
+		$notFound = true;
 	}
 }
-
-# Terminaison de la commande SQL
-$sql = generate_SQL(
-	$num_start,
-	10,
-	$users,
-	$tags,
-	$search_value,
-	$period,
-	$popular,
-	$post_id);
-
-$page_url = '';
-foreach ($params as $key => $val) {
-	if ($key != "page" && $key != "title") {
-		$page_url .= $key."=".$val."&";
-	}
-}
-$filter_url = '';
-foreach ($params as $key => $val) {
-	if ($key != "page" && $key != "filter" && $key != "title") {
-		$filter_url .= $key."=".$val."&";
-	}
-}
-$page_vars = array(
-	"next" => $params["page"]+1,
-	"prev" => $params["page"]-1,
-	"params" => $page_url
-);
-$core->tpl->setVar('params', $params);
-$core->tpl->setVar('page', $page_vars);
-$core->tpl->setVar('filter_url', $filter_url);
-
-
-# Executing sql querry
-$rs = $core->con->select($sql);
-
-#######################
-# RENDER FILTER MENU
-#######################
-$core->tpl->render('menu.filter');
-
-
-######################
-# RENDER POST LIST
-######################
-
-
-
-# Show result
-echo $core->tpl->render();
-
 ?>

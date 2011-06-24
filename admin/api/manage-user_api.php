@@ -6,7 +6,7 @@
 * Website : www.bilboplanet.com
 * Tracker : redmine.bilboplanet.com
 * Blog : www.bilboplanet.com
-* 
+*
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License as
@@ -76,10 +76,10 @@ if(isset($_POST['action'])) {
 		}
 		$error = array();
 
-		if ($user_id['success'] 
-			&& $user_email['success'] 
-			&& $user_fullname['success'] 
-			&& $user_password['success'] 
+		if ($user_id['success']
+			&& $user_email['success']
+			&& $user_fullname['success']
+			&& $user_password['success']
 			&& $user_site['success'])
 		{
 			if(!preg_match('/^[0-9A-Za-z_\-]+$/',$user_id['value'])) {
@@ -109,7 +109,7 @@ if(isset($_POST['action'])) {
 			if ($rs2->count() > 0){
 				$error[] = sprintf(T_('The website %s is already assigned to the user %s'),$user_site['value'], $user_id['value']);
 			}
-			
+
 			if (empty($error)) {
 				$cur = $core->con->openCursor($core->prefix.'user');
 				$cur->user_id = $user_id['value'];
@@ -127,7 +127,7 @@ if(isset($_POST['action'])) {
 					# Get next ID
 					$rs3 = $core->con->select(
 						'SELECT MAX(site_id) '.
-						'FROM '.$core->prefix.'site ' 
+						'FROM '.$core->prefix.'site '
 						);
 					$next_site_id = (integer) $rs3->f(0) + 1;
 					$cur = $core->con->openCursor($core->prefix.'site');
@@ -181,7 +181,7 @@ if(isset($_POST['action'])) {
 	case 'toggle':
 		$user_id = urldecode(trim($_POST['user_id']));
 		$user = $core->con->select("SELECT user_status FROM ".$core->prefix."user WHERE user_id = '$user_id'");
-		
+
 		$cur = $core->con->openCursor($core->prefix.'user');
 		if($user->f('user_status') == 1) {
 			$cur->user_status = 0;
@@ -209,7 +209,7 @@ if(isset($_POST['action'])) {
 
 		$error = array();
 
-		if ($new_email['success'] 
+		if ($new_email['success']
 			&& $new_fullname['success']
 			&& $new_password['success'])
 		{
@@ -310,7 +310,7 @@ if(isset($_POST['action'])) {
 			$core->con->execute("DELETE FROM ".$core->prefix."site WHERE user_id ='$user_id'");
 			$core->con->execute("DELETE FROM ".$core->prefix."permissions WHERE user_id = '$user_id'");
 			$core->con->execute("DELETE FROM ".$core->prefix."user WHERE user_id = '$user_id'");
-			
+
 			print '<div class="flash_notice">'.sprintf(T_("Delete of user %s succeeded"),$user->f('fullname')).'</div>';
 		}
 		break;
@@ -347,7 +347,7 @@ if(isset($_POST['action'])) {
 			user_fullname,
 			user_email,
 			user_status
-			FROM '.$core->prefix.'user 
+			FROM '.$core->prefix.'user
 			'.$where_clause.'
 			ORDER by lower(user_fullname)';
 
@@ -374,7 +374,7 @@ if(isset($_POST['action'])) {
 
 		print getOutput($sql, $num_page, $nb_items);
 		break;
-		
+
 ##########################################################
 # DEFAULT RETURN
 ##########################################################
@@ -390,7 +390,7 @@ function getOutput($sql, $num_page=0, $nb_items=30) {
 	global $core, $blog_settings;
 
 	$rs = $core->con->select($sql);
-	$output .= showPagination($rs->count(), $num_page, $nb_items, 'updateUserList');
+	$output = showPagination($rs->count(), $num_page, $nb_items, 'updateUserList');
 
 	$output .= '
 <br />

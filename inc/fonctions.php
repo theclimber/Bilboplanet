@@ -407,25 +407,21 @@ function check_field($fieldname, $value, $type="none", $required=true){
 
 function check_email_address($email) {
 	// First, we check that there's one @ symbol, and that the lengths are right
-	if (!ereg("^[^@]{1,64}@[^@]{1,255}$", $email)) {
+	//if (!preg_match("^[^@]{1,64}@[^@]{1,255}$", $email)) {
+	if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 		// Email invalid because wrong number of characters in one section, or wrong number of @ symbols.
 		return false;
 	}
 	// Split it into sections to make life easier
 	$email_array = explode("@", $email);
 	$local_array = explode(".", $email_array[0]);
-	for ($i = 0; $i < sizeof($local_array); $i++) {
-		if (!ereg("^(([A-Za-z0-9!#$%&'*+/=?^_`{|}~-][A-Za-z0-9!#$%&'*+/=?^_`{|}~\.-]{0,63})|(\"[^(\\|\")]{0,62}\"))$", $local_array[$i])) {
-			return false;
-		}
-	}
-	if (!ereg("^\[?[0-9\.]+\]?$", $email_array[1])) { // Check if domain is IP. If not, it should be valid domain name
+	if (!preg_match("/^\[?[0-9\.]+\]?$/", $email_array[1])) { // Check if domain is IP. If not, it should be valid domain name
 		$domain_array = explode(".", $email_array[1]);
 		if (sizeof($domain_array) < 2) {
 			return false; // Not enough parts to domain
 		}
 		for ($i = 0; $i < sizeof($domain_array); $i++) {
-			if (!ereg("^(([A-Za-z0-9][A-Za-z0-9-]{0,61}[A-Za-z0-9])|([A-Za-z0-9]+))$", $domain_array[$i])) {
+			if (!preg_match("/^(([A-Za-z0-9][A-Za-z0-9-]{0,61}[A-Za-z0-9])|([A-Za-z0-9]+))$/", $domain_array[$i])) {
 				return false;
 			}
 		}
@@ -877,6 +873,58 @@ function createRandomPassword() {
 	}
 
 	return $pass;
+}
+# Procedure qui log un message a l'ecran et dans un fichier de log
+# types:
+# type = 0 : ''
+# type = 1 : SUCCESS
+# type = 2 : INFO
+# type = 3 : ERROR
+# type = 4 : DEBUG
+function logMsg($message, $filename=null, $type=0, $print=false) {
+	# On recupere la date
+	$print_style = '';
+	$date_log = '['.date("Y-m-d").' '.date("H:i:s").'] ';
+	switch($type){
+		case 1:
+			$message_type='SUCCESS : ';
+			$print_style = "[<font color=\"green\">SUCCESS</font>] ";
+			break;
+		case 2:
+			$message_type='INFO    : ';
+			$print_style = "[<font color=\"blue\">INFO</font>] ";
+			break;
+		case 3:
+			$message_type='ERROR   : ';
+			$print_style = "[<font color=\"red\">ERROR</font>] ";
+			break;
+		case 4:
+			$message_type='DEBUG   : ';
+			$print_style = "[<font color=\"pink\">DEBUG</font>] ";
+			break;
+		default:
+			$message_type='INFO   : ';
+			break;
+	}
+	$fd = null;
+	if ($filename != null) {
+		if (is_file($filename) && is_writable($filename)) {
+			$fd = fopen($filename, 'a');
+		} else {
+			throw Exception(T_('Unable to write file : ').$filename);
+		}
+	}
+	if ($fd == null) {
+		$fd = fopen(dirname(__FILE__).'/../logs/update-'.date("Y-m-d").'.log', 'a');
+	}
+	fwrite($fd, $date_log.$message_type.$message."\n");
+	fclose($fd);
+
+	# On log a l'ecran
+	if ($print)
+		return $print_style.$message."<br/>";
+	else
+		return $date_log.$message_type.$message."<br/>";
 }
 
 ?>

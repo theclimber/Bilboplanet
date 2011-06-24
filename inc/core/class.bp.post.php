@@ -23,8 +23,9 @@
 *
 ***** END LICENSE BLOCK *****/
 ?><?php
-class bpPost
+class bpPost extends bpObject
 {
+	protected $core;
 	protected $con;		///< <b>connection</b> Database connection object
 	protected $table;
 	protected $prefix;
@@ -46,9 +47,9 @@ class bpPost
 
 	public function __construct(&$con, $prefix,$post_id)
 	{
-		$this->con =& $con;
-		$this->table = $prefix.'post';
+		$this->con = $con;
 		$this->prefix = $prefix;
+		$this->table = $prefix.'post';
 		$this->post_id = $post_id;
 		$this->getPost();
 	}
@@ -66,7 +67,7 @@ class bpPost
 				post_score		as score,
 				post_status		as status,
 				post_comment	as post_comment";
-		$tables = $this->table.", ".$this->prefix."user, ".$this->prefix."post_tag";
+		$tables = $this->table.", ".$this->prefix."user";
 		$where_clause = $this->prefix."user.user_id = ".$this->table.".user_id";
 		$where_clause .= " AND ".$this->prefix."post.post_id = '".$this->post_id."'";
 
@@ -78,6 +79,9 @@ class bpPost
 			$rs = $this->con->select($strReq);
 		} catch (Exception $e) {
 			throw new Exception(T_('Unable to retrieve post:').' '.$this->con->error(), E_USER_ERROR);
+		}
+		if ($rs->count() == 0) {
+			throw new Exception(T_('This post does not exist'));
 		}
 
 		$this->timestamp = $rs->f('pubdate');
@@ -133,9 +137,6 @@ class bpPost
 	protected function getPubdateFormat($format) {
 		return  $this->getDateFormat($format,$this->timestamp);
 	}
-	protected function getDateFormat($format, $timestamp) {
-		return mysqldatetime_to_date($format,$timestamp);
-	}
 
 	public function setSearchWith($searchs) {
 		foreach ($searchs as $key=>$value) {
@@ -146,7 +147,7 @@ class bpPost
 		}
 	}
 
-	public function canRead() {
+	public function isActive() {
 		if ($this->status == 1) {
 			return true;
 		}

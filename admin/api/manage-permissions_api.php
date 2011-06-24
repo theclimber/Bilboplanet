@@ -6,7 +6,7 @@
 * Website : www.bilboplanet.com
 * Tracker : redmine.bilboplanet.com
 * Blog : www.bilboplanet.com
-* 
+*
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License as
@@ -98,7 +98,7 @@ if(isset($_POST['action'])) {
 		$rs = $core->con->select($sql);
 
 		$nb = 0;
-		$output .= showPagination($rs->count(), $num_page, $nb_items, 'updateUserList');
+		$output = showPagination($rs->count(), $num_page, $nb_items, 'updateUserList');
 		$output .= '
 <br /><br />
 <table id="userlist" class="table-member">
@@ -179,7 +179,7 @@ if(isset($_POST['action'])) {
 
 		print $output;
 		break;
-		
+
 ##########################################################
 # DEFAULT RETURN
 ##########################################################

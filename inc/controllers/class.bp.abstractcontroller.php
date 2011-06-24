@@ -22,7 +22,12 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 *
 ***** END LICENSE BLOCK *****/
-?>
-<?php
-require_once(dirname(__FILE__).'/prepend.php');
+?><?php
+
+abstract class AbstractController
+{
+	protected $prefix;
+	protected $con;
+	protected $core;
+}
 ?>

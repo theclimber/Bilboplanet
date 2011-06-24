@@ -26,151 +26,33 @@
 <?php
 # Inclusion des fonctions
 require_once(dirname(__FILE__).'/inc/prepend.php');
-$notFound = false;
 
-if (isset($_GET)) {
-	if (isset($_GET['page']) &&
-		in_array($_GET['page'], array(
-			'contact',
-			'subscribe'
-		)))
-	{
-		$view = new GenericView($core, $_GET['page']);
-		$view->addJavascript('javascript/functions.js');
-		$view->render();
-	} elseif (isset($_GET['page']) &&
-		in_array($_GET['page'], array(
-			'tribe',
-			'post'
-		)))
-	{
-		if ($_GET['page'] == 'tribe') {
-			tribeController();
-		}
+$page = "tribe";
+$action = "view";
 
-		if ($_GET['page'] == 'post') {
-			postController();
-		}
-	} else {
-		$notFound = true;
-	}
+if (isset($_GET['page']) && isset($_GET['action'])) {
+	$page = $_GET['page'];
+	$action = $_GET['action'];
 }
 
-if ($notFound) {
+if (in_array($page, array(
+		'contact',
+		'subscribe'
+	))) {
+	$view = new GenericView($core, $_GET['page']);
+	$view->addJavascript('javascript/functions.js');
+	$view->render();
+}
+
+$classname = ucfirst($page).'Controller';
+$controller = null;
+if (class_exists($classname)) {
+	$controller = new $classname($core);
+}
+if (method_exists($controller, $action)) {
+	$controller->$action();
+} else {
 	$view = new GenericView($core, '404');
 	$view->render();
-}
-
-function tribeController() {
-	global $blog_settings, $core;
-
-	$tribe_id = $blog_settings->get('planet_main_tribe');
-	$witags = '';
-	$wiusers = '';
-	$wisearch = '';
-	$wotags = '';
-	$wousers = '';
-	$wosearch = '';
-
-	# Customizing the tribe
-	if (isset($_GET)) {
-		# if user want to read a unique tribe
-		if (isset($_GET['id']) && !empty($_GET['id'])){
-			$tribe_id = $_GET['id'];
-		}
-		if (isset($_GET['witags'])) {
-			$witags = $_GET['witags'];
-		}
-		if (isset($_GET['wiusers'])) {
-			$wiusers = $_GET['wiusers'];
-		}
-		if (isset($_GET['wisearch'])) {
-			$wisearch = $_GET['wisearch'];
-		}
-		if (isset($_GET['wotags'])) {
-			$wotags = $_GET['wotags'];
-		}
-		if (isset($_GET['wousers'])) {
-			$wousers = $_GET['wousers'];
-		}
-		if (isset($_GET['wosearch'])) {
-			$wosearch = $_GET['wosearch'];
-		}
-
-	}
-
-	$core->tribes->setCurrentTribe($tribe_id);
-
-	$core->tribes->setCurrentTags($witags, 'with');
-	$core->tribes->setCurrentUsers($wiusers, 'with');
-	$core->tribes->setCurrentSearch($wisearch, 'with');
-	$core->tribes->setCurrentTags($wotags, 'without');
-	$core->tribes->setCurrentUsers($wousers, 'without');
-	$core->tribes->setCurrentSearch($wosearch, 'without');
-
-	$view = new TribeView($core);
-	$view->addJavascript('javascript/main.js');
-	$view->addJavascript('javascript/jquery.boxy.js');
-
-	# Customizing the view
-	if (isset($_GET)) {
-		if (isset($_GET['page']) && is_numeric($_GET['page'])) {
-			$view->setPage($_GET['page']);
-		}
-		if (isset($_GET['nbitems']) && is_numeric($_GET['nbitems'])) {
-			$view->setNbItems($_GET['nbitems']);
-		}
-		if (isset($_GET['popular'])) {
-			$view->setPopular();
-		}
-		if (isset($_GET['filter']) &&
-			in_array($_GET['filter'], array('day', 'week', 'month', 'all'))) {
-			$view->setPeriod($_GET['filter']);
-		}
-	}
-
-	# Print result on screen
-	$view->render();
-}
-
-function postController() {
-	global $blog_settings, $core, $notFound;
-
-	# if user want to read a unique post
-	if (isset($_GET['id']) && !empty($_GET['id'])){
-		$post = new bpPost($core->con, $core->prefix, intval($_GET['id']));
-
-		if($post->canRead()) {
-			if (
-				isset($_GET['go']) &&
-				$_GET['go'] == "external" &&
-				$blog_settings->get('internal_links')
-			){
-
-				$root_url = $blog_settings->get('planet_url');
-				$analytics = $blog_settings->get('planet_analytics');
-
-				if(!empty($analytics)) {
-					# If google analytics is activated, launch request
-					analyze (
-						$analytics,
-						$root_url.'/post/'.$post->getId(),
-						'post:'.$this->getId,
-						$post->getPermalink());
-				}
-				http::redirect(stripslashes($post->getPermalink));
-			} else {
-				$view = new PostView($core, $post);
-				$view->addJavascript('javascript/main.js');
-				$view->addJavascript('javascript/jquery.boxy.js');
-				# Print result on screen
-				$view->render();
-			}
-		} else {
-			$notFound = true;
-		}
-	} else {
-		$notFound = true;
-	}
 }
 ?>

@@ -40,13 +40,16 @@ if (!defined('CLEARBRICKS_PATH') || !is_dir(CLEARBRICKS_PATH)) {
 require CLEARBRICKS_PATH.'/_common.php';
 $__autoload['bpCore']				= dirname(__FILE__).'/core/class.bp.core.php';
 $__autoload['bpAuth']				= dirname(__FILE__).'/core/class.bp.auth.php';
-$__autoload['dcError']				= dirname(__FILE__).'/core/class.dc.error.php';
-$__autoload['dcModules']			= dirname(__FILE__).'/core/class.dc.modules.php';
+$__autoload['dcError']				= dirname(__FILE__).'/core/class.bp.error.php';
+$__autoload['dcModules']			= dirname(__FILE__).'/core/class.bp.modules.php';
 $__autoload['bpSettings']			= dirname(__FILE__).'/core/class.bp.settings.php';
 $__autoload['bpTribes']				= dirname(__FILE__).'/core/class.bp.tribes.php';
-$__autoload['dcRestServer']			= dirname(__FILE__).'/core/class.dc.rest.php';
+$__autoload['dcRestServer']			= dirname(__FILE__).'/core/class.bp.rest.php';
 $__autoload['bpPost']				= dirname(__FILE__).'/core/class.bp.post.php';
 $__autoload['bpUser']				= dirname(__FILE__).'/core/class.bp.user.php';
+$__autoload['bpObject']				= dirname(__FILE__).'/core/class.bp.object.php';
+$__autoload['bpFeed']				= dirname(__FILE__).'/core/class.bp.feed.php';
+$__autoload['bpSite']				= dirname(__FILE__).'/core/class.bp.site.php';
 
 require_once(dirname(__FILE__).'/lib/gettext/gettext.inc');
 require_once(dirname(__FILE__).'/fonctions.php');
@@ -60,6 +63,11 @@ $__autoload['AbstractView']			= dirname(__FILE__).'/views/class.bp.abstractview.
 $__autoload['TribeView']			= dirname(__FILE__).'/views/class.bp.tribeview.php';
 $__autoload['PostView']				= dirname(__FILE__).'/views/class.bp.postview.php';
 $__autoload['GenericView']			= dirname(__FILE__).'/views/class.bp.genericview.php';
+
+$__autoload['AbstractController']	= dirname(__FILE__).'/controllers/class.bp.abstractcontroller.php';
+$__autoload['TribeController']		= dirname(__FILE__).'/controllers/class.bp.tribecontroller.php';
+$__autoload['PostController']		= dirname(__FILE__).'/controllers/class.bp.postcontroller.php';
+$__autoload['UpdateController']		= dirname(__FILE__).'/controllers/class.bp.updatecontroller.php';
 
 mb_internal_encoding('UTF-8');
 

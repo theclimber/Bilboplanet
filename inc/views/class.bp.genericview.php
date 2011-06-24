@@ -29,25 +29,11 @@ class GenericView extends AbstractView
 
 	public function __construct(&$core, $page)
 	{
-		global $blog_settings;
+		$this->instantiateTPL();
 		$this->core =& $core;
-		$this->prefix = $core->prefix;
 		$this->con = $core->con;
+		$this->prefix = $core->prefix;
 		$this->page = $page;
-
-		# Create the Hyla_Tpl object
-		$this->tpl = new Hyla_Tpl();
-		$this->tpl->setL10nCallback('T_');
-		$this->tpl->importFile('index','index.tpl', dirname(__FILE__).'/../../themes/'.$blog_settings->get('planet_theme'));
-		$this->tpl->setVar('planet', array(
-			"url"	=>	$blog_settings->get('planet_url'),
-			"theme"	=>	$blog_settings->get('planet_theme'),
-			"title"	=>	$blog_settings->get('planet_title'),
-			"desc"	=>	$blog_settings->get('planet_desc'),
-			"keywords"	=>	$blog_settings->get('planet_keywords'),
-			"desc_meta"	=>	$blog_settings->get('planet_desc_meta'),
-			"msg_info" => $blog_settings->get('planet_msg_info'),
-		));
 	}
 
 	protected function renderContactPage() {

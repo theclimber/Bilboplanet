@@ -34,7 +34,7 @@ if ($core->auth->sessionExists()):
 		exit;
 	}
 
-require_once(dirname(__FILE__).'/../inc/lib/simplepie/simplepie.inc');
+require_once(dirname(__FILE__).'/../inc/lib/simplepie/SimplePieAutoloader.php');
 
 function showArticleSummary($con){
 	global $core;
@@ -84,7 +84,6 @@ function showBlogLastArticles() {
 	$feed = new SimplePie();
 	$feed->set_feed_url(array('http://bilboplanet.com/feed/'));
 	$feed->set_cache_duration (600);
-	$feed->enable_xml_dump(isset($_GET['xmldump']) ? true : false);
 	$success = $feed->init();
 	$feed->handle_content_type();
 	if ($success) {

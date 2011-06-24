@@ -24,7 +24,7 @@
 ***** END LICENSE BLOCK *****/
 ?><?php
 
-class bpUser
+class bpUser extends bpObject
 {
 	protected $con;		///< <b>connection</b> Database connection object
 	protected $table;

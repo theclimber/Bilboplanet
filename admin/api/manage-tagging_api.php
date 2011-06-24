@@ -157,7 +157,7 @@ if(isset($_POST['action'])) {
 				$action = '<a href="javascript:add_tags('.$rs->post_id.', \''.htmlspecialchars($rs->post_title).'\')">';
                 $action .= '<img src="meta/icons/add_tag.png" title="'.T_('Tag post').'" /></a>';
 
-				$list .= '<tr id="line'.$rs->post_id.'" class="'.$status.'">';
+				$list .= '<tr id="line'.$rs->post_id.'">';
 				$list .= '<td>'.mysqldatetime_to_date("d/m/Y", $rs->post_pubdate).'</td>';
                 $list .= '<td>'.$post_title.'<br /><div class="tag-line">'.$tags;
                 $list .= ' <span id="action'.$rs->post_id.'">'.$action.'</span></div></td></tr>';

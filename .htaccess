@@ -7,8 +7,8 @@ ErrorDocument 404 /404.php
 	RewriteEngine On
 	RewriteBase /~greg/bilboplanet/
 	RewriteRule ^feed/(.*)$ feed.php?type=$1
-	RewriteRule ^post/(.*)$  index.php?page=post&id=$1
-	RewriteRule ^tribe/(.*)$  index.php?page=tribe&id=$1
+	RewriteRule ^post/view/(.*)$  index.php?page=post&action=view&id=$1
+	RewriteRule ^tribe/view/(.*)$  index.php?page=tribe&action=view&id=$1
 	RewriteRule ^contact/(.*)$  index.php?page=contact&$1
 	RewriteRule ^subscribe/(.*)$  index.php?page=subscribe&$1
 </IfModule>

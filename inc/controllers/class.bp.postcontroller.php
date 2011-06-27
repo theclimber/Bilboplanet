@@ -32,7 +32,7 @@ class PostController extends AbstractController
 		$this->prefix = $core->prefix;
 	}
 
-	public function run() {
+	public function view() {
 		global $blog_settings, $notFound;
 
 		# if user want to read a unique post

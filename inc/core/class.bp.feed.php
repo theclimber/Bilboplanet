@@ -190,10 +190,12 @@ class bpFeed extends bpObject
 				##########################################
 				# Get tags defined in the database for all posts of that feed
 				$item_tags = $this->tags;
+				$reserved_tags = json_decode($blog_settings->get('planet_reserved_tags'), true);
 
 				# Get tags defined on the item in the feed
 				foreach ($item->get_categories() as $category) {
-					if (!in_array($category->get_label(), $item_tags)){
+					if (!in_array($category->get_label(), $item_tags)
+						&& !in_array($category->get_label(), $reserved_tags)){
 						$item_tags[] = $category->get_label();
 					}
 				}
@@ -202,7 +204,8 @@ class bpFeed extends bpObject
 				$hashtags = array();
 				preg_match('/#([\\d\\w]+)/', $item->get_title(), $hashtags);
 				foreach ($hashtags as $tag) {
-					if (!in_array($tag, $item_tags)){
+					if (!in_array($tag, $item_tags)
+						&& !in_array($tag, $reserved_tags)){
 						$item_tags[] = $tag;
 					}
 				}
@@ -210,7 +213,9 @@ class bpFeed extends bpObject
 				# check if some existing tags are in the title
 				foreach (explode(' ', $item_title) as $word) {
 					$tagRq = $this->con->select('SELECT tag_id FROM '.$this->prefix.'post_tag WHERE tag_id = "'.$word.'"');
-					if ($tagRq->count() > 1) {
+					if ($tagRq->count() > 1
+						&& !in_array($word, $item_tags)
+						&& !in_array($word, $reserved_tags)) {
 						$item_tags[] = $word;
 					}
 				}

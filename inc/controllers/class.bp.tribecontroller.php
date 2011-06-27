@@ -32,7 +32,7 @@ class TribeController extends AbstractController
 		$this->prefix = $core->prefix;
 	}
 
-	public function run() {
+	public function view() {
 		global $blog_settings;
 
 		$tribe_id = $blog_settings->get('planet_main_tribe');

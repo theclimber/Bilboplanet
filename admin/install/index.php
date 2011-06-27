@@ -239,6 +239,8 @@ if ($can_install && !empty($_POST))
 		$blog_settings->put('accept_public_tagged_feed','0', "boolean");
 		$blog_settings->put('accept_user_tagged_feed','1', "boolean");
 
+		$blog_settings->put('planet_reserved_tags',json_encode(array($p_title)), "string");
+
 		# Create planet salt :
 		$base_string = sha1(time().$u_fullname.$u_email.$u_pwd.'~'.microtime(TRUE).$default_tz);
 		$salt = substr($base_string, rand(0, strlen($base_string)), 32);

@@ -38,7 +38,7 @@ class bpFeed extends bpObject
 	private $feed_status;
 	private $feed_comment;
 
-	public function __construct(&$con, $prefix,$feed_id)
+	public function __construct(&$con, $prefix, $feed_id)
 	{
 		$this->con =& $con;
 		$this->table = $prefix.'feed';
@@ -144,6 +144,7 @@ class bpFeed extends bpObject
 		}
 
 		# On cree un objet SimplePie et on ajuste les parametres de base
+		require_once(dirname(__FILE__).'/../lib/simplepie/SimplePieAutoloader.php');
 		$feed = new SimplePie();
 		$feed->set_feed_url($this->getUrl());
 		$feed->set_cache_location(dirname(__FILE__).'/../../admin/cache');
@@ -190,7 +191,14 @@ class bpFeed extends bpObject
 				##########################################
 				# Get tags defined in the database for all posts of that feed
 				$item_tags = $this->tags;
-				$reserved_tags = json_decode($blog_settings->get('planet_reserved_tags'), true);
+
+				$reserved_tags = array();
+				$planet_tags = json_decode($blog_settings->get('planet_reserved_tags'), true);
+				if (is_array($planet_tags)) {
+					foreach ($planet_tags as $tag) {
+						$reserved_tags[] = $tag;
+					}
+				}
 
 				# Get tags defined on the item in the feed
 				foreach ($item->get_categories() as $category) {

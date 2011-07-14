@@ -1,0 +1,63 @@
+@import url(style.css);
+@import url(rating.css);
+
+div.authorDetail h1 {
+	display: inline-block;
+	margin: 0;
+}
+div.authorDetail img {
+	margin: 10px;
+	float: right;
+}
+div.postDetail {
+	color: #fff;
+}
+div.postDetail a{
+	color: #fff;
+	text-decoration: none;
+}
+div.postDetail a:hover{
+	text-decoration: underline;
+}
+header.article description {
+	display: inline-block;
+	line-height: 22px;
+	vertical-align: top;
+}
+article comments {
+	display: block;
+	margin-top: 50px;
+	background-color: #fff;
+}
+comment {
+	display: block;
+	padding: 10px;
+	margin: 10px;
+}
+comment info {
+	display: block;
+	padding: 5px;
+}
+comment content {
+	display: block;
+	border-radius: 5px;
+	padding: 5px;
+	background-color: #eee;
+}
+div#commentForm {
+	display: block;
+	margin: 5px;
+}
+div#commentForm input{
+	display: block;
+	width: 200px;
+	margin: 5px;
+}
+div#commentForm input.button {
+	width: 50px;
+}
+div#commentForm textarea {
+	width: 600;
+	height: 300px;
+	margin: 5px;
+}

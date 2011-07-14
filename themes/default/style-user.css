@@ -1,0 +1,72 @@
+@import url(style.css);
+
+div.userDetail {
+	color: #fff;
+}
+div.userDetail a{
+	color: #fff;
+	text-decoration: none;
+}
+div.userDetail a:hover{
+	text-decoration: underline;
+}
+/******************************
+ * Les formulaires
+ * ****************************/
+form.main {
+	padding: 20px;
+	border: 1px solid #fff;
+	-moz-box-shadow: -1px -1px 0 #ddd, -1px -1px 0 #ddd inset;
+	-webkit-box-shadow: -1px -1px 0 #ddd, -1px -1px 0 #ddd inset;
+	box-shadow: -1px -1px 0 #ddd, -1px -1px 0 #ddd inset;
+	-moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
+	border-radius: 20px;
+	background: #f2f2f2;
+}
+form.main input, form.main select, form.main textarea {
+    /*dÃ©jÃ  en inline-block*/
+    width: 250px;
+    padding: 4px;
+ /*   vertical-align: top;*/
+	border: 1px solid #aaa;
+	background: #f2f2f2;
+
+	-moz-box-shadow: -1px -1px 0 #ddd, -1px -1px 0 #ddd inset;
+	-webkit-box-shadow: -1px -1px 0 #ddd, -1px -1px 0 #ddd inset;
+	box-shadow: -1px -1px 0 #ddd, -1px -1px 0 #ddd inset;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+}
+form.main textarea {
+    width: 450px;
+    height: 15em;
+}
+form.main label {
+    display: inline-block;
+    width: 100px;
+    margin-right: 20px;
+   /* vertical-align: bottom;*/
+    text-align: right;
+}
+form.main label.textarea {
+	vertical-align: top;
+}
+form.main input#apply {
+	width: 100px;
+}
+form.main span.description {
+	margin-left: 120px;
+}
+
+form.main div.button {
+	padding: 5px;
+	background-color: #D2D6CB;
+	-moz-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	font-size: 12px;
+	text-align: center;
+}

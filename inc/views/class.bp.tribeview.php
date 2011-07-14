@@ -64,7 +64,58 @@ class TribeView extends AbstractView
 	# RENDER FILTER MENU
 	#######################
 	protected function renderPeriodFilter() {
-		$this->tpl->render('menu.filter');
+#		$this->tpl->render('menu.filter');
+	}
+
+	#######################
+	# RENDER TAG CLOUD
+	#######################
+	protected function renderTagCloud() {
+		$sql = "SELECT
+			tag_id, count(tag_id) as nb
+			FROM ".$this->prefix."post_tag
+			GROUP BY tag_id
+			LIMIT 0, 15";
+		$rs = $this->con->select($sql);
+
+		while ($rs->fetch()) {
+			$user_info = array(
+				"id" => urlencode($rs->f('tag_id')),
+				"weight" => $rs->f('nb')
+				);
+			$this->tpl->setVar("tag", $user_info);
+			$this->tpl->render("cloud.tag");
+		}
+		$this->tpl->render("widget.cloud.tag");
+	}
+
+
+	#######################
+	# RENDER USER CLOUD
+	#######################
+	protected function renderUserCloud() {
+		$sql_side = "SELECT
+			user_fullname as fullname,
+			".$this->prefix."user.user_id as id,
+			".$this->prefix."site.site_url as site_url,
+			".$this->prefix."site.site_name as site_name
+			FROM ".$this->prefix."user, ".$this->prefix."site
+			WHERE ".$this->prefix."user.user_id = ".$this->prefix."site.user_id
+			AND user_status = '1'
+			ORDER BY lower(user_fullname)
+			LIMIT 0,15";
+		$rs_side = $this->con->select($sql_side);
+
+		while ($rs_side->fetch()) {
+			$user_info = array(
+				"id" => urlencode($rs_side->f('id')),
+				"name" => $rs_side->f('fullname'),
+				"weight" => rand(1,10)
+				);
+			$this->tpl->setVar("user", $user_info);
+			$this->tpl->render("cloud.user");
+		}
+		$this->tpl->render("widget.cloud.user");
 	}
 
 	#######################
@@ -133,14 +184,49 @@ class TribeView extends AbstractView
 		}
 	}
 
+	protected function renderHeaderMenu() {
+		$this->tpl->render('menu.tribe');
+	}
+
+	protected function renderTribeMenu() {
+		$allTribes = $this->tribe->dumpGlobalTribes();
+		foreach($allTribes as $tribe) {
+			if ($tribe['id'] == $this->tribe->getCurrentTribeName()) {
+				$this->tpl->setVar('cSelected', 'class="selected"');
+			}
+			else {
+				$this->tpl->setVar('cSelected', 'class=""');
+			}
+			$this->tpl->setVar('tribeEntry', array('id' => $tribe['id'], 'name' => $tribe['name']));
+			$this->tpl->render('tribe.menuEntry');
+		}
+		$allTribes = $this->tribe->dumpLocalTribes();
+		foreach($allTribes as $tribe) {
+			if ($tribe['id'] == $this->tribe->getCurrentTribeName()) {
+				$this->tpl->setVar('cSelected', 'class="selected"');
+			}
+			else {
+				$this->tpl->setVar('cSelected', 'class=""');
+			}
+			$this->tpl->setVar('tribeEntry', array('id' => $tribe['id'], 'name' => $tribe['name']));
+			$this->tpl->render('tribe.menuEntry');
+		}
+	}
+
 	public function render() {
 		header('Content-type: text/html; charset=utf-8');
 		$this->renderGlobals();
 		$nbitems = $this->renderTribe();
-		$this->renderNavigation($nbitems);
+	#	$this->renderNavigation($nbitems);
 		$this->renderPeriodFilter();
 		$this->renderSearchBox();
-		$this->tpl->render("content.posts");
+		$this->renderHeaderMenu();
+		$this->renderTribeMenu();
+		$this->renderUserCloud();
+		$this->renderTagCloud();
+		$this->tpl->render('nav.tribe');
+		$this->tpl->setVar('page', 'tribe');
+		$this->tpl->render("content.tribe");
 		echo $this->tpl->render();
 	}
 }

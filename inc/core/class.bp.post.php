@@ -107,13 +107,16 @@ class bpPost extends bpObject
 
 	public function getPermalink() {
 		global $blog_settings;
-		$post_permalink = $this->permalink;
 		if ($blog_settings->get('internal_links')) {
-			$post_permalink = $blog_settings->get('planet_url').
+			return $blog_settings->get('planet_url').
 				"/index.php?post_id=".$this->post_id.
 				"&go=external";
 		}
-		return $post_permalink;
+		return $this->getBlogPermalink();
+	}
+
+	public function getBlogPermalink() {
+		return $this->permalink;
 	}
 
 	public function getPubdateDay() {

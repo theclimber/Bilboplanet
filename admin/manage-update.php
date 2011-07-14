@@ -34,7 +34,6 @@ if ($core->auth->sessionExists()):
 	}
 include_once(dirname(__FILE__).'/head.php');
 include_once(dirname(__FILE__).'/sidebar.php');
-include_once(dirname(__FILE__).'/../inc/cron_fct.php');
 
 $flash = array();
 $update = false;
@@ -65,7 +64,7 @@ if(isset($_POST) && isset($_POST['submit'])) {
 			fwrite($fp,time());
 			fclose($fp);
 			$flash[] = T_("The automatical update is disabled ").$result;
-			header("Location: ./gestion-update.php");
+			header("Location: ./manage-update.php");
 		}
 		elseif ($_POST['action'] == '1') {
 			if (get_cron_running())
@@ -73,17 +72,24 @@ if(isset($_POST) && isset($_POST['submit'])) {
 			else
 				$flash[] = T_('The automatic update is enabled');
 			unlink(dirname(__FILE__).'/../inc/STOP');
-			header("Location: ./gestion-update.php");
+			header("Location: ./manage-update.php");
 		}
 		else {
 			$update = true;
-			try{
-				$update_logs = update($core, true);
-				$flash[] = T_("Manual update ...");
+			$sql = "SELECT feed_id FROM ".$core->prefix."feed
+				ORDER BY feed_checked ASC
+				LIMIT 0, 30";
+			$rs = $core->con->select($sql);
+			while($rs->fetch()) {
+				$feed = new bpFeed($core->con, $core->prefix, $rs->feed_id);
+				try {
+				$feed->fetch();
+				}
+				catch(Exception $e){
+					$error[] = sprintf(T_('Error while updating : %s'), $e->getMessage());
+				}
 			}
-			catch(Exception $e){
-				$error[] = sprintf(T_('Error while updating : %s'), $e->getMessage());
-			}
+			$flash[] = T_("Manual update ...");
 		}
 	}
 

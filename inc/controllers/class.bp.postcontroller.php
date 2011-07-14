@@ -54,10 +54,10 @@ class PostController extends AbstractController
 						analyze (
 							$analytics,
 							$root_url.'/post/'.$post->getId(),
-							'post:'.$this->getId,
-							$post->getPermalink());
+							'post:'.$post->getId(),
+							$post->getBlogPermalink());
 					}
-					http::redirect(stripslashes($post->getPermalink));
+					http::redirect(stripslashes($post->getBlogPermalink()));
 				} else {
 					$view = new PostView($this->core, $post);
 					$view->addJavascript('javascript/main.js');

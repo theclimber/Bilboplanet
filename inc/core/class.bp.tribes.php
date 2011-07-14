@@ -354,6 +354,10 @@ class bpTribes
 		return $this->local_tribes;
 	}
 
+	public function getCurrentTribeName() {
+		return $this->current_tribe['id'];
+	}
+
 	public function getCurrentTribePopularPosts(
 		$nb_items,
 		$num_start = 0,

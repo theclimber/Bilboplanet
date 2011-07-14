@@ -61,52 +61,15 @@ abstract class AbstractView
 	}
 
 	#######################
-	# RENDER SIDEBAR
-	#######################
-	protected function renderSidebar() {
-		global $blog_settings;
-		if ($blog_settings->get('planet_msg_info')) {
-			$this->tpl->render('sidebar.alert');
-		}
-		if($blog_settings->get('planet_vote')) {
-			$this->tpl->render('sidebar.popular');
-		}
-
-		$sql_side = "SELECT
-			user_fullname as fullname,
-			".$this->prefix."user.user_id as id,
-			".$this->prefix."site.site_url as site_url,
-			".$this->prefix."site.site_name as site_name
-			FROM ".$this->prefix."user, ".$this->prefix."site
-			WHERE ".$this->prefix."user.user_id = ".$this->prefix."site.user_id
-			AND user_status = '1'
-			ORDER BY lower(user_fullname)";
-		$rs_side = $this->con->select($sql_side);
-
-		while ($rs_side->fetch()) {
-			$user_info = array(
-				"id" => urlencode($rs_side->f('id')),
-				"fullname" => $rs_side->f('fullname'),
-				"site_url" => $rs_side->f('site_url')
-				);
-			$this->tpl->setVar("user", $user_info);
-			$this->tpl->render("sidebar.users.list");
-		}
-	}
-
-	#######################
 	# RENDER MENU
 	#######################
 	protected function renderMenu() {
 		global $blog_settings;
-		if ($blog_settings->get('planet_vote')) {
-			$this->tpl->render('menu.votes');
-		}
 		if ($blog_settings->get('planet_contact_page')) {
-			$this->tpl->render('menu.contact');
+		#	$this->tpl->render('menu.contact');
 		}
 		if ($blog_settings->get('planet_subscription')) {
-			$this->tpl->render('menu.subscription');
+		#	$this->tpl->render('menu.subscription');
 		}
 
 		if ($this->core->auth->sessionExists() ) {
@@ -329,7 +292,6 @@ abstract class AbstractView
 	}
 
 	protected function renderGlobals() {
-		$this->renderSidebar();
 		$this->renderMenu();
 		$this->renderStyles();
 		$this->renderJavascript();

@@ -165,6 +165,10 @@ class UpdateController extends AbstractController
 		# On retourne la date de maj au bon format
 		return date("d-m-Y", $date).'&nbsp;&agrave;&nbsp;'.date("H:i", $date);
 	}
+
+	public function launch() {
+		$this->update(true);
+	}
 }
 ?>
 

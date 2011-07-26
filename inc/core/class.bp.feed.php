@@ -201,10 +201,13 @@ class bpFeed extends bpObject
 				}
 
 				# Get tags defined on the item in the feed
-				foreach ($item->get_categories() as $category) {
-					if (!in_array($category->get_label(), $item_tags)
-						&& !in_array($category->get_label(), $reserved_tags)){
-						$item_tags[] = $category->get_label();
+				$categs = $item->get_categories();
+				if ($categs) {
+					foreach ($categs as $category) {
+						if (!in_array($category->get_label(), $item_tags)
+							&& !in_array($category->get_label(), $reserved_tags)){
+							$item_tags[] = $category->get_label();
+						}
 					}
 				}
 
@@ -329,7 +332,7 @@ class bpFeed extends bpObject
 					$cur2->insert();
 				}
 
-				postNewsOnSocialNetwork($item_title, $this->getSite()->getAuthor()->getFullname(), $next_post_id);
+				$this->postNewsOnSocialNetwork($item_title, $this->getSite()->getAuthor()->getFullname(), $next_post_id);
 
 				return logMsg("Post added: ".$item_permalink, "", 1, $print);
 			}

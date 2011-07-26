@@ -45,7 +45,6 @@ class PostController extends AbstractController
 					$_GET['go'] == "external" &&
 					$blog_settings->get('internal_links')
 				){
-
 					$root_url = $blog_settings->get('planet_url');
 					$analytics = $blog_settings->get('planet_analytics');
 

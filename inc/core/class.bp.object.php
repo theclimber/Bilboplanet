@@ -24,8 +24,11 @@
 ***** END LICENSE BLOCK *****/
 ?><?php
 
-abstract class bpObject
+class bpObject
 {
+
+	public function __construct() {
+	}
 
 	protected function getDateFormat($format, $timestamp) {
 		return mysqldatetime_to_date($format,$timestamp);

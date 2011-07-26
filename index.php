@@ -27,32 +27,29 @@
 # Inclusion des fonctions
 require_once(dirname(__FILE__).'/inc/prepend.php');
 
-$page = "tribe";
-$action = "view";
+$page = isset($_GET['page']) ? $_GET['page'] : "tribe";
+$action = isset($_GET['action']) ? $_GET['action'] : "view";
 
-if (isset($_GET['page']) && isset($_GET['action'])) {
-	$page = $_GET['page'];
-	$action = $_GET['action'];
-}
-
-if (in_array($page, array(
-		'contact',
-		'subscribe'
+if (!in_array($page, array(
+		'tribe',
+		'post',
+		'update'
 	))) {
 	$view = new GenericView($core, $_GET['page']);
 	$view->addJavascript('javascript/functions.js');
 	$view->render();
 }
-
-$classname = ucfirst($page).'Controller';
-$controller = null;
-if (class_exists($classname)) {
-	$controller = new $classname($core);
-}
-if (method_exists($controller, $action)) {
-	$controller->$action();
-} else {
-	$view = new GenericView($core, '404');
-	$view->render();
+else {
+	$classname = ucfirst($page).'Controller';
+	$controller = null;
+	if (class_exists($classname)) {
+		$controller = new $classname($core);
+	}
+	if (method_exists($controller, $action)) {
+		$controller->$action();
+	} else {
+		$view = new GenericView($core, '404');
+		$view->render();
+	}
 }
 ?>

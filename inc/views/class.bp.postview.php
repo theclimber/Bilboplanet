@@ -46,6 +46,8 @@ class PostView extends AbstractView
 		header('Content-type: text/html; charset=utf-8');
 		$this->renderGlobals();
 		$this->renderPost();
+		$this->tpl->render('nav.single');
+		$this->tpl->setVar('page', 'single');
 		$this->tpl->render("content.single");
 		echo $this->tpl->render();
 	}

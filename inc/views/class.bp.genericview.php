@@ -92,11 +92,17 @@ class GenericView extends AbstractView
 			"text" => T_("Page not found")
 		);
 		$this->tpl->setVar("error", $error);
+		$this->tpl->render('nav.user');
+		$this->tpl->setVar("page", "user");
 		$this->tpl->render('content.404');
 	}
 
 	protected function renderPage() {
-		$this->{'render'.ucfirst($this->page).'Page'}();
+		if (method_exists($this, 'render'.ucfirst($this->page).'Page')){
+			$this->{'render'.ucfirst($this->page).'Page'}();
+		} else {
+			$this->render404Page();
+		}
 	}
 
 	public function render() {
@@ -107,4 +113,3 @@ class GenericView extends AbstractView
 	}
 }
 ?>
-

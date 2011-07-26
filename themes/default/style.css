@@ -11,6 +11,7 @@
 	border-radius: 5px;
 	width: 180px;
 	height: 30px;
+	padding-left: 7px;
 }
 #mainNav form.search #triangle {
 	border-color: transparent transparent #fff transparent;

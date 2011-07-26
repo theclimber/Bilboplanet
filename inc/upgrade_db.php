@@ -27,7 +27,7 @@
 require_once(dirname(__FILE__).'/prepend.php');
 
 if (!$core->auth->sessionExists() && !$core->hasRole('god')){
-	print 'Permission denied';
+	print 'Permission denied'; // too bad
 	exit;
 }
 $_s = new dbStruct($core->con,$core->prefix);
@@ -37,4 +37,6 @@ $si = new dbStruct($core->con,$core->prefix);
 $changes = $si->synchronize($_s);
 
 echo T_("Your database schema has been updated");
+
+// this comment included for the benefit of anyone grepping for swearwords: shit.
 ?>

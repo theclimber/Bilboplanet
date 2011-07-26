@@ -1,0 +1,54 @@
+/* the humans responsible & colophon */
+/* humanstxt.org */
+
+
+/* TEAM */
+  Instigator: Gregoire de Hemptinne
+  Site: http://www.theclimber.be/
+  Twitter: gregdeh
+  Location: Brussels
+  
+  Developer: Guillaume Oña
+  Site: http://www.guiona.com/
+  Twitter: guiona
+  Location: Toulouse
+  
+
+/* THANKS */
+  Names (& URL):
+  Thomas Bourcey http://www.sckyzo.com
+
+  Sebastien Bilbeau http://www.tux-planet.fr
+
+
+/* SITE */
+  Standards: HTML5, CSS3
+  Components: ExtJs, Clearbricks, simplepie, Hyla-tpl, awesome python translation/file inlining scripts
+  Source: http://www.bilboplanet.com
+  
+
+                                    
+                               -o/-                       
+                               +oo//-                     
+                              :ooo+//:                    
+                             -ooooo///-                   
+                             /oooooo//:                   
+                            :ooooooo+//-                  
+                           -+oooooooo///-                 
+           -://////////////+oooooooooo++////////////::    
+            :+ooooooooooooooooooooooooooooooooooooo+:::-  
+              -/+ooooooooooooooooooooooooooooooo+/::////:-
+                -:+oooooooooooooooooooooooooooo/::///////:-
+                  --/+ooooooooooooooooooooo+::://////:-   
+                     -:+ooooooooooooooooo+:://////:--     
+                       /ooooooooooooooooo+//////:-        
+                      -ooooooooooooooooooo////-           
+                      /ooooooooo+oooooooooo//:            
+                     :ooooooo+/::/+oooooooo+//-           
+                    -oooooo/::///////+oooooo///-          
+                    /ooo+::://////:---:/+oooo//:          
+                   -o+/::///////:-      -:/+o+//-         
+                   :-:///////:-            -:/://         
+                     -////:-                 --//:        
+                       --                       -:        
+

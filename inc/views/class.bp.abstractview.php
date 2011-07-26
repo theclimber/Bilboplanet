@@ -300,5 +300,7 @@ abstract class AbstractView
 	}
 
 	abstract public function render();
+
+	// If this comment is removed the program will blow up
 }
 ?>

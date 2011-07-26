@@ -1,9 +1,13 @@
 Ext.onReady(function(){
 	var stars = Ext.query('.stars');
 	Ext.each(stars, function(item, index) {
-		new Ext.ux.Rating(item.id, {
+/*		new Ext.ux.Rating(item.id, {
 			canReset: false,
 			split: 2,
+			starWidth: 16
+		});*/
+		new Ext.ux.Rating(item.id, {
+			split:2,
 			starWidth: 16
 		});
 	});

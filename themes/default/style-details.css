@@ -1,0 +1,33 @@
+/* Implementation of the details tag */
+  /* style according to HTML 5 spec (or so I could understand...) */
+details {
+  padding-left: 40px;
+  position: relative;
+  display: block;
+}
+
+details > * {
+  display: none;
+}
+
+details.open > *, /* sigh :-( http://twitter.com/rem/status/2178972149 */
+details[open] > * {
+  display: block;
+}
+
+details > summary:first-child {
+  display: block;
+  color: #999;
+  cursor: pointer;
+}
+
+/* questioning whether this is a smart idea or not - IE7 doesn't support before */
+details > summary:first-child:before,
+details > summary:first-child:before {
+  content: "▸ "; /*&#9666;*/
+}
+
+details[open] > summary:first-child:before,
+details.open > summary:first-child:before {
+  content: "▾ "; /*&#9662;*/
+}

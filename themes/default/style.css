@@ -1,3 +1,4 @@
+@import url(style-details.css);
 /* GENERAL */
 .clear {clear:both;}
 body {
@@ -350,7 +351,6 @@ ul.cloud a { padding: 0px; }
 ul.cloud { margin: 0; }
 ul.cloud li { display: inline; }
 
-
 #slide-out {
 	-moz-transition: all 0.1s ease-in-out;
 	-webkit-transition: all 0.1s ease-in-out;
@@ -358,11 +358,11 @@ ul.cloud li { display: inline; }
 	transition: all 0.1s ease-in-out;
 	background-color: #262626;
 	border-radius: 0px 0px 0px 10px;
-	height: 73px;
+	height: 95px;
 	color: #fff;
 	position: relative ;
 	padding-top: 25px;
-	margin-top: -98px;
+	margin-top: -120px;
 }
 .page-wrap {
 	position: relative;
@@ -432,4 +432,5 @@ header.top #loginBox a {
 }*/
 div.stars {
 	display: inline-block;
+	vertical-align: top;
 }

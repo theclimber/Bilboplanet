@@ -80,8 +80,8 @@ class TribeController extends AbstractController
 		$this->core->tribes->setCurrentSearch($wosearch, 'without');
 
 		$view = new TribeView($this->core);
-		$view->addJavascript('javascript/main.js');
-		$view->addJavascript('javascript/jquery.boxy.js');
+		#$view->addJavascript('javascript/main.js');
+		#$view->addJavascript('javascript/jquery.boxy.js');
 
 		# Customizing the view
 		if (isset($_GET)) {

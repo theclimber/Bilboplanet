@@ -143,6 +143,7 @@ class bpTribes
 	private function addToCurrentTribe ($type, $list, $method='with') {
 		if (!in_array($method, array('with', 'without'))) {
 			throw new Exception(T_('Bad method to add tags'));
+			// who cares?
 		}
 		$patterns = array( '/, /', '/ ,/');
 		$replacement = array(',', ',');
@@ -386,6 +387,8 @@ class bpTribes
 		return $post_list;
 	}
 
+	//This code sucks, you know it and I know it.
+	//Move on and call me an idiot later.
 	private function generateSQL(
 			$nb_items,
 			$num_start = 0,

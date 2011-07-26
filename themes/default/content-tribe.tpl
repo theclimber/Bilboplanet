@@ -27,7 +27,7 @@
 			<h2><a href="index.php?page=post&action=view&id={$post.id}">{$post.title}</a></h2>
 		</header>
 		<description>
-			<details id="post1">
+			<details id="post{$post.id}">
 				<summary>
 					<ul>
 						<li>Publié le {$post.date} par {$post.author_fullname} à {$post.hour}</li>
@@ -36,16 +36,16 @@
 						<li itemprop="rating" itemscope
 							itemtype="http://data-vocabulary.org/Rating">
 							<div id="rating{$post.id}" class="stars">
-								<input type="radio" name="rating1" value="0.5" title="Very poor">
-								<input type="radio" name="rating1" value="1" title="Very poor">
-								<input type="radio" name="rating1" value="1.5" title="Not that bad">
-								<input type="radio" name="rating1" value="2" title="Not that bad">
-								<input type="radio" name="rating1" value="2.5" title="Average">
-								<input type="radio" name="rating1" value="3" title="Average">
-								<input checked="true" type="radio" name="rating1" value="3.5" title="Good">
-								<input type="radio" name="rating1" value="4" title="Good">
-								<input type="radio" name="rating1" value="4.5" title="Perfect">
-								<input type="radio" name="rating1" value="5" title="Perfect">
+								<input disabled="true" type="radio" name="rating" value="0.5" title="Very poor">
+								<input disabled="true" type="radio" name="rating" value="1" title="Very poor">
+								<input disabled="true" type="radio" name="rating" value="1.5" title="Not that bad">
+								<input disabled="true" type="radio" name="rating" value="2" title="Not that bad">
+								<input disabled="true" type="radio" name="rating" value="2.5" title="Average">
+								<input disabled="true" type="radio" name="rating" value="3" title="Average">
+								<input disabled="true" checked="true" type="radio" name="rating" value="3.5" title="Good">
+								<input disabled="true" type="radio" name="rating" value="4" title="Good">
+								<input disabled="true" type="radio" name="rating" value="4.5" title="Perfect">
+								<input disabled="true" type="radio" name="rating" value="5" title="Perfect">
 							</div>
 						</li>
 						<!-- END post.block.votes -->

@@ -7,12 +7,14 @@
 		<meta charset="utf-8" />
 		<link rel="stylesheet" href="{$planet.url}/themes/{$planet.theme}/style-{$page}.css" />
 	</head>
+<!-- hack for ie browser (assuming that ie is a browser) -->
 <!--[if lt IE 9]>
 <script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
 	<script type="text/javascript" src="{$planet.url}/themes/{$planet.theme}/javascript/ext-core-debug.js"></script>
 	<script type="text/javascript" src="{$planet.url}/themes/{$planet.theme}/javascript/{$page}.js"></script>
 	<script type="text/javascript" src="{$planet.url}/themes/{$planet.theme}/javascript/rating.js"></script>
+	<script type="text/javascript" src="{$planet.url}/themes/{$planet.theme}/javascript/details.js"></script>
 <!-- BEGIN js.import -->
 <script type="text/javascript" src="{$planet.url}/{$js_file}"></script>
 <!-- END js.import -->

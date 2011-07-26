@@ -1,6 +1,22 @@
-<!DOCTYPE html>
-<html lang="fr">
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7 ]> <html class="no-js ie6" lang="fr"> <![endif]-->
+<!--[if IE 7 ]>    <html class="no-js ie7" lang="fr"> <![endif]-->
+<!--[if IE 8 ]>    <html class="no-js ie8" lang="fr"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html class="no-js" lang="fr"> <!--<![endif]-->
 	<head>
+
+		<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+			Remove this if you use the .htaccess -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+		<!-- Mobile viewport optimized: j.mp/bplateviewport -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!-- Place favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+		<link rel="shortcut icon" href="{$planet.url}/themes/{$planet.theme}/favicon.ico">
+		<link rel="apple-touch-icon" href="{$planet.url}/themes/{$planet.theme}/apple-touch-icon.png">
+
 		<title>{$planet.title}</title>
 		<meta name="description" content="{$planet.desc_meta}" />
 		<meta name="keywords" content="{$planet.keywords}" />
@@ -19,7 +35,7 @@
 <script type="text/javascript" src="{$planet.url}/{$js_file}"></script>
 <!-- END js.import -->
 <body>
-
+<a name="top"></a>
 <div id="wrap">
 <header class="top">
 	<div id="slide-out">

@@ -1,11 +1,11 @@
 	<div id="mainNav">
 		<div class="topNavMenu">
 			<ul>
-				<li class="selected"><a href="#"><img src="images/menu-search.png"></a></li>
-				<li><a href="#"><img src="images/menu-rss.png"></a></li>
-				<li><a href="#"><img src="images/menu-twitter.png"></a></li>
-				<li><a href="#"><img src="images/menu-mail.png"></a></li>
-				<li><a href="#"><img src="images/menu-info.png"></a></li>
+				<li {$topNavSelected.0}><a href="#"><img src="{$planet.url}/themes/{$planet.theme}/images/menu-search.png"></a></li>
+				<li {$topNavSelected.1}><a href="#"><img src="{$planet.url}/themes/{$planet.theme}/images/menu-rss.png"></a></li>
+				<li {$topNavSelected.2}><a href="#"><img src="{$planet.url}/themes/{$planet.theme}/images/menu-twitter.png"></a></li>
+				<li {$topNavSelected.3}><a href="#"><img src="{$planet.url}/themes/{$planet.theme}/images/menu-mail.png"></a></li>
+				<li {$topNavSelected.4}><a href="#"><img src="{$planet.url}/themes/{$planet.theme}/images/menu-info.png"></a></li>
 			</ul>
 			<form class="search">
 				<div id="triangle"></div>
@@ -16,49 +16,60 @@
 	</div>
 	<div id="widgetNav">
 		<div class="widget postDetail">
-			<h1>Post details</h1>
+			<h1>{_Post details}</h1>
 			<ul>
 				<li itemprop="rating" itemscope
 					itemtype="http://data-vocabulary.org/Rating">
 				★★★★☆
-				(<span itemprop="value">4</span> on a scale of
+				(<span itemprop="value">{$post.score}</span> on a scale of
 				<span itemprop="worst">0</span> to
 				<span itemprop="best">5</span>)
 				</li>
-				<li>Date : 11/11/2011</li>
-				<li>Cet article a été vu 234 fois</li>
-				<li>Ajouter cet article aux favoris</li>
-				<li>Voir l'article sur le blog</li>
+				<li>{_Publication} : {$post.date} - {$post.hour}</li>
+				<li>{_Times this post was viewed} : {$post.nbview}</li>
+				<li><a href="#">{_Add this post to your favorites}</a></li>
+				<li><a href="{$post.permalink}">{_Go to blog}</a></li>
 			</ul>
-			<p>Votez pour cet article:
-			</p>
+			<!-- BEGIN side.votes -->
+			<p>{$votes.html}</p>
+			<!-- END side.votes -->
 		</div>
 
-		<div class="widget">
-			<h1>Tags</h1>
-			<ul id="cloud">
-				<li><a href="#" class="size9"><tag>Bar</tag></a></li>
-				<li><a href="#" class="size3"><tag>Foo</tag></a></li>
-				<li><a href="#" class="size4"><tag>Brol</tag></a></li>
+		<div class="widget postDetail">
+			<h1>{_Tags}</h1>
+			<ul>
+			<!-- BEGIN post.tags -->
+				<li><a href="#"><tag>{$post_tag}</tag></a></li>
+			<!-- ELSE post.tags -->
+				<li>{_No tags for this post}</li>
+			<!-- END post.tags -->
 			</ul>
 		</div>
 		<div class="widget postDetail authorDetail">
-			<h1>L'auteur</h1>
-			<img src="images/grav1.jpg" width="64px" />
+			<h1>{_The Author}</h1>
+			<img src="{$post.author_avatar}&size=64" />
 			<ul>
-				<li>Nom: Jean</li>
-				<li>Nombre d'article publiés : 24</li>
-				<li>Nombre de votes : 55</li>
-				<li>Blog de l'auteur : <a href="">http://blog.theclimber.be</a></li>
+				<li>{_Name} : {$post.author_id}</li>
+				<li>{_Number of published posts} : {$post.author_posts}</li>
+				<li>{_Number of votes} : {$post.author_votes}</li>
+				<li>{_Author's blog} : 
+					<ul>
+					<!-- BEGIN author.sites -->
+						<li><a href="{$author_site}">{$author_site}</a></li>
+					<!-- END author.sites -->
+					</ul>
+				</li>
 			</ul>
-			<p>Né le 28 février 1970 à Stockolm, il rentre à l'université de Vladivostock à 20 ans et étudie l'élasticité des réseaux sous charge maximale. Puis est engagé par Amazon ou il développera le système de Cloud computing de la même société</p>
+			<p>{$post.author_desc}</p>
 		</div>
 		<div class="widget postDetail">
-			<h1>Du même auteur</h1>
+			<h1>{_From the same author}</h1>
 			<ul>
-				<li><a href="#">Linux c'est trop de la balle</a></li>
-				<li><a href="#">Nous aimons tous RMS</a></li>
-				<li><a href="#">Voldemore est parmi nous</a></li>
+				<!-- BEGIN author.same -->
+				<li><a href="{$same_post.permalink}">{$same_post.title}</a></li>
+				<!-- ELSE author.same -->
+				<li>{_No post found}</li>
+				<!-- END author.same -->
 			</ul>
 		</div>
 	</div>

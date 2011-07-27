@@ -179,22 +179,13 @@ abstract class AbstractView
 
 		# Gravatar
 		if($blog_settings->get('planet_avatar')) {
-			$gravatar_email = strtolower($post->getAuthor()->getEmail());
-			$this->tpl->setVar('gravatar_url', "http://www.gravatar.com/avatar.php?gravatar_id=".
-				md5($gravatar_email)."&default=".
-				urlencode($blog_settings->get('planet_url').
-				"/themes/".$blog_settings->get('planet_theme')."/images/gravatar.png"));
 			$this->tpl->render('post.block.gravatar');
 		}
 
 		if ($blog_settings->get('planet_vote')) {
-		$votes = array("html" => $this->afficheVotes($post->getScore(), $post->getId()));
+			$votes = array("html" => $this->afficheVotes($post->getScore(), $post->getId()));
 			$this->tpl->setVar('votes', $votes);
 			$this->tpl->render('post.block.votes');
-		}
-		foreach ($post->getTags() as $tag) {
-			$this->tpl->setVar('post_tag', $tag);
-			$this->tpl->render('post.tags');
 		}
 		if ($blog_settings->get('allow_post_modification')) {
 			if($blog_settings->get('allow_tagging_everything')) {
@@ -244,7 +235,7 @@ abstract class AbstractView
 		$this->tpl->render('post.block');
 	}
 
-	private function afficheVotes($nb_votes, $num_article) {
+	protected function afficheVotes($nb_votes, $num_article) {
 		global $blog_settings;
 		# On met un s a vote si il le faut
 		$vote = "vote";

@@ -1,24 +1,12 @@
-	<article>
+	<article id="post{$post.id}">
 		<header class="article">
-			<img src="images/grav1.jpg" width="32px" />
-			<h2>Ceci est un très long titre qui va prendre plus qu'une ligne si on diminue la taille de la fenetre</h2>
-			<description>Le 11/11/2011 à 17h38</description>
+			<img src="{$post.author_avatar}&size=32" />
+			<h2>{$post.title}</h2>
+			<description>{_Published on} {$post.date} - {$post.hour}</description>
 		</header>
 		<description>
 			<content>
-				Dans le cadre de mon stage, j’ai été amené à utiliser Freeplane.
-				Freeplane est un logiciel qui permet de créer des cartes heuristiques
-				(mind map en anglais). Une carte heuristique est un diagramme qui
-				représente des liens sémantiques entre différentes idées ou des liens
-				hiérarchiques entre différents concepts.
-				<br>
-				Freeplane est distribué sous licence GNU GPL, il existe depuis Juillet 2009, c’est un fork de FreeMind.
-Freeplane est développé en java et est disponible sous Windows, Mac OS et Linux.
-Avant de passer à l’installation, un petit aperçu d’une carte heuristique :
-<h3>Installation</h3>
-Freeplane n’est pour le moment pas packager pour Frugalware, ça va venir. Je propose en attendant une méthode alternative pour bénéficier de Freeplane.
-Pour commencer, on récupère le binaire de la version stable sur le site officiel. Au moment ou j’écris l’article, la version stable est la 1.1.3.
-Une fois l’archive récupéré, on la décompresse : unzip freeplane_bin-1.1.3.zip
+			{$post.content}
 			</content>
 		</description>
 		<comments>

@@ -37,6 +37,10 @@ class bpUser extends bpObject
 	protected $user_token;
 	protected $user_lang;
 
+	protected $user_settings;
+
+	protected $user_description;
+
 	public function __construct(&$con, $prefix,$user_id)
 	{
 		$this->con =& $con;
@@ -44,6 +48,7 @@ class bpUser extends bpObject
 		$this->prefix = $prefix;
 		$this->user_id =& $user_id;
 
+		$this->user_settings = new bpSettings($con, $prefix, $this->user_id);
 		$this->getUser();
 	}
 
@@ -65,6 +70,8 @@ class bpUser extends bpObject
 		$this->user_pwd = $rs->f('user_pwd');
 		$this->user_token = $rs->f('user_token');
 		$this->user_lang = $rs->f('user_lang');
+
+		$this->user_description = $this->user_settings->get('user_description');
 	}
 
 	# Fonction qui retourne le nombre de votes
@@ -100,6 +107,30 @@ class bpUser extends bpObject
 
 	public function getEmail() {
 		return $this->user_email;
+	}
+
+	public function getDescription() {
+		return $this->user_description;
+	}
+
+	public function getSites() {
+		$sites = array();
+		$rs = $this->con->select("SELECT site_id FROM ".$this->prefix."site
+			WHERE user_id = '".$this->getId()."'");
+		while($rs->fetch()) {
+			$sites[] = new bpSite($this->con, $this->prefix, $rs->site_id);
+		}
+		return $sites;
+	}
+
+	public function getLatestPosts($n) {
+		$latest_posts = array();
+		$rs = $this->con->select("SELECT post_id FROM ".$this->prefix."post
+			WHERE user_id = '".$this->getId()."' ORDER BY post_pubdate DESC LIMIT 0, $n");
+		while($rs->fetch()) {
+			$latest_posts[] = new bpPost($this->con, $this->prefix, $rs->post_id);
+		}
+		return $latest_posts;
 	}
 }
 ?>

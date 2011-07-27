@@ -168,7 +168,7 @@ if (!isset($locale)) {
 $schema = dbSchema::init($core->con);
 if (in_array($core->prefix.'setting', $schema->getTables())) {
 
-	$blog_settings = new bpSettings($core, 'root');
+	$blog_settings = new bpSettings($core->con, $core->prefix, 'root');
 
 	# Set timezone
 	$timezone_default = $blog_settings->get('planet_timezone');

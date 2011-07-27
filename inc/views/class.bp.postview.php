@@ -38,8 +38,41 @@ class PostView extends AbstractView
 		$this->page = "post";
 	}
 
+	protected function renderSingleSidebar() {
+		global $blog_settings;
+		foreach ($this->post->getTags() as $tag) {
+			$this->tpl->setVar('post_tag', $tag);
+			$this->tpl->render('post.tags');
+		}
+
+		$author_sites = $this->post->getAuthor()->getSites();
+		foreach ($author_sites as $site) {
+			$this->tpl->setVar('author_site', $site->getUrl());
+			$this->tpl->render("author.sites");
+		}
+
+		if ($blog_settings->get('planet_vote')) {
+			$votes = array("html" => $this->afficheVotes($this->post->getScore(), $this->post->getId()));
+			$this->tpl->setVar('votes', $votes);
+			$this->tpl->render('side.votes');
+		}
+
+		$latest_posts = $this->post->getAuthor()->getLatestPosts(3);
+		foreach ($latest_posts as $post) {
+			$this->tpl->setVar('same_post', array(
+				'title' => $post->getTitle(),
+				'permalink' => $post->getPlanetPermalink()));
+			$this->tpl->render('author.same');
+		}
+
+		$this->tpl->setVar('topNavSelected', array('class="selected"', '', '', '', ''));
+	}
+
 	public function renderPost() {
 		$this->renderSinglePost($this->post);
+
+		// render single post sidebar
+		$this->renderSingleSidebar();
 	}
 
 	public function render() {

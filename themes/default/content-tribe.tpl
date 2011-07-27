@@ -22,7 +22,7 @@
 		<header class="article">
 			<a name="post{$post.id}">&nbsp;</a>
 		<!-- BEGIN post.block.gravatar -->
-			<img src="{$gravatar_url}&size=32" />
+			<img src="{$post.author_avatar}&size=32" />
 		<!-- END post.block.gravatar -->
 			<h2><a href="index.php?page=post&action=view&id={$post.id}">{$post.title}</a></h2>
 		</header>

@@ -108,15 +108,19 @@ class bpPost extends bpObject
 	public function getPermalink() {
 		global $blog_settings;
 		if ($blog_settings->get('internal_links')) {
-			return $blog_settings->get('planet_url').
-				"/index.php?post_id=".$this->post_id.
-				"&go=external";
+			return $this->getPlanetPermalink()."&go=external";
 		}
 		return $this->getBlogPermalink();
 	}
 
 	public function getBlogPermalink() {
 		return $this->permalink;
+	}
+
+	public function getPlanetPermalink() {
+		global $blog_settings;
+		return $blog_settings->get('planet_url').
+			"/index.php?page=post&action=view&id=".$this->post_id;
 	}
 
 	public function getPubdateDay() {
@@ -220,6 +224,14 @@ class bpPost extends bpObject
 	}
 
 	public function getPostArray() {
+		global $blog_settings;
+
+		$gravatar_email = strtolower($this->getAuthor()->getEmail());
+		$gravatar_url = "http://www.gravatar.com/avatar.php?gravatar_id=".
+			md5($gravatar_email)."&default=".
+			urlencode($blog_settings->get('planet_url').
+			"/themes/".$blog_settings->get('planet_theme')."/images/gravatar.png");
+
 		$post_array = array(
 			"id"				=> $this->post_id,
 			"date"				=> $this->getPubdate(),
@@ -233,9 +245,12 @@ class bpPost extends bpObject
 			"author_id"			=> $this->getAuthor()->getId(),
 			"author_fullname"	=> $this->getAuthor()->getFullname(),
 			"author_email"		=> $this->getAuthor()->getEmail(),
+			"author_desc"		=> $this->getAuthor()->getDescription(),
 			"author_votes"		=> $this->getAuthor()->getUserVotes(),
 			"author_posts"		=> $this->getAuthor()->getNbPosts(),
+			"author_avatar"		=> $gravatar_url,
 			"nbview"			=> $this->getNbViews(),
+			"score"				=> $this->getScore(),
 			"last_viewed"		=> $this->getLatestViewedFormat('d/m/Y H:i')
 			);
 		return $post_array;

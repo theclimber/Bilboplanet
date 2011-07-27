@@ -26,7 +26,7 @@
 <?php
 
 require dirname(__FILE__).'/inc/admin/prepend.php';
-$blog_settings = new bpSettings($core, 'root');
+$blog_settings = new bpSettings($core->con, $core->prefix, 'root');
 
 if (isset($_GET['came_from']) && !empty($_GET['came_from'])){
 	$came_from = $_GET['came_from'];

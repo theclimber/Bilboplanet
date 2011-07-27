@@ -97,6 +97,9 @@ footer {
 	width: 100%;
 	text-align: center;
 }
+nav #mainNav div.topNavMenu {
+	padding: 5px 0;
+}
 nav #mainNav .topNavMenu ul {
 	height: 40px;
 	display: block;
@@ -116,7 +119,7 @@ nav #mainNav .topNavMenu form {
 }
 nav #mainNav ul.tabMenu {
 	margin: 0;
-	padding: 0;
+	padding: 5px 0;
 }
 nav #mainNav ul.tabMenu li {
 	list-style: none;

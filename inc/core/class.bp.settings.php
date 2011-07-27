@@ -6,7 +6,7 @@
 * Website : www.bilboplanet.com
 * Tracker : redmine.bilboplanet.com
 * Blog : www.bilboplanet.com
-* 
+*
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License as
@@ -37,40 +37,40 @@ class bpSettings
 	protected $con;		///< <b>connection</b> Database connection object
 	protected $table;		///< <b>string</b> Permission table name
 	protected $user_id;		///< <b>string</b> User ID
-	
+
 	protected $settings = array();		///< <b>array</b> Associative settings array
 	protected $global_settings = array();	///< <b>array</b> Global settings array
 	protected $local_settings = array();	///< <b>array</b> Local settings array
-	
+
 	/**
 	Object constructor. Retrieves blog settings and puts them in $settings
 	array. Local (blog) settings have a highest priority than global settings.
-	
+
 	@param	core		<b>bpCore</b>		bpCore object
 	@param	user_id	<b>string</b>		User ID
 	*/
-	public function __construct(&$core,$user_id)
+	public function __construct(&$con, $prefix ,$user_id)
 	{
-		$this->con =& $core->con;
-		$this->table = $core->prefix.'setting';
+		$this->con =& $con;
+		$this->table = $prefix.'setting';
 		$this->user_id =& $user_id;
-		
+
 		$this->getSettings();
 	}
-	
+
 	private function getSettings()
 	{
-		$strReq = "SELECT 
+		$strReq = "SELECT
 					user_id,
 					setting_id,
 					setting_value,
 					setting_label,
 					setting_type
-				FROM ".$this->table." 
+				FROM ".$this->table."
 				WHERE user_id = '".$this->con->escape($this->user_id)."'
-				OR user_id IS NULL 
+				OR user_id IS NULL
 				ORDER BY setting_value, setting_id DESC ";
-		
+
 		try {
 			$rs = $this->con->select($strReq);
 		} catch (Exception $e) {
@@ -82,17 +82,17 @@ class bpSettings
 			$id = trim($rs->setting_id);
 			$value = $rs->setting_value;
 			$type = $rs->setting_type;
-			
+
 			if ($type == 'float' || $type == 'double') {
 				$type = 'float';
 			} elseif ($type != 'boolean' && $type != 'integer') {
 				$type = 'string';
 			}
-			
+
 			settype($value,$type);
-			
+
 			$array = $rs->user_id ? 'local' : 'global';
-			
+
 			$this->{$array.'_settings'}[$id] = array(
 				'value' => $value,
 				'type' => $type,
@@ -100,32 +100,32 @@ class bpSettings
 				'global' => $rs->user_id == ''
 			);
 		}
-		
+
 		$this->settings = $this->global_settings;
-		
+
 		foreach ($this->local_settings as $id => $v) {
 			$this->settings[$id] = $v;
 		}
-			
+
 		return true;
 	}
-	
+
 	private function settingExists($id,$global=false)
 	{
 		$array = $global ? 'global' : 'local';
 		return isset($this->{$array.'_settings'}[$id]);
 	}
-	
-	
+
+
 	/**
 	Creates or updates a setting.
-	
+
 	$type could be 'string', 'integer', 'float', 'boolean' or null. If $type is
 	null and setting exists, it will keep current setting type.
-	
+
 	$value_change allow you to not change setting. Useful if you need to change
 	a setting label or type and don't want to change its value.
-	
+
 	@param	id			<b>string</b>		Setting ID
 	@param	value		<b>mixed</b>		Setting value
 	@param	type		<b>string</b>		Setting type
@@ -138,7 +138,7 @@ class bpSettings
 		if (!preg_match('/^[a-zA-Z][a-zA-Z0-9_]+$/',$id)) {
 			throw new Exception(sprintf(T_('%s is not a valid setting id'),$id));
 		}
-		
+
 		# We don't want to change setting value
 		if (!$value_change) {
 			if (!$global && $this->settingExists($id,false)) {
@@ -147,7 +147,7 @@ class bpSettings
 				$value = $this->global_settings[$id]['value'];
 			}
 		}
-		
+
 		# Setting type
 		if ($type == 'double')
 		{
@@ -167,7 +167,7 @@ class bpSettings
 		{
 			$type = 'string';
 		}
-		
+
 		# We don't change label
 		if ($label == null)
 		{
@@ -177,20 +177,20 @@ class bpSettings
 				$label = $this->global_settings[$id]['label'];
 			}
 		}
-		
+
 		settype($value,$type);
-		
+
 		$cur = $this->con->openCursor($this->table);
 		$cur->setting_value = ($type == 'boolean') ? (string) (integer) $value : (string) $value;
 		$cur->setting_type = $type;
 		$cur->setting_label = $label;
-		
+
 		#If we are local, compare to global value
 		if (!$global && $this->settingExists($id,true))
 		{
 			$g = $this->global_settings[$id];
 			$same_setting = $g['value'] == $value && $g['type'] == $type && $g['label'] == $label;
-			
+
 			# Drop setting if same value as global
 			if ($same_setting && $this->settingExists($id,false)) {
 				$this->drop($id);
@@ -198,7 +198,7 @@ class bpSettings
 				return;
 			}
 		}
-		
+
 		if ($this->settingExists($id,$global))
 		{
 			if ($global) {
@@ -206,41 +206,41 @@ class bpSettings
 			} else {
 				$where = "WHERE user_id = '".$this->con->escape($this->user_id)."' ";
 			}
-			
+
 			$cur->update($where."AND setting_id = '".$this->con->escape($id)."' ");
 		}
 		else
 		{
 			$cur->setting_id = $id;
 			$cur->user_id = $global ? null : $this->user_id;
-			
+
 			$cur->insert();
 		}
 	}
-	
+
 	/**
-	Removes an existing setting. Namespace 
-	
+	Removes an existing setting. Namespace
+
 	@param	id		<b>string</b>		Setting ID
 	*/
 	public function drop($id)
 	{
 		$strReq =	'DELETE FROM '.$this->table.' ';
-		
+
 		if ($this->user_id === null) {
 			$strReq .= 'WHERE user_id IS NULL ';
 		} else {
 			$strReq .= "WHERE user_id = '".$this->con->escape($this->user_id)."' ";
 		}
-		
+
 		$strReq .= "AND setting_id = '".$this->con->escape($id)."' ";
-		
+
 		$this->con->execute($strReq);
 	}
-	
+
 	/**
 	Returns setting value if exists.
-	
+
 	@param	n		<b>string</b>		Setting name
 	@return	<b>mixed</b>
 	*/
@@ -249,10 +249,10 @@ class bpSettings
 		if (isset($this->settings[$n]['value'])) {
 			return $this->settings[$n]['value'];
 		}
-		
+
 		return null;
 	}
-	
+
 	/**
 	Magic __get method.
 	@copydoc ::get
@@ -261,11 +261,11 @@ class bpSettings
 	{
 		return $this->get($n);
 	}
-	
+
 	/**
 	Sets a setting in $settings property. This sets the setting for script
 	execution time only and if setting exists.
-	
+
 	@param	n		<b>string</b>		Setting name
 	@param	v		<b>mixed</b>		Setting value
 	*/
@@ -282,7 +282,7 @@ class bpSettings
 			);
 		}
 	}
-	
+
 	/**
 	Magic __set method.
 	@copydoc ::set
@@ -291,26 +291,26 @@ class bpSettings
 	{
 		$this->set($n,$v);
 	}
-	
+
 	/**
 	Returns $settings property content.
-	
+
 	@return	<b>array</b>
 	*/
 	public function dumpSettings()
 	{
 		return $this->settings;
 	}
-	
+
 	/**
 	Returns $global_settings property content.
-	
+
 	@return	<b>array</b>
 	*/
 	public function dumpGlobalSettings()
 	{
 		return $this->global_settings;
 	}
-	
+
 }
 ?>

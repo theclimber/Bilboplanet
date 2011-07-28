@@ -246,23 +246,30 @@ function set_nb_items(nb) {
 	this.nb_items = nb;
 	updatePostList();
 	var html = '';
+	var height = 205;
 	$('#filter-page').attr('style', 'display:none;');
 	if (nb != 10) {
 		html += '<a href="#" onclick="javascript:set_nb_items(10)">10</a>, '
 	} else {
 		html += '10, ';
+		height = 205;
 	}
 	if (nb != 15) {
 		html += '<a href="#" onclick="javascript:set_nb_items(15)">15</a>, '
 	} else {
 		html += '15, ';
+		height = 275;
 	}
 	if (nb != 20) {
 		html += '<a href="#" onclick="javascript:set_nb_items(20)">20</a>'
 	} else {
 		html += '20';
+		height = 330;
 	}
 	$('#filter-nb-items-content').html(html);
+	setTimeout( function () {
+		$('div#top_10').attr('style', 'height:'+height+'px');
+	}, 1000);
 }
 
 function updateFeedList() {

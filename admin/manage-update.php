@@ -6,7 +6,7 @@
 * Website : www.bilboplanet.com
 * Tracker : redmine.bilboplanet.com
 * Blog : www.bilboplanet.com
-* 
+*
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License as
@@ -23,7 +23,7 @@
 *
 ***** END LICENSE BLOCK *****/
 ?>
-<?php 
+<?php
 include_once(dirname(__FILE__).'/../inc/admin/prepend.php');
 if ($core->auth->sessionExists()):
 	if (!$core->hasRole('manager') | !$core->hasPermission('configuration')){
@@ -96,8 +96,8 @@ if(isset($_POST) && isset($_POST['submit'])) {
 	<div id="flash-log" style="display:none;">
 		<div id="flash-msg"><!-- spanner --></div>
 	</div>
-	
-<?php 
+
+<?php
 if (!empty($flash)) {
 	$msg = '<ul>';
 	foreach ($flash as $value) {
@@ -115,7 +115,7 @@ elseif (!empty($error)) {
 <fieldset><legend><?php echo T_('Automatic update');?></legend>
 	<div class="message">
 		<p><?php echo T_('System configuration update.');?></p>
-	</div><br />	
+	</div><br />
 <?php
 if (get_cron_running()) echo '<div id="BP_startupdate">'.T_('The update is running').'</div><br />';
 else
@@ -152,7 +152,7 @@ echo '<label for="enable_on_index"><input id="enable_on_index" type="checkbox" n
 	<li><?php echo T_("The optimal solution as said before it to configure manually the crontab of your server to enable the update. To configure a cron manually you'll find some advice here under."); ?></li>
 </ul></p>
 </div>
-		
+
 <p><?php echo T_('You can setup a manual crontab update by calling automatically every X time the following page :'); ?><br/>
 <b><?php echo $blog_settings->get('planet_url')."/inc/update_manual.php"; ?></b><br />
 <?php echo T_('This will automatically launch the update and log it into the log files.'); ?></p>
@@ -171,6 +171,6 @@ include(dirname(__FILE__).'/footer.php');
 
 else:
 	$page_url = urlencode(http::getHost().$_SERVER['REQUEST_URI']);
-	http::redirect('auth.php?came_from='.$page_url);
+	http::redirect('../auth.php?came_from='.$page_url);
 endif;
 ?>

@@ -6,7 +6,7 @@
 * Website : www.bilboplanet.com
 * Tracker : redmine.bilboplanet.com
 * Blog : www.bilboplanet.com
-* 
+*
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License as
@@ -125,7 +125,7 @@ if (isset($_POST)) {
 
 							$rs3 = $core->con->select(
 								'SELECT MAX(site_id) '.
-								'FROM '.$core->prefix.'site ' 
+								'FROM '.$core->prefix.'site '
 								);
 							$next_site_id = (integer) $rs3->f(0) + 1;
 							$cur = $core->con->openCursor($core->prefix.'site');
@@ -285,7 +285,7 @@ include_once(dirname(__FILE__).'/sidebar.php');
 <script type="text/javascript" src="meta/js/manage-database.js"></script>
 <div id="BP_page" class="page">
 	<div class="inpage">
-	
+
 <?php
 if (!empty($flash)) {
 	$msg = '<ul>';
@@ -322,37 +322,37 @@ if (!empty($flash)) {
 <ul>
 	<li>
 		<label for="user_table">
-		<input id="user_table" type="checkbox" class="input" name="list[]" value="user" /> 
+		<input id="user_table" type="checkbox" class="input" name="list[]" value="user" />
 		<?php echo T_('User table'); ?></label>
 	</li>
 	<li>
 		<label for="site_table">
-		<input id="site_table" type="checkbox" class="input" name="list[]" value="site" /> 
+		<input id="site_table" type="checkbox" class="input" name="list[]" value="site" />
 		<?php echo T_('Site table'); ?></label>
 	</li>
 	<li>
 		<label for="feed_table">
-		<input id="feed_table" type="checkbox" class="input" name="list[]" value="feed" /> 
+		<input id="feed_table" type="checkbox" class="input" name="list[]" value="feed" />
 		<?php echo T_('Feed table'); ?></label>
 	</li>
 	<li>
 		<label for="post">
-		<input id="post_table" type="checkbox" class="input" name="list[]" value="post" /> 
+		<input id="post_table" type="checkbox" class="input" name="list[]" value="post" />
 		<?php echo T_('Post table'); ?></label>
 	</li>
 	<li>
 		<label for="votes_table">
-		<input id="votes_table" type="checkbox" class="input" name="list[]" value="votes" /> 
+		<input id="votes_table" type="checkbox" class="input" name="list[]" value="votes" />
 		<?php echo T_('Votes table'); ?></label>
 	</li>
 	<li>
 		<label for="perm_table">
-		<input id="perm_table" type="checkbox" class="input" name="list[]" value="permissions" /> 
+		<input id="perm_table" type="checkbox" class="input" name="list[]" value="permissions" />
 		<?php echo T_('Permission table'); ?></label>
 	</li>
 	<li>
 		<label for="setting_table">
-		<input id="setting_table" type="checkbox" class="input" name="list[]" value="setting" /> 
+		<input id="setting_table" type="checkbox" class="input" name="list[]" value="setting" />
 		<?php echo T_('Setting table'); ?></label>
 	</li>
 </ul>
@@ -401,6 +401,6 @@ form::combo('import_version',$allowed_versions,'', 'input').'</label><br />';
 include(dirname(__FILE__).'/footer.php');
 else:
 	$page_url = urlencode(http::getHost().$_SERVER['REQUEST_URI']);
-	http::redirect('auth.php?came_from='.$page_url);
+	http::redirect('../auth.php?came_from='.$page_url);
 endif;
 ?>

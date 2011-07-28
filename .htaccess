@@ -3,7 +3,7 @@ SetEnv PHP_VER 5
 ErrorDocument 404 /404.php
 
 <IfModule mod_rewrite.c>
-	Options +FollowSymLinks
+#	Options +FollowSymLinks
 	RewriteEngine On
 	RewriteBase /
 	RewriteRule ^feed/(.*)$ feed.php?type=$1

@@ -6,7 +6,7 @@
 * Website : www.bilboplanet.com
 * Tracker : redmine.bilboplanet.com
 * Blog : www.bilboplanet.com
-* 
+*
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License as
@@ -29,7 +29,7 @@ if (!($_s instanceof dbStruct)) {
 }
 
 /* Tables
- * Utilisation : (type, length, nullable, default value) 
+ * Utilisation : (type, length, nullable, default value)
 -------------------------------------------------------- */
 $_s->user
 	->user_id		('varchar',		64,	false)
@@ -53,6 +53,7 @@ $_s->pending_user
 	->user_pwd		('varchar',		255,true)
 	->user_lang		('varchar',		5,	true, null)
 	->licence		('varchar',		255,true, null)
+	->site_url		('text',		0,	false)
 	->feed_url		('text',		0,	false)
 	->feed_tags		('text',		0,	false)
 	->created		('timestamp',	0,	true, 'now()')
@@ -64,18 +65,18 @@ $_s->pending_user
 $_s->post
 	->post_id		('integer',		0,	false)
 	->user_id		('varchar',		64,	false)
-	->feed_id		('integer',		0,	false)
 	->post_pubdate	('timestamp',	0,	false, 'now()')
 	->post_permalink	('text',	0,	true, null)
 	->post_title		('text',	0,	true, null)
 	->post_content	('text',		255,true, null)
 	->post_status	('smallint',	0,	false, 1)
+	->post_comment	('smallint',	0,	false, 1)
 	->post_score	('integer',		0,	false, 0)
 	->post_nbview	('integer',		0,	false, 0)
 	->last_viewed	('timestamp',	0,	true, null)
 	->created		('timestamp',	0,	true, 'now()')
 	->modified		('timestamp',	0,	true, 'now()')
-	
+
 	->primary('pk_post','post_id')
 	;
 
@@ -88,6 +89,7 @@ $_s->feed
 	->feed_checked	('timestamp',	0,	true, null)
 	->feed_status	('smallint',	0,	false, 1)
 	->feed_trust	('smallint',	0,	false, 0)
+	->feed_comment	('smallint',	0,	false, 0)
 	->created		('timestamp',	0,	true, 'now()')
 	->modified		('timestamp',	0,	true, 'now()')
 
@@ -104,8 +106,24 @@ $_s->feed_tag
 $_s->post_tag
 	->tag_id		('varchar',		255, false)
 	->post_id		('integer',		0, false)
+	->user_id		('varchar',		64,	false)
+	->created		('timestamp',	0,	true, 'now()')
 
 	->primary('pk_post_tag', 'tag_id', 'post_id')
+	;
+
+$_s->comment
+	->comment_id	('integer',		0, false)
+	->post_id		('integer',		0, true, null)
+	->tribe_id		('integer',		0, true, null)
+	->user_fullname	('varchar',		128,false)
+	->user_email	('varchar',		128,false)
+	->user_site		('text',		0,	false)
+	->content		('text',		255,true, null)
+	->created		('timestamp',	0,	true, 'now()')
+	->modified		('timestamp',	0,	true, 'now()')
+
+	->primary('pk_post_comment', 'comment_id')
 	;
 
 $_s->site
@@ -156,15 +174,29 @@ $_s->session
 	->ses_time	('integer',	0,	false,	0)
 	->ses_start	('integer',	0,	false,	0)
 	->ses_value	('text',		0,	false)
-	
+
 	->primary('pk_session','ses_id')
 	;
 
+$_s->tribe
+	->tribe_id		('integer',		0, false)
+	->user_id		('integer',		0, false)
+	->order			('integer',		0, true, 100)
+	->public		('smallint',	0,	false, 0)
+	->name			('varchar',		128,false)
+	->tribe_comment	('smallint',	0,	false, 0)
+	->search_text	('text',		0,	false)
+	->tags			('text',		0,	false)
+	->users			('text',		0,	false)
+	->created		('timestamp',	0,	true, 'now()')
+	->modified		('timestamp',	0,	true, 'now()')
+
+	->primary('pk_tribe', 'tribe_id')
+	;
 
 /* References indexes
 -------------------------------------------------------- */
 $_s->post->index	('idx_post_user_id', 'btree', 'user_id');
-$_s->post->index	('idx_post_feed_id', 'btree', 'feed_id');
 $_s->feed->index	('idx_feed_user_id', 'btree', 'user_id');
 $_s->feed->index	('idx_feed_site_id', 'btree', 'site_id');
 $_s->site->index	('idx_site_user_id', 'btree', 'user_id');
@@ -174,7 +206,6 @@ $_s->setting->index	('idx_setting_user_id', 'btree', 'user_id');
 /* Foreign keys
 	-------------------------------------------------------- */
 $_s->post->reference('fk_post_user', 'user_id', 'user', 'user_id', 'cascade', 'cascade');
-$_s->post->reference('fk_post_feed', 'feed_id', 'feed', 'feed_id', 'cascade', 'cascade');
 $_s->feed->reference('fk_feed_user', 'user_id', 'user', 'user_id', 'cascade', 'cascade');
 $_s->feed->reference('fk_feed_site', 'site_id', 'site', 'site_id', 'cascade', 'cascade');
 $_s->site->reference('fk_site_user', 'user_id', 'user', 'user_id', 'cascade', 'cascade');

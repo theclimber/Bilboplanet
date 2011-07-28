@@ -321,11 +321,11 @@ function getPostTags($post_id) {
 	$sql = "SELECT tag_id
 		FROM ".$core->prefix."post_tag
 		WHERE post_id = ".$post_id.";";
-	$rs = $core->con->select($sql);
+	$res = $core->con->select($sql);
 
 	$tags = array();
-	while($rs->fetch()){
-		$tags[] = $rs->tag_id;
+	while($res->fetch()){
+		$tags[] = $res->tag_id;
 	}
 	return $tags;
 }
@@ -376,16 +376,164 @@ function convert_iso_special_html_char($string) {
 	return str_replace($search, $replace, $string);
 }
 
+function getArrayFromList($list) {
+	$patterns = array( '/, /', '/ ,/');
+	$replacement = array(',', ',');
+	$list = urldecode($list);
+	$list = preg_replace($patterns, $replacement, $list);
+	$array = preg_split('/,/',$list, -1, PREG_SPLIT_NO_EMPTY);
+	return $array;
+}
+
 #--------------------------#
 #   Fonction d'affichage   #
 #--------------------------#
+function generate_SQL(
+		$num_start = 0,
+		$nb_items = null,
+		$users = array(),
+		$tags = array(),
+		$search = null,
+		$period = null,
+		$popular = false,
+		$post_id = null,
+		$post_status = 1)
+	{
+	global $blog_settings, $core;
+	if (!isset($nb_items)) {
+		$nb_items = $blog_settings->get('planet_nb_post');
+	}
+
+	$tables = $core->prefix."post, ".$core->prefix."user";
+	if (!empty($tags)) {
+		$tables .= ", ".$core->prefix."post_tag";
+	}
+
+	$select = $core->prefix."user.user_id		as user_id,
+			user_fullname	as user_fullname,
+			user_email		as user_email,
+			post_pubdate	as pubdate,
+			post_title		as title,
+			post_permalink	as permalink,
+			post_content	as content,
+			post_nbview		as nbview,
+			last_viewed		as last_viewed,
+			SUBSTRING(post_content,1,400) as short_content,
+			".$core->prefix."post.post_id		as post_id,
+			post_score		as score,
+			post_status		as status,
+			post_comment	as comment";
+	$where_clause = $core->prefix."user.user_id = ".$core->prefix."post.user_id
+		AND user_status = '1'
+		AND post_score > '".$blog_settings->get('planet_votes_limit')."'";
+
+	if ($post_status <= 1) {
+		$where_clause .= " AND post_status = '".$post_status."' ";
+	}
+
+	if (isset($post_id) && !empty($post_id)) {
+		$where_clause .= " AND ".$core->prefix."post.post_id = '".$post_id."'";
+		$sql = "SELECT DISTINCT
+				".$select."
+			FROM ".$tables."
+			WHERE ".$where_clause;
+		return $sql;
+	}
+
+	if (!empty($users)) {
+		$sql_users = "(";
+		foreach ($users as $key=>$user) {
+			$sql_users .= $core->prefix."post.user_id = '".$user."'";
+			$or = ($key == count($users)-1) ? "" : " OR ";
+			$sql_users .= $or;
+		}
+		$sql_users .= ")";
+		$where_clause .= ' AND '.$sql_users.' ';
+	}
+
+	if (!empty($tags)) {
+		$sql_tags = "(";
+		foreach ($tags as $key=>$tag) {
+			$sql_tags .= $core->prefix."post_tag.tag_id = '".$tag."'";
+			$or = ($key == count($tags)-1) ? "" : " OR ";
+			$sql_tags .= $or;
+		}
+		$sql_tags .= ")";
+		$where_clause .= " AND ".$core->prefix."post.post_id = ".$core->prefix."post_tag.post_id";
+		$where_clause .= ' AND '.$sql_tags.' ';
+	}
+
+	if (isset($search) && !empty($search)){
+		# Complete the SQL query
+		$where_clause .= " AND (".$core->prefix."post.post_title LIKE '%$search%'
+			OR ".$core->prefix."post.post_permalink LIKE '%$search%'
+			OR ".$core->prefix."post.post_content LIKE '%$search%'
+			OR ".$core->prefix."user.user_fullname LIKE '%$search%')";
+	}
+
+	if (isset($period) && !empty($period)) {
+		# Complete the SQL query
+		$now = mktime(0, 0, 0, date("m",time()), date("d",time()), date("Y",time()));
+		$day = date('Y-m-d', $now).' 00:00:00';
+		$week = date('Y-m-d', $now - 3600*24*7).' 00:00:00';
+		$month = date('Y-m-d', $now - 3600*24*31).' 00:00:00';
+		$filter_class = array(
+			"day" => "",
+			"week" => "",
+			"month" => "");
+		switch($period) {
+		case "day"		:
+			$where_clause .= " AND post_pubdate > '".$day."'";
+			break;
+		case "week"		:
+			$where_clause .= " AND post_pubdate > '".$week."'";
+			break;
+		case "month"	:
+			$where_clause .= " AND post_pubdate > '".$month."'";
+			break;
+		default			:
+			$where_clause .= " AND post_pubdate > '".$week."'";
+			break;
+		}
+	}
+
+	if ($popular){
+		$max = $core->con->select("SELECT
+			MAX(post_nbview) as max_view,
+			MAX(post_score) as max_score
+			FROM ".$core->prefix."post");
+		$max_view = $max->f('max_view');
+		$max_score = $max->f('max_score');
+		# Complete the SQL query
+		$select .= ",
+			post_score/".$max_score." + post_nbview/".$max_view." as total_score";
+		$where_clause .= " AND post_score > 0 ";
+		if (!isset($period) || empty($period)) {
+			$week = time() - 3600*24*7;
+			$where_clause .= "AND post_pubdate > ".$week;
+		}
+		$fin_sql = " ORDER BY total_score DESC
+			LIMIT $num_start,".$nb_items;
+	}
+	else {
+		$fin_sql = " ORDER BY post_pubdate DESC
+			LIMIT $num_start,".$nb_items;
+	}
+
+	$debut_sql = "SELECT DISTINCT
+			".$select."
+		FROM ".$tables."
+		WHERE ".$where_clause;
+	$sql = $debut_sql." ".$fin_sql;
+
+	return $sql;
+}
 
 function showPosts($rs, $tpl, $search_value="", $strip_tags=false) {
-	global $blog_settings;
+	global $blog_settings, $core;
 	$gravatar = $blog_settings->get('planet_avatar');
 
 	while($rs->fetch()){
-
 		$post_permalink = $rs->permalink;
 		if ($blog_settings->get('internal_links')) {
 			$post_permalink = $blog_settings->get('planet_url').
@@ -409,11 +557,12 @@ function showPosts($rs, $tpl, $search_value="", $strip_tags=false) {
 			"nbview" => $rs->nbview,
 			"last_viewed" => mysqldatetime_to_date('d/m/Y H:i',$rs->last_viewed),
 			"user_votes" => getNbVotes(null,$rs->user_id),
-			"user_posts" => getNbPosts(null,$rs->user_id),
-			"post_site" => getFeedSite($rs->feed_id)
+			"user_posts" => getNbPosts(null,$rs->user_id)
 			);
 
-		$post['description'] = sprintf(T_('By %s, on %s at %s.'),'<a href="'.$blog_settings->get('planet_url').'/index.php?user_id='.$rs->user_id.'">'.$rs->user_fullname.'</a>',$post["date"],$post["hour"]);
+		$post['description'] = sprintf(T_('By %s, on %s at %s.'),
+			'<a href="#" onclick="javascript:add_user(\''.$rs->user_id.'\')">'.$rs->user_fullname.'</a>',
+			$post["date"],$post["hour"]);
 		$post['description'].= ' <a href="'.$blog_settings->get('planet_url').'/index.php?post_id='.$rs->post_id.'" title="'.$post['title'].'">'.T_("View post detail").'</a>';
 		if (!empty($search_value)){
 			# Format the occurences of the search request in the posts list
@@ -445,6 +594,50 @@ function showPosts($rs, $tpl, $search_value="", $strip_tags=false) {
 				$tpl->setVar('post_tag', $tag);
 				$tpl->render('post.tags');
 			}
+		}
+		if ($blog_settings->get('allow_post_modification')) {
+			if($blog_settings->get('allow_tagging_everything')) {
+				$tpl->render('post.action.tags');
+			} else {
+				if($core->auth->userID() == $rs->user_id) {
+					$tpl->render('post.action.tags');
+				}
+			}
+		}
+		if ($blog_settings->get('allow_post_comments')) {
+			if($core->auth->userID() == $rs->user_id || $core->hasRole('manager')) {
+				if ($rs->comment) {
+					$tpl->render('post.action.uncomment');
+				} else {
+					$tpl->render('post.action.comment');
+				}
+			}
+		}
+		if ($blog_settings->get('allow_post_comments') && $rs->comment == 1) {
+			$sql = "SELECT * FROM ".$core->prefix."comment
+				WHERE post_id=".$rs->post_id;
+	//		print $sql;
+	//		exit;
+			$rs_comment = $core->con->select($sql);
+			while ($rs_comment->fetch()) {
+				$fullname = $rs_comment->user_fullname;
+				if (!empty($rs_comment->user_site)) {
+					$fullname = '<a href="'.$rs_comment->user_site.'">'.$fullname.'</a>';
+				}
+				$content = $core->wikiTransform($rs_comment->content);
+				$comment = array(
+					"id" => $rs_comment->comment_id,
+					"post_id" => $rs_comment->post_id,
+					"user_fullname_link" => $fullname,
+					"user_fullname" => $rs_comment->user_fullname,
+					"user_site" => $rs_comment->user_site,
+					"content" => $content,
+					"pubdate" => mysqldatetime_to_date("d/m/Y",$rs_comment->created)
+					);
+				$tpl->setVar("comment", $comment);
+				$tpl->render('post.comment.element');
+			}
+			$tpl->render('post.comment.block');
 		}
 		if ($rs->count()>1) {
 			$tpl->render('post.backsummary');
@@ -644,7 +837,7 @@ function check_url($url){
 	// GET Query (optional)
 	$urlregex .= "(\?[a-z+&\$_.-][a-z0-9;:@/&%=+\$_.-]*)?";
 	// ANCHOR (optional)
-	$urlregex .= "(#[a-z_.-][a-z0-9+\$_.-]*)?\$";
+	#$urlregex .= "(#[a-z_.-][a-z0-9+\$_.-]*)?\$";
 
 	// check
 	if (eregi($urlregex, $url)) {
@@ -959,4 +1152,107 @@ function code_htmlentities ($html, $tag1, $tag2, $return = 0) {
 	}
 	return $output;
 }
+
+#---------------------------------------------------#
+# Function to add pending user						#
+#---------------------------------------------------#
+function addPendingUser ($user_id, $user_fullname, $user_email, $url, $feed, $lang) {
+	
+	global $core;
+	
+	# Clean Up user_id
+	$user_id = preg_replace("( )", "_", $user_id);
+	$user_id = cleanString($user_id);
+	
+	# Check if user have already sent subscription
+	$rs0 = $core->con->select("SELECT puser_id, user_fullname, user_email, feed_url
+		FROM ".$core->prefix."pending_user
+		WHERE lower(puser_id) = '".strtolower($user_id)."'
+		OR lower(user_fullname) = '".strtolower($user_fullname)."'
+		OR lower(user_email) = '".strtolower($user_email)."'");
+		
+	if ($rs0->count() > 0){
+		if ($rs0->f('puser_id') == $user_id) {
+			$error[] = sprintf(T_('A registration request have been already sent with this username: %s'), $user_id);
+		}
+		if ($rs0->f('user_fullname') == $user_fullname) {
+			$error[] = sprintf(T_('A registration request have been already sent with this fullname: %s'), $user_fullname);
+		}
+		if ($rs0->f('user_email') == $user_email) {
+			$error[] = sprintf(T_('A registration request have been already sent with this email adress: %s'), $user_email);
+		}
+		if ($rs0->f('site_url') == $url) {
+			$error[] = sprintf(T_('A registration request have been already sent with this website: %s'), $url);
+		}
+		if ($rs0->f('feed_url') == $feed) {
+			$error[] = sprintf(T_('A registration request have been already sent with this Feed URL: %s'), $feed);
+		}
+	}
+	
+	if (empty($error)) {
+		# Check if user's information already exist
+		$rs1 = $core->con->select("SELECT user_id, user_fullname, user_email 
+			FROM ".$core->prefix."user
+			WHERE lower(user_id) = '".strtolower($user_id)."'
+			OR lower(user_fullname) = '".strtolower($user_fullname)."'
+			OR lower(user_email) = '".strtolower($user_email)."'");
+		if ($rs1->count() > 0){
+			if ($rs1->f('user_id') == $user_id) {
+				$error[] = sprintf(T_('The user %s already exists'),$user_id);
+			}
+			if ($rs1->f('user_fullname') == $user_fullname) {
+				$error[] = sprintf(T_('The user %s already exists'),$user_fullname);
+			}
+			if ($rs1->f('user_email') == $user_email) {
+				$error[] = sprintf(T_('The email address %s is already in use'),$user_email);
+			}
+		} else {
+			# Check if website is already in use
+			$rs2 = $core->con->select("SELECT ".$core->prefix."user.user_id 
+				FROM ".$core->prefix."user, ".$core->prefix."site 
+				WHERE ".$core->prefix."site.user_id = ".$core->prefix."user.user_id 
+				AND site_url = '".$url."'");
+			if ($rs2->count() > 0){
+				$error[] = sprintf(T_('The website %s is already assigned to the user %s'),$url, $user_id);
+			}
+		}
+	}
+	
+	# All OK
+	if (empty($error)) {
+		$cur = $core->con->openCursor($core->prefix.'pending_user');
+		$cur->puser_id = $user_id;
+		$cur->user_fullname = $user_fullname;
+		$cur->user_email = $user_email;
+		$cur->user_pwd = crypt::hmac('BP_MASTER_KEY', createRandomPassword());
+		$cur->user_lang = $lang;
+		$cur->site_url = $url;
+		$cur->feed_url = $feed;
+		$cur->created = array(' NOW() ');
+		$cur->modified = array(' NOW() ');
+		$cur->insert();
+	}
+	
+	return $error;
+}
+
+#---------------------------------------------------#
+# Function to generate random Password				#
+#---------------------------------------------------#
+function createRandomPassword() {
+	$chars = "abcdefghijkmnopqrstuvwxyz023456789";
+	srand((double)microtime()*1000000);
+	$i = 0;
+	$pass = '' ;
+
+	while ($i <= 7) {
+		$num = rand() % 33;
+		$tmp = substr($chars, $num, 1);
+		$pass = $pass . $tmp;
+		$i++;
+	}
+
+	return $pass;
+}
+
 ?>

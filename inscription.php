@@ -53,9 +53,8 @@ if(isset($_POST) && isset($_POST['submit'])){
 		$flash = array('type' => 'error', 'msg' => sprintf(T_("The reCAPTCHA wasn't entered correctly. Go back and try it again. (reCAPTCHA said: %s)"),$captcha->error));
 	} else {
 		$ip = getIP();
-
 		if ($user_id['success'] && $fullname['success'] && $email['success'] && $url['success'] && $feed['success'] && $choice['success'] && $charter["success"]){
-			# Construction du email
+			# Build email
 			$objet = $choice['value'];
 			$msg = T_("Name : ").$user_id['value'];
 			$msg .= "\n".T_("Firstname : ").$fullname['value'];
@@ -65,14 +64,26 @@ if(isset($_POST) && isset($_POST['submit'])){
 			$msg .= "\n".T_("Choice : ").$choice['value'];
 			$msg .= "\nIP : $ip";
 
-			# Envoi du email
-			$envoi = sendmail($email['value'], $blog_settings->get('author_mail'), $objet, $msg);
-
-			# Message d'information
-			if($envoi) {
-				$flash = array('type' => 'notice', 'msg' => T_("Your email has been sent"));
+			# Add Pending User if subscription only
+			if ($choice['value'] == "abonnement") {
+				$addPendingUser = addPendingUser($user_id['value'], $fullname['value'], $email['value'], $url['value'], $feed['value'], $blog_settings->get('planet_lang'));
+			}
+			
+			# Check error
+			if (empty($addPendingUser)) {
+				# Send email
+				$envoi = sendmail($email['value'], $blog_settings->get('author_mail'), $objet, $msg);
+				
+				# Information message
+				if($envoi) {
+					$flash = array('type' => 'notice', 'msg' => T_("Your email has been sent"));
+				} else {
+					$flash = array('type' => 'error', 'msg' => T_("Your request could not be sent for an unknown reason.<br/>Please try again."));
+				}
 			} else {
-				$flash = array('type' => 'error', 'msg' => T_("Your request could not be sent for an unknown reason.<br/>Please try again."));
+				foreach($addPendingUser as $value) {
+					$flash = array('type' => 'error', 'msg' => $value);
+				}
 			}
 		}
 		else {

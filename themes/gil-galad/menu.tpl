@@ -12,9 +12,9 @@
 			<li class="preLastLi"><a class="a_header" href="{$planet.url}/contact.php">{_Contact}</a></li>
 			<!-- END menu.contact -->
 			<li class="lastLi">
-			
+
 				<!-- BEGIN search.box -->
-					<form id="recherche_global" action="index.php" method="get">
+					<form id="search_form" action="">
 						<fieldset>
 						<!-- BEGIN search.popular -->
 						<input type="hidden" id="popular" name="popular" value="{$params.popular}" />
@@ -25,7 +25,7 @@
 						<!-- BEGIN search.filter -->
 						<input type="hidden" id="filter" name="filter" value="{$params.filter}" />
 						<!-- END search.filter -->
-						<input type="text" id="recherche" name="search" value="{$search_value}" />
+						<input type="text" id="search_text" name="search" value="{$search_value}" />
 						<input type="submit" id="recherche_global_btn" value="" />
 						<fieldset>
 					</form>

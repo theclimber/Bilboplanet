@@ -26,100 +26,32 @@
 <?php
 # Inclusion des fonctions
 require_once(dirname(__FILE__).'/inc/prepend.php');
+$scripts = array();
+$scripts[] = "javascript/main.js";
+$scripts[] = "javascript/jquery.boxy.js";
 include dirname(__FILE__).'/tpl.php';#
 header('Content-type: text/html; charset=utf-8');
 
 # Valeurs par defaut
 $num_start = 0;
+$nb_items = $blog_settings->get('planet_nb_post');
+$popular = false;
+$period = null;
+$users = array();
+$tags = array();
+$page = 0;
+$search_value = null;
+$post_id = null;
+
 if (!isset($params)) {
 	$params = array(
 		'title'=>$blog_settings->get('planet_title')
 		);
 }
 
-/* On recupere les infomations des articles */
-$debut_sql = "SELECT
-		".$core->prefix."user.user_id		as user_id,
-		user_fullname	as user_fullname,
-		user_email		as user_email,
-		post_pubdate	as pubdate,
-		post_title		as title,
-		post_permalink	as permalink,
-		post_content	as content,
-		post_nbview		as nbview,
-		last_viewed		as last_viewed,
-		feed_id			as feed_id,
-		SUBSTRING(post_content,1,400) as short_content,
-		".$core->prefix."post.post_id		as post_id,
-		post_score		as score
-    FROM ".$core->prefix."post, ".$core->prefix."user
-	WHERE ".$core->prefix."user.user_id = ".$core->prefix."post.user_id
-	AND post_status = '1'
-	AND user_status = '1'
-	AND post_score > '".$blog_settings->get('planet_votes_limit')."'";
-
 # Verification du contenu du get
 if (isset($_GET)) {
-	if (isset($_GET['page']) && is_numeric(trim($_GET['page']))) {
-		# On recuepre la valeur du get
-		$params["page"] = trim($_GET['page']);
-		if ($params["page"] < 1) {
-			$params["page"] = 0;
-		}
-		$num_start = $params["page"] * $blog_settings->get('planet_nb_post');
-	}
-	if (isset($_GET['tags'])) {
-		$patterns = array( '/, /', '/ ,/');
-		$replacement = array(',', ',');
-		$tags = urldecode($_GET['tags']);
-		$tags = preg_replace($patterns, $replacement, $tags);
-		$tags = preg_split('/,/',$tags, -1, PREG_SPLIT_NO_EMPTY);
-
-		$sql_tags = "(";
-		foreach ($tags as $key=>$tag) {
-			$sql_tags .= $core->prefix."post_tag.tag_id = '".$tag."'";
-			$or = ($key == count($tags)-1) ? "" : " OR ";
-			$sql_tags .= $or;
-		}
-		$sql_tags .= ")";
-
-		$debut_sql = "SELECT DISTINCT
-                ".$core->prefix."user.user_id		as user_id,
-                user_fullname	as user_fullname,
-                user_email		as user_email,
-                post_pubdate	as pubdate,
-                post_title		as title,
-                post_permalink	as permalink,
-                post_content	as content,
-                post_nbview		as nbview,
-                last_viewed		as last_viewed,
-				feed_id			as feed_id,
-				SUBSTRING(post_content,1,400) as short_content,
-				".$core->prefix."post.post_id		as post_id,
-                post_score		as score
-            FROM ".$core->prefix."post, ".$core->prefix."user, ".$core->prefix."post_tag
-            WHERE ".$core->prefix."user.user_id = ".$core->prefix."post.user_id
-            AND ".$core->prefix."post.post_id = ".$core->prefix."post_tag.post_id
-			AND ".$sql_tags."
-            AND post_status = '1'
-            AND user_status = '1'
-            AND post_score > '".$blog_settings->get('planet_votes_limit')."'";
-
-    }
-
-	# Si le lecteur a fait une recherche
-	if (isset($_GET['search']) && !empty($_GET['search'])){
-		$params["search"] = $_GET['search'];
-
-		# Complete the SQL query
-		$search_value = $_GET['search'];
-		$search_value = htmlentities($search_value, ENT_QUOTES, 'UTF-8');
-		$search_value = mysql_real_escape_string($search_value);
-		$debut_sql = $debut_sql." AND (".$core->prefix."post.post_title LIKE '%$search_value%'
-			OR ".$core->prefix."post.post_permalink LIKE '%$search_value%'
-			OR ".$core->prefix."post.post_content LIKE '%$search_value%'
-			OR ".$core->prefix."user.user_fullname LIKE '%$search_value%')";
-	}
+	# if user want to read a unique post
 	if (isset($_GET['post_id']) && !empty($_GET['post_id'])){
 		$params["post_id"] = intval($_GET['post_id']);
 		$res = $core->con->select(
@@ -136,6 +68,8 @@ if (isset($_GET)) {
 		$cur->post_nbview = $res->post_nbview + 1;
 		$cur->last_viewed = array('NOW()');
 		$cur->update("WHERE post_id = '".$params['post_id']."'");
+
+		$post_id = $params['post_id'];
 
 		if (isset($_GET['go']) &&
 			$_GET['go'] == "external" &&
@@ -155,70 +89,58 @@ if (isset($_GET)) {
 			$post_url = stripslashes($res->post_permalink);
 			http::redirect($post_url);
 		}
-
-		# Complete the SQL query
-		$debut_sql = $debut_sql." AND ".$core->prefix."post.post_id = '".$params["post_id"]."'";
 	}
-	# On recupere le numero du membre
-	if (isset($_GET['user_id']) && !empty($_GET['user_id'])){
-		$params["user_id"] = urldecode($_GET['user_id']);
-
-		# Complete the SQL query
-		$debut_sql = $debut_sql." AND ".$core->prefix."post.user_id = '".$params["user_id"]."'";
-	}
-	if (isset($_GET['popular']) && !empty($_GET['popular'])){
-		$params['popular'] = $_GET['popular'];
-		if (!isset($_GET['filter'])) {
-			$_GET['filter'] = 'week';
+	else {
+		if (isset($_GET['page']) && is_numeric(trim($_GET['page']))) {
+			$params["page"] = trim($_GET['page']);
+			if ($params["page"] < 1) {
+				$params["page"] = 0;
+			}
+			$num_start = $params["page"] * $nb_items;
+		}
+		if (isset($_GET['tags'])) {
+			$params["tags"] = $_GET['tags'];
+			$tags = !empty($_GET['tags']) ? getArrayFromList($_GET['tags']) : array();
+		}
+		# Si le lecteur a fait une recherche
+		if (isset($_GET['search']) && !empty($_GET['search'])){
+			$params["search"] = $_GET['search'];
+			$search_value = $_GET['search'];
+		}
+		# On recupere le numero du membre
+		if (isset($_GET['user_id']) && !empty($_GET['user_id'])){
+			$params["user_id"] = urldecode($_GET['user_id']);
+			$users = !empty($_GET['user_id']) ? getArrayFromList($_GET['user_id']) : array();
+		}
+		if (isset($_GET['popular']) && !empty($_GET['popular'])){
+			$params['popular'] = $_GET['popular'];
+			$popular = true;
+		}
+		# If there is a filter call
+		if (isset($_GET['filter']) && !empty($_GET['filter'])) {
+			$params["filter"] = trim($_GET['filter']);
+			$period = trim($_GET['filter']);
+			$filter_class = array(
+				"day" => "",
+				"week" => "",
+				"month" => "");
+			$filter_class[$period] = "selected";
 		}
 	}
-
-	# If there is a filter call
-	if (isset($_GET['filter']) && !empty($_GET['filter'])) {
-		$params["filter"] = trim($_GET['filter']);
-
-		# Complete the SQL query
-		$now = mktime(0, 0, 0, date("m",time()), date("d",time()), date("Y",time()));
-		$day = date('Y-m-d', $now).' 00:00:00';
-		$week = date('Y-m-d', $now - 3600*24*7).' 00:00:00';
-		$month = date('Y-m-d', $now - 3600*24*31).' 00:00:00';
-		$filter_class = array(
-			"day" => "",
-			"week" => "",
-			"month" => "");
-		switch($params["filter"]) {
-		case "day"		:
-			$filter_class["day"] = "selected";
-			$debut_sql = $debut_sql." AND post_pubdate > '".$day."'";
-			break;
-		case "week"		:
-			$filter_class["week"] = "selected";
-			$debut_sql = $debut_sql." AND post_pubdate > '".$week."'";
-			break;
-		case "month"	:
-			$filter_class["month"] = "selected";
-			$debut_sql = $debut_sql." AND post_pubdate > '".$month."'";
-			break;
-		default			:
-			$debut_sql = $debut_sql." AND post_pubdate > '".$week."'";
-			$params["filter"] = "week";
-			break;
-		}
-	}
-}
-
-if (array_key_exists('popular', $params)){
-	# Complete the SQL query
-	$debut_sql = $debut_sql." AND post_score > 0";
-	$fin_sql = " ORDER BY post_score DESC LIMIT $num_start,".$blog_settings->get('planet_nb_post');
-}
-else {
-	$fin_sql = " ORDER BY post_pubdate DESC
-		LIMIT $num_start,".$blog_settings->get('planet_nb_post');
 }
 
 # Terminaison de la commande SQL
-$sql = $debut_sql." ".$fin_sql;
+$sql = generate_SQL(
+	$num_start,
+	10,
+	$users,
+	$tags,
+	$search_value,
+	$period,
+	$popular,
+	$post_id);
+#print $sql;
+#exit;
 
 $page_url = '';
 foreach ($params as $key => $val) {
@@ -301,35 +223,10 @@ if (!isset($_GET['post_id']) | empty($_GET['post_id'])){
 }
 
 # Liste des articles
-if (isset($_GET) && isset($_GET['popular']) && !empty($_GET['popular'])) {
-	$core->tpl = showPosts($rs, $core->tpl, $search_value, true);
-}
-else {
-	$core->tpl = showPosts($rs, $core->tpl, $search_value, false);
-}
+$core->tpl = showPosts($rs, $core->tpl, $search_value, $popular);
 $core->tpl->render("content.posts");
 
 # Show result
 echo $core->tpl->render();
 
-##################
-# UPDATE ALGO
-##################
-$cron_file = dirname(__FILE__).'/inc/cron_running.txt';
-$dodo_interval = 250;
-if (!file_exists(dirname(__FILE__).'/STOP') && $blog_settings->get('planet_index_update')) {
-	$fp = fopen($cron_file, "rb");
-	$contents = fread($fp, filesize($cron_file));
-	$next = (int) $contents + $dodo_interval;
-	if ($next <= time()) {
-		require_once(dirname(__FILE__).'/inc/cron_fct.php');
-		$fp = @fopen($cron_file,'wb');
-		if ($fp === false) {
-			throw new Exception(sprintf(__('Cannot write %s file.'),$fichier));
-		}
-		fwrite($fp,time());
-		fclose($fp);
-		update($core);
-	}
-}
 ?>

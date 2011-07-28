@@ -6,7 +6,7 @@
 * Website : www.bilboplanet.com
 * Tracker : redmine.bilboplanet.com
 * Blog : www.bilboplanet.com
-* 
+*
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License as
@@ -122,13 +122,13 @@ if(isset($_POST) && isset($_POST['submitNewsletter'])) {
 		}
 		if(!$message['success']) {
 			$flash['error'][] = htmlspecialchars($message['error']);
-		}		
+		}
 	}
 }
 
 # Vérification du formulaire de confirmation
 if(isset($_POST) && isset($_POST['confirmSubmit'])) {
-	$envoi = sendmail($_POST['sender'], $_POST['recipients'], $_POST['subject'], $_POST['message'], 'newsletter');	
+	$envoi = sendmail($_POST['sender'], $_POST['recipients'], $_POST['subject'], $_POST['message'], 'newsletter');
 	if($envoi) {
 		$flash['notice'][] = T_("Your email has been sent");
 	} else {
@@ -262,7 +262,7 @@ include_once(dirname(__FILE__).'/sidebar.php');
                 	<input type="submit" class="valide" name="submitNewsletter" value="<?php echo T_('Send');?>" />
                 </div>
                 &nbsp;&nbsp;
-                <div class="button br3px">		
+                <div class="button br3px">
                    	<input type="reset" class="reset" name="reset" value="<?php echo T_('Reset');?>" />
                 </div>
             </fieldset>
@@ -277,6 +277,6 @@ finCache();
 
 else:
 	$page_url = urlencode(http::getHost().$_SERVER['REQUEST_URI']);
-	http::redirect('auth.php?came_from='.$page_url);
+	http::redirect('../auth.php?came_from='.$page_url);
 endif;
 ?>

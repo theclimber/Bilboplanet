@@ -226,13 +226,13 @@ color:#393f4d;
 color:#fff;
 background:url("../images/bg-li.png");
 }
-#recherche_global{
+#search_form{
 position:relative;
 float:right;
 padding-right:25px;
 margin-top:3px;
 }
-#recherche {
+#search_text {
 position:relative;
 float:left;
 width:174px;
@@ -727,7 +727,7 @@ position:relative;
 float:left;
 width:974px;
 }
-#centre_centre
+#body
 {
 position:relative;
 float:left;
@@ -835,10 +835,23 @@ text-decoration:none;
 font-size:11px;
 margin-right:20px;
 }
+
+/********************************/
+/**           PAGE STATUS      **/
+/********************************/
+#filter-status{
+position:relative;
+width:180px;
+padding-left:21px;
+font-size:11px;
+padding-bottom:13px;
+padding-right:21px;
+text-align:left;
+}
 div.post_description div.tag-line {
     margin : 5px 5px;
 }
-div.post_description span.post-tag {
+span.tag {
 	margin: 0px 5px;
     padding: 0px 6px 1px 6px;
 	background: #edbe59;
@@ -846,4 +859,86 @@ div.post_description span.post-tag {
 	-khtml-border-radius: 8px;
 	-webkit-border-radius: 8px;
 	border-radius: 8px;
+}
+span.user {
+	margin: 0px 5px;
+    padding: 0px 6px 1px 6px;
+	background: #78bf7b;
+	-moz-border-radius: 8px;
+	-khtml-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	border-radius: 8px;
+}
+div#filter-feed {
+	background: url('../images/ico-feed.gif') no-repeat;
+	padding-left : 25px;
+	margin: 5px;
+}
+div#userMenu {
+	padding: 5px 0;
+/*	background: #000;
+	color: #FFF;*/
+	width: 100%;
+	display: block;
+	position: relative;
+    font-family: Arial, Serif;
+    font-size: 11px;
+}
+div#userMenu a, div#userMenu a:hover, div#userMenu a:visited {
+	color: #000;
+}
+div#userMenu a:hover {
+	text-decoration: underline;
+}
+div#popup {
+	position: absolute;
+	left: 64px;
+	top: 22px;
+	z-index: -100;
+	width: 1100px;
+	border: 3px solid #13678A;
+	background: none repeat scroll 0 0 white;
+}
+div#popup .window-bar {
+	overflow: auto;
+	padding: 2px 5px 2px 0;
+	text-align: right;
+	background-color: #E3ECF3;
+}
+div#loginBox {
+	cursor: pointer;
+	display: inline-block;
+	height: 10px;
+	padding: 7px 15px 2px;
+	vertical-align: top;
+	white-space: nowrap;
+	font-weight: bold;
+	margin: 0 50px;;
+}
+div#loginBox span#login-dropdown {
+	background: url('../images/sprite-icons.png') no-repeat scoll -79px -68px transparent;
+	display: inline-block;
+	height: 7px;
+	margin-left: 1px;
+	margin-top: 8px;
+	vertical-align: top;
+	width: 7px;
+}
+div#loginBox:hover, div#loginBox.open{
+	background: #333;
+}
+div#loginForm {
+	background: #333;
+	position: absolute;
+	top: 30px;
+	right: 10px;
+	margin: 0 50px;
+	padding: 20px;
+	border: 1px solid #fff;
+	-moz-box-shadow: -1px -1px 0 #ddd, -1px -1px 0 #ddd inset;
+	-webkit-box-shadow: -1px -1px 0 #ddd, -1px -1px 0 #ddd inset;
+	box-shadow: -1px -1px 0 #ddd, -1px -1px 0 #ddd inset;
+	-moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
+	border-radius: 20px;
 }

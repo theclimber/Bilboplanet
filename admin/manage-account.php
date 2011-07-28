@@ -6,7 +6,7 @@
 * Website : www.bilboplanet.com
 * Tracker : redmine.bilboplanet.com
 * Blog : www.bilboplanet.com
-* 
+*
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License as
@@ -40,7 +40,7 @@ include_once(dirname(__FILE__).'/sidebar.php');
 
 <div id="BP_page" class="page">
 	<div class="inpage">
-	
+
 <div id="flash-log" style="display:none;">
 	<div id="flash-msg"><!-- spanner --></div>
 </div>
@@ -91,6 +91,6 @@ include(dirname(__FILE__).'/footer.php');
 finCache();
 else:
 	$page_url = urlencode(http::getHost().$_SERVER['REQUEST_URI']);
-	http::redirect('auth.php?came_from='.$page_url);
+	http::redirect('../auth.php?came_from='.$page_url);
 endif;
 ?>

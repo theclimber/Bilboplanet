@@ -6,7 +6,7 @@
 * Website : www.bilboplanet.com
 * Tracker : redmine.bilboplanet.com
 * Blog : www.bilboplanet.com
-* 
+*
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License as
@@ -40,7 +40,7 @@ include_once(dirname(__FILE__).'/sidebar.php');
 
 <div id="BP_page" class="page">
 	<div class="inpage">
-	
+
 <div id="flash-log" style="display:none;">
 	<div id="flash-msg"><!-- spanner --></div>
 </div>
@@ -83,7 +83,7 @@ form::combo('fuser_id',$users,0, 'input','','').'</label><br /><br />'.
 '<label class="required" for="user_status">'.T_('User status').' : '.
 form::combo('user_status',$status,0, 'input','','').'</label><br /><br />';
 
-echo 
+echo
 '<div class="button br3px"><input type="submit" name="filter_user" class="valide" value="'.T_('Filter').'" /></div>'.
 '<div class="button br3px close-button"><a class="close" onclick="javascript:closeFilter()">'.T_('Close').'</a></div>'.
 '</form>';
@@ -128,7 +128,7 @@ form::field('site',30,255,html::escapeHTML(), 'input').'</label>
 '<div class="button br3px close-button"><a class="close" onclick="javascript:closeAdd()">'.T_('Close').'</a></div>'.
 '</form>';
 ?>
-	
+
 </fieldset>
 
 <fieldset><legend><?php echo T_('List of the users');?></legend>
@@ -213,6 +213,6 @@ include(dirname(__FILE__).'/footer.php');
 finCache();
 else:
 	$page_url = urlencode(http::getHost().$_SERVER['REQUEST_URI']);
-	http::redirect('auth.php?came_from='.$page_url);
+	http::redirect('../auth.php?came_from='.$page_url);
 endif;
 ?>

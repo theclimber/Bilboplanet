@@ -6,7 +6,7 @@
 * Website : www.bilboplanet.com
 * Tracker : redmine.bilboplanet.com
 * Blog : www.bilboplanet.com
-* 
+*
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License as
@@ -31,7 +31,7 @@ if (!is_file($rc_path)) {
 	require_once(dirname(__FILE__).'/i18n.php');
 	$summary = T_('No configuration file');
 	$message = T_('There is no configuration file, you need to create one. Therefor you can use the wizard to generate a configuration file. Click "Next" to go to the setup page.');
-	$message2 = '<a href="wizard.php"><div class="next">'.T_('Next').' &rarr;</div></a>';
+	$message2 = '<a href="wizard.php"><div class="next">'.T_('Next').'</div></a>';
 	$code = 0;
 	include dirname(__FILE__).'/../../inc/core_error.php';
 	exit;
@@ -84,7 +84,7 @@ if ($can_install && !empty($_POST))
 	$p_title = !empty($_POST['p_title']) ? htmlentities(stripslashes($_POST['p_title']), ENT_QUOTES, 'UTF-8') : null;
 	$p_lang = !empty($_POST['p_lang']) ? $_POST['p_lang'] : null;
 	define('BP_PROT_PATH',dirname(__FILE__).'/../../.htpasswd');
-	
+
 	# Version of the planet
 	$version_file = dirname(__FILE__).'/VERSION';
 	$fp = @fopen($version_file, 'rb');
@@ -93,7 +93,7 @@ if ($can_install && !empty($_POST))
 	}
 	$p_version = fread($fp, 10);
 	fclose($fp);
-	
+
 	try
 	{
 		# Check user information
@@ -142,14 +142,14 @@ if ($can_install && !empty($_POST))
 				unset($_tz);
 			}
 		}
-		
+
 		# Create schema
 		$_s = new dbStruct($core->con,$core->prefix);
 		require dirname(__FILE__).'/../../inc/dbschema/db-schema.php';
-		
+
 		$si = new dbStruct($core->con,$core->prefix);
 		$changes = $si->synchronize($_s);
-		
+
 		# Create user
 		$cur = $core->con->openCursor($core->prefix.'user');
 		$cur->user_id = (string) $u_login;
@@ -165,7 +165,7 @@ if ($can_install && !empty($_POST))
 			# Get next ID
 			$rs3 = $core->con->select(
 				'SELECT MAX(site_id) '.
-				'FROM '.$core->prefix.'site ' 
+				'FROM '.$core->prefix.'site '
 				);
 			$next_site_id = (integer) $rs3->f(0) + 1;
 			$cur = $core->con->openCursor($core->prefix.'site');
@@ -185,7 +185,7 @@ if ($can_install && !empty($_POST))
 		$planet_url = http::getHost().$root_url;
 
 		$blog_settings = new bpSettings($core,'root');
-		
+
 		$blog_settings->put('author', "$u_fullname", "string");
 		$blog_settings->put('author_mail', $u_email, "string");
 		$blog_settings->put('author_id', $u_login, "string");
@@ -218,14 +218,26 @@ if ($can_install && !empty($_POST))
 		$blog_settings->put('planet_moderation', '1', "boolean");
 		$blog_settings->put('planet_subscription', '1', "boolean");
 		$blog_settings->put('planet_subscription_content', $subscription_content, "string");
+		$blog_settings->put('planet_subscription_accept', "Default text when accept subscription", "string");
+		$blog_settings->put('planet_subscription_refuse', "Default text when refuse subscription", "string");
 		$blog_settings->put('planet_mail_error','1', "boolean");
-		
+
 		# Advanced configuration
 		$blog_settings->put('planet_timezone',$default_tz, "string");
 		$blog_settings->put('planet_maint','0', "boolean");
 		$blog_settings->put('auto_feed_disabling','0', "boolean");
 		$blog_settings->put('internal_links','1', "boolean");
-		
+		$blog_settings->put('allow_feed_modification','1', "boolean");
+		$blog_settings->put('allow_post_modification','1', "boolean");
+		$blog_settings->put('allow_tagging_everything','1', "boolean");
+		$blog_settings->put('accept_public_tagged_feed','0', "boolean");
+		$blog_settings->put('accept_user_tagged_feed','1', "boolean");
+
+		# Create planet salt :
+		$base_string = sha1(time().$u_fullname.$u_email.$u_pwd.'~'.microtime(TRUE).$default_tz);
+		$salt = substr($base_string, rand(0, strlen($base_string)), 32);
+		$blog_settings->put('planet_salt',$salt, "string");
+
 		$step = 1;
 	}
 	catch (Exception $e)
@@ -293,10 +305,10 @@ closedir($dir_handle);
 
 	echo
 	'<h2>'.T_('Information on the BilboPlanet').'</h2>'.
-	
+
 	'<p>'.T_('Thank you for taking somes minutes to answer those questions to help to the configuration of the bilboplanet.').'</p>'.
 	'<p><span class="red">*&nbsp;</span>'.T_('Fields marked with an asterisk are obligatory').'</p>'.
-	
+
 	'<form id="install-form" action="index.php" method="post">'.
 	'<fieldset><legend><strong>'.T_('Information of the user').'</strong></legend>'.
 	'<label>'.T_('Fullname').'<span class="red"> * </span>'.
@@ -321,7 +333,7 @@ closedir($dir_handle);
 	form::combo('p_lang',$lang_array, $p_lang).'</label>
 	<span class="description">'.T_('Choose your langage').'</span>'.
 	'</fieldset><br/>'.
-	
+
 	'<fieldset><legend><strong>'.T_('Administration username and password').'</strong></legend>'.
 	'<label class="required" title="'.T_('Required field').'">'.T_('Username').'<span class="red"> * </span>'.
 	form::field('u_login',30,32,html::escapeHTML($u_login)).'</label>
@@ -333,7 +345,7 @@ closedir($dir_handle);
 	form::password('u_pwd2',30,255).'</label>
 	<span class="description">'.T_('Re-enter your password for verification').'</span>'.
 	'</fieldset><br/>'.
-	
+
 	'<input class="save" type="submit" value="'.T_('Save').'" />'.
 	'</form>';
 }
@@ -343,24 +355,24 @@ elseif ($can_install && $step == 1)
 	$bpPath = $bpPath[0];
 	$adminPath = explode("install/index.php",http::getSelfURI());
 	$adminPath = $adminPath[0];
-	
+
 	echo
 	'<p class="message"><strong>'.T_('Install succeeded').'</strong></p>'.
-	
+
 	'<p>'.T_('The Bilboplanet was successfully installed. Here you can find a resume of the configuration').'</p>'.
-	
+
 	'<h3>'.T_('Your account').'</h3>'.
 	'<ul>'.
 	'<li>'.T_('Username:').' <strong>'.html::escapeHTML($u_login).'</strong></li>'.
 	'<li>'.T_('Password:').' <strong>'.html::escapeHTML($u_pwd).'</strong></li>'.
 	'</ul>'.
-	
+
 	'<h3>'.T_('Your Bilboplanet').'</h3>'.
 	'<ul>'.
 	'<li>'.T_('URL of the BilboPlanet:').' <strong>'.html::escapeHTML($bpPath).'</strong></li>'.
 	'<li>'.T_('Administration interface:').' <strong>'.html::escapeHTML($adminPath).'</strong></li>'.
 	'</ul>'.
-	
+
 	'<form action="'.html::escapeHTML($adminPath).'" method="post">'.
 	'<p><input class="save" type="submit" value="'.T_('Go to the administration interface').'" />'.
 	'</p>'.

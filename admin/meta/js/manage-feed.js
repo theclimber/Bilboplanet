@@ -263,3 +263,16 @@ function add_tags(num_page, nb_items, feed_id, feed_name) {
         title: "Tagging : " + feed_name,
     });
 }
+function toggleFeedComment(feed_id, comment_status, num_page, nb_items) {
+    $.ajax({
+        type: "POST",
+        url: "api/",
+        data : {'ajax' : 'feed',
+			'action' : 'comment',
+			'feed_id' : feed_id,
+			'status': comment_status},
+        success: function(msg){
+			updateFeedList(num_page, nb_items);
+        }
+    });
+}

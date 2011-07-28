@@ -8,6 +8,7 @@
 	<link href="{$planet.url}/themes/{$planet.theme}/css/blueprint/screen.css" rel="stylesheet" type="text/css" />
 	<link href="{$planet.url}/themes/{$planet.theme}/css/jquery.fancybox-1.3.2" rel="stylesheet" type="text/css" />
 	<link href="{$planet.url}/themes/{$planet.theme}/css/core.css" rel="stylesheet" type="text/css" />
+	<link href="{$planet.url}/themes/{$planet.theme}/css/boxy.css" rel="stylesheet" type="text/css" />
 <!-- BEGIN css.import -->
 	<link href="{$planet.url}/{$css_file}" rel="stylesheet" type="text/css" />
 <!-- END css.import -->
@@ -17,6 +18,7 @@
 	<link rel="icon" type="image/ico" href="{$planet.url}/themes/{$planet.theme}/favicon.png" />
 
 	<script type="text/javascript" src="{$planet.url}/javascript/jquery.js"></script>
+	<script type="text/javascript" src="{$planet.url}/javascript/jquery.boxy.js"></script>
 	<script type="text/javascript" src="{$planet.url}/javascript/jquery.easing-1.3.pack.js" ></script>
 <!-- BEGIN js.import -->
 <script type="text/javascript" src="{$planet.url}/{$js_file}"></script>
@@ -27,6 +29,44 @@
 
 </head>
 <body>
+	<div id="userMenu">
+	<!-- BEGIN page.loginbox -->
+		<div id="loginBox">
+			{_Welcome} {$login.username}
+			| <a href="javascript:popup('{$planet.url}/user/')">Dashboard</a>
+		<!-- BEGIN page.loginadmin -->
+			| <a href="{$planet.url}/admin/">Administration</a>
+		<!-- END page.loginadmin -->
+			| <a href="?logout={$planet.url}">Logout</a>
+		</div>
+	<!-- ELSE page.loginbox -->
+		<div id="loginBox"><a><span id="dropdown">Login <span id="login-dropdown">&nbsp;</span></span></a></div>
+		<div id="loginForm" style="display:none;">
+			<form class="login" method="POST" action="{$planet.url}/auth.php">
+			<input type="hidden" name="came_from" value="{$planet.url}">
+			<p>
+			<label class="username" for="user_id">
+				<span>{_Username}</span>
+				<input type="text" name="user_id" value="">
+			</label>
+			</p><p>
+			<label class="password" for="user_pwd">
+				<span>{_Password}</span>
+				<input type="password" name="user_pwd" value="">
+			</label>
+			</p><p>
+			<label class="remember">
+				<input type="checkbox" name="user_remember" value="1" checked>
+				<span>{_Remember me}</span>
+			</label>
+			<input class="submit button" type="submit" value="{_Connect}" />
+			</p><p>
+			<a href="{$planet.url}/auth.php?recover=1" class="forgot">{_Password forgotten?}</a><br>
+			</p>
+			</form>
+		</div>
+	<!-- END page.loginbox -->
+	</div>
 <div id="top_gradient"> </div>
 <div id="top_image"> </div>
 <div id="top_logo"> </div>
@@ -50,7 +90,7 @@
 				{!include:'sidebar.tpl'}
 			</div>
 
-			<div id="homeleft">
+			<div id="body">
 				<!-- ADD CONTENT HERE -->
 				<!-- BEGIN content.posts -->
 					{!include:'posts.tpl'}
@@ -91,6 +131,23 @@
 	</div><!-- end main -->
 
 </div><!-- end wrap -->
+
+<div id="popup" style="display:none">
+	<div class="window-bar">
+		<a href="#" onclick="javascript:close_popup();" id="close_popup">{_Close} x</a>
+	</div>
+	<div class="popup-content"></div>
+</div>
+<div id="tag-post-form" style="display:none">
+<form>
+	<label class="required" for="tags">{_Tags}</label>
+	<input type="text" id="tags" name="tags" value=""><br/>
+	<span class="description">{_Comma separated tags (ex: linux,web,event)}</span>
+	<div class="button">
+		<input type="submit" name="apply" class="add_tags" value="{_Apply}" />
+	</div>
+</form>
+</div>
 
 <!-- ADD FOOTER HERE -->
 {!include:'footer.tpl'}

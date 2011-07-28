@@ -266,7 +266,7 @@ function set_nb_items(nb) {
 }
 
 function updateFeedList() {
-	var feedlink = 'http://localhost/~greg/bilboplanet/';
+	var feedlink = '';
 	feedlink += getFeedURL();
 	$('a#filter-feed').attr('href',feedlink);
 	if (this.tags.length > 0 || this.users.length > 0) {

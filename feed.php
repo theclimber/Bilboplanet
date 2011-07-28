@@ -79,7 +79,8 @@ if (isset($_GET) && isset($_GET['type'])) {
 	$users = array();
 	$period = '';
 	$tribe_id = '';
-	if ($blog_settings->get('accept_public_tagged_feeds')) {
+	#if ($blog_settings->get('accept_public_tagged_feeds')) {
+	if (true) {
 		$tags = !empty($_GET['tags']) ? getArrayFromList($_GET['tags']) : array();
 		$users = !empty($_GET['users']) ? getArrayFromList($_GET['users']) : array();
 		$period = !empty($_GET['period']) ? trim($_GET['period']) : '';

@@ -33,11 +33,12 @@ if ($core->auth->sessionExists()):
 		exit;
 	}
 
-$allowed_versions = array("1.0" => "1.0", "0.3.2" => "0.3.2");
+	$allowed_versions = array("1.1" => "1.1", "1.0" => "1.0");
 
 $possible_tables = array();
+$possible_tables["1.1"] = array("user", "site", "feed", "post", "permissions", "setting", "votes", "comment", "feed_tag", "pending_user", "post_tag", "tribe");
 $possible_tables["1.0"] = array("user", "site", "feed", "post", "permissions", "setting", "votes");
-$possible_tables["0.3.2"] = array("article", "flux", "membre", "votes");
+#$possible_tables["0.3.2"] = array("article", "flux", "membre", "votes");
 
 if (isset($_POST)) {
 ##########################################################
@@ -68,24 +69,100 @@ if (isset($_POST)) {
 			$gzfile = file_get_contents($_FILES['imported_file']['tmp_name'], FILE_USE_INCLUDE_PATH);
 			$content = my_gzdecode($gzfile);
 			$tables = json_decode($content, true);
+			$author_id = $blog_settings->get('author_id');
 
 			foreach ($tables as $table){
-				if ($imported_version == '1.0') {
-					if (in_array($table['name'], $possible_tables["1.0"])){
-						// on insere le contenu dans la table
-						$core->con->execute("TRUNCATE TABLE `".$core->prefix.$table['name']."`");
+				if (($imported_version == '1.1' && in_array($table['name'], $possible_tables["1.1"])) ||
+					($imported_version == '1.0' && in_array($table['name'], $possible_tables["1.0"]))) {
+						// on vide le contenu de la table
+						if ($table['name'] == 'user') {
+							$core->con->execute("DELETE FROM ".$core->prefix."user WHERE user_id != '".$author_id."'");
+						} elseif ($table['name'] == "permissions") {
+							$core->con->execute("DELETE FROM ".$core->prefix."permissions WHERE user_id != '".$author_id."'");
+						} elseif ($table['name'] == "settings") {
+							$core->con->execute("DELETE FROM ".$core->prefix."setting WHERE
+								setting_value != 'author_id' AND
+								setting_value != 'planet_url' AND
+								setting_value != 'planet_version'"
+								);
+						} else {
+							$core->con->execute("TRUNCATE TABLE `".$core->prefix.$table['name']."`");
+						}
 						$cols = $table['head'];
+
+						if ($table['name'] == "post" && $imported_version == '1.0') {
+							# Suppression de la colonne feed_id
+							$cols_id = array_search('feed_id', $cols);
+							if ($cols_id) {
+								unset($cols[$cols_id]);
+							}
+						} else {
+							$cols_id = false;
+						}
+
 						foreach($table['content'] as $key => $value){
-							$n = 0;
+
+							$cols_to_remove = array();
+							$values_to_add = array();
+
+							if ($cols_id) {
+								# il y a une colonne de moins dans les valeurs
+								$cols_to_remove[] = $cols_id-1;
+							}
+
+							if ($table['name'] == 'user' && $key == $author_id) {
+								# Empecher d'overrider l'utilisateur principal
+								continue;
+							}
+							if ($table['name'] == 'permissions' && $key == $author_id) {
+								continue;
+							}
+							if ($table['name'] == 'setting') {
+								# pour les settings on ne modifie pas tout
+								if (in_array($key, array('author_id','planet_url', 'planet_version'))) {
+									continue;
+								}
+							}
+							if ($table['name'] == 'votes') {
+								$value[0] = $author_id;
+							}
+							if ($table['name'] == 'post_tag') {
+								# Ajouter un utilisateur aux tags
+								if (!array_search('user_id', $cols)) {
+									$cols[] = 'user_id';
+								}
+								$values_to_add[] = $author_id;
+							}
+
+							# Creation de la liste de valeurs
 							$values = "'".$key."'";
-							while ($n < count($cols)-1){
-								$values .= ",'".$value[$n]."'";
+							$n = 0;
+							while ($n < count($value)){
+								# On ajoute la valeur si elle n'est pas dans $cols_to_remove
+								if (!in_array($n, $cols_to_remove)){
+									$values .= ",'".$value[$n]."'";
+								}
 								$n+=1;
 							}
-							$sql = "INSERT INTO ".$core->prefix.$table['name']." VALUES (".$values.")";
-							$core->con->execute($sql);
+
+							# On rajoute eventuellement des valeurs
+							foreach($values_to_add as $val) {
+								$values .= ",'".$val."'";
+							}
+
+							# Creation de la liste des colonnes
+							$cols_list = '('.getListFromArray($cols).')';
+
+							# Creation de la requeste
+							$sql = "INSERT INTO ".$core->prefix.$table['name']." ".$cols_list." VALUES (".$values.")";
+							try {
+								$core->con->execute($sql);
+							} catch (Exception $e) {
+								print $sql;
+								print "<p><b>$e</b></p>";
+								exit;
+							}
 						}
-					}
 				} elseif ($imported_version == '0.3.2') {
 					switch($table['name']) {
 					case "membre":

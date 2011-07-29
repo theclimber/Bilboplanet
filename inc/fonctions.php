@@ -384,6 +384,10 @@ function getArrayFromList($list) {
 	$array = preg_split('/,/',$list, -1, PREG_SPLIT_NO_EMPTY);
 	return $array;
 }
+function getListFromArray($arr) {
+	$list = implode(',',$arr);
+	return $list;
+}
 
 #--------------------------#
 #   Fonction d'affichage   #
@@ -454,7 +458,7 @@ function generate_SQL(
 	if (!empty($tags)) {
 		$sql_tags = "(";
 		foreach ($tags as $key=>$tag) {
-			$sql_tags .= $core->prefix."post_tag.tag_id = '".$tag."'";
+			$sql_tags .= $core->prefix."post_tag.tag_id = '".strtolower($tag)."'";
 			$or = ($key == count($tags)-1) ? "" : " OR ";
 			$sql_tags .= $or;
 		}
@@ -1157,20 +1161,20 @@ function code_htmlentities ($html, $tag1, $tag2, $return = 0) {
 # Function to add pending user						#
 #---------------------------------------------------#
 function addPendingUser ($user_id, $user_fullname, $user_email, $url, $feed, $lang) {
-	
+
 	global $core;
-	
+
 	# Clean Up user_id
 	$user_id = preg_replace("( )", "_", $user_id);
 	$user_id = cleanString($user_id);
-	
+
 	# Check if user have already sent subscription
 	$rs0 = $core->con->select("SELECT puser_id, user_fullname, user_email, feed_url
 		FROM ".$core->prefix."pending_user
 		WHERE lower(puser_id) = '".strtolower($user_id)."'
 		OR lower(user_fullname) = '".strtolower($user_fullname)."'
 		OR lower(user_email) = '".strtolower($user_email)."'");
-		
+
 	if ($rs0->count() > 0){
 		if ($rs0->f('puser_id') == $user_id) {
 			$error[] = sprintf(T_('A registration request have been already sent with this username: %s'), $user_id);
@@ -1188,10 +1192,10 @@ function addPendingUser ($user_id, $user_fullname, $user_email, $url, $feed, $la
 			$error[] = sprintf(T_('A registration request have been already sent with this Feed URL: %s'), $feed);
 		}
 	}
-	
+
 	if (empty($error)) {
 		# Check if user's information already exist
-		$rs1 = $core->con->select("SELECT user_id, user_fullname, user_email 
+		$rs1 = $core->con->select("SELECT user_id, user_fullname, user_email
 			FROM ".$core->prefix."user
 			WHERE lower(user_id) = '".strtolower($user_id)."'
 			OR lower(user_fullname) = '".strtolower($user_fullname)."'
@@ -1208,16 +1212,16 @@ function addPendingUser ($user_id, $user_fullname, $user_email, $url, $feed, $la
 			}
 		} else {
 			# Check if website is already in use
-			$rs2 = $core->con->select("SELECT ".$core->prefix."user.user_id 
-				FROM ".$core->prefix."user, ".$core->prefix."site 
-				WHERE ".$core->prefix."site.user_id = ".$core->prefix."user.user_id 
+			$rs2 = $core->con->select("SELECT ".$core->prefix."user.user_id
+				FROM ".$core->prefix."user, ".$core->prefix."site
+				WHERE ".$core->prefix."site.user_id = ".$core->prefix."user.user_id
 				AND site_url = '".$url."'");
 			if ($rs2->count() > 0){
 				$error[] = sprintf(T_('The website %s is already assigned to the user %s'),$url, $user_id);
 			}
 		}
 	}
-	
+
 	# All OK
 	if (empty($error)) {
 		$cur = $core->con->openCursor($core->prefix.'pending_user');
@@ -1232,7 +1236,7 @@ function addPendingUser ($user_id, $user_fullname, $user_email, $url, $feed, $la
 		$cur->modified = array(' NOW() ');
 		$cur->insert();
 	}
-	
+
 	return $error;
 }
 

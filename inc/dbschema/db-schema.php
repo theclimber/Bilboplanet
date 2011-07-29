@@ -179,15 +179,14 @@ $_s->session
 	;
 
 $_s->tribe
-	->tribe_id		('integer',		0, false)
-	->user_id		('integer',		0, false)
-	->order			('integer',		0, true, 100)
-	->public		('smallint',	0,	false, 0)
-	->name			('varchar',		128,false)
-	->tribe_comment	('smallint',	0,	false, 0)
-	->search_text	('text',		0,	false)
-	->tags			('text',		0,	false)
-	->users			('text',		0,	false)
+	->tribe_id		('varchar',		64,	true)
+	->user_id		('varchar',		64,	true)
+	->ordering		('integer',		0, true, 100)
+	->visibility	('smallint',	0,	false, 0)
+	->tribe_name	('varchar',		128,false)
+	->tribe_search	('text',		0,	false)
+	->tribe_tags	('text',		0,	false)
+	->tribe_users	('text',		0,	false)
 	->created		('timestamp',	0,	true, 'now()')
 	->modified		('timestamp',	0,	true, 'now()')
 

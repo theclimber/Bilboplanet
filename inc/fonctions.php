@@ -384,6 +384,10 @@ function getArrayFromList($list) {
 	$array = preg_split('/,/',$list, -1, PREG_SPLIT_NO_EMPTY);
 	return $array;
 }
+function getListFromArray($arr) {
+	$list = implode(',',$arr);
+	return $list;
+}
 
 #--------------------------#
 #   Fonction d'affichage   #

@@ -157,14 +157,14 @@ function getItemsFromFeeds ($rs, $print) {
 				$rs_tag = $core->con->select("SELECT tag_id FROM ".$core->prefix."feed_tag
 					WHERE feed_id = ".$rs->feed_id);
 				while($rs_tag->fetch()) {
-					$item_tags[] = $rs_tag->tag_id;
+					$item_tags[] = strtolower($rs_tag->tag_id);
 				}
 
 				$reserved_tags = array();
-				$planet_tags = json_decode($blog_settings->get('planet_reserved_tags'), true);
+				$planet_tags = getArrayFromList($blog_settings->get('planet_reserved_tags'));
 				if (is_array($planet_tags)) {
 					foreach ($planet_tags as $tag) {
-						$reserved_tags[] = $tag;
+						$reserved_tags[] = strtolower($tag);
 					}
 				}
 
@@ -172,9 +172,10 @@ function getItemsFromFeeds ($rs, $print) {
 				$categs = $item->get_categories();
 				if ($categs) {
 					foreach ($categs as $category) {
-						if (!in_array($category->get_label(), $item_tags)
-							&& !in_array($category->get_label(), $reserved_tags)){
-							$item_tags[] = $category->get_label();
+						$label = strtolower($category->get_label());
+						if (!in_array($label, $item_tags)
+							&& !in_array($label, $reserved_tags)){
+							$item_tags[] = $label;
 						}
 					}
 				}
@@ -183,6 +184,7 @@ function getItemsFromFeeds ($rs, $print) {
 				$hashtags = array();
 				preg_match('/#([\\d\\w]+)/', $item->get_title(), $hashtags);
 				foreach ($hashtags as $tag) {
+					$tag = strtolower($tag);
 					if (!in_array($tag, $item_tags)
 						&& !in_array($tag, $reserved_tags)){
 						$item_tags[] = $tag;
@@ -191,6 +193,7 @@ function getItemsFromFeeds ($rs, $print) {
 
 				# check if some existing tags are in the title
 				foreach (explode(' ', $item_title) as $word) {
+					$word = strtolower($word);
 					$tagRq = $core->con->select('SELECT tag_id FROM '.$core->prefix.'post_tag WHERE tag_id = "'.$word.'"');
 					if ($tagRq->count() > 1
 						&& !in_array($word, $item_tags)
@@ -264,6 +267,7 @@ function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_c
 
 	# Check if item is already in the database
 	$sql = "SELECT
+			post_id,
 			user_id,
 			post_title,
 			post_content,
@@ -338,7 +342,8 @@ function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_c
 	elseif($rs2->count() == 1) {
 		$title2 = $rs2->f('post_title');
 		$content2 = $rs2->f('post_content');
-
+		$post_id = $rs2->f('post_id');
+		$user_id = $rs2->f('user_id');
 
 		# Update tags if needed
 		$old_tags = array();
@@ -360,7 +365,7 @@ function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_c
 				$cur = $core->con->openCursor($core->prefix.'post_tag');
 				$cur->tag_id = $tag;
 				$cur->post_id = $post_id;
-				$cur->user_id = $core->getSite()->getAuthor()->getId();
+				$cur->user_id = $user_id;
 				$cur->created = array('NOW()');
 				try {
 					$cur->insert();

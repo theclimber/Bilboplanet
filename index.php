@@ -87,6 +87,7 @@ if (isset($_GET)) {
 					$res->post_permalink);
 			}
 			$post_url = stripslashes($res->post_permalink);
+			http::head('301');
 			http::redirect($post_url);
 		}
 	}

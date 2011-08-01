@@ -273,7 +273,10 @@ if (isset($_GET) && isset($_GET['type'])) {
 	/* On termine le cache */
 	finCache();
 }
-else http::redirect($blog_settings->get('planet_url')."/feed.php?type=rss");
+else {
+	http::head(301);
+	http::redirect($blog_settings->get('planet_url')."/feed.php?type=rss");
+}
 
 $root_url = $blog_settings->get('planet_url');
 $analytics = $blog_settings->get('planet_analytics');

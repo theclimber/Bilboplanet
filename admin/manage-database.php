@@ -33,12 +33,12 @@ if ($core->auth->sessionExists()):
 		exit;
 	}
 
-	$allowed_versions = array("1.1" => "1.1", "1.0" => "1.0");
+	$allowed_versions = array("1.1" => "1.1", "1.0" => "1.0", "0.3.2" => "0.3.2");
 
 $possible_tables = array();
 $possible_tables["1.1"] = array("user", "site", "feed", "post", "permissions", "setting", "votes", "comment", "feed_tag", "pending_user", "post_tag", "tribe");
 $possible_tables["1.0"] = array("user", "site", "feed", "post", "permissions", "setting", "votes");
-#$possible_tables["0.3.2"] = array("article", "flux", "membre", "votes");
+$possible_tables["0.3.2"] = array("article", "flux", "membre", "votes");
 
 if (isset($_POST)) {
 ##########################################################
@@ -164,6 +164,8 @@ if (isset($_POST)) {
 							}
 						}
 				} elseif ($imported_version == '0.3.2') {
+					# FIXME test this !!
+					# Poeple should not use this version normally !!!
 					switch($table['name']) {
 					case "membre":
 						$author_id = $blog_settings->get('author_id');
@@ -296,30 +298,24 @@ if (isset($_POST)) {
 								$article_url = $site_membre.$article_url;
 							}
 
-							$sql = "SELECT feed_id FROM ".$core->prefix."feed WHERE user_id = '".$user_id."'";
-							$rs = $core->con->select($sql);
 
-							if ($rs->count() > 0) {
-								$feed_id = $rs->f('feed_id');
-								$rs3 = $core->con->select(
-									'SELECT MAX(post_id) '.
-									'FROM '.$core->prefix.'post '
-									);
-								$next_post_id = (integer) $rs3->f(0) + 1;
-								$cur = $core->con->openCursor($core->prefix."post");
-								$cur->post_id = $next_post_id;
-								$cur->user_id = $user_id;
-								$cur->feed_id = $feed_id;
-								$cur->post_pubdate = $article_pub;
-								$cur->post_permalink = $article_url;
-								$cur->post_title = $article_titre;
-								$cur->post_content = $article_content;
-								$cur->post_status = $article_statut;
-								$cur->post_score = $article_score;
-								$cur->created = array(' NOW() ');
-								$cur->modified = array(' NOW() ');
-								$cur->insert();
-							}
+							$rs3 = $core->con->select(
+								'SELECT MAX(post_id) '.
+								'FROM '.$core->prefix.'post '
+								);
+							$next_post_id = (integer) $rs3->f(0) + 1;
+							$cur = $core->con->openCursor($core->prefix."post");
+							$cur->post_id = $next_post_id;
+							$cur->user_id = $user_id;
+							$cur->post_pubdate = $article_pub;
+							$cur->post_permalink = $article_url;
+							$cur->post_title = $article_titre;
+							$cur->post_content = $article_content;
+							$cur->post_status = $article_statut;
+							$cur->post_score = $article_score;
+							$cur->created = array(' NOW() ');
+							$cur->modified = array(' NOW() ');
+							$cur->insert();
 						}
 						break;
 					case "votes":

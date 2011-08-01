@@ -229,4 +229,6 @@ $core->tpl->render("content.posts");
 # Show result
 echo $core->tpl->render();
 
+require_once(dirname(__FILE__).'/javascript/analytics.php');
+
 ?>

@@ -111,6 +111,7 @@ if (isset($_GET)) {
 		# On recupere le numero du membre
 		if (isset($_GET['user_id']) && !empty($_GET['user_id'])){
 			$params["user_id"] = urldecode($_GET['user_id']);
+			$params['users'] = $_GET['user_id'];
 			$users = !empty($_GET['user_id']) ? getArrayFromList($_GET['user_id']) : array();
 		}
 		if (isset($_GET['popular']) && !empty($_GET['popular'])){
@@ -179,6 +180,11 @@ if (isset($_GET)) {
 	}
 	if (isset($_GET['search']) && !empty($_GET['search'])){
 		$core->tpl->render('search.line');
+	}
+	if ((isset($_GET['tags']) && !empty($_GET['tags'])) ||
+		(isset($_GET['user_id']) && !empty($_GET['user_id']))){
+		$core->tpl->render('feed.tags');
+		$core->tpl->render('feed.main.button.filter');
 	}
 }
 

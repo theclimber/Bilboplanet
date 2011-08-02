@@ -154,12 +154,15 @@ function getItemsFromFeeds ($rs, $print) {
 				##########################################
 				# Get tags defined in the database for all posts of that feed
 				$item_tags = array();
-				$rs_tag = $core->con->select("SELECT tag_id FROM ".$core->prefix."feed_tag
+
+				# Get the tags on the feed
+				$rs_feed_tag = $core->con->select("SELECT tag_id FROM ".$core->prefix."feed_tag
 					WHERE feed_id = ".$rs->feed_id);
-				while($rs_tag->fetch()) {
-					$item_tags[] = strtolower($rs_tag->tag_id);
+				while($rs_feed_tag->fetch()) {
+					$item_tags[] = strtolower($rs_feed_tag->tag_id);
 				}
 
+				# Get the reserved tags
 				$reserved_tags = array();
 				$planet_tags = getArrayFromList($blog_settings->get('planet_reserved_tags'));
 				if (is_array($planet_tags)) {
@@ -347,7 +350,7 @@ function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_c
 
 		# Update tags if needed
 		$old_tags = array();
-		$tagRq = $core->con->select('SELECT tag_id FROM '.$core->prefix.'post_tag WHERE post_id = '.$post_id.'');
+		$tagRq = $core->con->select('SELECT tag_id FROM '.$core->prefix.'post_tag WHERE post_id = '.$post_id.' AND user_id = \'root\'');
 		while ($tagRq->fetch()) {
 			$old_tags[] = $tagRq->tag_id;
 		}
@@ -365,7 +368,7 @@ function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_c
 				$cur = $core->con->openCursor($core->prefix.'post_tag');
 				$cur->tag_id = $tag;
 				$cur->post_id = $post_id;
-				$cur->user_id = $user_id;
+				$cur->user_id = 'root';
 				$cur->created = array('NOW()');
 				try {
 					$cur->insert();

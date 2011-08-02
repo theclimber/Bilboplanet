@@ -333,7 +333,7 @@ function tag_post(post_id, post_title) {
             }
         });
     }, {
-        title: "Tagging : " + post_title,
+        title: "Add tags to this post",
     });
 }
 

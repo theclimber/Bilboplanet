@@ -62,6 +62,10 @@
 		<ul class="no_bullet">
 			<li><img src="{$planet.url}/themes/{$planet.theme}/images/ico-feed.gif" alt="feed" />&nbsp;
 			<a href="{$planet.url}/feed.php?type=rss" rel="nofollow">{_Feed with all the posts}</a></li>
+		<!-- BEGIN feed.main.button.filter -->
+			<li><img src="{$planet.url}/themes/{$planet.theme}/images/ico-feed.gif" alt="feed" />&nbsp;
+			<a href="{$planet.url}/feed.php?type=rss&tags={$params.tags}&users={$params.users}" rel="nofollow">{_Feed with the posts of this category : } {$params.tags}</a></li>
+		<!-- END feed.main.button.filter -->
 
 			<!-- BEGIN sidebar.popular -->
 			<li><img src="{$planet.url}/themes/{$planet.theme}/images/ico-feed.gif" alt="feed" />&nbsp;

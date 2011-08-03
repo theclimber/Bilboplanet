@@ -447,7 +447,7 @@ function generate_SQL(
 	if (!empty($users)) {
 		$sql_users = "(";
 		foreach ($users as $key=>$user) {
-			$sql_users .= $core->prefix."post.user_id = '".$user."'";
+			$sql_users .= "LOWER(".$core->prefix."post.user_id) = '".strtolower($user)."'";
 			$or = ($key == count($users)-1) ? "" : " OR ";
 			$sql_users .= $or;
 		}
@@ -458,7 +458,7 @@ function generate_SQL(
 	if (!empty($tags)) {
 		$sql_tags = "(";
 		foreach ($tags as $key=>$tag) {
-			$sql_tags .= $core->prefix."post_tag.tag_id = '".strtolower($tag)."'";
+			$sql_tags .= "LOWER(".$core->prefix."post_tag.tag_id) = '".strtolower($tag)."'";
 			$or = ($key == count($tags)-1) ? "" : " OR ";
 			$sql_tags .= $or;
 		}

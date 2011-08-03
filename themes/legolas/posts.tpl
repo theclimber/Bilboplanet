@@ -70,7 +70,7 @@
 				<span class="tag">{$post_tag}</span>
 			<!-- END post.tags -->
 			<!-- BEGIN post.action.tags -->
-			<a href="javascript:tag_post('{$post.id}','{$post.title}')"><img title="{_Add tag}" src="user/tpl/images/add_tag.png"></a>
+			<a href="javascript:tag_post('{$post.id}')"><img title="{_Add tag}" src="user/tpl/images/add_tag.png"></a>
 			<!-- END post.action.tags -->
 			<!-- BEGIN post.action.comment -->
 			<a href="javascript:toggle_post_comments('{$post.id}', 1)"><img title="{_Allow comments}" src="user/tpl/images/comment.png"></a>

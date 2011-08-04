@@ -30,8 +30,16 @@ if(isset($_POST['action'])) {
 	case 'post_comment':
 		$post_id = $_POST['post_id'];
 		$fullname = $_POST['user_fullname'];
-		$email = $_POST['user_email'];
-		$site = $_POST['user_site'];
+		if (!filter_var($_POST['user_email'], FILTER_VALIDATE_EMAIL)) {
+			$email = $_POST['user_email'];
+		} else {
+			$email = null;
+		}
+		if (!filter_var($_POST['user_site'], FILTER_VALIDATE_URL)) {
+			$site = $_POST['user_site'];
+		} else {
+			$site = '';
+		}
 		$content = $_POST['content'];
 
 		$sql = "SELECT post_id FROM ".$core->prefix."post
@@ -39,7 +47,7 @@ if(isset($_POST['action'])) {
 			AND post_status = 1
 			AND post_comment = 1";
 		$rs = $core->con->select($sql);
-		if (!$rs->isEmpty()){
+		if (!$rs->isEmpty() && !empty($fullname) && !empty($email)){
 			$rs3 = $core->con->select(
 				'SELECT MAX(comment_id) '.
 				'FROM '.$core->prefix.'comment '

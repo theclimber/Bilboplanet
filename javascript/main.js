@@ -17,6 +17,26 @@ $(document).ready(function() {
 	this.users = new Array();
 	this.period = '';
 
+	var urlVars = getUrlVars();
+	if (urlVars['tags']) {
+		var tagList = urlVars['tags'];
+		if(tagList.search('#')) {
+			tagList = tagList.split('#')[0];
+		}
+		jQuery.each(tagList.split(','), function (i, v) {
+			add_tag(v, true);
+		});
+	}
+	if (urlVars['users']) {
+		var userList = urlVars['users'];
+		if(userList.search('#')) {
+			userList = userList.split('#')[0];
+		}
+		jQuery.each(userList.split(','), function (i, v) {
+			add_user(v, true);
+		});
+	}
+
 	$('#search_form').submit(function() {
 		var data = $('#search_form').serializeArray();
 		jQuery.each(data, function(i, field){
@@ -139,7 +159,7 @@ function prev_page() {
 		$('#filter-page').attr('style', '');
 	}
 }
-function add_tag(tag) {
+function add_tag(tag, disable_update) {
 	this.page = 0;
 	var already_exists = false;
 	jQuery.each(this.tags, function(i, val) {
@@ -149,7 +169,9 @@ function add_tag(tag) {
 	});
 	if (!already_exists) {
 		this.tags.push(tag);
-		updatePostList();
+		if (!disable_update) {
+			updatePostList();
+		}
 		var taglist = '';
 		jQuery.each(this.tags, function(i, val) {
 			taglist += '<span class="tag"><a href="#" onclick="javascript:rm_tag(\''+val+'\')">'+val+' x</a></span>';
@@ -175,7 +197,7 @@ function rm_tag(tag) {
 		$('#filter-tags').attr('style', '');
 	}
 }
-function add_user(user) {
+function add_user(user, disable_update) {
 	this.page = 0;
 	var already_exists = false;
 	jQuery.each(this.users, function(i, val) {
@@ -185,7 +207,9 @@ function add_user(user) {
 	});
 	if (!already_exists) {
 		this.users.push(user);
-		updatePostList();
+		if (!disable_update) {
+			updatePostList();
+		}
 		var userlist = '';
 		jQuery.each(this.users, function(i, val) {
 			userlist += '<span class="user"><a href="#" onclick="javascript:rm_user(\''+val+'\')">'+val+'</a></span>';
@@ -349,4 +373,18 @@ function toggle_post_comments(post_id, comment_status) {
             updatePostList();
         }
     });
+}
+
+// Read a page's GET URL variables and return them as an associative array.
+function getUrlVars()
+{
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for(var i = 0; i < hashes.length; i++)
+    {
+        hash = hashes[i].split('=');
+        vars.push(hash[0]);
+        vars[hash[0]] = hash[1];
+    }
+    return vars;
 }

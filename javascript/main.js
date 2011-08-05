@@ -5,6 +5,7 @@ this.popular = getUrlParameter('popular');
 this.tags = new Array();
 this.users = new Array();
 this.period = '';
+this.trigger = function() {};
 $(document).ready(function() {
 	this.page = getUrlParameter('num_page');
 	this.nb_items = 10;
@@ -137,6 +138,7 @@ function updatePostList() {
 			$('div#'+main_div).html(msg);
 			$('div#'+main_div).fadeTo('slow', 1, function(){});
 			updateFeedList();
+			$('div#'+main_div).trigger('ready');
 		}
 	});
 }

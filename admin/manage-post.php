@@ -6,7 +6,7 @@
 * Website : www.bilboplanet.com
 * Tracker : redmine.bilboplanet.com
 * Blog : www.bilboplanet.com
-* 
+*
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License as
@@ -23,7 +23,7 @@
 *
 ***** END LICENSE BLOCK *****/
 ?>
-<?php 
+<?php
 require_once(dirname(__FILE__).'/../inc/admin/prepend.php');
 if ($core->auth->sessionExists()):
 	if (!$core->hasRole('manager') | !$core->hasPermission('administration')){
@@ -195,7 +195,7 @@ $sql = "SELECT
 	WHERE ".$core->prefix."post.user_id = ".$core->prefix."user.user_id ";
 
 # Si on filtre un membre
-if($num_membre != '0') $sql .= "AND ".$core->prefix."post.user_id = '".$num_membre."'"; 
+if($num_membre != '0') $sql .= "AND ".$core->prefix."post.user_id = '".$num_membre."'";
 
 #si on filtre un status
 if($status_article != "all" && is_numeric($status_article)) $sql .= " AND ".$core->prefix."post.post_status = '$status_article'";
@@ -227,7 +227,7 @@ include(dirname(__FILE__).'/pagination.php');
 while($rs->fetch()) {
 
 	$date = mysqldatetime_to_date("d/m/Y",$rs->pubdate);
- 
+
 	# Couleur de la ligne en fonciton du statut du membre
 	if($rs->status == "1") {
 		$select  = '<select name="statut" class="actif">';
@@ -279,7 +279,7 @@ while($rs->fetch()) {
 ?>
 </table>
 
-<?php 
+<?php
 $params = "page=$num_page&";
 ?>
 <div class="nbitems">
@@ -290,6 +290,6 @@ include(dirname(__FILE__).'/footer.php');
 finCache();
 else:
 	$page_url = urlencode(http::getHost().$_SERVER['REQUEST_URI']);
-	http::redirect('auth.php?came_from='.$page_url);
+	http::redirect('../auth.php?came_from='.$page_url);
 endif;
 ?>

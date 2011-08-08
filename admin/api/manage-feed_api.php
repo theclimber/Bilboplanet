@@ -37,6 +37,7 @@ if(isset($_POST['action'])) {
 				feed_name,
 				feed_url,
 				feed_status,
+				feed_comment,
 				feed_trust,
 				".$core->prefix."feed.site_id as site_id,
 				".$core->prefix."site.site_name as site_name,
@@ -51,6 +52,7 @@ if(isset($_POST['action'])) {
 			'feed_name' => $rs->f('feed_name'),
 			'feed_url' => $rs->f('feed_url'),
 			'feed_status' => $rs->f('feed_status'),
+			'feed_comment' => $rs->f('feed_comment'),
 			'feed_trust' => $rs->f('feed_trust'),
 			'site_id' => $rs->f('site_id'),
 			'site_url' => $rs->f('site_url'),
@@ -248,7 +250,6 @@ if(isset($_POST['action'])) {
 		$confirmation = "<p>".sprintf(T_('Are you sure you want to remove feed %s ?'),
 			'<a href="'.$rs->f('feed_url').'" target="_blank">'.$rs->f('feed_url').'</a>')."?<br/>";
 		$confirmation .= "<ul><li>".T_('This action can not be canceled')."</li>";
-		$confirmation .= "<li>".T_('All the posts comming from this feed will be removed')."</li>";
 		$confirmation .= "</ul><br/>";
 		$confirmation .= "<form id='removeFeedConfirm_form'><input type='hidden' name='feed_id' value='".$feed_id."'/>";
 		$confirmation .= "<div class='button br3px'><input class='notvalide' type='button' onclick=\"javascript:$('#flash-msg').html('')\" value='".T_('Reset')."'/></div>&nbsp;&nbsp;";
@@ -263,10 +264,12 @@ if(isset($_POST['action'])) {
 		sleep(1);
 		$feed_id = trim($_POST['feed_id']);
 		$rs2 = $core->con->select("SELECT * FROM ".$core->prefix."feed WHERE feed_id = '$feed_id'");
-		$core->con->execute("DELETE FROM ".$core->prefix."post WHERE feed_id ='$feed_id'");
-		$core->con->execute("DELETE FROM ".$core->prefix."feed WHERE feed_id ='$feed_id'");
-
-		print '<div class="flash_notice">'.sprintf(T_("Delete of feed %s succeeded"),$rs2->f('feed_url')).'</div>';
+		if (!$rs2->isEmpty()) {
+			$core->con->execute("DELETE FROM ".$core->prefix."feed WHERE feed_id ='$feed_id'");
+			print '<div class="flash_notice">'.sprintf(T_("Delete of feed %s succeeded"),$rs2->f('feed_url')).'</div>';
+		} else {
+			print '<div class="flash_error">'.sprintf(T_("This feed does not exist in the database"),$rs2->f('feed_url')).'</div>';
+		}
 		break;
 
 
@@ -351,6 +354,42 @@ if(isset($_POST['action'])) {
 		break;
 
 ##########################################################
+# MANAGE COMMENTS ON FEED
+##########################################################
+	case 'comment':
+		$feed_id = $_POST['feed_id'];
+		$status = $_POST['status'];
+
+		$sql = "SELECT feed_status, feed_comment, feed_id
+			FROM ".$core->prefix."feed
+			WHERE feed_id = ".$feed_id;
+		$rs = $core->con->select($sql);
+
+		if ($rs->count() > 0){
+			if ($rs->f('post_comment') == $status) {
+				$error[] = T_('Nothing to do');
+			}
+			else {
+				$cur = $core->con->openCursor($core->prefix."feed");
+				$cur->feed_comment = $status;
+				$cur->update("WHERE feed_id = $feed_id");
+				$output = T_("Feed successfully updated");
+			}
+		}
+
+		if (!empty($error)) {
+			$output .= "<ul>";
+			foreach($error as $value) {
+				$output .= "<li>".$value."</li>";
+			}
+			$output .= "</ul>";
+			print '<div class="flash_error">'.$output.'</div>';
+		}
+		else {
+			print '<div class="flash_notice">'.$output.'</div>';
+		}
+		break;
+##########################################################
 # GET FILTERED FEED LIST
 ##########################################################
 	case 'filter':
@@ -372,6 +411,7 @@ if(isset($_POST['action'])) {
 			feed_name,
 			feed_url,
 			feed_status,
+			feed_comment,
 			feed_checked,
 			feed_trust
 			FROM '.$core->prefix.'feed, '.$core->prefix.'site
@@ -399,6 +439,7 @@ if(isset($_POST['action'])) {
 			feed_name,
 			feed_url,
 			feed_status,
+			feed_comment,
 			feed_checked,
 			feed_trust
 			FROM '.$core->prefix.'feed, '.$core->prefix.'site
@@ -462,6 +503,16 @@ function getOutput($sql, $num_page=0, $nb_items=30) {
 			$trust_msg = T_('Trust this feed');
 		}
 
+		if($rs->feed_comment) {
+			$toggle_comment = 'nocomment';
+			$comment_msg = T_('Disable comments on this feed');
+			$comment_status = 0;
+		} else {
+			$toggle_comment = 'comment';
+			$comment_msg = T_('Allow comments on this feed');
+			$comment_status = 1;
+		}
+
 		$user = $core->con->select("SELECT user_email FROM ".$core->prefix."user WHERE user_id = '".$rs->user_id."'");
 		$gravatar_email = strtolower($user->f('user_email'));
 		$gravatar_url = "http://www.gravatar.com/avatar.php?gravatar_id=".md5($gravatar_email)."&default=".urlencode($blog_settings->get('planet_url')."/themes/".$blog_settings->get('planet_theme')."/images/gravatar.png")."&size=40";
@@ -496,6 +547,11 @@ function getOutput($sql, $num_page=0, $nb_items=30) {
 			$output .= '<a href="#" onclick="javascript:toggleFeedTrust(\''.$rs->feed_id.'\', \''.$num_page.'\', \''.$nb_items.'\')">
 				<img src="meta/icons/action-'.$toggle_trust.'.png" title="'.$trust_msg.'" /></a>';
 		}
+		if ($blog_settings->get('allow_post_comments')) {
+			$output .= '<a href="#" onclick="javascript:toggleFeedComment(\''.$rs->feed_id.'\', '.$comment_status.', \''.$num_page.'\', \''.$nb_items.'\')">
+				<img src="meta/icons/action-'.$toggle_comment.'.png" title="'.$comment_msg.'" /></a>';
+		}
+
 		$output .= '<a href="#" onclick="javascript:toggleFeedStatus(\''.$rs->feed_id.'\', \''.$num_page.'\', \''.$nb_items.'\')">
 				<img src="meta/icons/action-'.$toggle_status.'.png" title="'.$toggle_msg.'" /></a>
 			<a href="#" onclick="javascript:edit(\''.$rs->feed_id.'\', \''.$num_page.'\', \''.$nb_items.'\')">

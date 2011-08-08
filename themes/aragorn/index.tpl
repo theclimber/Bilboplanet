@@ -6,15 +6,21 @@
 	<title>{$params.title}</title>
 
 	<link href="{$planet.url}/themes/{$planet.theme}/css/core.css" rel="stylesheet" type="text/css" />
+	<link href="{$planet.url}/themes/{$planet.theme}/css/boxy.css" rel="stylesheet" type="text/css" />
 	<link href="{$planet.url}/themes/{$planet.theme}/css/jquery.fancybox-1.3.2.css" rel="stylesheet" type="text/css" />
 <!-- BEGIN css.import -->
 	<link href="{$planet.url}/{$css_file}" rel="stylesheet" type="text/css" />
 <!-- END css.import -->
 	<link rel="alternate" type="application/rss+xml"  title="RSS"  href="{$planet.url}/feed.php?type=rss" />
 	<link rel="alternate" type="application/atom+xml" title="ATOM" href="{$planet.url}/feed.php?type=atom" />
+<!-- BEGIN feed.tags -->
+<link rel="alternate" type="application/rss+xml"  title="RSS with filter"  href="{$planet.url}/feed.php?type=rss&tags={$params.tags}&users={$params.users}" />
+<link rel="alternate" type="application/atom+xml" title="ATOM with filter" href="{$planet.url}/feed.php?type=atomi&tags={$params.tags}&users={$params.users}" />
+<!-- END feed.tags -->
 	<link rel="icon" type="image/ico" href="{$planet.url}/themes/{$planet.theme}/favicon.png" />
 
 	<script type="text/javascript" src="{$planet.url}/javascript/jquery.js"></script>
+	<script type="text/javascript" src="{$planet.url}/javascript/jquery.boxy.js"></script>
 	<script type="text/javascript" src="{$planet.url}/javascript/jquery.easing-1.3.pack.js" ></script>
 <!-- BEGIN js.import -->
 <script type="text/javascript" src="{$planet.url}/{$js_file}"></script>
@@ -23,8 +29,47 @@
 	<script type="text/javascript" src="{$planet.url}/themes/{$planet.theme}/js/votes.js" ></script>
 	<script type="text/javascript" src="{$planet.url}/themes/{$planet.theme}/js/mobile.js" ></script>
 
+
 </head>
 <body>
+	<div id="userMenu">
+	<!-- BEGIN page.loginbox -->
+		<div id="loginBox">
+			{_Welcome} {$login.username}
+			| <a href="javascript:popup('{$planet.url}/user/')">Dashboard</a>
+		<!-- BEGIN page.loginadmin -->
+			| <a href="{$planet.url}/admin/">Administration</a>
+		<!-- END page.loginadmin -->
+			| <a href="?logout={$planet.url}">Logout</a>
+		</div>
+	<!-- ELSE page.loginbox -->
+		<div id="loginBox"><a><span id="dropdown">Login <span id="login-dropdown">&nbsp;</span></span></a></div>
+		<div id="loginForm" style="display:none;">
+			<form class="login" method="POST" action="{$planet.url}/auth.php">
+			<input type="hidden" name="came_from" value="{$planet.url}">
+			<p>
+			<label class="username" for="user_id">
+				<span>{_Username}</span>
+				<input type="text" name="user_id" value="">
+			</label>
+			</p><p>
+			<label class="password" for="user_pwd">
+				<span>{_Password}</span>
+				<input type="password" name="user_pwd" value="">
+			</label>
+			</p><p>
+			<label class="remember">
+				<input type="checkbox" name="user_remember" value="1" checked>
+				<span>{_Remember me}</span>
+			</label>
+			<input class="submit button" type="submit" value="{_Connect}" />
+			</p><p>
+			<a href="{$planet.url}/auth.php?recover=1" class="forgot">{_Password forgotten?}</a><br>
+			</p>
+			</form>
+		</div>
+	<!-- END page.loginbox -->
+	</div>
 <div id="tour">
 <div id="arriere_plan">
 <div id="global">
@@ -47,28 +92,27 @@
 				{!include:'sidebar.tpl'}
 			</div>
 
-			<div id="centre_centre">
-
-				<!-- BEGIN menu.filter -->
-				<div class="tri">
-					<b>{_Filter posts} :&nbsp;&nbsp;&nbsp;&nbsp;</b>
-					<span>
-						<a href="index.php?{$filter_url}filter=day">{_Posts of the day}</a>
-					</span>&nbsp;&nbsp;-&nbsp;&nbsp;  
-					<span>
-						<a href="index.php?{$filter_url}filter=week">{_Posts of the week}</a>
-					</span>&nbsp;&nbsp;-&nbsp;&nbsp;
-					<span>
-						<a href="index.php?{$filter_url}filter=month">{_Posts of the month}</a>
-					</span>&nbsp;&nbsp;-&nbsp;&nbsp;
-					<span>
-						<a href="index.php?{$filter_url}">{_All the posts}</a>
-					</span>
-				</div><!-- end submenu -->
-				<!-- END menu.filter -->
+			<div id="body">
 
 				<!-- ADD CONTENT HERE -->
 				<!-- BEGIN content.posts -->
+					<!-- BEGIN menu.filter -->
+					<div class="tri">
+						<b>{_Filter posts} :&nbsp;&nbsp;&nbsp;&nbsp;</b>
+						<span>
+							<a href="#" onclick="javascript:set_period('day')">{_Posts of the day}</a>
+						</span>&nbsp;&nbsp;-&nbsp;&nbsp;
+						<span>
+							<a href="#" onclick="javascript:set_period('week')">{_Posts of the week}</a>
+						</span>&nbsp;&nbsp;-&nbsp;&nbsp;
+						<span>
+							<a href="#" onclick="javascript:set_period('month')">{_Posts of the month}</a>
+						</span>&nbsp;&nbsp;-&nbsp;&nbsp;
+						<span>
+							<a href="#" onclick="javascript:rm_period()">{_All the posts}</a>
+						</span>
+					</div><!-- end submenu -->
+					<!-- END menu.filter -->
 					{!include:'posts.tpl'}
 				<!-- END content.posts -->
 
@@ -114,6 +158,23 @@
 </div>
 </div>
 </div><!-- end wrap -->
+
+<div id="popup" style="display:none">
+	<div class="window-bar">
+		<a href="#" onclick="javascript:close_popup();" id="close_popup">{_Close} x</a>
+	</div>
+	<div class="popup-content"></div>
+</div>
+<div id="tag-post-form" style="display:none">
+<form>
+	<label class="required" for="tags">{_Tags}</label>
+	<input type="text" id="tags" name="tags" value=""><br/>
+	<span class="description">{_Comma separated tags (ex: linux,web,event)}</span>
+	<div class="button">
+		<input type="submit" name="apply" class="add_tags" value="{_Apply}" />
+	</div>
+</form>
+</div>
 
 <!-- ADD JAVASCRIPT IMPORT HERE -->
 <script type="text/javascript" src="{$planet.url}/themes/{$planet.theme}/js/jquery.fancybox-1.3.2.pack.js" ></script>

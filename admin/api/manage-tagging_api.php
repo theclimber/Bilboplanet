@@ -67,11 +67,13 @@ if(isset($_POST['action'])) {
 ##########################################################
 	case 'add_tags':
 		$post_id = $_POST['post_id'];
-        $patterns = array( '/, /', '/ ,/');
-        $replacement = array(',', ',');
-        $tags = urldecode($_POST['tags']);
-        $tags = preg_replace($patterns, $replacement, $tags);
-        $tags = preg_split('/,/',$tags, -1, PREG_SPLIT_NO_EMPTY);
+		$user_id = $core->auth->userID();
+		print $user_id;
+		$patterns = array( '/, /', '/ ,/');
+		$replacement = array(',', ',');
+		$tags = urldecode($_POST['tags']);
+		$tags = preg_replace($patterns, $replacement, $tags);
+		$tags = preg_split('/,/',$tags, -1, PREG_SPLIT_NO_EMPTY);
 
 		$sql = "SELECT tag_id
 			FROM ".$core->prefix."post_tag
@@ -79,20 +81,22 @@ if(isset($_POST['action'])) {
 		$rs = $core->con->select($sql);
 
 		while($rs->fetch()){
-            if (in_array($rs->tag_id, $tags)) {
-                $key = array_keys($tags, $rs->tag_id);
-                unset($tags[$key]);
-            }
-        }
+			if (in_array($rs->tag_id, $tags)) {
+				$key = array_keys($tags, $rs->tag_id);
+				unset($tags[$key]);
+			}
+		}
 
-        $output .= T_("Tags added : ");
-        foreach($tags as $tag) {
-            $cur = $core->con->openCursor($core->prefix.'post_tag');
-            $cur->post_id = $post_id;
-            $cur->tag_id = $tag;
-            $cur->insert();
-            $output .= $tag.",";
-        }
+		$output .= T_("Tags added : ");
+		foreach($tags as $tag) {
+			$cur = $core->con->openCursor($core->prefix.'post_tag');
+			$cur->post_id = $post_id;
+			$cur->tag_id = $tag;
+			$cur->user_id = $user_id;
+			$cur->created = array(' NOW() ');
+			$cur->insert();
+			$output .= $tag.",";
+		}
 
 		if (!empty($error)) {
 			$output .= "<ul>";

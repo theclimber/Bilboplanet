@@ -6,7 +6,7 @@
 * Website : www.bilboplanet.com
 * Tracker : redmine.bilboplanet.com
 * Blog : www.bilboplanet.com
-* 
+*
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License as
@@ -24,6 +24,7 @@
 ***** END LICENSE BLOCK *****/
 ?>
 <?php
+
 if (!isset($styles)) {
 	$styles = array();
 }
@@ -47,6 +48,16 @@ if ($blog_settings->get('planet_subscription')) {
 	$core->tpl->render('menu.subscription');
 }
 
+if ($core->auth->sessionExists() ) {
+	$login = array(
+	'username' => $core->auth->userID()
+		);
+	$core->tpl->setVar('login', $login);
+	if ($core->hasRole('manager')) {
+		$core->tpl->render('page.loginadmin');
+	}
+	$core->tpl->render('page.loginbox');
+}
 
 #######################
 # RENDER SIDEBAR
@@ -58,7 +69,7 @@ if($blog_settings->get('planet_vote')) {
 	$core->tpl->render('sidebar.popular');
 }
 
-$sql_side = "SELECT 
+$sql_side = "SELECT
 	user_fullname as fullname,
 	".$core->prefix."user.user_id as id,
 	".$core->prefix."site.site_url as site_url,

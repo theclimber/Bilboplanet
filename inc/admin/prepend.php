@@ -6,7 +6,7 @@
 * Website : www.bilboplanet.com
 * Tracker : redmine.bilboplanet.com
 * Blog : www.bilboplanet.com
-* 
+*
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License as
@@ -49,41 +49,6 @@ header("Pragma: no-cache");
 
 define('BP_CONTEXT_ADMIN',true);
 
-if ($core->auth->sessionExists())
-{
-	# If we have a session we launch it now
-	try {
-		if (!$core->auth->checkSession())
-		{
-			# Avoid loop caused by old cookie
-			$p = $core->session->getCookieParameters(false,-600);
-			$p[3] = '/';
-			call_user_func_array('setcookie',$p);
-			
-			http::redirect('auth.php');
-		}
-	} catch (Exception $e) {
-		__error(T_('Database error')
-			,T_('There seems to be no Session table in your database. Is Bilboplanet completly installed?')
-			,20);
-	}
-}
-
-# Logout
-if (isset($_GET['logout'])) {
-	$core->session->destroy();
-	if (isset($_COOKIE['bp_admin'])) {
-		unset($_COOKIE['bp_admin']);
-		setcookie('bp_admin',false,-600,'','');
-	}
-	if (!empty($_GET['logout'])) {
-		http::redirect($_GET['logout']);
-	}
-	else {
-		http::redirect('auth.php');
-	}
-	exit;
-}
 
 function showNextButton($next_page, $nb_items, $script) {
 	return '<a href="#" onclick="javascript:'.$script.'(\''.$next_page.'\', \''.$nb_items.'\')" class="page_svt">'.T_('Next Page').' &raquo;</a>';

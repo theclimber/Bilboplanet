@@ -6,7 +6,7 @@
 * Website : www.bilboplanet.com
 * Tracker : redmine.bilboplanet.com
 * Blog : blog.bilboplanet.com
-* 
+*
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License as
@@ -24,14 +24,14 @@
 ***** END LICENSE BLOCK *****/
 ?><?php
 if(isset($_POST) && isset($_POST['action'])) {
-	
+
 	switch (trim($_POST['action'])){
 ######################################
 # Update Options
 ######################################
 		case 'update':
 			$flash = array();
-			
+
 			if (!empty($_POST['title'])) {
 				$title = htmlentities(stripslashes(trim($_POST['title'])), ENT_QUOTES, 'UTF-8');
 				$blog_settings->put('planet_title', $title, "string");
@@ -39,7 +39,7 @@ if(isset($_POST) && isset($_POST['action'])) {
 			else {
 				$flash[] = array('type' => 'error', 'msg' => T_("The title can not be empty"));
 			}
-			
+
 			if (!empty($_POST['desc'])) {
 				$desc = htmlentities(stripslashes(trim($_POST['desc'])), ENT_QUOTES, 'UTF-8');
 				$blog_settings->put('planet_desc', $desc, "string");
@@ -47,7 +47,7 @@ if(isset($_POST) && isset($_POST['action'])) {
 			else {
 				$blog_settings->put('planet_desc', '', "string");
 			}
-			
+
 			$blog_settings->put('planet_theme', trim($_POST['theme']), "string");
 
 			$lang = trim($_POST['lang']);
@@ -66,6 +66,14 @@ if(isset($_POST) && isset($_POST['action'])) {
 				$blog_settings->put('planet_msg_info', '', "string");
 			}
 
+			if (!empty($_POST['planet_reserved_tags'])) {
+				$planet_reserved_tags = stripslashes(trim($_POST['planet_reserved_tags']));
+				$blog_settings->put('planet_reserved_tags', $planet_reserved_tags, "string");
+			}
+			else {
+				$blog_settings->put('planet_reserved_tags', '', "string");
+			}
+
 			if (isset($_POST['show_contact'])) {
 				$blog_settings->put('planet_contact_page', '1', "boolean");
 			}
@@ -81,21 +89,28 @@ if(isset($_POST) && isset($_POST['action'])) {
 			}
 
 			$blog_settings->put('planet_votes_system', trim($_POST['system_votes']), "string");
-			
+
 			if (isset($_POST['moderation'])) {
 				$blog_settings->put('planet_moderation', '1', "boolean");
 			}
 			else {
 				$blog_settings->put('planet_moderation', '0', "boolean");
 			}
-			
+
+			if (isset($_POST['allow_post_comments'])) {
+				$blog_settings->put('allow_post_comments', '1', "boolean");
+			}
+			else {
+				$blog_settings->put('allow_post_comments', '0', "boolean");
+			}
+
 			if (isset($_POST['avatar'])) {
 				$blog_settings->put('planet_avatar', '1', "boolean");
 			}
 			else {
 				$blog_settings->put('planet_avatar', '0', "boolean");
 			}
-			
+
 			if (isset($_POST['maintenance'])) {
 				$blog_settings->put('planet_maint', '1', "boolean");
 			}
@@ -104,7 +119,7 @@ if(isset($_POST) && isset($_POST['action'])) {
 			}
 
 			$blog_settings->put('planet_log', trim($_POST['log_level']), "string");
-			
+
 			if (is_numeric(trim($_POST['nb_posts_page']))) {
 				$nb_posts_page = trim($_POST['nb_posts_page']);
 				$blog_settings->put('planet_nb_post', $nb_posts_page, "integer");
@@ -112,7 +127,7 @@ if(isset($_POST) && isset($_POST['action'])) {
 			else {
 				$flash[] = array('type' => 'error', 'msg' => T_("Only numeric value are allowed for number of posts by page"));
 			}
-			
+
 			if (!empty($_POST['planet_analytics'])) {
 				$planet_analytics = $_POST['planet_analytics'];
 				$blog_settings->put('planet_analytics', $planet_analytics, "string");
@@ -137,14 +152,14 @@ if(isset($_POST) && isset($_POST['action'])) {
 			} else {
 				$blog_settings->put('piwik_id', '', "integer");
 			}
-			
+
 			if (isset($_POST['internal_links'])) {
 				$blog_settings->put('internal_links', '1', "boolean");
 			}
 			else {
 				$blog_settings->put('internal_links', '0', "boolean");
 			}
-			
+
 			if (isset($_POST['subscription']) && !empty($_POST['subscription_content'])) {
 				$blog_settings->put('planet_subscription', '1', "boolean");
 				$subscription_content = htmlentities(stripslashes(trim($_POST['subscription_content'])), ENT_QUOTES, 'UTF-8');
@@ -156,7 +171,7 @@ if(isset($_POST) && isset($_POST['action'])) {
 			else {
 				$blog_settings->put('planet_subscription', '0', "boolean");
 			}
-			
+
 
 			############
 			# Add post values for statusNet
@@ -203,7 +218,7 @@ if(isset($_POST) && isset($_POST['action'])) {
 
 			# statusnet enable/disable posts :
 			if (isset($_POST['statusnet_auto_post'])) {
-				
+
 				if (!isset($statusnet_host)) {
 					$statusnet_host = '';
 				}
@@ -260,18 +275,19 @@ if(isset($_POST) && isset($_POST['action'])) {
 # Get Options
 ######################################
 		case 'options-form':
-			
+
 			# Init var
 			$output = "";
 			$theme_list = array();
 			$lang_list = array();
 			$arr_system_votes = array('yes-no', 'yes-warn');
 			$arr_log_level = array('notice', 'debug');
-			
+
 			# Load value from setting table
 			$title = stripslashes($blog_settings->get('planet_title'));
 			$desc = stripslashes($blog_settings->get('planet_desc'));
 			$msg_info = stripslashes($blog_settings->get('planet_msg_info'));
+			$planet_reserved_tags = stripslashes($blog_settings->get('planet_reserved_tags'));
 			$votes = $blog_settings->get('planet_vote');
 			$contact = $blog_settings->get('planet_contact_page');
 			$theme = $blog_settings->get('planet_theme');
@@ -279,6 +295,7 @@ if(isset($_POST) && isset($_POST['action'])) {
 			$moderation = $blog_settings->get('planet_moderation');
 			$maintenance = $blog_settings->get('planet_maint');
 			$system_votes = $blog_settings->get('planet_votes_system');
+			$allow_post_comments = $blog_settings->get('allow_post_comments');
 			$avatar = $blog_settings->get('planet_avatar');
 			$log_level = $blog_settings->get('planet_log');
 			$nb_posts_page = $blog_settings->get('planet_nb_post');
@@ -298,7 +315,7 @@ if(isset($_POST) && isset($_POST['action'])) {
 				'post_format' => stripslashes($blog_settings->get('statusnet_post_format')),
 				'auto_post' => $blog_settings->get('statusnet_auto_post')
 				);
-			
+
 			# Build an array of available theme
 			$theme_path = dirname(__FILE__)."/../../themes/";
 			$dir_handle = @opendir($theme_path) or die("Unable to open $theme_path");
@@ -313,7 +330,7 @@ if(isset($_POST) && isset($_POST['action'])) {
 				}
 			}
 			closedir($dir_handle);
-			
+
 			# Build an array of available lang
 			$lang_path = dirname(__FILE__)."/../../i18n/";
 			$dir_handle = @opendir($lang_path) or die("Unable to open $lang_path");
@@ -386,6 +403,14 @@ if(isset($_POST) && isset($_POST['action'])) {
 			<td><textarea class="cadre_option field" name="msg_info" rows=3>'.$msg_info.'</textarea></td>
 		</tr>
 		<tr>
+			<td>'.T_('Reserved tags').'
+				<div class="comment"><p>
+					'.T_('comma separated tags (i.e : pl-agenda, pl-selected)').'
+				</p></div>
+			</td>
+			<td><input type="text" class="input field" name="planet_reserved_tags" value="'.$planet_reserved_tags.'"</input></td>
+		</tr>
+		<tr>
 			<td>'.T_('Show the contact page').'</td>';
 			if($contact) {
 				$output .= '<td><input type="checkbox" class="input field" id="show_contact" name="show_contact" checked/></td>';
@@ -438,6 +463,22 @@ if(isset($_POST) && isset($_POST['action'])) {
 		$output .= '</tr>
 		<tr>
 			<td>
+				'.T_('Allow comments on posts').'
+				<div class="comment">
+					<p>
+						'.T_('This will allow some post to accept some comments').'
+					</p>
+				</div>
+			</td>';
+			if($allow_post_comments) {
+				$output .= '<td><input type="checkbox" class="input field" id="allow_post_comments" name="allow_post_comments" checked /></td>';
+			}
+			else {
+				$output .= '<td><input type="checkbox" class="input field" id="allow_post_comments" name="allow_post_comments" /></td>';
+			}
+		$output .= '</tr>
+		<tr>
+			<td>
 				'.T_('Enable avatar').'
 				<div class="comment">
 					<p>
@@ -471,7 +512,7 @@ if(isset($_POST) && isset($_POST['action'])) {
 					}
 					else {
 						$output .= '<option value="'.$value.'" >'.T_($value).'</option>';
-					} 
+					}
 				}
 				$output .= '</select>
 			</td>
@@ -592,6 +633,7 @@ if(isset($_POST) && isset($_POST['action'])) {
 			$title = stripslashes($blog_settings->get('planet_title'));
 			$desc = stripslashes($blog_settings->get('planet_desc'));
 			$msg_info = stripslashes($blog_settings->get('planet_msg_info'));
+			$planet_reserved_tags = stripslashes($blog_settings->get('planet_reserved_tags'));
 			$votes = $blog_settings->get('planet_vote');
 			$contact = $blog_settings->get('planet_contact_page');
 			$theme = $blog_settings->get('planet_theme');
@@ -599,6 +641,7 @@ if(isset($_POST) && isset($_POST['action'])) {
 			$moderation = $blog_settings->get('planet_moderation');
 			$maintenance = $blog_settings->get('planet_maint');
 			$system_votes = $blog_settings->get('planet_votes_system');
+			$allow_post_comments = $blog_settings->get('allow_post_comments');
 			$avatar = $blog_settings->get('planet_avatar');
 			$log_level = $blog_settings->get('planet_log');
 			$nb_posts_page = $blog_settings->get('planet_nb_post');
@@ -620,7 +663,7 @@ if(isset($_POST) && isset($_POST['action'])) {
 				'post_format' => stripslashes($blog_settings->get('statusnet_post_format')),
 				'auto_post' => $blog_settings->get('statusnet_auto_post')
 				);
-			
+
 			$output = "";
 			$output .= '<table id="tbl1" class="table-news">
 			<thead>
@@ -650,6 +693,10 @@ if(isset($_POST) && isset($_POST['action'])) {
 				<td>'.$msg_info.'</td>
 			</tr>
 			<tr>
+				<td>'.T_('Reserved tags').'</td>
+				<td>'.$planet_reserved_tags.'</td>
+			</tr>
+			<tr>
 				<td>'.T_('Show the contact page').'</td>';
 				if($contact) {
 					$output .= '<td>'.T_('Enabled').'</td>';
@@ -675,6 +722,15 @@ if(isset($_POST) && isset($_POST['action'])) {
 			$output .= '<tr>
 				<td>'.T_('Option of moderation').'</td>';
 				if($moderation) {
+					$output .= '<td>'.T_('Enabled').'</td>';
+				}
+				else {
+					$output .= '<td>'.T_('Disabled').'</td>';
+				}
+			$output .= '</tr>
+			<tr>
+				<td>'.T_('Allow post comments').'</td>';
+				if ($allow_post_comments) {
 					$output .= '<td>'.T_('Enabled').'</td>';
 				}
 				else {
@@ -792,7 +848,7 @@ if(isset($_POST) && isset($_POST['action'])) {
 				}
 			$output .= '</tr>
 			</table>';
-			
+
 		print $output;
 		break;
 		}

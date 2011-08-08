@@ -46,6 +46,7 @@ function update($core, $print=false) {
 			feed_url,
 			site_url,
 			feed_trust,
+			feed_comment,
 			feed_checked
 		FROM ".$core->prefix."feed, ".$core->prefix."site, ".$core->prefix."user
 		WHERE
@@ -149,6 +150,61 @@ function getItemsFromFeeds ($rs, $print) {
 				# Permalink
 				$permalink = $item->get_permalink();
 
+				# Analyse the possible tags of the item
+				##########################################
+				# Get tags defined in the database for all posts of that feed
+				$item_tags = array();
+
+				# Get the tags on the feed
+				$rs_feed_tag = $core->con->select("SELECT tag_id FROM ".$core->prefix."feed_tag
+					WHERE feed_id = ".$rs->feed_id);
+				while($rs_feed_tag->fetch()) {
+					$item_tags[] = strtolower($rs_feed_tag->tag_id);
+				}
+
+				# Get the reserved tags
+				$reserved_tags = array();
+				$planet_tags = getArrayFromList($blog_settings->get('planet_reserved_tags'));
+				if (is_array($planet_tags)) {
+					foreach ($planet_tags as $tag) {
+						$reserved_tags[] = strtolower($tag);
+					}
+				}
+
+				# Get tags defined on the item in the feed
+				$categs = $item->get_categories();
+				if ($categs) {
+					foreach ($categs as $category) {
+						$label = strtolower($category->get_label());
+						if (!in_array($label, $item_tags)
+							&& !in_array($label, $reserved_tags)){
+							$item_tags[] = $label;
+						}
+					}
+				}
+
+				# Find hashtags in title
+				$hashtags = array();
+				preg_match('/#([\\d\\w]+)/', $item->get_title(), $hashtags);
+				foreach ($hashtags as $tag) {
+					$tag = strtolower($tag);
+					if (!in_array($tag, $item_tags)
+						&& !in_array($tag, $reserved_tags)){
+						$item_tags[] = $tag;
+					}
+				}
+
+				# check if some existing tags are in the title
+				foreach (explode(' ', $item_title) as $word) {
+					$word = strtolower($word);
+					$tagRq = $core->con->select('SELECT tag_id FROM '.$core->prefix.'post_tag WHERE tag_id = "'.$word.'"');
+					if ($tagRq->count() > 1
+						&& !in_array($word, $item_tags)
+						&& !in_array($word, $reserved_tags)) {
+						$item_tags[] = $word;
+					}
+				}
+
 				if (empty($item_content)) {
 					$log_msg = logMsg("Pas de contenu sur $rs->feed_url", "", 3, $print);
 				} elseif(empty($permalink)) {
@@ -160,7 +216,9 @@ function getItemsFromFeeds ($rs, $print) {
 						$item->get_date("U"),
 						$item_title,
 						$item_content,
-						$print
+						$item_tags,
+						$print,
+						$rs->feed_id
 					);
 					$cpt++;
 				} # fin du $item->get_content()
@@ -201,7 +259,7 @@ function getItemsFromFeeds ($rs, $print) {
 	return $output;
 }
 
-function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_content, $print) {
+function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_content, $item_tags, $print, $feed_id) {
 	global $log, $core;
 	# Date
 	if (!$date) {
@@ -212,6 +270,7 @@ function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_c
 
 	# Check if item is already in the database
 	$sql = "SELECT
+			post_id,
 			user_id,
 			post_title,
 			post_content,
@@ -246,24 +305,20 @@ function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_c
 			$cur = $core->con->openCursor($core->prefix.'post');
 			$cur->post_id = $next_post_id;
 			$cur->user_id = $rs->user_id;
-			$cur->feed_id = $rs->feed_id;
 			$cur->post_pubdate = $item_date;
 			$cur->post_permalink = addslashes($item_permalink);
 			$cur->post_title = $item_title;
 			$cur->post_content = $item_content;
 			$cur->post_status = $rs->feed_trust == 1 ? 1 : 2;
+			$cur->post_comment = $rs->feed_comment;
 			$cur->created = array(' NOW() ');
 			$cur->modified = array(' NOW() ');
 			$cur->insert();
 
-			$sql4 = "SELECT tag_id
-				FROM ".$core->prefix."feed_tag
-				WHERE feed_id = ".$rs->feed_id.";";
-			$rs5 = $core->con->select($sql4);
-			while ($rs5->fetch()) {
+			foreach ($item_tags as $tag) {
 				$cur2 = $core->con->openCursor($core->prefix.'post_tag');
 				$cur2->post_id = $next_post_id;
-				$cur2->tag_id = $rs5->tag_id;
+				$cur2->tag_id = $tag;
 				$cur2->insert();
 			}
 
@@ -290,6 +345,43 @@ function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_c
 	elseif($rs2->count() == 1) {
 		$title2 = $rs2->f('post_title');
 		$content2 = $rs2->f('post_content');
+		$post_id = $rs2->f('post_id');
+		$user_id = $rs2->f('user_id');
+
+		# Update tags if needed
+		$old_tags = array();
+		$tagRq = $core->con->select('SELECT tag_id FROM '.$core->prefix.'post_tag WHERE post_id = '.$post_id.' AND user_id = \'root\'');
+		while ($tagRq->fetch()) {
+			$old_tags[] = $tagRq->tag_id;
+		}
+		$tags_to_remove = array_diff($old_tags, $item_tags);
+		$tags_to_append = array_diff($item_tags, $old_tags);
+
+		if(count($tags_to_remove) > 0) {
+			foreach ($tags_to_remove as $tag) {
+				$core->con->execute("DELETE FROM ".$core->prefix."post_tag
+					WHERE tag_id ='$tag' AND post_id = ".$post_id);
+			}
+		}
+		if(count($tags_to_append) > 0) {
+			foreach ($tags_to_append as $tag) {
+				$cur = $core->con->openCursor($core->prefix.'post_tag');
+				$cur->tag_id = $tag;
+				$cur->post_id = $post_id;
+				$cur->user_id = 'root';
+				$cur->created = array('NOW()');
+				try {
+					$cur->insert();
+				} catch (Exception $e){
+					print "<br>to remove :";
+					print_r($tags_to_remove);
+					print "<br>to append:";
+					print_r($tags_to_append);
+					print "<br>post_id:".$post_id."<p>";
+					print $e;
+				}
+			}
+		}
 
 		# Si l'article a ete modifie (soit la date, soit le titre, soit le contenu)
 		if($item_date != $rs2->f('post_pubdate') && !empty($date)) {

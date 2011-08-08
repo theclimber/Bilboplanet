@@ -6,7 +6,7 @@
 * Website : www.bilboplanet.com
 * Tracker : redmine.bilboplanet.com
 * Blog : www.bilboplanet.com
-* 
+*
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License as
@@ -141,7 +141,7 @@ if (function_exists('phpversion')){
 ?>
 <div id="BP_page" class="page">
 	<div class="inpage">
-	
+
 	<fieldset><legend><?php echo T_('Dashboard');?></legend>
 		<div class="message">
 			<p><?php echo T_('Quick summary of the planet');?></p>
@@ -149,10 +149,10 @@ if (function_exists('phpversion')){
 
 <?php
 if (file_exists(dirname(__FILE__).'/install')) {
-	echo '<div id="flash-msg" style="background:red;" class="error">'.T_('WARNING : please remove /admin/install folder').'</div>';
+	echo '<div class="message_install"><p>'.T_('WARNING : please remove /admin/install folder for maximum security').'</p></div>';
 }
 ?>
-		
+
 <div id="dashboard">
 	<div class="box-container-left">
 <?php
@@ -206,6 +206,6 @@ echo showBlogLastArticles();
 include(dirname(__FILE__).'/footer.php');
 else:
 	$page_url = urlencode(http::getHost().$_SERVER['REQUEST_URI']);
-	http::redirect('auth.php?came_from='.$page_url);
+	http::redirect('../auth.php?came_from='.$page_url);
 endif;
 ?>

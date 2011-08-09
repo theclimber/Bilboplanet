@@ -117,7 +117,7 @@ function getItemsFromFeeds ($rs, $print) {
 			if (ereg($rs->feed_url, $error)) {
 				$log_msg = logMsg("Aucun article trouve ".$error, "", 3, $print);
 			} else {
-				$log_msg = logMsg("Aucun article trouve sur $rs->feed_url: ".$error, "", 3, $print);
+				$log_msg = logMsg("Aucun article trouve sur $rs->feed_url ($rs->user_id): ".$error, "", 3, $print);
 			}
 			if ($print) $output .= $log_msg;
 		} else {
@@ -177,7 +177,8 @@ function getItemsFromFeeds ($rs, $print) {
 					foreach ($categs as $category) {
 						$label = strtolower($category->get_label());
 						if (!in_array($label, $item_tags)
-							&& !in_array($label, $reserved_tags)){
+							&& !in_array($label, $reserved_tags)
+							&& !is_int($label)){
 							$item_tags[] = $label;
 						}
 					}
@@ -189,7 +190,8 @@ function getItemsFromFeeds ($rs, $print) {
 				foreach ($hashtags as $tag) {
 					$tag = strtolower($tag);
 					if (!in_array($tag, $item_tags)
-						&& !in_array($tag, $reserved_tags)){
+						&& !in_array($tag, $reserved_tags)
+						&& !is_int ($tag) ){
 						$item_tags[] = $tag;
 					}
 				}
@@ -351,11 +353,32 @@ function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_c
 		# Update tags if needed
 		$old_tags = array();
 		$tagRq = $core->con->select('SELECT tag_id FROM '.$core->prefix.'post_tag WHERE post_id = '.$post_id.' AND user_id = \'root\'');
+		
+		$tags_to_append = $item_tags; # par defaut TOUT
+		$tags_to_remove = array(); # par defaut RIEN
 		while ($tagRq->fetch()) {
+			# Si le tag existe deja, ne pas l'ajouter
+			$rm_i = -1;
+			foreach ($tags_to_append as $key=>$value) {
+				if ($value == $tagRq->tag_id) {
+					$rm_i = $key;
+				}
+			}
+			if ($rm_i >= 0) {
+				unset($tags_to_append[$rm_i]);
+			}
+/*			if (in_array($tagRq->tag_id, $item_tags)) {
+				$key = array_search($tagRq, $item_tags);
+				unset($tags_to_append[$key]);
+			}**/
+			# Si le tag n'exitse plus, le supprimer
+			if (!in_array($tagRq->tag_id, $item_tags)) {
+				$tags_to_remove[] = $tagRq->tag_id;
+			}
 			$old_tags[] = $tagRq->tag_id;
 		}
-		$tags_to_remove = array_diff($old_tags, $item_tags);
-		$tags_to_append = array_diff($item_tags, $old_tags);
+		//$tags_to_remove = array_diff($old_tags, $item_tags);
+		//$tags_to_append = array_diff($item_tags, $old_tags);
 
 		if(count($tags_to_remove) > 0) {
 			foreach ($tags_to_remove as $tag) {
@@ -369,16 +392,21 @@ function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_c
 				$cur->tag_id = $tag;
 				$cur->post_id = $post_id;
 				$cur->user_id = 'root';
-				$cur->created = array('NOW()');
+				$cur->created = 'NOW()';
 				try {
 					$cur->insert();
 				} catch (Exception $e){
+					print "<br>New tags :";
+					print_r($item_tags);
+					print "<br>Old tags :";
+					print_r($old_tags);
 					print "<br>to remove :";
 					print_r($tags_to_remove);
 					print "<br>to append:";
 					print_r($tags_to_append);
 					print "<br>post_id:".$post_id."<p>";
 					print $e;
+					exit;
 				}
 			}
 		}

@@ -530,11 +530,14 @@ class bpCore
 		}
 		else {
 			$user_perms = $this->getUserRolePermissions($this->auth->userID());
-			if ($user_perms->{'role'} == $role) {
-					return true;
+			if ($user_perms->{'role'} == 'manager') {
+				return in_array($role, array('manager','user'));
+			}
+			elseif ($user_perms->{'role'} == $role) {
+				return true;
 			}
 			else {
-				return false;
+				return $role == 'user';
 			}
 		}
 	}

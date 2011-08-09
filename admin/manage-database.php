@@ -140,7 +140,11 @@ if (isset($_POST)) {
 							while ($n < count($value)){
 								# On ajoute la valeur si elle n'est pas dans $cols_to_remove
 								if (!in_array($n, $cols_to_remove)){
-									$values .= ",'".$value[$n]."'";
+									if ($table['name'] == 'post') {
+										$values .= ",'".addslashes($value[$n])."'";
+									} else {
+										$values .= ",'".$value[$n]."'";
+									}
 								}
 								$n+=1;
 							}

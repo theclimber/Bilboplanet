@@ -83,14 +83,14 @@ if (isset($_GET) && isset($_GET['type'])) {
 	if (true) {
 		$tags = !empty($_GET['tags']) ? getArrayFromList($_GET['tags']) : array();
 		$users = !empty($_GET['users']) ? getArrayFromList($_GET['users']) : array();
-		$period = !empty($_GET['period']) ? trim($_GET['period']) : '';
+		$period = !empty($_GET['filter']) ? trim($_GET['filter']) : '';
 	}
 	elseif ($blog_settings->get('accept_user_tagged_feeds')) {
 		$user_token = !empty($_GET['token']) ? trim($_GET['token']) : '';
 		if ($core->hasRole('user') || $core->hasRole('user',$token)){
 			$tags = !empty($_GET['tags']) ? getArrayFromList($_GET['tags']) : array();
 			$users = !empty($_GET['users']) ? getArrayFromList($_GET['users']) : array();
-			$period = !empty($_GET['period']) ? trim($_GET['period']) : '';
+			$period = !empty($_GET['filter']) ? trim($_GET['filter']) : '';
 		}
 	} else {
 		$tribe_id = !empty($_GET['tribe_id']) ? trim($_GET['tribe_id']) : '';

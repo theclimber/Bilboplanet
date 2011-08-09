@@ -45,7 +45,9 @@ $post_id = null;
 
 if (!isset($params)) {
 	$params = array(
-		'title'=>$blog_settings->get('planet_title')
+		'title'=>$blog_settings->get('planet_title'),
+		'popular'=>'false',
+		'filter'=>'week'
 		);
 }
 
@@ -114,7 +116,7 @@ if (isset($_GET)) {
 			$params['users'] = $_GET['user_id'];
 			$users = !empty($_GET['user_id']) ? getArrayFromList($_GET['user_id']) : array();
 		}
-		if (isset($_GET['popular']) && !empty($_GET['popular'])){
+		if (isset($_GET['popular']) && !empty($_GET['popular']) && $_GET['popular'] = 'true'){
 			$params['popular'] = $_GET['popular'];
 			$popular = true;
 		}

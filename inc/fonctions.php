@@ -570,7 +570,7 @@ function showPosts($rs, $tpl, $search_value="", $strip_tags=false) {
 		$post['description'].= ' <a href="'.$blog_settings->get('planet_url').'/index.php?post_id='.$rs->post_id.'" title="'.$post['title'].'">'.T_("View post detail").'</a>';
 		if (!empty($search_value)){
 			# Format the occurences of the search request in the posts list
-			$post['content'] = split_balise($search_value, '<span class="search_content">'.$search_value.'</span>', $post['content'], 'str_ireplace', 1);
+			$post['content'] = split_balise($search_value, '<span class="search-content">'.$search_value.'</span>', $post['content'], 'str_ireplace', 1);
 			# Format the occurences of the search request in the posts title
 			$post['title'] = split_balise($search_value, '<span class="search_title">'.$search_value.'</span>', $post['title'], 'str_ireplace', 1);
 		}

@@ -179,5 +179,7 @@
 <!-- ADD JAVASCRIPT IMPORT HERE -->
 <script type="text/javascript" src="{$planet.url}/themes/{$planet.theme}/js/jquery.fancybox-1.3.2.pack.js" ></script>
 <script type="text/javascript" src="{$planet.url}/themes/{$planet.theme}/js/fancy.js"></script>
+{$analytics_html}
+
 </body>
 </html>

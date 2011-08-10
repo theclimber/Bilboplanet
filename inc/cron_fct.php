@@ -352,7 +352,7 @@ function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_c
 
 		# Update tags if needed
 		$old_tags = array();
-		$tagRq = $core->con->select('SELECT tag_id FROM '.$core->prefix.'post_tag WHERE post_id = '.$post_id.' AND user_id = \'root\'');
+		$tagRq = $core->con->select('SELECT tag_id, user_id FROM '.$core->prefix.'post_tag WHERE post_id = '.$post_id);
 		
 		$tags_to_append = $item_tags; # par defaut TOUT
 		$tags_to_remove = array(); # par defaut RIEN
@@ -372,7 +372,7 @@ function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_c
 				unset($tags_to_append[$key]);
 			}**/
 			# Si le tag n'exitse plus, le supprimer
-			if (!in_array($tagRq->tag_id, $item_tags)) {
+			if (!in_array($tagRq->tag_id, $item_tags) && $tagRq->user_id == 'root') {
 				$tags_to_remove[] = $tagRq->tag_id;
 			}
 			$old_tags[] = $tagRq->tag_id;

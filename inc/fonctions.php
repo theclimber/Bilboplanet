@@ -1258,5 +1258,45 @@ function createRandomPassword() {
 
 	return $pass;
 }
+function getAnalyticsCode() {
+	global $blog_settings;
+	$output='';
+	$analytics = $blog_settings->get('planet_analytics');
+
+	if ($analytics == "google-analytics") {
+		$ga = $blog_settings->get('planet_ganalytics');
+		$output = "
+<script type=\"text/javascript\">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', '$ga']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+		";
+	} elseif ($analytics == 'piwik') {
+		$id = $blog_settings->get('piwik_id');
+		$url = $blog_settings->get('piwik_url');
+		$output = "
+<!-- Piwik -->
+<script type=\"text/javascript\">
+	var pkBaseURL = ((\"https:\" == document.location.protocol) ? \"https://piwik.kiwais.com/\" : \" $url\");
+document.write(unescape(\"%3Cscript src='\" + pkBaseURL + \"piwik.js' type='text/javascript'%3E%3C/script%3E\"));
+</script><script type=\"text/javascript\">
+try {
+var piwikTracker = Piwik.getTracker(pkBaseURL + \"piwik.php\",  $id);
+piwikTracker.trackPageView();
+piwikTracker.enableLinkTracking();
+} catch( err ) {}
+</script>
+<noscript><p><img src=\"$url/piwik.php?idsite=$id\" style=\"border:0\" alt='' /></p></noscript>
+<!-- End Piwik Tracking Tag -->";
+	}
+	return $output;
+}
 
 ?>

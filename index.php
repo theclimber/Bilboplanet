@@ -236,8 +236,8 @@ $core->tpl = showPosts($rs, $core->tpl, $search_value, $popular);
 $core->tpl->render("content.posts");
 
 # Show result
+$analytics_code = getAnalyticsCode();
+$core->tpl->setVar('analytics_html', $analytics_code);
 echo $core->tpl->render();
-
-require_once(dirname(__FILE__).'/javascript/analytics.php');
 
 ?>

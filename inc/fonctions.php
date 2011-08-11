@@ -1291,7 +1291,9 @@ try {
 var piwikTracker = Piwik.getTracker(pkBaseURL + \"piwik.php\",  $id);
 piwikTracker.trackPageView();
 piwikTracker.enableLinkTracking();
-} catch( err ) {}
+} catch(err) {
+console.debug(err);
+}
 </script>
 <noscript><p><img src=\"$url/piwik.php?idsite=$id\" style=\"border:0\" alt='' /></p></noscript>
 <!-- End Piwik Tracking Tag -->";

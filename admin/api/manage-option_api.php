@@ -782,7 +782,7 @@ if(isset($_POST) && isset($_POST['action'])) {
 				}
 			$output .= '</tr>
 			<tr>
-				<td>'.T_('Piwik URL').'</td>';
+				<td>'.T_('Piwik URL (don\'t forget the "/" at the end)').'</td>';
 			$output .= '<td>'.$piwik_url.'</td>';
 			$output .= '</tr>
 			<tr>

@@ -71,7 +71,7 @@ function piwik_analytics($aid,$purl,$name, $go, $html = 1) {
 	}
 	PiwikTracker::$URL = $blog_settings->get('piwik_url');
 
-	$screen_resolution = "1024x768";
+	$screen_resolution = "1280x800";
 	if (!isset($_SESSION[iterate]) && $html) {
 		if(!isset($_COOKIE["piwik_user_resolution"])){
 			//means cookie is not found set it using Javascript

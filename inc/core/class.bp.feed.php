@@ -193,10 +193,10 @@ class bpFeed extends bpObject
 				$item_tags = $this->tags;
 
 				$reserved_tags = array();
-				$planet_tags = json_decode($blog_settings->get('planet_reserved_tags'), true);
+				$planet_tags = getArrayFromList($blog_settings->get('planet_reserved_tags'));
 				if (is_array($planet_tags)) {
 					foreach ($planet_tags as $tag) {
-						$reserved_tags[] = $tag;
+						$reserved_tags[] = strtolower($tag);
 					}
 				}
 
@@ -204,9 +204,10 @@ class bpFeed extends bpObject
 				$categs = $item->get_categories();
 				if ($categs) {
 					foreach ($categs as $category) {
-						if (!in_array($category->get_label(), $item_tags)
-							&& !in_array($category->get_label(), $reserved_tags)){
-							$item_tags[] = $category->get_label();
+						$label = strtolower($category->get_label());
+						if (!in_array($label, $item_tags)
+							&& !in_array($label, $reserved_tags)){
+							$item_tags[] = $label;
 						}
 					}
 				}
@@ -215,6 +216,7 @@ class bpFeed extends bpObject
 				$hashtags = array();
 				preg_match('/#([\\d\\w]+)/', $item->get_title(), $hashtags);
 				foreach ($hashtags as $tag) {
+					$tag = strtolower($tag);
 					if (!in_array($tag, $item_tags)
 						&& !in_array($tag, $reserved_tags)){
 						$item_tags[] = $tag;
@@ -223,6 +225,7 @@ class bpFeed extends bpObject
 
 				# check if some existing tags are in the title
 				foreach (explode(' ', $item_title) as $word) {
+					$word = strtolower($word);
 					$tagRq = $this->con->select('SELECT tag_id FROM '.$this->prefix.'post_tag WHERE tag_id = "'.$word.'"');
 					if ($tagRq->count() > 1
 						&& !in_array($word, $item_tags)

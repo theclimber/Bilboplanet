@@ -17,6 +17,26 @@ $(document).ready(function() {
 	this.users = new Array();
 	this.period = '';
 
+	var urlVars = getUrlVars();
+	if (urlVars['tags']) {
+		var tagList = urlVars['tags'];
+		if(tagList.search('#')) {
+			tagList = tagList.split('#')[0];
+		}
+		jQuery.each(tagList.split(','), function (i, v) {
+			add_tag(v, true);
+		});
+	}
+	if (urlVars['users']) {
+		var userList = urlVars['users'];
+		if(userList.search('#')) {
+			userList = userList.split('#')[0];
+		}
+		jQuery.each(userList.split(','), function (i, v) {
+			add_user(v, true);
+		});
+	}
+
 	$('#search_form').submit(function() {
 		var data = $('#search_form').serializeArray();
 		jQuery.each(data, function(i, field){
@@ -139,7 +159,7 @@ function prev_page() {
 		$('#filter-page').attr('style', '');
 	}
 }
-function add_tag(tag) {
+function add_tag(tag, disable_update) {
 	this.page = 0;
 	var already_exists = false;
 	jQuery.each(this.tags, function(i, val) {
@@ -149,7 +169,9 @@ function add_tag(tag) {
 	});
 	if (!already_exists) {
 		this.tags.push(tag);
-		updatePostList();
+		if (!disable_update) {
+			updatePostList();
+		}
 		var taglist = '';
 		jQuery.each(this.tags, function(i, val) {
 			taglist += '<span class="tag"><a href="#" onclick="javascript:rm_tag(\''+val+'\')">'+val+' x</a></span>';
@@ -175,7 +197,7 @@ function rm_tag(tag) {
 		$('#filter-tags').attr('style', '');
 	}
 }
-function add_user(user) {
+function add_user(user, disable_update) {
 	this.page = 0;
 	var already_exists = false;
 	jQuery.each(this.users, function(i, val) {
@@ -185,7 +207,9 @@ function add_user(user) {
 	});
 	if (!already_exists) {
 		this.users.push(user);
-		updatePostList();
+		if (!disable_update) {
+			updatePostList();
+		}
 		var userlist = '';
 		jQuery.each(this.users, function(i, val) {
 			userlist += '<span class="user"><a href="#" onclick="javascript:rm_user(\''+val+'\')">'+val+'</a></span>';
@@ -246,27 +270,34 @@ function set_nb_items(nb) {
 	this.nb_items = nb;
 	updatePostList();
 	var html = '';
+	var height = 205;
 	$('#filter-page').attr('style', 'display:none;');
 	if (nb != 10) {
 		html += '<a href="#" onclick="javascript:set_nb_items(10)">10</a>, '
 	} else {
 		html += '10, ';
+		height = 205;
 	}
 	if (nb != 15) {
 		html += '<a href="#" onclick="javascript:set_nb_items(15)">15</a>, '
 	} else {
 		html += '15, ';
+		height = 275;
 	}
 	if (nb != 20) {
 		html += '<a href="#" onclick="javascript:set_nb_items(20)">20</a>'
 	} else {
 		html += '20';
+		height = 330;
 	}
 	$('#filter-nb-items-content').html(html);
+	setTimeout( function () {
+		$('div#top_10').attr('style', 'height:'+height+'px');
+	}, 1000);
 }
 
 function updateFeedList() {
-	var feedlink = 'http://localhost/~greg/bilboplanet/';
+	var feedlink = '';
 	feedlink += getFeedURL();
 	$('a#filter-feed').attr('href',feedlink);
 	if (this.tags.length > 0 || this.users.length > 0) {
@@ -326,7 +357,7 @@ function tag_post(post_id, post_title) {
             }
         });
     }, {
-        title: "Tagging : " + post_title,
+        title: "Add tags to this post",
     });
 }
 
@@ -342,4 +373,18 @@ function toggle_post_comments(post_id, comment_status) {
             updatePostList();
         }
     });
+}
+
+// Read a page's GET URL variables and return them as an associative array.
+function getUrlVars()
+{
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for(var i = 0; i < hashes.length; i++)
+    {
+        hash = hashes[i].split('=');
+        vars.push(hash[0]);
+        vars[hash[0]] = hash[1];
+    }
+    return vars;
 }

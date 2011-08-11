@@ -473,7 +473,7 @@ class bpTribes
 		if (count($array['with']) > 0) {
 			$sql_with = "(";
 			foreach ($array['with'] as $key=>$value) {
-				$sql_with .= $compare." = '".$value."'";
+				$sql_with .= "LOWER(".$compare.") = '".strtolower($value)."'";
 				$or = ($key == count($array['with'])-1) ? "" : " OR ";
 				$sql_with .= $or;
 			}
@@ -484,7 +484,7 @@ class bpTribes
 		if (count($array['without']) > 0) {
 			$sql_without = "(";
 			foreach ($array['without'] as $key=>$value) {
-				$sql_without .= $compare." != '".$value."'";
+				$sql_without .= "LOWER(".$compare.") != '".strtolower($value)."'";
 				$and = ($key == count($array['without'])-1) ? "" : " AND ";
 				$sql_without .= $and;
 			}

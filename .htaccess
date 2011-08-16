@@ -8,6 +8,9 @@ ErrorDocument 404 /404.php
 	RewriteBase /
 	RewriteRule ^feed/(.*)$ feed.php?type=$1
 	RewriteRule ^post/(.*)$  index.php?post_id=$1
+	RewriteRule ^tags/(.*)$  index.php?tags=$1
+	RewriteRule ^users/(.*)$  index.php?users=$1
+	RewriteRule ^popular/(.*)$  index.php?popular=true&filter=$1
 	RewriteRule ^rss10.php$  feed.php?type=rss
 	RewriteRule ^atom10.php$  feed.php?type=atom
 </IfModule>

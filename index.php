@@ -86,7 +86,9 @@ if (isset($_GET)) {
 					$analytics,
 					$root_url.'/post/'.$params['post_id'],
 					'post:'.$params['post_id'],
-					$res->post_permalink);
+					$res->post_permalink, 
+					false
+				);
 			}
 			$post_url = stripslashes($res->post_permalink);
 			http::head('301');

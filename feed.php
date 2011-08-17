@@ -281,6 +281,16 @@ else {
 $root_url = $blog_settings->get('planet_url');
 $analytics = $blog_settings->get('planet_analytics');
 if(!empty($analytics)) {
-	analyze($analytics,$root_url.'/feed/'.$_GET['type'],T_('Feed'),"",0);
+	$analyzed_url = $root_url.'/feed/'.$_GET['type'];
+	if (!empty($tags)) {
+		$analyzed_url .= '/tags/'.implode(',',$tags);
+	}
+	if (!empty($users)) {
+		$analyzed_url .= '/users/'.implode(',',$users);
+	}
+	if (!empty($period)) {
+		$analyzed_url .= '/period/'.$period;
+	}
+	analyze($analytics, $analyzed_url, T_('Feed'),"",0);
 }
 ?>

@@ -1,9 +1,0 @@
-inc/config.php
-inc/cron_running.txt
-inc/update.txt
-admin/cache/*
-admin/mysql/snapshot/*
-logs/*
-sitemap.xml
-themes/planetlibre
-planet-libre_logo.png

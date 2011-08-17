@@ -178,7 +178,8 @@ function getItemsFromFeeds ($rs, $print) {
 						$label = strtolower($category->get_label());
 						if (!in_array($label, $item_tags)
 							&& !in_array($label, $reserved_tags)
-							&& !is_int($label)){
+							&& !is_int($label)
+							&& strlen($label) > 1){
 							$item_tags[] = $label;
 						}
 					}
@@ -191,7 +192,8 @@ function getItemsFromFeeds ($rs, $print) {
 					$tag = strtolower($tag);
 					if (!in_array($tag, $item_tags)
 						&& !in_array($tag, $reserved_tags)
-						&& !is_int ($tag) ){
+						&& !is_int($tag)
+						&& strlen($tag) > 1){
 						$item_tags[] = $tag;
 					}
 				}
@@ -202,7 +204,9 @@ function getItemsFromFeeds ($rs, $print) {
 					$tagRq = $core->con->select('SELECT tag_id FROM '.$core->prefix.'post_tag WHERE tag_id = "'.$word.'"');
 					if ($tagRq->count() > 1
 						&& !in_array($word, $item_tags)
-						&& !in_array($word, $reserved_tags)) {
+						&& !in_array($word, $reserved_tags)
+						&& !is_int($word)
+						&& strlen($word) > 1) {
 						$item_tags[] = $word;
 					}
 				}
@@ -241,8 +245,13 @@ function getItemsFromFeeds ($rs, $print) {
 		unset($feed);
 
 		if ($blog_settings->get('auto_feed_disabling')) {
-			$toolong = time() - 86400*5; # five days ago
-			if (mysqldatetime_to_timestamp($rs->feed_checked) < $toolong) {
+			$toolong = time() - 86400*7; # seven days ago
+			$last_checked = mysqldatetime_to_timestamp($rs->feed_checked);
+			if ($last_checked < $toolong) {
+				$diff = ($toolong - $last_checked)/60;
+				$log_msg = logMsg("Le flux n'a plus ete mis a jour depuis $diff minutes. Il sera donc desactive : ".$rs->feed_url, "", 2, $print);
+				if ($print) $output .= $log_msg;
+				
 				# if feed was in error for too long, let's disable it
 				$cur = $core->con->openCursor($core->prefix.'feed');
 				$cur->feed_status = 2;

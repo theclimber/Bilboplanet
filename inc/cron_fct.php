@@ -36,6 +36,9 @@ function update($core, $print=false) {
 	global $blog_settings;
 	$output = "";
 
+	# Inclusion des fichiers necessaires
+#	require_once(dirname(__FILE__).'/lib/simplepie/simplepie.inc');
+
 	# Requete permettant de recuperer la liste des flux a parser
 	$sql = "SELECT
 			".$core->prefix."feed.user_id as user_id,

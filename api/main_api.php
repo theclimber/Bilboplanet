@@ -63,6 +63,8 @@ if(isset($_POST['action'])) {
 		$num_start = $num_page * $nb_items;
 		# Get search value
 		$search_value = !empty($_POST['search']) ? $_POST['search'] : null;
+		print $search_value;
+		exit;
 		if (isset($search_value)){
 			$search_value = htmlentities($search_value, ENT_QUOTES, 'UTF-8');
 			$search_value = mysql_real_escape_string($search_value);
@@ -124,7 +126,7 @@ if(isset($_POST['action'])) {
 		$result = array(
 			"posts" => $tpl->render('content.posts'),
 			"nb_items" => $nb_items,
-			"page" => $page,
+			"page" => $num_page,
 			"users" => $users,
 			"tags" => $tags,
 			"search" => $search_value

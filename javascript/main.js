@@ -37,6 +37,17 @@ $(document).ready(function() {
 			add_user(v, true);
 		});
 	}
+	/*
+	if (urlVars['filter']) {
+		var varF = urlVars['filter'];
+		varF = varF.split('#')[0];
+		this.period = varF;
+	}
+	if (urlVars['page']) {
+		var varL = urlVars['page'];
+		varL = varL.split('#')[0];
+		this.page = varL;
+	}*/
 
 	$('#search_form').submit(function() {
 		var data = $('#search_form').serializeArray();
@@ -237,9 +248,9 @@ function rm_user(user) {
 		$('#filter-users').attr('style', '');
 	}
 }
-function add_search(search) {
+function add_search(search_val) {
 	this.page = 0;
-	this.search = search;
+	this.search = search_val;
 	updatePostList();
 	$('#filter-page').attr('style', 'display:none;');
 	$('#filter-search-content').html(search+' <a href="#" onclick="javascript:clear_search()">(x)</a>');

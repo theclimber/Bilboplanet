@@ -110,8 +110,8 @@ if (isset($_GET)) {
 		}
 		# Si le lecteur a fait une recherche
 		if (isset($_GET['search']) && !empty($_GET['search'])){
-			$params["search"] = $_GET['search'];
-			$search_value = $_GET['search'];
+			$search_value = strip_script($_GET['search']);
+			$params["search"] = $search_value;
 		}
 		# On recupere le numero du membre
 		if (isset($_GET['user_id']) && !empty($_GET['user_id'])){

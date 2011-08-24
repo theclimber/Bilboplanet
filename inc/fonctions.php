@@ -1301,5 +1301,42 @@ console.debug(err);
 	}
 	return $output;
 }
+function strip_script($string, $rm = 1) {
+	if (!$rm) {
+		$s = array("/<(\/script[^\>]*)>/", "/<(script[^\>]*)>/");
+		$r = array("<$1></myScript>", "<myScript><$1>");
+		//do
+		$string = preg_replace($s, $r, $string);
+		//while (preg_match($s, $string)!=0);
+		return code_htmlentities($string, 'myScript', 'pre', 1);
+	} else {
+
+		$split1 = preg_split('(<script[^>]*>)', $string, -1);
+		$result = array();
+
+		# Pour chaque element on test si on trouve une fin de balise
+		foreach ($split1 as $el) {
+			$split2 = preg_split('(<\/script[^>]*>)', $el, -1);
+			if (count($split2) == 2) {
+				# si la longueur du tableau est de 2, c'est qu'il y avait une balise
+				# l'element avec une valise est le premier des deux
+				$content_text = '';
+				//$result[] = '<'.$tag2.'>'.$content_text.'</'.$tag2.'>';
+				$result[] = $split2[1];
+			}
+			else {
+				# s'il n'y a pas de balise, alors on ajoute simplement l'element au tableau
+				$result[] = $el;
+			}
+		}
+
+		# Maintenant que le texte est transforme en tableau, on l'affiche element par element
+		$output = "";
+		foreach($result as $el) {
+			$output .= $el;
+		}
+		return $output;
+	}
+}
 
 ?>

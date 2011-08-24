@@ -123,6 +123,8 @@ function getItemsFromFeeds ($rs, $print) {
 
 			$items = $feed->get_items();
 			foreach ($items as $item) {
+				print $item->get_permalink().'<br>';
+				continue;
 
 				# open log file and write activity down
 				$fp = @fopen($cron_file,'wb');

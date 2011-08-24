@@ -6,7 +6,7 @@
 * Website : www.bilboplanet.com
 * Tracker : redmine.bilboplanet.com
 * Blog : www.bilboplanet.com
-* 
+*
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License as
@@ -27,7 +27,7 @@
 require_once(dirname(__FILE__).'/prepend.php');
 require_once(dirname(__FILE__).'/cron_fct.php');
 
-$log_file = fopen(dirname(__FILE__).'/../logs/cron_job.log', 'a');
+$log_file = dirname(__FILE__).'/../logs/cron_job.log';
 
 $cache_dir = dirname(__FILE__).'/../admin/cache/';
 

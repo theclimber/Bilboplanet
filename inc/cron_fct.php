@@ -25,19 +25,16 @@
 ?>
 <?php
 require_once(dirname(__FILE__).'/lib/checkValidHTML.php');
+require_once(dirname(__FILE__).'/lib/simplepie/SimplePieAutoloader.php');
 
 function finished() {
-	$log_file = fopen('../logs/cron_job.log', 'a');
+	$log_file = dirname(__FILE__).'/../logs/cron_job.log';
 	logMsg("The Cron is stopped and exited", $log_file);
 }
 
 function update($core, $print=false) {
 	global $blog_settings;
 	$output = "";
-
-	# Inclusion des fichiers necessaires
-#	require_once(dirname(__FILE__).'/lib/simplepie/simplepie.inc');
-	require_once(dirname(__FILE__).'/lib/simplepie/SimplePieAutoloader.php');
 
 	# Requete permettant de recuperer la liste des flux a parser
 	$sql = "SELECT
@@ -518,21 +515,43 @@ function logMsg($message, $filename="", $type=0, $print=false) {
 			$print_style = "[<font color=\"pink\">DEBUG</font>] ";
 			break;
 		default:
+			$message_type='INFO    : ';
+			$print_style = "[<font color=\"blue\">INFO</font>] ";
 			break;
 	}
 
-	if ($filename != "") {
-		$file = $filename;
+	if ($filename == "") {
+		$filename = dirname(__FILE__).'/../logs/update-'.date("Y-m-d").'.log';
+	}
+
+	// Assurons nous que le fichier est accessible en écriture
+	if (is_string($filename) && is_writable($filename)) {
+
+		// Dans notre exemple, nous ouvrons le fichier $filename en mode d'ajout
+		// Le pointeur de fichier est placé à la fin du fichier
+		// c'est là que $somecontent sera placé
+		if (!$handle = fopen($filename, 'a')) {
+			echo "Impossible d'ouvrir le fichier ($filename)";
+			exit;
+		}
+
+		// Ecrivons quelque chose dans notre fichier.
+		if (fwrite($handle, $date_log.$message_type.$message."\n") === FALSE) {
+			echo "Impossible d'écrire dans le fichier ($filename)";
+			exit;
+		}
+		fclose($handle);
 	}
 	else {
-		# Ouverture du fichier de log
-		$file = fopen(dirname(__FILE__).'/../logs/update-'.date("Y-m-d").'.log', 'a');
+		echo "Le fichier $filename n'est pas accessible en écriture.";
 	}
+
+
+	/*
 	if (!empty($file)) {
 		fwrite($file, $date_log.$message_type.$message."\n");
 		fclose($file);
-	}
-
+	}*/
 	# On log a l'ecran
 	if ($print)
 		return $print_style.$message."<br/>";

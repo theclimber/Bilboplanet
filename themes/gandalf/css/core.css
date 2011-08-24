@@ -358,6 +358,7 @@ border:1px solid #333;
 padding:1px;
 float:left;
 }
+.gravatar {height:40px; width:40px; background:url('../images/gravatar.png') }
 #wrap .gratavar {
 float:left;
 width:50px;
@@ -654,7 +655,7 @@ div#loginBox {
 	vertical-align: top;
 	white-space: nowrap;
 	font-weight: bold;
-	margin: 0 50px;;
+	margin: 0 50px;
 }
 div#loginBox span#login-dropdown {
 	background: url('../images/sprite-icons.png') no-repeat scoll -79px -68px transparent;

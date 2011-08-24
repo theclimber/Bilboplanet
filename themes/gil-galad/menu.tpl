@@ -27,7 +27,7 @@
 						<!-- END search.filter -->
 						<input type="text" id="search_text" name="search" value="{$search_value}" />
 						<input type="submit" id="recherche_global_btn" value="" />
-						<fieldset>
+						</fieldset>
 					</form>
 				<!-- END search.box -->
 			</li>

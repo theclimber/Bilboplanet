@@ -13,7 +13,7 @@
 
 	<div id="filter-status">
 		<h2 id="filter-title">{_Page status}</h2>
-		<div id="filter-nb-items">{_Number of items :} <span id="filter-nb-items-content">
+		<div id="filter-nb-items">{_Number of posts :} <span id="filter-nb-items-content">
 			<a href="#" onclick="javascript:set_nb_items(10)">10</a>,
 			<a href="#" onclick="javascript:set_nb_items(15)">15</a>,
 			<a href="#" onclick="javascript:set_nb_items(20)">20</a>
@@ -34,7 +34,7 @@
 			</div>
 	</div>
 
-		<h2 id="abonnement">{_Subscribe}</h2>
+		<h2 id="abonnements">{_Subscribe}</h2>
 		<ul>
 			<li><img src="{$planet.url}/themes/{$planet.theme}/images/ico-feed.gif" alt="feed" />&nbsp;
 			<a href="{$planet.url}/feed.php?type=rss" rel="nofollow">{_Feed with all the posts}</a></li>

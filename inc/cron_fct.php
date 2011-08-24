@@ -36,7 +36,8 @@ function update($core, $print=false) {
 	$output = "";
 
 	# Inclusion des fichiers necessaires
-	require_once(dirname(__FILE__).'/lib/simplepie/simplepie.inc');
+#	require_once(dirname(__FILE__).'/lib/simplepie/simplepie.inc');
+	require_once(dirname(__FILE__).'/lib/simplepie/SimplePieAutoloader.php');
 
 	# Requete permettant de recuperer la liste des flux a parser
 	$sql = "SELECT
@@ -83,6 +84,7 @@ function update($core, $print=false) {
 
 function getItemsFromFeeds ($rs, $print) {
 	global $blog_settings, $core;
+	$output = "";
 	$cron_file = dirname(__FILE__).'/cron_running.txt';
 
 	# Duree de mise a jour
@@ -102,7 +104,7 @@ function getItemsFromFeeds ($rs, $print) {
 		$feed = new SimplePie();
 		$feed->set_feed_url($rs->feed_url);
 		$feed->set_cache_location(dirname(__FILE__).'/../admin/cache');
-		$feed->set_cache_duration($item_refresh);
+#		$feed->set_cache_duration($item_refresh);
 		$feed->init();
 
 		# Pour faire fonctionner les lecteurs flash, non recomande par simplepie
@@ -251,7 +253,7 @@ function getItemsFromFeeds ($rs, $print) {
 				$diff = ($toolong - $last_checked)/60;
 				$log_msg = logMsg("Le flux n'a plus ete mis a jour depuis $diff minutes. Il sera donc desactive : ".$rs->feed_url, "", 2, $print);
 				if ($print) $output .= $log_msg;
-				
+
 				# if feed was in error for too long, let's disable it
 				$cur = $core->con->openCursor($core->prefix.'feed');
 				$cur->feed_status = 2;
@@ -362,7 +364,7 @@ function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_c
 		# Update tags if needed
 		$old_tags = array();
 		$tagRq = $core->con->select('SELECT tag_id, user_id FROM '.$core->prefix.'post_tag WHERE post_id = '.$post_id);
-		
+
 		$tags_to_append = $item_tags; # par defaut TOUT
 		$tags_to_remove = array(); # par defaut RIEN
 		while ($tagRq->fetch()) {
@@ -526,8 +528,10 @@ function logMsg($message, $filename="", $type=0, $print=false) {
 		# Ouverture du fichier de log
 		$file = fopen(dirname(__FILE__).'/../logs/update-'.date("Y-m-d").'.log', 'a');
 	}
-	fwrite($file, $date_log.$message_type.$message."\n");
-	fclose($file);
+	if (!empty($file)) {
+		fwrite($file, $date_log.$message_type.$message."\n");
+		fclose($file);
+	}
 
 	# On log a l'ecran
 	if ($print)

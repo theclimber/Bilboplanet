@@ -464,7 +464,7 @@ function getOutput($sql, $num_page=0, $nb_items=30) {
 	$prev_page = $num_page - 1;
 
 	$rs = $core->con->select($sql);
-	$output .= showPagination($rs->count(), $num_page, $nb_items, 'updateFeedList');
+	$output = showPagination($rs->count(), $num_page, $nb_items, 'updateFeedList');
 
 	$output .= '
 <br />

@@ -925,9 +925,10 @@ div#loginBox span#login-dropdown {
 	vertical-align: top;
 	width: 7px;
 }
+/*
 div#loginBox:hover, div#loginBox.open{
 	background: #333;
-}
+}*/
 div#loginForm {
 	background: #333;
 	position: absolute;

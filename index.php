@@ -45,9 +45,10 @@ $post_id = null;
 
 if (!isset($params)) {
 	$params = array(
-		'title'=>$blog_settings->get('planet_title'),
-		'popular'=>'false',
-		'filter'=>'week'
+		'title'=> $blog_settings->get('planet_title'),
+		'popular'=> 'false',
+		'filter'=> 'week',
+		'page' => 0
 		);
 }
 
@@ -86,7 +87,7 @@ if (isset($_GET)) {
 					$analytics,
 					$root_url.'/post/'.$params['post_id'],
 					'post:'.$params['post_id'],
-					$res->post_permalink, 
+					$res->post_permalink,
 					false
 				);
 			}
@@ -160,9 +161,10 @@ foreach ($params as $key => $val) {
 		$filter_url .= $key."=".$val."&";
 	}
 }
+$page_nbr = isset($params["page"]) ? $params['page'] : 0;
 $page_vars = array(
-	"next" => $params["page"]+1,
-	"prev" => $params["page"]-1,
+	"next" => $page_nbr+1,
+	"prev" => $page_nbr-1,
 	"params" => $page_url
 );
 $core->tpl->setVar('search_value', $search_value);
@@ -204,7 +206,7 @@ $core->tpl->render('menu.filter');
 # RENDER PAGINATION
 #######################
 if (!isset($_GET['post_id']) | empty($_GET['post_id'])){
-	if($params["page"] == 0 & $rs->count()>=10) {
+	if((!isset($params['page']) || $params["page"] == 0) & $rs->count()>=10) {
 		# if we are on the first page
 		$core->tpl->render('pagination.up.next');
 		$core->tpl->render('pagination.low.next');

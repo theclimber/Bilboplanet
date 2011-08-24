@@ -104,30 +104,32 @@ while ($rs_side->fetch()) {
 
 $widget_path = dirname(__FILE__).'/widgets';
 $widget_files = json_decode($blog_settings->get('planet_widget_files'));
-foreach ($widget_files as $file){
-	if (is_dir($widget_path) && is_file($widget_path.'/'.$file->{'name'})) {
-		# Build an array of available widgets
-		require_once($widget_path.'/'.$file->{'name'});
-		$wgt = getWidget();
-		foreach ($wgt['styles'] as $sty) {
-			$styles[] = $sty;
-		}
-		foreach ($wgt['scripts'] as $spt) {
-			$scripts[] = $spt;
-		}
-		if ($file->{'position'} == "sidebar") {
-			$core->tpl->setVar("sidebar-widget", array(
-				'title' => $wgt['title'],
-				'html' => $wgt['html'],
-				'id' => $wgt['id']));
-			$core->tpl->render('sidebar.widget');
-		}
-		if ($file->{"position"} == "footer") {
-			$core->tpl->setVar("footer-widget", array(
-				'title' => $wgt['title'],
-				'html' => $wgt['html'],
-				'id' => $wgt['id']));
-			$core->tpl->render('footer.widget');
+if (is_array($widget_files)) {
+	foreach ($widget_files as $file){
+		if (is_dir($widget_path) && is_file($widget_path.'/'.$file->{'name'})) {
+			# Build an array of available widgets
+			require_once($widget_path.'/'.$file->{'name'});
+			$wgt = getWidget();
+			foreach ($wgt['styles'] as $sty) {
+				$styles[] = $sty;
+			}
+			foreach ($wgt['scripts'] as $spt) {
+				$scripts[] = $spt;
+			}
+			if ($file->{'position'} == "sidebar") {
+				$core->tpl->setVar("sidebar-widget", array(
+					'title' => $wgt['title'],
+					'html' => $wgt['html'],
+					'id' => $wgt['id']));
+				$core->tpl->render('sidebar.widget');
+			}
+			if ($file->{"position"} == "footer") {
+				$core->tpl->setVar("footer-widget", array(
+					'title' => $wgt['title'],
+					'html' => $wgt['html'],
+					'id' => $wgt['id']));
+				$core->tpl->render('footer.widget');
+			}
 		}
 	}
 }

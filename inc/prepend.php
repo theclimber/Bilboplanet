@@ -186,7 +186,7 @@ putenv('LANGUAGE='.$locale);
 #putenv('LANG='.$locale);
 putenv('LC_ALL='.$locale);
 putenv('LC_MESSAGES='.$locale);
-T_setlocale('LANGUAGE='.$locale);
+#T_setlocale('LANGUAGE='.$locale);
 T_setlocale(LC_ALL, $locale);
 T_setlocale(LC_CTYPE, $locale);
 

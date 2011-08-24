@@ -90,6 +90,10 @@ if(isset($_POST['action'])) {
 
 		$tpl = new Hyla_Tpl(dirname(__FILE__).'/../themes/'.$blog_settings->get('planet_theme').'/');
 		$tpl->importFile('index', 'index.tpl');
+		$tpl->setVar('planet', array(
+			'url' => $blog_settings->get('planet_url'),
+			'theme' => $blog_settings->get('planet_theme')
+		));
 
 		if($num_page == 0 & $rs->count()>= $nb_items) {
 			# if we are on the first page

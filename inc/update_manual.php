@@ -30,6 +30,8 @@ require_once(dirname(__FILE__).'/cron_fct.php');
 $log_file = dirname(__FILE__).'/../logs/cron_job.log';
 
 $cache_dir = dirname(__FILE__).'/../admin/cache/';
+#ini_set('max_execution_time', 0);
+#proc_nice(5);
 
 logMsg("Actual time : ".time(), $log_file);
 if (file_exists(dirname(__FILE__).'/STOP')) {

@@ -63,8 +63,6 @@ if(isset($_POST['action'])) {
 		$num_start = $num_page * $nb_items;
 		# Get search value
 		$search_value = !empty($_POST['search']) ? $_POST['search'] : null;
-		print $search_value;
-		exit;
 		if (isset($search_value)){
 			$search_value = htmlentities($search_value, ENT_QUOTES, 'UTF-8');
 			$search_value = mysql_real_escape_string($search_value);
@@ -86,8 +84,8 @@ if(isset($_POST['action'])) {
 			$search_value,
 			$period,
 			$popular);
-		//print $sql;
-		//exit;
+		#print $sql;
+		#exit;
 		$rs = $core->con->select($sql);
 
 		$tpl = new Hyla_Tpl(dirname(__FILE__).'/../themes/'.$blog_settings->get('planet_theme').'/');

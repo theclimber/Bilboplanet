@@ -25,7 +25,6 @@
 ?>
 <?php
 require_once(dirname(__FILE__).'/lib/checkValidHTML.php');
-require_once(dirname(__FILE__).'/lib/simplepie/SimplePieAutoloader.php');
 
 function finished() {
 	$log_file = dirname(__FILE__).'/../logs/cron_job.log';
@@ -100,10 +99,12 @@ function getItemsFromFeeds ($rs, $print) {
 			break;
 		}
 
+		require_once(dirname(__FILE__).'/lib/simplepie/SimplePieAutoloader.php');
 		# On cree un objet SimplePie et on ajuste les parametres de base
 		$feed = new SimplePie();
 		$feed->set_feed_url($rs->feed_url);
 		$feed->set_cache_location(dirname(__FILE__).'/../admin/cache');
+#$feed->enable_cache(false);
 #		$feed->set_cache_duration($item_refresh);
 		$feed->init();
 
@@ -126,8 +127,8 @@ function getItemsFromFeeds ($rs, $print) {
 
 			$items = $feed->get_items();
 			foreach ($items as $item) {
-				print $item->get_permalink().'<br>';
-				continue;
+				#print $item->get_permalink().'<br>';
+				#continue;
 
 				# open log file and write activity down
 				$fp = @fopen($cron_file,'wb');
@@ -530,7 +531,7 @@ function logMsg($message, $filename="", $type=0, $print=false) {
 	}
 
 	// Assurons nous que le fichier est accessible en écriture
-	if (is_string($filename) && is_writable($filename)) {
+	if (is_string($filename)) {
 
 		// Dans notre exemple, nous ouvrons le fichier $filename en mode d'ajout
 		// Le pointeur de fichier est placé à la fin du fichier
@@ -542,7 +543,7 @@ function logMsg($message, $filename="", $type=0, $print=false) {
 
 		// Ecrivons quelque chose dans notre fichier.
 		if (fwrite($handle, $date_log.$message_type.$message."\n") === FALSE) {
-			echo "Impossible d'écrire dans le fichier ($filename)";
+			echo "Impossible d'ecrire dans le fichier ($filename)";
 			exit;
 		}
 		fclose($handle);

@@ -889,7 +889,8 @@ function check_url($url){
 }
 
 function check_feed($url){
-	require_once(dirname(__FILE__).'/lib/simplepie/simplepie.inc');
+	#require_once(dirname(__FILE__).'/lib/simplepie/simplepie.inc');
+	require_once(dirname(__FILE__).'/lib/simplepie/SimplePieAutoloader.php');
 	$file = new SimplePie_File($url);
 	$test = new SimplePie_Locator($file);
 
@@ -1159,15 +1160,16 @@ function code_htmlentities ($html, $tag1, $tag2, $return = 0) {
 }
 
 #---------------------------------------------------#
-# Function to add pending user						#
+# Function to add pending user			    #
 #---------------------------------------------------#
-function addPendingUser ($user_id, $user_fullname, $user_email, $url, $feed, $lang) {
+function addPendingUser($user_id, $user_fullname, $user_email, $url, $feed, $lang) {
 
 	global $core;
 
 	# Clean Up user_id
 	$user_id = preg_replace("( )", "_", $user_id);
 	$user_id = cleanString($user_id);
+
 
 	# Check if user have already sent subscription
 	$rs0 = $core->con->select("SELECT puser_id, user_fullname, user_email, feed_url
@@ -1241,9 +1243,9 @@ function addPendingUser ($user_id, $user_fullname, $user_email, $url, $feed, $la
 	return $error;
 }
 
-#---------------------------------------------------#
-# Function to generate random Password				#
-#---------------------------------------------------#
+#-----------------------------------------------#
+# Function to generate random Password		#
+#-----------------------------------------------#
 function createRandomPassword() {
 	$chars = "abcdefghijkmnopqrstuvwxyz023456789";
 	srand((double)microtime()*1000000);

@@ -1,0 +1,103 @@
+<?php
+//
+// Copyright (C) 2011 Jacob Barkdull, Roberto Guido
+//
+//   This program is free software: you can redistribute it and/or modify
+//   it under the terms of the GNU Affero General Public License as
+//   published by the Free Software Foundation, either version 3 of the
+//   License, or (at your option) any later version.
+//
+//   This program is distributed in the hope that it will be useful,
+//   but WITHOUT ANY WARRANTY; without even the implied warranty of
+//   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//   GNU Affero General Public License for more details.
+//
+//   You should have received a copy of the GNU Affero General Public License
+//   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//
+require_once(dirname(__FILE__).'/../inc/prepend.php');
+
+$post_id = isset($_GET['post_id']) ? intval(trim($_GET['post_id'])) : -1;
+$url = isset($_GET['url']) ? trim($_GET['url']) : '';
+
+
+if (!is_int($post_id) || ($url != '' && !check_url($url))) {
+	print T_("Permission denied");
+	exit;
+}
+
+if(isset($_GET["source"])){
+	header("Content-type: text/plain");
+	readfile(".".$_SERVER["PHP_SELF"]);
+	die();
+}
+
+$server = $_SERVER["SERVER_NAME"];
+if ($url != '') {
+
+	$referer = $url;
+	$referringurl = str_replace(array("http://", "www."), "", $referer);
+	$jsondata = file_get_contents("http://identi.ca/api/search.json?q=".$referringurl."&rpp=100");
+	$results = substr_count($jsondata, str_replace("/", "\/", addslashes($referringurl)));
+
+	if($results <= 0){
+		$results = "0";
+	}
+} elseif ($post_id > 0) { 
+
+	# Check for planet URL
+	$referer = $blog_settings->get('planet_url').'?post_id='.$post_id;
+	$referringurl = str_replace(array("http://", "www."), "", $referer);
+	$jsondata = file_get_contents("http://identi.ca/api/search.json?q=".$referringurl."&rpp=100");
+	$result1 = substr_count($jsondata, str_replace("/", "\/", addslashes($referringurl)));
+	
+	#Check for permalink
+	$rs = $core->con->select("SELECT post_permalink FROM ".$core->prefix."post WHERE post_id = ".$post_id);
+	$referer = $rs->f('post_permalink');
+	$referringurl = str_replace(array("http://", "www."), "", $rs->f('post_permalink'));
+	$jsondata = file_get_contents("http://identi.ca/api/search.json?q=".$referringurl."&rpp=100");
+	$result2 = substr_count($jsondata, str_replace("/", "\/", addslashes($referringurl)));
+
+	# Get results
+	$results = intval($result1) + intval($result2);
+	if($results <= 0){
+		$results = "0";
+	}
+
+
+} else {
+	$results = "-1";
+}
+
+if(isset($_GET["title"])){
+	$title = $_GET["title"]." ";
+}else if(!isset($_GET["noscript"])){
+	$title = '"+document.title+" - ';
+}else{
+	$title = '';
+}
+
+$html = <<<HTML
+<html>
+	<head>
+		<title>Share on Identi.ca</title>
+	</head>
+
+	<body marginwidth="0" marginheight="0">
+		<div id="identishare" style="width: 61px; height: 61px; display: inline-block; overflow; hidden; vertical-align: bottom; font-size: 35px; text-align: center;">
+			<a href="http://identi.ca/index.php?action=newnotice&status_textarea=$title - $referer" target="_blank" style="display: inline-block; background-image: url('http://www.planet-libre.org/themes/planetlibre_repo/identishare.png'); width: 61px; height: 61px; font-family: arial; text-decoration: none; line-height: 1.2em; color: #000000;" title="Share on Identi.ca"><b style="float: none !important; margin: 0px !important;">$results</b></a>
+		</div>
+	</body>
+</html>
+HTML;
+
+if(isset($_GET["noscript"])){
+	echo $html;
+}else{
+	header("Content-type: text/javascript");
+	echo 'document.getElementById("identishare").style.display="inline-block";'."\n";
+	echo 'document.getElementById("identishare").style.width="61px";'."\n";
+	echo 'document.getElementById("identishare").style.overflow="hidden";'."\n";
+	echo 'document.getElementById("identishare").innerHTML="<a href=\"http://identi.ca/index.php?action=newnotice&status_textarea='.$title.' - '.$referer.'\" target=\"_blank\" style=\"display: inline-block; background-image: url(\'http://www.planet-libre.org/themes/planetlibre_repo/identishare.png\'); width: 61px; height: 61px; padding: 0px; font-size: 35px; text-decoration: none; line-height: 1.2em; color: #000000; text-align: center;\" title=\"Share on Identi.ca\"><b style=\"float: none !important; margin: 0px !important;\">'.$results.'</b></a>";';
+}
+?>

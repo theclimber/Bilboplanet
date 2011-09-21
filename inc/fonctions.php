@@ -664,6 +664,7 @@ function showPostsSummary($rs, $tpl) {
 		$line = array(
 			"date" => mysqldatetime_to_date("d/m/Y",$rs->pubdate),
 			"title" => $title,
+			"user" => $rs->user_fullname,
 			"short_title" => $show,
 			"id" => $rs->post_id,
 			"url" => "#post".$rs->post_id);

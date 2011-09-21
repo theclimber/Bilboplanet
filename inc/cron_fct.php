@@ -112,11 +112,11 @@ function getItemsFromFeeds ($rs, $print) {
 		$feed->strip_htmltags(false);
 
 		# Si le flux ne contient pas  de donnee
-		$item_nb = $feed->get_item_quantity();
-		if ($feed->get_item_quantity() == 0) {
+		#$item_nb = $feed->get_item_quantity();
+		$error = $feed->error();
+		if (isset($error)) {
 
 			# Affichage du message d'erreur
-			$error = $feed->error();
 			if (ereg($rs->feed_url, $error)) {
 				$log_msg = logMsg("Aucun article trouve ".$error, "", 3, $print);
 			} else {
@@ -240,6 +240,8 @@ function getItemsFromFeeds ($rs, $print) {
 			$cur = $core->con->openCursor($core->prefix.'feed');
 			$cur->feed_checked = array('NOW()');
 			$cur->update("WHERE feed_id = '$rs->feed_id'");
+			$log_msg = logMsg("Le flux ".$rs->feed_url." est mis a jour", "", 2, $print);
+			if ($print) $output .= $log_msg;
 
 			# On fait un reset du foreach
 			reset($items);
@@ -251,7 +253,9 @@ function getItemsFromFeeds ($rs, $print) {
 
 		if ($blog_settings->get('auto_feed_disabling')) {
 			$toolong = time() - 86400*7; # seven days ago
-			$last_checked = mysqldatetime_to_timestamp($rs->feed_checked);
+			$check_sql = "SELECT feed_checked FROM ".$core->prefix."feed WHERE feed_id=".$rs->feed_id;
+			$rs_check = $core->con->select($check_sql);
+			$last_checked = mysqldatetime_to_timestamp($rs_check->f('feed_checked'));
 			if ($last_checked < $toolong) {
 				$diff = ($toolong - $last_checked)/60;
 				$log_msg = logMsg("Le flux n'a plus ete mis a jour depuis $diff minutes. Il sera donc desactive : ".$rs->feed_url, "", 2, $print);

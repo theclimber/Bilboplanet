@@ -98,6 +98,7 @@ function getItemsFromFeeds ($rs, $print) {
 			if ($print) $output .= $log_msg;
 			break;
 		}
+		echo $rs->feed_url."\n";
 
 		require_once(dirname(__FILE__).'/lib/simplepie/SimplePieAutoloader.php');
 		# On cree un objet SimplePie et on ajuste les parametres de base

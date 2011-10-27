@@ -15,11 +15,13 @@
 //   You should have received a copy of the GNU Affero General Public License
 //   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
+
+exit;
 require_once(dirname(__FILE__).'/../inc/prepend.php');
 
 $post_id = isset($_GET['post_id']) ? intval(trim($_GET['post_id'])) : -1;
 $url = isset($_GET['url']) ? trim($_GET['url']) : '';
-
+$planet_url = $blog_settings->get('planet_url');
 
 if (!is_int($post_id) || ($url != '' && !check_url($url))) {
 	print T_("Permission denied");
@@ -46,7 +48,7 @@ if ($url != '') {
 } elseif ($post_id > 0) { 
 
 	# Check for planet URL
-	$referer = $blog_settings->get('planet_url').'?post_id='.$post_id;
+	$referer = $planet_url.'?post_id='.$post_id;
 	$referringurl = str_replace(array("http://", "www."), "", $referer);
 	$jsondata = file_get_contents("http://identi.ca/api/search.json?q=".$referringurl."&rpp=100");
 	$result1 = substr_count($jsondata, str_replace("/", "\/", addslashes($referringurl)));
@@ -85,7 +87,7 @@ $html = <<<HTML
 
 	<body marginwidth="0" marginheight="0">
 		<div id="identishare" style="width: 61px; height: 61px; display: inline-block; overflow; hidden; vertical-align: bottom; font-size: 35px; text-align: center;">
-			<a href="http://identi.ca/index.php?action=newnotice&status_textarea=$title - $referer" target="_blank" style="display: inline-block; background-image: url('http://www.planet-libre.org/themes/planetlibre_repo/identishare.png'); width: 61px; height: 61px; font-family: arial; text-decoration: none; line-height: 1.2em; color: #000000;" title="Share on Identi.ca"><b style="float: none !important; margin: 0px !important;">$results</b></a>
+			<a href="http://identi.ca/index.php?action=newnotice&status_textarea=$title - $referer" target="_blank" style="display: inline-block; background-image: url('$planet_url/api/identishare.png'); width: 61px; height: 61px; font-family: arial; text-decoration: none; line-height: 1.2em; color: #000000;" title="Share on Identi.ca"><b style="float: none !important; margin: 0px !important;">$results</b></a>
 		</div>
 	</body>
 </html>
@@ -98,6 +100,6 @@ if(isset($_GET["noscript"])){
 	echo 'document.getElementById("identishare").style.display="inline-block";'."\n";
 	echo 'document.getElementById("identishare").style.width="61px";'."\n";
 	echo 'document.getElementById("identishare").style.overflow="hidden";'."\n";
-	echo 'document.getElementById("identishare").innerHTML="<a href=\"http://identi.ca/index.php?action=newnotice&status_textarea='.$title.' - '.$referer.'\" target=\"_blank\" style=\"display: inline-block; background-image: url(\'http://www.planet-libre.org/themes/planetlibre_repo/identishare.png\'); width: 61px; height: 61px; padding: 0px; font-size: 35px; text-decoration: none; line-height: 1.2em; color: #000000; text-align: center;\" title=\"Share on Identi.ca\"><b style=\"float: none !important; margin: 0px !important;\">'.$results.'</b></a>";';
+	echo 'document.getElementById("identishare").innerHTML="<a href=\"http://identi.ca/index.php?action=newnotice&status_textarea='.$title.' - '.$referer.'\" target=\"_blank\" style=\"display: inline-block; background-image: url(\''.$planet_url.'/api/identishare.png\'); width: 61px; height: 61px; padding: 0px; font-size: 35px; text-decoration: none; line-height: 1.2em; color: #000000; text-align: center;\" title=\"Share on Identi.ca\"><b style=\"float: none !important; margin: 0px !important;\">'.$results.'</b></a>";';
 }
 ?>

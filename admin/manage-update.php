@@ -41,7 +41,7 @@ $update = false;
 $index_update = $blog_settings->get('planet_index_update');
 
 if(isset($_POST) && isset($_POST['submit'])) {
-	if ($_POST['index_update'] == "on") {
+	if (isset($_POST['index_update']) && $_POST['index_update'] == "on") {
 		if (!$index_update) {
 			$blog_settings->put('planet_index_update','1', "boolean");
 			$flash[] = T_('Enable update on loading of index page: Enable');

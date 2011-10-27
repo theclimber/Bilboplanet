@@ -260,7 +260,7 @@ while($rs->fetch()) {
 	echo '<tr><form method="POST">
 		<input type="hidden" name="num" value="'.$rs->post_id.'"/>
 		<input type="hidden" name="title" value="'.$rs->title.'"/>
-		<td class="'.$colore.' tc1 tcl" '.$style.'>'.$rs->user_id.'</td>
+		<td class="tc1 tcl" '.$style.'>'.$rs->user_id.'</td>
 		<td class="tc2" '.$style.'>'.$date.'</td>
 		<td class="tc3" '.$style.'><a href="'.$rs->permalink.'" target="_blank">'.substr($rs->title,0,70).'</a></td>
 		<td class="tc4" '.$style.'>'.$select.'</td>

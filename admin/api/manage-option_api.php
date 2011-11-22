@@ -4,7 +4,7 @@
 * Copyright (C) 2010 By French Dev Team : Dev BilboPlanet
 * Contact : dev@bilboplanet.com
 * Website : www.bilboplanet.com
-* Tracker : redmine.bilboplanet.com
+* Tracker : http://chili.kiwais.com/projects/bilboplanet
 * Blog : blog.bilboplanet.com
 *
 *

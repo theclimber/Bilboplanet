@@ -4,7 +4,7 @@
 * Copyright (C) 2010 By French Dev Team : Dev BilboPlanet
 * Contact : dev@bilboplanet.com
 * Website : www.bilboplanet.com
-* Tracker : redmine.bilboplanet.com
+* Tracker : http://chili.kiwais.com/projects/bilboplanet
 * Blog : www.bilboplanet.com
 *
 *
@@ -67,18 +67,19 @@ if ($blog_settings->get('planet_rtl')) {
 			<p>
 				<h3><?php echo T_('Bilboplanet was developed by');?></h3>
 				<ul>
-					<li>- Gregoire de Hemptinne (<a href="http://www.theclimber.be" target="_blank">http://www.theclimber.be</a>)</li>
-					<li>- Thomas Bourcey (<a href="http://www.sckyzo.com" target="_blank">http://www.sckyzo.com</a>)</li>
-					<li>- Guillaume Oña (<a href="http://www.guiona.com" target="_blank">http://www.guiona.com</a>)</li>
+					<li>Gregoire de Hemptinne (<a href="http://www.theclimber.be" target="_blank">http://www.theclimber.be</a>)</li>
+					<li>Thomas Bourcey (<a href="http://www.sckyzo.com" target="_blank">http://www.sckyzo.com</a>)</li>
+					<li>Guillaume Oña (<a href="http://www.guiona.com" target="_blank">http://www.guiona.com</a>)</li>
 				</ul>
 			</p>
 			<br />
 			<h3><?php echo T_('BilboPlanet : Useful links');?></h3>
 			<p>
 				<ul>
-					<li><?php echo T_('- Official WebSite: ');?><a href="http://www.bilboplanet.com" target="_blank">http://www.bilboplanet.com</a></li>
-					<li><?php echo T_('- Official Forum: ');?><a href="http://www.bilboplanet.com/forum" target="_blank">http://www.bilboplanet.com/forum</a></li>
-					<li><?php echo T_('- Official Documentation: ');?><a href="http://www.bilboplanet.com/documentation.php" target="_blank">http://www.bilboplanet.com/documentation.php</a></li>
+					<li><?php echo T_('Official WebSite: ');?><a href="http://www.bilboplanet.com" target="_blank">http://www.bilboplanet.com</a></li>
+					<li><?php echo T_('Official Forum: ');?><a href="http://www.bilboplanet.com/forum" target="_blank">http://www.bilboplanet.com/forum</a></li>
+					<li><?php echo T_('Official Documentation: ');?><a href="http://wiki.bilboplanet.com" target="_blank">http://wiki.bilboplanet.com</a></li>
+					<li><?php echo T_('Tracker: ');?><a href="http://chili.kiwais.com/projects/bilboplanet" target="_blank">http://chili.kiwais.com/projects/bilboplanet</a></li>
 				</ul>
 			</p>
 			<br />

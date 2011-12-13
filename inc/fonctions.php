@@ -469,10 +469,12 @@ function generate_SQL(
 
 	if (isset($search) && !empty($search)){
 		# Complete the SQL query
-		$where_clause .= " AND (".$core->prefix."post.post_title LIKE '%$search%'
-			OR ".$core->prefix."post.post_permalink LIKE '%$search%'
-			OR ".$core->prefix."post.post_content LIKE '%$search%'
-			OR ".$core->prefix."user.user_fullname LIKE '%$search%')";
+		$search = strtolower($search);
+		$where_clause .= " AND (
+			lower(".$core->prefix."post.post_title) LIKE '%$search%'
+			OR lower(".$core->prefix."post.post_permalink) LIKE '%$search%'
+			OR lower(".$core->prefix."post.post_content) LIKE '%$search%'
+			OR lower(".$core->prefix."user.user_fullname) LIKE '%$search%')";
 	}
 
 	if (isset($period) && !empty($period)) {

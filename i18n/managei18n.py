@@ -19,6 +19,10 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 #**** END LICENSE BLOCK *****
+# To make this script work, we need two packages in ubuntu :
+# * translate-toolkit
+# * python-django
+
 import sys, os
 import re
 from translate.storage import po

@@ -220,12 +220,12 @@ function getOutput($sql, $num_page=0, $nb_items=30) {
 </thead>';
 
 	while($rs->fetch()) {
-		$gravatar_email = strtolower($rs->user_email);
-		$gravatar_url = "http://www.gravatar.com/avatar.php?gravatar_id=".md5($gravatar_email)."&default=".urlencode($blog_settings->get('planet_url')."/themes/".$blog_settings->get('planet_theme')."/images/gravatar.png")."&size=40";
+		$avatar_email = strtolower($rs->user_email);
+		$avatar_url = "http://cdn.libravatar.org/avatar/".md5($avatar_email)."?d=".urlencode($blog_settings->get('planet_url')."/themes/".$blog_settings->get('planet_theme')."/images/gravatar.png")."&s=40";
 
 		$output .= '<tr class="line">
 			<td style="text-align: center;">
-				<img src="'.$gravatar_url.'">
+				<img src="'.$avatar_url.'">
 			</td>';
 
 		$output .= '<td>

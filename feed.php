@@ -218,9 +218,9 @@ if (isset($_GET) && isset($_GET['type'])) {
 
 	# Gravatar
 	if($blog_settings->get('planet_avatar')) {
-		$gravatar_email = strtolower($post_list->user_email);
-		$gravatar_url = "http://www.gravatar.com/avatar.php?gravatar_id=".md5($gravatar_email)."&amp;default=".urlencode($blog_settings->get('planet_url')."themes/".$blog_settings->get('planet_theme')."/images/gravatar.png")."&amp;size=40";
-		$gravatar = '<img src="'.$gravatar_url.'" alt="'.sprintf(T_('Gravatar of %s'),$post_list->user_fullname).'" class="gravatar" />';
+		$avatar_email = strtolower($post_list->user_email);
+		$avatar_url = "http://cdn.libravatar.org/avatar/".md5($avatar_email)."?d=".urlencode($blog_settings->get('planet_url')."/themes/".$blog_settings->get('planet_theme')."/images/gravatar.png")."&s=40";
+		$avatar = '<img src="'.$avatar_url.'" alt="'.sprintf(T_('Gravatar of %s'),$post_list->user_fullname).'" class="gravatar" />';
 	}
 
 	if ($_GET['type']=="rss"){
@@ -234,7 +234,7 @@ if (isset($_GET) && isset($_GET['type'])) {
 		echo "\t\t\t\t<guid isPermaLink=\"true\">".htmlentities($url)."</guid>\n";
 
 		if($blog_settings->get('planet_avatar')) {
-			echo "\t\t\t\t<content:encoded><![CDATA[".$item."<p>".$gravatar.$links."</p>"."]]></content:encoded>\n";
+			echo "\t\t\t\t<content:encoded><![CDATA[".$item."<p>".$avatar.$links."</p>"."]]></content:encoded>\n";
 		} else {
 			echo "\t\t\t\t<content:encoded><![CDATA[".$item."<p>".$links."</p>"."]]></content:encoded>\n";
 		}
@@ -254,7 +254,7 @@ if (isset($_GET) && isset($_GET['type'])) {
 			echo "\t\t\t<link href=\"".htmlentities($url)."\" rel=\"alternate\" type=\"text/html\" title=\"".$titre."\" />\n";
 			echo "\t\t\t<summary type=\"html\">".str_replace(array("\r\n", "\r", "\n"), " ", $desc)."</summary>\n";
 			if($blog_settings->get('planet_avatar')) {
-				echo "\t\t\t<content type=\"html\"><![CDATA[".$item."<p>".$gravatar.$links."</p>"."]]></content>\n";
+				echo "\t\t\t<content type=\"html\"><![CDATA[".$item."<p>".$avatar.$links."</p>"."]]></content>\n";
 			} else {
 				echo "\t\t\t<content type=\"html\"><![CDATA[".$item."<p>".$links."</p>"."]]></content>\n";
 			}

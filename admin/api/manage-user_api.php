@@ -423,11 +423,10 @@ function getOutput($sql, $num_page=0, $nb_items=30) {
 			$toggle_msg = T_('Enable user');
 			$status = 'inactive';
 		}
-		$gravatar_email = strtolower($rs->user_email);
-		$gravatar_url = "http://www.gravatar.com/avatar.php?gravatar_id=".md5($gravatar_email)."&default=".urlencode($blog_settings->get('planet_url')."/themes/".$blog_settings->get('planet_theme')."/images/gravatar.png")."&size=40";
-
+		$avatar_email = strtolower($rs->user_email);
+		$avatar_url = "http://cdn.libravatar.org/avatar/".md5($avatar_email)."?d=".urlencode($blog_settings->get('planet_url')."/themes/".$blog_settings->get('planet_theme')."/images/gravatar.png")."&s=40";
 		# Affichage de la ligne de tableau
-		$output .= '<tr class="line '.$status.'"><td class="'.$god_class.'" style="text-align: center;"><img src="'.$gravatar_url.'"></td>
+		$output .= '<tr class="line '.$status.'"><td class="'.$god_class.'" style="text-align: center;"><img src="'.$avatar_url.'"></td>
 			<td class="'.$god_class.'"><ul>
 				<li>User id : '.$rs->user_id.'</li>
 				<li>Fullname : '.html_entity_decode(stripslashes($rs->user_fullname), ENT_QUOTES, 'UTF-8').'</li>

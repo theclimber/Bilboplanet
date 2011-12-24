@@ -122,11 +122,11 @@ if(isset($_POST['action'])) {
 			} else {
 				$status = 'inactive';
 			}
-			$gravatar_email = strtolower($rs->user_email);
-			$gravatar_url = "http://www.gravatar.com/avatar.php?gravatar_id=".md5($gravatar_email)."&default=".urlencode($blog_settings->get('planet_url')."/themes/".$blog_settings->get('planet_theme')."/images/gravatar.png")."&size=40";
+			$avatar_email = strtolower($rs->user_email);
+			$avatar_url = "http://cdn.libravatar.org/avatar/".md5($avatar_email)."?d=".urlencode($blog_settings->get('planet_url')."/themes/".$blog_settings->get('planet_theme')."/images/gravatar.png")."&s=40";
 
 			# Affichage de la ligne de tableau
-			$output .= '<tr class="line '.$status.'"><td><img src="'.$gravatar_url.'"></td>
+			$output .= '<tr class="line '.$status.'"><td><img src="'.$avatar_url.'"></td>
 				<td><ul>
 					<li>User id : '.$rs->user_id.'</li>
 					<li>Fullname : '.$rs->user_fullname.'</li>

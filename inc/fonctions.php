@@ -537,7 +537,7 @@ function generate_SQL(
 
 function showPosts($rs, $tpl, $search_value="", $strip_tags=false) {
 	global $blog_settings, $core;
-	$gravatar = $blog_settings->get('planet_avatar');
+	$avatar = $blog_settings->get('planet_avatar');
 
 	while($rs->fetch()){
 		$post_permalink = $rs->permalink;
@@ -579,9 +579,9 @@ function showPosts($rs, $tpl, $search_value="", $strip_tags=false) {
 
 		$tpl->setVar('post', $post);
 		# Gravatar
-		if($gravatar) {
-			$gravatar_email = strtolower($post['author_email']);
-			$tpl->setVar('gravatar_url', "http://www.gravatar.com/avatar.php?gravatar_id=".md5($gravatar_email)."&default=".urlencode($blog_settings->get('planet_url')."/themes/".$blog_settings->get('planet_theme')."/images/gravatar.png"));
+		if($avatar) {
+			$avatar_email = strtolower($post['author_email']);
+			$tpl->setVar('avatar_url', "http://cdn.libravatar.org/avatar/".md5($avatar_email)."?d=".urlencode($blog_settings->get('planet_url')."/themes/".$blog_settings->get('planet_theme')."/images/gravatar.png"));
 
 			$tpl->render('post.block.gravatar');
 		}

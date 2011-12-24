@@ -52,7 +52,7 @@
 			<!-- BEGIN post.block.gravatar -->
 			<div class="gravatar">
 				<a href="javascript:add_user('{$post.author_id}')" title="{_Show user's posts}">
-				<img src="{$gravatar_url}&size=40" class="gravatar" /></a>
+				<img src="{$avatar_url}&size=40" class="gravatar" /></a>
 			</div>
 			<!-- END post.block.gravatar -->
 			<div class="title">

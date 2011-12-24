@@ -482,7 +482,7 @@ if(isset($_POST) && isset($_POST['action'])) {
 				'.T_('Enable avatar').'
 				<div class="comment">
 					<p>
-						'.T_('Work with').' <a href="http://www.gravatar.com" target="_blank" >www.gravatar.com</a>
+						'.T_('Work with').' <a href="https://www.libravatar.org" target="_blank" >https://www.libravatar.org/</a>
 					</p>
 				</div>
 			</td>';

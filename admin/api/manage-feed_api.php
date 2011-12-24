@@ -514,8 +514,8 @@ function getOutput($sql, $num_page=0, $nb_items=30) {
 		}
 
 		$user = $core->con->select("SELECT user_email FROM ".$core->prefix."user WHERE user_id = '".$rs->user_id."'");
-		$gravatar_email = strtolower($user->f('user_email'));
-		$gravatar_url = "http://www.gravatar.com/avatar.php?gravatar_id=".md5($gravatar_email)."&default=".urlencode($blog_settings->get('planet_url')."/themes/".$blog_settings->get('planet_theme')."/images/gravatar.png")."&size=40";
+		$avatar_email = strtolower($user->f('user_email'));
+		$avatar_url = "http://cdn.libravatar.org/avatar/".md5($avatar_email)."?d=".urlencode($blog_settings->get('planet_url')."/themes/".$blog_settings->get('planet_theme')."/images/gravatar.png")."&s=40";
 
 		# Get tags from feed
 		$sql2 = "SELECT tag_id
@@ -531,7 +531,7 @@ function getOutput($sql, $num_page=0, $nb_items=30) {
 		$tag_action .= '<img src="meta/icons/add_tag.png" title="'.T_('Tag feed').'" /></a>';
 
 		# Affichage de la ligne de tableau
-		$output .= '<tr class="line '.$status.'"><td><img src="'.$gravatar_url.'" /><br />'.$rs->user_id.'</td>
+		$output .= '<tr class="line '.$status.'"><td><img src="'.$avatar_url.'" /><br />'.$rs->user_id.'</td>
 			<td><ul>
 				<li>'.T_('Feed name : ').$rs->feed_name.'</li>
 				<li>'.T_('Site URL : ').'<a href="'.$rs->site_url.'" target="_blank">'.$rs->site_url.'</a></li>

@@ -32,9 +32,9 @@ msgstr ""
 "certain qu'ils seront bien interprêtés par le moteur d'agrégation qui "
 "utilise la librairie <a href='http://simplepie.org/' title='Simple Pie' "
 "rel='noffolow'>Simple Pie</a> (distribuée sous licence LGPL). Vérifiez aussi "
-"si vos flux sont parfaitement valide sur <a href='http://feedvalidator.org/"
-"check.cgi' target='_blank'>Feedvalidator</a> et dans le cas échéant veuillez "
-"à les corriger. Sinon vous pourriez rencontrer quelques problèmes."
+"si vos flux sont parfaitement valides sur <a href='http://feedvalidator.org/"
+"check.cgi' target='_blank'>Feedvalidator</a> et, dans le cas échéant, veillez "
+"à les corriger, sinon vous pourriez rencontrer quelques problèmes."
 
 #: themes/aragorn/footer.tpl:6 themes/gil-galad/footer.tpl:6
 msgid "Back to top"
@@ -79,7 +79,7 @@ msgstr "Lire l'article"
 #: themes/legolas/posts.tpl:95 themes/aragorn/posts.tpl:74
 #: themes/gandalf/posts.tpl:77 themes/gil-galad/posts.tpl:75
 msgid "No comments yet"
-msgstr ""
+msgstr "Pas encore de commentaires"
 
 #: themes/legolas/posts.tpl:39 themes/legolas/posts.tpl:139
 #: themes/aragorn/posts.tpl:20 themes/aragorn/posts.tpl:118
@@ -98,7 +98,7 @@ msgstr "Accès rapide aux derniers articles de la page"
 #: themes/gandalf/index.tpl:67 themes/gil-galad/index.tpl:80
 #, fuzzy
 msgid "Password forgotten?"
-msgstr "Changer de mot de passe"
+msgstr "Mot de passe oublié ?"
 
 #: themes/legolas/subscription.tpl:57 themes/legolas/contact.tpl:22
 #: themes/aragorn/subscription.tpl:57 themes/aragorn/contact.tpl:22
@@ -126,7 +126,7 @@ msgstr "Afficher les articles de l'utilisateur"
 #: themes/legolas/posts.tpl:54 themes/aragorn/posts.tpl:34
 #: themes/gandalf/posts.tpl:35 themes/gil-galad/posts.tpl:35
 msgid "Show user's posts"
-msgstr "Affiches les articles de l'utilisateur"
+msgstr "Affiche les articles de l'utilisateur"
 
 #: themes/legolas/sidebar.tpl:49 themes/aragorn/sidebar.tpl:33
 #: themes/gandalf/sidebar.tpl:30 themes/gil-galad/sidebar.tpl:33
@@ -211,7 +211,7 @@ msgstr "Nom d'utilisateur"
 #: themes/gandalf/sidebar.tpl:41 themes/gil-galad/sidebar.tpl:43
 #, fuzzy
 msgid "Feed with the posts of this category : "
-msgstr "Fil de tous les articles"
+msgstr "Fil de tous les articles de cette catégorie : "
 
 #: themes/legolas/stats.tpl:12 themes/aragorn/stats.tpl:12
 #: themes/gandalf/stats.tpl:12 themes/gil-galad/stats.tpl:12
@@ -226,7 +226,7 @@ msgstr "Visiter la source"
 #: themes/legolas/index.tpl:39 themes/aragorn/index.tpl:38
 #: themes/gandalf/index.tpl:38 themes/gil-galad/index.tpl:51
 msgid "Welcome"
-msgstr ""
+msgstr "Bienvenue"
 
 #: themes/legolas/posts.tpl:32 themes/legolas/posts.tpl:133
 #: themes/legolas/archives.tpl:6 themes/aragorn/posts.tpl:13
@@ -246,7 +246,7 @@ msgstr "Total des votes"
 #: themes/legolas/posts.tpl:73 themes/aragorn/posts.tpl:52
 #: themes/gandalf/posts.tpl:52 themes/gil-galad/posts.tpl:53
 msgid "Add tag"
-msgstr ""
+msgstr "Ajouter un mot-clé"
 
 #: themes/aragorn/sidebar.tpl:58 themes/gil-galad/sidebar.tpl:58
 msgid "Members"
@@ -259,8 +259,8 @@ msgid ""
 "your feed URL, suggestion ...), you can do it by <a href='contact."
 "php'>clicking here</a>."
 msgstr ""
-"Si vous souhaitez contacter l'équipe d'administration pour une raison ou un "
-"autre (changer l'adresse de vos flux, faire une suggestion, ...) vous pouvez "
+"Si vous souhaitez contacter l'équipe d'administration pour une raison ou une "
+"autre (changer l'adresse de vos flux, faire une suggestion...), vous pouvez "
 "le faire en <a href='contact.php'>cliquant ici</a>."
 
 #: themes/legolas/sidebar.tpl:37 themes/aragorn/sidebar.tpl:21
@@ -271,7 +271,7 @@ msgstr ""
 #: themes/legolas/posts.tpl:76 themes/aragorn/posts.tpl:55
 #: themes/gandalf/posts.tpl:55 themes/gil-galad/posts.tpl:56
 msgid "Allow comments"
-msgstr ""
+msgstr "Autoriser les commentaires"
 
 #: themes/legolas/stats.tpl:2 themes/aragorn/stats.tpl:2
 #: themes/gandalf/stats.tpl:2 themes/gil-galad/stats.tpl:2
@@ -285,7 +285,7 @@ msgstr "Filtrer les articles"
 #: themes/legolas/index.tpl:149 themes/aragorn/index.tpl:172
 #: themes/gandalf/index.tpl:164 themes/gil-galad/index.tpl:172
 msgid "Comma separated tags (ex: linux,web,event)"
-msgstr ""
+msgstr "Mot-clés séparés par une virgule (ex. : linux,web,event)"
 
 #: themes/legolas/menu.tpl:14 themes/aragorn/menu.tpl:12
 #: themes/gandalf/menu.tpl:14 themes/gil-galad/menu.tpl:12
@@ -338,7 +338,7 @@ msgstr "Administration"
 #: themes/legolas/sidebar.tpl:44 themes/aragorn/sidebar.tpl:28
 #: themes/gandalf/sidebar.tpl:25 themes/gil-galad/sidebar.tpl:28
 msgid "Tagged with :"
-msgstr ""
+msgstr "Marqué avec : "
 
 #: themes/legolas/subscription.tpl:39 themes/aragorn/subscription.tpl:39
 #: themes/gandalf/subscription.tpl:39 themes/gil-galad/subscription.tpl:39
@@ -367,18 +367,18 @@ msgstr "Site web"
 #: themes/legolas/index.tpl:147 themes/aragorn/index.tpl:170
 #: themes/gandalf/index.tpl:162 themes/gil-galad/index.tpl:170
 msgid "Tags"
-msgstr ""
+msgstr "Mots-clés"
 
 #: themes/legolas/posts.tpl:116 themes/aragorn/posts.tpl:95
 #: themes/gandalf/posts.tpl:98 themes/gil-galad/posts.tpl:96
 msgid "Here you'll find some help concerning the syntax :"
-msgstr ""
+msgstr "Ici vous trouverez de l'aide concernant la syntaxe : "
 
 #: themes/legolas/posts.tpl:79 themes/aragorn/posts.tpl:58
 #: themes/gandalf/posts.tpl:58 themes/gil-galad/posts.tpl:59
 #, fuzzy
 msgid "Disable comments"
-msgstr "Désactiver le flux"
+msgstr "Désactiver les commentaires"
 
 #: themes/legolas/subscription.tpl:46 themes/aragorn/subscription.tpl:46
 #: themes/gandalf/subscription.tpl:46 themes/gil-galad/subscription.tpl:46
@@ -394,7 +394,7 @@ msgstr "Top 10"
 #: themes/gandalf/index.tpl:63 themes/gil-galad/index.tpl:76
 #, fuzzy
 msgid "Remember me"
-msgstr "Décembre"
+msgstr "Se souvenir de moi"
 
 #: themes/legolas/sidebar.tpl:6
 msgid "Search"
@@ -403,12 +403,12 @@ msgstr "Recherche"
 #: themes/legolas/subscription.tpl:35 themes/aragorn/subscription.tpl:35
 #: themes/gandalf/subscription.tpl:35 themes/gil-galad/subscription.tpl:35
 msgid "Website URL"
-msgstr "Site URL"
+msgstr "Adresse du site"
 
 #: themes/legolas/posts.tpl:120 themes/aragorn/posts.tpl:99
 #: themes/gandalf/posts.tpl:102 themes/gil-galad/posts.tpl:100
 msgid "Publish"
-msgstr ""
+msgstr "Publier"
 
 #: themes/legolas/footer.tpl:11 themes/aragorn/sidebar.tpl:70
 #: themes/gandalf/sidebar.tpl:73 themes/gil-galad/sidebar.tpl:70
@@ -424,7 +424,7 @@ msgstr "Fil des articles populaires"
 #: themes/gandalf/contact.tpl:10 themes/gil-galad/contact.tpl:10
 msgid "You can contact the administration team with the form below:"
 msgstr ""
-"Vous pouvez contacter les administrateurs via le formulaire ci-dessous:"
+"Vous pouvez contacter les administrateurs via le formulaire ci-dessous : "
 
 #: themes/legolas/posts.tpl:22 themes/aragorn/posts.tpl:3
 #: themes/gandalf/posts.tpl:3 themes/gil-galad/posts.tpl:3
@@ -434,7 +434,7 @@ msgstr "Vous cherchez tous les articles contenant :"
 #: themes/legolas/index.tpl:66 themes/aragorn/index.tpl:65
 #: themes/gandalf/index.tpl:65 themes/gil-galad/index.tpl:78
 msgid "Connect"
-msgstr ""
+msgstr "Se connecter"
 
 #: themes/legolas/index.tpl:141 themes/aragorn/index.tpl:164
 #: themes/gandalf/index.tpl:156 themes/gil-galad/index.tpl:164
@@ -476,7 +476,7 @@ msgstr "Utilisateurs"
 #: themes/gandalf/sidebar.tpl:13
 #, fuzzy
 msgid "Number of items :"
-msgstr "Nombre de votes :"
+msgstr "Nombre d'articles : "
 
 #: themes/legolas/subscription.tpl:17 themes/aragorn/subscription.tpl:17
 #: themes/gandalf/subscription.tpl:17 themes/gil-galad/subscription.tpl:17
@@ -486,7 +486,7 @@ msgstr "Inscription / Désinscription"
 #: themes/legolas/sidebar.tpl:46 themes/aragorn/sidebar.tpl:30
 #: themes/gandalf/sidebar.tpl:27 themes/gil-galad/sidebar.tpl:30
 msgid "Written by :"
-msgstr ""
+msgstr "Ecrit par : "
 
 #: themes/legolas/index.tpl:58 themes/aragorn/index.tpl:57
 #: themes/gandalf/index.tpl:57 themes/gil-galad/index.tpl:70
@@ -696,7 +696,7 @@ msgid ""
 "Your request could not be sent for an unknown reason.<br/>Please try again."
 msgstr ""
 "Votre demande n'a pas pu être envoyée pour une raison inconnue.<br/>Merci de "
-"réessayer"
+"réessayer."
 
 #: inscription.php:115 contact.php:95
 msgid "In case of problem"

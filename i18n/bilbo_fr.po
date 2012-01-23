@@ -906,7 +906,7 @@ msgid ""
 "User ID must contain at least 2 characters using letters, numbers or symbols."
 msgstr ""
 "l'ID utilisateur doit contenir au moins 2 caractères, utilisant des lettres, "
-"des chiffres ou des symboles"
+"des chiffres ou des symboles."
 
 #: inc/core/class.bp.core.php:648
 msgid "Password must contain at least 6 characters."
@@ -918,7 +918,7 @@ msgstr "Code de langue invalide"
 
 #: inc/core/class.bp.settings.php:77
 msgid "Unable to retrieve settings:"
-msgstr "Impossible de récupérer la configuration:"
+msgstr "Impossible de récupérer la configuration :"
 
 #: inc/core/class.bp.settings.php:139
 #, php-format
@@ -927,17 +927,17 @@ msgstr "Le champ %s n'est pas un champ de configuration valide"
 
 #: inc/core/class.dc.modules.php:208
 msgid "Empty module zip file."
-msgstr "Fichier module zip vide"
+msgstr "Fichier module zip vide."
 
 #: inc/core/class.dc.modules.php:213
 msgid "The zip file does not appear to be a valid Bilboplanet module."
 msgstr ""
 "Le fichier zip n'apparait pas comme étant un module valide pour le "
-"Bilboplanet"
+"Bilboplanet."
 
 #: inc/core/class.dc.modules.php:238
 msgid "An error occurred during module deletion."
-msgstr "Il y a eu une erreur pendant la suppression du module"
+msgstr "Il y a eu une erreur pendant la suppression du module."
 
 #: inc/core/class.dc.modules.php:245
 #, php-format
@@ -951,7 +951,7 @@ msgstr "Impossible de lire le nouveau fichier _define.php"
 #: inc/core/class.dc.modules.php:315 inc/core/class.dc.modules.php:326
 #: inc/core/class.dc.modules.php:341
 msgid "No such module."
-msgstr "Aucun module de ce nom"
+msgstr "Aucun module de ce nom."
 
 #: inc/core/class.dc.modules.php:319
 msgid "Cannot remove module files"
@@ -959,11 +959,11 @@ msgstr "Impossible de supprimer les fichiers de module"
 
 #: inc/core/class.dc.modules.php:330 inc/core/class.dc.modules.php:334
 msgid "Cannot deactivate plugin."
-msgstr "Impossible de désactiver le plugin"
+msgstr "Impossible de désactiver le plugin."
 
 #: inc/core/class.dc.modules.php:345 inc/core/class.dc.modules.php:349
 msgid "Cannot activate plugin."
-msgstr "Impossible d'actiber le plugon"
+msgstr "Impossible d'activer le plugin."
 
 #: inc/core/class.bp.auth.php:68
 msgid "administrator"
@@ -999,15 +999,15 @@ msgstr "Gérer tous les éléments média"
 
 #: inc/core/class.bp.auth.php:374
 msgid "That user does not exists in the database."
-msgstr "Cet utilisateur n'existe pas dans la base de données"
+msgstr "Cet utilisateur n'existe pas dans la base de données."
 
 #: inc/core/class.bp.auth.php:406
 msgid "That key does not exists in the database."
-msgstr "Cette clé n'existe pas dans la base de données"
+msgstr "Cette clé n'existe pas dans la base de données."
 
 #: inc/admin/prepend.php:66
 msgid "Database error"
-msgstr "Erreur de base de données"
+msgstr "Erreur de base de données."
 
 #: inc/admin/prepend.php:67
 msgid ""
@@ -1015,7 +1015,7 @@ msgid ""
 "completly installed?"
 msgstr ""
 "Il semblerait qu'il n'y ait pas de table Session dans votre base de données. "
-"Est-ce que le Bilboplanet est complètement installé?"
+"Est-ce que le Bilboplanet est complètement installé ?"
 
 #: inc/admin/prepend.php:89
 msgid "Next Page"
@@ -1039,7 +1039,7 @@ msgstr "Accès refusé"
 #: admin/index.php:32 admin/manage-useroption.php:32 admin/manage-logs.php:31
 #: admin/manage-database.php:31 admin/manage-update.php:31
 msgid "You are not allowed to see this page."
-msgstr "Vous n'êtes pas authorisé à voir cette page."
+msgstr "Vous n'êtes pas autorisé à voir cette page."
 
 #: admin/manage-post.php:32 admin/manage-account.php:32
 #: admin/manage-permissions.php:32 admin/manage-user.php:32
@@ -1063,7 +1063,7 @@ msgstr "L'article %s a été modifié"
 
 #: admin/manage-post.php:119
 msgid "Filtering of the posts"
-msgstr "Filtrer les articles"
+msgstr "Filtrage des articles"
 
 #: admin/manage-post.php:121
 msgid "Filter articles"
@@ -1171,12 +1171,12 @@ msgstr "id utilisateur"
 #: admin/manage-account.php:67 admin/manage-user.php:109
 #: admin/manage-user.php:150
 msgid "ex: Jean Dupont"
-msgstr "ex: Jean Dupont"
+msgstr "ex : Jean Dupont"
 
 #: admin/manage-account.php:71 admin/manage-user.php:113
 #: admin/manage-user.php:154
 msgid "ex: xxx@yyy.zzz"
-msgstr "ex: xxx@yyy.zzz"
+msgstr "ex : xxx@yyy.zzz"
 
 #: admin/manage-account.php:73 admin/manage-user.php:156
 msgid "New password"
@@ -1184,7 +1184,7 @@ msgstr "Nouveau mot de passe"
 
 #: admin/manage-account.php:76 admin/manage-user.php:159
 msgid "Confirm new password"
-msgstr "Confirmation nouveau mot de passe"
+msgstr "Confirmation du nouveau mot de passe"
 
 #: admin/manage-account.php:78 admin/manage-user.php:161
 msgid "You can leave the password field blank if you don't want to change it"
@@ -1235,11 +1235,11 @@ msgstr "Statut utilisateur"
 
 #: admin/manage-user.php:96
 msgid "To add a new member, fill out the form below."
-msgstr "Pour ajouter un nouveau membre, remplissez le formulaire ci-dessous"
+msgstr "Pour ajouter un nouveau membre, remplissez le formulaire ci-dessous."
 
 #: admin/manage-user.php:105
 msgid "ex: Frankenstein"
-msgstr "ex: Frankenstein"
+msgstr "ex : Frankenstein"
 
 #: admin/manage-user.php:117
 msgid "Minimum 4 chars"
@@ -1255,7 +1255,7 @@ msgstr "Site web (facultatif)"
 
 #: admin/manage-user.php:124
 msgid "ex: http://www.example.com"
-msgstr "ex: http://www.example.com ou http://planet.example.com"
+msgstr "ex : http://www.example.com ou http://planet.example.com"
 
 #: admin/manage-user.php:127 admin/manage-user.php:185
 #: admin/manage-feed.php:144
@@ -1282,7 +1282,7 @@ msgstr "Nom du site"
 
 #: admin/manage-user.php:178 admin/manage-user.php:196
 msgid "ex: Bilboplanet blog"
-msgstr "ex: Bilboplanet"
+msgstr "ex : Bilboplanet"
 
 #: admin/manage-user.php:180 admin/manage-user.php:198
 msgid "Site URL"
@@ -1290,7 +1290,7 @@ msgstr "Adresse du site"
 
 #: admin/manage-user.php:182 admin/manage-user.php:200
 msgid "ex: http://www.bilboplanet.com"
-msgstr "ex: http://www.bilboplanet.com"
+msgstr "ex : http://www.bilboplanet.com"
 
 #: admin/manage-feed.php:48 admin/manage-feed.php:98
 msgid "Add a feed"
@@ -1321,7 +1321,7 @@ msgid ""
 "Manage member's feeds. Notice that you can only add a feed to a user who has "
 "a website. So you first need to create the user and add a site to him"
 msgstr ""
-"Gérer les flux des utilisateurs. Notez qu'on ne peut que ajouter un flux sur "
+"Gérer les flux des utilisateurs. Notez qu'on ne peut ajouter un flux que sur "
 "un utilisateur qui a un site. Il faut donc d'abord ajouter un site à un "
 "utilisateur avant de pouvoir lui attribuer un flux"
 
@@ -1347,7 +1347,7 @@ msgstr "URL complète du flux"
 
 #: admin/manage-feed.php:131
 msgid "ex: http://www.bilboplanet.com/feed/atom/"
-msgstr "ex: http://www.bilboplanet.com/feed/"
+msgstr "ex : http://www.bilboplanet.com/feed/"
 
 #: admin/manage-feed.php:133 admin/manage-feed.php:165
 msgid "Feed name"
@@ -1355,7 +1355,7 @@ msgstr "Nom du flux"
 
 #: admin/manage-feed.php:135
 msgid "ex: gnu/Linux posts"
-msgstr "ex: articles gnu/Linux"
+msgstr "ex : articles gnu/Linux"
 
 #: admin/manage-feed.php:138
 msgid "Trusted URL"
@@ -1371,7 +1371,7 @@ msgstr "Gérer les flux des membres."
 
 #: admin/manage-feed.php:167
 msgid "ex: GNU/Linux posts"
-msgstr "ex: articles gnu/Linux"
+msgstr "ex : articles gnu/Linux"
 
 #: admin/manage-feed.php:169
 msgid "Feed URL"
@@ -1379,7 +1379,7 @@ msgstr "URL du flux"
 
 #: admin/manage-feed.php:171
 msgid "ex: http://www.bilboplanet.com/feed/"
-msgstr "ex: http://www.bilboplanet.com/feed/"
+msgstr "ex : http://www.bilboplanet.com/feed/"
 
 #: admin/manage-moderation.php:48 admin/sidebar.php:88
 msgid "Moderation interface"
@@ -1387,7 +1387,7 @@ msgstr "Interface de modération"
 
 #: admin/manage-moderation.php:50
 msgid "Moderate some posts."
-msgstr "Modérer des articles"
+msgstr "Modérer des articles."
 
 #: admin/manage-moderation.php:54
 msgid ""
@@ -1463,14 +1463,14 @@ msgid ""
 "website manager, <br />multiple feed per site, new configuration system, "
 "newsletter and optimized dashboard."
 msgstr ""
-"-Nouveau panneau d'administration avec la gersion des permissions "
+"- Nouveau panneau d'administration avec la gestion des permissions "
 "utilisateur, interface de modération<br/>plusieurs flux par site, nouveau "
-"système de configuration, newsletter et dashboard optimisé"
+"système de configuration, newsletter et dashboard optimisé."
 
 #: admin/head.php:89
 msgid "- Easy templating system allowing you to draw personnalize own Planet"
 msgstr ""
-"-Un moteur de templates facile vous permettant de personnaliser votre propre "
+"- Un moteur de templates facile vous permettant de personnaliser votre propre "
 "Planet"
 
 #: admin/head.php:90
@@ -1478,12 +1478,12 @@ msgid ""
 "- New database, new installer, more security, more ajax in admin panel, and "
 "a lot of more cool stuff !!"
 msgstr ""
-"-Nouvelle base de données, nouvel installateur, plus de sécurité, plus "
+"- Nouvelle base de données, nouvel installateur, plus de sécurité, plus "
 "d'appels dynamiques dans l'admin et une série de chouettes trucs sympa !!"
 
 #: admin/manage-cache.php:54
 msgid "The cache files were correctly deleted."
-msgstr "Les fichiers de cache ont été correctement supprimés"
+msgstr "Les fichiers de cache ont été correctement supprimés."
 
 #: admin/manage-cache.php:70
 msgid "Manage cache"
@@ -1499,7 +1499,7 @@ msgstr "Supprimer le cache"
 
 #: admin/manage-cache.php:83
 msgid "The following files were deleted :"
-msgstr "Les fichiers suivant ont été supprimé :"
+msgstr "Les fichiers suivant ont été supprimés :"
 
 #: admin/manage-option.php:60
 msgid "Options"
@@ -1512,7 +1512,7 @@ msgstr "Configuration du Planet."
 #: admin/manage-newsletter.php:60
 #, php-format
 msgid "You shoud have selected %s"
-msgstr "Vous auriez du selectionner %s"
+msgstr "Vous auriez dû selectionner %s"
 
 #: admin/manage-newsletter.php:87 admin/manage-newsletter.php:225
 msgid "Sender"
@@ -1574,7 +1574,7 @@ msgstr "Faites votre sélection de la semaine"
 #: admin/manage-selection.php:95
 #, php-format
 msgid "Pool of selectionned posts between %s and %s"
-msgstr "Dépot des articles sélectionnés entre %s et %s"
+msgstr "Dépô des articles sélectionnés entre %s et %s"
 
 #: admin/manage-selection.php:111
 msgid "Your email address"
@@ -1626,11 +1626,11 @@ msgstr "La mise à jour est désactivée"
 
 #: admin/index.php:173
 msgid "The update on loading of index page enabled"
-msgstr "Mise à jour au chargement de la page d'index activé"
+msgstr "Mise à jour au chargement de la page d'index activée"
 
 #: admin/index.php:175
 msgid "Current size of the database :"
-msgstr "Taille de la base de donnée :"
+msgstr "Taille actuelle de la base de donnée :"
 
 #: admin/index.php:176
 msgid "Number of articles in the DB :"
@@ -1702,7 +1702,7 @@ msgstr "Options des utilisateurs"
 
 #: admin/manage-useroption.php:101
 msgid "Configuring user settings."
-msgstr "Configurer l'utilisateur"
+msgstr "Configurer l'utilisateur."
 
 #: admin/manage-useroption.php:114
 msgid "Jabber / GoogleTalk"
@@ -1752,7 +1752,7 @@ msgstr "Nom du fichier :"
 
 #: admin/manage-database.php:66
 msgid "Size: "
-msgstr "Taille:"
+msgstr "Taille :"
 
 #: admin/manage-database.php:66
 msgid "Kb"
@@ -1773,7 +1773,7 @@ msgstr ""
 
 #: admin/manage-database.php:190
 msgid "site_id should not be null for user "
-msgstr "Le champ site_id ne doit pas être vite pour cet utilisateur"
+msgstr "Le champ site_id ne doit pas être vide pour cet utilisateur"
 
 #: admin/manage-database.php:196
 msgid ""
@@ -1813,7 +1813,7 @@ msgstr ""
 
 #: admin/manage-database.php:317
 msgid "Exported data"
-msgstr "Donnés exportées"
+msgstr "Données exportées"
 
 #: admin/manage-database.php:326
 msgid "User table"
@@ -1841,7 +1841,7 @@ msgstr "Table des permissions"
 
 #: admin/manage-database.php:356
 msgid "Setting table"
-msgstr "Table setting"
+msgstr "Table des données de configuration"
 
 #: admin/manage-database.php:360
 msgid "Export"
@@ -1853,7 +1853,7 @@ msgstr "Importer la configuration du planet"
 
 #: admin/manage-database.php:369
 msgid "Please select the file you want to restore."
-msgstr "Veuillez sélectionner le fichier que vous voulez restorer"
+msgstr "Veuillez sélectionner le fichier que vous voulez restaurer"
 
 #: admin/manage-database.php:370
 msgid "TAKE CARE !"
@@ -1864,7 +1864,7 @@ msgid ""
 "If you apply the content of one of this file, this action can not be "
 "cancelled"
 msgstr ""
-"Si vous appliquez le contenu d'un de ces fichiers, cette action est "
+"Si vous appliquez le contenu de l'un de ces fichiers, cette action est "
 "irréversible"
 
 #: admin/manage-database.php:371
@@ -1872,7 +1872,7 @@ msgid ""
 "This action can take several minutes. Be patient and don't cancel the "
 "process during execution"
 msgstr ""
-"Cette action peut prendre plusieurs minutes. Soyez patient et n'annuller pas "
+"Cette action peut prendre plusieurs minutes. Soyez patient et n'annulez pas "
 "le processus pendant son exécution"
 
 #: admin/manage-database.php:376
@@ -1901,7 +1901,7 @@ msgstr ""
 
 #: admin/manage-update.php:47
 msgid "Enable update on loading of index page: Enable"
-msgstr "Activer la mise à jour au chargement de la page d'index: Activé"
+msgstr "Activer la mise à jour au chargement de la page d'index : Activé"
 
 #: admin/manage-update.php:54
 msgid "Enable update on loading of index page: Disable"
@@ -1916,7 +1916,7 @@ msgid ""
 "The update can not start : the process is already started (You can force "
 "update by deleting the /inc/cron_running.txt file)"
 msgstr ""
-"La mise à jour ne peut pas démarrer : Le processus est déjà lancé (Vous "
+"La mise à jour ne peut pas démarrer : le processus est déjà lancé (vous "
 "pouvez forcer la mise à jour en supprimant le fichier /inc/cron_running.txt)"
 
 #: admin/manage-update.php:74
@@ -1925,7 +1925,7 @@ msgstr "La mise à jour automatique est activée"
 
 #: admin/manage-update.php:82
 msgid "Manual update ..."
-msgstr "Mise à jour manuelle ..."
+msgstr "Mise à jour manuelle..."
 
 #: admin/manage-update.php:85
 #, php-format
@@ -1962,11 +1962,11 @@ msgstr "Configurer la mise à jour des flux"
 
 #: admin/manage-update.php:143
 msgid "How to configure the update of the feeds ?"
-msgstr "Comment configurer la mise à jour des flux?"
+msgstr "Comment configurer la mise à jour des flux ?"
 
 #: admin/manage-update.php:146
 msgid "How does it work?"
-msgstr "Comment ça marche?"
+msgstr "Comment ça marche ?"
 
 #: admin/manage-update.php:147
 msgid ""
@@ -1978,7 +1978,7 @@ msgstr ""
 "L'algorithme de mise à jour peut fonctionner de plusieurs manières. La "
 "solution optimale qui consomme le moins de ressources et donnera les "
 "meilleurs résultats est clairement l'installation manuelle d'un cron sur "
-"votre serveur. Cependant vous trouverez ici une petite explication sur les "
+"votre serveur. Cependant, vous trouverez ici une petite explication sur les "
 "différentes méthodes existantes :"
 
 #: admin/manage-update.php:149
@@ -2006,7 +2006,7 @@ msgstr ""
 "spéciales PHP que vous n'avez pas nécessairement sur votre serveur. De plus, "
 "si vous utilisez cette solution, veuillez à vérifier de temps en temps que "
 "la mise à jour fonctionne toujours. Elle se désactive parfois toute seule "
-"(le process peut être tué)."
+"(le processus peut être tué)."
 
 #: admin/manage-update.php:151
 msgid ""
@@ -2017,7 +2017,7 @@ msgid ""
 msgstr ""
 "Une autre possibilité intuitive c'est de configurer la mise à jour au "
 "chargement de la page d'index (voir checkbox ci-dessus). Ceci signifie que "
-"la mise à jour sera activité à la visite de votre site. C'est une solution "
+"la mise à jour sera activée à la visite de votre site. C'est une solution "
 "souvent utilisée mais qui peut gêner légèrement l'expérience utilisateur sur "
 "votre site."
 
@@ -2029,7 +2029,7 @@ msgid ""
 msgstr ""
 "La solution optimale, comme expliqué plus haut, est de configurer "
 "manuellement le crontab de votre serveur pour activer la mise à jour. Pour "
-"configurer un cron manuellement vous pourrez trouver quelques conseils ci-"
+"configurer un cron manuellement, vous pourrez trouver quelques conseils ci-"
 "dessous."
 
 #: admin/manage-update.php:156
@@ -2044,8 +2044,8 @@ msgstr ""
 msgid ""
 "This will automatically launch the update and log it into the log files."
 msgstr ""
-"Ceci va automatiquement lancer la mise à jour et logger les informations "
-"dans les fichiers de log."
+"Ceci va automatiquement lancer la mise à jour et enregistrer les informations "
+"dans les fichiers journaux."
 
 #: admin/auth.php:95
 msgid "Password reset"
@@ -2068,8 +2068,8 @@ msgid ""
 "To reset your password visit the following address, otherwise just ignore "
 "this email and nothing will happen."
 msgstr ""
-"Pour  réinitialiser votre mote de passe, visitez l'adresse suivante. Sinon "
-"ignorez simplement cet email et rien ne se passera"
+"Pour réinitialiser votre mot de passe, rendez-vous à l'adresse suivante."
+"Sinon ignorez simplement cet email et rien ne se passera"
 
 #: admin/auth.php:106
 #, php-format
@@ -2083,16 +2083,16 @@ msgstr "Votre nouveau mot de passe"
 #: admin/auth.php:122 admin/auth.php:270 admin/auth.php:316
 #: admin/install/wizard.php:192 admin/install/index.php:354
 msgid "Username:"
-msgstr "Nom d'utilisateur:"
+msgstr "Nom d'utilisateur :"
 
 #: admin/auth.php:123 admin/auth.php:320 admin/install/wizard.php:196
 #: admin/install/index.php:355
 msgid "Password:"
-msgstr "Mot de passe:"
+msgstr "Mot de passe :"
 
 #: admin/auth.php:130
 msgid "Your new password is in your mailbox."
-msgstr "Votre nouveau mot de passe est dans votre boite mail"
+msgstr "Votre nouveau mot de passe est dans votre boîte mail"
 
 #: admin/auth.php:162
 msgid "Passwords don't match"
@@ -2116,7 +2116,7 @@ msgstr "Demander un nouveau mot de passe"
 
 #: admin/auth.php:274
 msgid "Email:"
-msgstr "Email:"
+msgstr "Email :"
 
 #: admin/auth.php:280
 msgid "recover"
@@ -2128,11 +2128,11 @@ msgstr "Changez votre mot de passe"
 
 #: admin/auth.php:291
 msgid "New password:"
-msgstr "Nouveau mot de passe:"
+msgstr "Nouveau mot de passe :"
 
 #: admin/auth.php:294
 msgid "Confirm password:"
-msgstr "Confirmation mot de passe:"
+msgstr "Confirmation du mot de passe :"
 
 #: admin/auth.php:298
 msgid "change"
@@ -2148,7 +2148,7 @@ msgstr "Se souvenir de moi sur cet ordinateur"
 
 #: admin/auth.php:332
 msgid "login"
-msgstr "Login"
+msgstr "Identification"
 
 #: admin/sidebar.php:27
 msgid "Common"
@@ -2245,7 +2245,7 @@ msgstr "Permissions"
 
 #: admin/install/wizard.php:74
 msgid "The Bilboplanet could not be installed."
-msgstr "Le Bilboplanet ne peut pas être installé"
+msgstr "Le Bilboplanet ne peut pas être installé."
 
 #: admin/install/wizard.php:80
 msgid ""
@@ -2253,17 +2253,17 @@ msgid ""
 "database before."
 msgstr ""
 "Le Bilboplanet est déjà installé. Veuillez d'abord supprimer les tables de "
-"la base de donnée."
+"la base de données."
 
 #: admin/install/wizard.php:86
 #, php-format
 msgid "File %s does not exist."
-msgstr "Le fichier %s n'existe pas"
+msgstr "Le fichier %s n'existe pas."
 
 #: admin/install/wizard.php:91 admin/install/wizard.php:105
 #, php-format
 msgid "Cannot write %s file."
-msgstr "Impossible d'écrire dans le fichier %s"
+msgstr "Impossible d'écrire dans le fichier %s."
 
 #: admin/install/wizard.php:142
 msgid "Bilboplanet Install Wizard"
@@ -2275,7 +2275,7 @@ msgstr "Assistant d'installation du bilboplanet"
 
 #: admin/install/wizard.php:161 admin/install/index.php:271
 msgid "Errors:"
-msgstr "Erreurs:"
+msgstr "Erreurs :"
 
 #: admin/install/wizard.php:165
 #, php-format
@@ -2300,7 +2300,7 @@ msgid ""
 "   4. Table prefix for your database.<br/><br/>"
 msgstr ""
 "<h3>Bienvenue sur le Bilboplanet. Avant de commencer, vous avez besoin de "
-"connaitre quelques informations concernant votre base de données. Vous "
+"connaître quelques informations concernant votre base de données. Vous "
 "devrez fournir les informations suivantes pour commencer l'installation et "
 "créer le fichier de configuration.</h3>\n"
 "\n"
@@ -2308,23 +2308,23 @@ msgstr ""
 "2. Le nom de la base de données<br/>\n"
 "3. Le nom d'utilisateur<br/>\n"
 "4. Le mot de passe<br/>\n"
-"5. Le prefix de vos tables.<br/><br>"
+"5. Le préfixe de vos tables.<br/><br>"
 
 #: admin/install/wizard.php:184
 msgid "Host of the database"
-msgstr "Hôte de la base de données:"
+msgstr "Hôte de la base de données :"
 
 #: admin/install/wizard.php:186
 msgid "ex: localhost"
-msgstr "ex: localhost"
+msgstr "ex : localhost"
 
 #: admin/install/wizard.php:188
 msgid "Name of the database:"
-msgstr "Nom de la base de données:"
+msgstr "Nom de la base de données :"
 
 #: admin/install/wizard.php:190
 msgid "ex: bilboplanet"
-msgstr "ex: bilboplanet"
+msgstr "ex : bilboplanet"
 
 #: admin/install/wizard.php:194
 msgid "Your username depends of your provider"
@@ -2341,7 +2341,7 @@ msgstr "Champ requis"
 
 #: admin/install/wizard.php:200
 msgid "Database Tables Prefix:"
-msgstr "Préfixe des tables de la base de données:"
+msgstr "Préfixe des tables de la base de données :"
 
 #: admin/install/wizard.php:202
 msgid "bp_ is the default prefix"
@@ -2404,7 +2404,7 @@ msgid ""
 "the wizard to generate a configuration file. Click \"Next\" to go to the "
 "setup page."
 msgstr ""
-"Il n'y a pas de fichier de configuration, vous devez en créer un. Pour ça "
+"Il n'y a pas de fichier de configuration, vous devez en créer un. Pour cela, "
 "vous pouvez utiliser l'assistant qui générera automatiquement un fichier de "
 "configuration. Cliquez sur \"Suivant\" pour aller à la page d'installation."
 
@@ -2414,7 +2414,7 @@ msgstr "Suivant"
 
 #: admin/install/index.php:50
 msgid "The Bilboplanet is already installed."
-msgstr "Le Bilboplanet est déjà installé"
+msgstr "Le Bilboplanet est déjà installé."
 
 #: admin/install/index.php:56
 msgid "The Bilboplanet can not be installed"
@@ -2423,7 +2423,7 @@ msgstr "Le Bilboplanet ne peut pas être installé"
 #: admin/install/index.php:92
 #, php-format
 msgid "Unable to read %s file."
-msgstr "Impossible de lire le fichier %s"
+msgstr "Impossible de lire le fichier %s."
 
 #: admin/install/index.php:101
 msgid "Please fill the title in."
@@ -2431,11 +2431,11 @@ msgstr "Veuillez remplir le titre."
 
 #: admin/install/index.php:104
 msgid "Please fill the user email in."
-msgstr "Veuillez remplir l'adresse email de l'utilisateur"
+msgstr "Veuillez remplir l'adresse email de l'utilisateur."
 
 #: admin/install/index.php:107
 msgid "Please fill the username in."
-msgstr "Veuillez remplir le nom d'utilisateur"
+msgstr "Veuillez remplir le nom d'utilisateur."
 
 #: admin/install/index.php:110 admin/api/manage-user_api.php:86
 msgid ""
@@ -2481,12 +2481,12 @@ msgid ""
 "Thank you for taking somes minutes to answer those questions to help to the "
 "configuration of the bilboplanet."
 msgstr ""
-"Merci de prendre quelques minutes pour répondres à ces questions pour aider "
+"Merci de prendre quelques minutes pour répondre à ces questions pour aider "
 "à la configuration du bilboplanet"
 
 #: admin/install/index.php:298
 msgid "Fields marked with an asterisk are obligatory"
-msgstr "Les champs marqués d'un asterisque sont mandatoires"
+msgstr "Les champs marqués d'un asterisque sont obligatoires"
 
 #: admin/install/index.php:301
 msgid "Information of the user"
@@ -2494,7 +2494,7 @@ msgstr "Information de l'utilisateur"
 
 #: admin/install/index.php:304
 msgid "Enter your fullname or the name you want to be displayed"
-msgstr "Entrez votre nom complet ou le nom que vous souhaitez voir afficher"
+msgstr "Entrez votre nom complet ou le nom que vous souhaitez voir affiché"
 
 #: admin/install/index.php:307
 msgid "Enter your email address"
@@ -2612,7 +2612,7 @@ msgstr "Le flux %s a été correctement ajouté"
 #: admin/api/manage-feed_api.php:126
 msgid "Please select the user to you want to add the feed"
 msgstr ""
-"Veuillez sélectionner l'utilisateur auquell vous souhaitez ajouter le flux"
+"Veuillez sélectionner l'utilisateur auquel vous souhaitez ajouter le flux"
 
 #: admin/api/manage-feed_api.php:129
 msgid "Please select the site to you wand to add the feed"
@@ -2784,7 +2784,7 @@ msgstr "Ajouter un nouveau site"
 #: admin/api/manage-database_api.php:74
 #, php-format
 msgid "Unable to write %s file."
-msgstr "Impossible d'écrire dans le fichier %s"
+msgstr "Impossible d'écrire dans le fichier %s."
 
 #: admin/api/manage-database_api.php:74
 msgid "Please check you /admin/cache directory permissions"
@@ -2795,12 +2795,12 @@ msgid ""
 "A snapshot of your current database was successfully created. Please "
 "download the following file and put it in some safe place."
 msgstr ""
-"Une sauvegarde de votre base de donnée courrante a été crée avec succès. "
+"Une sauvegarde de votre base de donnée courante a été crée avec succès. "
 "Veuillez télécharger le fichier suivant et le mettre en sécurité."
 
 #: admin/api/manage-database_api.php:86
 msgid "Please select at least one table to export"
-msgstr "Veuillez au moins séletionner une table à exporter"
+msgstr "Veuillez séletionner au moins une table à exporter"
 
 #: admin/api/manage-option_api.php:40
 msgid "The title can not be empty"
@@ -2933,7 +2933,7 @@ msgstr "Identifiant de site Piwik"
 
 #: admin/api/manage-option_api.php:514 admin/api/manage-option_api.php:737
 msgid "Enable Internal links"
-msgstr "Activer les liens interne"
+msgstr "Activer les liens internes"
 
 #: admin/api/manage-option_api.php:527
 msgid "Planet statusnet host"
@@ -2941,7 +2941,7 @@ msgstr "Hôte du statusnet du planet"
 
 #: admin/api/manage-option_api.php:528
 msgid "(ex: http://identi.ca)"
-msgstr "(ex: http://identi.ca)"
+msgstr "(ex : http://identi.ca)"
 
 #: admin/api/manage-option_api.php:532 admin/api/manage-option_api.php:756
 msgid "Planet statusnet username"
@@ -2996,7 +2996,7 @@ msgstr "Identifiant de site Piwik"
 
 #: admin/api/manage-option_api.php:751
 msgid "Planet statusnet host (ex: http://identi.ca)"
-msgstr "Hôte du statusnet du planet (ex: http://identi.ca)"
+msgstr "Hôte du statusnet du planet (ex : http://identi.ca)"
 
 #: admin/api/manage-option_api.php:801
 msgid "Nothing to do"
@@ -3056,7 +3056,7 @@ msgstr "Mauvaise requête, cette requête ajax n'existe pas"
 #: admin/api/manage-permissions_api.php:36
 #: admin/api/manage-permissions_api.php:70
 msgid "Impossible to change your own role"
-msgstr "Impossible de changer votre propre role"
+msgstr "Impossible de changer votre propre rôle"
 
 #: admin/api/manage-permissions_api.php:41
 #, php-format
@@ -3065,16 +3065,16 @@ msgstr "L'utilisateur %s est maintenant connu sous le nom de %s"
 
 #: admin/api/manage-permissions_api.php:44
 msgid "There was a problem during toggling user role"
-msgstr "Il y a eu un problème pendant la modification du role de l'utilisateur"
+msgstr "Il y a eu un problème pendant la modification du rôle de l'utilisateur"
 
 #: admin/api/manage-permissions_api.php:74
 #, php-format
 msgid "User %s has new permissions : %s"
-msgstr "L'utilisateur %s a es nouvelles permissions : %s"
+msgstr "L'utilisateur %s a de nouvelles permissions : %s"
 
 #: admin/api/manage-permissions_api.php:109
 msgid "Role"
-msgstr "Role"
+msgstr "Rôle"
 
 #: admin/api/manage-permissions_api.php:114
 msgid "Normal user"

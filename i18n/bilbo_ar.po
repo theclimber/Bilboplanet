@@ -1,28 +1,29 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
 # Translators:
-#   <>, 2011.
-# Amine <amine@linuxac.org>, 2010.
-#   <amine@linuxac.org>, 2011.
+# <>, 2011.
+# Amine <amine@linuxac.org>, 2010, 2011, 2012.
+# <amine@linuxac.org>, 2011, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Bilboplanet\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-10-29 10:55+0200\n"
-"PO-Revision-Date: 2011-12-20 20:02+0000\n"
-"Last-Translator: Mohamed <amine@linuxac.org>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2012-01-03 20:31+0000\n"
+"Last-Translator: amine <amine@linuxac.org>\n"
+"Language-Team: ...\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
-"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5\n"
+"&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
+"X-Generator: Virtaal 0.7.0\n"
 
 #: themes/legolas/subscription.tpl:12 themes/aragorn/subscription.tpl:12
 #: themes/gandalf/subscription.tpl:12 themes/gil-galad/subscription.tpl:12
+#, fuzzy
 msgid ""
 "Before to subscribe, do not hesitate to test your RSS/Atom feeds to be sure "
 "they'll be well interpretated by the planet aggregator engine which is using "
@@ -32,54 +33,57 @@ msgid ""
 "target='_blank'>Feedvalidator</a> and correct them if needed. Otherwise you "
 "could have some problems using them."
 msgstr ""
+"قبل التسجيل، لا تتردّد في إختبار تلقيم RSS/Atom الخاص بك للتأكد من تفسيره من "
+"قِبل محرك مُجمِّع الكوكب الذي يستعمل مكتبة <a href='http://simplepie.org/' "
+"title='Simple Pie' rel='noffolow'>Simple Pie</a> (موزعة تحت رخصة LGPL). تأكد "
+"أيضا من أن التلقيم صالح على <a href='http://feedvalidator.org/check.cgi' "
+"target='_blank'>Feedvalidator</a> وقم بإصلاحه إن تطلب الأمر وإلا قد تواجه "
+"بعض مشاكل الإستخدام."
 
 #: themes/aragorn/footer.tpl:6 themes/gil-galad/footer.tpl:6
 msgid "Back to top"
-msgstr ""
+msgstr "العودة للأعلى"
 
 #: themes/legolas/sidebar.tpl:25 themes/aragorn/sidebar.tpl:7
 #: themes/gandalf/sidebar.tpl:6 themes/gil-galad/sidebar.tpl:7
 msgid "Quick news"
-msgstr ""
+msgstr "أخبار سريعة"
 
 #: themes/legolas/subscription.tpl:31 themes/aragorn/subscription.tpl:31
 #: themes/gandalf/subscription.tpl:31 themes/gil-galad/subscription.tpl:31
-#, fuzzy
 msgid "Contact email"
-msgstr "إسم المتصل"
+msgstr "بريد المراسل"
 
 #: themes/legolas/sidebar.tpl:39 themes/aragorn/sidebar.tpl:23
 #: themes/gandalf/sidebar.tpl:20 themes/gil-galad/sidebar.tpl:23
 msgid "Searching with :"
-msgstr ""
+msgstr "البحث مع :"
 
 #: themes/legolas/subscription.tpl:65 themes/legolas/contact.tpl:8
 #: themes/aragorn/subscription.tpl:65 themes/aragorn/contact.tpl:8
 #: themes/gandalf/subscription.tpl:65 themes/gandalf/contact.tpl:8
 #: themes/gil-galad/subscription.tpl:65 themes/gil-galad/contact.tpl:8
-#, fuzzy
 msgid "Contact us"
-msgstr "إسم المتصل"
+msgstr "راسلنا"
 
 #: themes/legolas/posts.tpl:14 themes/gandalf/menu.tpl:32
 msgid "All posts"
-msgstr ""
+msgstr "كل المواضيع"
 
 #: themes/legolas/subscription.tpl:13 themes/aragorn/subscription.tpl:13
 #: themes/gandalf/subscription.tpl:13 themes/gil-galad/subscription.tpl:13
 msgid "You can test the simplepie engine on the following page :"
-msgstr ""
+msgstr "يمكنك إختبار محرك simplepie على الصفحة التالية :"
 
 #: themes/legolas/archives.tpl:4 themes/aragorn/archives.tpl:4
 #: themes/gandalf/archives.tpl:4 themes/gil-galad/archives.tpl:4
-#, fuzzy
 msgid "Read the article"
-msgstr "آخر المواضيع :"
+msgstr "قرأة الموضوع"
 
 #: themes/legolas/posts.tpl:95 themes/aragorn/posts.tpl:74
 #: themes/gandalf/posts.tpl:77 themes/gil-galad/posts.tpl:75
 msgid "No comments yet"
-msgstr ""
+msgstr "لا توجد تعليقات بعد"
 
 #: themes/legolas/posts.tpl:39 themes/legolas/posts.tpl:139
 #: themes/aragorn/posts.tpl:20 themes/aragorn/posts.tpl:118
@@ -92,13 +96,12 @@ msgstr "الصفحة السابقة"
 #: themes/legolas/posts.tpl:27 themes/aragorn/posts.tpl:8
 #: themes/gandalf/posts.tpl:8 themes/gil-galad/posts.tpl:9
 msgid "Fast access to the last posts of the page"
-msgstr ""
+msgstr "نفاذ سريع لآخر مواضيع الصفحة"
 
 #: themes/legolas/index.tpl:68 themes/aragorn/index.tpl:67
 #: themes/gandalf/index.tpl:67 themes/gil-galad/index.tpl:80
-#, fuzzy
 msgid "Password forgotten?"
-msgstr "إستعادة كلمة السّر"
+msgstr "نسيت كلمة السّر؟"
 
 #: themes/legolas/subscription.tpl:57 themes/legolas/contact.tpl:22
 #: themes/aragorn/subscription.tpl:57 themes/aragorn/contact.tpl:22
@@ -109,25 +112,24 @@ msgstr "إستعادة كلمة السّر"
 #: admin/api/manage-feed_api.php:254 admin/api/manage-user_api.php:286
 #: admin/api/manage-site_api.php:190
 msgid "Reset"
-msgstr "تصفير "
+msgstr "تصفير"
 
 #: themes/legolas/stats.tpl:23 themes/legolas/stats.tpl:44
 #: themes/aragorn/stats.tpl:23 themes/aragorn/stats.tpl:44
 #: themes/gandalf/stats.tpl:23 themes/gandalf/stats.tpl:44
 #: themes/gil-galad/stats.tpl:23 themes/gil-galad/stats.tpl:44
 msgid "Visit the website"
-msgstr ""
+msgstr "زيارة الموقع"
 
 #: themes/legolas/sidebar.tpl:81 themes/aragorn/sidebar.tpl:61
 #: themes/gandalf/sidebar.tpl:62 themes/gil-galad/sidebar.tpl:61
-#, fuzzy
 msgid "See members posts"
-msgstr "إختيار جميع الأعضاء"
+msgstr "مشاهدة مواضيع الأعضاء"
 
 #: themes/legolas/posts.tpl:54 themes/aragorn/posts.tpl:34
 #: themes/gandalf/posts.tpl:35 themes/gil-galad/posts.tpl:35
 msgid "Show user's posts"
-msgstr ""
+msgstr "إظهار مواضيع المستخدمين"
 
 #: themes/legolas/sidebar.tpl:49 themes/aragorn/sidebar.tpl:33
 #: themes/gandalf/sidebar.tpl:30 themes/gil-galad/sidebar.tpl:33
@@ -136,51 +138,45 @@ msgstr ""
 
 #: themes/gandalf/posts.tpl:120
 msgid "You can search to find other articles."
-msgstr ""
+msgstr "يمكنك البحث للعثور على مواضيع أخرى"
 
 #: themes/legolas/posts.tpl:11 themes/aragorn/index.tpl:109
 #: themes/gandalf/menu.tpl:29 themes/gil-galad/index.tpl:108
-#, fuzzy
 msgid "Posts of the month"
-msgstr "موضوع العضو :"
+msgstr "مواضيع الشهر :"
 
 #: themes/legolas/footer.tpl:12 themes/aragorn/sidebar.tpl:71
 #: themes/gandalf/sidebar.tpl:74 themes/gil-galad/sidebar.tpl:71
 msgid "Add your blog"
-msgstr ""
+msgstr "أضف مدونتك"
 
 #: themes/legolas/menu.tpl:10 themes/aragorn/menu.tpl:8
 #: themes/gandalf/menu.tpl:10 themes/gil-galad/menu.tpl:8
-#, fuzzy
 msgid "Registration"
-msgstr "الإدارة"
+msgstr "التسجيل"
 
 #: themes/legolas/sidebar.tpl:83 themes/aragorn/sidebar.tpl:63
 #: themes/gandalf/sidebar.tpl:64 themes/gil-galad/sidebar.tpl:63
 msgid "User's website"
-msgstr ""
+msgstr "موقع المستخدم"
 
 #: themes/legolas/menu.tpl:8 themes/aragorn/menu.tpl:6
 #: themes/gandalf/menu.tpl:8 themes/gil-galad/menu.tpl:6
-#, fuzzy
 msgid "Statistics"
 msgstr "الإحصائيات"
 
 #: themes/legolas/subscription.tpl:23 themes/aragorn/subscription.tpl:23
 #: themes/gandalf/subscription.tpl:23 themes/gil-galad/subscription.tpl:23
-#, fuzzy
 msgid "Name or nickname"
-msgstr "الإسم/اللقب :"
+msgstr "الإسم أو الكنية :"
 
 #: themes/legolas/posts.tpl:8 themes/aragorn/index.tpl:106
 #: themes/gandalf/menu.tpl:26 themes/gil-galad/index.tpl:105
-#, fuzzy
 msgid "Posts of the week"
-msgstr "موضوع العضو :"
+msgstr "مواضيع الأسبوع :"
 
 #: themes/legolas/stats.tpl:5 themes/aragorn/stats.tpl:5
 #: themes/gandalf/stats.tpl:5 themes/gil-galad/stats.tpl:5
-#, fuzzy
 msgid "Number of feeds :"
 msgstr "عدد التلقيمات :"
 
@@ -195,20 +191,18 @@ msgid "Send"
 msgstr "إرسال"
 
 #: themes/legolas/footer.tpl:18
-#, fuzzy
 msgid "About Bilboplanet"
-msgstr "الرجوع إلى Bilboplanet"
+msgstr "حول Bilboplanet"
 
 #: themes/legolas/menu.tpl:12 themes/aragorn/menu.tpl:10
 #: themes/gandalf/menu.tpl:12 themes/gil-galad/menu.tpl:10
 msgid "Archives"
-msgstr ""
+msgstr "الأرشيف"
 
 #: themes/legolas/subscription.tpl:9 themes/aragorn/subscription.tpl:9
 #: themes/gandalf/subscription.tpl:9 themes/gil-galad/subscription.tpl:9
-#, fuzzy
 msgid "Test your feeds"
-msgstr "الثقة في هذا التلقيم"
+msgstr "إختبار التلقيم"
 
 #: themes/legolas/index.tpl:53 themes/aragorn/index.tpl:52
 #: themes/gandalf/index.tpl:52 themes/gil-galad/index.tpl:65
@@ -219,23 +213,22 @@ msgstr "إسم المستخدم"
 #: themes/legolas/sidebar.tpl:67 themes/aragorn/sidebar.tpl:43
 #: themes/gandalf/sidebar.tpl:41 themes/gil-galad/sidebar.tpl:43
 msgid "Feed with the posts of this category : "
-msgstr ""
+msgstr "تلقيم بمواضيع هذا التصنيف :"
 
 #: themes/legolas/stats.tpl:12 themes/aragorn/stats.tpl:12
 #: themes/gandalf/stats.tpl:12 themes/gil-galad/stats.tpl:12
-#, fuzzy
 msgid "List of the most active members"
-msgstr "قائمة المواضيع"
+msgstr "قائمة أنشط الأعضاء"
 
 #: themes/legolas/posts.tpl:59 themes/aragorn/posts.tpl:39
 #: themes/gandalf/posts.tpl:40 themes/gil-galad/posts.tpl:40
 msgid "Visit source"
-msgstr ""
+msgstr "زيارة المصدر"
 
 #: themes/legolas/index.tpl:39 themes/aragorn/index.tpl:38
 #: themes/gandalf/index.tpl:38 themes/gil-galad/index.tpl:51
 msgid "Welcome"
-msgstr ""
+msgstr "مرحباً"
 
 #: themes/legolas/posts.tpl:32 themes/legolas/posts.tpl:133
 #: themes/legolas/archives.tpl:6 themes/aragorn/posts.tpl:13
@@ -245,22 +238,21 @@ msgstr ""
 #: themes/gil-galad/posts.tpl:113 themes/gil-galad/archives.tpl:6
 #: admin/api/manage-moderation_api.php:193
 msgid "No posts found"
-msgstr ""
+msgstr "لم يتم العثور على الموضوع"
 
 #: themes/legolas/stats.tpl:38 themes/aragorn/stats.tpl:38
 #: themes/gandalf/stats.tpl:38 themes/gil-galad/stats.tpl:38
 msgid "Total of votes"
-msgstr ""
+msgstr "مجموع الأصوات"
 
 #: themes/legolas/posts.tpl:73 themes/aragorn/posts.tpl:52
 #: themes/gandalf/posts.tpl:52 themes/gil-galad/posts.tpl:53
 msgid "Add tag"
-msgstr ""
+msgstr "إضافة وَسْم"
 
 #: themes/aragorn/sidebar.tpl:58 themes/gil-galad/sidebar.tpl:58
-#, fuzzy
 msgid "Members"
-msgstr "نونبر"
+msgstr "الأعضاء"
 
 #: themes/legolas/subscription.tpl:68 themes/aragorn/subscription.tpl:68
 #: themes/gandalf/subscription.tpl:68 themes/gil-galad/subscription.tpl:68
@@ -269,78 +261,72 @@ msgid ""
 "your feed URL, suggestion ...), you can do it by <a href='contact."
 "php'>clicking here</a>."
 msgstr ""
+"إن إحتجت لمراسلة فريق الإدارة لأي سبب كان (تغيير مسار التلقيم، إقتراحات "
+"...)، يمكنك ذالك <a href='contact.php'>بالضغط هنا</a>."
 
 #: themes/legolas/sidebar.tpl:37 themes/aragorn/sidebar.tpl:21
 #: themes/gandalf/sidebar.tpl:18 themes/gil-galad/sidebar.tpl:21
 msgid "Page :"
-msgstr ""
+msgstr "الصفحة :"
 
 #: themes/legolas/posts.tpl:76 themes/aragorn/posts.tpl:55
 #: themes/gandalf/posts.tpl:55 themes/gil-galad/posts.tpl:56
 msgid "Allow comments"
-msgstr ""
+msgstr "السماح بالتعليقات"
 
 #: themes/legolas/stats.tpl:2 themes/aragorn/stats.tpl:2
 #: themes/gandalf/stats.tpl:2 themes/gil-galad/stats.tpl:2
-#, fuzzy
 msgid "Main statistics"
-msgstr "الإحصائيات"
+msgstr "الإحصائيات العامة"
 
 #: themes/aragorn/index.tpl:101 themes/gil-galad/index.tpl:100
-#, fuzzy
 msgid "Filter posts"
-msgstr "ترشيح المواضيع"
+msgstr "رشح المواضيع"
 
 #: themes/legolas/index.tpl:149 themes/aragorn/index.tpl:172
 #: themes/gandalf/index.tpl:164 themes/gil-galad/index.tpl:172
 msgid "Comma separated tags (ex: linux,web,event)"
-msgstr ""
+msgstr "تُفصل الوُسوم بفواصل (مثال: لينكس،وِب،حدث)"
 
 #: themes/legolas/menu.tpl:14 themes/aragorn/menu.tpl:12
 #: themes/gandalf/menu.tpl:14 themes/gil-galad/menu.tpl:12
-#, fuzzy
 msgid "Contact"
-msgstr "إسم المتصل"
+msgstr "المراسل"
 
 #: themes/legolas/posts.tpl:5 themes/aragorn/index.tpl:103
 #: themes/gandalf/menu.tpl:23 themes/gil-galad/index.tpl:102
-#, fuzzy
 msgid "Posts of the day"
-msgstr "مضيف قاعدة البيانات:"
+msgstr "مواضيع اليوم"
 
 #: themes/legolas/sidebar.tpl:31 themes/aragorn/sidebar.tpl:14
 #: themes/gandalf/sidebar.tpl:11 themes/gil-galad/sidebar.tpl:15
-#, fuzzy
 msgid "Page status"
-msgstr "حالة الموضوع"
+msgstr "حالة الصفحة"
 
 #: themes/legolas/footer.tpl:9 themes/aragorn/sidebar.tpl:67
 #: themes/gandalf/sidebar.tpl:70 themes/gil-galad/sidebar.tpl:67
 msgid "Contribute"
-msgstr ""
+msgstr "المساهمة"
 
 #: themes/legolas/sidebar.tpl:64 themes/aragorn/sidebar.tpl:40
 #: themes/gandalf/sidebar.tpl:38 themes/gil-galad/sidebar.tpl:40
-#, fuzzy
 msgid "Feed with all the posts"
-msgstr "قائمة المواضيع"
+msgstr "تلقيم بكل المواضيع"
 
 #: themes/legolas/menu.tpl:4 themes/aragorn/menu.tpl:2
 #: themes/gandalf/menu.tpl:4 themes/gil-galad/menu.tpl:2
 msgid "Home"
-msgstr ""
+msgstr "الرئيسية"
 
 #: themes/legolas/stats.tpl:32 themes/aragorn/stats.tpl:32
 #: themes/gandalf/stats.tpl:32 themes/gil-galad/stats.tpl:32
-#, fuzzy
 msgid "List of the best ranked members"
-msgstr "قائمة المستخدمين"
+msgstr "قائمة الأعضاء الأفضل منزلة"
 
 #: themes/legolas/contact.tpl:13 themes/aragorn/contact.tpl:13
 #: themes/gandalf/contact.tpl:13 themes/gil-galad/contact.tpl:13
-#, fuzzy
 msgid "Name / Nickname :"
-msgstr "الإسم/اللقب :"
+msgstr "الإسم / الكنية :"
 
 #: themes/legolas/footer.tpl:14 themes/aragorn/sidebar.tpl:74
 #: themes/gandalf/sidebar.tpl:77 themes/gil-galad/sidebar.tpl:74
@@ -352,17 +338,17 @@ msgstr "الإدارة"
 #: themes/legolas/sidebar.tpl:44 themes/aragorn/sidebar.tpl:28
 #: themes/gandalf/sidebar.tpl:25 themes/gil-galad/sidebar.tpl:28
 msgid "Tagged with :"
-msgstr ""
+msgstr "وُسِم بـ :"
 
 #: themes/legolas/subscription.tpl:39 themes/aragorn/subscription.tpl:39
 #: themes/gandalf/subscription.tpl:39 themes/gil-galad/subscription.tpl:39
 msgid "Feed URL (this can be a tag or category specific feed feed too)"
-msgstr ""
+msgstr "مسار التلقيم (يمكن أن يكون تلقيم لوَسْم أو تصنيف)"
 
 #: themes/legolas/subscription.tpl:18 themes/aragorn/subscription.tpl:18
 #: themes/gandalf/subscription.tpl:18 themes/gil-galad/subscription.tpl:18
 msgid "To add or remove your website from the planet, just fill this form in :"
-msgstr ""
+msgstr "لإضافة أو إزالة موقعك من الكوكب إملأ الإستمارة التالية :"
 
 #: themes/legolas/posts.tpl:111 themes/legolas/stats.tpl:16
 #: themes/legolas/stats.tpl:37 themes/aragorn/posts.tpl:90
@@ -377,76 +363,71 @@ msgstr "الموقع"
 #: themes/legolas/index.tpl:147 themes/aragorn/index.tpl:170
 #: themes/gandalf/index.tpl:162 themes/gil-galad/index.tpl:170
 msgid "Tags"
-msgstr ""
+msgstr "الوُسوم"
 
 #: themes/legolas/posts.tpl:116 themes/aragorn/posts.tpl:95
 #: themes/gandalf/posts.tpl:98 themes/gil-galad/posts.tpl:96
 msgid "Here you'll find some help concerning the syntax :"
-msgstr ""
+msgstr "ستجد هنا بعض المساعدة بخصوص الصيغة التالية :"
 
 #: themes/legolas/posts.tpl:79 themes/aragorn/posts.tpl:58
 #: themes/gandalf/posts.tpl:58 themes/gil-galad/posts.tpl:59
-#, fuzzy
 msgid "Disable comments"
-msgstr "تعطيل التلقيم"
+msgstr "تعطيل التعليقات"
 
 #: themes/legolas/subscription.tpl:46 themes/aragorn/subscription.tpl:46
 #: themes/gandalf/subscription.tpl:46 themes/gil-galad/subscription.tpl:46
 msgid "Unsubscribe"
-msgstr ""
+msgstr "إلغاء التسجيل"
 
 #: themes/legolas/menu.tpl:6 themes/aragorn/menu.tpl:4
 #: themes/gandalf/menu.tpl:6 themes/gil-galad/menu.tpl:4
 msgid "Top 10"
-msgstr ""
+msgstr "أفضل 10"
 
 #: themes/legolas/index.tpl:64 themes/aragorn/index.tpl:63
 #: themes/gandalf/index.tpl:63 themes/gil-galad/index.tpl:76
-#, fuzzy
 msgid "Remember me"
-msgstr "دجنبر"
+msgstr "تذكّرني"
 
 #: themes/legolas/sidebar.tpl:6
-#, fuzzy
 msgid "Search"
-msgstr "مارس"
+msgstr "البحث"
 
 #: themes/legolas/subscription.tpl:35 themes/aragorn/subscription.tpl:35
 #: themes/gandalf/subscription.tpl:35 themes/gil-galad/subscription.tpl:35
-#, fuzzy
 msgid "Website URL"
-msgstr "الموقع"
+msgstr "مسار الموقع"
 
 #: themes/legolas/posts.tpl:120 themes/aragorn/posts.tpl:99
 #: themes/gandalf/posts.tpl:102 themes/gil-galad/posts.tpl:100
 msgid "Publish"
-msgstr ""
+msgstr "نشر"
 
 #: themes/legolas/footer.tpl:11 themes/aragorn/sidebar.tpl:70
 #: themes/gandalf/sidebar.tpl:73 themes/gil-galad/sidebar.tpl:70
-#, fuzzy
 msgid "Subscribe your blog to the planet"
-msgstr "ملخص سريع عن كوكب"
+msgstr "سجل مدونتك على الكوكب"
 
 #: themes/legolas/sidebar.tpl:72 themes/aragorn/sidebar.tpl:48
 #: themes/gandalf/sidebar.tpl:46 themes/gil-galad/sidebar.tpl:48
 msgid "Popular posts feed"
-msgstr ""
+msgstr "تلقيم المواضيع المشهورة"
 
 #: themes/legolas/contact.tpl:10 themes/aragorn/contact.tpl:10
 #: themes/gandalf/contact.tpl:10 themes/gil-galad/contact.tpl:10
 msgid "You can contact the administration team with the form below:"
-msgstr ""
+msgstr "يمكنك مراسلة فريق الإدارة من خلال الإستمارة التالية :"
 
 #: themes/legolas/posts.tpl:22 themes/aragorn/posts.tpl:3
 #: themes/gandalf/posts.tpl:3 themes/gil-galad/posts.tpl:3
 msgid "You are searching for all the posts with :"
-msgstr ""
+msgstr "أنت تبحث عن كل المواضيع التي تحتوي على :"
 
 #: themes/legolas/index.tpl:66 themes/aragorn/index.tpl:65
 #: themes/gandalf/index.tpl:65 themes/gil-galad/index.tpl:78
 msgid "Connect"
-msgstr ""
+msgstr "إتصال"
 
 #: themes/legolas/index.tpl:141 themes/aragorn/index.tpl:164
 #: themes/gandalf/index.tpl:156 themes/gil-galad/index.tpl:164
@@ -465,42 +446,37 @@ msgstr "الصفحة التالية"
 
 #: themes/legolas/contact.tpl:15 themes/aragorn/contact.tpl:15
 #: themes/gandalf/contact.tpl:15 themes/gil-galad/contact.tpl:15
-#, fuzzy
 msgid "Email :"
 msgstr "البريد الإلكتروني :"
 
 #: themes/legolas/posts.tpl:107 themes/aragorn/posts.tpl:86
 #: themes/gandalf/posts.tpl:89 themes/gil-galad/posts.tpl:87
-#, fuzzy
 msgid "E-mail"
 msgstr "البريد الإلكتروني"
 
 #: themes/legolas/sidebar.tpl:41 themes/aragorn/sidebar.tpl:25
 #: themes/gandalf/sidebar.tpl:22 themes/gil-galad/sidebar.tpl:25
-#, fuzzy
 msgid "Period of posts :"
-msgstr "عدد المواضيع"
+msgstr "دورة المواضيع :"
 
 #: themes/legolas/sidebar.tpl:78 themes/gandalf/sidebar.tpl:59
-#, fuzzy
 msgid "Users"
-msgstr "المستخدم"
+msgstr "المستخدمون"
 
 #: themes/legolas/sidebar.tpl:32 themes/aragorn/sidebar.tpl:16
 #: themes/gandalf/sidebar.tpl:13
-#, fuzzy
 msgid "Number of items :"
-msgstr "عدد المواضيع"
+msgstr "عدد العناصر"
 
 #: themes/legolas/subscription.tpl:17 themes/aragorn/subscription.tpl:17
 #: themes/gandalf/subscription.tpl:17 themes/gil-galad/subscription.tpl:17
 msgid "Subscribe / Unsubscribe"
-msgstr ""
+msgstr "تسجيل / إلغاء التسجيل"
 
 #: themes/legolas/sidebar.tpl:46 themes/aragorn/sidebar.tpl:30
 #: themes/gandalf/sidebar.tpl:27 themes/gil-galad/sidebar.tpl:30
 msgid "Written by :"
-msgstr ""
+msgstr "كتبه"
 
 #: themes/legolas/index.tpl:58 themes/aragorn/index.tpl:57
 #: themes/gandalf/index.tpl:57 themes/gil-galad/index.tpl:70
@@ -518,44 +494,40 @@ msgstr "الإسم"
 
 #: themes/legolas/stats.tpl:8 themes/aragorn/stats.tpl:8
 #: themes/gandalf/stats.tpl:8 themes/gil-galad/stats.tpl:8
-#, fuzzy
 msgid "Number of votes :"
-msgstr "عدد المواضيع"
+msgstr "عدد الأصوات :"
 
 #: themes/legolas/posts.tpl:129 themes/aragorn/posts.tpl:108
 #: themes/gandalf/posts.tpl:112 themes/gil-galad/posts.tpl:109
 msgid "Back to summary"
-msgstr ""
+msgstr "العودة للملخص"
 
 #: themes/legolas/stats.tpl:17 themes/aragorn/stats.tpl:17
 #: themes/gandalf/stats.tpl:17 themes/gil-galad/stats.tpl:17
-#, fuzzy
 msgid "Qtity of posts"
-msgstr "قائمة المواضيع"
+msgstr ""
 
 #: themes/legolas/stats.tpl:4 themes/aragorn/stats.tpl:4
 #: themes/gandalf/stats.tpl:4 themes/gil-galad/stats.tpl:4
-#, fuzzy
 msgid "Number of members :"
 msgstr "عدد الأعضاء :"
 
 #: themes/legolas/subscription.tpl:49 themes/aragorn/subscription.tpl:49
 #: themes/gandalf/subscription.tpl:49 themes/gil-galad/subscription.tpl:49
-#, fuzzy
 msgid "Please fill in the captcha"
-msgstr "المرجو ملئ العنوان."
+msgstr "إملأ الكابتشا من من فضلك"
 
 #: themes/legolas/sidebar.tpl:43 themes/aragorn/sidebar.tpl:27
 #: themes/gandalf/sidebar.tpl:24 themes/gil-galad/sidebar.tpl:27
+#, fuzzy
 msgid "In popular tags"
-msgstr ""
+msgstr "في أشهر الوُسوم "
 
 #: themes/legolas/stats.tpl:6 themes/aragorn/stats.tpl:6
 #: themes/gandalf/stats.tpl:6 themes/gil-galad/sidebar.tpl:16
 #: themes/gil-galad/stats.tpl:6
-#, fuzzy
 msgid "Number of posts :"
-msgstr "عدد المواضيع"
+msgstr "عدد المواضيع :"
 
 #: themes/legolas/posts.tpl:103 themes/legolas/subscription.tpl:27
 #: themes/aragorn/posts.tpl:82 themes/aragorn/subscription.tpl:27
@@ -568,25 +540,21 @@ msgid "Fullname"
 msgstr "الإسم الكامل"
 
 #: themes/aragorn/index.tpl:112 themes/gil-galad/index.tpl:111
-#, fuzzy
 msgid "All the posts"
-msgstr "قائمة المواضيع"
+msgstr "كل المواضيع"
 
 #: themes/legolas/contact.tpl:17 themes/aragorn/contact.tpl:17
 #: themes/gandalf/contact.tpl:17 themes/gil-galad/contact.tpl:17
-#, fuzzy
 msgid "Subject :"
 msgstr "الموضوع :"
 
 #: themes/legolas/contact.tpl:19 themes/aragorn/contact.tpl:19
 #: themes/gandalf/contact.tpl:19 themes/gil-galad/contact.tpl:19
-#, fuzzy
 msgid "Content :'"
-msgstr "المحتوى"
+msgstr "المحتوى :'"
 
 #: themes/legolas/footer.tpl:13 themes/aragorn/sidebar.tpl:73
 #: themes/gandalf/sidebar.tpl:76 themes/gil-galad/sidebar.tpl:73
-#, fuzzy
 msgid "Admin interface"
 msgstr "واجهة الإدارة"
 
@@ -595,7 +563,7 @@ msgstr "واجهة الإدارة"
 #: themes/gandalf/subscription.tpl:43 themes/gandalf/sidebar.tpl:35
 #: themes/gil-galad/sidebar.tpl:37 themes/gil-galad/subscription.tpl:43
 msgid "Subscribe"
-msgstr ""
+msgstr "تسجيل"
 
 #: themes/legolas/index.tpl:151 themes/aragorn/index.tpl:174
 #: themes/gandalf/index.tpl:166 themes/gil-galad/index.tpl:174
@@ -607,7 +575,7 @@ msgstr "تطبيق"
 #: themes/legolas/subscription.tpl:53 themes/aragorn/subscription.tpl:53
 #: themes/gandalf/subscription.tpl:53 themes/gil-galad/subscription.tpl:53
 msgid "I have read and accept the charter"
-msgstr ""
+msgstr "قرأت ووافقت على إتفاقية الإستخدام"
 
 #: tpl.php:128
 msgid "Powered by Bilboplanet"
@@ -1082,11 +1050,11 @@ msgstr "الموضوع %s تم تعديله"
 
 #: admin/manage-post.php:119
 msgid "Filtering of the posts"
-msgstr "ترشيح المواضيع"
+msgstr "رشح المواضيع"
 
 #: admin/manage-post.php:121
 msgid "Filter articles"
-msgstr "ترشيح المواضيع"
+msgstr "رشح المواضيع"
 
 #: admin/manage-post.php:127
 msgid "Posts of the member :"
@@ -1228,7 +1196,7 @@ msgstr "إضافة مستخدم"
 
 #: admin/manage-user.php:52
 msgid "Filter userlist"
-msgstr "ترشيح قائمة الأعضاء"
+msgstr "رشح قائمة الأعضاء"
 
 #: admin/manage-user.php:55 admin/manage-user.php:87 admin/manage-feed.php:56
 #: admin/manage-feed.php:91 admin/manage-moderation.php:90
@@ -1313,7 +1281,7 @@ msgstr "إضافة تلقيم"
 
 #: admin/manage-feed.php:51
 msgid "Filter feedlist"
-msgstr "ترشيح قائمة التلقيمات"
+msgstr "رشح قائمة التلقيمات"
 
 #: admin/manage-feed.php:75
 msgid "Active feeds"
@@ -1423,7 +1391,7 @@ msgstr "عناصر العرض"
 
 #: admin/manage-moderation.php:68 admin/manage-selection.php:59
 msgid "Filter by user"
-msgstr "الترشيح بالمستخدمين"
+msgstr "الرشح بالمستخدمين"
 
 #: admin/manage-moderation.php:103 admin/manage-selection.php:109
 msgid "Moderation of your post"
@@ -3014,7 +2982,7 @@ msgstr "لا يمكنك تغيير دَورك"
 #: admin/api/manage-permissions_api.php:41
 #, php-format
 msgid "User %s is now know as %s"
-msgstr "المستخدم %s معروف الآن ب %s"
+msgstr "المستخدم %s معروف الآن بـ %s"
 
 #: admin/api/manage-permissions_api.php:44
 msgid "There was a problem during toggling user role"

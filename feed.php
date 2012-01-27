@@ -79,11 +79,13 @@ if (isset($_GET) && isset($_GET['type'])) {
 	$users = array();
 	$period = '';
 	$tribe_id = '';
+	$post_status = 1;
 	#if ($blog_settings->get('accept_public_tagged_feeds')) {
 	if (true) {
 		$tags = !empty($_GET['tags']) ? getArrayFromList($_GET['tags']) : array();
 		$users = !empty($_GET['users']) ? getArrayFromList($_GET['users']) : array();
 		$period = !empty($_GET['filter']) ? trim($_GET['filter']) : '';
+		$post_status = !empty($_GET['uncensored']) ? 2 : 1;
 	}
 	elseif ($blog_settings->get('accept_user_tagged_feeds')) {
 		$user_token = !empty($_GET['token']) ? trim($_GET['token']) : '';
@@ -91,6 +93,7 @@ if (isset($_GET) && isset($_GET['type'])) {
 			$tags = !empty($_GET['tags']) ? getArrayFromList($_GET['tags']) : array();
 			$users = !empty($_GET['users']) ? getArrayFromList($_GET['users']) : array();
 			$period = !empty($_GET['filter']) ? trim($_GET['filter']) : '';
+			$post_status = !empty($_GET['uncensored']) ? 2 : 1;
 		}
 	} else {
 		$tribe_id = !empty($_GET['tribe_id']) ? trim($_GET['tribe_id']) : '';
@@ -117,7 +120,9 @@ if (isset($_GET) && isset($_GET['type'])) {
 		$tags,
 		$search_value,
 		$period,
-		$popular);
+		$popular,
+		null,
+		$post_status);
 
 	# Encode specific char
 	if ($_GET['type'] == "rss") {

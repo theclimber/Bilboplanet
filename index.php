@@ -42,6 +42,7 @@ $tags = array();
 $page = 0;
 $search_value = null;
 $post_id = null;
+$post_status = 1;
 
 if (!isset($params)) {
 	$params = array(
@@ -95,6 +96,10 @@ if (isset($_GET)) {
 			http::head('301');
 			http::redirect($post_url);
 		}
+		if (isset($_GET['uncensored']) && !empty($_GET['uncensored'])){
+			$params['uncensored'] = true;
+			$post_status = 2;
+		}
 	}
 	else {
 		if (isset($_GET['page']) && is_numeric(trim($_GET['page']))) {
@@ -118,6 +123,10 @@ if (isset($_GET)) {
 			$params["user_id"] = urldecode($_GET['user_id']);
 			$params['users'] = $_GET['user_id'];
 			$users = !empty($_GET['user_id']) ? getArrayFromList($_GET['user_id']) : array();
+		}
+		if (isset($_GET['uncensored']) && !empty($_GET['uncensored'])){
+			$params['uncensored'] = true;
+			$post_status = 2;
 		}
 		if (isset($_GET['popular']) && !empty($_GET['popular']) && $_GET['popular'] = 'true'){
 			$params['popular'] = $_GET['popular'];
@@ -145,7 +154,8 @@ $sql = generate_SQL(
 	$search_value,
 	$period,
 	$popular,
-	$post_id);
+	$post_id,
+	$post_status);
 #print $sql;
 #exit;
 

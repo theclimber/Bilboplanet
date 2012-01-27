@@ -74,6 +74,7 @@ if(isset($_POST['action'])) {
 		$period = !empty($_POST['period']) ? trim($_POST['period']) : '';
 		# Order by most popular
 		$popular = !empty($_POST['popular']) ? true : false;
+		$post_status = !empty($_POST['post_status']) ? trim($_POST['post_status']) : 1;
 
 		# On recupere les informtions sur les membres
 		$sql = generate_SQL(
@@ -83,7 +84,9 @@ if(isset($_POST['action'])) {
 			$tags,
 			$search_value,
 			$period,
-			$popular);
+			$popular,
+			null,
+			$post_status);
 		#print $sql;
 		#exit;
 		$rs = $core->con->select($sql);

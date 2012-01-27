@@ -71,7 +71,10 @@ if(isset($_POST['action'])) {
 ##########################################################
 	case 'add_tags':
 		$post_id = $_POST['post_id'];
-		$user_id = $core->auth->userID();
+		$user_id = '';
+		if ($core->auth->sessionExists()){
+			$user_id = $core->auth->userID();
+		}
 		if (!$blog_settings->get('allow_post_modification')) {
 			print 'forbidden';
 			exit;

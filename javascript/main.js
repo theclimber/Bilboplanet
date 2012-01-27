@@ -5,6 +5,7 @@ this.popular = getUrlParameter('popular');
 this.tags = new Array();
 this.users = new Array();
 this.period = '';
+this.post_status = 1;
 this.trigger = function() {};
 $(document).ready(function() {
 	this.page = getUrlParameter('num_page');
@@ -17,6 +18,7 @@ $(document).ready(function() {
 	this.tags = new Array();
 	this.users = new Array();
 	this.period = '';
+	this.post_status = 1;
 
 	var urlVars = getUrlVars();
 	if (urlVars['tags']) {
@@ -36,6 +38,13 @@ $(document).ready(function() {
 		jQuery.each(userList.split(','), function (i, v) {
 			add_user(v, true);
 		});
+	}
+	if (urlVars['uncensored']) {
+		var varF = urlVars['uncensored'];
+		varF = varF.split('#')[0];
+		if (varF != '') {
+			this.post_status = 2;
+		}
 	}
 	/*
 	if (urlVars['filter']) {
@@ -143,7 +152,8 @@ function updatePostList() {
 			'popular' : this.popular,
 			'tags' : arrayToString(this.tags),
 			'users' : arrayToString(this.users),
-			'period' : this.period
+			'period' : this.period,
+			'post_status' : this.post_status
 		},
 		success: function(msg){
 			$('div#'+main_div).html(msg);
@@ -371,6 +381,22 @@ function tag_post(post_id, post_title) {
         });
     }, {
         title: "Add tags to this post",
+    });
+}
+function rm_tag_post(post_id, tag) {
+    var content = $('#tag-post-form form').clone();
+	Boxy.confirm('Are you sure you want to remove <b>'+tag+'</b> from this post?', function(val) {
+//    Boxy.askform(content, function(val) {
+        $.ajax({
+            type: "POST",
+            url: "user/api/",
+			data : {'ajax' : 'tagging', 'action' : 'rm_tag', 'post_id' : post_id, 'tag' : tag},
+            success: function(msg){
+                updatePostList();
+            }
+        });
+    }, {
+        title: "Remove tag to this post",
     });
 }
 

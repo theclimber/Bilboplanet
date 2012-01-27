@@ -232,6 +232,7 @@ if ($can_install && !empty($_POST))
 		$blog_settings->put('allow_tagging_everything','1', "boolean");
 		$blog_settings->put('accept_public_tagged_feed','0', "boolean");
 		$blog_settings->put('accept_user_tagged_feed','1', "boolean");
+		$blog_settings->put('allow_uncensored_feed','1', "boolean");
 
 		# Create planet salt :
 		$base_string = sha1(time().$u_fullname.$u_email.$u_pwd.'~'.microtime(TRUE).$default_tz);

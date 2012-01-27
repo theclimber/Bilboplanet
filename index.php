@@ -97,8 +97,10 @@ if (isset($_GET)) {
 			http::redirect($post_url);
 		}
 		if (isset($_GET['uncensored']) && !empty($_GET['uncensored'])){
-			$params['uncensored'] = true;
-			$post_status = 2;
+			if ($blog_settings->get('allow_uncensored_feed')) {
+				$params['uncensored'] = true;
+				$post_status = 2;
+			}
 		}
 	}
 	else {
@@ -125,8 +127,10 @@ if (isset($_GET)) {
 			$users = !empty($_GET['user_id']) ? getArrayFromList($_GET['user_id']) : array();
 		}
 		if (isset($_GET['uncensored']) && !empty($_GET['uncensored'])){
-			$params['uncensored'] = true;
-			$post_status = 2;
+			if ($blog_settings->get('allow_uncensored_feed')) {
+				$params['uncensored'] = true;
+				$post_status = 2;
+			}
 		}
 		if (isset($_GET['popular']) && !empty($_GET['popular']) && $_GET['popular'] = 'true'){
 			$params['popular'] = $_GET['popular'];

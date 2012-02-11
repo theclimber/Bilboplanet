@@ -1344,4 +1344,13 @@ function strip_script($string, $rm = 1) {
 	}
 }
 
+function comma_to_array($string) {
+	$patterns = array( '/, /', '/ ,/');
+	$replacement = array(',', ',');
+	$string = urldecode($string);
+	$string = preg_replace($patterns, $replacement, $string);
+	$string = preg_split('/,/',$string, -1, PREG_SPLIT_NO_EMPTY);
+	return $string;
+}
+
 ?>

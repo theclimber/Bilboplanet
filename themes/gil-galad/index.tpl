@@ -116,6 +116,10 @@
 					{!include:'posts.tpl'}
 				<!-- END content.posts -->
 
+				<!-- BEGIN content.portal -->
+					{!include:'portal.tpl'}
+				<!-- END content.portal -->
+
 				<!-- BEGIN content.html -->
 					{$html}
 				<!-- END content.html -->

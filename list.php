@@ -191,7 +191,12 @@ if (isset($_GET)) {
 }
 
 # Executing sql querry
-$rs = $core->con->select($sql);
+if ($sql != "") {
+	$rs = $core->con->select($sql);
+} else {
+	print "error";
+	exit;
+}
 
 #######################
 # RENDER FILTER MENU

@@ -550,6 +550,12 @@ function generate_tribe_SQL($tribe_id, $num_start = 0, $nb_items = 10) {
 		AND visibility = 1";
 	$rs = $core->con->select($sql_tribes);
 
+	if ($rs->user_id != "root") {
+		if (!$core->auth->sessionExists() || $core->auth->userID() != $rs->user_id) {
+			return "";
+		}
+	}
+
 	$tribe_name = $rs->f('tribe_name');
 	$tribe_search = $rs->f('tribe_search');//getArrayFromList($rs->tribe_search);
 	$tribe_tags = getArrayFromList($rs->f('tribe_tags'));

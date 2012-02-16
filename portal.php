@@ -32,6 +32,8 @@ $sql_tribes = "SELECT
 	WHERE visibility = 1
 	AND (user_id = 'root' ".$user_condition.")
 	ORDER BY ordering DESC";
+//print $sql_tribes;
+//exit;
 $rs = $core->con->select($sql_tribes);
 
 $align= 'right';
@@ -50,6 +52,23 @@ while ($rs->fetch()) {
 
 	// For each tribe I'll have to generate a list of 10 posts with their title and permalink
 }
+
+$align = $align=='right'? 'left' : 'right';
+$tribe = array(
+	"title" => T_('Popular posts'),
+	"id" => '',
+	"align" => $align
+	);
+$core->tpl->setVar('tribe', $tribe);
+$popular_sql = generate_SQL(
+		0,
+		10,
+		null,
+		null,
+		null,
+		null,
+		true);
+showTribe($popular_sql, true);
 
 $core->tpl->render("content.portal");
 

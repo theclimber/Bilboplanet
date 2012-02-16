@@ -681,3 +681,48 @@ div#loginForm {
 	-webkit-border-radius: 20px;
 	border-radius: 20px;
 }
+
+/*********************
+* Design of the portal
+* */
+
+div#portal {
+	width: 100%;
+}
+.portalbox {
+	border-radius : 5px;
+	width: 400px;
+	padding: 0px;
+	font-size: 0.8em;
+	background-color: #FFF;
+	margin: 20px 0px;
+}
+.portalbox .title {
+	font-size: 1.1em;
+	font-weight: bold;
+	padding: 5px 0px 5px 0px;
+	margin: 0px;
+	border-radius : 5px 5px 0px 0px;
+	width: 100%;
+	background-color: #CCC;
+}
+.portalbox .title a {
+	padding: 5px;
+	color : #5C5C5C;
+}
+.portalbox .feedlink {
+	float: right;
+	padding: 10px 0px;
+}
+.portalbox .list ul{
+	margin-left: 10px;
+}
+.portalbox .list li{
+	padding: 5px 5px;
+}
+.leftbox{
+	float:left;
+}
+.rightbox{
+	float:right;
+}

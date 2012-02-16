@@ -11,6 +11,7 @@ $page = 0;
 $search_value = null;
 $post_id = null;
 $post_status = 1;
+$tribe_id = null;
 
 if (!isset($params)) {
 	$params = array(
@@ -114,20 +115,33 @@ if (isset($_GET)) {
 				"month" => "");
 			$filter_class[$period] = "selected";
 		}
+		# On recupere le numero du membre
+		if (isset($_GET['tribe_id']) && !empty($_GET['tribe_id'])){
+			$params["tribe_id"] = urldecode($_GET['tribe_id']);
+			$params["title"] = $params["title"]." - ".sprintf(T_("%s tribe"), $params['tribe_id']);
+			$tribe_id = $params["tribe_id"];
+		}
 	}
 }
 
-# Terminaison de la commande SQL
-$sql = generate_SQL(
-	$num_start,
-	10,
-	$users,
-	$tags,
-	$search_value,
-	$period,
-	$popular,
-	$post_id,
-	$post_status);
+if ($tribe_id != null) {
+	$sql = generate_tribe_SQL(
+		$tribe_id,
+		$num_start,
+		$nb_items);
+} else {
+	# Terminaison de la commande SQL
+	$sql = generate_SQL(
+		$num_start,
+		$nb_items,
+		$users,
+		$tags,
+		$search_value,
+		$period,
+		$popular,
+		$post_id,
+		$post_status);
+}
 #print $sql;
 #exit;
 

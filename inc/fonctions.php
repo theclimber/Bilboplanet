@@ -384,6 +384,7 @@ function getArrayFromList($list) {
 	$array = preg_split('/,/',$list, -1, PREG_SPLIT_NO_EMPTY);
 	return $array;
 }
+
 function getListFromArray($arr) {
 	$list = implode(',',$arr);
 	return $list;
@@ -533,6 +534,77 @@ function generate_SQL(
 	$sql = $debut_sql." ".$fin_sql;
 
 	return $sql;
+}
+
+function generate_tribe_SQL($tribe_id, $num_start = 0, $nb_items = 10) {
+	global $core;
+	$sql_tribes = "SELECT
+			tribe_id,
+			user_id,
+			tribe_name,
+			tribe_search,
+			tribe_tags,
+			tribe_users
+		FROM ".$core->prefix."tribe
+		WHERE tribe_id = '".$tribe_id."'
+		AND visibility = 1";
+	$rs = $core->con->select($sql_tribes);
+
+	$tribe_name = $rs->f('tribe_name');
+	$tribe_search = $rs->f('tribe_search');//getArrayFromList($rs->tribe_search);
+	$tribe_tags = getArrayFromList($rs->f('tribe_tags'));
+	$tribe_users = getArrayFromList($rs->f('tribe_users'));
+	$align = $align=='right'? 'left' : 'right';
+
+	// Generating the SQL request
+	return generate_SQL(
+		$num_start,
+		$nb_items,
+		$tribe_users,
+		$tribe_tags,
+		$tribe_search);
+}
+
+function showTribe($sql_posts) {
+	global $core, $blog_settings;
+	$rs_posts = $core->con->select($sql_posts);
+	if ($rs_posts->count() > 0) {
+		while ($rs_posts->fetch()) {
+			######################
+			# RENDER TRIBE LIST
+			######################
+			$post_permalink = $rs_posts->permalink;
+			if ($blog_settings->get('internal_links')) {
+				$post_permalink = $blog_settings->get('planet_url').
+					"/index.php?post_id=".$rs_posts->post_id.
+					"&go=external";
+			}
+
+			$entry = array(
+				"id" => $rs_posts->post_id,
+				"date" => mysqldatetime_to_date("d/m/Y",$rs_posts->pubdate),
+				"day" => mysqldatetime_to_date("d",$rs_posts->pubdate),
+				"month" => mysqldatetime_to_date("m",$rs_posts->pubdate),
+				"year" => mysqldatetime_to_date("Y",$rs_posts->pubdate),
+				"hour" => mysqldatetime_to_date("H:i",$rs_posts->pubdate),
+				"permalink" => urldecode($post_permalink),
+				"title" => html_entity_decode($rs_posts->title, ENT_QUOTES, 'UTF-8'),
+				"content" => html_entity_decode($rs_posts->content, ENT_QUOTES, 'UTF-8'),
+				"author_id" => $rs_posts->user_id,
+				"author_fullname" => $rs_posts->user_fullname,
+				"author_email" => $rs_posts->user_email,
+				"nbview" => $rs_posts->nbview,
+				"last_viewed" => mysqldatetime_to_date('d/m/Y H:i',$rs_posts->last_viewed),
+				"user_votes" => getNbVotes(null,$rs_posts->user_id),
+				"user_posts" => getNbPosts(null,$rs_posts->user_id)
+				);
+
+			$core->tpl->setVar('entry', $entry);
+
+			$core->tpl->render('portal.entry');
+		}
+		$core->tpl->render('portal.block');
+	}
 }
 
 function showPosts($rs, $tpl, $search_value="", $strip_tags=false) {
@@ -1344,13 +1416,5 @@ function strip_script($string, $rm = 1) {
 	}
 }
 
-function comma_to_array($string) {
-	$patterns = array( '/, /', '/ ,/');
-	$replacement = array(',', ',');
-	$string = urldecode($string);
-	$string = preg_replace($patterns, $replacement, $string);
-	$string = preg_split('/,/',$string, -1, PREG_SPLIT_NO_EMPTY);
-	return $string;
-}
 
 ?>

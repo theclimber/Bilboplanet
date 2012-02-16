@@ -69,12 +69,7 @@ if(isset($_POST['action'])) {
 		$post_id = $_POST['post_id'];
 		$user_id = $core->auth->userID();
 
-/*		$patterns = array( '/, /', '/ ,/');
-		$replacement = array(',', ',');
-		$tags = urldecode($_POST['tags']);
-		$tags = preg_replace($patterns, $replacement, $tags);
-		$tags = preg_split('/,/',$tags, -1, PREG_SPLIT_NO_EMPTY);*/
-		$tags = comma_to_array($_POST['tags']);
+		$tags = getArrayFromList($_POST['tags']);
 
 		$sql = "SELECT tag_id
 			FROM ".$core->prefix."post_tag

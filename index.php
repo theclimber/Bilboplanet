@@ -32,6 +32,7 @@ $scripts[] = "javascript/jquery.boxy.js";
 include dirname(__FILE__).'/tpl.php';#
 header('Content-type: text/html; charset=utf-8');
 
+
 if (isset($_GET['portal'])) {
 	require_once(dirname(__FILE__).'/portal.php');
 } else {

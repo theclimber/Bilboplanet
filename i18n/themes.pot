@@ -18,8 +18,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 
-#: themes/aragorn/subscription.tpl:12
 #: themes/legolas/subscription.tpl:12
+#: themes/aragorn/subscription.tpl:12
 #: themes/gandalf/subscription.tpl:12
 #: themes/gil-galad/subscription.tpl:12
 msgid "Before to subscribe, do not hesitate to test your RSS/Atom feeds to be sure they'll be well interpretated by the planet aggregator engine which is using the <a href='http://simplepie.org/' title='Simple Pie' rel='noffolow'>Simple Pie</a> library (distributed under the LGPL licecne). Check also if your feeds are perfectly valid on <a href='http://feedvalidator.org/check.cgi' target='_blank'>Feedvalidator</a> and correct them if needed. Otherwise you could have some problems using them."
@@ -30,31 +30,31 @@ msgstr ""
 msgid "Back to top"
 msgstr ""
 
-#: themes/aragorn/sidebar.tpl:7
 #: themes/legolas/sidebar.tpl:25
+#: themes/aragorn/sidebar.tpl:7
 #: themes/gandalf/sidebar.tpl:6
 #: themes/gil-galad/sidebar.tpl:7
 msgid "Quick news"
 msgstr ""
 
-#: themes/aragorn/subscription.tpl:31
 #: themes/legolas/subscription.tpl:31
+#: themes/aragorn/subscription.tpl:31
 #: themes/gandalf/subscription.tpl:31
 #: themes/gil-galad/subscription.tpl:31
 msgid "Contact email"
 msgstr ""
 
-#: themes/aragorn/sidebar.tpl:23
 #: themes/legolas/sidebar.tpl:39
+#: themes/aragorn/sidebar.tpl:23
 #: themes/gandalf/sidebar.tpl:20
 #: themes/gil-galad/sidebar.tpl:23
 msgid "Searching with :"
 msgstr ""
 
-#: themes/aragorn/subscription.tpl:65
-#: themes/aragorn/contact.tpl:8
 #: themes/legolas/subscription.tpl:65
 #: themes/legolas/contact.tpl:8
+#: themes/aragorn/subscription.tpl:65
+#: themes/aragorn/contact.tpl:8
 #: themes/gandalf/subscription.tpl:65
 #: themes/gandalf/contact.tpl:8
 #: themes/gil-galad/subscription.tpl:65
@@ -62,47 +62,36 @@ msgstr ""
 msgid "Contact us"
 msgstr ""
 
-#: themes/aragorn/stats.tpl:23
-#: themes/aragorn/stats.tpl:44
-#: themes/legolas/stats.tpl:23
-#: themes/legolas/stats.tpl:44
-#: themes/gandalf/stats.tpl:23
-#: themes/gandalf/stats.tpl:44
-#: themes/gil-galad/stats.tpl:23
-#: themes/gil-galad/stats.tpl:44
-msgid "Visit the website"
-msgstr ""
-
 #: themes/legolas/posts.tpl:14
 #: themes/gandalf/menu.tpl:32
 msgid "All posts"
 msgstr ""
 
-#: themes/aragorn/subscription.tpl:13
 #: themes/legolas/subscription.tpl:13
+#: themes/aragorn/subscription.tpl:13
 #: themes/gandalf/subscription.tpl:13
 #: themes/gil-galad/subscription.tpl:13
 msgid "You can test the simplepie engine on the following page :"
 msgstr ""
 
-#: themes/aragorn/archives.tpl:4
 #: themes/legolas/archives.tpl:4
+#: themes/aragorn/archives.tpl:4
 #: themes/gandalf/archives.tpl:4
 #: themes/gil-galad/archives.tpl:4
 msgid "Read the article"
 msgstr ""
 
-#: themes/aragorn/posts.tpl:74
 #: themes/legolas/posts.tpl:95
+#: themes/aragorn/posts.tpl:74
 #: themes/gandalf/posts.tpl:77
 #: themes/gil-galad/posts.tpl:75
 msgid "No comments yet"
 msgstr ""
 
-#: themes/aragorn/posts.tpl:20
-#: themes/aragorn/posts.tpl:118
 #: themes/legolas/posts.tpl:39
 #: themes/legolas/posts.tpl:139
+#: themes/aragorn/posts.tpl:20
+#: themes/aragorn/posts.tpl:118
 #: themes/gandalf/posts.tpl:21
 #: themes/gandalf/posts.tpl:128
 #: themes/gil-galad/posts.tpl:21
@@ -110,24 +99,24 @@ msgstr ""
 msgid "Previous page"
 msgstr ""
 
-#: themes/aragorn/posts.tpl:8
 #: themes/legolas/posts.tpl:27
+#: themes/aragorn/posts.tpl:8
 #: themes/gandalf/posts.tpl:8
 #: themes/gil-galad/posts.tpl:9
 msgid "Fast access to the last posts of the page"
 msgstr ""
 
-#: themes/aragorn/index.tpl:67
 #: themes/legolas/index.tpl:68
+#: themes/aragorn/index.tpl:67
 #: themes/gandalf/index.tpl:67
 #: themes/gil-galad/index.tpl:80
 msgid "Password forgotten?"
 msgstr ""
 
-#: themes/aragorn/subscription.tpl:57
-#: themes/aragorn/contact.tpl:22
 #: themes/legolas/subscription.tpl:57
 #: themes/legolas/contact.tpl:22
+#: themes/aragorn/subscription.tpl:57
+#: themes/aragorn/contact.tpl:22
 #: themes/gandalf/subscription.tpl:57
 #: themes/gandalf/contact.tpl:22
 #: themes/gil-galad/subscription.tpl:57
@@ -135,29 +124,33 @@ msgstr ""
 msgid "Reset"
 msgstr ""
 
-#: themes/aragorn/subscription.tpl:53
-#: themes/legolas/subscription.tpl:53
-#: themes/gandalf/subscription.tpl:53
-#: themes/gil-galad/subscription.tpl:53
-msgid "I have read and accept the charter"
+#: themes/legolas/stats.tpl:23
+#: themes/legolas/stats.tpl:44
+#: themes/aragorn/stats.tpl:23
+#: themes/aragorn/stats.tpl:44
+#: themes/gandalf/stats.tpl:23
+#: themes/gandalf/stats.tpl:44
+#: themes/gil-galad/stats.tpl:23
+#: themes/gil-galad/stats.tpl:44
+msgid "Visit the website"
 msgstr ""
 
-#: themes/aragorn/sidebar.tpl:61
 #: themes/legolas/sidebar.tpl:81
+#: themes/aragorn/sidebar.tpl:61
 #: themes/gandalf/sidebar.tpl:62
 #: themes/gil-galad/sidebar.tpl:61
 msgid "See members posts"
 msgstr ""
 
-#: themes/aragorn/posts.tpl:34
 #: themes/legolas/posts.tpl:54
+#: themes/aragorn/posts.tpl:34
 #: themes/gandalf/posts.tpl:35
 #: themes/gil-galad/posts.tpl:35
 msgid "Show user's posts"
 msgstr ""
 
-#: themes/aragorn/sidebar.tpl:33
 #: themes/legolas/sidebar.tpl:49
+#: themes/aragorn/sidebar.tpl:33
 #: themes/gandalf/sidebar.tpl:30
 #: themes/gil-galad/sidebar.tpl:33
 msgid "Parametrized feed"
@@ -167,70 +160,66 @@ msgstr ""
 msgid "You can search to find other articles."
 msgstr ""
 
-#: themes/aragorn/sidebar.tpl:21
-#: themes/legolas/sidebar.tpl:37
-#: themes/gandalf/sidebar.tpl:18
-#: themes/gil-galad/sidebar.tpl:21
-msgid "Page :"
+#: themes/legolas/posts.tpl:11
+#: themes/aragorn/index.tpl:109
+#: themes/gandalf/menu.tpl:29
+#: themes/gil-galad/index.tpl:108
+msgid "Posts of the month"
 msgstr ""
 
-#: themes/gil-galad/portal.tpl:21
-msgid "Follow this tribe"
-msgstr ""
-
-#: themes/aragorn/sidebar.tpl:71
 #: themes/legolas/footer.tpl:12
+#: themes/aragorn/sidebar.tpl:71
 #: themes/gandalf/sidebar.tpl:74
 #: themes/gil-galad/sidebar.tpl:71
 msgid "Add your blog"
 msgstr ""
 
-#: themes/aragorn/menu.tpl:8
 #: themes/legolas/menu.tpl:10
+#: themes/aragorn/menu.tpl:8
 #: themes/gandalf/menu.tpl:10
 #: themes/gil-galad/menu.tpl:8
 msgid "Registration"
 msgstr ""
 
-#: themes/aragorn/sidebar.tpl:63
 #: themes/legolas/sidebar.tpl:83
+#: themes/aragorn/sidebar.tpl:63
 #: themes/gandalf/sidebar.tpl:64
 #: themes/gil-galad/sidebar.tpl:63
 msgid "User's website"
 msgstr ""
 
-#: themes/aragorn/menu.tpl:6
 #: themes/legolas/menu.tpl:8
+#: themes/aragorn/menu.tpl:6
 #: themes/gandalf/menu.tpl:8
 #: themes/gil-galad/menu.tpl:6
 msgid "Statistics"
 msgstr ""
 
-#: themes/aragorn/subscription.tpl:23
 #: themes/legolas/subscription.tpl:23
+#: themes/aragorn/subscription.tpl:23
 #: themes/gandalf/subscription.tpl:23
 #: themes/gil-galad/subscription.tpl:23
 msgid "Name or nickname"
 msgstr ""
 
-#: themes/aragorn/index.tpl:106
 #: themes/legolas/posts.tpl:8
+#: themes/aragorn/index.tpl:106
 #: themes/gandalf/menu.tpl:26
 #: themes/gil-galad/index.tpl:105
 msgid "Posts of the week"
 msgstr ""
 
-#: themes/aragorn/stats.tpl:5
 #: themes/legolas/stats.tpl:5
+#: themes/aragorn/stats.tpl:5
 #: themes/gandalf/stats.tpl:5
 #: themes/gil-galad/stats.tpl:5
 msgid "Number of feeds :"
 msgstr ""
 
-#: themes/aragorn/subscription.tpl:58
-#: themes/aragorn/contact.tpl:24
 #: themes/legolas/subscription.tpl:58
 #: themes/legolas/contact.tpl:24
+#: themes/aragorn/subscription.tpl:58
+#: themes/aragorn/contact.tpl:24
 #: themes/gandalf/subscription.tpl:58
 #: themes/gandalf/contact.tpl:24
 #: themes/gil-galad/subscription.tpl:58
@@ -242,61 +231,61 @@ msgstr ""
 msgid "About Bilboplanet"
 msgstr ""
 
-#: themes/aragorn/menu.tpl:10
 #: themes/legolas/menu.tpl:12
+#: themes/aragorn/menu.tpl:10
 #: themes/gandalf/menu.tpl:12
 #: themes/gil-galad/menu.tpl:10
 msgid "Archives"
 msgstr ""
 
-#: themes/aragorn/subscription.tpl:9
 #: themes/legolas/subscription.tpl:9
+#: themes/aragorn/subscription.tpl:9
 #: themes/gandalf/subscription.tpl:9
 #: themes/gil-galad/subscription.tpl:9
 msgid "Test your feeds"
 msgstr ""
 
-#: themes/aragorn/index.tpl:52
 #: themes/legolas/index.tpl:53
+#: themes/aragorn/index.tpl:52
 #: themes/gandalf/index.tpl:52
 #: themes/gil-galad/index.tpl:65
 msgid "Username"
 msgstr ""
 
-#: themes/aragorn/sidebar.tpl:43
 #: themes/legolas/sidebar.tpl:67
+#: themes/aragorn/sidebar.tpl:43
 #: themes/gandalf/sidebar.tpl:41
 #: themes/gil-galad/sidebar.tpl:43
 msgid "Feed with the posts of this category : "
 msgstr ""
 
-#: themes/aragorn/stats.tpl:12
 #: themes/legolas/stats.tpl:12
+#: themes/aragorn/stats.tpl:12
 #: themes/gandalf/stats.tpl:12
 #: themes/gil-galad/stats.tpl:12
 msgid "List of the most active members"
 msgstr ""
 
-#: themes/aragorn/posts.tpl:39
 #: themes/legolas/posts.tpl:59
+#: themes/aragorn/posts.tpl:39
 #: themes/gandalf/posts.tpl:40
 #: themes/gil-galad/posts.tpl:40
 msgid "Visit source"
 msgstr ""
 
-#: themes/aragorn/index.tpl:38
 #: themes/legolas/index.tpl:39
+#: themes/aragorn/index.tpl:38
 #: themes/gandalf/index.tpl:38
 #: themes/gil-galad/index.tpl:51
 msgid "Welcome"
 msgstr ""
 
-#: themes/aragorn/posts.tpl:13
-#: themes/aragorn/posts.tpl:112
-#: themes/aragorn/archives.tpl:6
 #: themes/legolas/posts.tpl:32
 #: themes/legolas/posts.tpl:133
 #: themes/legolas/archives.tpl:6
+#: themes/aragorn/posts.tpl:13
+#: themes/aragorn/posts.tpl:112
+#: themes/aragorn/archives.tpl:6
 #: themes/gandalf/posts.tpl:14
 #: themes/gandalf/posts.tpl:119
 #: themes/gandalf/archives.tpl:6
@@ -306,15 +295,15 @@ msgstr ""
 msgid "No posts found"
 msgstr ""
 
-#: themes/aragorn/stats.tpl:38
 #: themes/legolas/stats.tpl:38
+#: themes/aragorn/stats.tpl:38
 #: themes/gandalf/stats.tpl:38
 #: themes/gil-galad/stats.tpl:38
 msgid "Total of votes"
 msgstr ""
 
-#: themes/aragorn/posts.tpl:52
 #: themes/legolas/posts.tpl:73
+#: themes/aragorn/posts.tpl:52
 #: themes/gandalf/posts.tpl:52
 #: themes/gil-galad/posts.tpl:53
 msgid "Add tag"
@@ -325,29 +314,29 @@ msgstr ""
 msgid "Members"
 msgstr ""
 
-#: themes/aragorn/subscription.tpl:68
 #: themes/legolas/subscription.tpl:68
+#: themes/aragorn/subscription.tpl:68
 #: themes/gandalf/subscription.tpl:68
 #: themes/gil-galad/subscription.tpl:68
 msgid "If you need to contact the administration team for any reason (change of your feed URL, suggestion ...), you can do it by <a href='contact.php'>clicking here</a>."
 msgstr ""
 
-#: themes/aragorn/index.tpl:109
-#: themes/legolas/posts.tpl:11
-#: themes/gandalf/menu.tpl:29
-#: themes/gil-galad/index.tpl:108
-msgid "Posts of the month"
+#: themes/legolas/sidebar.tpl:37
+#: themes/aragorn/sidebar.tpl:21
+#: themes/gandalf/sidebar.tpl:18
+#: themes/gil-galad/sidebar.tpl:21
+msgid "Page :"
 msgstr ""
 
-#: themes/aragorn/posts.tpl:55
 #: themes/legolas/posts.tpl:76
+#: themes/aragorn/posts.tpl:55
 #: themes/gandalf/posts.tpl:55
 #: themes/gil-galad/posts.tpl:56
 msgid "Allow comments"
 msgstr ""
 
-#: themes/aragorn/stats.tpl:2
 #: themes/legolas/stats.tpl:2
+#: themes/aragorn/stats.tpl:2
 #: themes/gandalf/stats.tpl:2
 #: themes/gil-galad/stats.tpl:2
 msgid "Main statistics"
@@ -358,103 +347,103 @@ msgstr ""
 msgid "Filter posts"
 msgstr ""
 
-#: themes/aragorn/index.tpl:172
 #: themes/legolas/index.tpl:149
+#: themes/aragorn/index.tpl:172
 #: themes/gandalf/index.tpl:164
-#: themes/gil-galad/index.tpl:176
+#: themes/gil-galad/index.tpl:172
 msgid "Comma separated tags (ex: linux,web,event)"
 msgstr ""
 
-#: themes/aragorn/menu.tpl:12
 #: themes/legolas/menu.tpl:14
+#: themes/aragorn/menu.tpl:12
 #: themes/gandalf/menu.tpl:14
 #: themes/gil-galad/menu.tpl:12
 msgid "Contact"
 msgstr ""
 
-#: themes/aragorn/index.tpl:103
 #: themes/legolas/posts.tpl:5
+#: themes/aragorn/index.tpl:103
 #: themes/gandalf/menu.tpl:23
 #: themes/gil-galad/index.tpl:102
 msgid "Posts of the day"
 msgstr ""
 
-#: themes/aragorn/sidebar.tpl:14
 #: themes/legolas/sidebar.tpl:31
+#: themes/aragorn/sidebar.tpl:14
 #: themes/gandalf/sidebar.tpl:11
 #: themes/gil-galad/sidebar.tpl:15
 msgid "Page status"
 msgstr ""
 
-#: themes/aragorn/sidebar.tpl:67
 #: themes/legolas/footer.tpl:9
+#: themes/aragorn/sidebar.tpl:67
 #: themes/gandalf/sidebar.tpl:70
 #: themes/gil-galad/sidebar.tpl:67
 msgid "Contribute"
 msgstr ""
 
-#: themes/aragorn/sidebar.tpl:40
 #: themes/legolas/sidebar.tpl:64
+#: themes/aragorn/sidebar.tpl:40
 #: themes/gandalf/sidebar.tpl:38
 #: themes/gil-galad/sidebar.tpl:40
 msgid "Feed with all the posts"
 msgstr ""
 
-#: themes/aragorn/menu.tpl:2
 #: themes/legolas/menu.tpl:4
+#: themes/aragorn/menu.tpl:2
 #: themes/gandalf/menu.tpl:4
 #: themes/gil-galad/menu.tpl:2
 msgid "Home"
 msgstr ""
 
-#: themes/aragorn/stats.tpl:32
 #: themes/legolas/stats.tpl:32
+#: themes/aragorn/stats.tpl:32
 #: themes/gandalf/stats.tpl:32
 #: themes/gil-galad/stats.tpl:32
 msgid "List of the best ranked members"
 msgstr ""
 
-#: themes/aragorn/contact.tpl:13
 #: themes/legolas/contact.tpl:13
+#: themes/aragorn/contact.tpl:13
 #: themes/gandalf/contact.tpl:13
 #: themes/gil-galad/contact.tpl:13
 msgid "Name / Nickname :"
 msgstr ""
 
-#: themes/aragorn/sidebar.tpl:74
 #: themes/legolas/footer.tpl:14
+#: themes/aragorn/sidebar.tpl:74
 #: themes/gandalf/sidebar.tpl:77
 #: themes/gil-galad/sidebar.tpl:74
 msgid "Administration"
 msgstr ""
 
-#: themes/aragorn/sidebar.tpl:28
 #: themes/legolas/sidebar.tpl:44
+#: themes/aragorn/sidebar.tpl:28
 #: themes/gandalf/sidebar.tpl:25
 #: themes/gil-galad/sidebar.tpl:28
 msgid "Tagged with :"
 msgstr ""
 
-#: themes/aragorn/subscription.tpl:39
 #: themes/legolas/subscription.tpl:39
+#: themes/aragorn/subscription.tpl:39
 #: themes/gandalf/subscription.tpl:39
 #: themes/gil-galad/subscription.tpl:39
 msgid "Feed URL (this can be a tag or category specific feed feed too)"
 msgstr ""
 
-#: themes/aragorn/subscription.tpl:18
 #: themes/legolas/subscription.tpl:18
+#: themes/aragorn/subscription.tpl:18
 #: themes/gandalf/subscription.tpl:18
 #: themes/gil-galad/subscription.tpl:18
 msgid "To add or remove your website from the planet, just fill this form in :"
 msgstr ""
 
-#: themes/aragorn/posts.tpl:90
-#: themes/aragorn/stats.tpl:16
-#: themes/aragorn/stats.tpl:37
 #: themes/legolas/posts.tpl:111
 #: themes/legolas/stats.tpl:16
 #: themes/legolas/stats.tpl:37
+#: themes/aragorn/posts.tpl:90
+#: themes/aragorn/stats.tpl:16
+#: themes/aragorn/stats.tpl:37
 #: themes/gandalf/posts.tpl:93
 #: themes/gandalf/stats.tpl:16
 #: themes/gandalf/stats.tpl:37
@@ -464,105 +453,112 @@ msgstr ""
 msgid "Website"
 msgstr ""
 
-#: themes/aragorn/index.tpl:170
 #: themes/legolas/index.tpl:147
+#: themes/aragorn/index.tpl:170
 #: themes/gandalf/index.tpl:162
-#: themes/gil-galad/index.tpl:174
+#: themes/gil-galad/index.tpl:170
 msgid "Tags"
 msgstr ""
 
-#: themes/aragorn/posts.tpl:95
 #: themes/legolas/posts.tpl:116
+#: themes/aragorn/posts.tpl:95
 #: themes/gandalf/posts.tpl:98
 #: themes/gil-galad/posts.tpl:96
 msgid "Here you'll find some help concerning the syntax :"
 msgstr ""
 
-#: themes/aragorn/posts.tpl:58
 #: themes/legolas/posts.tpl:79
+#: themes/aragorn/posts.tpl:58
 #: themes/gandalf/posts.tpl:58
 #: themes/gil-galad/posts.tpl:59
 msgid "Disable comments"
 msgstr ""
 
-#: themes/aragorn/subscription.tpl:46
 #: themes/legolas/subscription.tpl:46
+#: themes/aragorn/subscription.tpl:46
 #: themes/gandalf/subscription.tpl:46
 #: themes/gil-galad/subscription.tpl:46
 msgid "Unsubscribe"
 msgstr ""
 
-#: themes/aragorn/menu.tpl:4
 #: themes/legolas/menu.tpl:6
+#: themes/aragorn/menu.tpl:4
 #: themes/gandalf/menu.tpl:6
 #: themes/gil-galad/menu.tpl:4
 msgid "Top 10"
+msgstr ""
+
+#: themes/legolas/index.tpl:64
+#: themes/aragorn/index.tpl:63
+#: themes/gandalf/index.tpl:63
+#: themes/gil-galad/index.tpl:76
+msgid "Remember me"
 msgstr ""
 
 #: themes/legolas/sidebar.tpl:6
 msgid "Search"
 msgstr ""
 
-#: themes/aragorn/subscription.tpl:35
 #: themes/legolas/subscription.tpl:35
+#: themes/aragorn/subscription.tpl:35
 #: themes/gandalf/subscription.tpl:35
 #: themes/gil-galad/subscription.tpl:35
 msgid "Website URL"
 msgstr ""
 
-#: themes/aragorn/posts.tpl:99
 #: themes/legolas/posts.tpl:120
+#: themes/aragorn/posts.tpl:99
 #: themes/gandalf/posts.tpl:102
 #: themes/gil-galad/posts.tpl:100
 msgid "Publish"
 msgstr ""
 
-#: themes/aragorn/sidebar.tpl:70
 #: themes/legolas/footer.tpl:11
+#: themes/aragorn/sidebar.tpl:70
 #: themes/gandalf/sidebar.tpl:73
 #: themes/gil-galad/sidebar.tpl:70
 msgid "Subscribe your blog to the planet"
 msgstr ""
 
-#: themes/aragorn/sidebar.tpl:48
 #: themes/legolas/sidebar.tpl:72
+#: themes/aragorn/sidebar.tpl:48
 #: themes/gandalf/sidebar.tpl:46
 #: themes/gil-galad/sidebar.tpl:48
 msgid "Popular posts feed"
 msgstr ""
 
-#: themes/aragorn/contact.tpl:10
 #: themes/legolas/contact.tpl:10
+#: themes/aragorn/contact.tpl:10
 #: themes/gandalf/contact.tpl:10
 #: themes/gil-galad/contact.tpl:10
 msgid "You can contact the administration team with the form below:"
 msgstr ""
 
-#: themes/aragorn/posts.tpl:3
 #: themes/legolas/posts.tpl:22
+#: themes/aragorn/posts.tpl:3
 #: themes/gandalf/posts.tpl:3
 #: themes/gil-galad/posts.tpl:3
 msgid "You are searching for all the posts with :"
 msgstr ""
 
-#: themes/aragorn/index.tpl:65
 #: themes/legolas/index.tpl:66
+#: themes/aragorn/index.tpl:65
 #: themes/gandalf/index.tpl:65
 #: themes/gil-galad/index.tpl:78
 msgid "Connect"
 msgstr ""
 
-#: themes/aragorn/index.tpl:164
 #: themes/legolas/index.tpl:141
+#: themes/aragorn/index.tpl:164
 #: themes/gandalf/index.tpl:156
-#: themes/gil-galad/index.tpl:168
+#: themes/gil-galad/index.tpl:164
 msgid "Close"
 msgstr ""
 
-#: themes/aragorn/posts.tpl:23
-#: themes/aragorn/posts.tpl:121
 #: themes/legolas/posts.tpl:42
 #: themes/legolas/posts.tpl:142
+#: themes/aragorn/posts.tpl:23
+#: themes/aragorn/posts.tpl:121
 #: themes/gandalf/posts.tpl:24
 #: themes/gandalf/posts.tpl:131
 #: themes/gil-galad/posts.tpl:24
@@ -570,131 +566,25 @@ msgstr ""
 msgid "Next page"
 msgstr ""
 
-#: themes/aragorn/contact.tpl:15
 #: themes/legolas/contact.tpl:15
+#: themes/aragorn/contact.tpl:15
 #: themes/gandalf/contact.tpl:15
 #: themes/gil-galad/contact.tpl:15
 msgid "Email :"
 msgstr ""
 
-#: themes/aragorn/posts.tpl:86
 #: themes/legolas/posts.tpl:107
+#: themes/aragorn/posts.tpl:86
 #: themes/gandalf/posts.tpl:89
 #: themes/gil-galad/posts.tpl:87
 msgid "E-mail"
 msgstr ""
 
-#: themes/aragorn/sidebar.tpl:25
 #: themes/legolas/sidebar.tpl:41
+#: themes/aragorn/sidebar.tpl:25
 #: themes/gandalf/sidebar.tpl:22
 #: themes/gil-galad/sidebar.tpl:25
 msgid "Period of posts :"
-msgstr ""
-
-#: themes/aragorn/index.tpl:63
-#: themes/legolas/index.tpl:64
-#: themes/gandalf/index.tpl:63
-#: themes/gil-galad/index.tpl:76
-msgid "Remember me"
-msgstr ""
-
-#: themes/aragorn/sidebar.tpl:16
-#: themes/legolas/sidebar.tpl:32
-#: themes/gandalf/sidebar.tpl:13
-msgid "Number of items :"
-msgstr ""
-
-#: themes/aragorn/subscription.tpl:17
-#: themes/legolas/subscription.tpl:17
-#: themes/gandalf/subscription.tpl:17
-#: themes/gil-galad/subscription.tpl:17
-msgid "Subscribe / Unsubscribe"
-msgstr ""
-
-#: themes/aragorn/sidebar.tpl:30
-#: themes/legolas/sidebar.tpl:46
-#: themes/gandalf/sidebar.tpl:27
-#: themes/gil-galad/sidebar.tpl:30
-msgid "Written by :"
-msgstr ""
-
-#: themes/aragorn/index.tpl:57
-#: themes/legolas/index.tpl:58
-#: themes/gandalf/index.tpl:57
-#: themes/gil-galad/index.tpl:70
-msgid "Password"
-msgstr ""
-
-#: themes/aragorn/stats.tpl:15
-#: themes/aragorn/stats.tpl:36
-#: themes/legolas/stats.tpl:15
-#: themes/legolas/stats.tpl:36
-#: themes/gandalf/stats.tpl:15
-#: themes/gandalf/stats.tpl:36
-#: themes/gil-galad/stats.tpl:15
-#: themes/gil-galad/stats.tpl:36
-msgid "Name"
-msgstr ""
-
-#: themes/aragorn/stats.tpl:8
-#: themes/legolas/stats.tpl:8
-#: themes/gandalf/stats.tpl:8
-#: themes/gil-galad/stats.tpl:8
-msgid "Number of votes :"
-msgstr ""
-
-#: themes/aragorn/posts.tpl:108
-#: themes/legolas/posts.tpl:129
-#: themes/gandalf/posts.tpl:112
-#: themes/gil-galad/posts.tpl:109
-msgid "Back to summary"
-msgstr ""
-
-#: themes/aragorn/stats.tpl:17
-#: themes/legolas/stats.tpl:17
-#: themes/gandalf/stats.tpl:17
-#: themes/gil-galad/stats.tpl:17
-msgid "Qtity of posts"
-msgstr ""
-
-#: themes/aragorn/stats.tpl:4
-#: themes/legolas/stats.tpl:4
-#: themes/gandalf/stats.tpl:4
-#: themes/gil-galad/stats.tpl:4
-msgid "Number of members :"
-msgstr ""
-
-#: themes/aragorn/subscription.tpl:49
-#: themes/legolas/subscription.tpl:49
-#: themes/gandalf/subscription.tpl:49
-#: themes/gil-galad/subscription.tpl:49
-msgid "Please fill in the captcha"
-msgstr ""
-
-#: themes/aragorn/sidebar.tpl:27
-#: themes/legolas/sidebar.tpl:43
-#: themes/gandalf/sidebar.tpl:24
-#: themes/gil-galad/sidebar.tpl:27
-msgid "In popular tags"
-msgstr ""
-
-#: themes/aragorn/stats.tpl:6
-#: themes/legolas/stats.tpl:6
-#: themes/gandalf/stats.tpl:6
-#: themes/gil-galad/sidebar.tpl:16
-#: themes/gil-galad/stats.tpl:6
-msgid "Number of posts :"
-msgstr ""
-
-#: themes/aragorn/posts.tpl:82
-#: themes/aragorn/subscription.tpl:27
-#: themes/legolas/posts.tpl:103
-#: themes/legolas/subscription.tpl:27
-#: themes/gandalf/posts.tpl:85
-#: themes/gandalf/subscription.tpl:27
-#: themes/gil-galad/posts.tpl:83
-#: themes/gil-galad/subscription.tpl:27
-msgid "Fullname"
 msgstr ""
 
 #: themes/legolas/sidebar.tpl:78
@@ -702,31 +592,135 @@ msgstr ""
 msgid "Users"
 msgstr ""
 
-#: themes/aragorn/contact.tpl:17
+#: themes/legolas/sidebar.tpl:32
+#: themes/aragorn/sidebar.tpl:16
+#: themes/gandalf/sidebar.tpl:13
+msgid "Number of items :"
+msgstr ""
+
+#: themes/legolas/subscription.tpl:17
+#: themes/aragorn/subscription.tpl:17
+#: themes/gandalf/subscription.tpl:17
+#: themes/gil-galad/subscription.tpl:17
+msgid "Subscribe / Unsubscribe"
+msgstr ""
+
+#: themes/legolas/sidebar.tpl:46
+#: themes/aragorn/sidebar.tpl:30
+#: themes/gandalf/sidebar.tpl:27
+#: themes/gil-galad/sidebar.tpl:30
+msgid "Written by :"
+msgstr ""
+
+#: themes/legolas/index.tpl:58
+#: themes/aragorn/index.tpl:57
+#: themes/gandalf/index.tpl:57
+#: themes/gil-galad/index.tpl:70
+msgid "Password"
+msgstr ""
+
+#: themes/legolas/stats.tpl:15
+#: themes/legolas/stats.tpl:36
+#: themes/aragorn/stats.tpl:15
+#: themes/aragorn/stats.tpl:36
+#: themes/gandalf/stats.tpl:15
+#: themes/gandalf/stats.tpl:36
+#: themes/gil-galad/stats.tpl:15
+#: themes/gil-galad/stats.tpl:36
+msgid "Name"
+msgstr ""
+
+#: themes/legolas/stats.tpl:8
+#: themes/aragorn/stats.tpl:8
+#: themes/gandalf/stats.tpl:8
+#: themes/gil-galad/stats.tpl:8
+msgid "Number of votes :"
+msgstr ""
+
+#: themes/legolas/posts.tpl:129
+#: themes/aragorn/posts.tpl:108
+#: themes/gandalf/posts.tpl:112
+#: themes/gil-galad/posts.tpl:109
+msgid "Back to summary"
+msgstr ""
+
+#: themes/legolas/stats.tpl:17
+#: themes/aragorn/stats.tpl:17
+#: themes/gandalf/stats.tpl:17
+#: themes/gil-galad/stats.tpl:17
+msgid "Qtity of posts"
+msgstr ""
+
+#: themes/legolas/stats.tpl:4
+#: themes/aragorn/stats.tpl:4
+#: themes/gandalf/stats.tpl:4
+#: themes/gil-galad/stats.tpl:4
+msgid "Number of members :"
+msgstr ""
+
+#: themes/legolas/subscription.tpl:49
+#: themes/aragorn/subscription.tpl:49
+#: themes/gandalf/subscription.tpl:49
+#: themes/gil-galad/subscription.tpl:49
+msgid "Please fill in the captcha"
+msgstr ""
+
+#: themes/legolas/sidebar.tpl:43
+#: themes/aragorn/sidebar.tpl:27
+#: themes/gandalf/sidebar.tpl:24
+#: themes/gil-galad/sidebar.tpl:27
+msgid "In popular tags"
+msgstr ""
+
+#: themes/legolas/stats.tpl:6
+#: themes/aragorn/stats.tpl:6
+#: themes/gandalf/stats.tpl:6
+#: themes/gil-galad/sidebar.tpl:16
+#: themes/gil-galad/stats.tpl:6
+msgid "Number of posts :"
+msgstr ""
+
+#: themes/legolas/posts.tpl:103
+#: themes/legolas/subscription.tpl:27
+#: themes/aragorn/posts.tpl:82
+#: themes/aragorn/subscription.tpl:27
+#: themes/gandalf/posts.tpl:85
+#: themes/gandalf/subscription.tpl:27
+#: themes/gil-galad/posts.tpl:83
+#: themes/gil-galad/subscription.tpl:27
+msgid "Fullname"
+msgstr ""
+
+#: themes/aragorn/index.tpl:112
+#: themes/gil-galad/index.tpl:111
+msgid "All the posts"
+msgstr ""
+
 #: themes/legolas/contact.tpl:17
+#: themes/aragorn/contact.tpl:17
 #: themes/gandalf/contact.tpl:17
 #: themes/gil-galad/contact.tpl:17
 msgid "Subject :"
 msgstr ""
 
-#: themes/aragorn/contact.tpl:19
 #: themes/legolas/contact.tpl:19
+#: themes/aragorn/contact.tpl:19
 #: themes/gandalf/contact.tpl:19
 #: themes/gil-galad/contact.tpl:19
 msgid "Content :'"
 msgstr ""
 
-#: themes/aragorn/sidebar.tpl:73
 #: themes/legolas/footer.tpl:13
+#: themes/aragorn/sidebar.tpl:73
 #: themes/gandalf/sidebar.tpl:76
 #: themes/gil-galad/sidebar.tpl:73
 msgid "Admin interface"
 msgstr ""
 
-#: themes/aragorn/sidebar.tpl:37
-#: themes/aragorn/subscription.tpl:43
 #: themes/legolas/sidebar.tpl:61
 #: themes/legolas/subscription.tpl:43
+#: themes/aragorn/sidebar.tpl:37
+#: themes/aragorn/subscription.tpl:43
 #: themes/gandalf/subscription.tpl:43
 #: themes/gandalf/sidebar.tpl:35
 #: themes/gil-galad/sidebar.tpl:37
@@ -734,15 +728,17 @@ msgstr ""
 msgid "Subscribe"
 msgstr ""
 
-#: themes/aragorn/index.tpl:174
 #: themes/legolas/index.tpl:151
+#: themes/aragorn/index.tpl:174
 #: themes/gandalf/index.tpl:166
-#: themes/gil-galad/index.tpl:178
+#: themes/gil-galad/index.tpl:174
 msgid "Apply"
 msgstr ""
 
-#: themes/aragorn/index.tpl:112
-#: themes/gil-galad/index.tpl:111
-msgid "All the posts"
+#: themes/legolas/subscription.tpl:53
+#: themes/aragorn/subscription.tpl:53
+#: themes/gandalf/subscription.tpl:53
+#: themes/gil-galad/subscription.tpl:53
+msgid "I have read and accept the charter"
 msgstr ""
 

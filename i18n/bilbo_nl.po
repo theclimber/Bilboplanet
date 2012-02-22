@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: themes/aragorn/subscription.tpl:12 themes/legolas/subscription.tpl:12
+#: themes/legolas/subscription.tpl:12 themes/aragorn/subscription.tpl:12
 #: themes/gandalf/subscription.tpl:12 themes/gil-galad/subscription.tpl:12
 msgid ""
 "Before to subscribe, do not hesitate to test your RSS/Atom feeds to be sure "
@@ -41,100 +41,95 @@ msgstr ""
 msgid "Back to top"
 msgstr "Terug naar boven"
 
-#: themes/aragorn/sidebar.tpl:7 themes/legolas/sidebar.tpl:25
+#: themes/legolas/sidebar.tpl:25 themes/aragorn/sidebar.tpl:7
 #: themes/gandalf/sidebar.tpl:6 themes/gil-galad/sidebar.tpl:7
 msgid "Quick news"
 msgstr "Snel nieuws"
 
-#: themes/aragorn/subscription.tpl:31 themes/legolas/subscription.tpl:31
+#: themes/legolas/subscription.tpl:31 themes/aragorn/subscription.tpl:31
 #: themes/gandalf/subscription.tpl:31 themes/gil-galad/subscription.tpl:31
 msgid "Contact email"
 msgstr "Contact e-mail"
 
-#: themes/aragorn/sidebar.tpl:23 themes/legolas/sidebar.tpl:39
+#: themes/legolas/sidebar.tpl:39 themes/aragorn/sidebar.tpl:23
 #: themes/gandalf/sidebar.tpl:20 themes/gil-galad/sidebar.tpl:23
 msgid "Searching with :"
 msgstr ""
 
-#: themes/aragorn/subscription.tpl:65 themes/aragorn/contact.tpl:8
 #: themes/legolas/subscription.tpl:65 themes/legolas/contact.tpl:8
+#: themes/aragorn/subscription.tpl:65 themes/aragorn/contact.tpl:8
 #: themes/gandalf/subscription.tpl:65 themes/gandalf/contact.tpl:8
 #: themes/gil-galad/subscription.tpl:65 themes/gil-galad/contact.tpl:8
 msgid "Contact us"
 msgstr "Contacteer ons"
 
-#: themes/aragorn/stats.tpl:23 themes/aragorn/stats.tpl:44
-#: themes/legolas/stats.tpl:23 themes/legolas/stats.tpl:44
-#: themes/gandalf/stats.tpl:23 themes/gandalf/stats.tpl:44
-#: themes/gil-galad/stats.tpl:23 themes/gil-galad/stats.tpl:44
-msgid "Visit the website"
-msgstr "Bezoek de website"
-
 #: themes/legolas/posts.tpl:14 themes/gandalf/menu.tpl:32
 msgid "All posts"
 msgstr "Alle berichten"
 
-#: themes/aragorn/subscription.tpl:13 themes/legolas/subscription.tpl:13
+#: themes/legolas/subscription.tpl:13 themes/aragorn/subscription.tpl:13
 #: themes/gandalf/subscription.tpl:13 themes/gil-galad/subscription.tpl:13
 msgid "You can test the simplepie engine on the following page :"
 msgstr "U kunt de simplepie engine op de volgende pagina uit tester:"
 
-#: themes/aragorn/archives.tpl:4 themes/legolas/archives.tpl:4
+#: themes/legolas/archives.tpl:4 themes/aragorn/archives.tpl:4
 #: themes/gandalf/archives.tpl:4 themes/gil-galad/archives.tpl:4
 msgid "Read the article"
 msgstr "Lees het artikel"
 
-#: themes/aragorn/posts.tpl:74 themes/legolas/posts.tpl:95
+#: themes/legolas/posts.tpl:95 themes/aragorn/posts.tpl:74
 #: themes/gandalf/posts.tpl:77 themes/gil-galad/posts.tpl:75
 msgid "No comments yet"
 msgstr ""
 
-#: themes/aragorn/posts.tpl:20 themes/aragorn/posts.tpl:118
 #: themes/legolas/posts.tpl:39 themes/legolas/posts.tpl:139
+#: themes/aragorn/posts.tpl:20 themes/aragorn/posts.tpl:118
 #: themes/gandalf/posts.tpl:21 themes/gandalf/posts.tpl:128
 #: themes/gil-galad/posts.tpl:21 themes/gil-galad/posts.tpl:119
 #: inc/admin/prepend.php:58 admin/pagination.php:53 admin/pagination.php:60
 msgid "Previous page"
 msgstr "Vorige pagina"
 
-#: themes/aragorn/posts.tpl:8 themes/legolas/posts.tpl:27
+#: themes/legolas/posts.tpl:27 themes/aragorn/posts.tpl:8
 #: themes/gandalf/posts.tpl:8 themes/gil-galad/posts.tpl:9
 msgid "Fast access to the last posts of the page"
 msgstr "Snelle toegang tot de laatste berichten van de pagina"
 
-#: themes/aragorn/index.tpl:67 themes/legolas/index.tpl:68
+#: themes/legolas/index.tpl:68 themes/aragorn/index.tpl:67
 #: themes/gandalf/index.tpl:67 themes/gil-galad/index.tpl:80
 #, fuzzy
 msgid "Password forgotten?"
 msgstr "Wachtwoord resetten"
 
-#: themes/aragorn/subscription.tpl:57 themes/aragorn/contact.tpl:22
 #: themes/legolas/subscription.tpl:57 themes/legolas/contact.tpl:22
+#: themes/aragorn/subscription.tpl:57 themes/aragorn/contact.tpl:22
 #: themes/gandalf/subscription.tpl:57 themes/gandalf/contact.tpl:22
 #: themes/gil-galad/subscription.tpl:57 themes/gil-galad/contact.tpl:22
-#: admin/manage-post.php:171 admin/manage-feed.php:143
-#: admin/manage-user.php:126 admin/manage-newsletter.php:266
-#: admin/api/manage-user_api.php:286 admin/api/manage-feed_api.php:255
-#: admin/api/manage-site_api.php:190
+#: admin/manage-feed.php:143 admin/manage-user.php:126
+#: admin/manage-post.php:171 admin/manage-newsletter.php:266
+#: admin/api/manage-site_api.php:190 admin/api/manage-feed_api.php:255
+#: admin/api/manage-user_api.php:286
 msgid "Reset"
 msgstr "Reset"
 
-#: themes/aragorn/subscription.tpl:53 themes/legolas/subscription.tpl:53
-#: themes/gandalf/subscription.tpl:53 themes/gil-galad/subscription.tpl:53
-msgid "I have read and accept the charter"
-msgstr "Ik heb de charter gelezen en accepteer ze"
+#: themes/legolas/stats.tpl:23 themes/legolas/stats.tpl:44
+#: themes/aragorn/stats.tpl:23 themes/aragorn/stats.tpl:44
+#: themes/gandalf/stats.tpl:23 themes/gandalf/stats.tpl:44
+#: themes/gil-galad/stats.tpl:23 themes/gil-galad/stats.tpl:44
+msgid "Visit the website"
+msgstr "Bezoek de website"
 
-#: themes/aragorn/sidebar.tpl:61 themes/legolas/sidebar.tpl:81
+#: themes/legolas/sidebar.tpl:81 themes/aragorn/sidebar.tpl:61
 #: themes/gandalf/sidebar.tpl:62 themes/gil-galad/sidebar.tpl:61
 msgid "See members posts"
 msgstr "Zie leden berichten"
 
-#: themes/aragorn/posts.tpl:34 themes/legolas/posts.tpl:54
+#: themes/legolas/posts.tpl:54 themes/aragorn/posts.tpl:34
 #: themes/gandalf/posts.tpl:35 themes/gil-galad/posts.tpl:35
 msgid "Show user's posts"
 msgstr "Toon berichten van de lid"
 
-#: themes/aragorn/sidebar.tpl:33 themes/legolas/sidebar.tpl:49
+#: themes/legolas/sidebar.tpl:49 themes/aragorn/sidebar.tpl:33
 #: themes/gandalf/sidebar.tpl:30 themes/gil-galad/sidebar.tpl:33
 msgid "Parametrized feed"
 msgstr ""
@@ -143,59 +138,55 @@ msgstr ""
 msgid "You can search to find other articles."
 msgstr "U kunt zoeken naar andere artikelen te vinden."
 
-#: themes/aragorn/sidebar.tpl:21 themes/legolas/sidebar.tpl:37
-#: themes/gandalf/sidebar.tpl:18 themes/gil-galad/sidebar.tpl:21
-msgid "Page :"
-msgstr ""
+#: themes/legolas/posts.tpl:11 themes/aragorn/index.tpl:109
+#: themes/gandalf/menu.tpl:29 themes/gil-galad/index.tpl:108
+msgid "Posts of the month"
+msgstr "Berichten van de maand"
 
-#: themes/gil-galad/portal.tpl:21
-msgid "Follow this tribe"
-msgstr ""
-
-#: themes/aragorn/sidebar.tpl:71 themes/legolas/footer.tpl:12
+#: themes/legolas/footer.tpl:12 themes/aragorn/sidebar.tpl:71
 #: themes/gandalf/sidebar.tpl:74 themes/gil-galad/sidebar.tpl:71
 msgid "Add your blog"
 msgstr "Voeg uw blog"
 
-#: themes/aragorn/menu.tpl:8 themes/legolas/menu.tpl:10
+#: themes/legolas/menu.tpl:10 themes/aragorn/menu.tpl:8
 #: themes/gandalf/menu.tpl:10 themes/gil-galad/menu.tpl:8
 msgid "Registration"
 msgstr "Inschrijving"
 
-#: themes/aragorn/sidebar.tpl:63 themes/legolas/sidebar.tpl:83
+#: themes/legolas/sidebar.tpl:83 themes/aragorn/sidebar.tpl:63
 #: themes/gandalf/sidebar.tpl:64 themes/gil-galad/sidebar.tpl:63
 msgid "User's website"
 msgstr "Gebruikers website"
 
-#: themes/aragorn/menu.tpl:6 themes/legolas/menu.tpl:8
+#: themes/legolas/menu.tpl:8 themes/aragorn/menu.tpl:6
 #: themes/gandalf/menu.tpl:8 themes/gil-galad/menu.tpl:6
 msgid "Statistics"
 msgstr "Statistieken"
 
-#: themes/aragorn/subscription.tpl:23 themes/legolas/subscription.tpl:23
+#: themes/legolas/subscription.tpl:23 themes/aragorn/subscription.tpl:23
 #: themes/gandalf/subscription.tpl:23 themes/gil-galad/subscription.tpl:23
 msgid "Name or nickname"
 msgstr "Naam of pseudoniem"
 
-#: themes/aragorn/index.tpl:106 themes/legolas/posts.tpl:8
+#: themes/legolas/posts.tpl:8 themes/aragorn/index.tpl:106
 #: themes/gandalf/menu.tpl:26 themes/gil-galad/index.tpl:105
 msgid "Posts of the week"
 msgstr "Berichten van de week"
 
-#: themes/aragorn/stats.tpl:5 themes/legolas/stats.tpl:5
+#: themes/legolas/stats.tpl:5 themes/aragorn/stats.tpl:5
 #: themes/gandalf/stats.tpl:5 themes/gil-galad/stats.tpl:5
 msgid "Number of feeds :"
 msgstr "Aantal feeds:"
 
-#: themes/aragorn/subscription.tpl:58 themes/aragorn/contact.tpl:24
 #: themes/legolas/subscription.tpl:58 themes/legolas/contact.tpl:24
+#: themes/aragorn/subscription.tpl:58 themes/aragorn/contact.tpl:24
 #: themes/gandalf/subscription.tpl:58 themes/gandalf/contact.tpl:24
 #: themes/gil-galad/subscription.tpl:58 themes/gil-galad/contact.tpl:24
-#: admin/manage-moderation.php:109 admin/manage-pendinguser.php:61
-#: admin/manage-pendinguser.php:74 admin/manage-tagging.php:99
-#: admin/manage-post.php:172 admin/manage-feed.php:188
-#: admin/manage-selection.php:119 admin/manage-newsletter.php:262
-#: admin/manage-update.php:138
+#: admin/manage-feed.php:188 admin/manage-update.php:138
+#: admin/manage-post.php:172 admin/manage-tagging.php:99
+#: admin/manage-newsletter.php:262 admin/manage-selection.php:119
+#: admin/manage-pendinguser.php:61 admin/manage-pendinguser.php:74
+#: admin/manage-moderation.php:109
 msgid "Send"
 msgstr "Sturen"
 
@@ -203,60 +194,60 @@ msgstr "Sturen"
 msgid "About Bilboplanet"
 msgstr "Over Bilboplanet"
 
-#: themes/aragorn/menu.tpl:10 themes/legolas/menu.tpl:12
+#: themes/legolas/menu.tpl:12 themes/aragorn/menu.tpl:10
 #: themes/gandalf/menu.tpl:12 themes/gil-galad/menu.tpl:10
 msgid "Archives"
 msgstr "Archief"
 
-#: themes/aragorn/subscription.tpl:9 themes/legolas/subscription.tpl:9
+#: themes/legolas/subscription.tpl:9 themes/aragorn/subscription.tpl:9
 #: themes/gandalf/subscription.tpl:9 themes/gil-galad/subscription.tpl:9
 msgid "Test your feeds"
 msgstr "Test uw feeds"
 
-#: themes/aragorn/index.tpl:52 themes/legolas/index.tpl:53
+#: themes/legolas/index.tpl:53 themes/aragorn/index.tpl:52
 #: themes/gandalf/index.tpl:52 themes/gil-galad/index.tpl:65
 #: inscription.php:129 admin/install/index.php:339
 msgid "Username"
 msgstr "Gebruikersnaam"
 
-#: themes/aragorn/sidebar.tpl:43 themes/legolas/sidebar.tpl:67
+#: themes/legolas/sidebar.tpl:67 themes/aragorn/sidebar.tpl:43
 #: themes/gandalf/sidebar.tpl:41 themes/gil-galad/sidebar.tpl:43
 #, fuzzy
 msgid "Feed with the posts of this category : "
 msgstr "Feed met alle berichten"
 
-#: themes/aragorn/stats.tpl:12 themes/legolas/stats.tpl:12
+#: themes/legolas/stats.tpl:12 themes/aragorn/stats.tpl:12
 #: themes/gandalf/stats.tpl:12 themes/gil-galad/stats.tpl:12
 msgid "List of the most active members"
 msgstr "Lijst van de meeste actieve leden"
 
-#: themes/aragorn/posts.tpl:39 themes/legolas/posts.tpl:59
+#: themes/legolas/posts.tpl:59 themes/aragorn/posts.tpl:39
 #: themes/gandalf/posts.tpl:40 themes/gil-galad/posts.tpl:40
 msgid "Visit source"
 msgstr "Bezoek bron"
 
-#: themes/aragorn/index.tpl:38 themes/legolas/index.tpl:39
+#: themes/legolas/index.tpl:39 themes/aragorn/index.tpl:38
 #: themes/gandalf/index.tpl:38 themes/gil-galad/index.tpl:51
 msgid "Welcome"
 msgstr ""
 
-#: themes/aragorn/posts.tpl:13 themes/aragorn/posts.tpl:112
-#: themes/aragorn/archives.tpl:6 themes/legolas/posts.tpl:32
-#: themes/legolas/posts.tpl:133 themes/legolas/archives.tpl:6
+#: themes/legolas/posts.tpl:32 themes/legolas/posts.tpl:133
+#: themes/legolas/archives.tpl:6 themes/aragorn/posts.tpl:13
+#: themes/aragorn/posts.tpl:112 themes/aragorn/archives.tpl:6
 #: themes/gandalf/posts.tpl:14 themes/gandalf/posts.tpl:119
 #: themes/gandalf/archives.tpl:6 themes/gil-galad/posts.tpl:14
 #: themes/gil-galad/posts.tpl:113 themes/gil-galad/archives.tpl:6
+#: admin/api/manage-tagging_api.php:172
 #: admin/api/manage-moderation_api.php:193
-#: admin/api/manage-tagging_api.php:173
 msgid "No posts found"
 msgstr "Geen berichten gevonden"
 
-#: themes/aragorn/stats.tpl:38 themes/legolas/stats.tpl:38
+#: themes/legolas/stats.tpl:38 themes/aragorn/stats.tpl:38
 #: themes/gandalf/stats.tpl:38 themes/gil-galad/stats.tpl:38
 msgid "Total of votes"
 msgstr "Totaal stemmen"
 
-#: themes/aragorn/posts.tpl:52 themes/legolas/posts.tpl:73
+#: themes/legolas/posts.tpl:73 themes/aragorn/posts.tpl:52
 #: themes/gandalf/posts.tpl:52 themes/gil-galad/posts.tpl:53
 msgid "Add tag"
 msgstr ""
@@ -265,7 +256,7 @@ msgstr ""
 msgid "Members"
 msgstr "Leden"
 
-#: themes/aragorn/subscription.tpl:68 themes/legolas/subscription.tpl:68
+#: themes/legolas/subscription.tpl:68 themes/aragorn/subscription.tpl:68
 #: themes/gandalf/subscription.tpl:68 themes/gil-galad/subscription.tpl:68
 msgid ""
 "If you need to contact the administration team for any reason (change of "
@@ -276,17 +267,17 @@ msgstr ""
 "(verandering van uw feed-URL contact, suggestie ...), kunt u dit doen door "
 "<a href='contact.php'>hier te klikken.</a>"
 
-#: themes/aragorn/index.tpl:109 themes/legolas/posts.tpl:11
-#: themes/gandalf/menu.tpl:29 themes/gil-galad/index.tpl:108
-msgid "Posts of the month"
-msgstr "Berichten van de maand"
+#: themes/legolas/sidebar.tpl:37 themes/aragorn/sidebar.tpl:21
+#: themes/gandalf/sidebar.tpl:18 themes/gil-galad/sidebar.tpl:21
+msgid "Page :"
+msgstr ""
 
-#: themes/aragorn/posts.tpl:55 themes/legolas/posts.tpl:76
+#: themes/legolas/posts.tpl:76 themes/aragorn/posts.tpl:55
 #: themes/gandalf/posts.tpl:55 themes/gil-galad/posts.tpl:56
 msgid "Allow comments"
 msgstr ""
 
-#: themes/aragorn/stats.tpl:2 themes/legolas/stats.tpl:2
+#: themes/legolas/stats.tpl:2 themes/aragorn/stats.tpl:2
 #: themes/gandalf/stats.tpl:2 themes/gil-galad/stats.tpl:2
 msgid "Main statistics"
 msgstr "Algemene statistieken"
@@ -295,308 +286,317 @@ msgstr "Algemene statistieken"
 msgid "Filter posts"
 msgstr "Filteren van de berichten"
 
-#: themes/aragorn/index.tpl:172 themes/legolas/index.tpl:149
-#: themes/gandalf/index.tpl:164 themes/gil-galad/index.tpl:176
-#: admin/manage-tagging.php:96 admin/manage-feed.php:185
+#: themes/legolas/index.tpl:149 themes/aragorn/index.tpl:172
+#: themes/gandalf/index.tpl:164 themes/gil-galad/index.tpl:172
+#: admin/manage-feed.php:185 admin/manage-tagging.php:96
 msgid "Comma separated tags (ex: linux,web,event)"
 msgstr ""
 
-#: themes/aragorn/menu.tpl:12 themes/legolas/menu.tpl:14
+#: themes/legolas/menu.tpl:14 themes/aragorn/menu.tpl:12
 #: themes/gandalf/menu.tpl:14 themes/gil-galad/menu.tpl:12
 msgid "Contact"
 msgstr "Contact"
 
-#: themes/aragorn/index.tpl:103 themes/legolas/posts.tpl:5
+#: themes/legolas/posts.tpl:5 themes/aragorn/index.tpl:103
 #: themes/gandalf/menu.tpl:23 themes/gil-galad/index.tpl:102
 msgid "Posts of the day"
 msgstr "Berichten van de dag"
 
-#: themes/aragorn/sidebar.tpl:14 themes/legolas/sidebar.tpl:31
+#: themes/legolas/sidebar.tpl:31 themes/aragorn/sidebar.tpl:14
 #: themes/gandalf/sidebar.tpl:11 themes/gil-galad/sidebar.tpl:15
 #, fuzzy
 msgid "Page status"
 msgstr "Stemmen tabel"
 
-#: themes/aragorn/sidebar.tpl:67 themes/legolas/footer.tpl:9
+#: themes/legolas/footer.tpl:9 themes/aragorn/sidebar.tpl:67
 #: themes/gandalf/sidebar.tpl:70 themes/gil-galad/sidebar.tpl:67
 msgid "Contribute"
 msgstr "Doe mee"
 
-#: themes/aragorn/sidebar.tpl:40 themes/legolas/sidebar.tpl:64
+#: themes/legolas/sidebar.tpl:64 themes/aragorn/sidebar.tpl:40
 #: themes/gandalf/sidebar.tpl:38 themes/gil-galad/sidebar.tpl:40
 msgid "Feed with all the posts"
 msgstr "Feed met alle berichten"
 
-#: themes/aragorn/menu.tpl:2 themes/legolas/menu.tpl:4
+#: themes/legolas/menu.tpl:4 themes/aragorn/menu.tpl:2
 #: themes/gandalf/menu.tpl:4 themes/gil-galad/menu.tpl:2
 msgid "Home"
 msgstr "Home"
 
-#: themes/aragorn/stats.tpl:32 themes/legolas/stats.tpl:32
+#: themes/legolas/stats.tpl:32 themes/aragorn/stats.tpl:32
 #: themes/gandalf/stats.tpl:32 themes/gil-galad/stats.tpl:32
 msgid "List of the best ranked members"
 msgstr "Lijst van de beste gerangschikte leden"
 
-#: themes/aragorn/contact.tpl:13 themes/legolas/contact.tpl:13
+#: themes/legolas/contact.tpl:13 themes/aragorn/contact.tpl:13
 #: themes/gandalf/contact.tpl:13 themes/gil-galad/contact.tpl:13
 msgid "Name / Nickname :"
 msgstr "Naam / pseudoniem:"
 
-#: themes/aragorn/sidebar.tpl:74 themes/legolas/footer.tpl:14
+#: themes/legolas/footer.tpl:14 themes/aragorn/sidebar.tpl:74
 #: themes/gandalf/sidebar.tpl:77 themes/gil-galad/sidebar.tpl:74
-#: admin/sidebar.php:36 admin/head.php:31
+#: admin/head.php:31 admin/sidebar.php:36
 #: admin/api/manage-permissions_api.php:166
 msgid "Administration"
 msgstr "Administratie"
 
-#: themes/aragorn/sidebar.tpl:28 themes/legolas/sidebar.tpl:44
+#: themes/legolas/sidebar.tpl:44 themes/aragorn/sidebar.tpl:28
 #: themes/gandalf/sidebar.tpl:25 themes/gil-galad/sidebar.tpl:28
 msgid "Tagged with :"
 msgstr ""
 
-#: themes/aragorn/subscription.tpl:39 themes/legolas/subscription.tpl:39
+#: themes/legolas/subscription.tpl:39 themes/aragorn/subscription.tpl:39
 #: themes/gandalf/subscription.tpl:39 themes/gil-galad/subscription.tpl:39
 msgid "Feed URL (this can be a tag or category specific feed feed too)"
 msgstr "Feed URL (dit kan een tag of categorie specifieke feed zijn ook)"
 
-#: themes/aragorn/subscription.tpl:18 themes/legolas/subscription.tpl:18
+#: themes/legolas/subscription.tpl:18 themes/aragorn/subscription.tpl:18
 #: themes/gandalf/subscription.tpl:18 themes/gil-galad/subscription.tpl:18
 msgid "To add or remove your website from the planet, just fill this form in :"
 msgstr ""
 "Toevoegen of verwijderen van uw website van de planeet kan via dit formulier:"
 
-#: themes/aragorn/posts.tpl:90 themes/aragorn/stats.tpl:16
-#: themes/aragorn/stats.tpl:37 themes/legolas/posts.tpl:111
-#: themes/legolas/stats.tpl:16 themes/legolas/stats.tpl:37
+#: themes/legolas/posts.tpl:111 themes/legolas/stats.tpl:16
+#: themes/legolas/stats.tpl:37 themes/aragorn/posts.tpl:90
+#: themes/aragorn/stats.tpl:16 themes/aragorn/stats.tpl:37
 #: themes/gandalf/posts.tpl:93 themes/gandalf/stats.tpl:16
 #: themes/gandalf/stats.tpl:37 themes/gil-galad/posts.tpl:91
 #: themes/gil-galad/stats.tpl:16 themes/gil-galad/stats.tpl:37
-#: inscription.php:132 admin/api/manage-user_api.php:402
-#: admin/api/manage-pendinguser_api.php:161
+#: inscription.php:132 admin/api/manage-pendinguser_api.php:161
 #: admin/api/manage-pendinguser_api.php:217
-#: admin/api/manage-pendinguser_api.php:241
+#: admin/api/manage-pendinguser_api.php:241 admin/api/manage-user_api.php:402
 msgid "Website"
 msgstr "Website"
 
-#: themes/aragorn/index.tpl:170 themes/legolas/index.tpl:147
-#: themes/gandalf/index.tpl:162 themes/gil-galad/index.tpl:174
-#: admin/manage-tagging.php:94 admin/manage-feed.php:183
+#: themes/legolas/index.tpl:147 themes/aragorn/index.tpl:170
+#: themes/gandalf/index.tpl:162 themes/gil-galad/index.tpl:170
+#: admin/manage-feed.php:183 admin/manage-tagging.php:94
 msgid "Tags"
 msgstr ""
 
-#: themes/aragorn/posts.tpl:95 themes/legolas/posts.tpl:116
+#: themes/legolas/posts.tpl:116 themes/aragorn/posts.tpl:95
 #: themes/gandalf/posts.tpl:98 themes/gil-galad/posts.tpl:96
 msgid "Here you'll find some help concerning the syntax :"
 msgstr ""
 
-#: themes/aragorn/posts.tpl:58 themes/legolas/posts.tpl:79
+#: themes/legolas/posts.tpl:79 themes/aragorn/posts.tpl:58
 #: themes/gandalf/posts.tpl:58 themes/gil-galad/posts.tpl:59
 #, fuzzy
 msgid "Disable comments"
 msgstr "Disable deze feed"
 
-#: themes/aragorn/subscription.tpl:46 themes/legolas/subscription.tpl:46
+#: themes/legolas/subscription.tpl:46 themes/aragorn/subscription.tpl:46
 #: themes/gandalf/subscription.tpl:46 themes/gil-galad/subscription.tpl:46
 msgid "Unsubscribe"
 msgstr "Uitschrijven"
 
-#: themes/aragorn/menu.tpl:4 themes/legolas/menu.tpl:6
+#: themes/legolas/menu.tpl:6 themes/aragorn/menu.tpl:4
 #: themes/gandalf/menu.tpl:6 themes/gil-galad/menu.tpl:4
 msgid "Top 10"
 msgstr "Top 10"
+
+#: themes/legolas/index.tpl:64 themes/aragorn/index.tpl:63
+#: themes/gandalf/index.tpl:63 themes/gil-galad/index.tpl:76
+#, fuzzy
+msgid "Remember me"
+msgstr "December"
 
 #: themes/legolas/sidebar.tpl:6
 msgid "Search"
 msgstr "Zoek"
 
-#: themes/aragorn/subscription.tpl:35 themes/legolas/subscription.tpl:35
+#: themes/legolas/subscription.tpl:35 themes/aragorn/subscription.tpl:35
 #: themes/gandalf/subscription.tpl:35 themes/gil-galad/subscription.tpl:35
 msgid "Website URL"
 msgstr "Website URL"
 
-#: themes/aragorn/posts.tpl:99 themes/legolas/posts.tpl:120
+#: themes/legolas/posts.tpl:120 themes/aragorn/posts.tpl:99
 #: themes/gandalf/posts.tpl:102 themes/gil-galad/posts.tpl:100
 msgid "Publish"
 msgstr ""
 
-#: themes/aragorn/sidebar.tpl:70 themes/legolas/footer.tpl:11
+#: themes/legolas/footer.tpl:11 themes/aragorn/sidebar.tpl:70
 #: themes/gandalf/sidebar.tpl:73 themes/gil-galad/sidebar.tpl:70
 msgid "Subscribe your blog to the planet"
 msgstr "Schrijf je blog in op de planeet"
 
-#: themes/aragorn/sidebar.tpl:48 themes/legolas/sidebar.tpl:72
+#: themes/legolas/sidebar.tpl:72 themes/aragorn/sidebar.tpl:48
 #: themes/gandalf/sidebar.tpl:46 themes/gil-galad/sidebar.tpl:48
 msgid "Popular posts feed"
 msgstr "Populaire berichten feed"
 
-#: themes/aragorn/contact.tpl:10 themes/legolas/contact.tpl:10
+#: themes/legolas/contact.tpl:10 themes/aragorn/contact.tpl:10
 #: themes/gandalf/contact.tpl:10 themes/gil-galad/contact.tpl:10
 msgid "You can contact the administration team with the form below:"
 msgstr ""
 "U kunt contact opnemen met de administratie team met het formulier hieronder:"
 
-#: themes/aragorn/posts.tpl:3 themes/legolas/posts.tpl:22
+#: themes/legolas/posts.tpl:22 themes/aragorn/posts.tpl:3
 #: themes/gandalf/posts.tpl:3 themes/gil-galad/posts.tpl:3
 msgid "You are searching for all the posts with :"
 msgstr "U zoekt naar alle berichten met :"
 
-#: themes/aragorn/index.tpl:65 themes/legolas/index.tpl:66
+#: themes/legolas/index.tpl:66 themes/aragorn/index.tpl:65
 #: themes/gandalf/index.tpl:65 themes/gil-galad/index.tpl:78
 msgid "Connect"
 msgstr ""
 
-#: themes/aragorn/index.tpl:164 themes/legolas/index.tpl:141
-#: themes/gandalf/index.tpl:156 themes/gil-galad/index.tpl:168
+#: themes/legolas/index.tpl:141 themes/aragorn/index.tpl:164
+#: themes/gandalf/index.tpl:156 themes/gil-galad/index.tpl:164
 #: admin/manage-option.php:56 admin/manage-feed.php:92
 #: admin/manage-feed.php:145 admin/manage-user.php:88
 #: admin/manage-user.php:128 admin/head.php:88
 msgid "Close"
 msgstr "Sluit"
 
-#: themes/aragorn/posts.tpl:23 themes/aragorn/posts.tpl:121
 #: themes/legolas/posts.tpl:42 themes/legolas/posts.tpl:142
+#: themes/aragorn/posts.tpl:23 themes/aragorn/posts.tpl:121
 #: themes/gandalf/posts.tpl:24 themes/gandalf/posts.tpl:131
 #: themes/gil-galad/posts.tpl:24 themes/gil-galad/posts.tpl:122
 #: admin/pagination.php:46 admin/pagination.php:61
 msgid "Next page"
 msgstr "Volgende pagina"
 
-#: themes/aragorn/contact.tpl:15 themes/legolas/contact.tpl:15
+#: themes/legolas/contact.tpl:15 themes/aragorn/contact.tpl:15
 #: themes/gandalf/contact.tpl:15 themes/gil-galad/contact.tpl:15
 msgid "Email :"
 msgstr "Email :"
 
-#: themes/aragorn/posts.tpl:86 themes/legolas/posts.tpl:107
+#: themes/legolas/posts.tpl:107 themes/aragorn/posts.tpl:86
 #: themes/gandalf/posts.tpl:89 themes/gil-galad/posts.tpl:87
 #, fuzzy
 msgid "E-mail"
 msgstr "E-mail"
 
-#: themes/aragorn/sidebar.tpl:25 themes/legolas/sidebar.tpl:41
+#: themes/legolas/sidebar.tpl:41 themes/aragorn/sidebar.tpl:25
 #: themes/gandalf/sidebar.tpl:22 themes/gil-galad/sidebar.tpl:25
 #, fuzzy
 msgid "Period of posts :"
 msgstr "Aantal berichten"
 
-#: themes/aragorn/index.tpl:63 themes/legolas/index.tpl:64
-#: themes/gandalf/index.tpl:63 themes/gil-galad/index.tpl:76
-#, fuzzy
-msgid "Remember me"
-msgstr "December"
+#: themes/legolas/sidebar.tpl:78 themes/gandalf/sidebar.tpl:59
+msgid "Users"
+msgstr "Gebruikers"
 
-#: themes/aragorn/sidebar.tpl:16 themes/legolas/sidebar.tpl:32
+#: themes/legolas/sidebar.tpl:32 themes/aragorn/sidebar.tpl:16
 #: themes/gandalf/sidebar.tpl:13
 #, fuzzy
 msgid "Number of items :"
 msgstr "Aantal berichten :"
 
-#: themes/aragorn/subscription.tpl:17 themes/legolas/subscription.tpl:17
+#: themes/legolas/subscription.tpl:17 themes/aragorn/subscription.tpl:17
 #: themes/gandalf/subscription.tpl:17 themes/gil-galad/subscription.tpl:17
 msgid "Subscribe / Unsubscribe"
 msgstr "Inschrijven / Uitschrijven"
 
-#: themes/aragorn/sidebar.tpl:30 themes/legolas/sidebar.tpl:46
+#: themes/legolas/sidebar.tpl:46 themes/aragorn/sidebar.tpl:30
 #: themes/gandalf/sidebar.tpl:27 themes/gil-galad/sidebar.tpl:30
 msgid "Written by :"
 msgstr ""
 
-#: themes/aragorn/index.tpl:57 themes/legolas/index.tpl:58
+#: themes/legolas/index.tpl:58 themes/aragorn/index.tpl:57
 #: themes/gandalf/index.tpl:57 themes/gil-galad/index.tpl:70
 #: admin/manage-user.php:115 admin/install/index.php:342
 msgid "Password"
 msgstr "Wachtwoord"
 
-#: themes/aragorn/stats.tpl:15 themes/aragorn/stats.tpl:36
 #: themes/legolas/stats.tpl:15 themes/legolas/stats.tpl:36
+#: themes/aragorn/stats.tpl:15 themes/aragorn/stats.tpl:36
 #: themes/gandalf/stats.tpl:15 themes/gandalf/stats.tpl:36
 #: themes/gil-galad/stats.tpl:15 themes/gil-galad/stats.tpl:36
 #: admin/manage-post.php:215 admin/manage-logs.php:71
 msgid "Name"
 msgstr "Naam"
 
-#: themes/aragorn/stats.tpl:8 themes/legolas/stats.tpl:8
+#: themes/legolas/stats.tpl:8 themes/aragorn/stats.tpl:8
 #: themes/gandalf/stats.tpl:8 themes/gil-galad/stats.tpl:8
 msgid "Number of votes :"
 msgstr "Aantal berichten :"
 
-#: themes/aragorn/posts.tpl:108 themes/legolas/posts.tpl:129
+#: themes/legolas/posts.tpl:129 themes/aragorn/posts.tpl:108
 #: themes/gandalf/posts.tpl:112 themes/gil-galad/posts.tpl:109
 msgid "Back to summary"
 msgstr "Terug naar de inhoud"
 
-#: themes/aragorn/stats.tpl:17 themes/legolas/stats.tpl:17
+#: themes/legolas/stats.tpl:17 themes/aragorn/stats.tpl:17
 #: themes/gandalf/stats.tpl:17 themes/gil-galad/stats.tpl:17
 msgid "Qtity of posts"
 msgstr "Aantal berichten"
 
-#: themes/aragorn/stats.tpl:4 themes/legolas/stats.tpl:4
+#: themes/legolas/stats.tpl:4 themes/aragorn/stats.tpl:4
 #: themes/gandalf/stats.tpl:4 themes/gil-galad/stats.tpl:4
 msgid "Number of members :"
 msgstr "Aantal leden:"
 
-#: themes/aragorn/subscription.tpl:49 themes/legolas/subscription.tpl:49
+#: themes/legolas/subscription.tpl:49 themes/aragorn/subscription.tpl:49
 #: themes/gandalf/subscription.tpl:49 themes/gil-galad/subscription.tpl:49
 msgid "Please fill in the captcha"
 msgstr "Vul in de captcha"
 
-#: themes/aragorn/sidebar.tpl:27 themes/legolas/sidebar.tpl:43
+#: themes/legolas/sidebar.tpl:43 themes/aragorn/sidebar.tpl:27
 #: themes/gandalf/sidebar.tpl:24 themes/gil-galad/sidebar.tpl:27
 msgid "In popular tags"
 msgstr ""
 
-#: themes/aragorn/stats.tpl:6 themes/legolas/stats.tpl:6
+#: themes/legolas/stats.tpl:6 themes/aragorn/stats.tpl:6
 #: themes/gandalf/stats.tpl:6 themes/gil-galad/sidebar.tpl:16
 #: themes/gil-galad/stats.tpl:6
 msgid "Number of posts :"
 msgstr "Aantal berichten"
 
-#: themes/aragorn/posts.tpl:82 themes/aragorn/subscription.tpl:27
 #: themes/legolas/posts.tpl:103 themes/legolas/subscription.tpl:27
+#: themes/aragorn/posts.tpl:82 themes/aragorn/subscription.tpl:27
 #: themes/gandalf/posts.tpl:85 themes/gandalf/subscription.tpl:27
 #: themes/gil-galad/posts.tpl:83 themes/gil-galad/subscription.tpl:27
-#: inscription.php:130 admin/manage-user.php:107 admin/manage-user.php:148
-#: admin/manage-account.php:65 admin/api/manage-pendinguser_api.php:234
-#: admin/api/manage-account_api.php:36 admin/install/index.php:315
-#: user/api/account_api.php:36
+#: inscription.php:130 admin/manage-account.php:65 admin/manage-user.php:107
+#: admin/manage-user.php:148 admin/install/index.php:315
+#: admin/api/manage-pendinguser_api.php:234
+#: admin/api/manage-account_api.php:36 user/api/account_api.php:36
 msgid "Fullname"
 msgstr "Naam"
 
-#: themes/legolas/sidebar.tpl:78 themes/gandalf/sidebar.tpl:59
-msgid "Users"
-msgstr "Gebruikers"
+#: themes/aragorn/index.tpl:112 themes/gil-galad/index.tpl:111
+msgid "All the posts"
+msgstr "Alle berichten"
 
-#: themes/aragorn/contact.tpl:17 themes/legolas/contact.tpl:17
+#: themes/legolas/contact.tpl:17 themes/aragorn/contact.tpl:17
 #: themes/gandalf/contact.tpl:17 themes/gil-galad/contact.tpl:17
 msgid "Subject :"
 msgstr "Onderwerp:"
 
-#: themes/aragorn/contact.tpl:19 themes/legolas/contact.tpl:19
+#: themes/legolas/contact.tpl:19 themes/aragorn/contact.tpl:19
 #: themes/gandalf/contact.tpl:19 themes/gil-galad/contact.tpl:19
 msgid "Content :'"
 msgstr "Inhoud:"
 
-#: themes/aragorn/sidebar.tpl:73 themes/legolas/footer.tpl:13
+#: themes/legolas/footer.tpl:13 themes/aragorn/sidebar.tpl:73
 #: themes/gandalf/sidebar.tpl:76 themes/gil-galad/sidebar.tpl:73
 msgid "Admin interface"
 msgstr "Admin interface"
 
-#: themes/aragorn/sidebar.tpl:37 themes/aragorn/subscription.tpl:43
 #: themes/legolas/sidebar.tpl:61 themes/legolas/subscription.tpl:43
+#: themes/aragorn/sidebar.tpl:37 themes/aragorn/subscription.tpl:43
 #: themes/gandalf/subscription.tpl:43 themes/gandalf/sidebar.tpl:35
 #: themes/gil-galad/sidebar.tpl:37 themes/gil-galad/subscription.tpl:43
 msgid "Subscribe"
 msgstr "Inschrijven"
 
-#: themes/aragorn/index.tpl:174 themes/legolas/index.tpl:151
-#: themes/gandalf/index.tpl:166 themes/gil-galad/index.tpl:178
+#: themes/legolas/index.tpl:151 themes/aragorn/index.tpl:174
+#: themes/gandalf/index.tpl:166 themes/gil-galad/index.tpl:174
 #: admin/manage-useroption.php:123 admin/api/manage-permissions_api.php:171
 #: admin/api/manage-option_api.php:621
 msgid "Apply"
 msgstr "Aanvragen"
 
-#: themes/aragorn/index.tpl:112 themes/gil-galad/index.tpl:111
-msgid "All the posts"
-msgstr "Alle berichten"
+#: themes/legolas/subscription.tpl:53 themes/aragorn/subscription.tpl:53
+#: themes/gandalf/subscription.tpl:53 themes/gil-galad/subscription.tpl:53
+msgid "I have read and accept the charter"
+msgstr "Ik heb de charter gelezen en accepteer ze"
+
+#: mobile.php:111
+#, php-format
+msgid "%d vote(s)"
+msgstr "%d stem(men)"
 
 #: tpl.php:141
 msgid "Powered by Bilboplanet"
@@ -609,6 +609,14 @@ msgstr "Valid CSS - XHTML"
 #: tpl.php:147
 msgid "Designed by BilboPlanet"
 msgstr "Designed by BilboPlanet"
+
+#: 404.php:33
+msgid "404 Error"
+msgstr "404 Fout"
+
+#: 404.php:34
+msgid "Page not found"
+msgstr "Pagina niet gevonden"
 
 #: contact.php:47 inscription.php:53
 #, php-format
@@ -659,31 +667,53 @@ msgstr ""
 "Als u geen bevestiging van de administratie team in de 5 dagen ontvangen "
 "heeft, aarzel dan niet om contact met ons op te nemen via e-mail op %s"
 
-#: feed.php:218
-#, php-format
-msgid "Vote for this post on <a href=\"%s\" title=\"Go on the planet\">%s</a>."
-msgstr ""
-"Stem voor deze post op <a href=\"%s\" title=\"Go on the planet\">%s.</a>"
+#: archives.php:29
+msgid "January"
+msgstr "Januari"
 
-#: feed.php:229
-#, php-format
-msgid "Gravatar of %s"
-msgstr "Gravatar van %s"
+#: archives.php:29
+msgid "February"
+msgstr "Februari"
 
-#: feed.php:300 inscription.php:133 admin/api/manage-feed_api.php:476
-#: admin/api/manage-pendinguser_api.php:177
-#: admin/api/manage-pendinguser_api.php:217
-#: admin/api/manage-pendinguser_api.php:242
-msgid "Feed"
-msgstr "Feed"
+#: archives.php:29
+msgid "March"
+msgstr "Maart"
 
-#: 404.php:33
-msgid "404 Error"
-msgstr "404 Fout"
+#: archives.php:29
+msgid "April"
+msgstr "April"
 
-#: 404.php:34
-msgid "Page not found"
-msgstr "Pagina niet gevonden"
+#: archives.php:29
+msgid "May"
+msgstr "Mei"
+
+#: archives.php:29
+msgid "June"
+msgstr "Juni"
+
+#: archives.php:29
+msgid "July"
+msgstr "Juli"
+
+#: archives.php:29
+msgid "August"
+msgstr "Augustus"
+
+#: archives.php:29
+msgid "September"
+msgstr "September"
+
+#: archives.php:29
+msgid "October"
+msgstr "October"
+
+#: archives.php:29
+msgid "November"
+msgstr "November"
+
+#: archives.php:29
+msgid "December"
+msgstr "December"
 
 #: auth.php:95
 msgid "Password reset"
@@ -719,13 +749,13 @@ msgstr "Het configuratie bestand is gemaakt."
 msgid "Your new password"
 msgstr "Typ uw nieuwe wachtwoord opnieuw"
 
-#: auth.php:122 auth.php:283 auth.php:329 admin/install/index.php:367
-#: admin/install/wizard.php:192
+#: auth.php:122 auth.php:283 auth.php:329 admin/install/wizard.php:192
+#: admin/install/index.php:367
 msgid "Username:"
 msgstr "Gebruikersnaam:"
 
-#: auth.php:123 auth.php:333 admin/install/index.php:368
-#: admin/install/wizard.php:196
+#: auth.php:123 auth.php:333 admin/install/wizard.php:196
+#: admin/install/index.php:368
 msgid "Password:"
 msgstr "Wachtwoord:"
 
@@ -797,53 +827,22 @@ msgstr "Onthoud mijn ID op deze computer"
 msgid "login"
 msgstr "login"
 
-#: archives.php:29
-msgid "January"
-msgstr "Januari"
+#: feed.php:218
+#, php-format
+msgid "Vote for this post on <a href=\"%s\" title=\"Go on the planet\">%s</a>."
+msgstr ""
+"Stem voor deze post op <a href=\"%s\" title=\"Go on the planet\">%s.</a>"
 
-#: archives.php:29
-msgid "February"
-msgstr "Februari"
+#: feed.php:229
+#, php-format
+msgid "Gravatar of %s"
+msgstr "Gravatar van %s"
 
-#: archives.php:29
-msgid "March"
-msgstr "Maart"
-
-#: archives.php:29
-msgid "April"
-msgstr "April"
-
-#: archives.php:29
-msgid "May"
-msgstr "Mei"
-
-#: archives.php:29
-msgid "June"
-msgstr "Juni"
-
-#: archives.php:29
-msgid "July"
-msgstr "Juli"
-
-#: archives.php:29
-msgid "August"
-msgstr "Augustus"
-
-#: archives.php:29
-msgid "September"
-msgstr "September"
-
-#: archives.php:29
-msgid "October"
-msgstr "October"
-
-#: archives.php:29
-msgid "November"
-msgstr "November"
-
-#: archives.php:29
-msgid "December"
-msgstr "December"
+#: feed.php:300 inscription.php:133 admin/api/manage-pendinguser_api.php:177
+#: admin/api/manage-pendinguser_api.php:217
+#: admin/api/manage-pendinguser_api.php:242 admin/api/manage-feed_api.php:476
+msgid "Feed"
+msgstr "Feed"
 
 #: inscription.php:59
 msgid "Name : "
@@ -878,78 +877,23 @@ msgstr ""
 "Als u geen nieuws van de administratie team in de 5 dagen heeft ontvangen, "
 "aarzel dan niet om ons te contacteren via %s met deze informatie:"
 
-#: inscription.php:128 admin/manage-moderation.php:102
+#: inscription.php:128 admin/manage-newsletter.php:91
+#: admin/manage-newsletter.php:232 admin/manage-selection.php:108
 #: admin/manage-pendinguser.php:56 admin/manage-pendinguser.php:69
-#: admin/manage-selection.php:108 admin/manage-newsletter.php:91
-#: admin/manage-newsletter.php:232
+#: admin/manage-moderation.php:102
 msgid "Subject"
 msgstr "Onderwerp"
 
-#: inscription.php:131 admin/manage-user.php:111 admin/manage-user.php:152
-#: admin/manage-account.php:69 admin/api/manage-pendinguser_api.php:235
-#: admin/api/manage-account_api.php:37 admin/install/index.php:318
-#: user/api/account_api.php:37
+#: inscription.php:131 admin/manage-account.php:69 admin/manage-user.php:111
+#: admin/manage-user.php:152 admin/install/index.php:318
+#: admin/api/manage-pendinguser_api.php:235
+#: admin/api/manage-account_api.php:37 user/api/account_api.php:37
 msgid "Email"
 msgstr "E-mail"
 
 #: inscription.php:134
 msgid "Choice"
 msgstr "Keuze"
-
-#: mobile.php:111
-#, php-format
-msgid "%d vote(s)"
-msgstr "%d stem(men)"
-
-#: api/votes.php:75
-msgid "Success"
-msgstr "Succes"
-
-#: api/votes.php:78
-msgid "Error: article number incorrect !"
-msgstr "Error: foute artikel nummer !"
-
-#: api/votes.php:82
-msgid "Error: you already vote on this post !"
-msgstr "Error: u heeft al op dit bericht gestemd!"
-
-#: api/votes.php:86
-msgid "Error: refused access"
-msgstr "Error: toegang geweigerd"
-
-#: api/main_api.php:142 api/comment_api.php:154
-#: admin/api/manage-user_api.php:382 admin/api/manage-feed_api.php:454
-#: admin/api/manage-moderation_api.php:198
-#: admin/api/manage-permissions_api.php:187
-#: admin/api/manage-selection_api.php:82 admin/api/manage-tagging_api.php:178
-#: admin/api/manage-pendinguser_api.php:197
-#: admin/api/manage-database_api.php:95 admin/api/manage-site_api.php:227
-#: admin/api/manage-account_api.php:104 user/api/main_api.php:39
-#: user/api/account_api.php:104 user/api/feed_api.php:72
-#: user/api/tagging_api.php:214 user/api/post_api.php:134
-msgid "User bad call"
-msgstr "Gebruiker slechte oproep"
-
-#: api/index.php:52 admin/api/index.php:115 user/api/index.php:73
-msgid "bad call, this ajax call does not exist"
-msgstr "slecht te noemen, doet dit ajax oproep bestaat niet"
-
-#: api/identishare.php:27 admin/manage-option.php:34
-#: admin/manage-database.php:30 admin/manage-moderation.php:31
-#: admin/manage-useroption.php:31 admin/manage-pendinguser.php:30
-#: admin/index.php:31 admin/manage-cache.php:30 admin/manage-tagging.php:31
-#: admin/manage-post.php:30 admin/manage-logs.php:30 admin/manage-feed.php:30
-#: admin/manage-user.php:30 admin/manage-permissions.php:30
-#: admin/manage-selection.php:31 admin/manage-account.php:30
-#: admin/manage-newsletter.php:30 admin/manage-update.php:30 user/index.php:31
-#, fuzzy
-msgid "Permission denied"
-msgstr "Toegang geweigerd"
-
-#: api/comment_api.php:67
-#, fuzzy
-msgid "This action is forbidden"
-msgstr "Deze actie kan niet geannuleerd worden"
 
 #: inc/prepend.php:157
 msgid "Database error"
@@ -962,6 +906,11 @@ msgid ""
 msgstr ""
 "Er lijkt geen sessie tabel in uw database. Is Bilboplanetcompleet "
 "geïnstalleerd?"
+
+#: inc/upgrade_db.php:39
+#, fuzzy
+msgid "Your database schema has been updated"
+msgstr "Uw e-mail is verzonden"
 
 #: inc/fonctions.php:163
 msgid ""
@@ -1085,8 +1034,8 @@ msgid "A registration request have been already sent with this Feed URL: %s"
 msgstr ""
 
 #: inc/fonctions.php:1211 inc/fonctions.php:1214
-#: admin/api/manage-user_api.php:97 admin/api/manage-user_api.php:100
-#: admin/api/manage-user_api.php:225 admin/api/manage-account_api.php:55
+#: admin/api/manage-account_api.php:55 admin/api/manage-user_api.php:97
+#: admin/api/manage-user_api.php:100 admin/api/manage-user_api.php:225
 #: user/api/account_api.php:55
 #, php-format
 msgid "The user %s already exists"
@@ -1101,11 +1050,6 @@ msgstr "Het e-mailadres %s is al in gebruik"
 #, fuzzy, php-format
 msgid "The website %s is already assigned to the user %s"
 msgstr "De website %s is al toegewezen aan een gebruiker"
-
-#: inc/upgrade_db.php:39
-#, fuzzy
-msgid "Your database schema has been updated"
-msgstr "Uw e-mail is verzonden"
 
 #: inc/core/class.bp.settings.php:77
 #, fuzzy
@@ -1234,34 +1178,88 @@ msgstr "Die sleutel niet bestaat in de database."
 msgid "Next Page"
 msgstr "Volgende pagina"
 
-#: admin/manage-option.php:35 admin/manage-database.php:31
-#: admin/manage-moderation.php:32 admin/manage-useroption.php:32
-#: admin/manage-pendinguser.php:31 admin/index.php:32
-#: admin/manage-cache.php:31 admin/manage-tagging.php:32
-#: admin/manage-post.php:31 admin/manage-logs.php:31 admin/manage-feed.php:31
-#: admin/manage-user.php:31 admin/manage-permissions.php:31
-#: admin/manage-selection.php:32 admin/manage-account.php:31
-#: admin/manage-newsletter.php:31 admin/manage-update.php:31 user/index.php:32
+#: api/identishare.php:27 admin/manage-option.php:34
+#: admin/manage-permissions.php:30 admin/manage-feed.php:30
+#: admin/manage-update.php:30 admin/manage-useroption.php:31
+#: admin/manage-account.php:30 admin/manage-user.php:30
+#: admin/manage-post.php:30 admin/manage-database.php:30
+#: admin/manage-tagging.php:31 admin/manage-newsletter.php:30
+#: admin/manage-selection.php:31 admin/manage-pendinguser.php:30
+#: admin/manage-moderation.php:31 admin/manage-logs.php:30
+#: admin/manage-cache.php:30 admin/index.php:31 user/index.php:31
+#, fuzzy
+msgid "Permission denied"
+msgstr "Toegang geweigerd"
+
+#: api/main_api.php:142 api/comment_api.php:154
+#: admin/api/manage-site_api.php:227 admin/api/manage-pendinguser_api.php:197
+#: admin/api/manage-feed_api.php:454 admin/api/manage-database_api.php:95
+#: admin/api/manage-selection_api.php:82
+#: admin/api/manage-permissions_api.php:187
+#: admin/api/manage-tagging_api.php:177
+#: admin/api/manage-moderation_api.php:198
+#: admin/api/manage-account_api.php:104 admin/api/manage-user_api.php:382
+#: user/api/feed_api.php:72 user/api/tagging_api.php:214
+#: user/api/account_api.php:104 user/api/main_api.php:39
+#: user/api/post_api.php:134
+msgid "User bad call"
+msgstr "Gebruiker slechte oproep"
+
+#: api/votes.php:75
+msgid "Success"
+msgstr "Succes"
+
+#: api/votes.php:78
+msgid "Error: article number incorrect !"
+msgstr "Error: foute artikel nummer !"
+
+#: api/votes.php:82
+msgid "Error: you already vote on this post !"
+msgstr "Error: u heeft al op dit bericht gestemd!"
+
+#: api/votes.php:86
+msgid "Error: refused access"
+msgstr "Error: toegang geweigerd"
+
+#: api/comment_api.php:67
+#, fuzzy
+msgid "This action is forbidden"
+msgstr "Deze actie kan niet geannuleerd worden"
+
+#: api/index.php:52 admin/api/index.php:115 user/api/index.php:73
+msgid "bad call, this ajax call does not exist"
+msgstr "slecht te noemen, doet dit ajax oproep bestaat niet"
+
+#: admin/manage-option.php:35 admin/manage-permissions.php:31
+#: admin/manage-feed.php:31 admin/manage-update.php:31
+#: admin/manage-useroption.php:32 admin/manage-account.php:31
+#: admin/manage-user.php:31 admin/manage-post.php:31
+#: admin/manage-database.php:31 admin/manage-tagging.php:32
+#: admin/manage-newsletter.php:31 admin/manage-selection.php:32
+#: admin/manage-pendinguser.php:31 admin/manage-moderation.php:32
+#: admin/manage-logs.php:31 admin/manage-cache.php:31 admin/index.php:32
+#: user/index.php:32
 #, fuzzy
 msgid "You are not allowed to see this page."
 msgstr ""
 "U bent niet toegelaten om een feed toe te voegen zonder een lid te selecteren"
 
-#: admin/manage-option.php:36 admin/manage-database.php:32
-#: admin/manage-moderation.php:33 admin/manage-useroption.php:33
-#: admin/manage-pendinguser.php:32 admin/index.php:33
-#: admin/manage-cache.php:32 admin/manage-tagging.php:33
-#: admin/manage-post.php:32 admin/manage-logs.php:32 admin/manage-feed.php:32
-#: admin/manage-user.php:32 admin/manage-permissions.php:32
-#: admin/manage-selection.php:33 admin/manage-account.php:32
-#: admin/manage-newsletter.php:32 admin/manage-update.php:32 user/index.php:33
+#: admin/manage-option.php:36 admin/manage-permissions.php:32
+#: admin/manage-feed.php:32 admin/manage-update.php:32
+#: admin/manage-useroption.php:33 admin/manage-account.php:32
+#: admin/manage-user.php:32 admin/manage-post.php:32
+#: admin/manage-database.php:32 admin/manage-tagging.php:33
+#: admin/manage-newsletter.php:32 admin/manage-selection.php:33
+#: admin/manage-pendinguser.php:32 admin/manage-moderation.php:33
+#: admin/manage-logs.php:32 admin/manage-cache.php:32 admin/index.php:33
+#: user/index.php:33
 msgid "You can delete your session if you logout : "
 msgstr "Je kunt je sessie als je afmelden:"
 
 #: admin/manage-option.php:53 admin/manage-feed.php:174
-#: admin/manage-user.php:164 admin/manage-user.php:203
-#: admin/manage-account.php:79 admin/api/manage-user_api.php:460
-#: admin/api/manage-feed_api.php:558
+#: admin/manage-account.php:79 admin/manage-user.php:164
+#: admin/manage-user.php:203 admin/api/manage-feed_api.php:558
+#: admin/api/manage-user_api.php:460
 msgid "Update"
 msgstr "Update"
 
@@ -1272,6 +1270,525 @@ msgstr "Opties"
 #: admin/manage-option.php:62
 msgid "Configuration settings Planet."
 msgstr "Instellingen van de Planeet."
+
+#: admin/manage-permissions.php:48 admin/sidebar.php:118
+msgid "Manage user permissions"
+msgstr "Beheren van gebruikersrechten"
+
+#: admin/manage-permissions.php:50
+msgid "Check user statuses and configure their permissions"
+msgstr "Controleer de gebruiker statussen en configureren hun machtigingen"
+
+#: admin/manage-feed.php:48 admin/manage-feed.php:98
+msgid "Add a feed"
+msgstr "Voeg een feed"
+
+#: admin/manage-feed.php:51
+#, fuzzy
+msgid "Filter feedlist"
+msgstr "Filter berichten"
+
+#: admin/manage-feed.php:56 admin/manage-feed.php:91 admin/manage-user.php:55
+#: admin/manage-user.php:87 admin/manage-tagging.php:82
+#: admin/manage-selection.php:81 admin/manage-moderation.php:90
+msgid "Filter"
+msgstr "Filter"
+
+#: admin/manage-feed.php:72 admin/manage-feed.php:77 admin/manage-user.php:70
+#: admin/manage-user.php:75 admin/manage-post.php:146
+#: admin/manage-post.php:148 admin/manage-post.php:158
+msgid "All"
+msgstr "Allemaal"
+
+#: admin/manage-feed.php:75
+msgid "Active feeds"
+msgstr "Actieve feeds"
+
+#: admin/manage-feed.php:76
+#, fuzzy
+msgid "Inactive feeds"
+msgstr "Beheer feeds"
+
+#: admin/manage-feed.php:79
+#, fuzzy
+msgid "Auto disabled feeds"
+msgstr "Feed beheren"
+
+#: admin/manage-feed.php:84 admin/manage-feed.php:122
+#: admin/manage-feed.php:162 admin/manage-account.php:62
+#: admin/manage-user.php:80 admin/manage-user.php:103
+#: admin/manage-user.php:145 admin/manage-user.php:173
+#: admin/api/manage-pendinguser_api.php:233
+msgid "User id"
+msgstr "Gebruiker id"
+
+#: admin/manage-feed.php:87
+#, fuzzy
+msgid "Feed status"
+msgstr "Feeds tabel"
+
+#: admin/manage-feed.php:100
+msgid ""
+"Manage member's feeds. Notice that you can only add a feed to a user who has "
+"a website. So you first need to create the user and add a site to him"
+msgstr ""
+"Beheer lid feeds. Merk op dat u een feed alleen toe te voegen aan een "
+"gebruiker die heefteen website. Dus moet u eerst de gebruiker aanmaken en "
+"een site toe te voegen aan hem"
+
+#: admin/manage-feed.php:114
+msgid "-- Choose an user --"
+msgstr "- Kies een gebruiker -"
+
+#: admin/manage-feed.php:125
+msgid "Site id"
+msgstr "Website id"
+
+#: admin/manage-feed.php:126
+msgid "-- Choose an user id --"
+msgstr "- Kies een gebruikers-id -"
+
+#: admin/manage-feed.php:127
+#, fuzzy
+msgid "Choose the website of the feed"
+msgstr "Bezoek de website van %s"
+
+#: admin/manage-feed.php:129
+msgid "Full feed URL"
+msgstr "Volledige URL van de feed"
+
+#: admin/manage-feed.php:131
+#, fuzzy
+msgid "ex: http://www.bilboplanet.com/feed/atom/"
+msgstr "ex: http://blog.bilboplanet.com/feed/atom/"
+
+#: admin/manage-feed.php:133 admin/manage-feed.php:165
+#, fuzzy
+msgid "Feed name"
+msgstr "Bestand naam:"
+
+#: admin/manage-feed.php:135
+msgid "ex: gnu/Linux posts"
+msgstr "ex: GNU / Linux berichten"
+
+#: admin/manage-feed.php:138
+msgid "Trusted URL"
+msgstr "Vertrouwde URL"
+
+#: admin/manage-feed.php:144 admin/manage-user.php:127
+#: admin/manage-user.php:185
+msgid "Add"
+msgstr "Toevoegen"
+
+#: admin/manage-feed.php:150 admin/sidebar.php:48
+msgid "Manage feeds"
+msgstr "Beheer feeds"
+
+#: admin/manage-feed.php:152
+msgid "Manage member feed."
+msgstr "Beheer lid feed."
+
+#: admin/manage-feed.php:167
+msgid "ex: GNU/Linux posts"
+msgstr "ex: GNU / Linux berichten"
+
+#: admin/manage-feed.php:169
+msgid "Feed URL"
+msgstr "Feed URL"
+
+#: admin/manage-feed.php:171
+#, fuzzy
+msgid "ex: http://www.bilboplanet.com/feed/"
+msgstr "bv: bilboplanet"
+
+#: admin/manage-feed.php:173 admin/manage-feed.php:187
+#: admin/manage-user.php:163 admin/manage-user.php:184
+#: admin/manage-user.php:202 admin/manage-tagging.php:98
+#: admin/manage-selection.php:118 admin/manage-pendinguser.php:60
+#: admin/manage-pendinguser.php:73 admin/manage-moderation.php:108
+#, fuzzy
+msgid "Cancel"
+msgstr "Veranderen"
+
+#: admin/manage-update.php:47
+#, fuzzy
+msgid "Enable update on loading of index page: Enable"
+msgstr "Activeer de update tijdens het laden van de index pagina"
+
+#: admin/manage-update.php:54
+#, fuzzy
+msgid "Enable update on loading of index page: Disable"
+msgstr "Activeer de update tijdens het laden van de index pagina"
+
+#: admin/manage-update.php:67
+msgid "The automatical update is disabled "
+msgstr "De automatische update is uitgeschakeld"
+
+#: admin/manage-update.php:72
+msgid ""
+"The update can not start : the process is already started (You can force "
+"update by deleting the /inc/cron_running.txt file)"
+msgstr ""
+"De update kan niet beginnen: het proces is reeds gestart (U kunt kracht "
+"bijwerken door het verwijderen van de /inc/cron_running.txt bestand)"
+
+#: admin/manage-update.php:74
+msgid "The automatic update is enabled"
+msgstr "De automatische update is ingeschakeld"
+
+#: admin/manage-update.php:82
+msgid "Manual update ..."
+msgstr "Handmatige update ..."
+
+#: admin/manage-update.php:85
+#, php-format
+msgid "Error while updating : %s"
+msgstr "Fout tijdens het update: %s"
+
+#: admin/manage-update.php:115
+msgid "Automatic update"
+msgstr "Automatische update"
+
+#: admin/manage-update.php:117
+msgid "System configuration update."
+msgstr "Systeemconfiguratie update."
+
+#: admin/manage-update.php:120 admin/index.php:166
+msgid "The update is running"
+msgstr "De update wordt uitgevoerd"
+
+#: admin/manage-update.php:122 admin/index.php:168
+msgid "The update is stopped"
+msgstr "De update is gestopt"
+
+#: admin/manage-update.php:123 admin/index.php:170
+msgid "The update is disabled"
+msgstr "De update is uitgeschakeld"
+
+#: admin/manage-update.php:126
+msgid "Stop the update algorithm"
+msgstr "Stop de update algoritme"
+
+#: admin/manage-update.php:127
+msgid "Start the update algorithm"
+msgstr "Start de update algoritme"
+
+#: admin/manage-update.php:128
+msgid "Start a manual update"
+msgstr "Start een handmatige update"
+
+#: admin/manage-update.php:135
+msgid "Enable update on loading of index page"
+msgstr "Activeer de update tijdens het laden van de index pagina"
+
+#: admin/manage-update.php:141
+msgid "Setup feed update"
+msgstr ""
+
+#: admin/manage-update.php:143
+#, fuzzy
+msgid "How to configure the update of the feeds ?"
+msgstr "Bezoek de website van %s"
+
+#: admin/manage-update.php:146
+msgid "How does it work?"
+msgstr ""
+
+#: admin/manage-update.php:147
+msgid ""
+"The update algorithm can work on several ways. The optimal solution that "
+"consumes less ressources and will give you the best results is clearly to "
+"setup a cron update manually into your server. But here you'll find a short "
+"explanation of the several methods :"
+msgstr ""
+
+#: admin/manage-update.php:149
+msgid ""
+"The first intuitive way is to use this page to update manually the feeds of "
+"your database by clicking on the 'Start a manual update' option in the menu "
+"above. This means that it will update all your feeds only once."
+msgstr ""
+
+#: admin/manage-update.php:150
+msgid ""
+"The second solution is to click on the 'Start the update algorithm' in the "
+"form. This will enable a PHP script which will fetch your feeds. This can be "
+"done but needs some special PHP libraries on your web server that may not be "
+"installed. This solution can be used but we advise you to check sometimes if "
+"the update engine is still alive (it can be killed after a time)"
+msgstr ""
+
+#: admin/manage-update.php:151
+msgid ""
+"Another intuitive way to configure the update of your feeds is by enabling "
+"update on index page loading. This means that all your feeds will be updated "
+"whenever people connect to your site. This is a good manner to deal with the "
+"update but can slightly slow down your site."
+msgstr ""
+
+#: admin/manage-update.php:152
+msgid ""
+"The optimal solution as said before it to configure manually the crontab of "
+"your server to enable the update. To configure a cron manually you'll find "
+"some advice here under."
+msgstr ""
+
+#: admin/manage-update.php:156
+msgid ""
+"You can setup a manual crontab update by calling automatically every X time "
+"the following page :"
+msgstr ""
+"U kunt uw eigen crontab instellen door een oproep naar de volgende pagina "
+"elke X minuten te maken :"
+
+#: admin/manage-update.php:158
+msgid ""
+"This will automatically launch the update and log it into the log files."
+msgstr ""
+"Het gaat automatisch de update inschakelen en de log informatie in the log "
+"bestanden zetten."
+
+#: admin/manage-useroption.php:48 admin/manage-useroption.php:108
+msgid "Reference contact email"
+msgstr "Referentie contact e-mail"
+
+#: admin/manage-useroption.php:49 admin/manage-useroption.php:111
+msgid "Author Website"
+msgstr "Auteur website"
+
+#: admin/manage-useroption.php:50 admin/manage-useroption.php:105
+msgid "Contact Name"
+msgstr "Contact naam"
+
+#: admin/manage-useroption.php:65 admin/api/manage-option_api.php:269
+msgid "Modification succeeded"
+msgstr "Wijziging geslaagd"
+
+#: admin/manage-useroption.php:99
+msgid "Users Options"
+msgstr "Gebruikers Opties"
+
+#: admin/manage-useroption.php:101
+msgid "Configuring user settings."
+msgstr "Configureren gebruikersinstellingen."
+
+#: admin/manage-useroption.php:114
+msgid "Jabber / GoogleTalk"
+msgstr "Jabber / GoogleTalk"
+
+#: admin/manage-useroption.php:117
+msgid "Other Instant Messaging"
+msgstr "Andere Instant Messaging"
+
+#: admin/manage-useroption.php:120
+msgid "About Me"
+msgstr "Over mij"
+
+#: admin/manage-account.php:48
+#, fuzzy
+msgid "Manage account"
+msgstr "Uw account"
+
+#: admin/manage-account.php:50
+msgid "You can change your profile configuration here"
+msgstr "U kunt uw profiel configuratie hier"
+
+#: admin/manage-account.php:67 admin/manage-user.php:109
+#: admin/manage-user.php:150
+msgid "ex: Jean Dupont"
+msgstr "ex: Jean Dupont"
+
+#: admin/manage-account.php:71 admin/manage-user.php:113
+#: admin/manage-user.php:154
+msgid "ex: xxx@yyy.zzz"
+msgstr "ex: xxx@yyy.zzz"
+
+#: admin/manage-account.php:73 admin/manage-user.php:156
+msgid "New password"
+msgstr "Nieuw wachtwoord"
+
+#: admin/manage-account.php:76 admin/manage-user.php:159
+#, fuzzy
+msgid "Confirm new password"
+msgstr "Bevestig uw wachtwoord:"
+
+#: admin/manage-account.php:78 admin/manage-user.php:161
+msgid "You can leave the password field blank if you don't want to change it"
+msgstr "U kunt het wachtwoord veld leeg als je niet wilt wijzigen"
+
+#: admin/manage-user.php:49 admin/manage-user.php:94
+msgid "Add an user"
+msgstr "Voeg een gebruiker"
+
+#: admin/manage-user.php:52
+#, fuzzy
+msgid "Filter userlist"
+msgstr "Geef uw gebruikersnaam"
+
+#: admin/manage-user.php:73
+msgid "Active user"
+msgstr "Actieve gebruiker"
+
+#: admin/manage-user.php:74
+msgid "Inactive user"
+msgstr "inactieve gebruiker"
+
+#: admin/manage-user.php:83
+#, fuzzy
+msgid "User status"
+msgstr "Stemmen tabel"
+
+#: admin/manage-user.php:96
+msgid "To add a new member, fill out the form below."
+msgstr "Om een nieuw lid toe te voegen, vul de onderstaande formulier in."
+
+#: admin/manage-user.php:105
+msgid "ex: Frankenstein"
+msgstr "ex: Frankenstein"
+
+#: admin/manage-user.php:117
+msgid "Minimum 4 chars"
+msgstr ""
+
+#: admin/manage-user.php:119
+msgid "Confirm password"
+msgstr "Bevestig uw wachtwoord:"
+
+#: admin/manage-user.php:122
+#, fuzzy
+msgid "Website (Optional)"
+msgstr "Voornaam (optioneel)"
+
+#: admin/manage-user.php:124
+#, fuzzy
+msgid "ex: http://www.example.com"
+msgstr "bv: http://www.example.com of http://planet.example.com"
+
+#: admin/manage-user.php:134
+msgid "List of the users"
+msgstr "Lijst van de gebruikers"
+
+#: admin/manage-user.php:136
+msgid "List of members of the Planet"
+msgstr "Lijst van de leden van de Planeet"
+
+#: admin/manage-user.php:176 admin/manage-user.php:194
+msgid "Site name"
+msgstr "Website naam"
+
+#: admin/manage-user.php:178 admin/manage-user.php:196
+#, fuzzy
+msgid "ex: Bilboplanet blog"
+msgstr "bv: bilboplanet"
+
+#: admin/manage-user.php:180 admin/manage-user.php:198
+msgid "Site URL"
+msgstr "Website URL"
+
+#: admin/manage-user.php:182 admin/manage-user.php:200
+#, fuzzy
+msgid "ex: http://www.bilboplanet.com"
+msgstr "bv: bilboplanet"
+
+#: admin/manage-post.php:95
+#, php-format
+msgid "The post %s was removed"
+msgstr "Het bericht %s is verwijderd"
+
+#: admin/manage-post.php:102
+#, php-format
+msgid "The post %s was changed"
+msgstr "Het bericht %s is veranderd"
+
+#: admin/manage-post.php:119
+msgid "Filtering of the posts"
+msgstr "Filteren van de berichten"
+
+#: admin/manage-post.php:121
+msgid "Filter articles"
+msgstr "Filter berichten"
+
+#: admin/manage-post.php:127
+msgid "Posts of the member :"
+msgstr "Berichten van het lid:"
+
+#: admin/manage-post.php:155
+#, fuzzy
+msgid "Post status"
+msgstr "Stemmen tabel"
+
+#: admin/manage-post.php:159 admin/manage-post.php:235
+#: admin/manage-post.php:243 admin/manage-post.php:249
+#: admin/manage-post.php:253
+msgid "inactive"
+msgstr "inactief"
+
+#: admin/manage-post.php:160 admin/manage-post.php:234
+#: admin/manage-post.php:239 admin/manage-post.php:244
+#: admin/manage-post.php:254
+msgid "active"
+msgstr "actief"
+
+#: admin/manage-post.php:161 admin/manage-post.php:237
+#: admin/manage-post.php:246 admin/manage-post.php:252
+#: admin/manage-post.php:255
+msgid "pending"
+msgstr "in afwachting van"
+
+#: admin/manage-post.php:167
+msgid "Number of posts"
+msgstr "Aantal berichten"
+
+#: admin/manage-post.php:178
+msgid "List of the posts"
+msgstr "Lijst van de berichten"
+
+#: admin/manage-post.php:180
+msgid ""
+"NOTE: If you delete a post which is too recent, it will be refetched next "
+"time the update happen !!"
+msgstr ""
+"OPMERKING: Als u een recenter bericht vermijderd, zal dit bericht refetched "
+"worden tijdens de volgende update!"
+
+#: admin/manage-post.php:216 admin/api/manage-tagging_api.php:135
+#: admin/api/manage-moderation_api.php:156
+msgid "Date"
+msgstr "Datum"
+
+#: admin/manage-post.php:217 admin/index.php:68
+#: admin/api/manage-tagging_api.php:136
+#: admin/api/manage-moderation_api.php:158
+msgid "Title"
+msgstr "Titel"
+
+#: admin/manage-post.php:218
+msgid "Status"
+msgstr "Status"
+
+#: admin/manage-post.php:219
+msgid "Nb votes"
+msgstr "Nb stemmen"
+
+#: admin/manage-post.php:220 admin/manage-newsletter.php:254
+#: admin/manage-logs.php:72 admin/api/manage-pendinguser_api.php:218
+#: admin/api/manage-feed_api.php:477 admin/api/manage-moderation_api.php:159
+#: admin/api/manage-user_api.php:403
+msgid "Action"
+msgstr "Actie"
+
+#: admin/manage-post.php:269
+msgid "Change"
+msgstr "Veranderen"
+
+#: admin/manage-post.php:270 admin/manage-logs.php:88
+#: admin/api/manage-feed_api.php:560 admin/api/manage-user_api.php:463
+msgid "Delete"
+msgstr "Vermijderen"
+
+#: admin/manage-post.php:286
+msgid "Show items by : "
+msgstr "Ordeer de elementen :"
 
 #: admin/manage-database.php:52
 msgid "Your file could not be downloaded"
@@ -1444,370 +1961,6 @@ msgstr ""
 "OPMERKING: Om een database bestand te importeren moet het bestand in de "
 "formaat *. json.gz zijn !"
 
-#: admin/sidebar.php:27
-msgid "Common"
-msgstr "Gemeenschappelijke"
-
-#: admin/sidebar.php:30
-msgid "Access the quick summary of the planet"
-msgstr "Toegang tot de snelle samenvatting van de planeet"
-
-#: admin/sidebar.php:30 admin/index.php:144
-msgid "Dashboard"
-msgstr "Dashboard"
-
-#: admin/sidebar.php:31
-msgid "Manage your profile account"
-msgstr "Beheer uw profiel account"
-
-#: admin/sidebar.php:31
-#, fuzzy
-msgid "Manage your account"
-msgstr "Uw account"
-
-#: admin/sidebar.php:42
-#, fuzzy
-msgid "Manage users"
-msgstr "Leden beheren"
-
-#: admin/sidebar.php:45
-#, fuzzy
-msgid "Pending users"
-msgstr "Leden beheren"
-
-#: admin/sidebar.php:48 admin/manage-feed.php:150
-msgid "Manage feeds"
-msgstr "Beheer feeds"
-
-#: admin/sidebar.php:51
-#, fuzzy
-msgid "Manage posts"
-msgstr "Beheer feeds"
-
-#: admin/sidebar.php:54
-#, fuzzy
-msgid "Manage newsletter of the planet"
-msgstr "Beheer artikelen van de planeet"
-
-#: admin/sidebar.php:54
-msgid "Newsletter"
-msgstr "Newsletter"
-
-#: admin/sidebar.php:61 admin/api/manage-permissions_api.php:163
-msgid "Configuration"
-msgstr "Configuratie"
-
-#: admin/sidebar.php:65
-#, fuzzy
-msgid "Author configuration"
-msgstr "Gebruikersconfiguratie"
-
-#: admin/sidebar.php:65
-msgid "Planet Author"
-msgstr "Planeet auteur"
-
-#: admin/sidebar.php:68 admin/manage-moderation.php:55
-msgid "Planet Configuration"
-msgstr "Planeet Configuratie"
-
-#: admin/sidebar.php:68
-#, fuzzy
-msgid "Planet configuration"
-msgstr "Planeet Configuratie"
-
-#: admin/sidebar.php:71
-msgid "View logs information"
-msgstr "Bekijk log informatie"
-
-#: admin/sidebar.php:71
-msgid "Logs Files"
-msgstr "Logs Bestanden"
-
-#: admin/sidebar.php:74
-msgid "Import/Export Planet configuration"
-msgstr "Import/Export planeet configuratie"
-
-#: admin/sidebar.php:74
-msgid "Import/Export"
-msgstr "Import/Export"
-
-#: admin/sidebar.php:77
-msgid "Clear Planet cache"
-msgstr "Clear Planeet cache"
-
-#: admin/sidebar.php:77
-msgid "Clear cache"
-msgstr "Cache wissen"
-
-#: admin/sidebar.php:80
-#, fuzzy
-msgid "Feed fetching system configuration"
-msgstr "Systeemconfiguratie update"
-
-#: admin/sidebar.php:80
-msgid "Feed fetching"
-msgstr "Feed ophalen"
-
-#: admin/sidebar.php:86 admin/sidebar.php:92
-#: admin/api/manage-permissions_api.php:169
-#, fuzzy
-msgid "Moderation"
-msgstr "Registratie"
-
-#: admin/sidebar.php:91 admin/manage-moderation.php:48
-#, fuzzy
-msgid "Moderation interface"
-msgstr "Administratie interface:"
-
-#: admin/sidebar.php:96
-#, fuzzy
-msgid "Tag the last posts"
-msgstr "%s laatste berichten"
-
-#: admin/sidebar.php:97
-msgid "Tagging"
-msgstr ""
-
-#: admin/sidebar.php:113
-msgid "System"
-msgstr "Systeem"
-
-#: admin/sidebar.php:118 admin/manage-permissions.php:48
-msgid "Manage user permissions"
-msgstr "Beheren van gebruikersrechten"
-
-#: admin/sidebar.php:119 admin/api/manage-permissions_api.php:110
-msgid "Permissions"
-msgstr "Machtigingen"
-
-#: admin/manage-moderation.php:50
-#, fuzzy
-msgid "Moderate some posts."
-msgstr "Meer berichten"
-
-#: admin/manage-moderation.php:54
-msgid ""
-"The moderation functionnality is disabled. If you want to enable it, please "
-"go to the configuration page"
-msgstr ""
-"De matiging functionnality is uitgeschakeld. Als u wilt inschakelen, danGa "
-"naar de configuratiepagina"
-
-#: admin/manage-moderation.php:55
-msgid "Planet"
-msgstr "Planeet"
-
-#: admin/manage-moderation.php:66 admin/manage-tagging.php:58
-#: admin/manage-selection.php:57
-msgid "Elements to display"
-msgstr "Elementen weer te geven"
-
-#: admin/manage-moderation.php:68 admin/manage-tagging.php:60
-#: admin/manage-selection.php:59
-#, fuzzy
-msgid "Filter by user"
-msgstr "Geef uw gebruikersnaam"
-
-#: admin/manage-moderation.php:90 admin/manage-tagging.php:82
-#: admin/manage-feed.php:56 admin/manage-feed.php:91 admin/manage-user.php:55
-#: admin/manage-user.php:87 admin/manage-selection.php:81
-msgid "Filter"
-msgstr "Filter"
-
-#: admin/manage-moderation.php:103 admin/manage-selection.php:109
-#, fuzzy
-msgid "Moderation of your post"
-msgstr "Geef een beschrijving van de Planeet"
-
-#: admin/manage-moderation.php:105 admin/manage-pendinguser.php:58
-#: admin/manage-pendinguser.php:71 admin/manage-selection.php:115
-msgid "Comment"
-msgstr "Commentaar"
-
-#: admin/manage-moderation.php:108 admin/manage-pendinguser.php:60
-#: admin/manage-pendinguser.php:73 admin/manage-tagging.php:98
-#: admin/manage-feed.php:173 admin/manage-feed.php:187
-#: admin/manage-user.php:163 admin/manage-user.php:184
-#: admin/manage-user.php:202 admin/manage-selection.php:118
-#, fuzzy
-msgid "Cancel"
-msgstr "Veranderen"
-
-#: admin/manage-useroption.php:48 admin/manage-useroption.php:108
-msgid "Reference contact email"
-msgstr "Referentie contact e-mail"
-
-#: admin/manage-useroption.php:49 admin/manage-useroption.php:111
-msgid "Author Website"
-msgstr "Auteur website"
-
-#: admin/manage-useroption.php:50 admin/manage-useroption.php:105
-msgid "Contact Name"
-msgstr "Contact naam"
-
-#: admin/manage-useroption.php:65 admin/api/manage-option_api.php:269
-msgid "Modification succeeded"
-msgstr "Wijziging geslaagd"
-
-#: admin/manage-useroption.php:99
-msgid "Users Options"
-msgstr "Gebruikers Opties"
-
-#: admin/manage-useroption.php:101
-msgid "Configuring user settings."
-msgstr "Configureren gebruikersinstellingen."
-
-#: admin/manage-useroption.php:114
-msgid "Jabber / GoogleTalk"
-msgstr "Jabber / GoogleTalk"
-
-#: admin/manage-useroption.php:117
-msgid "Other Instant Messaging"
-msgstr "Andere Instant Messaging"
-
-#: admin/manage-useroption.php:120
-msgid "About Me"
-msgstr "Over mij"
-
-#: admin/manage-pendinguser.php:46
-#, fuzzy
-msgid "List of pending users"
-msgstr "Lijst van de gebruikers"
-
-#: admin/manage-pendinguser.php:48
-#, fuzzy
-msgid "List of pending users for the Planet"
-msgstr "Lijst van de leden van de Planeet"
-
-#: admin/manage-pendinguser.php:57
-#, fuzzy
-msgid "Refuse subscription"
-msgstr "Activeer inschrijving"
-
-#: admin/manage-pendinguser.php:70
-#, fuzzy
-msgid "Accept subscription"
-msgstr "Activeer inschrijving"
-
-#: admin/index.php:40
-msgid "Latest articles :"
-msgstr "Laatste artikelen:"
-
-#: admin/index.php:68 admin/api/manage-feed_api.php:474
-msgid "User"
-msgstr "Gebruiker"
-
-#: admin/index.php:68 admin/manage-post.php:217
-#: admin/api/manage-moderation_api.php:158
-#: admin/api/manage-tagging_api.php:137
-msgid "Title"
-msgstr "Titel"
-
-#: admin/index.php:90
-msgid "BilboPlanet news - Official Website :"
-msgstr "Bilboplanet nieuws - Officiele website"
-
-#: admin/index.php:146
-msgid "Quick summary of the planet"
-msgstr "Korte samenvatting van de planeet"
-
-#: admin/index.php:151
-#, fuzzy
-msgid "WARNING : please remove /admin/install folder for maximum security"
-msgstr "OPGELET : vermijder de /admin/install map"
-
-#: admin/index.php:161
-msgid "Statistics :"
-msgstr "Statistieken:"
-
-#: admin/index.php:166 admin/manage-update.php:120
-msgid "The update is running"
-msgstr "De update wordt uitgevoerd"
-
-#: admin/index.php:168 admin/manage-update.php:122
-msgid "The update is stopped"
-msgstr "De update is gestopt"
-
-#: admin/index.php:170 admin/manage-update.php:123
-msgid "The update is disabled"
-msgstr "De update is uitgeschakeld"
-
-#: admin/index.php:172
-msgid "The update on loading of index page enabled"
-msgstr "De update tijdens het laden van de index pagina is geactiveerd"
-
-#: admin/index.php:174
-msgid "Current size of the database :"
-msgstr "Huidige grootte van de database:"
-
-#: admin/index.php:175
-msgid "Number of articles in the DB :"
-msgstr "Aantal artikels in de database :"
-
-#: admin/index.php:176
-msgid "Number of votes in the DB :"
-msgstr "Aantal stemmen in de DB :"
-
-#: admin/index.php:177
-msgid "Number of members in the DB :"
-msgstr "Aantal leden in de DB :"
-
-#: admin/index.php:178
-msgid "Number of feeds in the DB :"
-msgstr "Aantal feeds in de DB :"
-
-#: admin/index.php:184
-msgid "System information :"
-msgstr "Systeem informaties :"
-
-#: admin/index.php:186
-msgid "Date server :"
-msgstr "Datum van de server :"
-
-#: admin/index.php:187
-msgid "Operating System :"
-msgstr "Operating system :"
-
-#: admin/index.php:188
-msgid "PHP version :"
-msgstr "PHP versie :"
-
-#: admin/index.php:189
-msgid "MySQL version :"
-msgstr "MySQL versie :"
-
-#: admin/index.php:190
-msgid "Server :"
-msgstr "Server :"
-
-#: admin/index.php:191
-msgid "Memory :"
-msgstr "Geheugen :"
-
-#: admin/index.php:192
-msgid "Your BilboPlanet version :"
-msgstr "Uw Bilboplanet versie :"
-
-#: admin/manage-cache.php:54
-msgid "The cache files were correctly deleted."
-msgstr "De cache-bestanden werden verwijderd met succes."
-
-#: admin/manage-cache.php:70
-msgid "Manage cache"
-msgstr "Beheer cache"
-
-#: admin/manage-cache.php:72
-msgid "Remove the cache files"
-msgstr "Verwijder de cache bestanden"
-
-#: admin/manage-cache.php:78
-msgid "Delete cache"
-msgstr "Delete Cache"
-
-#: admin/manage-cache.php:83
-msgid "The following files were deleted :"
-msgstr "De volgende bestanden zijn verwijderd:"
-
 #: admin/manage-tagging.php:48
 #, fuzzy
 msgid "Tagging interface"
@@ -1817,396 +1970,16 @@ msgstr "Admin interface"
 msgid "Tag posts and put them together by theme."
 msgstr ""
 
-#: admin/manage-post.php:95
-#, php-format
-msgid "The post %s was removed"
-msgstr "Het bericht %s is verwijderd"
+#: admin/manage-tagging.php:58 admin/manage-selection.php:57
+#: admin/manage-moderation.php:66
+msgid "Elements to display"
+msgstr "Elementen weer te geven"
 
-#: admin/manage-post.php:102
-#, php-format
-msgid "The post %s was changed"
-msgstr "Het bericht %s is veranderd"
-
-#: admin/manage-post.php:119
-msgid "Filtering of the posts"
-msgstr "Filteren van de berichten"
-
-#: admin/manage-post.php:121
-msgid "Filter articles"
-msgstr "Filter berichten"
-
-#: admin/manage-post.php:127
-msgid "Posts of the member :"
-msgstr "Berichten van het lid:"
-
-#: admin/manage-post.php:146 admin/manage-post.php:148
-#: admin/manage-post.php:158 admin/manage-feed.php:72 admin/manage-feed.php:77
-#: admin/manage-user.php:70 admin/manage-user.php:75
-msgid "All"
-msgstr "Allemaal"
-
-#: admin/manage-post.php:155
+#: admin/manage-tagging.php:60 admin/manage-selection.php:59
+#: admin/manage-moderation.php:68
 #, fuzzy
-msgid "Post status"
-msgstr "Stemmen tabel"
-
-#: admin/manage-post.php:159 admin/manage-post.php:235
-#: admin/manage-post.php:243 admin/manage-post.php:249
-#: admin/manage-post.php:253
-msgid "inactive"
-msgstr "inactief"
-
-#: admin/manage-post.php:160 admin/manage-post.php:234
-#: admin/manage-post.php:239 admin/manage-post.php:244
-#: admin/manage-post.php:254
-msgid "active"
-msgstr "actief"
-
-#: admin/manage-post.php:161 admin/manage-post.php:237
-#: admin/manage-post.php:246 admin/manage-post.php:252
-#: admin/manage-post.php:255
-msgid "pending"
-msgstr "in afwachting van"
-
-#: admin/manage-post.php:167
-msgid "Number of posts"
-msgstr "Aantal berichten"
-
-#: admin/manage-post.php:178
-msgid "List of the posts"
-msgstr "Lijst van de berichten"
-
-#: admin/manage-post.php:180
-msgid ""
-"NOTE: If you delete a post which is too recent, it will be refetched next "
-"time the update happen !!"
-msgstr ""
-"OPMERKING: Als u een recenter bericht vermijderd, zal dit bericht refetched "
-"worden tijdens de volgende update!"
-
-#: admin/manage-post.php:216 admin/api/manage-moderation_api.php:156
-#: admin/api/manage-tagging_api.php:136
-msgid "Date"
-msgstr "Datum"
-
-#: admin/manage-post.php:218
-msgid "Status"
-msgstr "Status"
-
-#: admin/manage-post.php:219
-msgid "Nb votes"
-msgstr "Nb stemmen"
-
-#: admin/manage-post.php:220 admin/manage-logs.php:72
-#: admin/manage-newsletter.php:254 admin/api/manage-user_api.php:403
-#: admin/api/manage-feed_api.php:477 admin/api/manage-moderation_api.php:159
-#: admin/api/manage-pendinguser_api.php:218
-msgid "Action"
-msgstr "Actie"
-
-#: admin/manage-post.php:269
-msgid "Change"
-msgstr "Veranderen"
-
-#: admin/manage-post.php:270 admin/manage-logs.php:88
-#: admin/api/manage-user_api.php:463 admin/api/manage-feed_api.php:560
-msgid "Delete"
-msgstr "Vermijderen"
-
-#: admin/manage-post.php:286
-msgid "Show items by : "
-msgstr "Ordeer de elementen :"
-
-#: admin/manage-logs.php:63
-msgid "All the log files"
-msgstr "Alle log bestanden"
-
-#: admin/manage-logs.php:65
-msgid "Management planet log files (Advanced users)."
-msgstr "Management planeet log-bestanden (Advanced gebruikers)."
-
-#: admin/manage-logs.php:109
-msgid "Purge all the log files"
-msgstr "Verwijder alle logbestanden"
-
-#: admin/manage-feed.php:48 admin/manage-feed.php:98
-msgid "Add a feed"
-msgstr "Voeg een feed"
-
-#: admin/manage-feed.php:51
-#, fuzzy
-msgid "Filter feedlist"
-msgstr "Filter berichten"
-
-#: admin/manage-feed.php:75
-msgid "Active feeds"
-msgstr "Actieve feeds"
-
-#: admin/manage-feed.php:76
-#, fuzzy
-msgid "Inactive feeds"
-msgstr "Beheer feeds"
-
-#: admin/manage-feed.php:79
-#, fuzzy
-msgid "Auto disabled feeds"
-msgstr "Feed beheren"
-
-#: admin/manage-feed.php:84 admin/manage-feed.php:122
-#: admin/manage-feed.php:162 admin/manage-user.php:80
-#: admin/manage-user.php:103 admin/manage-user.php:145
-#: admin/manage-user.php:173 admin/manage-account.php:62
-#: admin/api/manage-pendinguser_api.php:233
-msgid "User id"
-msgstr "Gebruiker id"
-
-#: admin/manage-feed.php:87
-#, fuzzy
-msgid "Feed status"
-msgstr "Feeds tabel"
-
-#: admin/manage-feed.php:100
-msgid ""
-"Manage member's feeds. Notice that you can only add a feed to a user who has "
-"a website. So you first need to create the user and add a site to him"
-msgstr ""
-"Beheer lid feeds. Merk op dat u een feed alleen toe te voegen aan een "
-"gebruiker die heefteen website. Dus moet u eerst de gebruiker aanmaken en "
-"een site toe te voegen aan hem"
-
-#: admin/manage-feed.php:114
-msgid "-- Choose an user --"
-msgstr "- Kies een gebruiker -"
-
-#: admin/manage-feed.php:125
-msgid "Site id"
-msgstr "Website id"
-
-#: admin/manage-feed.php:126
-msgid "-- Choose an user id --"
-msgstr "- Kies een gebruikers-id -"
-
-#: admin/manage-feed.php:127
-#, fuzzy
-msgid "Choose the website of the feed"
-msgstr "Bezoek de website van %s"
-
-#: admin/manage-feed.php:129
-msgid "Full feed URL"
-msgstr "Volledige URL van de feed"
-
-#: admin/manage-feed.php:131
-#, fuzzy
-msgid "ex: http://www.bilboplanet.com/feed/atom/"
-msgstr "ex: http://blog.bilboplanet.com/feed/atom/"
-
-#: admin/manage-feed.php:133 admin/manage-feed.php:165
-#, fuzzy
-msgid "Feed name"
-msgstr "Bestand naam:"
-
-#: admin/manage-feed.php:135
-msgid "ex: gnu/Linux posts"
-msgstr "ex: GNU / Linux berichten"
-
-#: admin/manage-feed.php:138
-msgid "Trusted URL"
-msgstr "Vertrouwde URL"
-
-#: admin/manage-feed.php:144 admin/manage-user.php:127
-#: admin/manage-user.php:185
-msgid "Add"
-msgstr "Toevoegen"
-
-#: admin/manage-feed.php:152
-msgid "Manage member feed."
-msgstr "Beheer lid feed."
-
-#: admin/manage-feed.php:167
-msgid "ex: GNU/Linux posts"
-msgstr "ex: GNU / Linux berichten"
-
-#: admin/manage-feed.php:169
-msgid "Feed URL"
-msgstr "Feed URL"
-
-#: admin/manage-feed.php:171
-#, fuzzy
-msgid "ex: http://www.bilboplanet.com/feed/"
-msgstr "bv: bilboplanet"
-
-#: admin/manage-user.php:49 admin/manage-user.php:94
-msgid "Add an user"
-msgstr "Voeg een gebruiker"
-
-#: admin/manage-user.php:52
-#, fuzzy
-msgid "Filter userlist"
+msgid "Filter by user"
 msgstr "Geef uw gebruikersnaam"
-
-#: admin/manage-user.php:73
-msgid "Active user"
-msgstr "Actieve gebruiker"
-
-#: admin/manage-user.php:74
-msgid "Inactive user"
-msgstr "inactieve gebruiker"
-
-#: admin/manage-user.php:83
-#, fuzzy
-msgid "User status"
-msgstr "Stemmen tabel"
-
-#: admin/manage-user.php:96
-msgid "To add a new member, fill out the form below."
-msgstr "Om een nieuw lid toe te voegen, vul de onderstaande formulier in."
-
-#: admin/manage-user.php:105
-msgid "ex: Frankenstein"
-msgstr "ex: Frankenstein"
-
-#: admin/manage-user.php:109 admin/manage-user.php:150
-#: admin/manage-account.php:67
-msgid "ex: Jean Dupont"
-msgstr "ex: Jean Dupont"
-
-#: admin/manage-user.php:113 admin/manage-user.php:154
-#: admin/manage-account.php:71
-msgid "ex: xxx@yyy.zzz"
-msgstr "ex: xxx@yyy.zzz"
-
-#: admin/manage-user.php:117
-msgid "Minimum 4 chars"
-msgstr ""
-
-#: admin/manage-user.php:119
-msgid "Confirm password"
-msgstr "Bevestig uw wachtwoord:"
-
-#: admin/manage-user.php:122
-#, fuzzy
-msgid "Website (Optional)"
-msgstr "Voornaam (optioneel)"
-
-#: admin/manage-user.php:124
-#, fuzzy
-msgid "ex: http://www.example.com"
-msgstr "bv: http://www.example.com of http://planet.example.com"
-
-#: admin/manage-user.php:134
-msgid "List of the users"
-msgstr "Lijst van de gebruikers"
-
-#: admin/manage-user.php:136
-msgid "List of members of the Planet"
-msgstr "Lijst van de leden van de Planeet"
-
-#: admin/manage-user.php:156 admin/manage-account.php:73
-msgid "New password"
-msgstr "Nieuw wachtwoord"
-
-#: admin/manage-user.php:159 admin/manage-account.php:76
-#, fuzzy
-msgid "Confirm new password"
-msgstr "Bevestig uw wachtwoord:"
-
-#: admin/manage-user.php:161 admin/manage-account.php:78
-msgid "You can leave the password field blank if you don't want to change it"
-msgstr "U kunt het wachtwoord veld leeg als je niet wilt wijzigen"
-
-#: admin/manage-user.php:176 admin/manage-user.php:194
-msgid "Site name"
-msgstr "Website naam"
-
-#: admin/manage-user.php:178 admin/manage-user.php:196
-#, fuzzy
-msgid "ex: Bilboplanet blog"
-msgstr "bv: bilboplanet"
-
-#: admin/manage-user.php:180 admin/manage-user.php:198
-msgid "Site URL"
-msgstr "Website URL"
-
-#: admin/manage-user.php:182 admin/manage-user.php:200
-#, fuzzy
-msgid "ex: http://www.bilboplanet.com"
-msgstr "bv: bilboplanet"
-
-#: admin/head.php:56
-msgid "Back on the Bilboplanet"
-msgstr "Terug op de Bilboplanet"
-
-#: admin/head.php:59
-msgid "Logout"
-msgstr "Afmelden"
-
-#: admin/head.php:60 admin/head.php:66
-msgid "About"
-msgstr "Over ons"
-
-#: admin/head.php:68
-msgid "Bilboplanet was developed by"
-msgstr "Bilboplanet was ontwikkeld door"
-
-#: admin/head.php:76
-msgid "BilboPlanet : Useful links"
-msgstr "Bilboplanet : nuttige linken"
-
-#: admin/head.php:79
-#, fuzzy
-msgid "Official WebSite: "
-msgstr "Officiele Website :"
-
-#: admin/head.php:80
-#, fuzzy
-msgid "Official Forum: "
-msgstr "Officiele forum :"
-
-#: admin/head.php:81
-#, fuzzy
-msgid "Official Documentation: "
-msgstr "Officiele documentatie : "
-
-#: admin/head.php:82
-msgid "Tracker: "
-msgstr ""
-
-#: admin/manage-permissions.php:50
-msgid "Check user statuses and configure their permissions"
-msgstr "Controleer de gebruiker statussen en configureren hun machtigingen"
-
-#: admin/manage-selection.php:48
-#, fuzzy
-msgid "Selection of the week"
-msgstr "Berichten van de week"
-
-#: admin/manage-selection.php:50 admin/manage-selection.php:97
-#, fuzzy
-msgid "Make your selection of the week"
-msgstr "Berichten van de week"
-
-#: admin/manage-selection.php:95
-#, php-format
-msgid "Pool of selectionned posts between %s and %s"
-msgstr "Pool van selectionned posten tussen% s en% s"
-
-#: admin/manage-selection.php:111
-#, fuzzy
-msgid "Your email address"
-msgstr "Geeg uw email adres"
-
-#: admin/manage-selection.php:113
-msgid "This is your own email"
-msgstr "Dit is uw eigen e-mail"
-
-#: admin/manage-account.php:48
-#, fuzzy
-msgid "Manage account"
-msgstr "Uw account"
-
-#: admin/manage-account.php:50
-msgid "You can change your profile configuration here"
-msgstr "U kunt uw profiel configuratie hier"
 
 #: admin/manage-newsletter.php:60
 #, php-format
@@ -2267,133 +2040,551 @@ msgstr "Vermijderen"
 msgid "Preview"
 msgstr "Zie"
 
-#: admin/manage-update.php:47
+#: admin/manage-selection.php:48
 #, fuzzy
-msgid "Enable update on loading of index page: Enable"
-msgstr "Activeer de update tijdens het laden van de index pagina"
+msgid "Selection of the week"
+msgstr "Berichten van de week"
 
-#: admin/manage-update.php:54
+#: admin/manage-selection.php:50 admin/manage-selection.php:97
 #, fuzzy
-msgid "Enable update on loading of index page: Disable"
-msgstr "Activeer de update tijdens het laden van de index pagina"
+msgid "Make your selection of the week"
+msgstr "Berichten van de week"
 
-#: admin/manage-update.php:67
-msgid "The automatical update is disabled "
-msgstr "De automatische update is uitgeschakeld"
-
-#: admin/manage-update.php:72
-msgid ""
-"The update can not start : the process is already started (You can force "
-"update by deleting the /inc/cron_running.txt file)"
-msgstr ""
-"De update kan niet beginnen: het proces is reeds gestart (U kunt kracht "
-"bijwerken door het verwijderen van de /inc/cron_running.txt bestand)"
-
-#: admin/manage-update.php:74
-msgid "The automatic update is enabled"
-msgstr "De automatische update is ingeschakeld"
-
-#: admin/manage-update.php:82
-msgid "Manual update ..."
-msgstr "Handmatige update ..."
-
-#: admin/manage-update.php:85
+#: admin/manage-selection.php:95
 #, php-format
-msgid "Error while updating : %s"
-msgstr "Fout tijdens het update: %s"
+msgid "Pool of selectionned posts between %s and %s"
+msgstr "Pool van selectionned posten tussen% s en% s"
 
-#: admin/manage-update.php:115
-msgid "Automatic update"
-msgstr "Automatische update"
-
-#: admin/manage-update.php:117
-msgid "System configuration update."
-msgstr "Systeemconfiguratie update."
-
-#: admin/manage-update.php:126
-msgid "Stop the update algorithm"
-msgstr "Stop de update algoritme"
-
-#: admin/manage-update.php:127
-msgid "Start the update algorithm"
-msgstr "Start de update algoritme"
-
-#: admin/manage-update.php:128
-msgid "Start a manual update"
-msgstr "Start een handmatige update"
-
-#: admin/manage-update.php:135
-msgid "Enable update on loading of index page"
-msgstr "Activeer de update tijdens het laden van de index pagina"
-
-#: admin/manage-update.php:141
-msgid "Setup feed update"
-msgstr ""
-
-#: admin/manage-update.php:143
+#: admin/manage-selection.php:109 admin/manage-moderation.php:103
 #, fuzzy
-msgid "How to configure the update of the feeds ?"
-msgstr "Bezoek de website van %s"
+msgid "Moderation of your post"
+msgstr "Geef een beschrijving van de Planeet"
 
-#: admin/manage-update.php:146
-msgid "How does it work?"
+#: admin/manage-selection.php:111
+#, fuzzy
+msgid "Your email address"
+msgstr "Geeg uw email adres"
+
+#: admin/manage-selection.php:113
+msgid "This is your own email"
+msgstr "Dit is uw eigen e-mail"
+
+#: admin/manage-selection.php:115 admin/manage-pendinguser.php:58
+#: admin/manage-pendinguser.php:71 admin/manage-moderation.php:105
+msgid "Comment"
+msgstr "Commentaar"
+
+#: admin/manage-pendinguser.php:46
+#, fuzzy
+msgid "List of pending users"
+msgstr "Lijst van de gebruikers"
+
+#: admin/manage-pendinguser.php:48
+#, fuzzy
+msgid "List of pending users for the Planet"
+msgstr "Lijst van de leden van de Planeet"
+
+#: admin/manage-pendinguser.php:57
+#, fuzzy
+msgid "Refuse subscription"
+msgstr "Activeer inschrijving"
+
+#: admin/manage-pendinguser.php:70
+#, fuzzy
+msgid "Accept subscription"
+msgstr "Activeer inschrijving"
+
+#: admin/head.php:56
+msgid "Back on the Bilboplanet"
+msgstr "Terug op de Bilboplanet"
+
+#: admin/head.php:59
+msgid "Logout"
+msgstr "Afmelden"
+
+#: admin/head.php:60 admin/head.php:66
+msgid "About"
+msgstr "Over ons"
+
+#: admin/head.php:68
+msgid "Bilboplanet was developed by"
+msgstr "Bilboplanet was ontwikkeld door"
+
+#: admin/head.php:76
+msgid "BilboPlanet : Useful links"
+msgstr "Bilboplanet : nuttige linken"
+
+#: admin/head.php:79
+#, fuzzy
+msgid "Official WebSite: "
+msgstr "Officiele Website :"
+
+#: admin/head.php:80
+#, fuzzy
+msgid "Official Forum: "
+msgstr "Officiele forum :"
+
+#: admin/head.php:81
+#, fuzzy
+msgid "Official Documentation: "
+msgstr "Officiele documentatie : "
+
+#: admin/head.php:82
+msgid "Tracker: "
 msgstr ""
 
-#: admin/manage-update.php:147
+#: admin/manage-moderation.php:48 admin/sidebar.php:91
+#, fuzzy
+msgid "Moderation interface"
+msgstr "Administratie interface:"
+
+#: admin/manage-moderation.php:50
+#, fuzzy
+msgid "Moderate some posts."
+msgstr "Meer berichten"
+
+#: admin/manage-moderation.php:54
 msgid ""
-"The update algorithm can work on several ways. The optimal solution that "
-"consumes less ressources and will give you the best results is clearly to "
-"setup a cron update manually into your server. But here you'll find a short "
-"explanation of the several methods :"
+"The moderation functionnality is disabled. If you want to enable it, please "
+"go to the configuration page"
+msgstr ""
+"De matiging functionnality is uitgeschakeld. Als u wilt inschakelen, danGa "
+"naar de configuratiepagina"
+
+#: admin/manage-moderation.php:55 admin/sidebar.php:68
+msgid "Planet Configuration"
+msgstr "Planeet Configuratie"
+
+#: admin/manage-moderation.php:55
+msgid "Planet"
+msgstr "Planeet"
+
+#: admin/manage-logs.php:63
+msgid "All the log files"
+msgstr "Alle log bestanden"
+
+#: admin/manage-logs.php:65
+msgid "Management planet log files (Advanced users)."
+msgstr "Management planeet log-bestanden (Advanced gebruikers)."
+
+#: admin/manage-logs.php:109
+msgid "Purge all the log files"
+msgstr "Verwijder alle logbestanden"
+
+#: admin/sidebar.php:27
+msgid "Common"
+msgstr "Gemeenschappelijke"
+
+#: admin/sidebar.php:30
+msgid "Access the quick summary of the planet"
+msgstr "Toegang tot de snelle samenvatting van de planeet"
+
+#: admin/sidebar.php:30 admin/index.php:144
+msgid "Dashboard"
+msgstr "Dashboard"
+
+#: admin/sidebar.php:31
+msgid "Manage your profile account"
+msgstr "Beheer uw profiel account"
+
+#: admin/sidebar.php:31
+#, fuzzy
+msgid "Manage your account"
+msgstr "Uw account"
+
+#: admin/sidebar.php:42
+#, fuzzy
+msgid "Manage users"
+msgstr "Leden beheren"
+
+#: admin/sidebar.php:45
+#, fuzzy
+msgid "Pending users"
+msgstr "Leden beheren"
+
+#: admin/sidebar.php:51
+#, fuzzy
+msgid "Manage posts"
+msgstr "Beheer feeds"
+
+#: admin/sidebar.php:54
+#, fuzzy
+msgid "Manage newsletter of the planet"
+msgstr "Beheer artikelen van de planeet"
+
+#: admin/sidebar.php:54
+msgid "Newsletter"
+msgstr "Newsletter"
+
+#: admin/sidebar.php:61 admin/api/manage-permissions_api.php:163
+msgid "Configuration"
+msgstr "Configuratie"
+
+#: admin/sidebar.php:65
+#, fuzzy
+msgid "Author configuration"
+msgstr "Gebruikersconfiguratie"
+
+#: admin/sidebar.php:65
+msgid "Planet Author"
+msgstr "Planeet auteur"
+
+#: admin/sidebar.php:68
+#, fuzzy
+msgid "Planet configuration"
+msgstr "Planeet Configuratie"
+
+#: admin/sidebar.php:71
+msgid "View logs information"
+msgstr "Bekijk log informatie"
+
+#: admin/sidebar.php:71
+msgid "Logs Files"
+msgstr "Logs Bestanden"
+
+#: admin/sidebar.php:74
+msgid "Import/Export Planet configuration"
+msgstr "Import/Export planeet configuratie"
+
+#: admin/sidebar.php:74
+msgid "Import/Export"
+msgstr "Import/Export"
+
+#: admin/sidebar.php:77
+msgid "Clear Planet cache"
+msgstr "Clear Planeet cache"
+
+#: admin/sidebar.php:77
+msgid "Clear cache"
+msgstr "Cache wissen"
+
+#: admin/sidebar.php:80
+#, fuzzy
+msgid "Feed fetching system configuration"
+msgstr "Systeemconfiguratie update"
+
+#: admin/sidebar.php:80
+msgid "Feed fetching"
+msgstr "Feed ophalen"
+
+#: admin/sidebar.php:86 admin/sidebar.php:92
+#: admin/api/manage-permissions_api.php:169
+#, fuzzy
+msgid "Moderation"
+msgstr "Registratie"
+
+#: admin/sidebar.php:96
+#, fuzzy
+msgid "Tag the last posts"
+msgstr "%s laatste berichten"
+
+#: admin/sidebar.php:97
+msgid "Tagging"
 msgstr ""
 
-#: admin/manage-update.php:149
+#: admin/sidebar.php:113
+msgid "System"
+msgstr "Systeem"
+
+#: admin/sidebar.php:119 admin/api/manage-permissions_api.php:110
+msgid "Permissions"
+msgstr "Machtigingen"
+
+#: admin/manage-cache.php:54
+msgid "The cache files were correctly deleted."
+msgstr "De cache-bestanden werden verwijderd met succes."
+
+#: admin/manage-cache.php:70
+msgid "Manage cache"
+msgstr "Beheer cache"
+
+#: admin/manage-cache.php:72
+msgid "Remove the cache files"
+msgstr "Verwijder de cache bestanden"
+
+#: admin/manage-cache.php:78
+msgid "Delete cache"
+msgstr "Delete Cache"
+
+#: admin/manage-cache.php:83
+msgid "The following files were deleted :"
+msgstr "De volgende bestanden zijn verwijderd:"
+
+#: admin/index.php:40
+msgid "Latest articles :"
+msgstr "Laatste artikelen:"
+
+#: admin/index.php:68 admin/api/manage-feed_api.php:474
+msgid "User"
+msgstr "Gebruiker"
+
+#: admin/index.php:90
+msgid "BilboPlanet news - Official Website :"
+msgstr "Bilboplanet nieuws - Officiele website"
+
+#: admin/index.php:146
+msgid "Quick summary of the planet"
+msgstr "Korte samenvatting van de planeet"
+
+#: admin/index.php:151
+#, fuzzy
+msgid "WARNING : please remove /admin/install folder for maximum security"
+msgstr "OPGELET : vermijder de /admin/install map"
+
+#: admin/index.php:161
+msgid "Statistics :"
+msgstr "Statistieken:"
+
+#: admin/index.php:172
+msgid "The update on loading of index page enabled"
+msgstr "De update tijdens het laden van de index pagina is geactiveerd"
+
+#: admin/index.php:174
+msgid "Current size of the database :"
+msgstr "Huidige grootte van de database:"
+
+#: admin/index.php:175
+msgid "Number of articles in the DB :"
+msgstr "Aantal artikels in de database :"
+
+#: admin/index.php:176
+msgid "Number of votes in the DB :"
+msgstr "Aantal stemmen in de DB :"
+
+#: admin/index.php:177
+msgid "Number of members in the DB :"
+msgstr "Aantal leden in de DB :"
+
+#: admin/index.php:178
+msgid "Number of feeds in the DB :"
+msgstr "Aantal feeds in de DB :"
+
+#: admin/index.php:184
+msgid "System information :"
+msgstr "Systeem informaties :"
+
+#: admin/index.php:186
+msgid "Date server :"
+msgstr "Datum van de server :"
+
+#: admin/index.php:187
+msgid "Operating System :"
+msgstr "Operating system :"
+
+#: admin/index.php:188
+msgid "PHP version :"
+msgstr "PHP versie :"
+
+#: admin/index.php:189
+msgid "MySQL version :"
+msgstr "MySQL versie :"
+
+#: admin/index.php:190
+msgid "Server :"
+msgstr "Server :"
+
+#: admin/index.php:191
+msgid "Memory :"
+msgstr "Geheugen :"
+
+#: admin/index.php:192
+msgid "Your BilboPlanet version :"
+msgstr "Uw Bilboplanet versie :"
+
+#: admin/install/check.php:34
+#, php-format
+msgid "PHP version is %s (5.0 or earlier needed)."
+msgstr "PHP versie is %s (5.0 of eerder nodig)."
+
+#: admin/install/check.php:38
+msgid "Multibyte string module (mbstring) is not available."
+msgstr "Multibyte string module (mbstring) is niet beschikbaar."
+
+#: admin/install/check.php:42
+msgid "Iconv module is not available."
+msgstr "Iconv module is niet beschikbaar."
+
+#: admin/install/check.php:46
+msgid "Output control functions are not available."
+msgstr "Output controle functies zijn niet beschikbaar."
+
+#: admin/install/check.php:50
+msgid "SimpleXML module is not available."
+msgstr "SimpleXML module is niet beschikbaar."
+
+#: admin/install/check.php:54
+msgid "DOM XML module is not available."
+msgstr "DOM XML-module is niet beschikbaar."
+
+#: admin/install/check.php:59
+msgid "PCRE engine does not support UTF-8 strings."
+msgstr "PCRE motor biedt geen ondersteuning voor UTF-8 strings."
+
+#: admin/install/check.php:63
+msgid "SPL module is not available."
+msgstr "SPL-module is niet beschikbaar."
+
+#: admin/install/check.php:70
+#, php-format
+msgid "MySQL version is %s (4.1 or earlier needed)."
+msgstr "MySQL versie is %s (4.1 of eerder nodig)."
+
+#: admin/install/check.php:92
+#, php-format
+msgid "PostgreSQL version is %s (8.0 or earlier needed)."
+msgstr "PostgreSQL versie %s (8.0 of eerder nodig)."
+
+#: admin/install/wizard.php:74
+msgid "The Bilboplanet could not be installed."
+msgstr "De Bilboplanet kan niet worden geïnstalleerd."
+
+#: admin/install/wizard.php:80
 msgid ""
-"The first intuitive way is to use this page to update manually the feeds of "
-"your database by clicking on the 'Start a manual update' option in the menu "
-"above. This means that it will update all your feeds only once."
+"The Bilboplanet is already installed. Please remove the tables in the "
+"database before."
 msgstr ""
+"De Bilboplanet is al geïnstalleerd. Gelieve de tabels eerst te verwijden in "
+"de database."
 
-#: admin/manage-update.php:150
+#: admin/install/wizard.php:86
+#, php-format
+msgid "File %s does not exist."
+msgstr "Bestand %s bestaat niet."
+
+#: admin/install/wizard.php:91 admin/install/wizard.php:105
+#, php-format
+msgid "Cannot write %s file."
+msgstr "Kan niet schrijven in %s bestand."
+
+#: admin/install/wizard.php:142
+msgid "Bilboplanet Install Wizard"
+msgstr "Bilboplanet Install Wizard"
+
+#: admin/install/wizard.php:158
+msgid "Installation wizard of the Bilboplanet"
+msgstr "Installatie wizard van de Bilboplanet"
+
+#: admin/install/wizard.php:161 admin/install/index.php:284
+msgid "Errors:"
+msgstr "Fouten:"
+
+#: admin/install/wizard.php:165
+#, php-format
 msgid ""
-"The second solution is to click on the 'Start the update algorithm' in the "
-"form. This will enable a PHP script which will fetch your feeds. This can be "
-"done but needs some special PHP libraries on your web server that may not be "
-"installed. This solution can be used but we advise you to check sometimes if "
-"the update engine is still alive (it can be killed after a time)"
+"The file <strong>%s</strong> already exists. If you need to reinitialize on "
+"of the configuration elements in this file, please remove the configuration "
+"file first or <a href=\"%s\">continue the installation</a>."
 msgstr ""
+"Het bestand <strong>%s</strong> bestaat reeds. Als u de installatie wilt "
+"reinitialiseren kunt u het configuratie bestand verwijderen of <a href=\"%s"
+"\">verder gaan</a>.</a>"
 
-#: admin/manage-update.php:151
+#: admin/install/wizard.php:170
+#, fuzzy
 msgid ""
-"Another intuitive way to configure the update of your feeds is by enabling "
-"update on index page loading. This means that all your feeds will be updated "
-"whenever people connect to your site. This is a good manner to deal with the "
-"update but can slightly slow down your site."
+"Welcome to the BilboPlanet. Before you begin, we need some informations "
+"concerning the database. You'll need to provide the following information to "
+"begin the installation and to create the configuration file.<br /><br />\n"
+"   1. The host of the database.<br/>\n"
+"   2. The name of the database.<br/>\n"
+"   3. Your username to the database.<br/>\n"
+"   4. Your password to the database.<br/>\n"
+"   4. Table prefix for your database.<br/><br/>"
 msgstr ""
+"<h3> Welkom op de BilboPlanet. Voordat u begint, moeten we wat informatie "
+"over de database krijgen. U moet de volgende informatie hebben om de "
+"installatie te beginnen en om de configuratie bestand te maken.</h3>\n"
+"\n"
+"  1. De host van de database <br/>\n"
+"  2. De naam van de database <br/>\n"
+"  3. Uw gebruikersnaam voor de database <br/>\n"
+"  4. Uw wachtwoord voor de database <br/><br/>"
 
-#: admin/manage-update.php:152
+#: admin/install/wizard.php:184
+msgid "Host of the database"
+msgstr "Host van de database"
+
+#: admin/install/wizard.php:186
+msgid "ex: localhost"
+msgstr "bv: localhost"
+
+#: admin/install/wizard.php:188
+msgid "Name of the database:"
+msgstr "Naam van de database:"
+
+#: admin/install/wizard.php:190
+msgid "ex: bilboplanet"
+msgstr "bv: bilboplanet"
+
+#: admin/install/wizard.php:194
+msgid "Your username depends of your provider"
+msgstr "Uw gebruikersnaam hangt af van uw provider"
+
+#: admin/install/wizard.php:198
+msgid "Your password depends of your provider"
+msgstr "Uw wachtwoord hangt af van uw provider"
+
+#: admin/install/wizard.php:200 admin/install/index.php:339
+#: admin/install/index.php:342 admin/install/index.php:345
+msgid "Required field"
+msgstr "Verplicht veld"
+
+#: admin/install/wizard.php:200
+msgid "Database Tables Prefix:"
+msgstr "Databasetabellen Voorvoegsel:"
+
+#: admin/install/wizard.php:202
+msgid "bp_ is the default prefix"
+msgstr "bp_ is de standaard prefix"
+
+#: admin/install/wizard.php:204 admin/install/index.php:350
+msgid "Save"
+msgstr "Opslaan"
+
+#: admin/install/index.php:32
+msgid "No configuration file"
+msgstr "Geen configuratie bestand"
+
+#: admin/install/index.php:33
 msgid ""
-"The optimal solution as said before it to configure manually the crontab of "
-"your server to enable the update. To configure a cron manually you'll find "
-"some advice here under."
+"There is no configuration file, you need to create one. Therefor you can use "
+"the wizard to generate a configuration file. Click \"Next\" to go to the "
+"setup page."
 msgstr ""
+"Er is geen configuratie bestand, u moet er een maken. Daarom kunt u de "
+"wizard gebruiken om een configuratiebestand te genereren. Klik op volgende "
+"om naar de installatie pagina te gaan."
 
-#: admin/manage-update.php:156
-msgid ""
-"You can setup a manual crontab update by calling automatically every X time "
-"the following page :"
-msgstr ""
-"U kunt uw eigen crontab instellen door een oproep naar de volgende pagina "
-"elke X minuten te maken :"
+#: admin/install/index.php:34
+msgid "Next"
+msgstr "Volgende"
 
-#: admin/manage-update.php:158
-msgid ""
-"This will automatically launch the update and log it into the log files."
-msgstr ""
-"Het gaat automatisch de update inschakelen en de log informatie in the log "
-"bestanden zetten."
+#: admin/install/index.php:50
+msgid "The Bilboplanet is already installed."
+msgstr "De Bilboplanet is al geïnstalleerd."
 
-#: admin/api/manage-user_api.php:86 admin/install/index.php:110
+#: admin/install/index.php:56
+msgid "The Bilboplanet can not be installed"
+msgstr "De Bilboplanet kan niet worden geïnstalleerd"
+
+#: admin/install/index.php:92
+#, fuzzy, php-format
+msgid "Unable to read %s file."
+msgstr "Het schrijven op het bestand %s onmogenlijk"
+
+#: admin/install/index.php:101
+msgid "Please fill the title in."
+msgstr "Vul de titel in."
+
+#: admin/install/index.php:104
+msgid "Please fill the user email in."
+msgstr "Vul de gebruikers email in"
+
+#: admin/install/index.php:107
+msgid "Please fill the username in."
+msgstr "Vul de gebruikersnaam in"
+
+#: admin/install/index.php:110 admin/api/manage-user_api.php:86
 msgid ""
 "Please do not use special chars in user_id field. Allowed chars are only a-"
 "z, A-Z and 0-9"
@@ -2401,90 +2592,261 @@ msgstr ""
 "Dan geen speciale tekens gebruiken in user_id veld. Toegestaan chars zijn "
 "slechts een-z, AZ en 0-9"
 
-#: admin/api/manage-user_api.php:145 admin/api/manage-pendinguser_api.php:187
+#: admin/install/index.php:114
+msgid ""
+"The username has to be formed of minimum 2 characters with letters of numbers"
+msgstr ""
+"De gebruikersnaam moet worden gevormd door minimaal 2 tekens van letters en "
+"getallen"
+
+#: admin/install/index.php:117
+msgid "Invalid email address"
+msgstr "Ongeldig e-mailadres"
+
+#: admin/install/index.php:123
+msgid "The passwords don't match"
+msgstr "De wachtwoorden komen niet overeen"
+
+#: admin/install/index.php:126
+msgid "The password have to contain minimum 6 characters."
+msgstr "Het wachtwoord moet minimaal 6 tekens bevatten."
+
+#: admin/install/index.php:267 admin/install/index.php:281
+msgid "Installation of the Bilboplanet"
+msgstr "Installatie van de Bilboplanet"
+
+#: admin/install/index.php:288
+msgid "The configuration file was successfully created."
+msgstr "Het configuratie bestand is gemaakt."
+
+#: admin/install/index.php:308
+msgid "Information on the BilboPlanet"
+msgstr "Informatie over de BilboPlanet"
+
+#: admin/install/index.php:310
+#, fuzzy
+msgid ""
+"Thank you for taking somes minutes to answer those questions to help to the "
+"configuration of the bilboplanet."
+msgstr ""
+"Bedankt om enkele minuten te nemen om deze vragen te antwoorden voor de "
+"configuratie van de bilboplanet"
+
+#: admin/install/index.php:311
+msgid "Fields marked with an asterisk are obligatory"
+msgstr "Velden gemarkeerd met een sterretje zijn verplicht"
+
+#: admin/install/index.php:314
+msgid "Information of the user"
+msgstr "Informatie van de gebruiker"
+
+#: admin/install/index.php:317
+msgid "Enter your fullname or the name you want to be displayed"
+msgstr "Vul uw volledige naam of de naam die u wilt tonen"
+
+#: admin/install/index.php:320
+msgid "Enter your email address"
+msgstr "Geeg uw email adres"
+
+#: admin/install/index.php:321
+msgid "Website of the user"
+msgstr "Website van de gebruiker"
+
+#: admin/install/index.php:323
+msgid "Entre address of your website or blog (optional)"
+msgstr "Geef de url van uw website of blog (facultatief)"
+
+#: admin/install/index.php:326
+msgid "Information on the Planet"
+msgstr "Informatie over de Planeet"
+
+#: admin/install/index.php:327 admin/api/manage-option_api.php:358
+#: admin/api/manage-option_api.php:676
+msgid "Title of the Planet"
+msgstr "Titel van de Planeet"
+
+#: admin/install/index.php:329
+msgid "Fill the title of your planet"
+msgstr "Vul de titel van de planeet in"
+
+#: admin/install/index.php:330
+msgid "Description"
+msgstr "Beschrijving"
+
+#: admin/install/index.php:332
+msgid "Give a description of your planet"
+msgstr "Geef een beschrijving van de Planeet"
+
+#: admin/install/index.php:333
+msgid "Planet Language"
+msgstr "Planeet Taal"
+
+#: admin/install/index.php:335
+msgid "Choose your langage"
+msgstr "Kies uw taal"
+
+#: admin/install/index.php:338
+msgid "Administration username and password"
+msgstr "Administratie gebruikersnaam en wachtwoord"
+
+#: admin/install/index.php:341
+msgid "Enter your username"
+msgstr "Geef uw gebruikersnaam"
+
+#: admin/install/index.php:344
+msgid "Enter your password"
+msgstr "Geef uw wachtwoord:"
+
+#: admin/install/index.php:345
+msgid "Confirm your password"
+msgstr "Bevestig uw wachtwoord:"
+
+#: admin/install/index.php:347
+msgid "Re-enter your password for verification"
+msgstr "Geef uw wachtwoord opnieuw voor bevestiging"
+
+#: admin/install/index.php:361
+msgid "Install succeeded"
+msgstr "Installatie geslaagd"
+
+#: admin/install/index.php:363
+msgid ""
+"The Bilboplanet was successfully installed. Here you can find a resume of "
+"the configuration"
+msgstr ""
+"De Bilboplanet is met succes geïnstalleerd. Hier vindt u een samenvatting "
+"van de configuratie"
+
+#: admin/install/index.php:365
+msgid "Your account"
+msgstr "Uw account"
+
+#: admin/install/index.php:371
+msgid "Your Bilboplanet"
+msgstr "Uw Bilboplanet"
+
+#: admin/install/index.php:373
+msgid "URL of the BilboPlanet:"
+msgstr "URL van de BilboPlanet:"
+
+#: admin/install/index.php:374
+msgid "Administration interface:"
+msgstr "Administratie interface:"
+
+#: admin/install/index.php:378
+msgid "Go to the administration interface"
+msgstr "Ga naar de administratie-interface"
+
+#: admin/api/manage-site_api.php:58 admin/api/manage-site_api.php:121
+#, fuzzy, php-format
+msgid "The user %s already own the website %s"
+msgstr "De gebruiker %s bestaat al"
+
+#: admin/api/manage-site_api.php:61
+#, fuzzy, php-format
+msgid "The website %s owns to user %s"
+msgstr "De website %s is al toegewezen aan een gebruiker"
+
+#: admin/api/manage-site_api.php:81
+#, fuzzy, php-format
+msgid "Website %s successfully added to user %s"
+msgstr "Gebruiker %s toegevoegd"
+
+#: admin/api/manage-site_api.php:124
+#, fuzzy, php-format
+msgid "The website %s is owned by user %s"
+msgstr "De website %s is al toegewezen aan een gebruiker"
+
+#: admin/api/manage-site_api.php:135
+#, php-format
+msgid "Website %s successfully updated"
+msgstr "Website %s updated met succes"
+
+#: admin/api/manage-site_api.php:175
+msgid "Site status toggled"
+msgstr "Site status omgeschakeld"
+
+#: admin/api/manage-site_api.php:184
+#, fuzzy, php-format
+msgid "Are you sure you want to remove site %s ?"
+msgstr "Weet u zeker dat u de gebruiker %s wilt verwijderen?"
+
+#: admin/api/manage-site_api.php:186 admin/api/manage-feed_api.php:252
+#: admin/api/manage-user_api.php:281
+msgid "This action can not be canceled"
+msgstr "Deze actie kan niet geannuleerd worden"
+
+#: admin/api/manage-site_api.php:187
+#, fuzzy
+msgid "All the posts comming from this site will be removed"
+msgstr "Alle berichten van de gebruiker zullen worden verwijderd"
+
+#: admin/api/manage-site_api.php:188
+#, fuzzy
+msgid "All the feeds of this site will be removed"
+msgstr "Alle feeds van deze gebruiker zullen worden verwijderd"
+
+#: admin/api/manage-site_api.php:191 admin/api/manage-feed_api.php:256
+#: admin/api/manage-user_api.php:287
+msgid "Confirm"
+msgstr "Bevestig"
+
+#: admin/api/manage-site_api.php:208
+#, php-format
+msgid "Delete of site %s succeeded"
+msgstr "Verwijderen van website %s geslaagd"
+
+#: admin/api/manage-pendinguser_api.php:62
+#: admin/api/manage-moderation_api.php:121
+#, php-format
+msgid "Dear %s,"
+msgstr "Beste% s,"
+
+#: admin/api/manage-pendinguser_api.php:64
+#: admin/api/manage-moderation_api.php:123
+msgid "Dear user,"
+msgstr "Beste gebruiker,"
+
+#: admin/api/manage-pendinguser_api.php:80
+msgid "Regards,"
+msgstr ""
+
+#: admin/api/manage-pendinguser_api.php:102
+#: admin/api/manage-moderation_api.php:88
+msgid "Mail could not be send"
+msgstr "De mail kon niet gezonden worden"
+
+#: admin/api/manage-pendinguser_api.php:105
+#, fuzzy
+msgid "Subscription successfully refused"
+msgstr "Bericht gewijgerd met succes"
+
+#: admin/api/manage-pendinguser_api.php:187 admin/api/manage-user_api.php:145
 #, php-format
 msgid "User %s successfully added"
 msgstr "Gebruiker %s toegevoegd"
 
-#: admin/api/manage-user_api.php:193
-msgid "User status toggled"
-msgstr "De gebruiker de status omgeschakeld"
-
-#: admin/api/manage-user_api.php:228 admin/api/manage-account_api.php:58
-#: user/api/account_api.php:58
-#, fuzzy, php-format
-msgid "The email address %s is already in use by %s"
-msgstr "Het e-mailadres %s is al in gebruik"
-
-#: admin/api/manage-user_api.php:242 admin/api/manage-account_api.php:72
-#: user/api/account_api.php:72
-#, fuzzy, php-format
-msgid "User %s successfully updated"
-msgstr "Gebruiker %s toegevoegd"
-
-#: admin/api/manage-user_api.php:276 admin/api/manage-user_api.php:300
-#, fuzzy
-msgid "You are not allowed to remove a super user"
-msgstr ""
-"U bent niet toegelaten om een feed toe te voegen zonder een lid te selecteren"
-
-#: admin/api/manage-user_api.php:280
-#, php-format
-msgid "Are you sure you want to remove user %s ?"
-msgstr "Weet u zeker dat u de gebruiker %s wilt verwijderen?"
-
-#: admin/api/manage-user_api.php:281 admin/api/manage-feed_api.php:252
-#: admin/api/manage-site_api.php:186
-msgid "This action can not be canceled"
-msgstr "Deze actie kan niet geannuleerd worden"
-
-#: admin/api/manage-user_api.php:282
-msgid "All the posts of the user will be removed"
-msgstr "Alle berichten van de gebruiker zullen worden verwijderd"
-
-#: admin/api/manage-user_api.php:283
-msgid "All the votes on these posts will be removed"
-msgstr "Alle stemmen over deze berichten zullen worden verwijderd"
-
-#: admin/api/manage-user_api.php:284
-msgid "All the feeds of this user will be removed"
-msgstr "Alle feeds van deze gebruiker zullen worden verwijderd"
-
-#: admin/api/manage-user_api.php:287 admin/api/manage-feed_api.php:256
-#: admin/api/manage-site_api.php:191
-msgid "Confirm"
-msgstr "Bevestig"
-
-#: admin/api/manage-user_api.php:314
-#, php-format
-msgid "Delete of user %s succeeded"
-msgstr "Verwijderen van gebruiker %s geslaagd"
-
-#: admin/api/manage-user_api.php:400 admin/api/manage-permissions_api.php:107
 #: admin/api/manage-pendinguser_api.php:215
+#: admin/api/manage-permissions_api.php:107 admin/api/manage-user_api.php:400
 msgid "Avatar"
 msgstr "Avatar"
 
-#: admin/api/manage-user_api.php:401 admin/api/manage-permissions_api.php:108
 #: admin/api/manage-pendinguser_api.php:216
+#: admin/api/manage-permissions_api.php:108 admin/api/manage-user_api.php:401
 msgid "User Informations"
 msgstr "Gebruikers informaties"
 
-#: admin/api/manage-user_api.php:420
-msgid "Disable user"
-msgstr "Uitschakelen gebruiker"
+#: admin/api/manage-pendinguser_api.php:248
+#: admin/api/manage-moderation_api.php:172
+#: admin/api/manage-moderation_api.php:177
+msgid "Refuse"
+msgstr "Wijgeren"
 
-#: admin/api/manage-user_api.php:423
-msgid "Enable user"
-msgstr "De gebruiker mogelijk"
-
-#: admin/api/manage-user_api.php:435
-msgid "Planet author"
-msgstr "Planeet auteur"
-
-#: admin/api/manage-user_api.php:453
-msgid "Add a new website"
-msgstr "Voeg een nieuwe website"
+#: admin/api/manage-pendinguser_api.php:252
+#: admin/api/manage-moderation_api.php:170
+#: admin/api/manage-moderation_api.php:176
+msgid "Accept"
+msgstr "Te aanvaarden"
 
 #: admin/api/manage-feed_api.php:90
 #, fuzzy, php-format
@@ -2560,7 +2922,7 @@ msgstr ""
 msgid "The tag was successfuly removed"
 msgstr "Gebruiker %s toegevoegd"
 
-#: admin/api/manage-feed_api.php:334 admin/api/manage-tagging_api.php:91
+#: admin/api/manage-feed_api.php:334 admin/api/manage-tagging_api.php:90
 #: user/api/tagging_api.php:100 user/api/tagging_api.php:190
 msgid "Tags added : "
 msgstr ""
@@ -2619,76 +2981,26 @@ msgstr "Feed naam:"
 msgid "Site URL : "
 msgstr "Website URL :"
 
-#: admin/api/manage-moderation_api.php:41 user/api/post_api.php:41
-msgid "The post is already accepted"
-msgstr "Het bericht is al geaccepteerd"
-
-#: admin/api/manage-moderation_api.php:47 user/api/post_api.php:47
-msgid "Post successfully updated"
-msgstr "Bericht met succes updated"
-
-#: admin/api/manage-moderation_api.php:84
-msgid "The post is already refused"
-msgstr "Het bericht is al gewijgerd"
-
-#: admin/api/manage-moderation_api.php:88
-#: admin/api/manage-pendinguser_api.php:102
-msgid "Mail could not be send"
-msgstr "De mail kon niet gezonden worden"
-
-#: admin/api/manage-moderation_api.php:93 user/api/post_api.php:83
-msgid "Post successfully refused"
-msgstr "Bericht gewijgerd met succes"
-
-#: admin/api/manage-moderation_api.php:121
-#: admin/api/manage-pendinguser_api.php:62
+#: admin/api/manage-database_api.php:74
 #, php-format
-msgid "Dear %s,"
-msgstr "Beste% s,"
+msgid "Unable to write %s file."
+msgstr "Het schrijven op het bestand %s onmogenlijk"
 
-#: admin/api/manage-moderation_api.php:123
-#: admin/api/manage-pendinguser_api.php:64
-msgid "Dear user,"
-msgstr "Beste gebruiker,"
+#: admin/api/manage-database_api.php:74
+msgid "Please check you /admin/cache directory permissions"
+msgstr "Gelieve u / admin / cache directory permissies"
 
-#: admin/api/manage-moderation_api.php:126
-msgid "We took the decision to moderate the following post :"
-msgstr "We namen het besluit om de volgende post matig:"
+#: admin/api/manage-database_api.php:81
+msgid ""
+"A snapshot of your current database was successfully created. Please "
+"download the following file and put it in some safe place."
+msgstr ""
+"Een backup bestand was met succes gecreëert. Download het bestand en zet hem "
+"in een veilige plaats."
 
-#: admin/api/manage-moderation_api.php:128
-msgid "The reasons of this moderation are :"
-msgstr "De redenen van deze matiging zijn:"
-
-#: admin/api/manage-moderation_api.php:131
-#, php-format
-msgid "Thank you for your contribution on the %s"
-msgstr "Dank u voor uw bijdrage op het% s"
-
-#: admin/api/manage-moderation_api.php:132
-msgid "Sincerely yours"
-msgstr "Met vriendelijke groeten"
-
-#: admin/api/manage-moderation_api.php:157
-msgid "Author"
-msgstr "Auteur"
-
-#: admin/api/manage-moderation_api.php:170
-#: admin/api/manage-moderation_api.php:176
-#: admin/api/manage-pendinguser_api.php:252
-msgid "Accept"
-msgstr "Te aanvaarden"
-
-#: admin/api/manage-moderation_api.php:172
-#: admin/api/manage-moderation_api.php:177
-#: admin/api/manage-pendinguser_api.php:248
-msgid "Refuse"
-msgstr "Wijgeren"
-
-#: admin/api/manage-moderation_api.php:187
-#: admin/api/manage-tagging_api.php:167
-#, php-format
-msgid "%s last posts :"
-msgstr "%s laatste berichten"
+#: admin/api/manage-database_api.php:86
+msgid "Please select at least one table to export"
+msgstr "Selecteer minimum een tabel te exporteren"
 
 #: admin/api/manage-permissions_api.php:36
 #: admin/api/manage-permissions_api.php:70
@@ -2725,94 +3037,6 @@ msgstr "Website manager"
 msgid "Super user"
 msgstr "Super gebruiker"
 
-#: admin/api/manage-tagging_api.php:43 user/api/tagging_api.php:47
-msgid "The tag you want to remove doesn't exist on this post"
-msgstr ""
-
-#: admin/api/manage-tagging_api.php:159
-#, fuzzy
-msgid "Tag post"
-msgstr "Beheer feeds"
-
-#: admin/api/manage-pendinguser_api.php:80
-msgid "Regards,"
-msgstr ""
-
-#: admin/api/manage-pendinguser_api.php:105
-#, fuzzy
-msgid "Subscription successfully refused"
-msgstr "Bericht gewijgerd met succes"
-
-#: admin/api/manage-database_api.php:74
-#, php-format
-msgid "Unable to write %s file."
-msgstr "Het schrijven op het bestand %s onmogenlijk"
-
-#: admin/api/manage-database_api.php:74
-msgid "Please check you /admin/cache directory permissions"
-msgstr "Gelieve u / admin / cache directory permissies"
-
-#: admin/api/manage-database_api.php:81
-msgid ""
-"A snapshot of your current database was successfully created. Please "
-"download the following file and put it in some safe place."
-msgstr ""
-"Een backup bestand was met succes gecreëert. Download het bestand en zet hem "
-"in een veilige plaats."
-
-#: admin/api/manage-database_api.php:86
-msgid "Please select at least one table to export"
-msgstr "Selecteer minimum een tabel te exporteren"
-
-#: admin/api/manage-site_api.php:58 admin/api/manage-site_api.php:121
-#, fuzzy, php-format
-msgid "The user %s already own the website %s"
-msgstr "De gebruiker %s bestaat al"
-
-#: admin/api/manage-site_api.php:61
-#, fuzzy, php-format
-msgid "The website %s owns to user %s"
-msgstr "De website %s is al toegewezen aan een gebruiker"
-
-#: admin/api/manage-site_api.php:81
-#, fuzzy, php-format
-msgid "Website %s successfully added to user %s"
-msgstr "Gebruiker %s toegevoegd"
-
-#: admin/api/manage-site_api.php:124
-#, fuzzy, php-format
-msgid "The website %s is owned by user %s"
-msgstr "De website %s is al toegewezen aan een gebruiker"
-
-#: admin/api/manage-site_api.php:135
-#, php-format
-msgid "Website %s successfully updated"
-msgstr "Website %s updated met succes"
-
-#: admin/api/manage-site_api.php:175
-msgid "Site status toggled"
-msgstr "Site status omgeschakeld"
-
-#: admin/api/manage-site_api.php:184
-#, fuzzy, php-format
-msgid "Are you sure you want to remove site %s ?"
-msgstr "Weet u zeker dat u de gebruiker %s wilt verwijderen?"
-
-#: admin/api/manage-site_api.php:187
-#, fuzzy
-msgid "All the posts comming from this site will be removed"
-msgstr "Alle berichten van de gebruiker zullen worden verwijderd"
-
-#: admin/api/manage-site_api.php:188
-#, fuzzy
-msgid "All the feeds of this site will be removed"
-msgstr "Alle feeds van deze gebruiker zullen worden verwijderd"
-
-#: admin/api/manage-site_api.php:208
-#, php-format
-msgid "Delete of site %s succeeded"
-msgstr "Verwijderen van website %s geslaagd"
-
 #: admin/api/manage-option_api.php:40
 #, fuzzy
 msgid "The title can not be empty"
@@ -2840,11 +3064,6 @@ msgstr "Opties"
 #: admin/api/manage-option_api.php:354 admin/api/manage-option_api.php:672
 msgid "Value"
 msgstr "Waarde"
-
-#: admin/api/manage-option_api.php:358 admin/api/manage-option_api.php:676
-#: admin/install/index.php:327
-msgid "Title of the Planet"
-msgstr "Titel van de Planeet"
 
 #: admin/api/manage-option_api.php:362 admin/api/manage-option_api.php:680
 msgid "Description of the Planet"
@@ -3037,338 +3256,117 @@ msgstr "Piwik identificatie site nummer"
 msgid "Planet statusnet host (ex: http://identi.ca)"
 msgstr "Planet statusnet host (bv: http://identi.ca)"
 
-#: admin/install/index.php:32
-msgid "No configuration file"
-msgstr "Geen configuratie bestand"
-
-#: admin/install/index.php:33
-msgid ""
-"There is no configuration file, you need to create one. Therefor you can use "
-"the wizard to generate a configuration file. Click \"Next\" to go to the "
-"setup page."
+#: admin/api/manage-tagging_api.php:43 user/api/tagging_api.php:47
+msgid "The tag you want to remove doesn't exist on this post"
 msgstr ""
-"Er is geen configuratie bestand, u moet er een maken. Daarom kunt u de "
-"wizard gebruiken om een configuratiebestand te genereren. Klik op volgende "
-"om naar de installatie pagina te gaan."
 
-#: admin/install/index.php:34
-msgid "Next"
-msgstr "Volgende"
+#: admin/api/manage-tagging_api.php:158
+#, fuzzy
+msgid "Tag post"
+msgstr "Beheer feeds"
 
-#: admin/install/index.php:50
-msgid "The Bilboplanet is already installed."
-msgstr "De Bilboplanet is al geïnstalleerd."
+#: admin/api/manage-tagging_api.php:166
+#: admin/api/manage-moderation_api.php:187
+#, php-format
+msgid "%s last posts :"
+msgstr "%s laatste berichten"
 
-#: admin/install/index.php:56
-msgid "The Bilboplanet can not be installed"
-msgstr "De Bilboplanet kan niet worden geïnstalleerd"
+#: admin/api/manage-moderation_api.php:41 user/api/post_api.php:41
+msgid "The post is already accepted"
+msgstr "Het bericht is al geaccepteerd"
 
-#: admin/install/index.php:92
+#: admin/api/manage-moderation_api.php:47 user/api/post_api.php:47
+msgid "Post successfully updated"
+msgstr "Bericht met succes updated"
+
+#: admin/api/manage-moderation_api.php:84
+msgid "The post is already refused"
+msgstr "Het bericht is al gewijgerd"
+
+#: admin/api/manage-moderation_api.php:93 user/api/post_api.php:83
+msgid "Post successfully refused"
+msgstr "Bericht gewijgerd met succes"
+
+#: admin/api/manage-moderation_api.php:126
+msgid "We took the decision to moderate the following post :"
+msgstr "We namen het besluit om de volgende post matig:"
+
+#: admin/api/manage-moderation_api.php:128
+msgid "The reasons of this moderation are :"
+msgstr "De redenen van deze matiging zijn:"
+
+#: admin/api/manage-moderation_api.php:131
+#, php-format
+msgid "Thank you for your contribution on the %s"
+msgstr "Dank u voor uw bijdrage op het% s"
+
+#: admin/api/manage-moderation_api.php:132
+msgid "Sincerely yours"
+msgstr "Met vriendelijke groeten"
+
+#: admin/api/manage-moderation_api.php:157
+msgid "Author"
+msgstr "Auteur"
+
+#: admin/api/manage-account_api.php:58 admin/api/manage-user_api.php:228
+#: user/api/account_api.php:58
 #, fuzzy, php-format
-msgid "Unable to read %s file."
-msgstr "Het schrijven op het bestand %s onmogenlijk"
+msgid "The email address %s is already in use by %s"
+msgstr "Het e-mailadres %s is al in gebruik"
 
-#: admin/install/index.php:101
-msgid "Please fill the title in."
-msgstr "Vul de titel in."
+#: admin/api/manage-account_api.php:72 admin/api/manage-user_api.php:242
+#: user/api/account_api.php:72
+#, fuzzy, php-format
+msgid "User %s successfully updated"
+msgstr "Gebruiker %s toegevoegd"
 
-#: admin/install/index.php:104
-msgid "Please fill the user email in."
-msgstr "Vul de gebruikers email in"
+#: admin/api/manage-user_api.php:193
+msgid "User status toggled"
+msgstr "De gebruiker de status omgeschakeld"
 
-#: admin/install/index.php:107
-msgid "Please fill the username in."
-msgstr "Vul de gebruikersnaam in"
-
-#: admin/install/index.php:114
-msgid ""
-"The username has to be formed of minimum 2 characters with letters of numbers"
-msgstr ""
-"De gebruikersnaam moet worden gevormd door minimaal 2 tekens van letters en "
-"getallen"
-
-#: admin/install/index.php:117
-msgid "Invalid email address"
-msgstr "Ongeldig e-mailadres"
-
-#: admin/install/index.php:123
-msgid "The passwords don't match"
-msgstr "De wachtwoorden komen niet overeen"
-
-#: admin/install/index.php:126
-msgid "The password have to contain minimum 6 characters."
-msgstr "Het wachtwoord moet minimaal 6 tekens bevatten."
-
-#: admin/install/index.php:267 admin/install/index.php:281
-msgid "Installation of the Bilboplanet"
-msgstr "Installatie van de Bilboplanet"
-
-#: admin/install/index.php:284 admin/install/wizard.php:161
-msgid "Errors:"
-msgstr "Fouten:"
-
-#: admin/install/index.php:288
-msgid "The configuration file was successfully created."
-msgstr "Het configuratie bestand is gemaakt."
-
-#: admin/install/index.php:308
-msgid "Information on the BilboPlanet"
-msgstr "Informatie over de BilboPlanet"
-
-#: admin/install/index.php:310
+#: admin/api/manage-user_api.php:276 admin/api/manage-user_api.php:300
 #, fuzzy
-msgid ""
-"Thank you for taking somes minutes to answer those questions to help to the "
-"configuration of the bilboplanet."
+msgid "You are not allowed to remove a super user"
 msgstr ""
-"Bedankt om enkele minuten te nemen om deze vragen te antwoorden voor de "
-"configuratie van de bilboplanet"
+"U bent niet toegelaten om een feed toe te voegen zonder een lid te selecteren"
 
-#: admin/install/index.php:311
-msgid "Fields marked with an asterisk are obligatory"
-msgstr "Velden gemarkeerd met een sterretje zijn verplicht"
-
-#: admin/install/index.php:314
-msgid "Information of the user"
-msgstr "Informatie van de gebruiker"
-
-#: admin/install/index.php:317
-msgid "Enter your fullname or the name you want to be displayed"
-msgstr "Vul uw volledige naam of de naam die u wilt tonen"
-
-#: admin/install/index.php:320
-msgid "Enter your email address"
-msgstr "Geeg uw email adres"
-
-#: admin/install/index.php:321
-msgid "Website of the user"
-msgstr "Website van de gebruiker"
-
-#: admin/install/index.php:323
-msgid "Entre address of your website or blog (optional)"
-msgstr "Geef de url van uw website of blog (facultatief)"
-
-#: admin/install/index.php:326
-msgid "Information on the Planet"
-msgstr "Informatie over de Planeet"
-
-#: admin/install/index.php:329
-msgid "Fill the title of your planet"
-msgstr "Vul de titel van de planeet in"
-
-#: admin/install/index.php:330
-msgid "Description"
-msgstr "Beschrijving"
-
-#: admin/install/index.php:332
-msgid "Give a description of your planet"
-msgstr "Geef een beschrijving van de Planeet"
-
-#: admin/install/index.php:333
-msgid "Planet Language"
-msgstr "Planeet Taal"
-
-#: admin/install/index.php:335
-msgid "Choose your langage"
-msgstr "Kies uw taal"
-
-#: admin/install/index.php:338
-msgid "Administration username and password"
-msgstr "Administratie gebruikersnaam en wachtwoord"
-
-#: admin/install/index.php:339 admin/install/index.php:342
-#: admin/install/index.php:345 admin/install/wizard.php:200
-msgid "Required field"
-msgstr "Verplicht veld"
-
-#: admin/install/index.php:341
-msgid "Enter your username"
-msgstr "Geef uw gebruikersnaam"
-
-#: admin/install/index.php:344
-msgid "Enter your password"
-msgstr "Geef uw wachtwoord:"
-
-#: admin/install/index.php:345
-msgid "Confirm your password"
-msgstr "Bevestig uw wachtwoord:"
-
-#: admin/install/index.php:347
-msgid "Re-enter your password for verification"
-msgstr "Geef uw wachtwoord opnieuw voor bevestiging"
-
-#: admin/install/index.php:350 admin/install/wizard.php:204
-msgid "Save"
-msgstr "Opslaan"
-
-#: admin/install/index.php:361
-msgid "Install succeeded"
-msgstr "Installatie geslaagd"
-
-#: admin/install/index.php:363
-msgid ""
-"The Bilboplanet was successfully installed. Here you can find a resume of "
-"the configuration"
-msgstr ""
-"De Bilboplanet is met succes geïnstalleerd. Hier vindt u een samenvatting "
-"van de configuratie"
-
-#: admin/install/index.php:365
-msgid "Your account"
-msgstr "Uw account"
-
-#: admin/install/index.php:371
-msgid "Your Bilboplanet"
-msgstr "Uw Bilboplanet"
-
-#: admin/install/index.php:373
-msgid "URL of the BilboPlanet:"
-msgstr "URL van de BilboPlanet:"
-
-#: admin/install/index.php:374
-msgid "Administration interface:"
-msgstr "Administratie interface:"
-
-#: admin/install/index.php:378
-msgid "Go to the administration interface"
-msgstr "Ga naar de administratie-interface"
-
-#: admin/install/wizard.php:74
-msgid "The Bilboplanet could not be installed."
-msgstr "De Bilboplanet kan niet worden geïnstalleerd."
-
-#: admin/install/wizard.php:80
-msgid ""
-"The Bilboplanet is already installed. Please remove the tables in the "
-"database before."
-msgstr ""
-"De Bilboplanet is al geïnstalleerd. Gelieve de tabels eerst te verwijden in "
-"de database."
-
-#: admin/install/wizard.php:86
+#: admin/api/manage-user_api.php:280
 #, php-format
-msgid "File %s does not exist."
-msgstr "Bestand %s bestaat niet."
+msgid "Are you sure you want to remove user %s ?"
+msgstr "Weet u zeker dat u de gebruiker %s wilt verwijderen?"
 
-#: admin/install/wizard.php:91 admin/install/wizard.php:105
+#: admin/api/manage-user_api.php:282
+msgid "All the posts of the user will be removed"
+msgstr "Alle berichten van de gebruiker zullen worden verwijderd"
+
+#: admin/api/manage-user_api.php:283
+msgid "All the votes on these posts will be removed"
+msgstr "Alle stemmen over deze berichten zullen worden verwijderd"
+
+#: admin/api/manage-user_api.php:284
+msgid "All the feeds of this user will be removed"
+msgstr "Alle feeds van deze gebruiker zullen worden verwijderd"
+
+#: admin/api/manage-user_api.php:314
 #, php-format
-msgid "Cannot write %s file."
-msgstr "Kan niet schrijven in %s bestand."
+msgid "Delete of user %s succeeded"
+msgstr "Verwijderen van gebruiker %s geslaagd"
 
-#: admin/install/wizard.php:142
-msgid "Bilboplanet Install Wizard"
-msgstr "Bilboplanet Install Wizard"
+#: admin/api/manage-user_api.php:420
+msgid "Disable user"
+msgstr "Uitschakelen gebruiker"
 
-#: admin/install/wizard.php:158
-msgid "Installation wizard of the Bilboplanet"
-msgstr "Installatie wizard van de Bilboplanet"
+#: admin/api/manage-user_api.php:423
+msgid "Enable user"
+msgstr "De gebruiker mogelijk"
 
-#: admin/install/wizard.php:165
-#, php-format
-msgid ""
-"The file <strong>%s</strong> already exists. If you need to reinitialize on "
-"of the configuration elements in this file, please remove the configuration "
-"file first or <a href=\"%s\">continue the installation</a>."
-msgstr ""
-"Het bestand <strong>%s</strong> bestaat reeds. Als u de installatie wilt "
-"reinitialiseren kunt u het configuratie bestand verwijderen of <a href=\"%s"
-"\">verder gaan</a>.</a>"
+#: admin/api/manage-user_api.php:435
+msgid "Planet author"
+msgstr "Planeet auteur"
 
-#: admin/install/wizard.php:170
-#, fuzzy
-msgid ""
-"Welcome to the BilboPlanet. Before you begin, we need some informations "
-"concerning the database. You'll need to provide the following information to "
-"begin the installation and to create the configuration file.<br /><br />\n"
-"   1. The host of the database.<br/>\n"
-"   2. The name of the database.<br/>\n"
-"   3. Your username to the database.<br/>\n"
-"   4. Your password to the database.<br/>\n"
-"   4. Table prefix for your database.<br/><br/>"
-msgstr ""
-"<h3> Welkom op de BilboPlanet. Voordat u begint, moeten we wat informatie "
-"over de database krijgen. U moet de volgende informatie hebben om de "
-"installatie te beginnen en om de configuratie bestand te maken.</h3>\n"
-"\n"
-"  1. De host van de database <br/>\n"
-"  2. De naam van de database <br/>\n"
-"  3. Uw gebruikersnaam voor de database <br/>\n"
-"  4. Uw wachtwoord voor de database <br/><br/>"
-
-#: admin/install/wizard.php:184
-msgid "Host of the database"
-msgstr "Host van de database"
-
-#: admin/install/wizard.php:186
-msgid "ex: localhost"
-msgstr "bv: localhost"
-
-#: admin/install/wizard.php:188
-msgid "Name of the database:"
-msgstr "Naam van de database:"
-
-#: admin/install/wizard.php:190
-msgid "ex: bilboplanet"
-msgstr "bv: bilboplanet"
-
-#: admin/install/wizard.php:194
-msgid "Your username depends of your provider"
-msgstr "Uw gebruikersnaam hangt af van uw provider"
-
-#: admin/install/wizard.php:198
-msgid "Your password depends of your provider"
-msgstr "Uw wachtwoord hangt af van uw provider"
-
-#: admin/install/wizard.php:200
-msgid "Database Tables Prefix:"
-msgstr "Databasetabellen Voorvoegsel:"
-
-#: admin/install/wizard.php:202
-msgid "bp_ is the default prefix"
-msgstr "bp_ is de standaard prefix"
-
-#: admin/install/check.php:34
-#, php-format
-msgid "PHP version is %s (5.0 or earlier needed)."
-msgstr "PHP versie is %s (5.0 of eerder nodig)."
-
-#: admin/install/check.php:38
-msgid "Multibyte string module (mbstring) is not available."
-msgstr "Multibyte string module (mbstring) is niet beschikbaar."
-
-#: admin/install/check.php:42
-msgid "Iconv module is not available."
-msgstr "Iconv module is niet beschikbaar."
-
-#: admin/install/check.php:46
-msgid "Output control functions are not available."
-msgstr "Output controle functies zijn niet beschikbaar."
-
-#: admin/install/check.php:50
-msgid "SimpleXML module is not available."
-msgstr "SimpleXML module is niet beschikbaar."
-
-#: admin/install/check.php:54
-msgid "DOM XML module is not available."
-msgstr "DOM XML-module is niet beschikbaar."
-
-#: admin/install/check.php:59
-msgid "PCRE engine does not support UTF-8 strings."
-msgstr "PCRE motor biedt geen ondersteuning voor UTF-8 strings."
-
-#: admin/install/check.php:63
-msgid "SPL module is not available."
-msgstr "SPL-module is niet beschikbaar."
-
-#: admin/install/check.php:70
-#, php-format
-msgid "MySQL version is %s (4.1 or earlier needed)."
-msgstr "MySQL versie is %s (4.1 of eerder nodig)."
-
-#: admin/install/check.php:92
-#, php-format
-msgid "PostgreSQL version is %s (8.0 or earlier needed)."
-msgstr "PostgreSQL versie %s (8.0 of eerder nodig)."
+#: admin/api/manage-user_api.php:453
+msgid "Add a new website"
+msgstr "Voeg een nieuwe website"
 
 #: user/api/util.php:114
 #, fuzzy

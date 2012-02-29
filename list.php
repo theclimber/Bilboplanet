@@ -115,7 +115,7 @@ if (isset($_GET)) {
 				"month" => "");
 			$filter_class[$period] = "selected";
 		}
-		# On recupere le numero du membre
+		# On recupere le numero de la tribe
 		if (isset($_GET['tribe_id']) && !empty($_GET['tribe_id'])){
 			$params["tribe_id"] = urldecode($_GET['tribe_id']);
 			$params["title"] = $params["title"]." - ".sprintf(T_("%s tribe"), $params['tribe_id']);

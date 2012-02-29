@@ -548,10 +548,12 @@ function generate_tribe_SQL($tribe_id, $num_start = 0, $nb_items = 10) {
 		FROM ".$core->prefix."tribe
 		WHERE tribe_id = '".$tribe_id."'
 		AND visibility = 1";
+#	print $sql_tribes;
+#	exit;
 	$rs = $core->con->select($sql_tribes);
 
-	if ($rs->user_id != "root") {
-		if (!$core->auth->sessionExists() || $core->auth->userID() != $rs->user_id) {
+	if ($rs->f('user_id') != "root") {
+		if (!$core->auth->sessionExists() || $core->auth->userID() != $rs->f('user_id')) {
 			return "";
 		}
 	}

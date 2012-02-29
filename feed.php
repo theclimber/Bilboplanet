@@ -78,7 +78,7 @@ if (isset($_GET) && isset($_GET['type'])) {
 	$tags = array();
 	$users = array();
 	$period = '';
-	$tribe_id = '';
+	$tribe_id = null;
 	$post_status = 1;
 	if ($blog_settings->get('allow_uncensored_feed')) {
 		$post_status = !empty($_GET['uncensored']) ? 2 : 1;
@@ -96,8 +96,16 @@ if (isset($_GET) && isset($_GET['type'])) {
 			$users = !empty($_GET['users']) ? getArrayFromList($_GET['users']) : array();
 			$period = !empty($_GET['filter']) ? trim($_GET['filter']) : '';
 		}
-	} else {
+	}
+	/*else {
 		$tribe_id = !empty($_GET['tribe_id']) ? trim($_GET['tribe_id']) : '';
+	}*/
+	
+	# On recupere le numero de la tribe
+	if (isset($_GET['tribe_id']) && !empty($_GET['tribe_id'])){
+		$params["tribe_id"] = urldecode(trim($_GET['tribe_id']));
+		$params["title"] = $params["title"]." - ".sprintf(T_("%s tribe"), $params['tribe_id']);
+		$tribe_id = $_GET['tribe_id'];
 	}
 
 	# Order by most popular
@@ -114,16 +122,29 @@ if (isset($_GET) && isset($_GET['type'])) {
 		$title_add = " - Feed";
 	}
 
-	$sql = generate_SQL(
-		0,
-		$blog_settings->get('planet_nb_art_flux'),
-		$users,
-		$tags,
-		$search_value,
-		$period,
-		$popular,
-		null,
-		$post_status);
+
+	$num_start = 0;
+	if ($tribe_id != null) {
+		$sql = generate_tribe_SQL(
+			$tribe_id,
+			$num_start,
+			$nb_items);
+	}
+	if ($sql == "") {
+		# Terminaison de la commande SQL
+		$sql = generate_SQL(
+			$num_start,
+			$blog_settings->get('planet_nb_art_flux'),
+			$users,
+			$tags,
+			$search_value,
+			$period,
+			$popular,
+			null,
+			$post_status);
+	}
+	//print $sql;
+	//exit;
 
 	# Encode specific char
 	if ($_GET['type'] == "rss") {

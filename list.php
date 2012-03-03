@@ -117,9 +117,13 @@ if (isset($_GET)) {
 		}
 		# On recupere le numero de la tribe
 		if (isset($_GET['tribe_id']) && !empty($_GET['tribe_id'])){
-			$params["tribe_id"] = urldecode($_GET['tribe_id']);
-			$params["title"] = $params["title"]." - ".sprintf(T_("%s tribe"), $params['tribe_id']);
-			$tribe_id = $params["tribe_id"];
+			if ($_GET['tribe_id'] == 'popular') {
+				$popular = true;
+			} else {
+				$params["tribe_id"] = urldecode($_GET['tribe_id']);
+				$params["title"] = $params["title"]." - ".sprintf(T_("%s tribe"), $params['tribe_id']);
+				$tribe_id = $params["tribe_id"];
+			}
 		}
 	}
 }

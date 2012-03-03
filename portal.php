@@ -56,10 +56,11 @@ while ($rs->fetch()) {
 $align = $align=='right'? 'left' : 'right';
 $tribe = array(
 	"title" => T_('Popular posts'),
-	"id" => '',
+	"id" => 'popular',
 	"align" => $align
 	);
 $core->tpl->setVar('tribe', $tribe);
+
 $popular_sql = generate_SQL(
 		0,
 		10,

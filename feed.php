@@ -100,16 +100,21 @@ if (isset($_GET) && isset($_GET['type'])) {
 	/*else {
 		$tribe_id = !empty($_GET['tribe_id']) ? trim($_GET['tribe_id']) : '';
 	}*/
-	
+
+	# Order by most popular
+	$popular = !empty($_GET['popular']) ? true : false;
+
 	# On recupere le numero de la tribe
 	if (isset($_GET['tribe_id']) && !empty($_GET['tribe_id'])){
 		$params["tribe_id"] = urldecode(trim($_GET['tribe_id']));
 		$params["title"] = $params["title"]." - ".sprintf(T_("%s tribe"), $params['tribe_id']);
-		$tribe_id = $_GET['tribe_id'];
+		if ($_GET['tribe_id'] == 'popular') {
+			$popular = true;
+		} else {
+			$tribe_id = $_GET['tribe_id'];
+		}
 	}
 
-	# Order by most popular
-	$popular = !empty($_GET['popular']) ? true : false;
 
 	# On active le cache
 	debutCache();

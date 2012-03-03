@@ -179,6 +179,16 @@ if ($can_install && !empty($_POST))
 			$cur->insert();
 		}
 
+		# Create main tribe
+		$cur = $core->con->openCursor($core->prefix.'tribe');
+		$cur->tribe_id = 'root';
+		$cur->user_id = 'root';
+		$cur->tribe_name = (string) $p_title;
+		$cur->visibility = 1;
+		$cur->created = array('NOW()');
+		$cur->modified = array('NOW()');
+		$cur->insert();
+
 		$core->setUserRole($u_login, 'god');
 
 		$root_url = preg_replace('%/admin/install/index.php$%','',$_SERVER['REQUEST_URI']);

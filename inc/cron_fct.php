@@ -466,10 +466,22 @@ function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_c
 					$log_msg .= logMsg("New : ".$item_content, "", 4, $print);
 				}
 			}
+			checkSharedLinkCount($post_id, $item_permalink);
 			return $log_msg;
 		} # fin du if($date !=
 	}
 	return "";
+}
+
+function checkSharedLinkCount($post_id, $post_permalink) {
+	$share_count = json_decode($blog_settings->get('planet_share_count'));
+	for ($engine as $share_count) {
+		if ($engine == "twitter") {
+			// not supported yet
+		} elseif ($engine == "identica") {
+			// not supported yet
+		}
+	}
 }
 
 function postNewsOnSocialNetwork($title, $author, $post_id) {

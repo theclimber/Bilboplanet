@@ -80,6 +80,16 @@ $_s->post
 	->primary('pk_post','post_id')
 	;
 
+$_s->post_share
+	->post_id		('varchar',		255, false)
+	->share_name	('varchar',		255, false)
+	->nb_share		('integer',		0, false)
+	->created		('timestamp',	0,	true, 'now()')
+	->modified		('timestamp',	0,	true, 'now()')
+
+	->primary('pk_post_id', 'post_id', 'share_name')
+	;
+
 $_s->feed
 	->feed_id		('integer',		0,	false)
 	->user_id		('varchar',		64,	false)
@@ -99,6 +109,8 @@ $_s->feed
 $_s->feed_tag
 	->tag_id		('varchar',		255, false)
 	->feed_id		('integer',		0, false)
+	->created		('timestamp',	0,	true, 'now()')
+	->modified		('timestamp',	0,	true, 'now()')
 
 	->primary('pk_feed_tag', 'tag_id', 'feed_id')
 	;

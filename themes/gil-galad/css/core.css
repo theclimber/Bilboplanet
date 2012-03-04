@@ -990,3 +990,34 @@ div#portal {
 .rightbox{
 	float:right;
 }
+/*********************
+* Design of the users page
+* */
+
+div#users {
+	width: 100%;
+}
+
+div.userbox {
+	display: inline-block;
+	margin: 5px;
+	border-radius: 2px;
+	border: 1px solid #CCC;
+	width: 150px;
+	overflow: hidden;
+	padding: 5px;
+	font-size: 0.8em;
+}
+
+div.userbox img.avatar {
+	margin: 0 auto;
+	display: block;
+}
+div.userbox p {
+	display: block;
+	margin: 10px auto;
+	text-align: center;
+}
+div.userbox .feedlink {
+	float: right;
+}

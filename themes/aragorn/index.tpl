@@ -120,6 +120,10 @@
 					{!include:'portal.tpl'}
 				<!-- END content.portal -->
 
+				<!-- BEGIN content.users -->
+					{!include:'users.tpl'}
+				<!-- END content.users -->
+
 
 				<!-- BEGIN content.html -->
 					{$html}

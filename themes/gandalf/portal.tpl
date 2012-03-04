@@ -3,7 +3,7 @@
 	<div id="portal">
 	<!-- BEGIN portal.block -->
 		<div class="portalbox {$tribe.align}box">
-			<div class="title"><a href="{$planet.url}/?tribe_id={$tribe.id}">{$tribe.title}</a></div>
+			<div class="title"><a href="{$planet.url}/?list=1&tribe_id={$tribe.id}">{$tribe.title}</a></div>
 			<div class="list">
 				<ul>
 			<!-- BEGIN portal.entry -->
@@ -18,7 +18,7 @@
 				</div>
 			<!-- END portal.details -->
 			</div>
-			<div class="feedlink"><a href="{$planet.url}/feed.php?tribe={$tribe.id}"><img class="followers-icon" alt="RSS" src="{$planet.url}/themes/{$planet.theme}/images/rss_24.png" /></a></div>
+			<div class="feedlink"><a href="{$planet.url}/feed.php?type=atom&tribe_id={$tribe.id}"><img class="followers-icon" alt="RSS" src="{$planet.url}/themes/{$planet.theme}/images/rss_24.png" /></a></div>
 		</div>
 	<!-- ELSE portal.block -->
 		<div class="portalbox">

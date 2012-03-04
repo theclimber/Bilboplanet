@@ -473,8 +473,20 @@ function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_c
 	return "";
 }
 
-function checkSharedLinkCount($post_id, $post_permalink) {
+function checkSharedLinkCount($post_id, $url) {
+	global $core, $blog_settings;
+	$planet_url = $blog_settings->get('planet_url');
+
 	$share_count = json_decode($blog_settings->get('planet_share_count'));
+	$sql = "SELECT
+			post_id,
+			engine,
+			nb_share
+		WHERE post_id = '$post_id'";
+	$rs = $core->con->select($sql);
+	while($rs->fetch()) {
+	}
+
 	for ($engine as $share_count) {
 		if ($engine == "twitter") {
 			// not supported yet

@@ -82,7 +82,7 @@ $_s->post
 
 $_s->post_share
 	->post_id		('varchar',		255, false)
-	->share_name	('varchar',		255, false)
+	->engine		('varchar',		255, false)
 	->nb_share		('integer',		0, false)
 	->created		('timestamp',	0,	true, 'now()')
 	->modified		('timestamp',	0,	true, 'now()')
@@ -199,6 +199,7 @@ $_s->tribe
 	->tribe_search	('text',		0,	false)
 	->tribe_tags	('text',		0,	false)
 	->tribe_users	('text',		0,	false)
+	->tribe_icon	('text',		0,	false)
 	->created		('timestamp',	0,	true, 'now()')
 	->modified		('timestamp',	0,	true, 'now()')
 

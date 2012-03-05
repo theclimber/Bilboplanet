@@ -487,7 +487,7 @@ function checkSharedLinkCount($post_id, $url) {
 	while($rs->fetch()) {
 	}
 
-	for ($engine as $share_count) {
+	foreach ($engine as $share_count) {
 		if ($engine == "twitter") {
 			// not supported yet
 		} elseif ($engine == "identica") {

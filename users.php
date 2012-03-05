@@ -16,13 +16,20 @@ $core->tpl->setVar('params', $params);
 
 
 $sql_users = "SELECT
-		user_id,
-		user_fullname,
-		user_email
-	FROM ".$core->prefix."user
-	WHERE user_status = 1
-	ORDER BY user_fullname DESC";
-//print $sql_tribes;
+		".$core->prefix."user.user_id,
+		".$core->prefix."user.user_fullname,
+		".$core->prefix."user.user_email,
+		".$core->prefix."site.site_url,
+		MAX(".$core->prefix."post.post_pubdate) as pubdate,
+		COUNT(".$core->prefix."post.post_id) as nb_post
+	FROM ".$core->prefix."user, ".$core->prefix."post, ".$core->prefix."site
+	WHERE ".$core->prefix."user.user_status = 1
+	AND ".$core->prefix."user.user_id = ".$core->prefix."post.user_id
+	AND ".$core->prefix."user.user_id = ".$core->prefix."site.user_id
+	GROUP BY ".$core->prefix."user.user_id
+	ORDER BY pubdate DESC";
+
+//print $sql_users;
 //exit;
 $rs = $core->con->select($sql_users);
 
@@ -31,7 +38,9 @@ while ($rs->fetch()) {
 		"id" => $rs->user_id,
 		"fullname" => $rs->user_fullname,
 		"email" => $rs->user_email,
-		"website" => ''
+		"website" => $rs->site_url,
+		"last" => mysqldatetime_to_date("d/m/Y",$rs->pubdate),
+		"nb_post" => $rs->nb_post
 		);
 	$core->tpl->setVar('user', $user);
 

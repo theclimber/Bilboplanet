@@ -1463,7 +1463,7 @@ function getNbDent($post_id) {
 	$referringurl = str_replace(array("http://", "www."), "", $referer);
 	$jsondata = file_get_contents("http://identi.ca/api/search.json?q=".$referringurl."&rpp=100");
 	$result1 = substr_count($jsondata, str_replace("/", "\/", addslashes($referringurl)));
-	
+
 	#Check for permalink
 	$rs = $core->con->select("SELECT post_permalink FROM ".$core->prefix."post WHERE post_id = ".$post_id);
 	$referer = $rs->f('post_permalink');
@@ -1478,6 +1478,70 @@ function getNbDent($post_id) {
 	}
 
 	return $results;
+}
+
+function checkSharedLinkCount($post_id, $return_engine="") {
+	global $core, $blog_settings;
+
+	$return = 0;
+	$share_count = json_decode($blog_settings->get('planet_share_count'));
+
+	foreach ($share_count as $engine) {
+		$run_update = false;
+		$nb_share = 0;
+		$sql = "SELECT
+				post_id,
+				engine,
+				nb_share,
+				modified
+			FROM ".$core->prefix."post_share
+			WHERE post_id = '$post_id' AND engine = '".$engine."'";
+		$rs = $core->con->select($sql);
+		if ($rs->count() == 0) {
+			$run_update = true;
+		}
+	else {
+		$last_update = mysqldatetime_to_timestamp($rs->f('modified'));
+			$to_update = time() - 3600*12;
+			if ($last_update - $to_update <= 0) {
+				// the last update was more than 12h ago
+				$run_update = true;
+			} else {
+			}
+		}
+
+		if ($run_update) {
+			switch($engine) {
+			case "twitter":
+				$nb_share = getNbTweet($post_id);
+			case "identica":
+				$nb_share = getNbDent($post_id);
+			default:
+				$nb_share = 0;
+			}
+
+			$cur = $core->con->openCursor($core->prefix.'post_share');
+			$cur->engine = $engine;
+			$cur->nb_share = $nb_share;
+			$cur->modified = array(' NOW() ');
+			if ($rs->count() == 0) {
+				$cur->post_id = $post_id;
+				$cur->created = array(' NOW() ');
+				$cur->insert();
+			} elseif ($nb_share > $rs->f('nb_share')) {
+				$cur->update("WHERE post_id='$post_id'");
+			}
+			if ($return_engine == $engine || $return_engine == "all") {
+				$return += $nb_share;
+			}
+		} else {
+			if ($return_engine == $engine || $return_engine == "all") {
+				$return += $rs->f('nb_share');
+			}
+		}
+	}
+	return $return;
+
 }
 
 

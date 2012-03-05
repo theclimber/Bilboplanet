@@ -344,6 +344,7 @@ function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_c
 			}
 
 			postNewsOnSocialNetwork($item_title, $rs->user_fullname, $next_post_id);
+			checkSharedLinkCount($next_post_id);
 
 			return logMsg("Post added: ".$item_permalink, "", 1, $print);
 		}
@@ -411,7 +412,7 @@ function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_c
 				$cur->tag_id = $tag;
 				$cur->post_id = $post_id;
 				$cur->user_id = 'root';
-				$cur->created = 'NOW()';
+				$cur->created = array(' NOW() ');
 				try {
 					$cur->insert();
 				} catch (Exception $e){
@@ -429,7 +430,6 @@ function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_c
 				}
 			}
 		}
-		checkSharedLinkCount($post_id);
 
 		# Si l'article a ete modifie (soit la date, soit le titre, soit le contenu)
 		if($item_date != $rs2->f('post_pubdate') && !empty($date)) {
@@ -473,46 +473,6 @@ function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_c
 	return "";
 }
 
-function checkSharedLinkCount($post_id) {
-	global $core, $blog_settings;
-
-	$share_count = json_decode($blog_settings->get('planet_share_count'));
-
-	foreach ($share_count as $engine) {
-		$nb_share = 0;
-		switch($engine) {
-		case "twitter":
-			$nb_share = getNbTweet($post_id);
-		case "identica":
-			$nb_share = getNbDent($post_id);
-		default:
-			$nb_share = 0;
-		}
-
-		if ($nb_share > 0) {
-			$sql = "SELECT
-					post_id,
-					engine,
-					nb_share,
-					modified
-				FROM ".$core->prefix."post_share
-				WHERE post_id = '$post_id' AND engine = '".$engine."'";
-			$rs = $core->con->select($sql);
-
-			$cur = $core->con->openCursor($core->prefix.'post_share');
-			$cur->engine = $engine;
-			$cur->nb_share = $nb_share;
-			$cur->modified = 'NOW()';
-			if ($rs->count() == 0) {
-				$cur->post_id = $post_id;
-				$cur->created = 'NOW()';
-				$cur->insert();
-			} elseif ($nb_share > $rs->f('nb_share')) {
-				$cur->update("WHERE post_id='$post_id'");
-			}
-		}
-	}
-}
 
 function postNewsOnSocialNetwork($title, $author, $post_id) {
 	global $blog_settings;

@@ -45,14 +45,19 @@ if ($url != '') {
 	if($results <= 0){
 		$results = "0";
 	}
-} elseif ($post_id > 0) { 
+} elseif ($post_id > 0) {
+/*
+* if the number of share are not known yet, we check them by calling the api
+* if the number is known and is not older than 12 hours, then we take it
+*/
+	$results = checkSharedLinkCount($post_id, "all");
 
 /*	# Check for planet URL
 	$referer = $planet_url.'?post_id='.$post_id;
 	$referringurl = str_replace(array("http://", "www."), "", $referer);
 	$jsondata = file_get_contents("http://identi.ca/api/search.json?q=".$referringurl."&rpp=100");
 	$result1 = substr_count($jsondata, str_replace("/", "\/", addslashes($referringurl)));
-	
+
 	#Check for permalink
 	$rs = $core->con->select("SELECT post_permalink FROM ".$core->prefix."post WHERE post_id = ".$post_id);
 	$referer = $rs->f('post_permalink');
@@ -66,7 +71,7 @@ if ($url != '') {
 		$results = "0";
 	}*/
 
-	$sql = "SELECT
+	/*$sql = "SELECT
 			post_id,
 			engine,
 			nb_share,
@@ -78,7 +83,7 @@ if ($url != '') {
 		$results = $rs->f('nb_share');
 	} else {
 		$results = 0;
-	}
+	}*/
 
 
 } else {

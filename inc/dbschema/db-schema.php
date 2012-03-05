@@ -87,7 +87,7 @@ $_s->post_share
 	->created		('timestamp',	0,	true, 'now()')
 	->modified		('timestamp',	0,	true, 'now()')
 
-	->primary('pk_post_id', 'post_id', 'share_name')
+	->primary('pk_post_id', 'post_id', 'engine')
 	;
 
 $_s->feed

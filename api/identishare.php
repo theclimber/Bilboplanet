@@ -16,7 +16,7 @@
 //   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-exit;
+
 require_once(dirname(__FILE__).'/../inc/prepend.php');
 
 $post_id = isset($_GET['post_id']) ? intval(trim($_GET['post_id'])) : -1;
@@ -47,7 +47,7 @@ if ($url != '') {
 	}
 } elseif ($post_id > 0) { 
 
-	# Check for planet URL
+/*	# Check for planet URL
 	$referer = $planet_url.'?post_id='.$post_id;
 	$referringurl = str_replace(array("http://", "www."), "", $referer);
 	$jsondata = file_get_contents("http://identi.ca/api/search.json?q=".$referringurl."&rpp=100");
@@ -64,6 +64,20 @@ if ($url != '') {
 	$results = intval($result1) + intval($result2);
 	if($results <= 0){
 		$results = "0";
+	}*/
+
+	$sql = "SELECT
+			post_id,
+			engine,
+			nb_share,
+			modified
+		FROM ".$core->prefix."post_share
+		WHERE post_id = '$post_id' AND engine = 'identica'";
+	$rs = $core->con->select($sql);
+	if ($rs->count() > 0) {
+		$results = $rs->f('nb_share');
+	} else {
+		$results = 0;
 	}
 
 

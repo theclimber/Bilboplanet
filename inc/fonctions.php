@@ -1424,5 +1424,61 @@ function strip_script($string, $rm = 1) {
 	}
 }
 
+function getNbTweet($post_id) {
+	global $blog_settings, $core;
+	$planet_url = $blog_settings->get('planet_url');
+
+	/*
+	# Check for planet URL
+	$referer = $planet_url.'?post_id='.$post_id;
+	$referringurl = str_replace(array("http://", "www."), "", $referer);
+	$jsondata = file_get_contents("http://urls.api.twitter.com/1/urls/count.json?url=".$referringurl."&rpp=100");
+	$result1 = substr_count($jsondata, str_replace("/", "\/", addslashes($referringurl)));
+	 */
+	$result1 = 0;
+
+	#Check for permalink
+	$rs = $core->con->select("SELECT post_permalink FROM ".$core->prefix."post WHERE post_id = ".$post_id);
+	$referer = $rs->f('post_permalink');
+	$referringurl = str_replace(array("http://", "www."), "", $rs->f('post_permalink'));
+	$jsondata = file_get_contents("http://urls.api.twitter.com/1/urls/count.json?url=".$referringurl."&rpp=100");
+	$data = json_decode($jsondata);
+	$result2 = $data->{'count'};
+
+	# Get results
+	$results = intval($result1) + intval($result2);
+	if($results <= 0){
+		$results = "0";
+	}
+
+	return $results;
+}
+
+function getNbDent($post_id) {
+	global $blog_settings, $core;
+	$planet_url = $blog_settings->get('planet_url');
+
+	# Check for planet URL
+	$referer = $planet_url.'?post_id='.$post_id;
+	$referringurl = str_replace(array("http://", "www."), "", $referer);
+	$jsondata = file_get_contents("http://identi.ca/api/search.json?q=".$referringurl."&rpp=100");
+	$result1 = substr_count($jsondata, str_replace("/", "\/", addslashes($referringurl)));
+	
+	#Check for permalink
+	$rs = $core->con->select("SELECT post_permalink FROM ".$core->prefix."post WHERE post_id = ".$post_id);
+	$referer = $rs->f('post_permalink');
+	$referringurl = str_replace(array("http://", "www."), "", $rs->f('post_permalink'));
+	$jsondata = file_get_contents("http://identi.ca/api/search.json?q=".$referringurl."&rpp=100");
+	$result2 = substr_count($jsondata, str_replace("/", "\/", addslashes($referringurl)));
+
+	# Get results
+	$results = intval($result1) + intval($result2);
+	if($results <= 0){
+		$results = "0";
+	}
+
+	return $results;
+}
+
 
 ?>

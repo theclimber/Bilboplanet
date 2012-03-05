@@ -429,6 +429,7 @@ function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_c
 				}
 			}
 		}
+		checkSharedLinkCount($post_id);
 
 		# Si l'article a ete modifie (soit la date, soit le titre, soit le contenu)
 		if($item_date != $rs2->f('post_pubdate') && !empty($date)) {
@@ -466,32 +467,49 @@ function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_c
 					$log_msg .= logMsg("New : ".$item_content, "", 4, $print);
 				}
 			}
-			checkSharedLinkCount($post_id, $item_permalink);
 			return $log_msg;
 		} # fin du if($date !=
 	}
 	return "";
 }
 
-function checkSharedLinkCount($post_id, $url) {
+function checkSharedLinkCount($post_id) {
 	global $core, $blog_settings;
-	$planet_url = $blog_settings->get('planet_url');
 
 	$share_count = json_decode($blog_settings->get('planet_share_count'));
-	$sql = "SELECT
-			post_id,
-			engine,
-			nb_share
-		WHERE post_id = '$post_id'";
-	$rs = $core->con->select($sql);
-	while($rs->fetch()) {
-	}
 
-	foreach ($engine as $share_count) {
-		if ($engine == "twitter") {
-			// not supported yet
-		} elseif ($engine == "identica") {
-			// not supported yet
+	foreach ($share_count as $engine) {
+		$nb_share = 0;
+		switch($engine) {
+		case "twitter":
+			$nb_share = getNbTweet($post_id);
+		case "identica":
+			$nb_share = getNbDent($post_id);
+		default:
+			$nb_share = 0;
+		}
+
+		if ($nb_share > 0) {
+			$sql = "SELECT
+					post_id,
+					engine,
+					nb_share,
+					modified
+				FROM ".$core->prefix."post_share
+				WHERE post_id = '$post_id' AND engine = '".$engine."'";
+			$rs = $core->con->select($sql);
+
+			$cur = $core->con->openCursor($core->prefix.'post_share');
+			$cur->engine = $engine;
+			$cur->nb_share = $nb_share;
+			$cur->modified = 'NOW()';
+			if ($rs->count() == 0) {
+				$cur->post_id = $post_id;
+				$cur->created = 'NOW()';
+				$cur->insert();
+			} elseif ($nb_share > $rs->f('nb_share')) {
+				$cur->update("WHERE post_id='$post_id'");
+			}
 		}
 	}
 }

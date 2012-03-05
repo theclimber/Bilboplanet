@@ -1462,14 +1462,18 @@ function getNbDent($post_id) {
 	$referer = $planet_url.'?post_id='.$post_id;
 	$referringurl = str_replace(array("http://", "www."), "", $referer);
 	$jsondata = file_get_contents("http://identi.ca/api/search.json?q=".$referringurl."&rpp=100");
-	$result1 = substr_count($jsondata, str_replace("/", "\/", addslashes($referringurl)));
+//	$result1 = substr_count($jsondata, str_replace("/", "\/", addslashes($referringurl)));
+	$data = json_decode($jsondata);
+	$result1 = count($data->{'results'});
 
 	#Check for permalink
 	$rs = $core->con->select("SELECT post_permalink FROM ".$core->prefix."post WHERE post_id = ".$post_id);
 	$referer = $rs->f('post_permalink');
 	$referringurl = str_replace(array("http://", "www."), "", $rs->f('post_permalink'));
 	$jsondata = file_get_contents("http://identi.ca/api/search.json?q=".$referringurl."&rpp=100");
-	$result2 = substr_count($jsondata, str_replace("/", "\/", addslashes($referringurl)));
+//	$result2 = substr_count($jsondata, str_replace("/", "\/", addslashes($referringurl)));
+	$data = json_decode($jsondata);
+	$result2 = count($data->{'results'});
 
 	# Get results
 	$results = intval($result1) + intval($result2);
@@ -1499,14 +1503,12 @@ function checkSharedLinkCount($post_id, $return_engine="") {
 		$rs = $core->con->select($sql);
 		if ($rs->count() == 0) {
 			$run_update = true;
-		}
-	else {
-		$last_update = mysqldatetime_to_timestamp($rs->f('modified'));
+		} else {
+			$last_update = mysqldatetime_to_timestamp($rs->f('modified'));
 			$to_update = time() - 3600*12;
 			if ($last_update - $to_update <= 0) {
 				// the last update was more than 12h ago
 				$run_update = true;
-			} else {
 			}
 		}
 

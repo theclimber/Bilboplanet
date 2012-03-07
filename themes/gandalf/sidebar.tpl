@@ -8,6 +8,7 @@
 	</div>
 	<!-- END sidebar.alert -->
 
+	<!-- BEGIN postlist.state -->
 	<h2 id="filter-title">{_Page status}</h2>
 	<div id="filter-status">
 		<div id="filter-nb-items">{_Number of items :} <span id="filter-nb-items-content">
@@ -30,6 +31,7 @@
 			<a id="filter-feed" href="feed.php?type=atom">{_Parametrized feed}</a>
 			</div>
 	</div>
+	<!-- END postlist.state -->
 
 	<div id="feeds">
 		<h2>{_Subscribe}</h2>
@@ -55,6 +57,7 @@
 	</div>
 	<!-- END sidebar.widget -->
 
+	<!-- BEGIN memberlist.box -->
 	<div id="userslist">
 		<h2>{_Users}</h2>
 		<ul>
@@ -65,6 +68,7 @@
 			<!-- END sidebar.users.list -->
 		</ul>
 	</div>
+	<!-- END memberlist.box -->
 
 	<div id="contribute">
 		<h2>{_Contribute}</h2>

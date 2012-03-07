@@ -69,25 +69,27 @@ if($blog_settings->get('planet_vote')) {
 	$core->tpl->render('sidebar.popular');
 }
 
-$sql_side = "SELECT
-	user_fullname as fullname,
-	".$core->prefix."user.user_id as id,
-	".$core->prefix."site.site_url as site_url,
-	".$core->prefix."site.site_name as site_name
-	FROM ".$core->prefix."user, ".$core->prefix."site
-	WHERE ".$core->prefix."user.user_id = ".$core->prefix."site.user_id
-	AND user_status = '1'
-	ORDER BY lower(user_fullname)";
-$rs_side = $core->con->select($sql_side);
+if ($current_page == "list") {
+	$sql_side = "SELECT
+		user_fullname as fullname,
+		".$core->prefix."user.user_id as id,
+		".$core->prefix."site.site_url as site_url,
+		".$core->prefix."site.site_name as site_name
+		FROM ".$core->prefix."user, ".$core->prefix."site
+		WHERE ".$core->prefix."user.user_id = ".$core->prefix."site.user_id
+		AND user_status = '1'
+		ORDER BY lower(user_fullname)";
+	$rs_side = $core->con->select($sql_side);
 
-while ($rs_side->fetch()) {
-	$user_info = array(
-		"id" => urlencode($rs_side->f('id')),
-		"fullname" => $rs_side->f('fullname'),
-		"site_url" => $rs_side->f('site_url')
-		);
-	$core->tpl->setVar("user", $user_info);
-	$core->tpl->render("sidebar.users.list");
+	while ($rs_side->fetch()) {
+		$user_info = array(
+			"id" => urlencode($rs_side->f('id')),
+			"fullname" => $rs_side->f('fullname'),
+			"site_url" => $rs_side->f('site_url')
+			);
+		$core->tpl->setVar("user", $user_info);
+		$core->tpl->render("sidebar.users.list");
+	}
 }
 
 #####################

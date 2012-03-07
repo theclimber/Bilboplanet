@@ -29,22 +29,25 @@ require_once(dirname(__FILE__).'/inc/prepend.php');
 $scripts = array();
 $scripts[] = "javascript/main.js";
 $scripts[] = "javascript/jquery.boxy.js";
+
+$default_home = $blog_settings->get('planet_homepage');
+$current_page = "portal";
+if ($default_home == "portal") {
+	if (isset($_GET['list'])) {
+		$current_page = "list";
+	}
+} else {
+	if (!isset($_GET['portal'])) {
+		$current_page = "list";
+	}
+}
 include dirname(__FILE__).'/tpl.php';#
 header('Content-type: text/html; charset=utf-8');
 
-$default_home = $blog_settings->get('planet_homepage');
-if ($default_home == "portal") {
-	if (isset($_GET['list'])) {
-		require_once(dirname(__FILE__).'/list.php');
-	} else {
-		require_once(dirname(__FILE__).'/portal.php');
-	}
+if ($current_page == "list") {
+	require_once(dirname(__FILE__).'/list.php');
 } else {
-	if (isset($_GET['portal'])) {
-		require_once(dirname(__FILE__).'/portal.php');
-	} else {
-		require_once(dirname(__FILE__).'/list.php');
-	}
+	require_once(dirname(__FILE__).'/portal.php');
 }
 
 ?>

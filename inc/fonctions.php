@@ -1516,10 +1516,13 @@ function checkSharedLinkCount($post_id, $return_engine="") {
 			switch($engine) {
 			case "twitter":
 				$nb_share = getNbTweet($post_id);
+				break;
 			case "identica":
 				$nb_share = getNbDent($post_id);
+				break;
 			default:
 				$nb_share = 0;
+				break;
 			}
 
 			$cur = $core->con->openCursor($core->prefix.'post_share');

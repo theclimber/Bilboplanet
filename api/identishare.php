@@ -50,6 +50,7 @@ if ($url != '') {
 * if the number of share are not known yet, we check them by calling the api
 * if the number is known and is not older than 12 hours, then we take it
 */
+	$referer = $planet_url.'?post_id='.$post_id;
 	$results = checkSharedLinkCount($post_id, "all");
 
 /*	# Check for planet URL

@@ -238,8 +238,6 @@ if (!isset($_GET['post_id']) | empty($_GET['post_id'])){
 if (!isset($_GET['post_id']) | empty($_GET['post_id'])){
 	$core->tpl = showPostsSummary($rs, $core->tpl);
 	$core->tpl->render('summary.block');
-	$core->tpl->render('postlist.state');
-	$core->tpl->render('memberlist.box');
 }
 
 # Liste des articles

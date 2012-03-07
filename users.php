@@ -4,6 +4,7 @@ require_once(dirname(__FILE__).'/inc/prepend.php');
 $scripts = array();
 $scripts[] = "javascript/main.js";
 $scripts[] = "javascript/jquery.boxy.js";
+$current_page="users";
 include dirname(__FILE__).'/tpl.php';#
 header('Content-type: text/html; charset=utf-8');
 

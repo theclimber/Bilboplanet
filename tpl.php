@@ -62,14 +62,14 @@ if ($core->auth->sessionExists() ) {
 #######################
 # RENDER SIDEBAR
 #######################
-if ($blog_settings->get('planet_msg_info')) {
-	$core->tpl->render('sidebar.alert');
-}
-if($blog_settings->get('planet_vote')) {
-	$core->tpl->render('sidebar.popular');
-}
-
+global $current_page;
 if ($current_page == "list") {
+	if ($blog_settings->get('planet_msg_info')) {
+		$core->tpl->render('sidebar.alert');
+	}
+	if($blog_settings->get('planet_vote')) {
+		$core->tpl->render('sidebar.popular');
+	}
 	$sql_side = "SELECT
 		user_fullname as fullname,
 		".$core->prefix."user.user_id as id,
@@ -90,6 +90,11 @@ if ($current_page == "list") {
 		$core->tpl->setVar("user", $user_info);
 		$core->tpl->render("sidebar.users.list");
 	}
+	$core->tpl->render('postlist.state');
+	$core->tpl->render('memberlist.box');
+}
+if ($current_page != "users") {
+	$core->tpl->render("content.sidebar");
 }
 
 #####################

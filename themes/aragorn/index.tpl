@@ -89,7 +89,9 @@
 			<div id="colonne">
 
 				<!-- ADD SIDEBAR HERE -->
+				<!-- BEGIN content.sidebar -->
 				{!include:'sidebar.tpl'}
+				<!-- END content.sidebar -->
 			</div>
 
 			<div id="body">

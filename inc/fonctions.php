@@ -1523,15 +1523,15 @@ function checkSharedLinkCount($post_id, $return_engine="") {
 			}
 
 			$cur = $core->con->openCursor($core->prefix.'post_share');
-			$cur->engine = $engine;
 			$cur->nb_share = $nb_share;
 			$cur->modified = array(' NOW() ');
 			if ($rs->count() == 0) {
 				$cur->post_id = $post_id;
+				$cur->engine = $engine;
 				$cur->created = array(' NOW() ');
 				$cur->insert();
 			} elseif ($nb_share > $rs->f('nb_share')) {
-				$cur->update("WHERE post_id='$post_id'");
+				$cur->update("WHERE post_id='$post_id' AND engine='$engine'");
 			}
 			if ($return_engine == $engine || $return_engine == "all") {
 				$return += $nb_share;

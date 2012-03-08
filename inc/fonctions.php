@@ -402,7 +402,8 @@ function generate_SQL(
 		$period = null,
 		$popular = false,
 		$post_id = null,
-		$post_status = 1)
+		$post_status = 1,
+		$count = false)
 	{
 	global $blog_settings, $core;
 	if (!isset($nb_items)) {
@@ -414,20 +415,25 @@ function generate_SQL(
 		$tables .= ", ".$core->prefix."post_tag";
 	}
 
-	$select = $core->prefix."user.user_id		as user_id,
-			user_fullname	as user_fullname,
-			user_email		as user_email,
-			post_pubdate	as pubdate,
-			post_title		as title,
-			post_permalink	as permalink,
-			post_content	as content,
-			post_nbview		as nbview,
-			last_viewed		as last_viewed,
-			SUBSTRING(post_content,1,400) as short_content,
-			".$core->prefix."post.post_id		as post_id,
-			post_score		as score,
-			post_status		as status,
-			post_comment	as comment";
+	if (!$count) {
+		$select = $core->prefix."user.user_id		as user_id,
+				user_fullname	as user_fullname,
+				user_email		as user_email,
+				post_pubdate	as pubdate,
+				post_title		as title,
+				post_permalink	as permalink,
+				post_content	as content,
+				post_nbview		as nbview,
+				last_viewed		as last_viewed,
+				SUBSTRING(post_content,1,400) as short_content,
+				".$core->prefix."post.post_id		as post_id,
+				post_score		as score,
+				post_status		as status,
+				post_comment	as comment";
+	} else {
+		$select = "COUNT(".$core->prefix."post.post_id) as count,
+				MAX(".$core->prefix."post.post_pubdate) as last";
+	}
 	$where_clause = $core->prefix."user.user_id = ".$core->prefix."post.user_id
 		AND user_status = '1'
 		AND post_score > '".$blog_settings->get('planet_votes_limit')."'";
@@ -519,18 +525,22 @@ function generate_SQL(
 			$week = time() - 3600*24*7;
 			$where_clause .= "AND post_pubdate > ".$week;
 		}
-		$fin_sql = " ORDER BY total_score DESC
-			LIMIT $num_start,".$nb_items;
+		$order_sql = " ORDER BY total_score DESC";
 	}
 	else {
-		$fin_sql = " ORDER BY post_pubdate DESC
-			LIMIT $num_start,".$nb_items;
+		$order_sql = " ORDER BY post_pubdate DESC";
+	}
+	if (!$count && $nb_items > 0) {
+		$limit_sql = "LIMIT $num_start,".$nb_items;
+	} else {
+		$limit_sql = "";
 	}
 
 	$debut_sql = "SELECT DISTINCT
 			".$select."
 		FROM ".$tables."
 		WHERE ".$where_clause;
+	$fin_sql = $order_sql." ".$limit_sql;
 	$sql = $debut_sql." ".$fin_sql;
 
 	return $sql;
@@ -565,12 +575,27 @@ function generate_tribe_SQL($tribe_id, $num_start = 0, $nb_items = 10) {
 	$align = $align=='right'? 'left' : 'right';
 
 	// Generating the SQL request
-	return generate_SQL(
-		$num_start,
-		$nb_items,
-		$tribe_users,
-		$tribe_tags,
-		$tribe_search);
+	if ($nb_items > 0) {
+		return generate_SQL(
+			$num_start,
+			$nb_items,
+			$tribe_users,
+			$tribe_tags,
+			$tribe_search);
+	} else {
+		return generate_SQL(
+			$num_start,
+			$nb_items,
+			$tribe_users,
+			$tribe_tags,
+			$tribe_search,
+			null, // period
+			false, // popular
+			null, // post_id
+			1, // post_status
+			true // count
+		);
+	}
 }
 
 function showTribe($sql_posts) {

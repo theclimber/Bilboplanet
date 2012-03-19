@@ -511,16 +511,25 @@ function generate_SQL(
 	}
 
 	if ($popular){
+		// the popular posts are based on :
+		// * the number of times they are viewed
+		// * the score of votes
+		// * the times they are shared in social networks
 		$max = $core->con->select("SELECT
 			MAX(post_nbview) as max_view,
-			MAX(post_score) as max_score
-			FROM ".$core->prefix."post");
+			MAX(post_score) as max_score,
+			MAX(nb_share) as max_share
+			FROM ".$core->prefix."post, ".$core->prefix."post_share");
 		$max_view = $max->f('max_view');
 		$max_score = $max->f('max_score');
+		$max_share = $max->f('max_share');
 		# Complete the SQL query
 		$select .= ",
-			post_score/".$max_score." + post_nbview/".$max_view." as total_score";
-		$where_clause .= " AND post_score > 0 ";
+			post_score/".$max_score." + post_nbview/".$max_view." + nb_share/".$max_share." as total_score";
+		$tables .= ", ".$core->prefix."post_share";
+		$where_clause .= " AND post_score > 0 
+			AND ".$core->prefix."post_share.post_id = ".$core->prefix."post.post_id
+			AND ".$core->prefix."post_share.engine = 'identica'";
 		if (!isset($period) || empty($period)) {
 			$week = time() - 3600*24*7;
 			$where_clause .= "AND post_pubdate > ".$week;
@@ -543,6 +552,8 @@ function generate_SQL(
 	$fin_sql = $order_sql." ".$limit_sql;
 	$sql = $debut_sql." ".$fin_sql;
 
+//	print $sql;
+//	exit;
 	return $sql;
 }
 

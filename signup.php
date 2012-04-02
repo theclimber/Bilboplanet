@@ -30,6 +30,12 @@ $scripts[] = "javascript/functions.js";
 include dirname(__FILE__).'/tpl.php';#
 header('Content-type: text/html; charset=utf-8');
 	
+
+$form_values = array(
+	"user_id" => "",
+	"fullname" => "",
+	"email" => ""
+);
 $flash='';
 session_start();
 if(isset($_POST) && isset($_POST['submit'])){
@@ -45,46 +51,53 @@ if(isset($_POST) && isset($_POST['submit'])){
 	$user_id = check_field('user_id',trim($_POST['user_id']),'not_empty');
 	$fullname = check_field('fullname',trim($_POST['fullname']),'',false);
 	$email = check_field('email',trim($_POST['email']),'email');
-	$url = check_field('url',trim($_POST['url']),'url');
-	$feed = check_field('flux',trim($_POST['feed']),'feed');
-	$choice = check_field('choice',trim($_POST['choice']),'not_empty');
-	$charter = check_field('charter',trim($_POST['ok']),'not_empty');
+
+	if($user_id)	$form_values["user_id"] = $user_id['value'];
+	if($fullname)	$form_values["fullname"] = $fullname['value'];
+	if($email)	$form_values["email"] = $email['value'];
+	
 	if (!$captcha->is_valid) {
 		$flash = array('type' => 'error', 'msg' => sprintf(T_("The reCAPTCHA wasn't entered correctly. Go back and try it again. (reCAPTCHA said: %s)"),$captcha->error));
 	} else {
 		$ip = getIP();
-		if ($user_id['success'] && $fullname['success'] && $email['success'] && $url['success'] && $feed['success'] && $choice['success'] && $charter["success"]){
+		if ($user_id['success'] && $fullname['success'] && $email['success']){
 			# Build email
-			$objet = $choice['value'];
-			$msg = T_("Name : ").$user_id['value'];
-			$msg .= "\n".T_("Firstname : ").$fullname['value'];
+			$objet = "[".$blog_settings->get('planet_name')."] Signup of user ".$user_id['value'];
+			$msg = T_("User id : ").$user_id['value'];
+			$msg .= "\n".T_("Fullname : ").$fullname['value'];
 			$msg .= "\n".T_("Email : ").$email['value'];
-			$msg .= "\n".T_("Website : ").$url['value'];
-			$msg .= "\n".T_("Feed : ").$feed['value'];
-			$msg .= "\n".T_("Choice : ").$choice['value'];
 			$msg .= "\nIP : $ip";
+			# TODO : the mail should contain a special token to signup
 
-			# Add Pending User if subscription only
-			if ($choice['value'] == "abonnement") {
-				$addPendingUser = addPendingUser($user_id['value'], $fullname['value'], $email['value'], $url['value'], $feed['value'], $blog_settings->get('planet_lang'));
-			}
-			
-			# Check error
-			if (empty($addPendingUser)) {
-				# Send email
-				$envoi = sendmail($email['value'], $blog_settings->get('author_mail'), $objet, $msg);
+			# Send email to new user to confirm email
+			$envoi1 = sendmail($blog_settings->get('author_mail'), $email['value'], $objet, $msg);
+			# Send email to planet author
+			$envoi2 = sendmail($email['value'], $blog_settings->get('author_mail'), $objet, $msg);
+
+			# Information message
+			if($envoi1 && $envoi2) {
+
+				# Add Pending User and waiting for confirmation
+				$addPendingUser = addPendingUserSignup($user_id['value'], $fullname['value'], $email['value'], $blog_settings->get('planet_lang'));
 				
-				# Information message
-				if($envoi) {
+				# Check error
+				if (empty($addPendingUser)) {
 					$flash = array('type' => 'notice', 'msg' => T_("Your email has been sent"));
 				} else {
-					$flash = array('type' => 'error', 'msg' => T_("Your request could not be sent for an unknown reason.<br/>Please try again."));
+					$flash = array('type' => 'error', 'msg' => '');
+					foreach($addPendingUser as $value) {
+						$flash['msg'] .= "<br/>".$value;
+					}
 				}
+
 			} else {
-				foreach($addPendingUser as $value) {
-					$flash = array('type' => 'error', 'msg' => $value);
-				}
+				$flash = array(
+					'type' => 'error',
+					'msg' => sprintf(T_("Your request could not be sent for an unknown reason.<br/>
+					Please try again or send an email manually to %s."), $blog_settings->get('planet_mail'))
+					);
 			}
+
 		}
 		else {
 			if(!$user_id['success']){
@@ -95,18 +108,6 @@ if(isset($_POST) && isset($_POST['submit'])){
 			}
 			if(!$email['success']){
 				$flash = array('type' => 'error', 'msg' => $email['error']);
-			}
-			if(!$url['success']){
-				$flash = array('type' => 'error', 'msg' => $url['error']);
-			}
-			if(!$feed['success']){
-				$flash = array('type' => 'error', 'msg' => $feed['error']);
-			}
-			if(!$choice['success']){
-				$flash = array('type' => 'error', 'msg' => $choice['error']);
-			}
-			if(!$charter['success']){
-				$flash = array('type' => 'error', 'msg' => $charter['error']);
 			}
 		}
 	}
@@ -129,9 +130,6 @@ else {
 			$msg .= "<li><b>".T_("Username")."</b> : ".$user_id['value']."</li>";
 			$msg .= "<li><b>".T_("Fullname")."</b> : ".$fullname['value']."</li>";
 			$msg .= "<li><b>".T_("Email")."</b> : ".$email['value']."</li>";
-			$msg .= "<li><b>".T_("Website")."</b> : ".$url['value']."</li>";
-			$msg .= "<li><b>".T_("Feed")."</b> : ".$feed['value']."</li>";
-			$msg .= "<li><b>".T_("Choice")."</b> : ".$choice['value']."</li>";
 			$msg .= "</ul></p></div>";
 		}
 		$core->tpl->setVar('flashmsg', $msg);
@@ -147,31 +145,18 @@ else {
 	$publickey = "6LdEeQgAAAAAACLccbiO8TNaptSmepfMFEDL3hj2";
 	$captcha_html = recaptcha_get_html($publickey);
 
-	$form_values = array(
-		"user_id" => "",
-		"fullname" => "",
-		"email" => "",
-		"url" => "",
-		"feed" => "",
-	);
-	if($user_id)	$form_values["user_id"] = $user_id['value'];
-	if($fullname)	$form_values["fullname"] = $fullname['value'];
-	if($email)	$form_values["email"] = $email['value'];
-	if($url)	$form_values["url"] = $url['value'];
-	if($feed)	$form_values["feed"] = $feed['value'];
-
 	$core->tpl->setVar('params', $params);
 	$core->tpl->setVar('form', $form_values);
 	$core->tpl->setVar('subscription_content', $content);
 	$core->tpl->setVar('captcha_html', $captcha_html);
-	$core->tpl->render('content.subscription');
+	$core->tpl->render('content.signup');
 	echo $core->tpl->render();
 }
 
 #---------------------------------------------------#
 # Function to add pending user			    #
 #---------------------------------------------------#
-function addPendingUser($user_id, $user_fullname, $user_email, $url, $feed, $lang) {
+function addPendingUserSignup($user_id, $user_fullname, $user_email, $lang) {
 
 	global $core;
 
@@ -181,7 +166,7 @@ function addPendingUser($user_id, $user_fullname, $user_email, $url, $feed, $lan
 
 
 	# Check if user have already sent subscription
-	$rs0 = $core->con->select("SELECT puser_id, user_fullname, user_email, feed_url
+	$rs0 = $core->con->select("SELECT puser_id, user_fullname, user_email
 		FROM ".$core->prefix."pending_user
 		WHERE lower(puser_id) = '".strtolower($user_id)."'
 		OR lower(user_fullname) = '".strtolower($user_fullname)."'
@@ -196,12 +181,6 @@ function addPendingUser($user_id, $user_fullname, $user_email, $url, $feed, $lan
 		}
 		if ($rs0->f('user_email') == $user_email) {
 			$error[] = sprintf(T_('A registration request have been already sent with this email adress: %s'), $user_email);
-		}
-		if ($rs0->f('site_url') == $url) {
-			$error[] = sprintf(T_('A registration request have been already sent with this website: %s'), $url);
-		}
-		if ($rs0->f('feed_url') == $feed) {
-			$error[] = sprintf(T_('A registration request have been already sent with this Feed URL: %s'), $feed);
 		}
 	}
 

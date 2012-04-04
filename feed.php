@@ -237,47 +237,67 @@ if (isset($_GET) && isset($_GET['type'])) {
 				"/index.php?post_id=".$post_list->post_id.
 				"&go=external";
 		}
-	$id = uuid($url, 'urn:uuid:');
+		$id = uuid($url, 'urn:uuid:');
 
-	# Other link
-	$links =  '<br/><i>'.sprintf('Original post of <a href="%s" title="Visit the source">%s</a>.',$url, $nom);
-	$links .= '<br/>'.sprintf(T_('Vote for this post on <a href="%s" title="Go on the planet">%s</a>.'),$blog_settings->get('planet_url'), $blog_settings->get('planet_title')).'</i>';
+		# Other link
+		$links =  '<i>'.sprintf('Original post of <a href="%s" title="Visit the source">%s</a>.',$url, $nom);
+		$links .= sprintf(T_('Vote for this post on <a href="%s" title="Go on the planet">%s</a>.'),$blog_settings->get('planet_url'), $blog_settings->get('planet_title')).'</i>';
 
-	# Remove html tag to post content
-	$desc = strip_tags($item);
-	# Split string only on space char
-	$desc = short_str($desc, 300, false);
+		# Remove html tag to post content
+		$desc = strip_tags($item);
+		# Split string only on space char
+		$desc = short_str($desc, 300, false);
 
-	# Gravatar
-	if($blog_settings->get('planet_avatar')) {
-		$avatar_email = strtolower($post_list->user_email);
-		$avatar_url = "http://cdn.libravatar.org/avatar/".md5($avatar_email)."?d=".urlencode($blog_settings->get('planet_url')."/themes/".$blog_settings->get('planet_theme')."/images/gravatar.png")."&s=40";
-		$avatar = '<img src="'.$avatar_url.'" alt="'.sprintf(T_('Gravatar of %s'),$post_list->user_fullname).'" class="gravatar" />';
-	}
-
-	if ($_GET['type']=="rss"){
-		# Display item content
-		echo "\t\t\t<item>\n";
-		echo "\t\t\t\t<title>".$nom." : ".$titre."</title>\n";
-		echo "\t\t\t\t<link>".htmlentities($url)."</link>\n";
-		echo "\t\t\t\t<pubDate>".date("r", strtotime($post_list->pubdate))."</pubDate>\n";
-		echo "\t\t\t\t<dc:creator>".$nom."</dc:creator>\n";
-		echo "\t\t\t\t<description><![CDATA[".$desc."]]></description>\n";
-		echo "\t\t\t\t<guid isPermaLink=\"true\">".htmlentities($url)."</guid>\n";
-
+		# Gravatar
 		if($blog_settings->get('planet_avatar')) {
-			echo "\t\t\t\t<content:encoded><![CDATA[".$item."<p>".$avatar.$links."</p>"."]]></content:encoded>\n";
-		} else {
-			echo "\t\t\t\t<content:encoded><![CDATA[".$item."<p>".$links."</p>"."]]></content:encoded>\n";
+			$avatar_email = strtolower($post_list->user_email);
+			$avatar_url = "http://cdn.libravatar.org/avatar/".md5($avatar_email)."?d=".urlencode($blog_settings->get('planet_url')."/themes/".$blog_settings->get('planet_theme')."/images/gravatar.png")."&s=40";
+			$avatar = '<img src="'.$avatar_url.'" alt="'.sprintf(T_('Gravatar of %s'),$post_list->user_fullname).'" class="gravatar" />';
 		}
 
-		# End of Item
-		echo "\t\t\t</item>\n";
-	}
-	elseif($_GET['type']=="atom") {
-		# Affichage du contenu de l'item
-		echo "\t\t<entry>\n";
-		echo "\t\t\t<id>".$id."</id>\n";
+		if($blog_settings->get('planet_avatar')) {
+			$item = $item."\n<p>".$avatar;
+		}
+		
+		$item = $item."<br/>".$links."</p>";
+
+		# Similar posts
+		$post_tags = getPostTags($post_list->post_id);
+		if ($blog_settings->get("show_similar_posts") && !empty($post_tags)) {
+			$sql_sim = getSimilarPosts_SQL($post_list->post_id, $post_tags);
+
+			$rsimilar = $core->con->select($sql_sim);
+			$sim_html = '<div class="similar-block"><h3>'.T_('Similar posts').'</h3><ul>';
+			while ($rsimilar->fetch()) {
+				$sim_html .= "<li>";
+				$sim_html .= $rsimilar->user_id." : ";
+				$sim_html .= '<a href="'.$rsimilar->post_permalink.'">'.$rsimilar->post_title;
+				$sim_html .= "</a> (".mysqldatetime_to_date("d/m/Y",$rsimilar->post_pubdate).")";
+				$sim_html .= "</li>";
+			}
+			$sim_html .= "</ul></div>";
+			$item = $item."\n<p>".$sim_html."</p>";
+		}
+
+		if ($_GET['type']=="rss"){
+			# Display item content
+			echo "\t\t\t<item>\n";
+			echo "\t\t\t\t<title>".$nom." : ".$titre."</title>\n";
+			echo "\t\t\t\t<link>".htmlentities($url)."</link>\n";
+			echo "\t\t\t\t<pubDate>".date("r", strtotime($post_list->pubdate))."</pubDate>\n";
+			echo "\t\t\t\t<dc:creator>".$nom."</dc:creator>\n";
+			echo "\t\t\t\t<description><![CDATA[".$desc."]]></description>\n";
+			echo "\t\t\t\t<guid isPermaLink=\"true\">".htmlentities($url)."</guid>\n";
+
+			echo "\t\t\t\t<content:encoded><![CDATA[".$item."]]></content:encoded>\n";
+
+			# End of Item
+			echo "\t\t\t</item>\n";
+		}
+		elseif($_GET['type']=="atom") {
+			# Affichage du contenu de l'item
+			echo "\t\t<entry>\n";
+			echo "\t\t\t<id>".$id."</id>\n";
 			echo "\t\t\t<title>".$nom." : ".$titre."</title>\n";
 			echo "\t\t\t<updated>".date("c", strtotime($post_list->pubdate))."</updated>\n";
 			echo "\t\t\t<author>\n";
@@ -285,11 +305,8 @@ if (isset($_GET) && isset($_GET['type'])) {
 			echo "\t\t\t</author>\n";
 			echo "\t\t\t<link href=\"".htmlentities($url)."\" rel=\"alternate\" type=\"text/html\" title=\"".$titre."\" />\n";
 			echo "\t\t\t<summary type=\"html\">".str_replace(array("\r\n", "\r", "\n"), " ", $desc)."</summary>\n";
-			if($blog_settings->get('planet_avatar')) {
-				echo "\t\t\t<content type=\"html\"><![CDATA[".$item."<p>".$avatar.$links."</p>"."]]></content>\n";
-			} else {
-				echo "\t\t\t<content type=\"html\"><![CDATA[".$item."<p>".$links."</p>"."]]></content>\n";
-			}
+
+			echo "\t\t\t<content type=\"html\"><![CDATA[".$item."]]></content>\n";
 			echo "\t\t</entry>\n";
 		}
 	}
@@ -302,7 +319,7 @@ if (isset($_GET) && isset($_GET['type'])) {
 		echo "\t</feed>";
 	}
 
-	/* On termine le cache */
+		/* On termine le cache */
 	finCache();
 }
 else {

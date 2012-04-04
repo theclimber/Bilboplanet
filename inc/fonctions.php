@@ -609,6 +609,29 @@ function generate_tribe_SQL($tribe_id, $num_start = 0, $nb_items = 10) {
 	}
 }
 
+function getSimilarPosts_SQL($post_id,$post_tags) {
+	global $core;
+	for($i=0; $i<sizeof($post_tags); $i++) {
+		$post_tags[$i] = "'".$post_tags[$i]."'";
+	}
+	$tags_string = implode(",",$post_tags);
+	$sql_sim = "SELECT
+			".$core->prefix."post.post_id,
+			".$core->prefix."post.user_id,
+			".$core->prefix."post.post_pubdate,
+			".$core->prefix."post.post_permalink,
+			".$core->prefix."post.post_title
+		FROM ".$core->prefix."post, ".$core->prefix."post_tag
+		WHERE 
+			".$core->prefix."post.post_id = ".$core->prefix."post_tag.post_id
+			AND NOT ".$core->prefix."post.post_id = ".$post_id."
+			AND tag_id IN (".$tags_string.")
+		GROUP BY ".$core->prefix."post.post_id
+		ORDER BY ".$core->prefix."post.post_pubdate DESC
+		LIMIT 0,5";
+	return $sql_sim;
+}
+
 function showTribe($sql_posts) {
 	global $core, $blog_settings;
 	$rs_posts = $core->con->select($sql_posts);
@@ -725,6 +748,21 @@ function showPosts($rs, $tpl, $search_value="", $strip_tags=false) {
 					$tpl->render('post.action.tags');
 				}
 			}
+		}
+		if ($blog_settings->get('show_similar_posts') && !empty($post_tags)) {
+			$sql_sim = getSimilarPosts_SQL($rs->post_id, $post_tags);
+			$rsimilar = $core->con->select($sql_sim);
+			while ($rsimilar->fetch()) {
+				$similar = array(
+					"author" => $rsimilar->user_id,
+					"title" => $rsimilar->post_title,
+					"permalink" => $rsimilar->post_permalink,
+					"pubdate" => mysqldatetime_to_date("d/m/Y",$rsimilar->post_pubdate)
+				);
+				$tpl->setVar('similar', $similar);
+				$tpl->render("post.similar.item");
+			}
+			$tpl->render("post.similar.block");
 		}
 		if ($blog_settings->get('allow_post_comments')) {
 			if($core->auth->userID() == $rs->user_id || $core->hasRole('manager')) {

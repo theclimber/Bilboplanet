@@ -94,6 +94,7 @@ if ($current_page == "list") {
 	$core->tpl->render('memberlist.box');
 }
 if ($current_page != "users") {
+	$core->tpl->render('search.box');
 	$core->tpl->render("content.sidebar");
 }
 

@@ -172,7 +172,6 @@ $core->tpl->setVar('params', $params);
 $core->tpl->setVar('page', $page_vars);
 $core->tpl->setVar('filter_url', $filter_url);
 
-$core->tpl->render('search.box');
 if (isset($_GET)) {
 	if (isset($_GET['filter']) && !empty($_GET['filter'])){
 		$core->tpl->setVar("filter", $filter_class);

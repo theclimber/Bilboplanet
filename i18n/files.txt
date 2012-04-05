@@ -1,11 +1,15 @@
 mobile.php
 tpl.php
+tags.php
 404.php
+portal.php
 contact.php
 archives.php
+users.php
 auth.php
 feed.php
 inscription.php
+list.php
 stats.php
 index.php
 inc/update_manual.php

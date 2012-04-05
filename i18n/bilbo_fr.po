@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Bilboplanet\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-10-29 10:55+0200\n"
-"PO-Revision-Date: 2012-02-22 10:50+0100\n"
+"PO-Revision-Date: 2012-04-05 14:48+0100\n"
 "Last-Translator: Gregoire de Hemptinne <greg@theclimber.be>\n"
 "Language-Team: French\n"
 "Language: \n"
@@ -43,12 +43,19 @@ msgstr "Informations"
 msgid "Contact email"
 msgstr "Email de contact"
 
-#: themes/legolas/sidebar.tpl:39
-#: themes/aragorn/sidebar.tpl:23
-#: themes/gandalf/sidebar.tpl:20
-#: themes/gil-galad/sidebar.tpl:23
+#: themes/legolas/sidebar.tpl:40
+#: themes/aragorn/sidebar.tpl:25
+#: themes/gandalf/sidebar.tpl:21
+#: themes/gil-galad/sidebar.tpl:24
 msgid "Searching with :"
 msgstr "Recherche avec :"
+
+#: themes/legolas/users.tpl:14
+#: themes/aragorn/users.tpl:14
+#: themes/gandalf/users.tpl:14
+#: themes/gil-galad/users.tpl:14
+msgid "No users found"
+msgstr "Aucun utilisateur trouvé"
 
 #: themes/legolas/subscription.tpl:65
 #: themes/legolas/contact.tpl:8
@@ -60,6 +67,17 @@ msgstr "Recherche avec :"
 #: themes/gil-galad/contact.tpl:8
 msgid "Contact us"
 msgstr "Contactez nous"
+
+#: themes/legolas/stats.tpl:23
+#: themes/legolas/stats.tpl:44
+#: themes/aragorn/stats.tpl:23
+#: themes/aragorn/stats.tpl:44
+#: themes/gandalf/stats.tpl:23
+#: themes/gandalf/stats.tpl:44
+#: themes/gil-galad/stats.tpl:23
+#: themes/gil-galad/stats.tpl:44
+msgid "Visit the website"
+msgstr "Visiter le site"
 
 #: themes/legolas/posts.tpl:14
 #: themes/gandalf/menu.tpl:32
@@ -133,21 +151,17 @@ msgstr "Mot de passe oublié ?"
 msgid "Reset"
 msgstr "Annuler"
 
-#: themes/legolas/stats.tpl:23
-#: themes/legolas/stats.tpl:44
-#: themes/aragorn/stats.tpl:23
-#: themes/aragorn/stats.tpl:44
-#: themes/gandalf/stats.tpl:23
-#: themes/gandalf/stats.tpl:44
-#: themes/gil-galad/stats.tpl:23
-#: themes/gil-galad/stats.tpl:44
-msgid "Visit the website"
-msgstr "Visiter le site"
+#: themes/legolas/index.tpl:64
+#: themes/aragorn/index.tpl:63
+#: themes/gandalf/index.tpl:63
+#: themes/gil-galad/index.tpl:76
+msgid "Remember me"
+msgstr "Se souvenir de moi"
 
-#: themes/legolas/sidebar.tpl:81
-#: themes/aragorn/sidebar.tpl:61
-#: themes/gandalf/sidebar.tpl:62
-#: themes/gil-galad/sidebar.tpl:61
+#: themes/legolas/sidebar.tpl:84
+#: themes/aragorn/sidebar.tpl:65
+#: themes/gandalf/sidebar.tpl:65
+#: themes/gil-galad/sidebar.tpl:64
 msgid "See members posts"
 msgstr "Afficher les articles de l'utilisateur"
 
@@ -158,10 +172,10 @@ msgstr "Afficher les articles de l'utilisateur"
 msgid "Show user's posts"
 msgstr "Affiche les articles de l'utilisateur"
 
-#: themes/legolas/sidebar.tpl:49
-#: themes/aragorn/sidebar.tpl:33
-#: themes/gandalf/sidebar.tpl:30
-#: themes/gil-galad/sidebar.tpl:33
+#: themes/legolas/sidebar.tpl:50
+#: themes/aragorn/sidebar.tpl:35
+#: themes/gandalf/sidebar.tpl:31
+#: themes/gil-galad/sidebar.tpl:34
 msgid "Parametrized feed"
 msgstr "Flux paramétrisé"
 
@@ -170,16 +184,16 @@ msgid "You can search to find other articles."
 msgstr "Vous pouvez chercher pour trouver d'autres articles."
 
 #: themes/legolas/posts.tpl:11
-#: themes/aragorn/index.tpl:109
+#: themes/aragorn/index.tpl:111
 #: themes/gandalf/menu.tpl:29
-#: themes/gil-galad/index.tpl:108
+#: themes/gil-galad/index.tpl:110
 msgid "Posts of the month"
 msgstr "Articles du mois"
 
 #: themes/legolas/footer.tpl:12
-#: themes/aragorn/sidebar.tpl:71
-#: themes/gandalf/sidebar.tpl:74
-#: themes/gil-galad/sidebar.tpl:71
+#: themes/aragorn/sidebar.tpl:76
+#: themes/gandalf/sidebar.tpl:78
+#: themes/gil-galad/sidebar.tpl:75
 msgid "Add your blog"
 msgstr "Ajouter votre blog"
 
@@ -190,10 +204,10 @@ msgstr "Ajouter votre blog"
 msgid "Registration"
 msgstr "Inscription"
 
-#: themes/legolas/sidebar.tpl:83
-#: themes/aragorn/sidebar.tpl:63
-#: themes/gandalf/sidebar.tpl:64
-#: themes/gil-galad/sidebar.tpl:63
+#: themes/legolas/sidebar.tpl:86
+#: themes/aragorn/sidebar.tpl:67
+#: themes/gandalf/sidebar.tpl:67
+#: themes/gil-galad/sidebar.tpl:66
 msgid "User's website"
 msgstr "Site de l'utilisateur"
 
@@ -212,9 +226,9 @@ msgid "Name or nickname"
 msgstr "Nom ou Pseudo"
 
 #: themes/legolas/posts.tpl:8
-#: themes/aragorn/index.tpl:106
+#: themes/aragorn/index.tpl:108
 #: themes/gandalf/menu.tpl:26
-#: themes/gil-galad/index.tpl:105
+#: themes/gil-galad/index.tpl:107
 msgid "Posts of the week"
 msgstr "Articles de la semaine"
 
@@ -268,14 +282,14 @@ msgstr "Testez vos flux"
 #: themes/gandalf/index.tpl:52
 #: themes/gil-galad/index.tpl:65
 #: inscription.php:129
-#: admin/install/index.php:339
+#: admin/install/index.php:352
 msgid "Username"
 msgstr "Nom d'utilisateur"
 
-#: themes/legolas/sidebar.tpl:67
-#: themes/aragorn/sidebar.tpl:43
-#: themes/gandalf/sidebar.tpl:41
-#: themes/gil-galad/sidebar.tpl:43
+#: themes/legolas/sidebar.tpl:69
+#: themes/aragorn/sidebar.tpl:46
+#: themes/gandalf/sidebar.tpl:43
+#: themes/gil-galad/sidebar.tpl:45
 msgid "Feed with the posts of this category : "
 msgstr "Fil de tous les articles de cette catégorie : "
 
@@ -312,7 +326,7 @@ msgstr "Bienvenue"
 #: themes/gil-galad/posts.tpl:14
 #: themes/gil-galad/posts.tpl:113
 #: themes/gil-galad/archives.tpl:6
-#: admin/api/manage-tagging_api.php:172
+#: admin/api/manage-tagging_api.php:168
 #: admin/api/manage-moderation_api.php:193
 msgid "No posts found"
 msgstr "Aucun article trouvé"
@@ -331,8 +345,8 @@ msgstr "Total des votes"
 msgid "Add tag"
 msgstr "Ajouter un mot-clé"
 
-#: themes/aragorn/sidebar.tpl:58
-#: themes/gil-galad/sidebar.tpl:58
+#: themes/aragorn/sidebar.tpl:62
+#: themes/gil-galad/sidebar.tpl:61
 msgid "Members"
 msgstr "Membres"
 
@@ -343,10 +357,10 @@ msgstr "Membres"
 msgid "If you need to contact the administration team for any reason (change of your feed URL, suggestion ...), you can do it by <a href='contact.php'>clicking here</a>."
 msgstr "Si vous souhaitez contacter l'équipe d'administration pour une raison ou une autre (changer l'adresse de vos flux, faire une suggestion...), vous pouvez le faire en <a href='contact.php'>cliquant ici</a>."
 
-#: themes/legolas/sidebar.tpl:37
-#: themes/aragorn/sidebar.tpl:21
-#: themes/gandalf/sidebar.tpl:18
-#: themes/gil-galad/sidebar.tpl:21
+#: themes/legolas/sidebar.tpl:38
+#: themes/aragorn/sidebar.tpl:23
+#: themes/gandalf/sidebar.tpl:19
+#: themes/gil-galad/sidebar.tpl:22
 msgid "Page :"
 msgstr "Page :"
 
@@ -364,15 +378,15 @@ msgstr "Autoriser les commentaires"
 msgid "Main statistics"
 msgstr "Statistiques générales"
 
-#: themes/aragorn/index.tpl:101
-#: themes/gil-galad/index.tpl:100
+#: themes/aragorn/index.tpl:103
+#: themes/gil-galad/index.tpl:102
 msgid "Filter posts"
 msgstr "Filtrer les articles"
 
-#: themes/legolas/index.tpl:149
-#: themes/aragorn/index.tpl:172
-#: themes/gandalf/index.tpl:164
-#: themes/gil-galad/index.tpl:172
+#: themes/legolas/index.tpl:160
+#: themes/aragorn/index.tpl:183
+#: themes/gandalf/index.tpl:175
+#: themes/gil-galad/index.tpl:183
 #: admin/manage-feed.php:185
 #: admin/manage-tagging.php:96
 msgid "Comma separated tags (ex: linux,web,event)"
@@ -386,30 +400,37 @@ msgid "Contact"
 msgstr "Contact"
 
 #: themes/legolas/posts.tpl:5
-#: themes/aragorn/index.tpl:103
+#: themes/aragorn/index.tpl:105
 #: themes/gandalf/menu.tpl:23
-#: themes/gil-galad/index.tpl:102
+#: themes/gil-galad/index.tpl:104
 msgid "Posts of the day"
 msgstr "Articles du jour"
 
-#: themes/legolas/sidebar.tpl:31
-#: themes/aragorn/sidebar.tpl:14
-#: themes/gandalf/sidebar.tpl:11
-#: themes/gil-galad/sidebar.tpl:15
+#: themes/legolas/users.tpl:6
+#: themes/aragorn/users.tpl:6
+#: themes/gandalf/users.tpl:6
+#: themes/gil-galad/users.tpl:6
+msgid "Show posts of"
+msgstr "Afficher les articles de "
+
+#: themes/legolas/sidebar.tpl:32
+#: themes/aragorn/sidebar.tpl:16
+#: themes/gandalf/sidebar.tpl:12
+#: themes/gil-galad/sidebar.tpl:16
 msgid "Page status"
 msgstr "Statut de la page"
 
 #: themes/legolas/footer.tpl:9
-#: themes/aragorn/sidebar.tpl:67
-#: themes/gandalf/sidebar.tpl:70
-#: themes/gil-galad/sidebar.tpl:67
+#: themes/aragorn/sidebar.tpl:72
+#: themes/gandalf/sidebar.tpl:74
+#: themes/gil-galad/sidebar.tpl:71
 msgid "Contribute"
 msgstr "Participer"
 
-#: themes/legolas/sidebar.tpl:64
-#: themes/aragorn/sidebar.tpl:40
-#: themes/gandalf/sidebar.tpl:38
-#: themes/gil-galad/sidebar.tpl:40
+#: themes/legolas/sidebar.tpl:66
+#: themes/aragorn/sidebar.tpl:43
+#: themes/gandalf/sidebar.tpl:40
+#: themes/gil-galad/sidebar.tpl:42
 msgid "Feed with all the posts"
 msgstr "Fil de tous les articles"
 
@@ -435,19 +456,19 @@ msgid "Name / Nickname :"
 msgstr "Nom / Pseudo :"
 
 #: themes/legolas/footer.tpl:14
-#: themes/aragorn/sidebar.tpl:74
-#: themes/gandalf/sidebar.tpl:77
-#: themes/gil-galad/sidebar.tpl:74
+#: themes/aragorn/sidebar.tpl:79
+#: themes/gandalf/sidebar.tpl:81
+#: themes/gil-galad/sidebar.tpl:78
 #: admin/head.php:31
 #: admin/sidebar.php:36
 #: admin/api/manage-permissions_api.php:166
 msgid "Administration"
 msgstr "Administration"
 
-#: themes/legolas/sidebar.tpl:44
-#: themes/aragorn/sidebar.tpl:28
-#: themes/gandalf/sidebar.tpl:25
-#: themes/gil-galad/sidebar.tpl:28
+#: themes/legolas/sidebar.tpl:45
+#: themes/aragorn/sidebar.tpl:30
+#: themes/gandalf/sidebar.tpl:26
+#: themes/gil-galad/sidebar.tpl:29
 msgid "Tagged with :"
 msgstr "Marqué avec : "
 
@@ -485,10 +506,10 @@ msgstr "Pour ajouter ou supprimer votre site web du planet, remplissez le formul
 msgid "Website"
 msgstr "Site web"
 
-#: themes/legolas/index.tpl:147
-#: themes/aragorn/index.tpl:170
-#: themes/gandalf/index.tpl:162
-#: themes/gil-galad/index.tpl:170
+#: themes/legolas/index.tpl:158
+#: themes/aragorn/index.tpl:181
+#: themes/gandalf/index.tpl:173
+#: themes/gil-galad/index.tpl:181
 #: admin/manage-feed.php:183
 #: admin/manage-tagging.php:94
 msgid "Tags"
@@ -522,13 +543,6 @@ msgstr "Désabonnement"
 msgid "Top 10"
 msgstr "Top 10"
 
-#: themes/legolas/index.tpl:64
-#: themes/aragorn/index.tpl:63
-#: themes/gandalf/index.tpl:63
-#: themes/gil-galad/index.tpl:76
-msgid "Remember me"
-msgstr "Se souvenir de moi"
-
 #: themes/legolas/sidebar.tpl:6
 msgid "Search"
 msgstr "Recherche"
@@ -548,16 +562,16 @@ msgid "Publish"
 msgstr "Publier"
 
 #: themes/legolas/footer.tpl:11
-#: themes/aragorn/sidebar.tpl:70
-#: themes/gandalf/sidebar.tpl:73
-#: themes/gil-galad/sidebar.tpl:70
+#: themes/aragorn/sidebar.tpl:75
+#: themes/gandalf/sidebar.tpl:77
+#: themes/gil-galad/sidebar.tpl:74
 msgid "Subscribe your blog to the planet"
 msgstr "Inscrire votre blog au planet"
 
-#: themes/legolas/sidebar.tpl:72
-#: themes/aragorn/sidebar.tpl:48
-#: themes/gandalf/sidebar.tpl:46
-#: themes/gil-galad/sidebar.tpl:48
+#: themes/legolas/sidebar.tpl:74
+#: themes/aragorn/sidebar.tpl:51
+#: themes/gandalf/sidebar.tpl:48
+#: themes/gil-galad/sidebar.tpl:50
 msgid "Popular posts feed"
 msgstr "Fil des articles populaires"
 
@@ -582,10 +596,10 @@ msgstr "Vous cherchez tous les articles contenant :"
 msgid "Connect"
 msgstr "Se connecter"
 
-#: themes/legolas/index.tpl:141
-#: themes/aragorn/index.tpl:164
-#: themes/gandalf/index.tpl:156
-#: themes/gil-galad/index.tpl:164
+#: themes/legolas/index.tpl:152
+#: themes/aragorn/index.tpl:175
+#: themes/gandalf/index.tpl:167
+#: themes/gil-galad/index.tpl:175
 #: admin/manage-option.php:56
 #: admin/manage-feed.php:92
 #: admin/manage-feed.php:145
@@ -622,21 +636,23 @@ msgstr "Email : "
 msgid "E-mail"
 msgstr "E-mail"
 
-#: themes/legolas/sidebar.tpl:41
-#: themes/aragorn/sidebar.tpl:25
-#: themes/gandalf/sidebar.tpl:22
-#: themes/gil-galad/sidebar.tpl:25
+#: themes/legolas/sidebar.tpl:42
+#: themes/aragorn/sidebar.tpl:27
+#: themes/gandalf/sidebar.tpl:23
+#: themes/gil-galad/sidebar.tpl:26
 msgid "Period of posts :"
 msgstr "Période des artricles :"
 
-#: themes/legolas/sidebar.tpl:78
-#: themes/gandalf/sidebar.tpl:59
+#: themes/legolas/sidebar.tpl:81
+#: themes/gandalf/sidebar.tpl:62
+#: tags.php:14
+#: users.php:14
 msgid "Users"
 msgstr "Utilisateurs"
 
-#: themes/legolas/sidebar.tpl:32
-#: themes/aragorn/sidebar.tpl:16
-#: themes/gandalf/sidebar.tpl:13
+#: themes/legolas/sidebar.tpl:33
+#: themes/aragorn/sidebar.tpl:18
+#: themes/gandalf/sidebar.tpl:14
 msgid "Number of items :"
 msgstr "Nombre d'éléments : "
 
@@ -647,10 +663,10 @@ msgstr "Nombre d'éléments : "
 msgid "Subscribe / Unsubscribe"
 msgstr "Inscription / Désinscription"
 
-#: themes/legolas/sidebar.tpl:46
-#: themes/aragorn/sidebar.tpl:30
-#: themes/gandalf/sidebar.tpl:27
-#: themes/gil-galad/sidebar.tpl:30
+#: themes/legolas/sidebar.tpl:47
+#: themes/aragorn/sidebar.tpl:32
+#: themes/gandalf/sidebar.tpl:28
+#: themes/gil-galad/sidebar.tpl:31
 msgid "Written by :"
 msgstr "Ecrit par : "
 
@@ -659,7 +675,7 @@ msgstr "Ecrit par : "
 #: themes/gandalf/index.tpl:57
 #: themes/gil-galad/index.tpl:70
 #: admin/manage-user.php:115
-#: admin/install/index.php:342
+#: admin/install/index.php:355
 msgid "Password"
 msgstr "Mot de passe"
 
@@ -711,17 +727,17 @@ msgstr "Nombre de membres : "
 msgid "Please fill in the captcha"
 msgstr "Veuillez remplir le champ du captcha"
 
-#: themes/legolas/sidebar.tpl:43
-#: themes/aragorn/sidebar.tpl:27
-#: themes/gandalf/sidebar.tpl:24
-#: themes/gil-galad/sidebar.tpl:27
+#: themes/legolas/sidebar.tpl:44
+#: themes/aragorn/sidebar.tpl:29
+#: themes/gandalf/sidebar.tpl:25
+#: themes/gil-galad/sidebar.tpl:28
 msgid "In popular tags"
 msgstr "Dans les flux populaires"
 
 #: themes/legolas/stats.tpl:6
 #: themes/aragorn/stats.tpl:6
 #: themes/gandalf/stats.tpl:6
-#: themes/gil-galad/sidebar.tpl:16
+#: themes/gil-galad/sidebar.tpl:17
 #: themes/gil-galad/stats.tpl:6
 msgid "Number of posts :"
 msgstr "Nombre d'articles :"
@@ -738,15 +754,15 @@ msgstr "Nombre d'articles :"
 #: admin/manage-account.php:65
 #: admin/manage-user.php:107
 #: admin/manage-user.php:148
-#: admin/install/index.php:315
+#: admin/install/index.php:328
 #: admin/api/manage-pendinguser_api.php:234
 #: admin/api/manage-account_api.php:36
 #: user/api/account_api.php:36
 msgid "Fullname"
 msgstr "Nom complet"
 
-#: themes/aragorn/index.tpl:112
-#: themes/gil-galad/index.tpl:111
+#: themes/aragorn/index.tpl:114
+#: themes/gil-galad/index.tpl:113
 msgid "All the posts"
 msgstr "Tous les articles"
 
@@ -765,27 +781,27 @@ msgid "Content :'"
 msgstr "Contenu :"
 
 #: themes/legolas/footer.tpl:13
-#: themes/aragorn/sidebar.tpl:73
-#: themes/gandalf/sidebar.tpl:76
-#: themes/gil-galad/sidebar.tpl:73
+#: themes/aragorn/sidebar.tpl:78
+#: themes/gandalf/sidebar.tpl:80
+#: themes/gil-galad/sidebar.tpl:77
 msgid "Admin interface"
 msgstr "Interface d'administration"
 
-#: themes/legolas/sidebar.tpl:61
+#: themes/legolas/sidebar.tpl:63
 #: themes/legolas/subscription.tpl:43
-#: themes/aragorn/sidebar.tpl:37
+#: themes/aragorn/sidebar.tpl:40
 #: themes/aragorn/subscription.tpl:43
 #: themes/gandalf/subscription.tpl:43
-#: themes/gandalf/sidebar.tpl:35
-#: themes/gil-galad/sidebar.tpl:37
+#: themes/gandalf/sidebar.tpl:37
+#: themes/gil-galad/sidebar.tpl:39
 #: themes/gil-galad/subscription.tpl:43
 msgid "Subscribe"
 msgstr "Abonnement"
 
-#: themes/legolas/index.tpl:151
-#: themes/aragorn/index.tpl:174
-#: themes/gandalf/index.tpl:166
-#: themes/gil-galad/index.tpl:174
+#: themes/legolas/index.tpl:162
+#: themes/aragorn/index.tpl:185
+#: themes/gandalf/index.tpl:177
+#: themes/gil-galad/index.tpl:185
 #: admin/manage-useroption.php:123
 #: admin/api/manage-permissions_api.php:171
 #: admin/api/manage-option_api.php:621
@@ -804,15 +820,15 @@ msgstr "J'ai lu et j'accepte la charte de fonctionnement"
 msgid "%d vote(s)"
 msgstr "%d vote(s)"
 
-#: tpl.php:141
+#: tpl.php:148
 msgid "Powered by Bilboplanet"
 msgstr "Produit par le BilboPlanet"
 
-#: tpl.php:144
+#: tpl.php:151
 msgid "Valid CSS - Xhtml"
 msgstr "CSS - Xhtml valide"
 
-#: tpl.php:147
+#: tpl.php:154
 msgid "Designed by BilboPlanet"
 msgstr "Produit par le BilboPlanet"
 
@@ -823,6 +839,14 @@ msgstr "Erreur 404"
 #: 404.php:34
 msgid "Page not found"
 msgstr "Page non trouvée"
+
+#: portal.php:16
+msgid "Portal"
+msgstr "Portail"
+
+#: portal.php:58
+msgid "Popular posts"
+msgstr "Articles populaires"
 
 #: contact.php:47
 #: inscription.php:53
@@ -944,14 +968,14 @@ msgstr "Votre nouveau mot de passe"
 #: auth.php:283
 #: auth.php:329
 #: admin/install/wizard.php:192
-#: admin/install/index.php:367
+#: admin/install/index.php:380
 msgid "Username:"
 msgstr "Nom d'utilisateur :"
 
 #: auth.php:123
 #: auth.php:333
 #: admin/install/wizard.php:196
-#: admin/install/index.php:368
+#: admin/install/index.php:381
 msgid "Password:"
 msgstr "Mot de passe :"
 
@@ -1016,17 +1040,27 @@ msgstr "Se souvenir de moi sur cet ordinateur"
 msgid "login"
 msgstr "Identification"
 
-#: feed.php:218
+#: feed.php:110
+#: list.php:124
+#, php-format
+msgid "%s tribe"
+msgstr "%s tribe"
+
+#: feed.php:244
 #, php-format
 msgid "Vote for this post on <a href=\"%s\" title=\"Go on the planet\">%s</a>."
 msgstr "Votez pour ce billet sur <a href=\"%s\" title=\"Aller sur le planet\">%s</a>."
 
-#: feed.php:229
+#: feed.php:255
 #, php-format
 msgid "Gravatar of %s"
 msgstr "Gravatar de %s"
 
-#: feed.php:300
+#: feed.php:271
+msgid "Similar posts"
+msgstr "Articles similaires"
+
+#: feed.php:350
 #: inscription.php:133
 #: admin/api/manage-pendinguser_api.php:177
 #: admin/api/manage-pendinguser_api.php:217
@@ -1079,7 +1113,7 @@ msgstr "Sujet"
 #: admin/manage-account.php:69
 #: admin/manage-user.php:111
 #: admin/manage-user.php:152
-#: admin/install/index.php:318
+#: admin/install/index.php:331
 #: admin/api/manage-pendinguser_api.php:235
 #: admin/api/manage-account_api.php:37
 #: user/api/account_api.php:37
@@ -1110,120 +1144,120 @@ msgstr "Erreur : le compte statusnet n'est pas correctement configuré. L'hôte 
 msgid "Reading cache"
 msgstr "Lecture du cache"
 
-#: inc/fonctions.php:569
+#: inc/fonctions.php:715
 #, php-format
 msgid "By %s, on %s at %s."
 msgstr "Par %s le %s à %s"
 
-#: inc/fonctions.php:572
+#: inc/fonctions.php:718
 msgid "View post detail"
 msgstr "Voir l'article"
 
-#: inc/fonctions.php:595
+#: inc/fonctions.php:741
 msgid "Read more"
 msgstr "Lire la suite"
 
-#: inc/fonctions.php:698
-#: inc/fonctions.php:711
+#: inc/fonctions.php:866
+#: inc/fonctions.php:879
 msgid "Vote yes"
 msgstr "Votez oui"
 
-#: inc/fonctions.php:699
-#: inc/fonctions.php:717
-#: inc/fonctions.php:721
+#: inc/fonctions.php:867
+#: inc/fonctions.php:885
+#: inc/fonctions.php:889
 msgid "Vote no"
 msgstr "Votez non"
 
-#: inc/fonctions.php:709
+#: inc/fonctions.php:877
 msgid "This post seems pertinent to you"
 msgstr "Cet article vous semble pertinent"
 
-#: inc/fonctions.php:715
+#: inc/fonctions.php:883
 msgid "This post seems not pertinent to you"
 msgstr "Cet article ne vous semble pas pertinent"
 
-#: inc/fonctions.php:719
+#: inc/fonctions.php:887
 msgid "This post should not be here"
 msgstr "Cet article n'a pas sa place ici"
 
-#: inc/fonctions.php:720
+#: inc/fonctions.php:888
 msgid "Are you sure this post should not be on this planet and should be removed?"
 msgstr "Êtes-vous sûr que cet article ne devrait pas se trouver sur le planet et devrait être supprimé ?"
 
-#: inc/fonctions.php:743
+#: inc/fonctions.php:911
 #, php-format
 msgid "The field \"%s\" has to be a valid email address"
 msgstr "Le champ \"%s\" doit être une adresse email valide"
 
-#: inc/fonctions.php:749
-#: inc/fonctions.php:755
+#: inc/fonctions.php:917
+#: inc/fonctions.php:923
 #, php-format
 msgid "The field \"%s\" %s has to be a valid URL"
 msgstr "Le champ \"%s\" %s doit être une URL valide"
 
-#: inc/fonctions.php:759
+#: inc/fonctions.php:927
 #, php-format
 msgid "The field \"%s\" %s is not a valid simplepie feed"
 msgstr "Le champ \"%s\" %s n'est pas un flux simplepie valide"
 
-#: inc/fonctions.php:774
+#: inc/fonctions.php:942
 #, php-format
 msgid "The fields %s does not match"
 msgstr "Le champ %s ne correspond pas"
 
-#: inc/fonctions.php:778
+#: inc/fonctions.php:946
 #, php-format
 msgid "The fields %s needs to have 4 characters minimum"
 msgstr "Le champ %s doit contenir 4 caractères minimum"
 
-#: inc/fonctions.php:786
+#: inc/fonctions.php:954
 #, php-format
 msgid "The field \"%s\" is empty"
 msgstr "Le champ \"%s\" est vide"
 
-#: inc/fonctions.php:948
+#: inc/fonctions.php:1116
 msgid " bytes"
 msgstr "octets"
 
-#: inc/fonctions.php:952
+#: inc/fonctions.php:1120
 msgid " Kb"
 msgstr "Ko"
 
-#: inc/fonctions.php:956
+#: inc/fonctions.php:1124
 msgid " MB"
 msgstr "Mo"
 
-#: inc/fonctions.php:960
+#: inc/fonctions.php:1128
 msgid " GB"
 msgstr "GB"
 
-#: inc/fonctions.php:1186
+#: inc/fonctions.php:1354
 #, php-format
 msgid "A registration request have been already sent with this username: %s"
 msgstr "Une demande d'inscription a déjà été envoyée avec ce nom d'utilisateur : %s"
 
-#: inc/fonctions.php:1189
+#: inc/fonctions.php:1357
 #, php-format
 msgid "A registration request have been already sent with this fullname: %s"
 msgstr "Une demande d'inscription a déjà été envoyée avec ce nom : %s"
 
-#: inc/fonctions.php:1192
+#: inc/fonctions.php:1360
 #, php-format
 msgid "A registration request have been already sent with this email adress: %s"
 msgstr "Une demande d'inscription a déjà été envoyée avec cette adresse email : %s"
 
-#: inc/fonctions.php:1195
+#: inc/fonctions.php:1363
 #, php-format
 msgid "A registration request have been already sent with this website: %s"
 msgstr "Une demande d'inscription a déjà été envoyée avec ce site : %s"
 
-#: inc/fonctions.php:1198
+#: inc/fonctions.php:1366
 #, php-format
 msgid "A registration request have been already sent with this Feed URL: %s"
 msgstr "Une demande d'inscription a déjà été envoyée avec ce flux : %s"
 
-#: inc/fonctions.php:1211
-#: inc/fonctions.php:1214
+#: inc/fonctions.php:1379
+#: inc/fonctions.php:1382
 #: admin/api/manage-account_api.php:55
 #: admin/api/manage-user_api.php:97
 #: admin/api/manage-user_api.php:100
@@ -1233,13 +1267,13 @@ msgstr "Une demande d'inscription a déjà été envoyée avec ce flux : %s"
 msgid "The user %s already exists"
 msgstr "L'utilisateur %s existe déjà"
 
-#: inc/fonctions.php:1217
+#: inc/fonctions.php:1385
 #: admin/api/manage-user_api.php:103
 #, php-format
 msgid "The email address %s is already in use"
 msgstr "L'adresse email %s est déjà utilisée"
 
-#: inc/fonctions.php:1226
+#: inc/fonctions.php:1394
 #: admin/api/manage-user_api.php:110
 #, php-format
 msgid "The website %s is already assigned to the user %s"
@@ -1396,7 +1430,7 @@ msgstr "Accès refusé"
 #: admin/api/manage-database_api.php:95
 #: admin/api/manage-selection_api.php:82
 #: admin/api/manage-permissions_api.php:187
-#: admin/api/manage-tagging_api.php:177
+#: admin/api/manage-tagging_api.php:173
 #: admin/api/manage-moderation_api.php:198
 #: admin/api/manage-account_api.php:104
 #: admin/api/manage-user_api.php:382
@@ -1960,14 +1994,14 @@ msgid "NOTE: If you delete a post which is too recent, it will be refetched next
 msgstr "NOTE: Si vous supprimez un article trop récent, il sera récupéré et republié lors de la prochaine mise à jour !!"
 
 #: admin/manage-post.php:216
-#: admin/api/manage-tagging_api.php:135
+#: admin/api/manage-tagging_api.php:131
 #: admin/api/manage-moderation_api.php:156
 msgid "Date"
 msgstr "Date"
 
 #: admin/manage-post.php:217
 #: admin/index.php:68
-#: admin/api/manage-tagging_api.php:136
+#: admin/api/manage-tagging_api.php:132
 #: admin/api/manage-moderation_api.php:158
 msgid "Title"
 msgstr "Titre"
@@ -2634,7 +2668,7 @@ msgid "Installation wizard of the Bilboplanet"
 msgstr "Assistant d'installation du bilboplanet"
 
 #: admin/install/wizard.php:161
-#: admin/install/index.php:284
+#: admin/install/index.php:297
 msgid "Errors:"
 msgstr "Erreurs :"
 
@@ -2685,9 +2719,9 @@ msgid "Your password depends of your provider"
 msgstr "Votre mot de passe dépend de votre fournisseur"
 
 #: admin/install/wizard.php:200
-#: admin/install/index.php:339
-#: admin/install/index.php:342
-#: admin/install/index.php:345
+#: admin/install/index.php:352
+#: admin/install/index.php:355
+#: admin/install/index.php:358
 msgid "Required field"
 msgstr "Champ requis"
 
@@ -2700,7 +2734,7 @@ msgid "bp_ is the default prefix"
 msgstr "bp_ est le préfixe par défaut"
 
 #: admin/install/wizard.php:204
-#: admin/install/index.php:350
+#: admin/install/index.php:363
 msgid "Save"
 msgstr "Enregistrer"
 
@@ -2762,122 +2796,122 @@ msgstr "Les mots de passe ne correspondent pas"
 msgid "The password have to contain minimum 6 characters."
 msgstr "Le mot de passe doit contenir au minimum 6 caractères"
 
-#: admin/install/index.php:267
-#: admin/install/index.php:281
+#: admin/install/index.php:280
+#: admin/install/index.php:294
 msgid "Installation of the Bilboplanet"
 msgstr "Installation du Bilboplanet"
 
-#: admin/install/index.php:288
+#: admin/install/index.php:301
 msgid "The configuration file was successfully created."
 msgstr "Le fichier de configuration a bien été crée"
 
-#: admin/install/index.php:308
+#: admin/install/index.php:321
 msgid "Information on the BilboPlanet"
 msgstr "Informations sur le Bilboplanet"
 
-#: admin/install/index.php:310
+#: admin/install/index.php:323
 msgid "Thank you for taking somes minutes to answer those questions to help to the configuration of the bilboplanet."
 msgstr "Merci de prendre quelques minutes pour répondre à ces questions pour aider à la configuration du bilboplanet"
 
-#: admin/install/index.php:311
+#: admin/install/index.php:324
 msgid "Fields marked with an asterisk are obligatory"
 msgstr "Les champs marqués d'un asterisque sont obligatoires"
 
-#: admin/install/index.php:314
+#: admin/install/index.php:327
 msgid "Information of the user"
 msgstr "Information de l'utilisateur"
 
-#: admin/install/index.php:317
+#: admin/install/index.php:330
 msgid "Enter your fullname or the name you want to be displayed"
 msgstr "Entrez votre nom complet ou le nom que vous souhaitez voir affiché"
 
-#: admin/install/index.php:320
+#: admin/install/index.php:333
 msgid "Enter your email address"
 msgstr "Entrez votre adresse email"
 
-#: admin/install/index.php:321
+#: admin/install/index.php:334
 msgid "Website of the user"
 msgstr "Site web de l'utilisateur"
 
-#: admin/install/index.php:323
+#: admin/install/index.php:336
 msgid "Entre address of your website or blog (optional)"
 msgstr "Ajoutez l'adresse de votre site ou blog personnel (optionnel)"
 
-#: admin/install/index.php:326
+#: admin/install/index.php:339
 msgid "Information on the Planet"
 msgstr "Information du planet"
 
-#: admin/install/index.php:327
+#: admin/install/index.php:340
 #: admin/api/manage-option_api.php:358
 #: admin/api/manage-option_api.php:676
 msgid "Title of the Planet"
 msgstr "Titre du planet"
 
-#: admin/install/index.php:329
+#: admin/install/index.php:342
 msgid "Fill the title of your planet"
 msgstr "Remplissez le titre de votre planet"
 
-#: admin/install/index.php:330
+#: admin/install/index.php:343
 msgid "Description"
 msgstr "Description"
 
-#: admin/install/index.php:332
+#: admin/install/index.php:345
 msgid "Give a description of your planet"
 msgstr "Donnez une description du planet"
 
-#: admin/install/index.php:333
+#: admin/install/index.php:346
 msgid "Planet Language"
 msgstr "Langue du planet"
 
-#: admin/install/index.php:335
+#: admin/install/index.php:348
 msgid "Choose your langage"
 msgstr "Choisissez votre langue"
 
-#: admin/install/index.php:338
+#: admin/install/index.php:351
 msgid "Administration username and password"
 msgstr "Nom d'utilisateur et mot de passe d'administration"
 
-#: admin/install/index.php:341
+#: admin/install/index.php:354
 msgid "Enter your username"
 msgstr "Entrez votre nom d'utilisateur"
 
-#: admin/install/index.php:344
+#: admin/install/index.php:357
 msgid "Enter your password"
 msgstr "Entrez votre mot de passe"
 
-#: admin/install/index.php:345
+#: admin/install/index.php:358
 msgid "Confirm your password"
 msgstr "Confirmez votre mot de passe"
 
-#: admin/install/index.php:347
+#: admin/install/index.php:360
 msgid "Re-enter your password for verification"
 msgstr "Entrez votre mot de passe à nouveau pour vérification"
 
-#: admin/install/index.php:361
+#: admin/install/index.php:374
 msgid "Install succeeded"
 msgstr "Installation réussie"
 
-#: admin/install/index.php:363
+#: admin/install/index.php:376
 msgid "The Bilboplanet was successfully installed. Here you can find a resume of the configuration"
 msgstr "Le bilboplanet a été installé avec succès. Ici vous pouvez trouver un résumé de la configuration"
 
-#: admin/install/index.php:365
+#: admin/install/index.php:378
 msgid "Your account"
 msgstr "Votre compte"
 
-#: admin/install/index.php:371
+#: admin/install/index.php:384
 msgid "Your Bilboplanet"
 msgstr "Votre Bilboplanet"
 
-#: admin/install/index.php:373
+#: admin/install/index.php:386
 msgid "URL of the BilboPlanet:"
 msgstr "URL du Bilboplanet"
 
-#: admin/install/index.php:374
+#: admin/install/index.php:387
 msgid "Administration interface:"
 msgstr "Interface d'administration"
 
-#: admin/install/index.php:378
+#: admin/install/index.php:391
 msgid "Go to the administration interface"
 msgstr "Aller à l'interface d'administration"
 
@@ -3068,7 +3102,7 @@ msgid "The tag was successfuly removed"
 msgstr "Le tag a été correctement supprimé"
 
 #: admin/api/manage-feed_api.php:334
-#: admin/api/manage-tagging_api.php:90
+#: admin/api/manage-tagging_api.php:86
 #: user/api/tagging_api.php:100
 #: user/api/tagging_api.php:190
 msgid "Tags added : "
@@ -3425,11 +3459,11 @@ msgstr "Hôte du statusnet du planet (ex : http://identi.ca)"
 msgid "The tag you want to remove doesn't exist on this post"
 msgstr "Le tag que vous souhaitez supprimer n'existe pas sur cet article"
 
-#: admin/api/manage-tagging_api.php:158
+#: admin/api/manage-tagging_api.php:154
 msgid "Tag post"
 msgstr "Tagger l'article"
 
-#: admin/api/manage-tagging_api.php:166
+#: admin/api/manage-tagging_api.php:162
 #: admin/api/manage-moderation_api.php:187
 #, php-format
 msgid "%s last posts :"
@@ -3652,9 +3686,6 @@ msgstr "Cet article est déjà supprimé"
 
 #~ msgid "Summary"
 #~ msgstr "Sommaire"
-
-#~ msgid "Show posts content"
-#~ msgstr "Afficher le contenu des articles"
 
 #~ msgid "Subscribe to RSS feed"
 #~ msgstr "S'abonner au flux RSS"

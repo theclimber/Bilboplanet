@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-22 10:41+0100\n"
+"POT-Creation-Date: 2012-04-05 14:46+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,16 +22,20 @@ msgstr ""
 msgid "%d vote(s)"
 msgstr ""
 
-#: tpl.php:141
+#: tpl.php:148
 msgid "Powered by Bilboplanet"
 msgstr ""
 
-#: tpl.php:144
+#: tpl.php:151
 msgid "Valid CSS - Xhtml"
 msgstr ""
 
-#: tpl.php:147
+#: tpl.php:154
 msgid "Designed by BilboPlanet"
+msgstr ""
+
+#: tags.php:14 users.php:14
+msgid "Users"
 msgstr ""
 
 #: 404.php:33
@@ -40,6 +44,14 @@ msgstr ""
 
 #: 404.php:34
 msgid "Page not found"
+msgstr ""
+
+#: portal.php:16
+msgid "Portal"
+msgstr ""
+
+#: portal.php:58
+msgid "Popular posts"
 msgstr ""
 
 #: contact.php:47 inscription.php:53
@@ -154,12 +166,12 @@ msgid "Your new password"
 msgstr ""
 
 #: auth.php:122 auth.php:283 auth.php:329 admin/install/wizard.php:192
-#: admin/install/index.php:367
+#: admin/install/index.php:380
 msgid "Username:"
 msgstr ""
 
 #: auth.php:123 auth.php:333 admin/install/wizard.php:196
-#: admin/install/index.php:368
+#: admin/install/index.php:381
 msgid "Password:"
 msgstr ""
 
@@ -223,17 +235,26 @@ msgstr ""
 msgid "login"
 msgstr ""
 
-#: feed.php:218
+#: feed.php:110 list.php:124
+#, php-format
+msgid "%s tribe"
+msgstr ""
+
+#: feed.php:244
 #, php-format
 msgid "Vote for this post on <a href=\"%s\" title=\"Go on the planet\">%s</a>."
 msgstr ""
 
-#: feed.php:229
+#: feed.php:255
 #, php-format
 msgid "Gravatar of %s"
 msgstr ""
 
-#: feed.php:300 inscription.php:133 admin/api/manage-pendinguser_api.php:177
+#: feed.php:271
+msgid "Similar posts"
+msgstr ""
+
+#: feed.php:350 inscription.php:133 admin/api/manage-pendinguser_api.php:177
 #: admin/api/manage-pendinguser_api.php:217
 #: admin/api/manage-pendinguser_api.php:242 admin/api/manage-feed_api.php:476
 msgid "Feed"
@@ -275,19 +296,19 @@ msgstr ""
 msgid "Subject"
 msgstr ""
 
-#: inscription.php:129 admin/install/index.php:339
+#: inscription.php:129 admin/install/index.php:352
 msgid "Username"
 msgstr ""
 
 #: inscription.php:130 admin/manage-account.php:65 admin/manage-user.php:107
-#: admin/manage-user.php:148 admin/install/index.php:315
+#: admin/manage-user.php:148 admin/install/index.php:328
 #: admin/api/manage-pendinguser_api.php:234
 #: admin/api/manage-account_api.php:36 user/api/account_api.php:36
 msgid "Fullname"
 msgstr ""
 
 #: inscription.php:131 admin/manage-account.php:69 admin/manage-user.php:111
-#: admin/manage-user.php:152 admin/install/index.php:318
+#: admin/manage-user.php:152 admin/install/index.php:331
 #: admin/api/manage-pendinguser_api.php:235
 #: admin/api/manage-account_api.php:37 user/api/account_api.php:37
 msgid "Email"
@@ -323,115 +344,115 @@ msgstr ""
 msgid "Reading cache"
 msgstr ""
 
-#: inc/fonctions.php:569
+#: inc/fonctions.php:715
 #, php-format
 msgid "By %s, on %s at %s."
 msgstr ""
 
-#: inc/fonctions.php:572
+#: inc/fonctions.php:718
 msgid "View post detail"
 msgstr ""
 
-#: inc/fonctions.php:595
+#: inc/fonctions.php:741
 msgid "Read more"
 msgstr ""
 
-#: inc/fonctions.php:698 inc/fonctions.php:711
+#: inc/fonctions.php:866 inc/fonctions.php:879
 msgid "Vote yes"
 msgstr ""
 
-#: inc/fonctions.php:699 inc/fonctions.php:717 inc/fonctions.php:721
+#: inc/fonctions.php:867 inc/fonctions.php:885 inc/fonctions.php:889
 msgid "Vote no"
 msgstr ""
 
-#: inc/fonctions.php:709
+#: inc/fonctions.php:877
 msgid "This post seems pertinent to you"
 msgstr ""
 
-#: inc/fonctions.php:715
+#: inc/fonctions.php:883
 msgid "This post seems not pertinent to you"
 msgstr ""
 
-#: inc/fonctions.php:719
+#: inc/fonctions.php:887
 msgid "This post should not be here"
 msgstr ""
 
-#: inc/fonctions.php:720
+#: inc/fonctions.php:888
 msgid "Are you sure this post should not be on this planet and should be removed?"
 msgstr ""
 
-#: inc/fonctions.php:743
+#: inc/fonctions.php:911
 #, php-format
 msgid "The field \"%s\" has to be a valid email address"
 msgstr ""
 
-#: inc/fonctions.php:749 inc/fonctions.php:755
+#: inc/fonctions.php:917 inc/fonctions.php:923
 #, php-format
 msgid "The field \"%s\" %s has to be a valid URL"
 msgstr ""
 
-#: inc/fonctions.php:759
+#: inc/fonctions.php:927
 #, php-format
 msgid "The field \"%s\" %s is not a valid simplepie feed"
 msgstr ""
 
-#: inc/fonctions.php:774
+#: inc/fonctions.php:942
 #, php-format
 msgid "The fields %s does not match"
 msgstr ""
 
-#: inc/fonctions.php:778
+#: inc/fonctions.php:946
 #, php-format
 msgid "The fields %s needs to have 4 characters minimum"
 msgstr ""
 
-#: inc/fonctions.php:786
+#: inc/fonctions.php:954
 #, php-format
 msgid "The field \"%s\" is empty"
 msgstr ""
 
-#: inc/fonctions.php:948
+#: inc/fonctions.php:1116
 msgid " bytes"
 msgstr ""
 
-#: inc/fonctions.php:952
+#: inc/fonctions.php:1120
 msgid " Kb"
 msgstr ""
 
-#: inc/fonctions.php:956
+#: inc/fonctions.php:1124
 msgid " MB"
 msgstr ""
 
-#: inc/fonctions.php:960
+#: inc/fonctions.php:1128
 msgid " GB"
 msgstr ""
 
-#: inc/fonctions.php:1186
+#: inc/fonctions.php:1354
 #, php-format
 msgid "A registration request have been already sent with this username: %s"
 msgstr ""
 
-#: inc/fonctions.php:1189
+#: inc/fonctions.php:1357
 #, php-format
 msgid "A registration request have been already sent with this fullname: %s"
 msgstr ""
 
-#: inc/fonctions.php:1192
+#: inc/fonctions.php:1360
 #, php-format
 msgid "A registration request have been already sent with this email adress: %s"
 msgstr ""
 
-#: inc/fonctions.php:1195
+#: inc/fonctions.php:1363
 #, php-format
 msgid "A registration request have been already sent with this website: %s"
 msgstr ""
 
-#: inc/fonctions.php:1198
+#: inc/fonctions.php:1366
 #, php-format
 msgid "A registration request have been already sent with this Feed URL: %s"
 msgstr ""
 
-#: inc/fonctions.php:1211 inc/fonctions.php:1214
+#: inc/fonctions.php:1379 inc/fonctions.php:1382
 #: admin/api/manage-account_api.php:55 admin/api/manage-user_api.php:97
 #: admin/api/manage-user_api.php:100 admin/api/manage-user_api.php:225
 #: user/api/account_api.php:55
@@ -439,12 +460,12 @@ msgstr ""
 msgid "The user %s already exists"
 msgstr ""
 
-#: inc/fonctions.php:1217 admin/api/manage-user_api.php:103
+#: inc/fonctions.php:1385 admin/api/manage-user_api.php:103
 #, php-format
 msgid "The email address %s is already in use"
 msgstr ""
 
-#: inc/fonctions.php:1226 admin/api/manage-user_api.php:110
+#: inc/fonctions.php:1394 admin/api/manage-user_api.php:110
 #, php-format
 msgid "The website %s is already assigned to the user %s"
 msgstr ""
@@ -586,7 +607,7 @@ msgstr ""
 #: admin/api/manage-feed_api.php:454 admin/api/manage-database_api.php:95
 #: admin/api/manage-selection_api.php:82
 #: admin/api/manage-permissions_api.php:187
-#: admin/api/manage-tagging_api.php:177
+#: admin/api/manage-tagging_api.php:173
 #: admin/api/manage-moderation_api.php:198
 #: admin/api/manage-account_api.php:104 admin/api/manage-user_api.php:382
 #: user/api/feed_api.php:72 user/api/tagging_api.php:214
@@ -1016,7 +1037,7 @@ msgstr ""
 msgid "ex: Frankenstein"
 msgstr ""
 
-#: admin/manage-user.php:115 admin/install/index.php:342
+#: admin/manage-user.php:115 admin/install/index.php:355
 msgid "Password"
 msgstr ""
 
@@ -1120,13 +1141,13 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: admin/manage-post.php:216 admin/api/manage-tagging_api.php:135
+#: admin/manage-post.php:216 admin/api/manage-tagging_api.php:131
 #: admin/api/manage-moderation_api.php:156
 msgid "Date"
 msgstr ""
 
 #: admin/manage-post.php:217 admin/index.php:68
-#: admin/api/manage-tagging_api.php:136
+#: admin/api/manage-tagging_api.php:132
 #: admin/api/manage-moderation_api.php:158
 msgid "Title"
 msgstr ""
@@ -1776,7 +1797,7 @@ msgstr ""
 msgid "Installation wizard of the Bilboplanet"
 msgstr ""
 
-#: admin/install/wizard.php:161 admin/install/index.php:284
+#: admin/install/wizard.php:161 admin/install/index.php:297
 msgid "Errors:"
 msgstr ""
 
@@ -1819,8 +1840,8 @@ msgstr ""
 msgid "Your password depends of your provider"
 msgstr ""
 
-#: admin/install/wizard.php:200 admin/install/index.php:339
-#: admin/install/index.php:342 admin/install/index.php:345
+#: admin/install/wizard.php:200 admin/install/index.php:352
+#: admin/install/index.php:355 admin/install/index.php:358
 msgid "Required field"
 msgstr ""
 
@@ -1832,7 +1853,7 @@ msgstr ""
 msgid "bp_ is the default prefix"
 msgstr ""
 
-#: admin/install/wizard.php:204 admin/install/index.php:350
+#: admin/install/wizard.php:204 admin/install/index.php:363
 msgid "Save"
 msgstr ""
 
@@ -1893,120 +1914,120 @@ msgstr ""
 msgid "The password have to contain minimum 6 characters."
 msgstr ""
 
-#: admin/install/index.php:267 admin/install/index.php:281
+#: admin/install/index.php:280 admin/install/index.php:294
 msgid "Installation of the Bilboplanet"
 msgstr ""
 
-#: admin/install/index.php:288
+#: admin/install/index.php:301
 msgid "The configuration file was successfully created."
 msgstr ""
 
-#: admin/install/index.php:308
+#: admin/install/index.php:321
 msgid "Information on the BilboPlanet"
 msgstr ""
 
-#: admin/install/index.php:310
+#: admin/install/index.php:323
 msgid "Thank you for taking somes minutes to answer those questions to help to the configuration of the bilboplanet."
 msgstr ""
 
-#: admin/install/index.php:311
+#: admin/install/index.php:324
 msgid "Fields marked with an asterisk are obligatory"
 msgstr ""
 
-#: admin/install/index.php:314
+#: admin/install/index.php:327
 msgid "Information of the user"
 msgstr ""
 
-#: admin/install/index.php:317
+#: admin/install/index.php:330
 msgid "Enter your fullname or the name you want to be displayed"
 msgstr ""
 
-#: admin/install/index.php:320
+#: admin/install/index.php:333
 msgid "Enter your email address"
 msgstr ""
 
-#: admin/install/index.php:321
+#: admin/install/index.php:334
 msgid "Website of the user"
 msgstr ""
 
-#: admin/install/index.php:323
+#: admin/install/index.php:336
 msgid "Entre address of your website or blog (optional)"
 msgstr ""
 
-#: admin/install/index.php:326
+#: admin/install/index.php:339
 msgid "Information on the Planet"
 msgstr ""
 
-#: admin/install/index.php:327 admin/api/manage-option_api.php:358
+#: admin/install/index.php:340 admin/api/manage-option_api.php:358
 #: admin/api/manage-option_api.php:676
 msgid "Title of the Planet"
 msgstr ""
 
-#: admin/install/index.php:329
+#: admin/install/index.php:342
 msgid "Fill the title of your planet"
 msgstr ""
 
-#: admin/install/index.php:330
+#: admin/install/index.php:343
 msgid "Description"
 msgstr ""
 
-#: admin/install/index.php:332
+#: admin/install/index.php:345
 msgid "Give a description of your planet"
 msgstr ""
 
-#: admin/install/index.php:333
+#: admin/install/index.php:346
 msgid "Planet Language"
 msgstr ""
 
-#: admin/install/index.php:335
+#: admin/install/index.php:348
 msgid "Choose your langage"
 msgstr ""
 
-#: admin/install/index.php:338
+#: admin/install/index.php:351
 msgid "Administration username and password"
 msgstr ""
 
-#: admin/install/index.php:341
+#: admin/install/index.php:354
 msgid "Enter your username"
 msgstr ""
 
-#: admin/install/index.php:344
+#: admin/install/index.php:357
 msgid "Enter your password"
 msgstr ""
 
-#: admin/install/index.php:345
+#: admin/install/index.php:358
 msgid "Confirm your password"
 msgstr ""
 
-#: admin/install/index.php:347
+#: admin/install/index.php:360
 msgid "Re-enter your password for verification"
 msgstr ""
 
-#: admin/install/index.php:361
+#: admin/install/index.php:374
 msgid "Install succeeded"
 msgstr ""
 
-#: admin/install/index.php:363
+#: admin/install/index.php:376
 msgid "The Bilboplanet was successfully installed. Here you can find a resume of the configuration"
 msgstr ""
 
-#: admin/install/index.php:365
+#: admin/install/index.php:378
 msgid "Your account"
 msgstr ""
 
-#: admin/install/index.php:371
+#: admin/install/index.php:384
 msgid "Your Bilboplanet"
 msgstr ""
 
-#: admin/install/index.php:373
+#: admin/install/index.php:386
 msgid "URL of the BilboPlanet:"
 msgstr ""
 
-#: admin/install/index.php:374
+#: admin/install/index.php:387
 msgid "Administration interface:"
 msgstr ""
 
-#: admin/install/index.php:378
+#: admin/install/index.php:391
 msgid "Go to the administration interface"
 msgstr ""
 
@@ -2187,7 +2208,7 @@ msgstr ""
 msgid "The tag was successfuly removed"
 msgstr ""
 
-#: admin/api/manage-feed_api.php:334 admin/api/manage-tagging_api.php:90
+#: admin/api/manage-feed_api.php:334 admin/api/manage-tagging_api.php:86
 #: user/api/tagging_api.php:100 user/api/tagging_api.php:190
 msgid "Tags added : "
 msgstr ""
@@ -2507,17 +2528,17 @@ msgstr ""
 msgid "The tag you want to remove doesn't exist on this post"
 msgstr ""
 
-#: admin/api/manage-tagging_api.php:158
+#: admin/api/manage-tagging_api.php:154
 msgid "Tag post"
 msgstr ""
 
-#: admin/api/manage-tagging_api.php:166
+#: admin/api/manage-tagging_api.php:162
 #: admin/api/manage-moderation_api.php:187
 #, php-format
 msgid "%s last posts :"
 msgstr ""
 
-#: admin/api/manage-tagging_api.php:172
+#: admin/api/manage-tagging_api.php:168
 #: admin/api/manage-moderation_api.php:193
 msgid "No posts found"
 msgstr ""

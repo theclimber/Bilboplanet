@@ -618,17 +618,26 @@ function getSimilarPosts_SQL($post_id,$post_tags) {
 	$sql_sim = "SELECT
 			".$core->prefix."post.post_id,
 			".$core->prefix."post.user_id,
+			".$core->prefix."user.user_fullname,
 			".$core->prefix."post.post_pubdate,
 			".$core->prefix."post.post_permalink,
-			".$core->prefix."post.post_title
-		FROM ".$core->prefix."post, ".$core->prefix."post_tag
+			".$core->prefix."post.post_title,
+			COUNT(".$core->prefix."post.post_id) as tag_count
+		FROM
+			".$core->prefix."post,
+			".$core->prefix."post_tag,
+			".$core->prefix."user
 		WHERE 
-			".$core->prefix."post.post_id = ".$core->prefix."post_tag.post_id
+		".$core->prefix."post.post_id = ".$core->prefix."post_tag.post_id
+			AND ".$core->prefix."user.user_id = ".$core->prefix."post.user_id
 			AND NOT ".$core->prefix."post.post_id = ".$post_id."
 			AND tag_id IN (".$tags_string.")
 		GROUP BY ".$core->prefix."post.post_id
-		ORDER BY ".$core->prefix."post.post_pubdate DESC
+		HAVING COUNT(".$core->prefix."post.post_id) > 2
+		ORDER BY tag_count DESC
 		LIMIT 0,5";
+	print $sql_sim;
+	exit;
 	return $sql_sim;
 }
 

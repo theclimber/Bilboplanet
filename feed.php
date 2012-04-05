@@ -270,9 +270,14 @@ if (isset($_GET) && isset($_GET['type'])) {
 			if ($rsimilar->count() > 0) {
 				$sim_html = '<div class="similar-block"><h3>'.T_('Similar posts').'</h3><ul>';
 				while ($rsimilar->fetch()) {
+					$post_permalink = $rsimilar->permalink;
+					if ($blog_settings->get('internal_links')) {
+						$post_permalink = $blog_settings->get('planet_url').
+							"/index.php?post_id=".$rsimilar->post_id;
+					}
 					$sim_html .= "<li>";
-					$sim_html .= $rsimilar->user_id." : ";
-					$sim_html .= '<a href="'.$rsimilar->post_permalink.'">'.$rsimilar->post_title;
+					$sim_html .= $rsimilar->user_fullname." : ";
+					$sim_html .= '<a href="'.urldecode($post_permalink).'">'.$rsimilar->post_title;
 					$sim_html .= "</a> (".mysqldatetime_to_date("d/m/Y",$rsimilar->post_pubdate).")";
 					$sim_html .= "</li>";
 				}

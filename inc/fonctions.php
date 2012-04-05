@@ -761,10 +761,15 @@ function showPosts($rs, $tpl, $search_value="", $strip_tags=false) {
 			$rsimilar = $core->con->select($sql_sim);
 			if ($rsimilar->count() > 0) {
 				while ($rsimilar->fetch()) {
+					$post_permalink = $rsimilar->permalink;
+					if ($blog_settings->get('internal_links')) {
+						$post_permalink = $blog_settings->get('planet_url').
+							"/index.php?post_id=".$rsimilar->post_id;
+					}
 					$similar = array(
-						"author" => $rsimilar->user_id,
+						"author" => $rsimilar->user_fullname,
 						"title" => $rsimilar->post_title,
-						"permalink" => $rsimilar->post_permalink,
+						"permalink" => urldecode($post_permalink),
 						"pubdate" => mysqldatetime_to_date("d/m/Y",$rsimilar->post_pubdate)
 					);
 					$tpl->setVar('similar', $similar);

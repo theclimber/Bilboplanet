@@ -32,9 +32,16 @@
 
 <p>Websites that aggregate posts from different blogs using Planet or similar software are known as planets themselves. Such sites are commonly associated with free and open source software projects, where they are used to collect posts from the various developers involved in projects.</p>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout bilboplanet
+<pre><code>
+$ cd your_dev_folder
+$ git clone https://github.com/YOUR_USERNAME/Bilboplanet.git
+$ cd bilboplanet
+$ git checkout -b myNewBranch # create your own development branch
+$ vim index.php
+... do some work
+$ git add index.php
+$ git commit
+$ git push origin myNewBranch # push your development branch on your remote
 </code></pre>
 
 <p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>

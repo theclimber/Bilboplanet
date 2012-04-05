@@ -636,8 +636,6 @@ function getSimilarPosts_SQL($post_id,$post_tags) {
 		HAVING COUNT(".$core->prefix."post.post_id) > 2
 		ORDER BY tag_count DESC
 		LIMIT 0,5";
-	print $sql_sim;
-	exit;
 	return $sql_sim;
 }
 
@@ -761,17 +759,19 @@ function showPosts($rs, $tpl, $search_value="", $strip_tags=false) {
 		if ($blog_settings->get('show_similar_posts') && !empty($post_tags)) {
 			$sql_sim = getSimilarPosts_SQL($rs->post_id, $post_tags);
 			$rsimilar = $core->con->select($sql_sim);
-			while ($rsimilar->fetch()) {
-				$similar = array(
-					"author" => $rsimilar->user_id,
-					"title" => $rsimilar->post_title,
-					"permalink" => $rsimilar->post_permalink,
-					"pubdate" => mysqldatetime_to_date("d/m/Y",$rsimilar->post_pubdate)
-				);
-				$tpl->setVar('similar', $similar);
-				$tpl->render("post.similar.item");
+			if ($rsimilar->count() > 0) {
+				while ($rsimilar->fetch()) {
+					$similar = array(
+						"author" => $rsimilar->user_id,
+						"title" => $rsimilar->post_title,
+						"permalink" => $rsimilar->post_permalink,
+						"pubdate" => mysqldatetime_to_date("d/m/Y",$rsimilar->post_pubdate)
+					);
+					$tpl->setVar('similar', $similar);
+					$tpl->render("post.similar.item");
+				}
+				$tpl->render("post.similar.block");
 			}
-			$tpl->render("post.similar.block");
 		}
 		if ($blog_settings->get('allow_post_comments')) {
 			if($core->auth->userID() == $rs->user_id || $core->hasRole('manager')) {

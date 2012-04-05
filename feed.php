@@ -267,16 +267,18 @@ if (isset($_GET) && isset($_GET['type'])) {
 			$sql_sim = getSimilarPosts_SQL($post_list->post_id, $post_tags);
 
 			$rsimilar = $core->con->select($sql_sim);
-			$sim_html = '<div class="similar-block"><h3>'.T_('Similar posts').'</h3><ul>';
-			while ($rsimilar->fetch()) {
-				$sim_html .= "<li>";
-				$sim_html .= $rsimilar->user_id." : ";
-				$sim_html .= '<a href="'.$rsimilar->post_permalink.'">'.$rsimilar->post_title;
-				$sim_html .= "</a> (".mysqldatetime_to_date("d/m/Y",$rsimilar->post_pubdate).")";
-				$sim_html .= "</li>";
+			if ($rsimilar->count() > 0) {
+				$sim_html = '<div class="similar-block"><h3>'.T_('Similar posts').'</h3><ul>';
+				while ($rsimilar->fetch()) {
+					$sim_html .= "<li>";
+					$sim_html .= $rsimilar->user_id." : ";
+					$sim_html .= '<a href="'.$rsimilar->post_permalink.'">'.$rsimilar->post_title;
+					$sim_html .= "</a> (".mysqldatetime_to_date("d/m/Y",$rsimilar->post_pubdate).")";
+					$sim_html .= "</li>";
+				}
+				$sim_html .= "</ul></div>";
+				$item = $item."\n<p>".$sim_html."</p>";
 			}
-			$sim_html .= "</ul></div>";
-			$item = $item."\n<p>".$sim_html."</p>";
 		}
 
 		if ($_GET['type']=="rss"){

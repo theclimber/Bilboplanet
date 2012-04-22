@@ -1,17 +1,15 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# Translators:
-# <>, 2011.
-# Amine <amine@linuxac.org>, 2010, 2011, 2012.
-# <amine@linuxac.org>, 2011, 2012.
+# French translations for bilboplanet package.
+# Copyright (C) 2009 THE Bilboplanet'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the Bilboplanet package.
+# Greg theClimber <greg@theclimber.be>, 2009.
+# amine <amine@ardebian.org>, 2010, 2011, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Bilboplanet\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-10-29 10:55+0200\n"
-"PO-Revision-Date: 2012-02-08 11:11+0100\n"
-"Last-Translator: Gregoire de Hemptinne <greg@theclimber.be>\n"
+"PO-Revision-Date: 2012-03-26 16:17+0000\n"
+"Last-Translator: amine <amine@ardebian.org>\n"
 "Language-Team: ...\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
@@ -19,381 +17,525 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Virtaal 0.7.0\n"
+"X-Generator: Virtaal 0.7.1\n"
 
-#: themes/legolas/subscription.tpl:12 themes/aragorn/subscription.tpl:12
-#: themes/gandalf/subscription.tpl:12 themes/gil-galad/subscription.tpl:12
-#, fuzzy
-msgid ""
-"Before to subscribe, do not hesitate to test your RSS/Atom feeds to be sure "
-"they'll be well interpretated by the planet aggregator engine which is using "
-"the <a href='http://simplepie.org/' title='Simple Pie' rel='noffolow'>Simple "
-"Pie</a> library (distributed under the LGPL licecne). Check also if your "
-"feeds are perfectly valid on <a href='http://feedvalidator.org/check.cgi' "
-"target='_blank'>Feedvalidator</a> and correct them if needed. Otherwise you "
-"could have some problems using them."
+#: themes/legolas/subscription.tpl:12
+#: themes/aragorn/subscription.tpl:12
+#: themes/gandalf/subscription.tpl:12
+#: themes/gil-galad/subscription.tpl:12
+msgid "Before to subscribe, do not hesitate to test your RSS/Atom feeds to be sure they'll be well interpretated by the planet aggregator engine which is using the <a href='http://simplepie.org/' title='Simple Pie' rel='noffolow'>Simple Pie</a> library (distributed under the LGPL licecne). Check also if your feeds are perfectly valid on <a href='http://feedvalidator.org/check.cgi' target='_blank'>Feedvalidator</a> and correct them if needed. Otherwise you could have some problems using them."
 msgstr ""
 "قبل التسجيل، لا تتردّد في إختبار تلقيم RSS/Atom الخاص بك للتأكد من تفسيره من "
-"قِبل محرك مُجمِّع الكوكب الذي يستعمل مكتبة <a href='http://simplepie.org/' "
-"title='Simple Pie' rel='noffolow'>Simple Pie</a> (موزعة تحت رخصة LGPL). تأكد "
-"أيضا من أن التلقيم صالح على <a href='http://feedvalidator.org/check.cgi' "
-"target='_blank'>Feedvalidator</a> وقم بإصلاحه إن تطلب الأمر وإلا قد تواجه "
-"بعض مشاكل الإستخدام."
+"قِبل محرك مُجمِّع الكوكب الذي يستعمل مكتبة <a href='http://simplepie.orag/' "
+"title='Simple Pie' rel='noffolow'>Simple Pie</a> (موزعة تحت رخصة LGPL). "
+"تأكد أيضا من أن التلقيم صالح على <a "
+"href='http://feedvalidator.org/check.cgi' target='_blank'>Feedvalidator</a> "
+"وقم بإصلاحه إن تطلب الأمر لكي لا تواجه مشاكل في الاستخدام."
 
-#: themes/aragorn/footer.tpl:6 themes/gil-galad/footer.tpl:6
+#: themes/aragorn/footer.tpl:6
+#: themes/gil-galad/footer.tpl:6
 msgid "Back to top"
-msgstr "العودة للأعلى"
+msgstr "الأعلى"
 
-#: themes/legolas/sidebar.tpl:25 themes/aragorn/sidebar.tpl:7
-#: themes/gandalf/sidebar.tpl:6 themes/gil-galad/sidebar.tpl:7
+#: themes/legolas/sidebar.tpl:25
+#: themes/aragorn/sidebar.tpl:7
+#: themes/gandalf/sidebar.tpl:6
+#: themes/gil-galad/sidebar.tpl:7
 msgid "Quick news"
 msgstr "أخبار سريعة"
 
-#: themes/legolas/subscription.tpl:31 themes/aragorn/subscription.tpl:31
-#: themes/gandalf/subscription.tpl:31 themes/gil-galad/subscription.tpl:31
+#: themes/legolas/subscription.tpl:31
+#: themes/aragorn/subscription.tpl:31
+#: themes/gandalf/subscription.tpl:31
+#: themes/gil-galad/subscription.tpl:31
 msgid "Contact email"
 msgstr "بريد المراسل"
 
-#: themes/legolas/sidebar.tpl:39 themes/aragorn/sidebar.tpl:23
-#: themes/gandalf/sidebar.tpl:20 themes/gil-galad/sidebar.tpl:23
+#: themes/legolas/sidebar.tpl:39
+#: themes/aragorn/sidebar.tpl:23
+#: themes/gandalf/sidebar.tpl:20
+#: themes/gil-galad/sidebar.tpl:23
 msgid "Searching with :"
-msgstr "البحث مع :"
+msgstr "البحث حسب :"
 
-#: themes/legolas/subscription.tpl:65 themes/legolas/contact.tpl:8
-#: themes/aragorn/subscription.tpl:65 themes/aragorn/contact.tpl:8
-#: themes/gandalf/subscription.tpl:65 themes/gandalf/contact.tpl:8
-#: themes/gil-galad/subscription.tpl:65 themes/gil-galad/contact.tpl:8
+#: themes/legolas/subscription.tpl:65
+#: themes/legolas/contact.tpl:8
+#: themes/aragorn/subscription.tpl:65
+#: themes/aragorn/contact.tpl:8
+#: themes/gandalf/subscription.tpl:65
+#: themes/gandalf/contact.tpl:8
+#: themes/gil-galad/subscription.tpl:65
+#: themes/gil-galad/contact.tpl:8
 msgid "Contact us"
 msgstr "راسلنا"
 
-#: themes/legolas/posts.tpl:14 themes/gandalf/menu.tpl:32
+#: themes/legolas/posts.tpl:14
+#: themes/gandalf/menu.tpl:32
 msgid "All posts"
-msgstr "كل المواضيع"
+msgstr "كافة المنشورات"
 
-#: themes/legolas/subscription.tpl:13 themes/aragorn/subscription.tpl:13
-#: themes/gandalf/subscription.tpl:13 themes/gil-galad/subscription.tpl:13
+#: themes/legolas/subscription.tpl:13
+#: themes/aragorn/subscription.tpl:13
+#: themes/gandalf/subscription.tpl:13
+#: themes/gil-galad/subscription.tpl:13
 msgid "You can test the simplepie engine on the following page :"
-msgstr "يمكنك إختبار محرك simplepie على الصفحة التالية :"
+msgstr "يمكنك اختبار محرّك simplepie على الصفحة التالية :"
 
-#: themes/legolas/archives.tpl:4 themes/aragorn/archives.tpl:4
-#: themes/gandalf/archives.tpl:4 themes/gil-galad/archives.tpl:4
+#: themes/legolas/archives.tpl:4
+#: themes/aragorn/archives.tpl:4
+#: themes/gandalf/archives.tpl:4
+#: themes/gil-galad/archives.tpl:4
 msgid "Read the article"
-msgstr "قرأة الموضوع"
+msgstr "قراءة المقال"
 
-#: themes/legolas/posts.tpl:95 themes/aragorn/posts.tpl:74
-#: themes/gandalf/posts.tpl:77 themes/gil-galad/posts.tpl:75
+#: themes/legolas/posts.tpl:95
+#: themes/aragorn/posts.tpl:74
+#: themes/gandalf/posts.tpl:77
+#: themes/gil-galad/posts.tpl:75
 msgid "No comments yet"
 msgstr "لا توجد تعليقات بعد"
 
-#: themes/legolas/posts.tpl:39 themes/legolas/posts.tpl:139
-#: themes/aragorn/posts.tpl:20 themes/aragorn/posts.tpl:118
-#: themes/gandalf/posts.tpl:21 themes/gandalf/posts.tpl:128
-#: themes/gil-galad/posts.tpl:21 themes/gil-galad/posts.tpl:119
-#: inc/admin/prepend.php:58 admin/pagination.php:53 admin/pagination.php:60
+#: themes/legolas/posts.tpl:39
+#: themes/legolas/posts.tpl:139
+#: themes/aragorn/posts.tpl:20
+#: themes/aragorn/posts.tpl:118
+#: themes/gandalf/posts.tpl:21
+#: themes/gandalf/posts.tpl:128
+#: themes/gil-galad/posts.tpl:21
+#: themes/gil-galad/posts.tpl:119
+#: inc/admin/prepend.php:58
+#: admin/pagination.php:53
+#: admin/pagination.php:60
 msgid "Previous page"
 msgstr "الصفحة السابقة"
 
-#: themes/legolas/posts.tpl:27 themes/aragorn/posts.tpl:8
-#: themes/gandalf/posts.tpl:8 themes/gil-galad/posts.tpl:9
+#: themes/legolas/posts.tpl:27
+#: themes/aragorn/posts.tpl:8
+#: themes/gandalf/posts.tpl:8
+#: themes/gil-galad/posts.tpl:9
 msgid "Fast access to the last posts of the page"
 msgstr "نفاذ سريع لآخر مواضيع الصفحة"
 
-#: themes/legolas/index.tpl:68 themes/aragorn/index.tpl:67
-#: themes/gandalf/index.tpl:67 themes/gil-galad/index.tpl:80
+#: themes/legolas/index.tpl:68
+#: themes/aragorn/index.tpl:67
+#: themes/gandalf/index.tpl:67
+#: themes/gil-galad/index.tpl:80
 msgid "Password forgotten?"
 msgstr "نسيت كلمة السّر؟"
 
-#: themes/legolas/subscription.tpl:57 themes/legolas/contact.tpl:22
-#: themes/aragorn/subscription.tpl:57 themes/aragorn/contact.tpl:22
-#: themes/gandalf/subscription.tpl:57 themes/gandalf/contact.tpl:22
-#: themes/gil-galad/subscription.tpl:57 themes/gil-galad/contact.tpl:22
-#: admin/manage-feed.php:143 admin/manage-user.php:126
-#: admin/manage-post.php:171 admin/manage-newsletter.php:266
-#: admin/api/manage-site_api.php:190 admin/api/manage-feed_api.php:255
+#: themes/legolas/subscription.tpl:57
+#: themes/legolas/contact.tpl:22
+#: themes/aragorn/subscription.tpl:57
+#: themes/aragorn/contact.tpl:22
+#: themes/gandalf/subscription.tpl:57
+#: themes/gandalf/contact.tpl:22
+#: themes/gil-galad/subscription.tpl:57
+#: themes/gil-galad/contact.tpl:22
+#: admin/manage-feed.php:143
+#: admin/manage-user.php:126
+#: admin/manage-post.php:171
+#: admin/manage-newsletter.php:266
+#: admin/api/manage-site_api.php:190
+#: admin/api/manage-feed_api.php:255
 #: admin/api/manage-user_api.php:286
 msgid "Reset"
 msgstr "تصفير"
 
-#: themes/legolas/stats.tpl:23 themes/legolas/stats.tpl:44
-#: themes/aragorn/stats.tpl:23 themes/aragorn/stats.tpl:44
-#: themes/gandalf/stats.tpl:23 themes/gandalf/stats.tpl:44
-#: themes/gil-galad/stats.tpl:23 themes/gil-galad/stats.tpl:44
+#: themes/legolas/stats.tpl:23
+#: themes/legolas/stats.tpl:44
+#: themes/aragorn/stats.tpl:23
+#: themes/aragorn/stats.tpl:44
+#: themes/gandalf/stats.tpl:23
+#: themes/gandalf/stats.tpl:44
+#: themes/gil-galad/stats.tpl:23
+#: themes/gil-galad/stats.tpl:44
 msgid "Visit the website"
 msgstr "زيارة الموقع"
 
-#: themes/legolas/sidebar.tpl:81 themes/aragorn/sidebar.tpl:61
-#: themes/gandalf/sidebar.tpl:62 themes/gil-galad/sidebar.tpl:61
+#: themes/legolas/sidebar.tpl:81
+#: themes/aragorn/sidebar.tpl:61
+#: themes/gandalf/sidebar.tpl:62
+#: themes/gil-galad/sidebar.tpl:61
 msgid "See members posts"
-msgstr "مشاهدة مواضيع الأعضاء"
+msgstr "عرض منشورات الأعضاء"
 
-#: themes/legolas/posts.tpl:54 themes/aragorn/posts.tpl:34
-#: themes/gandalf/posts.tpl:35 themes/gil-galad/posts.tpl:35
+#: themes/legolas/posts.tpl:54
+#: themes/aragorn/posts.tpl:34
+#: themes/gandalf/posts.tpl:35
+#: themes/gil-galad/posts.tpl:35
 msgid "Show user's posts"
-msgstr "إظهار مواضيع المستخدمين"
+msgstr "إظهار منشورات المستخدمين"
 
-#: themes/legolas/sidebar.tpl:49 themes/aragorn/sidebar.tpl:33
-#: themes/gandalf/sidebar.tpl:30 themes/gil-galad/sidebar.tpl:33
+#: themes/legolas/sidebar.tpl:49
+#: themes/aragorn/sidebar.tpl:33
+#: themes/gandalf/sidebar.tpl:30
+#: themes/gil-galad/sidebar.tpl:33
 msgid "Parametrized feed"
-msgstr ""
+msgstr "تلقيمات مخصّصة"
 
 #: themes/gandalf/posts.tpl:120
 msgid "You can search to find other articles."
-msgstr "يمكنك البحث للعثور على مواضيع أخرى"
+msgstr "يمكنك البحث للعثور على مواضيع أخرى."
 
-#: themes/legolas/posts.tpl:11 themes/aragorn/index.tpl:109
-#: themes/gandalf/menu.tpl:29 themes/gil-galad/index.tpl:108
+#: themes/legolas/posts.tpl:11
+#: themes/aragorn/index.tpl:109
+#: themes/gandalf/menu.tpl:29
+#: themes/gil-galad/index.tpl:108
 msgid "Posts of the month"
-msgstr "مواضيع الشهر :"
+msgstr "منشورات الشهر"
 
-#: themes/legolas/footer.tpl:12 themes/aragorn/sidebar.tpl:71
-#: themes/gandalf/sidebar.tpl:74 themes/gil-galad/sidebar.tpl:71
+#: themes/legolas/footer.tpl:12
+#: themes/aragorn/sidebar.tpl:71
+#: themes/gandalf/sidebar.tpl:74
+#: themes/gil-galad/sidebar.tpl:71
 msgid "Add your blog"
-msgstr "أضف مدونتك"
+msgstr "إضافة مدونتك"
 
-#: themes/legolas/menu.tpl:10 themes/aragorn/menu.tpl:8
-#: themes/gandalf/menu.tpl:10 themes/gil-galad/menu.tpl:8
+#: themes/legolas/menu.tpl:10
+#: themes/aragorn/menu.tpl:8
+#: themes/gandalf/menu.tpl:10
+#: themes/gil-galad/menu.tpl:8
 msgid "Registration"
 msgstr "التسجيل"
 
-#: themes/legolas/sidebar.tpl:83 themes/aragorn/sidebar.tpl:63
-#: themes/gandalf/sidebar.tpl:64 themes/gil-galad/sidebar.tpl:63
+#: themes/legolas/sidebar.tpl:83
+#: themes/aragorn/sidebar.tpl:63
+#: themes/gandalf/sidebar.tpl:64
+#: themes/gil-galad/sidebar.tpl:63
 msgid "User's website"
 msgstr "موقع المستخدم"
 
-#: themes/legolas/menu.tpl:8 themes/aragorn/menu.tpl:6
-#: themes/gandalf/menu.tpl:8 themes/gil-galad/menu.tpl:6
+#: themes/legolas/menu.tpl:8
+#: themes/aragorn/menu.tpl:6
+#: themes/gandalf/menu.tpl:8
+#: themes/gil-galad/menu.tpl:6
 msgid "Statistics"
-msgstr "الإحصائيات"
+msgstr "إحصائيات"
 
-#: themes/legolas/subscription.tpl:23 themes/aragorn/subscription.tpl:23
-#: themes/gandalf/subscription.tpl:23 themes/gil-galad/subscription.tpl:23
+#: themes/legolas/subscription.tpl:23
+#: themes/aragorn/subscription.tpl:23
+#: themes/gandalf/subscription.tpl:23
+#: themes/gil-galad/subscription.tpl:23
 msgid "Name or nickname"
-msgstr "الإسم أو الكنية :"
+msgstr "الاسم أو الكنية"
 
-#: themes/legolas/posts.tpl:8 themes/aragorn/index.tpl:106
-#: themes/gandalf/menu.tpl:26 themes/gil-galad/index.tpl:105
+#: themes/legolas/posts.tpl:8
+#: themes/aragorn/index.tpl:106
+#: themes/gandalf/menu.tpl:26
+#: themes/gil-galad/index.tpl:105
 msgid "Posts of the week"
-msgstr "مواضيع الأسبوع :"
+msgstr "منشورات الأسبوع"
 
-#: themes/legolas/stats.tpl:5 themes/aragorn/stats.tpl:5
-#: themes/gandalf/stats.tpl:5 themes/gil-galad/stats.tpl:5
+#: themes/legolas/stats.tpl:5
+#: themes/aragorn/stats.tpl:5
+#: themes/gandalf/stats.tpl:5
+#: themes/gil-galad/stats.tpl:5
 msgid "Number of feeds :"
 msgstr "عدد التلقيمات :"
 
-#: themes/legolas/subscription.tpl:58 themes/legolas/contact.tpl:24
-#: themes/aragorn/subscription.tpl:58 themes/aragorn/contact.tpl:24
-#: themes/gandalf/subscription.tpl:58 themes/gandalf/contact.tpl:24
-#: themes/gil-galad/subscription.tpl:58 themes/gil-galad/contact.tpl:24
-#: admin/manage-feed.php:188 admin/manage-update.php:138
-#: admin/manage-post.php:172 admin/manage-tagging.php:99
-#: admin/manage-newsletter.php:262 admin/manage-selection.php:119
-#: admin/manage-pendinguser.php:61 admin/manage-pendinguser.php:74
+#: themes/legolas/subscription.tpl:58
+#: themes/legolas/contact.tpl:24
+#: themes/aragorn/subscription.tpl:58
+#: themes/aragorn/contact.tpl:24
+#: themes/gandalf/subscription.tpl:58
+#: themes/gandalf/contact.tpl:24
+#: themes/gil-galad/subscription.tpl:58
+#: themes/gil-galad/contact.tpl:24
+#: admin/manage-feed.php:188
+#: admin/manage-update.php:138
+#: admin/manage-post.php:172
+#: admin/manage-tagging.php:99
+#: admin/manage-newsletter.php:262
+#: admin/manage-selection.php:119
+#: admin/manage-pendinguser.php:61
+#: admin/manage-pendinguser.php:74
 #: admin/manage-moderation.php:109
 msgid "Send"
 msgstr "إرسال"
 
 #: themes/legolas/footer.tpl:18
 msgid "About Bilboplanet"
-msgstr "حول Bilboplanet"
+msgstr "عن Bilboplanet"
 
-#: themes/legolas/menu.tpl:12 themes/aragorn/menu.tpl:10
-#: themes/gandalf/menu.tpl:12 themes/gil-galad/menu.tpl:10
+#: themes/legolas/menu.tpl:12
+#: themes/aragorn/menu.tpl:10
+#: themes/gandalf/menu.tpl:12
+#: themes/gil-galad/menu.tpl:10
 msgid "Archives"
 msgstr "الأرشيف"
 
-#: themes/legolas/subscription.tpl:9 themes/aragorn/subscription.tpl:9
-#: themes/gandalf/subscription.tpl:9 themes/gil-galad/subscription.tpl:9
+#: themes/legolas/subscription.tpl:9
+#: themes/aragorn/subscription.tpl:9
+#: themes/gandalf/subscription.tpl:9
+#: themes/gil-galad/subscription.tpl:9
 msgid "Test your feeds"
-msgstr "إختبار التلقيم"
+msgstr "اختبار تلقيماتك"
 
-#: themes/legolas/index.tpl:53 themes/aragorn/index.tpl:52
-#: themes/gandalf/index.tpl:52 themes/gil-galad/index.tpl:65
-#: inscription.php:129 admin/install/index.php:339
+#: themes/legolas/index.tpl:53
+#: themes/aragorn/index.tpl:52
+#: themes/gandalf/index.tpl:52
+#: themes/gil-galad/index.tpl:65
+#: inscription.php:129
+#: admin/install/index.php:339
 msgid "Username"
-msgstr "إسم المستخدم"
+msgstr "اسم المستخدم"
 
-#: themes/legolas/sidebar.tpl:67 themes/aragorn/sidebar.tpl:43
-#: themes/gandalf/sidebar.tpl:41 themes/gil-galad/sidebar.tpl:43
+#: themes/legolas/sidebar.tpl:67
+#: themes/aragorn/sidebar.tpl:43
+#: themes/gandalf/sidebar.tpl:41
+#: themes/gil-galad/sidebar.tpl:43
 msgid "Feed with the posts of this category : "
-msgstr "تلقيم بمواضيع هذا التصنيف :"
+msgstr "تلقيم بمنشورات هذا التصنيف :"
 
-#: themes/legolas/stats.tpl:12 themes/aragorn/stats.tpl:12
-#: themes/gandalf/stats.tpl:12 themes/gil-galad/stats.tpl:12
+#: themes/legolas/stats.tpl:12
+#: themes/aragorn/stats.tpl:12
+#: themes/gandalf/stats.tpl:12
+#: themes/gil-galad/stats.tpl:12
 msgid "List of the most active members"
 msgstr "قائمة أنشط الأعضاء"
 
-#: themes/legolas/posts.tpl:59 themes/aragorn/posts.tpl:39
-#: themes/gandalf/posts.tpl:40 themes/gil-galad/posts.tpl:40
+#: themes/legolas/posts.tpl:59
+#: themes/aragorn/posts.tpl:39
+#: themes/gandalf/posts.tpl:40
+#: themes/gil-galad/posts.tpl:40
 msgid "Visit source"
 msgstr "زيارة المصدر"
 
-#: themes/legolas/index.tpl:39 themes/aragorn/index.tpl:38
-#: themes/gandalf/index.tpl:38 themes/gil-galad/index.tpl:51
+#: themes/legolas/index.tpl:39
+#: themes/aragorn/index.tpl:38
+#: themes/gandalf/index.tpl:38
+#: themes/gil-galad/index.tpl:51
 msgid "Welcome"
 msgstr "مرحباً"
 
-#: themes/legolas/posts.tpl:32 themes/legolas/posts.tpl:133
-#: themes/legolas/archives.tpl:6 themes/aragorn/posts.tpl:13
-#: themes/aragorn/posts.tpl:112 themes/aragorn/archives.tpl:6
-#: themes/gandalf/posts.tpl:14 themes/gandalf/posts.tpl:119
-#: themes/gandalf/archives.tpl:6 themes/gil-galad/posts.tpl:14
-#: themes/gil-galad/posts.tpl:113 themes/gil-galad/archives.tpl:6
+#: themes/legolas/posts.tpl:32
+#: themes/legolas/posts.tpl:133
+#: themes/legolas/archives.tpl:6
+#: themes/aragorn/posts.tpl:13
+#: themes/aragorn/posts.tpl:112
+#: themes/aragorn/archives.tpl:6
+#: themes/gandalf/posts.tpl:14
+#: themes/gandalf/posts.tpl:119
+#: themes/gandalf/archives.tpl:6
+#: themes/gil-galad/posts.tpl:14
+#: themes/gil-galad/posts.tpl:113
+#: themes/gil-galad/archives.tpl:6
 #: admin/api/manage-tagging_api.php:172
 #: admin/api/manage-moderation_api.php:193
 msgid "No posts found"
-msgstr "لم يتم العثور على الموضوع"
+msgstr "لم يتم العثور على أي منشور"
 
-#: themes/legolas/stats.tpl:38 themes/aragorn/stats.tpl:38
-#: themes/gandalf/stats.tpl:38 themes/gil-galad/stats.tpl:38
+#: themes/legolas/stats.tpl:38
+#: themes/aragorn/stats.tpl:38
+#: themes/gandalf/stats.tpl:38
+#: themes/gil-galad/stats.tpl:38
 msgid "Total of votes"
 msgstr "مجموع الأصوات"
 
-#: themes/legolas/posts.tpl:73 themes/aragorn/posts.tpl:52
-#: themes/gandalf/posts.tpl:52 themes/gil-galad/posts.tpl:53
+#: themes/legolas/posts.tpl:73
+#: themes/aragorn/posts.tpl:52
+#: themes/gandalf/posts.tpl:52
+#: themes/gil-galad/posts.tpl:53
 msgid "Add tag"
 msgstr "إضافة وَسْم"
 
-#: themes/aragorn/sidebar.tpl:58 themes/gil-galad/sidebar.tpl:58
+#: themes/aragorn/sidebar.tpl:58
+#: themes/gil-galad/sidebar.tpl:58
 msgid "Members"
 msgstr "الأعضاء"
 
-#: themes/legolas/subscription.tpl:68 themes/aragorn/subscription.tpl:68
-#: themes/gandalf/subscription.tpl:68 themes/gil-galad/subscription.tpl:68
-msgid ""
-"If you need to contact the administration team for any reason (change of "
-"your feed URL, suggestion ...), you can do it by <a href='contact."
-"php'>clicking here</a>."
+#: themes/legolas/subscription.tpl:68
+#: themes/aragorn/subscription.tpl:68
+#: themes/gandalf/subscription.tpl:68
+#: themes/gil-galad/subscription.tpl:68
+msgid "If you need to contact the administration team for any reason (change of your feed URL, suggestion ...), you can do it by <a href='contact.php'>clicking here</a>."
 msgstr ""
-"إن إحتجت لمراسلة فريق الإدارة لأي سبب كان (تغيير مسار التلقيم، "
-"إقتراحات ...)، يمكنك ذالك <a href='contact.php'>بالضغط هنا</a>."
+"إذا احتجت لمراسلة فريق الإدارة لأي سبب من الأسباب (تغيير مسار التلقيم، "
+"إقتراحات ...)<a href='contact.php'>انقْر هنا</a>."
 
-#: themes/legolas/sidebar.tpl:37 themes/aragorn/sidebar.tpl:21
-#: themes/gandalf/sidebar.tpl:18 themes/gil-galad/sidebar.tpl:21
+#: themes/legolas/sidebar.tpl:37
+#: themes/aragorn/sidebar.tpl:21
+#: themes/gandalf/sidebar.tpl:18
+#: themes/gil-galad/sidebar.tpl:21
 msgid "Page :"
 msgstr "الصفحة :"
 
-#: themes/legolas/posts.tpl:76 themes/aragorn/posts.tpl:55
-#: themes/gandalf/posts.tpl:55 themes/gil-galad/posts.tpl:56
+#: themes/legolas/posts.tpl:76
+#: themes/aragorn/posts.tpl:55
+#: themes/gandalf/posts.tpl:55
+#: themes/gil-galad/posts.tpl:56
 msgid "Allow comments"
 msgstr "السماح بالتعليقات"
 
-#: themes/legolas/stats.tpl:2 themes/aragorn/stats.tpl:2
-#: themes/gandalf/stats.tpl:2 themes/gil-galad/stats.tpl:2
+#: themes/legolas/stats.tpl:2
+#: themes/aragorn/stats.tpl:2
+#: themes/gandalf/stats.tpl:2
+#: themes/gil-galad/stats.tpl:2
 msgid "Main statistics"
 msgstr "الإحصائيات العامة"
 
-#: themes/aragorn/index.tpl:101 themes/gil-galad/index.tpl:100
+#: themes/aragorn/index.tpl:101
+#: themes/gil-galad/index.tpl:100
 msgid "Filter posts"
-msgstr "رشح المواضيع"
+msgstr "رشح المنشورات"
 
-#: themes/legolas/index.tpl:149 themes/aragorn/index.tpl:172
-#: themes/gandalf/index.tpl:164 themes/gil-galad/index.tpl:172
-#: admin/manage-feed.php:185 admin/manage-tagging.php:96
+#: themes/legolas/index.tpl:149
+#: themes/aragorn/index.tpl:172
+#: themes/gandalf/index.tpl:164
+#: themes/gil-galad/index.tpl:172
+#: admin/manage-feed.php:185
+#: admin/manage-tagging.php:96
 msgid "Comma separated tags (ex: linux,web,event)"
-msgstr "تُفصل الوُسوم بفواصل (مثال: لينكس،وِب،حدث)"
+msgstr "يُفصل بين الوُسوم بفواصل (مثال: لينكس،وِب،حدث)"
 
-#: themes/legolas/menu.tpl:14 themes/aragorn/menu.tpl:12
-#: themes/gandalf/menu.tpl:14 themes/gil-galad/menu.tpl:12
+#: themes/legolas/menu.tpl:14
+#: themes/aragorn/menu.tpl:12
+#: themes/gandalf/menu.tpl:14
+#: themes/gil-galad/menu.tpl:12
 msgid "Contact"
-msgstr "المراسل"
+msgstr "راسلنا"
 
-#: themes/legolas/posts.tpl:5 themes/aragorn/index.tpl:103
-#: themes/gandalf/menu.tpl:23 themes/gil-galad/index.tpl:102
+#: themes/legolas/posts.tpl:5
+#: themes/aragorn/index.tpl:103
+#: themes/gandalf/menu.tpl:23
+#: themes/gil-galad/index.tpl:102
 msgid "Posts of the day"
-msgstr "مواضيع اليوم"
+msgstr "منشورات اليوم"
 
-#: themes/legolas/sidebar.tpl:31 themes/aragorn/sidebar.tpl:14
-#: themes/gandalf/sidebar.tpl:11 themes/gil-galad/sidebar.tpl:15
+#: themes/legolas/sidebar.tpl:31
+#: themes/aragorn/sidebar.tpl:14
+#: themes/gandalf/sidebar.tpl:11
+#: themes/gil-galad/sidebar.tpl:15
 msgid "Page status"
 msgstr "حالة الصفحة"
 
-#: themes/legolas/footer.tpl:9 themes/aragorn/sidebar.tpl:67
-#: themes/gandalf/sidebar.tpl:70 themes/gil-galad/sidebar.tpl:67
+#: themes/legolas/footer.tpl:9
+#: themes/aragorn/sidebar.tpl:67
+#: themes/gandalf/sidebar.tpl:70
+#: themes/gil-galad/sidebar.tpl:67
 msgid "Contribute"
 msgstr "المساهمة"
 
-#: themes/legolas/sidebar.tpl:64 themes/aragorn/sidebar.tpl:40
-#: themes/gandalf/sidebar.tpl:38 themes/gil-galad/sidebar.tpl:40
+#: themes/legolas/sidebar.tpl:64
+#: themes/aragorn/sidebar.tpl:40
+#: themes/gandalf/sidebar.tpl:38
+#: themes/gil-galad/sidebar.tpl:40
 msgid "Feed with all the posts"
-msgstr "تلقيم بكل المواضيع"
+msgstr "تلقيم بكافة المنشورات"
 
-#: themes/legolas/menu.tpl:4 themes/aragorn/menu.tpl:2
-#: themes/gandalf/menu.tpl:4 themes/gil-galad/menu.tpl:2
+#: themes/legolas/menu.tpl:4
+#: themes/aragorn/menu.tpl:2
+#: themes/gandalf/menu.tpl:4
+#: themes/gil-galad/menu.tpl:2
 msgid "Home"
 msgstr "الرئيسية"
 
-#: themes/legolas/stats.tpl:32 themes/aragorn/stats.tpl:32
-#: themes/gandalf/stats.tpl:32 themes/gil-galad/stats.tpl:32
+#: themes/legolas/stats.tpl:32
+#: themes/aragorn/stats.tpl:32
+#: themes/gandalf/stats.tpl:32
+#: themes/gil-galad/stats.tpl:32
 msgid "List of the best ranked members"
-msgstr "قائمة الأعضاء الأفضل منزلة"
+msgstr "قائمة أفضل الأعضاء"
 
-#: themes/legolas/contact.tpl:13 themes/aragorn/contact.tpl:13
-#: themes/gandalf/contact.tpl:13 themes/gil-galad/contact.tpl:13
+#: themes/legolas/contact.tpl:13
+#: themes/aragorn/contact.tpl:13
+#: themes/gandalf/contact.tpl:13
+#: themes/gil-galad/contact.tpl:13
 msgid "Name / Nickname :"
-msgstr "الإسم / الكنية :"
+msgstr "الاسم / الكنية :"
 
-#: themes/legolas/footer.tpl:14 themes/aragorn/sidebar.tpl:74
-#: themes/gandalf/sidebar.tpl:77 themes/gil-galad/sidebar.tpl:74
-#: admin/head.php:31 admin/sidebar.php:36
+#: themes/legolas/footer.tpl:14
+#: themes/aragorn/sidebar.tpl:74
+#: themes/gandalf/sidebar.tpl:77
+#: themes/gil-galad/sidebar.tpl:74
+#: admin/head.php:31
+#: admin/sidebar.php:36
 #: admin/api/manage-permissions_api.php:166
 msgid "Administration"
 msgstr "الإدارة"
 
-#: themes/legolas/sidebar.tpl:44 themes/aragorn/sidebar.tpl:28
-#: themes/gandalf/sidebar.tpl:25 themes/gil-galad/sidebar.tpl:28
+#: themes/legolas/sidebar.tpl:44
+#: themes/aragorn/sidebar.tpl:28
+#: themes/gandalf/sidebar.tpl:25
+#: themes/gil-galad/sidebar.tpl:28
 msgid "Tagged with :"
 msgstr "وُسِم بـ :"
 
-#: themes/legolas/subscription.tpl:39 themes/aragorn/subscription.tpl:39
-#: themes/gandalf/subscription.tpl:39 themes/gil-galad/subscription.tpl:39
+#: themes/legolas/subscription.tpl:39
+#: themes/aragorn/subscription.tpl:39
+#: themes/gandalf/subscription.tpl:39
+#: themes/gil-galad/subscription.tpl:39
 msgid "Feed URL (this can be a tag or category specific feed feed too)"
 msgstr "مسار التلقيم (يمكن أن يكون تلقيم لوَسْم أو تصنيف)"
 
-#: themes/legolas/subscription.tpl:18 themes/aragorn/subscription.tpl:18
-#: themes/gandalf/subscription.tpl:18 themes/gil-galad/subscription.tpl:18
+#: themes/legolas/subscription.tpl:18
+#: themes/aragorn/subscription.tpl:18
+#: themes/gandalf/subscription.tpl:18
+#: themes/gil-galad/subscription.tpl:18
 msgid "To add or remove your website from the planet, just fill this form in :"
-msgstr "لإضافة أو إزالة موقعك من الكوكب إملأ الإستمارة التالية :"
+msgstr "لإضافة أو إزالة موقعك من الكوكب املأ الإستمارة التالية :"
 
-#: themes/legolas/posts.tpl:111 themes/legolas/stats.tpl:16
-#: themes/legolas/stats.tpl:37 themes/aragorn/posts.tpl:90
-#: themes/aragorn/stats.tpl:16 themes/aragorn/stats.tpl:37
-#: themes/gandalf/posts.tpl:93 themes/gandalf/stats.tpl:16
-#: themes/gandalf/stats.tpl:37 themes/gil-galad/posts.tpl:91
-#: themes/gil-galad/stats.tpl:16 themes/gil-galad/stats.tpl:37
-#: inscription.php:132 admin/api/manage-pendinguser_api.php:161
+#: themes/legolas/posts.tpl:111
+#: themes/legolas/stats.tpl:16
+#: themes/legolas/stats.tpl:37
+#: themes/aragorn/posts.tpl:90
+#: themes/aragorn/stats.tpl:16
+#: themes/aragorn/stats.tpl:37
+#: themes/gandalf/posts.tpl:93
+#: themes/gandalf/stats.tpl:16
+#: themes/gandalf/stats.tpl:37
+#: themes/gil-galad/posts.tpl:91
+#: themes/gil-galad/stats.tpl:16
+#: themes/gil-galad/stats.tpl:37
+#: inscription.php:132
+#: admin/api/manage-pendinguser_api.php:161
 #: admin/api/manage-pendinguser_api.php:217
-#: admin/api/manage-pendinguser_api.php:241 admin/api/manage-user_api.php:402
+#: admin/api/manage-pendinguser_api.php:241
+#: admin/api/manage-user_api.php:402
 msgid "Website"
 msgstr "الموقع"
 
-#: themes/legolas/index.tpl:147 themes/aragorn/index.tpl:170
-#: themes/gandalf/index.tpl:162 themes/gil-galad/index.tpl:170
-#: admin/manage-feed.php:183 admin/manage-tagging.php:94
+#: themes/legolas/index.tpl:147
+#: themes/aragorn/index.tpl:170
+#: themes/gandalf/index.tpl:162
+#: themes/gil-galad/index.tpl:170
+#: admin/manage-feed.php:183
+#: admin/manage-tagging.php:94
 msgid "Tags"
 msgstr "الوُسوم"
 
-#: themes/legolas/posts.tpl:116 themes/aragorn/posts.tpl:95
-#: themes/gandalf/posts.tpl:98 themes/gil-galad/posts.tpl:96
+#: themes/legolas/posts.tpl:116
+#: themes/aragorn/posts.tpl:95
+#: themes/gandalf/posts.tpl:98
+#: themes/gil-galad/posts.tpl:96
 msgid "Here you'll find some help concerning the syntax :"
-msgstr "ستجد هنا بعض المساعدة بخصوص الصيغة التالية :"
+msgstr "ستجد هنا مساعدة بخصوص الصياغة : "
 
-#: themes/legolas/posts.tpl:79 themes/aragorn/posts.tpl:58
-#: themes/gandalf/posts.tpl:58 themes/gil-galad/posts.tpl:59
+#: themes/legolas/posts.tpl:79
+#: themes/aragorn/posts.tpl:58
+#: themes/gandalf/posts.tpl:58
+#: themes/gil-galad/posts.tpl:59
 msgid "Disable comments"
 msgstr "تعطيل التعليقات"
 
-#: themes/legolas/subscription.tpl:46 themes/aragorn/subscription.tpl:46
-#: themes/gandalf/subscription.tpl:46 themes/gil-galad/subscription.tpl:46
+#: themes/legolas/subscription.tpl:46
+#: themes/aragorn/subscription.tpl:46
+#: themes/gandalf/subscription.tpl:46
+#: themes/gil-galad/subscription.tpl:46
 msgid "Unsubscribe"
 msgstr "إلغاء التسجيل"
 
-#: themes/legolas/menu.tpl:6 themes/aragorn/menu.tpl:4
-#: themes/gandalf/menu.tpl:6 themes/gil-galad/menu.tpl:4
+#: themes/legolas/menu.tpl:6
+#: themes/aragorn/menu.tpl:4
+#: themes/gandalf/menu.tpl:6
+#: themes/gil-galad/menu.tpl:4
 msgid "Top 10"
 msgstr "أفضل 10"
 
-#: themes/legolas/index.tpl:64 themes/aragorn/index.tpl:63
-#: themes/gandalf/index.tpl:63 themes/gil-galad/index.tpl:76
+#: themes/legolas/index.tpl:64
+#: themes/aragorn/index.tpl:63
+#: themes/gandalf/index.tpl:63
+#: themes/gil-galad/index.tpl:76
 msgid "Remember me"
 msgstr "تذكّرني"
 
@@ -401,195 +543,277 @@ msgstr "تذكّرني"
 msgid "Search"
 msgstr "البحث"
 
-#: themes/legolas/subscription.tpl:35 themes/aragorn/subscription.tpl:35
-#: themes/gandalf/subscription.tpl:35 themes/gil-galad/subscription.tpl:35
+#: themes/legolas/subscription.tpl:35
+#: themes/aragorn/subscription.tpl:35
+#: themes/gandalf/subscription.tpl:35
+#: themes/gil-galad/subscription.tpl:35
 msgid "Website URL"
 msgstr "مسار الموقع"
 
-#: themes/legolas/posts.tpl:120 themes/aragorn/posts.tpl:99
-#: themes/gandalf/posts.tpl:102 themes/gil-galad/posts.tpl:100
+#: themes/legolas/posts.tpl:120
+#: themes/aragorn/posts.tpl:99
+#: themes/gandalf/posts.tpl:102
+#: themes/gil-galad/posts.tpl:100
 msgid "Publish"
 msgstr "نشر"
 
-#: themes/legolas/footer.tpl:11 themes/aragorn/sidebar.tpl:70
-#: themes/gandalf/sidebar.tpl:73 themes/gil-galad/sidebar.tpl:70
+#: themes/legolas/footer.tpl:11
+#: themes/aragorn/sidebar.tpl:70
+#: themes/gandalf/sidebar.tpl:73
+#: themes/gil-galad/sidebar.tpl:70
 msgid "Subscribe your blog to the planet"
 msgstr "سجل مدونتك على الكوكب"
 
-#: themes/legolas/sidebar.tpl:72 themes/aragorn/sidebar.tpl:48
-#: themes/gandalf/sidebar.tpl:46 themes/gil-galad/sidebar.tpl:48
+#: themes/legolas/sidebar.tpl:72
+#: themes/aragorn/sidebar.tpl:48
+#: themes/gandalf/sidebar.tpl:46
+#: themes/gil-galad/sidebar.tpl:48
 msgid "Popular posts feed"
-msgstr "تلقيم المواضيع المشهورة"
+msgstr "تلقيم المنشورات الأكثر شعبية"
 
-#: themes/legolas/contact.tpl:10 themes/aragorn/contact.tpl:10
-#: themes/gandalf/contact.tpl:10 themes/gil-galad/contact.tpl:10
+#: themes/legolas/contact.tpl:10
+#: themes/aragorn/contact.tpl:10
+#: themes/gandalf/contact.tpl:10
+#: themes/gil-galad/contact.tpl:10
 msgid "You can contact the administration team with the form below:"
 msgstr "يمكنك مراسلة فريق الإدارة من خلال الإستمارة التالية :"
 
-#: themes/legolas/posts.tpl:22 themes/aragorn/posts.tpl:3
-#: themes/gandalf/posts.tpl:3 themes/gil-galad/posts.tpl:3
+#: themes/legolas/posts.tpl:22
+#: themes/aragorn/posts.tpl:3
+#: themes/gandalf/posts.tpl:3
+#: themes/gil-galad/posts.tpl:3
 msgid "You are searching for all the posts with :"
-msgstr "أنت تبحث عن كل المواضيع التي تحتوي على :"
+msgstr "تبحث عن جميع المنشورات التي تحتوي على :"
 
-#: themes/legolas/index.tpl:66 themes/aragorn/index.tpl:65
-#: themes/gandalf/index.tpl:65 themes/gil-galad/index.tpl:78
+#: themes/legolas/index.tpl:66
+#: themes/aragorn/index.tpl:65
+#: themes/gandalf/index.tpl:65
+#: themes/gil-galad/index.tpl:78
 msgid "Connect"
-msgstr "إتصال"
+msgstr "إتّصل"
 
-#: themes/legolas/index.tpl:141 themes/aragorn/index.tpl:164
-#: themes/gandalf/index.tpl:156 themes/gil-galad/index.tpl:164
-#: admin/manage-option.php:56 admin/manage-feed.php:92
-#: admin/manage-feed.php:145 admin/manage-user.php:88
-#: admin/manage-user.php:128 admin/head.php:88
+#: themes/legolas/index.tpl:141
+#: themes/aragorn/index.tpl:164
+#: themes/gandalf/index.tpl:156
+#: themes/gil-galad/index.tpl:164
+#: admin/manage-option.php:56
+#: admin/manage-feed.php:92
+#: admin/manage-feed.php:145
+#: admin/manage-user.php:88
+#: admin/manage-user.php:128
+#: admin/head.php:88
 msgid "Close"
-msgstr "إغلاق"
+msgstr "غلق"
 
-#: themes/legolas/posts.tpl:42 themes/legolas/posts.tpl:142
-#: themes/aragorn/posts.tpl:23 themes/aragorn/posts.tpl:121
-#: themes/gandalf/posts.tpl:24 themes/gandalf/posts.tpl:131
-#: themes/gil-galad/posts.tpl:24 themes/gil-galad/posts.tpl:122
-#: admin/pagination.php:46 admin/pagination.php:61
+#: themes/legolas/posts.tpl:42
+#: themes/legolas/posts.tpl:142
+#: themes/aragorn/posts.tpl:23
+#: themes/aragorn/posts.tpl:121
+#: themes/gandalf/posts.tpl:24
+#: themes/gandalf/posts.tpl:131
+#: themes/gil-galad/posts.tpl:24
+#: themes/gil-galad/posts.tpl:122
+#: admin/pagination.php:46
+#: admin/pagination.php:61
 msgid "Next page"
 msgstr "الصفحة التالية"
 
-#: themes/legolas/contact.tpl:15 themes/aragorn/contact.tpl:15
-#: themes/gandalf/contact.tpl:15 themes/gil-galad/contact.tpl:15
+#: themes/legolas/contact.tpl:15
+#: themes/aragorn/contact.tpl:15
+#: themes/gandalf/contact.tpl:15
+#: themes/gil-galad/contact.tpl:15
 msgid "Email :"
 msgstr "البريد الإلكتروني :"
 
-#: themes/legolas/posts.tpl:107 themes/aragorn/posts.tpl:86
-#: themes/gandalf/posts.tpl:89 themes/gil-galad/posts.tpl:87
+#: themes/legolas/posts.tpl:107
+#: themes/aragorn/posts.tpl:86
+#: themes/gandalf/posts.tpl:89
+#: themes/gil-galad/posts.tpl:87
 msgid "E-mail"
-msgstr "البريد الإلكتروني"
+msgstr "البريد الإلكتروني :"
 
-#: themes/legolas/sidebar.tpl:41 themes/aragorn/sidebar.tpl:25
-#: themes/gandalf/sidebar.tpl:22 themes/gil-galad/sidebar.tpl:25
+#: themes/legolas/sidebar.tpl:41
+#: themes/aragorn/sidebar.tpl:25
+#: themes/gandalf/sidebar.tpl:22
+#: themes/gil-galad/sidebar.tpl:25
 msgid "Period of posts :"
-msgstr "دورة المواضيع :"
+msgstr "دورة المنشورات :"
 
-#: themes/legolas/sidebar.tpl:78 themes/gandalf/sidebar.tpl:59
+#: themes/legolas/sidebar.tpl:78
+#: themes/gandalf/sidebar.tpl:59
 msgid "Users"
-msgstr "المستخدمون"
+msgstr "المستخدمين"
 
-#: themes/legolas/sidebar.tpl:32 themes/aragorn/sidebar.tpl:16
+#: themes/legolas/sidebar.tpl:32
+#: themes/aragorn/sidebar.tpl:16
 #: themes/gandalf/sidebar.tpl:13
 msgid "Number of items :"
-msgstr "عدد العناصر"
+msgstr "عدد العناصر : "
 
-#: themes/legolas/subscription.tpl:17 themes/aragorn/subscription.tpl:17
-#: themes/gandalf/subscription.tpl:17 themes/gil-galad/subscription.tpl:17
+#: themes/legolas/subscription.tpl:17
+#: themes/aragorn/subscription.tpl:17
+#: themes/gandalf/subscription.tpl:17
+#: themes/gil-galad/subscription.tpl:17
 msgid "Subscribe / Unsubscribe"
-msgstr "تسجيل / إلغاء التسجيل"
+msgstr "التسجيل / إلغاء التسجيل"
 
-#: themes/legolas/sidebar.tpl:46 themes/aragorn/sidebar.tpl:30
-#: themes/gandalf/sidebar.tpl:27 themes/gil-galad/sidebar.tpl:30
+#: themes/legolas/sidebar.tpl:46
+#: themes/aragorn/sidebar.tpl:30
+#: themes/gandalf/sidebar.tpl:27
+#: themes/gil-galad/sidebar.tpl:30
 msgid "Written by :"
-msgstr "كتبه"
+msgstr "كتبه : "
 
-#: themes/legolas/index.tpl:58 themes/aragorn/index.tpl:57
-#: themes/gandalf/index.tpl:57 themes/gil-galad/index.tpl:70
-#: admin/manage-user.php:115 admin/install/index.php:342
+#: themes/legolas/index.tpl:58
+#: themes/aragorn/index.tpl:57
+#: themes/gandalf/index.tpl:57
+#: themes/gil-galad/index.tpl:70
+#: admin/manage-user.php:115
+#: admin/install/index.php:342
 msgid "Password"
 msgstr "كلمة السّر"
 
-#: themes/legolas/stats.tpl:15 themes/legolas/stats.tpl:36
-#: themes/aragorn/stats.tpl:15 themes/aragorn/stats.tpl:36
-#: themes/gandalf/stats.tpl:15 themes/gandalf/stats.tpl:36
-#: themes/gil-galad/stats.tpl:15 themes/gil-galad/stats.tpl:36
-#: admin/manage-post.php:215 admin/manage-logs.php:71
+#: themes/legolas/stats.tpl:15
+#: themes/legolas/stats.tpl:36
+#: themes/aragorn/stats.tpl:15
+#: themes/aragorn/stats.tpl:36
+#: themes/gandalf/stats.tpl:15
+#: themes/gandalf/stats.tpl:36
+#: themes/gil-galad/stats.tpl:15
+#: themes/gil-galad/stats.tpl:36
+#: admin/manage-post.php:215
+#: admin/manage-logs.php:71
 msgid "Name"
-msgstr "الإسم"
+msgstr "الاسم"
 
-#: themes/legolas/stats.tpl:8 themes/aragorn/stats.tpl:8
-#: themes/gandalf/stats.tpl:8 themes/gil-galad/stats.tpl:8
+#: themes/legolas/stats.tpl:8
+#: themes/aragorn/stats.tpl:8
+#: themes/gandalf/stats.tpl:8
+#: themes/gil-galad/stats.tpl:8
 msgid "Number of votes :"
 msgstr "عدد الأصوات :"
 
-#: themes/legolas/posts.tpl:129 themes/aragorn/posts.tpl:108
-#: themes/gandalf/posts.tpl:112 themes/gil-galad/posts.tpl:109
+#: themes/legolas/posts.tpl:129
+#: themes/aragorn/posts.tpl:108
+#: themes/gandalf/posts.tpl:112
+#: themes/gil-galad/posts.tpl:109
 msgid "Back to summary"
 msgstr "العودة للملخص"
 
-#: themes/legolas/stats.tpl:17 themes/aragorn/stats.tpl:17
-#: themes/gandalf/stats.tpl:17 themes/gil-galad/stats.tpl:17
+#: themes/legolas/stats.tpl:17
+#: themes/aragorn/stats.tpl:17
+#: themes/gandalf/stats.tpl:17
+#: themes/gil-galad/stats.tpl:17
+#, fuzzy
 msgid "Qtity of posts"
-msgstr ""
+msgstr "عدد المنشورات"
 
-#: themes/legolas/stats.tpl:4 themes/aragorn/stats.tpl:4
-#: themes/gandalf/stats.tpl:4 themes/gil-galad/stats.tpl:4
+#: themes/legolas/stats.tpl:4
+#: themes/aragorn/stats.tpl:4
+#: themes/gandalf/stats.tpl:4
+#: themes/gil-galad/stats.tpl:4
 msgid "Number of members :"
 msgstr "عدد الأعضاء :"
 
-#: themes/legolas/subscription.tpl:49 themes/aragorn/subscription.tpl:49
-#: themes/gandalf/subscription.tpl:49 themes/gil-galad/subscription.tpl:49
+#: themes/legolas/subscription.tpl:49
+#: themes/aragorn/subscription.tpl:49
+#: themes/gandalf/subscription.tpl:49
+#: themes/gil-galad/subscription.tpl:49
 msgid "Please fill in the captcha"
-msgstr "إملأ الكابتشا من من فضلك"
+msgstr "املأ الكابتشا من فضلك"
 
-#: themes/legolas/sidebar.tpl:43 themes/aragorn/sidebar.tpl:27
-#: themes/gandalf/sidebar.tpl:24 themes/gil-galad/sidebar.tpl:27
-#, fuzzy
+#: themes/legolas/sidebar.tpl:43
+#: themes/aragorn/sidebar.tpl:27
+#: themes/gandalf/sidebar.tpl:24
+#: themes/gil-galad/sidebar.tpl:27
 msgid "In popular tags"
-msgstr "في أشهر الوُسوم "
+msgstr "في أشهر الوُسوم"
 
-#: themes/legolas/stats.tpl:6 themes/aragorn/stats.tpl:6
-#: themes/gandalf/stats.tpl:6 themes/gil-galad/sidebar.tpl:16
+#: themes/legolas/stats.tpl:6
+#: themes/aragorn/stats.tpl:6
+#: themes/gandalf/stats.tpl:6
+#: themes/gil-galad/sidebar.tpl:16
 #: themes/gil-galad/stats.tpl:6
 msgid "Number of posts :"
-msgstr "عدد المواضيع :"
+msgstr "عدد المنشورات :"
 
-#: themes/legolas/posts.tpl:103 themes/legolas/subscription.tpl:27
-#: themes/aragorn/posts.tpl:82 themes/aragorn/subscription.tpl:27
-#: themes/gandalf/posts.tpl:85 themes/gandalf/subscription.tpl:27
-#: themes/gil-galad/posts.tpl:83 themes/gil-galad/subscription.tpl:27
-#: inscription.php:130 admin/manage-account.php:65 admin/manage-user.php:107
-#: admin/manage-user.php:148 admin/install/index.php:315
+#: themes/legolas/posts.tpl:103
+#: themes/legolas/subscription.tpl:27
+#: themes/aragorn/posts.tpl:82
+#: themes/aragorn/subscription.tpl:27
+#: themes/gandalf/posts.tpl:85
+#: themes/gandalf/subscription.tpl:27
+#: themes/gil-galad/posts.tpl:83
+#: themes/gil-galad/subscription.tpl:27
+#: inscription.php:130
+#: admin/manage-account.php:65
+#: admin/manage-user.php:107
+#: admin/manage-user.php:148
+#: admin/install/index.php:315
 #: admin/api/manage-pendinguser_api.php:234
-#: admin/api/manage-account_api.php:36 user/api/account_api.php:36
+#: admin/api/manage-account_api.php:36
+#: user/api/account_api.php:36
 msgid "Fullname"
-msgstr "الإسم الكامل"
+msgstr "الاسم الكامل"
 
-#: themes/aragorn/index.tpl:112 themes/gil-galad/index.tpl:111
+#: themes/aragorn/index.tpl:112
+#: themes/gil-galad/index.tpl:111
 msgid "All the posts"
-msgstr "كل المواضيع"
+msgstr "كافة المنشورات"
 
-#: themes/legolas/contact.tpl:17 themes/aragorn/contact.tpl:17
-#: themes/gandalf/contact.tpl:17 themes/gil-galad/contact.tpl:17
+#: themes/legolas/contact.tpl:17
+#: themes/aragorn/contact.tpl:17
+#: themes/gandalf/contact.tpl:17
+#: themes/gil-galad/contact.tpl:17
 msgid "Subject :"
 msgstr "الموضوع :"
 
-#: themes/legolas/contact.tpl:19 themes/aragorn/contact.tpl:19
-#: themes/gandalf/contact.tpl:19 themes/gil-galad/contact.tpl:19
+#: themes/legolas/contact.tpl:19
+#: themes/aragorn/contact.tpl:19
+#: themes/gandalf/contact.tpl:19
+#: themes/gil-galad/contact.tpl:19
 msgid "Content :'"
-msgstr "المحتوى :'"
+msgstr "المحتوى :"
 
-#: themes/legolas/footer.tpl:13 themes/aragorn/sidebar.tpl:73
-#: themes/gandalf/sidebar.tpl:76 themes/gil-galad/sidebar.tpl:73
+#: themes/legolas/footer.tpl:13
+#: themes/aragorn/sidebar.tpl:73
+#: themes/gandalf/sidebar.tpl:76
+#: themes/gil-galad/sidebar.tpl:73
 msgid "Admin interface"
 msgstr "واجهة الإدارة"
 
-#: themes/legolas/sidebar.tpl:61 themes/legolas/subscription.tpl:43
-#: themes/aragorn/sidebar.tpl:37 themes/aragorn/subscription.tpl:43
-#: themes/gandalf/subscription.tpl:43 themes/gandalf/sidebar.tpl:35
-#: themes/gil-galad/sidebar.tpl:37 themes/gil-galad/subscription.tpl:43
+#: themes/legolas/sidebar.tpl:61
+#: themes/legolas/subscription.tpl:43
+#: themes/aragorn/sidebar.tpl:37
+#: themes/aragorn/subscription.tpl:43
+#: themes/gandalf/subscription.tpl:43
+#: themes/gandalf/sidebar.tpl:35
+#: themes/gil-galad/sidebar.tpl:37
+#: themes/gil-galad/subscription.tpl:43
 msgid "Subscribe"
-msgstr "تسجيل"
+msgstr "سجّل"
 
-#: themes/legolas/index.tpl:151 themes/aragorn/index.tpl:174
-#: themes/gandalf/index.tpl:166 themes/gil-galad/index.tpl:174
-#: admin/manage-useroption.php:123 admin/api/manage-permissions_api.php:171
+#: themes/legolas/index.tpl:151
+#: themes/aragorn/index.tpl:174
+#: themes/gandalf/index.tpl:166
+#: themes/gil-galad/index.tpl:174
+#: admin/manage-useroption.php:123
+#: admin/api/manage-permissions_api.php:171
 #: admin/api/manage-option_api.php:621
 msgid "Apply"
 msgstr "تطبيق"
 
-#: themes/legolas/subscription.tpl:53 themes/aragorn/subscription.tpl:53
-#: themes/gandalf/subscription.tpl:53 themes/gil-galad/subscription.tpl:53
+#: themes/legolas/subscription.tpl:53
+#: themes/aragorn/subscription.tpl:53
+#: themes/gandalf/subscription.tpl:53
+#: themes/gil-galad/subscription.tpl:53
 msgid "I have read and accept the charter"
-msgstr "قرأت ووافقت على إتفاقية الإستخدام"
+msgstr "قرأت شروط التسجيل وأوافق بالالتزام بما جاء فيها."
 
 #: mobile.php:111
-#, fuzzy, php-format
+#, php-format
 msgid "%d vote(s)"
-msgstr "لا أصوات"
+msgstr ""
 
 #: tpl.php:141
 msgid "Powered by Bilboplanet"
@@ -611,26 +835,26 @@ msgstr "خطأ 404"
 msgid "Page not found"
 msgstr "الصفحة غير موجودة"
 
-#: contact.php:47 inscription.php:53
+#: contact.php:47
+#: inscription.php:53
 #, php-format
-msgid ""
-"The reCAPTCHA wasn't entered correctly. Go back and try it again. (reCAPTCHA "
-"said: %s)"
+msgid "The reCAPTCHA wasn't entered correctly. Go back and try it again. (reCAPTCHA said: %s)"
 msgstr ""
-"خطأ في إدخال reCAPTCHA، عُد للصفحة السابقة وحاول مرة أخرى. (reCAPTCHA said: "
+"خطأ في إدخال الكابتشا، عُد للصفحة السابقة وحاول مرة أخرى. (reCAPTCHA أرسلت: "
 "%s)"
 
 #: contact.php:60
 msgid "Name/Nickname : "
-msgstr "الإسم/اللقب :"
+msgstr "الاسم/الكنية :"
 
-#: contact.php:61 inscription.php:61
+#: contact.php:61
+#: inscription.php:61
 msgid "Email : "
 msgstr "البريد الإلكتروني :"
 
 #: contact.php:62
 msgid "Subject : "
-msgstr "الموضوع :"
+msgstr "الموضوع : "
 
 #: contact.php:63
 msgid "Content of the message: "
@@ -638,24 +862,24 @@ msgstr "محتوى الرسالة :"
 
 #: contact.php:71
 msgid "Your email has been sent !"
-msgstr "تمّ إرسال البريد !"
+msgstr "تم إرسال بريدك !"
 
-#: contact.php:73 inscription.php:81 admin/manage-newsletter.php:135
-msgid ""
-"Your request could not be sent for an unknown reason.<br/>Please try again."
-msgstr "لم يتم ارسال الطلب لسبب مجهول.<br/>يرجى المحاولة مرة أخرى."
+#: contact.php:73
+#: inscription.php:81
+#: admin/manage-newsletter.php:135
+msgid "Your request could not be sent for an unknown reason.<br/>Please try again."
+msgstr "تعذّر إرسال الطلب لسبب مجهول.<br/>يرجى المحاولة مرة أخرى."
 
-#: contact.php:95 inscription.php:126
+#: contact.php:95
+#: inscription.php:126
 msgid "In case of problem"
 msgstr "في حالة حدوث مشكلة"
 
 #: contact.php:96
 #, php-format
-msgid ""
-"If you do not recieve any confirmation from the administration team in the 5 "
-"days, do not hesitate to contact us by email at %s"
+msgid "If you do not recieve any confirmation from the administration team in the 5 days, do not hesitate to contact us by email at %s"
 msgstr ""
-"إذا لم تتلقى أي ردّ من الإدارة خلال 5 أيام لا تتردد في الإتصال بنا عبر  هذا "
+"إذا لم تتلقى أي ردّ من الإدارة خلال 5 أيام لا تتردد في الإتصال بنا على هذا "
 "البريد %s"
 
 #: archives.php:29
@@ -708,68 +932,70 @@ msgstr "دجنبر"
 
 #: auth.php:95
 msgid "Password reset"
-msgstr "إستعادة كلمة السّر"
+msgstr "طلب كلمة سرّ جديدة"
 
 #: auth.php:97
-msgid ""
-"Someone has requested to reset the password for the following site and "
-"username."
-msgstr "طلب أحدهم إستعادة كلمة السِّر للموقع والمستخدم التالي."
+msgid "Someone has requested to reset the password for the following site and username."
+msgstr "طلب أحدهم استعادة كلمة السرّ للموقع والمستخدم التاليين."
 
 #: auth.php:98
 msgid "User_id:"
 msgstr "معرّف_المستخدم:"
 
 #: auth.php:99
-msgid ""
-"To reset your password visit the following address, otherwise just ignore "
-"this email and nothing will happen."
+msgid "To reset your password visit the following address, otherwise just ignore this email and nothing will happen."
 msgstr ""
-"لإستعادة كلمة السّر قم بزيارة العنوان التالي أو تجاهل هذه الرسالة و لن يحدث "
+"لاستعادة كلمة السرّ قم بزيارة العنوان التالي أو تجاهل هذه الرسالة و لن يحدث "
 "شيء."
 
 #: auth.php:106
 #, php-format
 msgid "The e-mail was sent successfully to %s."
-msgstr "\"تم إرسال البريد بنجاح لـ%s."
+msgstr "تم إرسال البريد بنجاح لـ %s."
 
 #: auth.php:120
 msgid "Your new password"
 msgstr "كلمة السّر الجديدة"
 
-#: auth.php:122 auth.php:283 auth.php:329 admin/install/wizard.php:192
+#: auth.php:122
+#: auth.php:283
+#: auth.php:329
+#: admin/install/wizard.php:192
 #: admin/install/index.php:367
 msgid "Username:"
-msgstr "إسم المستخدم:"
+msgstr "اسم المستخدم:"
 
-#: auth.php:123 auth.php:333 admin/install/wizard.php:196
+#: auth.php:123
+#: auth.php:333
+#: admin/install/wizard.php:196
 #: admin/install/index.php:368
 msgid "Password:"
-msgstr "كلمة السّر:"
+msgstr "كلمة السرّ الجديدة"
 
 #: auth.php:130
 msgid "Your new password is in your mailbox."
-msgstr "كلمة السِّر الجديدة موجودة في علبة بريدك."
+msgstr "تم إرسال كلمة السرّ الجديدة إلى بريدك."
 
 #: auth.php:162
 msgid "Passwords don't match"
-msgstr "كلمتا السِّر غير متطابقتان"
+msgstr "كلمتا السرّ غير متطابقتان"
 
 #: auth.php:166
 msgid "You didn't change your password."
-msgstr "لم تقم بتغيير كلمة السّر."
+msgstr "لم تقم بتغيير كلمة السرّ."
 
 #: auth.php:229
 msgid "Wrong username or password"
-msgstr "خطأ في إسم المستخدم أو كلمة السّر"
+msgstr "خطأ في اسم المستخدم أو كلمة السرّ"
 
-#: auth.php:274 auth.php:297
+#: auth.php:274
+#: auth.php:297
 msgid "Back to login screen"
 msgstr "العودة إلى شاشة الولوج"
 
 #: auth.php:279
 msgid "Request a new password"
-msgstr "طلب كلمة سّر جديدة"
+msgstr "طلب كلمة سرّ جديدة"
 
 #: auth.php:287
 msgid "Email:"
@@ -777,27 +1003,27 @@ msgstr "البريد الإلكتروني:"
 
 #: auth.php:293
 msgid "recover"
-msgstr "إسترجاع"
+msgstr "استرجاع"
 
 #: auth.php:303
 msgid "Change your password"
-msgstr "تغيير كلمة السّر"
+msgstr "تغيير كلمة السرّ"
 
 #: auth.php:304
 msgid "New password:"
-msgstr "كلمة السّر الجديدة"
+msgstr "كلمة السرّ الجديدة"
 
 #: auth.php:307
 msgid "Confirm password:"
-msgstr "تأكيد كلمة السّر:"
+msgstr "تأكيد كلمة السرّ:"
 
 #: auth.php:311
 msgid "change"
-msgstr "تغيير"
+msgstr "غيِّر"
 
 #: auth.php:323
 msgid "I forgot my password"
-msgstr "نسيتُ كلمة السّر"
+msgstr "نسيتُ كلمة السرّ"
 
 #: auth.php:341
 msgid "Remember my ID on this computer"
@@ -810,27 +1036,29 @@ msgstr "ولوج"
 #: feed.php:218
 #, php-format
 msgid "Vote for this post on <a href=\"%s\" title=\"Go on the planet\">%s</a>."
-msgstr ""
-"صوّت لهذا الموضوع على <a href=\\\"%s\\\" title=\\\"الذهاب للكوكب\\\">%s</a>."
+msgstr "صوّت لهذا المنشور على <a href=\\\"%s\\\" title=\\\"الكوكب\\\">%s</a>."
 
 #: feed.php:229
 #, php-format
 msgid "Gravatar of %s"
 msgstr "غرفتار %s"
 
-#: feed.php:300 inscription.php:133 admin/api/manage-pendinguser_api.php:177
+#: feed.php:300
+#: inscription.php:133
+#: admin/api/manage-pendinguser_api.php:177
 #: admin/api/manage-pendinguser_api.php:217
-#: admin/api/manage-pendinguser_api.php:242 admin/api/manage-feed_api.php:476
+#: admin/api/manage-pendinguser_api.php:242
+#: admin/api/manage-feed_api.php:476
 msgid "Feed"
 msgstr "التلقيم"
 
 #: inscription.php:59
 msgid "Name : "
-msgstr "الإسم :"
+msgstr "الاسم :"
 
 #: inscription.php:60
 msgid "Firstname : "
-msgstr "الإسم الأول : "
+msgstr "الاسم الأول :"
 
 #: inscription.php:62
 msgid "Website : "
@@ -842,65 +1070,66 @@ msgstr "التلقيم :"
 
 #: inscription.php:64
 msgid "Choice : "
-msgstr "الإختيار :"
+msgstr "الاختيار :"
 
-#: inscription.php:79 admin/manage-newsletter.php:133
+#: inscription.php:79
+#: admin/manage-newsletter.php:133
 msgid "Your email has been sent"
-msgstr "تمّ إرسال بريدك الإلكتروني"
+msgstr "تم إرسال بريدك الإلكتروني"
 
 #: inscription.php:127
 #, php-format
-msgid ""
-"If you don't recieve any new from the administration team in the 5 days do "
-"not hesitate to contact us via %s with this information :"
+msgid "If you don't recieve any new from the administration team in the 5 days do not hesitate to contact us via %s with this information :"
 msgstr ""
-"إذا لم تتلقى أي ردّ من الإدارة خلال 5 أيام لا تتردد في الاتصال بنا عبر  هذا "
+"إذا لم تتلقى أي ردّ من الإدارة خلال 5 أيام لا تتردد في الاتصال بنا على هذا "
 "البريد %s"
 
-#: inscription.php:128 admin/manage-newsletter.php:91
-#: admin/manage-newsletter.php:232 admin/manage-selection.php:108
-#: admin/manage-pendinguser.php:56 admin/manage-pendinguser.php:69
+#: inscription.php:128
+#: admin/manage-newsletter.php:91
+#: admin/manage-newsletter.php:232
+#: admin/manage-selection.php:108
+#: admin/manage-pendinguser.php:56
+#: admin/manage-pendinguser.php:69
 #: admin/manage-moderation.php:102
 msgid "Subject"
 msgstr "الموضوع"
 
-#: inscription.php:131 admin/manage-account.php:69 admin/manage-user.php:111
-#: admin/manage-user.php:152 admin/install/index.php:318
+#: inscription.php:131
+#: admin/manage-account.php:69
+#: admin/manage-user.php:111
+#: admin/manage-user.php:152
+#: admin/install/index.php:318
 #: admin/api/manage-pendinguser_api.php:235
-#: admin/api/manage-account_api.php:37 user/api/account_api.php:37
+#: admin/api/manage-account_api.php:37
+#: user/api/account_api.php:37
 msgid "Email"
 msgstr "البريد الإلكتروني"
 
 #: inscription.php:134
 msgid "Choice"
-msgstr "الإختيار"
+msgstr "الاختيار"
 
 #: inc/prepend.php:157
 msgid "Database error"
 msgstr "خطأ في قاعدة بيانات"
 
 #: inc/prepend.php:158
-msgid ""
-"There seems to be no Session table in your database. Is Bilboplanet "
-"completly installed?"
+msgid "There seems to be no Session table in your database. Is Bilboplanet completly installed?"
 msgstr ""
-"يبدو أنه لا يوجد جدول للجلسة في قاعدة البيانات، هل Bilboplanet متبث بشكل "
+"يبدو أنه لا يوجد جدول للجلسة في قاعدة البيانات، هل Bilboplanet متبّث بشكل "
 "كامل؟"
 
 #: inc/upgrade_db.php:39
-#, fuzzy
 msgid "Your database schema has been updated"
-msgstr "تمّ إرسال بريدك الإلكتروني"
+msgstr "تم تحديث مخطّط قاعدة البيانات بنجاح"
 
 #: inc/fonctions.php:163
-msgid ""
-"Error : the statusnet account is not properly configured. The given hostname "
-"is empty."
-msgstr "خطأ : حساب statusnet غير مُعد بشكل صحيح. إسم المضيف فارغ."
+msgid "Error : the statusnet account is not properly configured. The given hostname is empty."
+msgstr "خطأ : حساب statusnet غير مضبوط بشكل صحيح. إسم المضيف فارغ."
 
 #: inc/fonctions.php:221
 msgid "Reading cache"
-msgstr "قراءة ذاكرة التخزين المؤقت"
+msgstr "قراءة التخزين المؤقت"
 
 #: inc/fonctions.php:569
 #, php-format
@@ -909,51 +1138,56 @@ msgstr "بواسطة %s بتاريخ %s في %s."
 
 #: inc/fonctions.php:572
 msgid "View post detail"
-msgstr "عرض المنشور"
+msgstr "عرض تفاصيل المنشور"
 
 #: inc/fonctions.php:595
 msgid "Read more"
 msgstr "قراءة المزيد"
 
-#: inc/fonctions.php:698 inc/fonctions.php:711
+#: inc/fonctions.php:698
+#: inc/fonctions.php:711
 msgid "Vote yes"
-msgstr "التصويت بنعم"
+msgstr "صوّت بنعم"
 
-#: inc/fonctions.php:699 inc/fonctions.php:717 inc/fonctions.php:721
+#: inc/fonctions.php:699
+#: inc/fonctions.php:717
+#: inc/fonctions.php:721
 msgid "Vote no"
-msgstr "التصويت بلا"
+msgstr "صوّت بلا"
 
 #: inc/fonctions.php:709
 msgid "This post seems pertinent to you"
-msgstr "يبدو هذا الموضوع مناسب لك"
+msgstr "هذا المنشور يبدو مناسبا لك"
 
 #: inc/fonctions.php:715
 msgid "This post seems not pertinent to you"
-msgstr "يبدو هذا الموضوع غير مناسب لك"
+msgstr "هذا المنشور لا غير مناسبا لك"
 
 #: inc/fonctions.php:719
+#, fuzzy
 msgid "This post should not be here"
-msgstr "هذا الموضوع ليس مكانه هنا"
+msgstr "هذا المنشور لا ينبغي أن يكون هنا"
 
 #: inc/fonctions.php:720
-msgid ""
-"Are you sure this post should not be on this planet and should be removed?"
-msgstr "هل أنت متأكد من أن هذا الموضوع لا يجب أن يكون بالكوكب ويجب حذفه؟"
+#, fuzzy
+msgid "Are you sure this post should not be on this planet and should be removed?"
+msgstr "متأكد أن هذا الموضوع لا ينبغي أن يكون بالكوكب ويجب إزالته؟"
 
 #: inc/fonctions.php:743
 #, php-format
 msgid "The field \"%s\" has to be a valid email address"
-msgstr " \\\"%s\\\" يجب أن يكون عنوان بريد صالح"
+msgstr "الحقل \"%s\" يجب أن يكون عنوان بريد صالح"
 
-#: inc/fonctions.php:749 inc/fonctions.php:755
+#: inc/fonctions.php:749
+#: inc/fonctions.php:755
 #, php-format
 msgid "The field \"%s\" %s has to be a valid URL"
-msgstr "الحقل \\\"%s\\\" %s يجب أن يكون مسارا صالحا"
+msgstr "الحقل \"%s\" %s يجب أن يكون مسارا صالحا"
 
 #: inc/fonctions.php:759
 #, php-format
 msgid "The field \"%s\" %s is not a valid simplepie feed"
-msgstr "الحقل \\\"%s\\\" %s ليس بتلقيم simplepie صالح"
+msgstr "الحقل \"%s\" %s ليس بتلقيم simplepie صالح"
 
 #: inc/fonctions.php:774
 #, php-format
@@ -963,16 +1197,16 @@ msgstr "الحقل %s غير مطابق"
 #: inc/fonctions.php:778
 #, php-format
 msgid "The fields %s needs to have 4 characters minimum"
-msgstr "الحقل %s يتطلب 4 محارف كحد أدنى"
+msgstr "الحقل %s يجب أن يحتوي على 4 محارف على الأقل"
 
 #: inc/fonctions.php:786
 #, php-format
 msgid "The field \"%s\" is empty"
-msgstr "الحقل \\\"%s\\\" فارغ"
+msgstr "الحقل \"%s\" فارغ"
 
 #: inc/fonctions.php:948
 msgid " bytes"
-msgstr "بايت"
+msgstr " بايت"
 
 #: inc/fonctions.php:952
 msgid " Kb"
@@ -989,46 +1223,50 @@ msgstr " GB"
 #: inc/fonctions.php:1186
 #, php-format
 msgid "A registration request have been already sent with this username: %s"
-msgstr ""
+msgstr "طلب التسجيل باسم المستخدم س%s تم إرساله بالفعل"
 
 #: inc/fonctions.php:1189
 #, php-format
 msgid "A registration request have been already sent with this fullname: %s"
-msgstr ""
+msgstr "طلب التسجيل بالاسم %s تم إرساله بالفعل"
 
 #: inc/fonctions.php:1192
 #, php-format
-msgid ""
-"A registration request have been already sent with this email adress: %s"
-msgstr ""
+msgid "A registration request have been already sent with this email adress: %s"
+msgstr "طلب التسجيل بالبريد %s تم إرساله بالفعل"
 
 #: inc/fonctions.php:1195
 #, php-format
 msgid "A registration request have been already sent with this website: %s"
-msgstr ""
+msgstr "طلب التسجيل بالموقع %s تم إرساله بالفعل"
 
 #: inc/fonctions.php:1198
 #, php-format
 msgid "A registration request have been already sent with this Feed URL: %s"
-msgstr ""
+msgstr "طلب التسجيل بالتلقيم %s تم إرساله بالفعل"
 
-#: inc/fonctions.php:1211 inc/fonctions.php:1214
-#: admin/api/manage-account_api.php:55 admin/api/manage-user_api.php:97
-#: admin/api/manage-user_api.php:100 admin/api/manage-user_api.php:225
+#: inc/fonctions.php:1211
+#: inc/fonctions.php:1214
+#: admin/api/manage-account_api.php:55
+#: admin/api/manage-user_api.php:97
+#: admin/api/manage-user_api.php:100
+#: admin/api/manage-user_api.php:225
 #: user/api/account_api.php:55
 #, php-format
 msgid "The user %s already exists"
-msgstr "المستخدم %s موجود بالفعل"
+msgstr "الاسم %s مستخدم بالفعل"
 
-#: inc/fonctions.php:1217 admin/api/manage-user_api.php:103
+#: inc/fonctions.php:1217
+#: admin/api/manage-user_api.php:103
 #, php-format
 msgid "The email address %s is already in use"
 msgstr "عنوان البريد %s مسجل فعلا"
 
-#: inc/fonctions.php:1226 admin/api/manage-user_api.php:110
+#: inc/fonctions.php:1226
+#: admin/api/manage-user_api.php:110
 #, php-format
 msgid "The website %s is already assigned to the user %s"
-msgstr "الموقع %s معيّن بالفعل للمستخدم %s"
+msgstr "الموقع %s معيّن للمستخدم %s بالفعل "
 
 #: inc/core/class.bp.settings.php:77
 msgid "Unable to retrieve settings:"
@@ -1037,93 +1275,100 @@ msgstr "عدم القدرة على جَلْب الإعدادات:"
 #: inc/core/class.bp.settings.php:139
 #, php-format
 msgid "%s is not a valid setting id"
-msgstr "%s ليس بحقل إعدادات id صالح"
+msgstr "الحقل %s غير صالح لتحديد المعرّف"
 
 #: inc/core/class.dc.modules.php:208
 msgid "Empty module zip file."
-msgstr "ملف الوحدة المضغوط فارغ"
+msgstr "الملف المضغوط للوحدة فارغ."
 
 #: inc/core/class.dc.modules.php:213
 msgid "The zip file does not appear to be a valid Bilboplanet module."
-msgstr "الملف المضغوط لا يبدو انه وحدة صالحة لـBilboplanet."
+msgstr "هذا الملف المضغوط لا يبدو أنه وحدة صالحة لـBilboplanet."
 
 #: inc/core/class.dc.modules.php:238
 msgid "An error occurred during module deletion."
-msgstr "حدث خطأ أثناء حذف الوحدة"
+msgstr "حدث خطأ أثناء حذف الوحدة."
 
 #: inc/core/class.dc.modules.php:245
 #, php-format
 msgid "Unable to upgrade \"%s\". (same version)"
-msgstr "لا يمكن ترقية \\\"%s\\\". (نفس الإصدار)"
+msgstr "عدم القدرة على ترقية \"%s\" (نفس الإصدار)"
 
 #: inc/core/class.dc.modules.php:251
 msgid "Unable to read new _define.php file"
-msgstr "غير قادر على قرآءة الملف new _define.php"
+msgstr "عدم القدرة على قراءة الملف الجديد _define.php"
 
-#: inc/core/class.dc.modules.php:315 inc/core/class.dc.modules.php:326
+#: inc/core/class.dc.modules.php:315
+#: inc/core/class.dc.modules.php:326
 #: inc/core/class.dc.modules.php:341
 msgid "No such module."
-msgstr "لا توجد أي وحدة بهذا الإسم"
+msgstr "لا توجد أية وحدة بهذا الاسم"
 
 #: inc/core/class.dc.modules.php:319
 msgid "Cannot remove module files"
 msgstr "لا يمكن إزالة ملفات هذه الوحدة"
 
-#: inc/core/class.dc.modules.php:330 inc/core/class.dc.modules.php:334
+#: inc/core/class.dc.modules.php:330
+#: inc/core/class.dc.modules.php:334
 msgid "Cannot deactivate plugin."
-msgstr "لا يمكن تعطيل هذا الملحق"
+msgstr "لا يمكن تعطيل هذا الملحق."
 
-#: inc/core/class.dc.modules.php:345 inc/core/class.dc.modules.php:349
+#: inc/core/class.dc.modules.php:345
+#: inc/core/class.dc.modules.php:349
 msgid "Cannot activate plugin."
-msgstr "لا يمكن تفعيل هذا الملحق"
+msgstr "لا يمكن تفعيل هذا الملحق."
 
-#: inc/core/class.bp.core.php:400 inc/core/class.bp.core.php:437
+#: inc/core/class.bp.core.php:400
+#: inc/core/class.bp.core.php:437
 #: inc/core/class.bp.core.php:471
 msgid "You are not an administrator"
-msgstr "لست بمدير"
+msgstr "ليست لديك صلاحيات المدير"
 
 #: inc/core/class.bp.core.php:404
+#, fuzzy
 msgid "No user ID given"
-msgstr "لم يتم تحديد معرّف المستخدم"
+msgstr "لم يتم تحديد هوية للمستخدم"
 
-#: inc/core/class.bp.core.php:408 admin/install/index.php:120
+#: inc/core/class.bp.core.php:408
+#: admin/install/index.php:120
+#, fuzzy
 msgid "No password given"
-msgstr "لم يتم تحديد كلمة السرّ"
+msgstr "لم يتم تحديد كلمة سرّ"
 
 #: inc/core/class.bp.core.php:653
-msgid ""
-"User ID must contain at least 2 characters using letters, numbers or symbols."
+msgid "User ID must contain at least 2 characters using letters, numbers or symbols."
 msgstr ""
-"معرّف المستخدم يجب أن يحتوي على محرفان على الأقل بإستخدام الحروف والأرقام أو "
-"الرموز"
+"هوية المستخدم يجب أن تحتوي على محرفان على الأقل باستخدام الحروف والأرقام "
+"والرّموز."
 
 #: inc/core/class.bp.core.php:664
 msgid "Password must contain at least 6 characters."
-msgstr "كلمة السرّ يجب أن تحتوي على  6 محارف على الأقل."
+msgstr "كلمة السرّ يجب أن تحتوي على 6 محارف على الأقل."
 
 #: inc/core/class.bp.core.php:670
 msgid "Invalid user language code"
-msgstr "ترميز اللغة غير صالح"
+msgstr "رمز اللغة غير صالح"
 
 #: inc/core/class.bp.auth.php:68
 msgid "administrator"
 msgstr "المدير"
 
 #: inc/core/class.bp.auth.php:69
+#, fuzzy
 msgid "manage their own entries and comments"
-msgstr "إدارة مشاريعهم الخاصة والتعليقات"
+msgstr "إدارة المدخلات والتعليقات الخاصة بهم"
 
 #: inc/core/class.bp.auth.php:70
 msgid "publish entries and comments"
-msgstr ""
+msgstr "نشر المدخلات والتعليقات"
 
 #: inc/core/class.bp.auth.php:71
 msgid "delete entries and comments"
-msgstr ""
+msgstr "حذف المدخلات والتعليقات"
 
 #: inc/core/class.bp.auth.php:72
 msgid "manage all entries and comments"
-msgstr ""
+msgstr "إدارة كافة المدخلات والتعليقات"
 
 #: inc/core/class.bp.auth.php:73
 msgid "manage categories"
@@ -1131,49 +1376,66 @@ msgstr "إدارة التصنيفات"
 
 #: inc/core/class.bp.auth.php:74
 msgid "manage their own media items"
-msgstr "إدارة عناصر الوسائط الخاصة"
+msgstr "إدارة الوسائط الخاصة بهم"
 
 #: inc/core/class.bp.auth.php:75
 msgid "manage all media items"
-msgstr "إدارة جميع عناصر الوسائط"
+msgstr "إدارة كافة الوسائط"
 
 #: inc/core/class.bp.auth.php:374
 msgid "That user does not exists in the database."
-msgstr "هذا المستخدم غير موجود في قاعدة البيانات"
+msgstr "هذا المستخدم غير موجود في قاعدة البيانات."
 
 #: inc/core/class.bp.auth.php:406
 msgid "That key does not exists in the database."
-msgstr "هذا المفتاح غير موجود في قاعدة البيانات"
+msgstr "هذا المفتاح غير موجود في قاعدة البيانات."
 
 #: inc/admin/prepend.php:54
 msgid "Next Page"
 msgstr "الصفحة التالية"
 
-#: api/identishare.php:27 admin/manage-option.php:34
-#: admin/manage-permissions.php:30 admin/manage-feed.php:30
-#: admin/manage-update.php:30 admin/manage-useroption.php:31
-#: admin/manage-account.php:30 admin/manage-user.php:30
-#: admin/manage-post.php:30 admin/manage-database.php:30
-#: admin/manage-tagging.php:31 admin/manage-newsletter.php:30
-#: admin/manage-selection.php:31 admin/manage-pendinguser.php:30
-#: admin/manage-moderation.php:31 admin/manage-logs.php:30
-#: admin/manage-cache.php:30 admin/index.php:31 user/index.php:31
+#: api/identishare.php:27
+#: admin/manage-option.php:34
+#: admin/manage-permissions.php:30
+#: admin/manage-feed.php:30
+#: admin/manage-update.php:30
+#: admin/manage-useroption.php:31
+#: admin/manage-account.php:30
+#: admin/manage-user.php:30
+#: admin/manage-post.php:30
+#: admin/manage-database.php:30
+#: admin/manage-tagging.php:31
+#: admin/manage-newsletter.php:30
+#: admin/manage-selection.php:31
+#: admin/manage-pendinguser.php:30
+#: admin/manage-moderation.php:31
+#: admin/manage-logs.php:30
+#: admin/manage-cache.php:30
+#: admin/index.php:31
+#: user/index.php:31
 msgid "Permission denied"
 msgstr "الوصول ممنوع"
 
-#: api/main_api.php:142 api/comment_api.php:154
-#: admin/api/manage-site_api.php:227 admin/api/manage-pendinguser_api.php:197
-#: admin/api/manage-feed_api.php:454 admin/api/manage-database_api.php:95
+#: api/main_api.php:142
+#: api/comment_api.php:154
+#: admin/api/manage-site_api.php:227
+#: admin/api/manage-pendinguser_api.php:197
+#: admin/api/manage-feed_api.php:454
+#: admin/api/manage-database_api.php:95
 #: admin/api/manage-selection_api.php:82
 #: admin/api/manage-permissions_api.php:187
 #: admin/api/manage-tagging_api.php:177
 #: admin/api/manage-moderation_api.php:198
-#: admin/api/manage-account_api.php:104 admin/api/manage-user_api.php:382
-#: user/api/feed_api.php:72 user/api/tagging_api.php:214
-#: user/api/account_api.php:104 user/api/main_api.php:39
+#: admin/api/manage-account_api.php:104
+#: admin/api/manage-user_api.php:382
+#: user/api/feed_api.php:72
+#: user/api/tagging_api.php:214
+#: user/api/account_api.php:104
+#: user/api/main_api.php:39
 #: user/api/post_api.php:134
+#, fuzzy
 msgid "User bad call"
-msgstr ""
+msgstr "استدعاء سيء للمستخدم"
 
 #: api/votes.php:75
 msgid "Success"
@@ -1181,52 +1443,74 @@ msgstr "نجاح"
 
 #: api/votes.php:78
 msgid "Error: article number incorrect !"
-msgstr "خطأ : رقم الموضوع غير صحيح !"
+msgstr "خطأ : رقم المقال غير صحيح !"
 
 #: api/votes.php:82
 msgid "Error: you already vote on this post !"
-msgstr "خطأ : سبق لك التصويت لهذا الموضوع !"
+msgstr "خطأ : لقد صوّتً لهذا المنشور بالفعل !"
 
 #: api/votes.php:86
 msgid "Error: refused access"
-msgstr "خطأ : ممنوع الوصول"
+msgstr "خطأ : الوصول ممنوع"
 
 #: api/comment_api.php:67
-#, fuzzy
 msgid "This action is forbidden"
-msgstr "لا يمكن إلغاء هذا الإجراء"
+msgstr "هذا الإجراء ممنوع"
 
-#: api/index.php:52 admin/api/index.php:115 user/api/index.php:73
+#: api/index.php:52
+#: admin/api/index.php:115
+#: user/api/index.php:73
 msgid "bad call, this ajax call does not exist"
-msgstr ""
+msgstr "استدعاء سيء، هذا الاستدعاء لأجاكس غير موجود"
 
-#: admin/manage-option.php:35 admin/manage-permissions.php:31
-#: admin/manage-feed.php:31 admin/manage-update.php:31
-#: admin/manage-useroption.php:32 admin/manage-account.php:31
-#: admin/manage-user.php:31 admin/manage-post.php:31
-#: admin/manage-database.php:31 admin/manage-tagging.php:32
-#: admin/manage-newsletter.php:31 admin/manage-selection.php:32
-#: admin/manage-pendinguser.php:31 admin/manage-moderation.php:32
-#: admin/manage-logs.php:31 admin/manage-cache.php:31 admin/index.php:32
+#: admin/manage-option.php:35
+#: admin/manage-permissions.php:31
+#: admin/manage-feed.php:31
+#: admin/manage-update.php:31
+#: admin/manage-useroption.php:32
+#: admin/manage-account.php:31
+#: admin/manage-user.php:31
+#: admin/manage-post.php:31
+#: admin/manage-database.php:31
+#: admin/manage-tagging.php:32
+#: admin/manage-newsletter.php:31
+#: admin/manage-selection.php:32
+#: admin/manage-pendinguser.php:31
+#: admin/manage-moderation.php:32
+#: admin/manage-logs.php:31
+#: admin/manage-cache.php:31
+#: admin/index.php:32
 #: user/index.php:32
 msgid "You are not allowed to see this page."
-msgstr "غير مسموح لك برؤية هذه الصفحة."
+msgstr "ليس مسموحا لك بعرض هذا الملف."
 
-#: admin/manage-option.php:36 admin/manage-permissions.php:32
-#: admin/manage-feed.php:32 admin/manage-update.php:32
-#: admin/manage-useroption.php:33 admin/manage-account.php:32
-#: admin/manage-user.php:32 admin/manage-post.php:32
-#: admin/manage-database.php:32 admin/manage-tagging.php:33
-#: admin/manage-newsletter.php:32 admin/manage-selection.php:33
-#: admin/manage-pendinguser.php:32 admin/manage-moderation.php:33
-#: admin/manage-logs.php:32 admin/manage-cache.php:32 admin/index.php:33
+#: admin/manage-option.php:36
+#: admin/manage-permissions.php:32
+#: admin/manage-feed.php:32
+#: admin/manage-update.php:32
+#: admin/manage-useroption.php:33
+#: admin/manage-account.php:32
+#: admin/manage-user.php:32
+#: admin/manage-post.php:32
+#: admin/manage-database.php:32
+#: admin/manage-tagging.php:33
+#: admin/manage-newsletter.php:32
+#: admin/manage-selection.php:33
+#: admin/manage-pendinguser.php:32
+#: admin/manage-moderation.php:33
+#: admin/manage-logs.php:32
+#: admin/manage-cache.php:32
+#: admin/index.php:33
 #: user/index.php:33
 msgid "You can delete your session if you logout : "
-msgstr "يمكنك حذف جلستك إذا قمت بالخروج"
+msgstr "يمكنك حذف جلستك إذا خرجت :"
 
-#: admin/manage-option.php:53 admin/manage-feed.php:174
-#: admin/manage-account.php:79 admin/manage-user.php:164
-#: admin/manage-user.php:203 admin/api/manage-feed_api.php:558
+#: admin/manage-option.php:53
+#: admin/manage-feed.php:174
+#: admin/manage-account.php:79
+#: admin/manage-user.php:164
+#: admin/manage-user.php:203
+#: admin/api/manage-feed_api.php:558
 #: admin/api/manage-user_api.php:460
 msgid "Update"
 msgstr "تحديث"
@@ -1239,7 +1523,8 @@ msgstr "الخيارات"
 msgid "Configuration settings Planet."
 msgstr "ضبط إعدادات الكوكب."
 
-#: admin/manage-permissions.php:48 admin/sidebar.php:118
+#: admin/manage-permissions.php:48
+#: admin/sidebar.php:118
 msgid "Manage user permissions"
 msgstr "إدارة صلاحيات المستخدم"
 
@@ -1247,7 +1532,8 @@ msgstr "إدارة صلاحيات المستخدم"
 msgid "Check user statuses and configure their permissions"
 msgstr "فحص حالة المستخدمين وضبط صلاحياتهم"
 
-#: admin/manage-feed.php:48 admin/manage-feed.php:98
+#: admin/manage-feed.php:48
+#: admin/manage-feed.php:98
 msgid "Add a feed"
 msgstr "إضافة تلقيم"
 
@@ -1255,65 +1541,75 @@ msgstr "إضافة تلقيم"
 msgid "Filter feedlist"
 msgstr "رشح قائمة التلقيمات"
 
-#: admin/manage-feed.php:56 admin/manage-feed.php:91 admin/manage-user.php:55
-#: admin/manage-user.php:87 admin/manage-tagging.php:82
-#: admin/manage-selection.php:81 admin/manage-moderation.php:90
+#: admin/manage-feed.php:56
+#: admin/manage-feed.php:91
+#: admin/manage-user.php:55
+#: admin/manage-user.php:87
+#: admin/manage-tagging.php:82
+#: admin/manage-selection.php:81
+#: admin/manage-moderation.php:90
 msgid "Filter"
 msgstr "المُرشِّح"
 
-#: admin/manage-feed.php:72 admin/manage-feed.php:77 admin/manage-user.php:70
-#: admin/manage-user.php:75 admin/manage-post.php:146
-#: admin/manage-post.php:148 admin/manage-post.php:158
+#: admin/manage-feed.php:72
+#: admin/manage-feed.php:77
+#: admin/manage-user.php:70
+#: admin/manage-user.php:75
+#: admin/manage-post.php:146
+#: admin/manage-post.php:148
+#: admin/manage-post.php:158
 msgid "All"
-msgstr "الكل"
+msgstr "الكلّ"
 
 #: admin/manage-feed.php:75
 msgid "Active feeds"
-msgstr "التلقيمات النشطة"
+msgstr "التلقيمات النشيطة"
 
 #: admin/manage-feed.php:76
 msgid "Inactive feeds"
-msgstr "التلقيمات الخملة"
+msgstr "التلقيمات الخاملة"
 
 #: admin/manage-feed.php:79
 msgid "Auto disabled feeds"
 msgstr "التلقيمات المعطلة آليا"
 
-#: admin/manage-feed.php:84 admin/manage-feed.php:122
-#: admin/manage-feed.php:162 admin/manage-account.php:62
-#: admin/manage-user.php:80 admin/manage-user.php:103
-#: admin/manage-user.php:145 admin/manage-user.php:173
+#: admin/manage-feed.php:84
+#: admin/manage-feed.php:122
+#: admin/manage-feed.php:162
+#: admin/manage-account.php:62
+#: admin/manage-user.php:80
+#: admin/manage-user.php:103
+#: admin/manage-user.php:145
+#: admin/manage-user.php:173
 #: admin/api/manage-pendinguser_api.php:233
 msgid "User id"
-msgstr "معرّف المستخدم"
+msgstr "هوية المستخدم"
 
 #: admin/manage-feed.php:87
 msgid "Feed status"
 msgstr "حالة التلقيمات"
 
 #: admin/manage-feed.php:100
-msgid ""
-"Manage member's feeds. Notice that you can only add a feed to a user who has "
-"a website. So you first need to create the user and add a site to him"
+msgid "Manage member's feeds. Notice that you can only add a feed to a user who has a website. So you first need to create the user and add a site to him"
 msgstr ""
-"إدارة تلقيمات المستخدمين. لاحظ أنه يمكنك إضافة تلقيم واحد لكل مستخدم لديه "
-"موقع لذا ستحتاج أولا إلى إضافة موقع للمستخدم قبل إضافة التقليم."
+"إدارة تلقيمات المستخدمين.لاحظ أنه يمكنك إضافة تلقيم واحد لكل مستخدم يملك "
+"موقعا لذا ستحتاج أولا إلى إضافة موقع للمستخدم قبل إضافة التقليم."
 
 #: admin/manage-feed.php:114
 msgid "-- Choose an user --"
-msgstr "-- إختر مستخدم --"
+msgstr "-- اختر مستخدم --"
 
 #: admin/manage-feed.php:125
 msgid "Site id"
-msgstr "معرّف الموقع"
+msgstr "هوية الموقع"
 
 #: admin/manage-feed.php:126
 msgid "-- Choose an user id --"
-msgstr "-- إختيار معرّف مستخدم --"
+msgstr "-- اختر هوية مستخدم --"
 
 #: admin/manage-feed.php:127
 msgid "Choose the website of the feed"
-msgstr "إختر موقع التلقيم"
+msgstr "اختر موقع التلقيم"
 
 #: admin/manage-feed.php:129
 msgid "Full feed URL"
@@ -1321,11 +1617,12 @@ msgstr "المسار الكامل للتلقيم"
 
 #: admin/manage-feed.php:131
 msgid "ex: http://www.bilboplanet.com/feed/atom/"
-msgstr "مثال: http://www.bilboplanet.com/feed/atom/"
+msgstr "مثال: http://www.bilboplanet.com/feed/atom"
 
-#: admin/manage-feed.php:133 admin/manage-feed.php:165
+#: admin/manage-feed.php:133
+#: admin/manage-feed.php:165
 msgid "Feed name"
-msgstr "إسم التوقيع"
+msgstr "اسم التلقيم"
 
 #: admin/manage-feed.php:135
 msgid "ex: gnu/Linux posts"
@@ -1335,22 +1632,24 @@ msgstr "مثال: مواضيع غنو/لينكس"
 msgid "Trusted URL"
 msgstr "مسار موثوق"
 
-#: admin/manage-feed.php:144 admin/manage-user.php:127
+#: admin/manage-feed.php:144
+#: admin/manage-user.php:127
 #: admin/manage-user.php:185
 msgid "Add"
 msgstr "إضافة"
 
-#: admin/manage-feed.php:150 admin/sidebar.php:48
+#: admin/manage-feed.php:150
+#: admin/sidebar.php:48
 msgid "Manage feeds"
 msgstr "إدارة التلقيمات"
 
 #: admin/manage-feed.php:152
 msgid "Manage member feed."
-msgstr "إدارة تلقيمات الأعضاء."
+msgstr "إدارة تلقيمات العضو."
 
 #: admin/manage-feed.php:167
 msgid "ex: GNU/Linux posts"
-msgstr "مثال: مواضيع غنو/لينكس"
+msgstr "مثال: منشورات غنو/لينكس"
 
 #: admin/manage-feed.php:169
 msgid "Feed URL"
@@ -1358,34 +1657,37 @@ msgstr "مسار التلقيم"
 
 #: admin/manage-feed.php:171
 msgid "ex: http://www.bilboplanet.com/feed/"
-msgstr "مثال: http://www.bilboplanet.com/feed/"
+msgstr "مثال: http://www.bilboplanet.com/feed"
 
-#: admin/manage-feed.php:173 admin/manage-feed.php:187
-#: admin/manage-user.php:163 admin/manage-user.php:184
-#: admin/manage-user.php:202 admin/manage-tagging.php:98
-#: admin/manage-selection.php:118 admin/manage-pendinguser.php:60
-#: admin/manage-pendinguser.php:73 admin/manage-moderation.php:108
+#: admin/manage-feed.php:173
+#: admin/manage-feed.php:187
+#: admin/manage-user.php:163
+#: admin/manage-user.php:184
+#: admin/manage-user.php:202
+#: admin/manage-tagging.php:98
+#: admin/manage-selection.php:118
+#: admin/manage-pendinguser.php:60
+#: admin/manage-pendinguser.php:73
+#: admin/manage-moderation.php:108
 msgid "Cancel"
-msgstr "القناة"
+msgstr "إلغاء"
 
 #: admin/manage-update.php:47
 msgid "Enable update on loading of index page: Enable"
-msgstr "تفيل التحديث عند تحميل صفحة الفهرس: مُفعَّل"
+msgstr "تفعيل التحديث عند تحميل صفحة الفهرس: مُفعَّل"
 
 #: admin/manage-update.php:54
 msgid "Enable update on loading of index page: Disable"
-msgstr "تعطيل التحديث عند تحميل صفحة الفهرس: مُعطَّل"
+msgstr "تفعيل التحديث عند تحميل صفحة الفهرس: مُعطَّل"
 
 #: admin/manage-update.php:67
 msgid "The automatical update is disabled "
-msgstr "التحديث التلقائي معطل"
+msgstr "التحديث التلقائي معطّل"
 
 #: admin/manage-update.php:72
-msgid ""
-"The update can not start : the process is already started (You can force "
-"update by deleting the /inc/cron_running.txt file)"
+msgid "The update can not start : the process is already started (You can force update by deleting the /inc/cron_running.txt file)"
 msgstr ""
-"لا يمكن بدأ التحديث : العملية بدأت بالفعل (يمكنك فرض التحديث عن طريق حذف "
+"لا يمكن بدء التحديث : العملية بدأت بالفعل (يمكنك فرض التحديث عن طريق حذف "
 "الملف /inc/cron_running.txt)"
 
 #: admin/manage-update.php:74
@@ -1403,23 +1705,27 @@ msgstr "خطأ أثناء تحديث : %s"
 
 #: admin/manage-update.php:115
 msgid "Automatic update"
-msgstr "Automatic update"
+msgstr "تحديث آلي"
 
 #: admin/manage-update.php:117
 msgid "System configuration update."
-msgstr "تحديث تضبيط النظام."
+msgstr "تحديث إعدادات النظام."
 
-#: admin/manage-update.php:120 admin/index.php:166
+#: admin/manage-update.php:120
+#: admin/index.php:166
+#, fuzzy
 msgid "The update is running"
-msgstr "جاري التحديث"
+msgstr "التحديث جاري"
 
-#: admin/manage-update.php:122 admin/index.php:168
+#: admin/manage-update.php:122
+#: admin/index.php:168
 msgid "The update is stopped"
-msgstr "تم إيقاف التحديث"
+msgstr "التحديث موقوف"
 
-#: admin/manage-update.php:123 admin/index.php:170
+#: admin/manage-update.php:123
+#: admin/index.php:170
 msgid "The update is disabled"
-msgstr "التحديث معطل"
+msgstr "التحديث معطّل"
 
 #: admin/manage-update.php:126
 msgid "Stop the update algorithm"
@@ -1431,7 +1737,7 @@ msgstr "بدء خوارزمية التحديث"
 
 #: admin/manage-update.php:128
 msgid "Start a manual update"
-msgstr "بدء التحديث اليدوي"
+msgstr "بدء تحديث اليدوي"
 
 #: admin/manage-update.php:135
 msgid "Enable update on loading of index page"
@@ -1439,91 +1745,76 @@ msgstr "تفعيل التحديث عند تحميل صفحة الفهرس"
 
 #: admin/manage-update.php:141
 msgid "Setup feed update"
-msgstr "Setup feed update"
+msgstr "إعداد تحديث التلقيمات"
 
 #: admin/manage-update.php:143
 msgid "How to configure the update of the feeds ?"
-msgstr "كيف يمكن إعداد تحديث التلقيمات؟"
+msgstr "كيف يتم إعداد تحديث التلقيمات؟"
 
 #: admin/manage-update.php:146
 msgid "How does it work?"
 msgstr "كيف يعمل؟"
 
 #: admin/manage-update.php:147
-msgid ""
-"The update algorithm can work on several ways. The optimal solution that "
-"consumes less ressources and will give you the best results is clearly to "
-"setup a cron update manually into your server. But here you'll find a short "
-"explanation of the several methods :"
+msgid "The update algorithm can work on several ways. The optimal solution that consumes less ressources and will give you the best results is clearly to setup a cron update manually into your server. But here you'll find a short explanation of the several methods :"
 msgstr ""
-"خوارزمية التحديث يمكن أن تعمل عبر عدة طرق. الطريقة الأمثل والتي تستهلك أقل "
-"الموارد وتعطي أفضل النتائج هي تثبيت الـcorn على الخادم بشكل يدوي. ستجد هنا "
-"شرحاً مختصراً لباقي الطرق الأخرى :"
+"خوارزمية التحديث يمكن أن تعمل عبر عدة طرق. الطريقة الأمثل والتي تستهلك موارد "
+"أقل وتعطي أفضل النتائج هي إعداد دورية على الخادم بشكل يدوي. ستجد هنا شرحاً "
+"مختصراً لعدة طرق :"
 
 #: admin/manage-update.php:149
-msgid ""
-"The first intuitive way is to use this page to update manually the feeds of "
-"your database by clicking on the 'Start a manual update' option in the menu "
-"above. This means that it will update all your feeds only once."
+msgid "The first intuitive way is to use this page to update manually the feeds of your database by clicking on the 'Start a manual update' option in the menu above. This means that it will update all your feeds only once."
 msgstr ""
 "الحل الحَدسي الأول هو إستعمال هذه الصفحة لتحديث التلقيمات في قاعدة البيانات "
-"بشكل يدوي بالنقر على الخيار 'بدء التحديث اليدوي'  في القائمة أعلاه. هذا يعني "
-"أنه سيتم تحديث التلقيمات مرة واحدة."
+"بشكل يدوي بالنقر على الخيار 'بدء التحديث اليدوي' في القائمة أعلاه. هذا يعني "
+" أنه سيتم تحديث التلقيمات مرة واحدة."
 
 #: admin/manage-update.php:150
-msgid ""
-"The second solution is to click on the 'Start the update algorithm' in the "
-"form. This will enable a PHP script which will fetch your feeds. This can be "
-"done but needs some special PHP libraries on your web server that may not be "
-"installed. This solution can be used but we advise you to check sometimes if "
-"the update engine is still alive (it can be killed after a time)"
+msgid "The second solution is to click on the 'Start the update algorithm' in the form. This will enable a PHP script which will fetch your feeds. This can be done but needs some special PHP libraries on your web server that may not be installed. This solution can be used but we advise you to check sometimes if the update engine is still alive (it can be killed after a time)"
 msgstr ""
 "الحل الثاني هو النقر على 'بدء خوارزمية التحديث' في الإستمارة. هذا سيفعّل "
 "سكربت PHP الذي سيجلب التلقيمات. هذا الحل يتطلب وجود بعض مكتبات PHP الخاصة "
-"على خادم الوِب والتي قد تكون غير متبثه على خادمك. تجدر الإشارة أنه يجيب بين "
-"الحين والأخر معاينة عمل محرك التحديث (من الممكن أن يتوقف أحيانا)."
+"على خادم الوِب والتي قد تكون غير متبّثه على خادمك. تجدر الإشارة أنه يجب بين "
+"الحين والأخر معاينة عمل محرك التحديث (من الممكن أن يتوقف في بعض الأحيان)."
 
 #: admin/manage-update.php:151
-msgid ""
-"Another intuitive way to configure the update of your feeds is by enabling "
-"update on index page loading. This means that all your feeds will be updated "
-"whenever people connect to your site. This is a good manner to deal with the "
-"update but can slightly slow down your site."
+msgid "Another intuitive way to configure the update of your feeds is by enabling update on index page loading. This means that all your feeds will be updated whenever people connect to your site. This is a good manner to deal with the update but can slightly slow down your site."
 msgstr ""
+"حل حَدسي آخر هو تقعيل التحديث عند تحميل صفحة الفهرس. هذا يعني تشغيل التحديث "
+"عند زيارة الموقع وهي طريقة جيدة للتعامل مع التحديث لكنها قد تبطئ الموقع "
+"قليلا."
 
 #: admin/manage-update.php:152
-msgid ""
-"The optimal solution as said before it to configure manually the crontab of "
-"your server to enable the update. To configure a cron manually you'll find "
-"some advice here under."
+msgid "The optimal solution as said before it to configure manually the crontab of your server to enable the update. To configure a cron manually you'll find some advice here under."
 msgstr ""
 "الحل الأمثل كما هو موضح أعلاه يتجلى في ضبط crontab خادمك يدوياً لتفعيل "
-"التحديث. لضبط cron يدويا ستجد بعض النصائح أدناه :"
+"التحديث. لضبط الدورية يدويا ستجد بعض النصائح أدناه :"
 
 #: admin/manage-update.php:156
-msgid ""
-"You can setup a manual crontab update by calling automatically every X time "
-"the following page :"
-msgstr "يمكن إنشاء crontab يدويا بإستدعاء الصفحة التالية كل وقت محدد X :"
+msgid "You can setup a manual crontab update by calling automatically every X time the following page :"
+msgstr "يمكن إنشاء crontab يدويا باستدعاء الصفحة التالية خلال وقت محدد :"
 
 #: admin/manage-update.php:158
-msgid ""
-"This will automatically launch the update and log it into the log files."
-msgstr "سيقوم هذا ببدء التحديث آلياً وتسجيل المعلومات في ملف السجل."
+msgid "This will automatically launch the update and log it into the log files."
+msgstr "هذا سيقوم بتنقيذ التحديث آلياً وتسجيل المعلومات في ملفات السجل."
 
-#: admin/manage-useroption.php:48 admin/manage-useroption.php:108
+#: admin/manage-useroption.php:48
+#: admin/manage-useroption.php:108
 msgid "Reference contact email"
-msgstr "بريد المتصل"
+msgstr "بريد المؤسس"
 
-#: admin/manage-useroption.php:49 admin/manage-useroption.php:111
+#: admin/manage-useroption.php:49
+#: admin/manage-useroption.php:111
 msgid "Author Website"
-msgstr "موقع المؤلف"
+msgstr "موقع المؤسس"
 
-#: admin/manage-useroption.php:50 admin/manage-useroption.php:105
+#: admin/manage-useroption.php:50
+#: admin/manage-useroption.php:105
 msgid "Contact Name"
-msgstr "إسم المتصل"
+msgstr "اسم المؤسس"
 
-#: admin/manage-useroption.php:65 admin/api/manage-option_api.php:269
+#: admin/manage-useroption.php:65
+#: admin/api/manage-option_api.php:269
 msgid "Modification succeeded"
 msgstr "نجاح التغيير"
 
@@ -1533,51 +1824,57 @@ msgstr "خيارات المستخدمين"
 
 #: admin/manage-useroption.php:101
 msgid "Configuring user settings."
-msgstr "ضبط إعدادات المستخدم."
+msgstr "ضبط المستخدم."
 
 #: admin/manage-useroption.php:114
 msgid "Jabber / GoogleTalk"
-msgstr "Jabber / GoogleTalk"
+msgstr "جابر / غوغل توك"
 
 #: admin/manage-useroption.php:117
 msgid "Other Instant Messaging"
-msgstr "تراسلات فورية أخرى"
+msgstr "خدمات أخرى للتراسل الفوري"
 
 #: admin/manage-useroption.php:120
 msgid "About Me"
-msgstr "عنّي"
+msgstr "عني"
 
 #: admin/manage-account.php:48
 msgid "Manage account"
-msgstr "إدارة الحساب"
+msgstr "أدر الحساب"
 
 #: admin/manage-account.php:50
 msgid "You can change your profile configuration here"
-msgstr "يمكنك تغيير ملفك الشخصي من هنا"
+msgstr "يمكنك تغيير  إعدادات ملفك الشخصي من هنا"
 
-#: admin/manage-account.php:67 admin/manage-user.php:109
+#: admin/manage-account.php:67
+#: admin/manage-user.php:109
 #: admin/manage-user.php:150
 msgid "ex: Jean Dupont"
-msgstr "مثال: Jean Dupont"
+msgstr "مثال : زين الدين زيدان"
 
-#: admin/manage-account.php:71 admin/manage-user.php:113
+#: admin/manage-account.php:71
+#: admin/manage-user.php:113
 #: admin/manage-user.php:154
 msgid "ex: xxx@yyy.zzz"
-msgstr "مثال: xxx@yyy.zzz"
+msgstr "مثال : xxx@yyy.zzz"
 
-#: admin/manage-account.php:73 admin/manage-user.php:156
+#: admin/manage-account.php:73
+#: admin/manage-user.php:156
 msgid "New password"
 msgstr "كلمة سرّ جديدة"
 
-#: admin/manage-account.php:76 admin/manage-user.php:159
+#: admin/manage-account.php:76
+#: admin/manage-user.php:159
 msgid "Confirm new password"
-msgstr "تأكيد كلمة سرّ الجديدة"
+msgstr "تأكيد كلمة السرّ الجديدة"
 
-#: admin/manage-account.php:78 admin/manage-user.php:161
+#: admin/manage-account.php:78
+#: admin/manage-user.php:161
 msgid "You can leave the password field blank if you don't want to change it"
-msgstr "يمكنك ترك حقل كلمة السّر فارغا إذا كنت لا تريد تغييرها"
+msgstr "يمكنك ترك حقل كلمة السرّ فارغا إذا كنت لا تريد تغييرها"
 
-#: admin/manage-user.php:49 admin/manage-user.php:94
+#: admin/manage-user.php:49
+#: admin/manage-user.php:94
 msgid "Add an user"
 msgstr "إضافة مستخدم"
 
@@ -1599,7 +1896,7 @@ msgstr "حالة المستخدم"
 
 #: admin/manage-user.php:96
 msgid "To add a new member, fill out the form below."
-msgstr "لإضافة عضو جديد إملئ الاستمارة أدناه"
+msgstr "لإضافة عضو جديد املأ الاستمارة أدناه"
 
 #: admin/manage-user.php:105
 msgid "ex: Frankenstein"
@@ -1629,86 +1926,96 @@ msgstr "قائمة المستخدمين"
 msgid "List of members of the Planet"
 msgstr "قائمة أعضاء الكوكب"
 
-#: admin/manage-user.php:176 admin/manage-user.php:194
+#: admin/manage-user.php:176
+#: admin/manage-user.php:194
 msgid "Site name"
-msgstr "إسم الموقع"
+msgstr "اسم الموقع"
 
-#: admin/manage-user.php:178 admin/manage-user.php:196
+#: admin/manage-user.php:178
+#: admin/manage-user.php:196
 msgid "ex: Bilboplanet blog"
-msgstr "مثال: Bilboplanet blog"
+msgstr "مثال: مدوّنة Bilboplanet"
 
-#: admin/manage-user.php:180 admin/manage-user.php:198
+#: admin/manage-user.php:180
+#: admin/manage-user.php:198
 msgid "Site URL"
 msgstr "مسار الموقع"
 
-#: admin/manage-user.php:182 admin/manage-user.php:200
+#: admin/manage-user.php:182
+#: admin/manage-user.php:200
 msgid "ex: http://www.bilboplanet.com"
 msgstr "مثال: http://www.bilboplanet.com"
 
 #: admin/manage-post.php:95
 #, php-format
 msgid "The post %s was removed"
-msgstr "الموضوع %s تم حذفه"
+msgstr "تم حذف المنشور %s"
 
 #: admin/manage-post.php:102
 #, php-format
 msgid "The post %s was changed"
-msgstr "الموضوع %s تم تعديله"
+msgstr "تم تغيير المنشور %s"
 
 #: admin/manage-post.php:119
 msgid "Filtering of the posts"
-msgstr "رشح المواضيع"
+msgstr "رشح المنشورات"
 
 #: admin/manage-post.php:121
 msgid "Filter articles"
-msgstr "رشح المواضيع"
+msgstr "رشح المنشورات"
 
 #: admin/manage-post.php:127
 msgid "Posts of the member :"
-msgstr "موضوع العضو :"
+msgstr "منشورات العضو :"
 
 #: admin/manage-post.php:155
 msgid "Post status"
-msgstr "حالة الموضوع"
+msgstr "حالة المنشور"
 
-#: admin/manage-post.php:159 admin/manage-post.php:235
-#: admin/manage-post.php:243 admin/manage-post.php:249
+#: admin/manage-post.php:159
+#: admin/manage-post.php:235
+#: admin/manage-post.php:243
+#: admin/manage-post.php:249
 #: admin/manage-post.php:253
 msgid "inactive"
 msgstr "خامل"
 
-#: admin/manage-post.php:160 admin/manage-post.php:234
-#: admin/manage-post.php:239 admin/manage-post.php:244
+#: admin/manage-post.php:160
+#: admin/manage-post.php:234
+#: admin/manage-post.php:239
+#: admin/manage-post.php:244
 #: admin/manage-post.php:254
 msgid "active"
 msgstr "نشِيط"
 
-#: admin/manage-post.php:161 admin/manage-post.php:237
-#: admin/manage-post.php:246 admin/manage-post.php:252
+#: admin/manage-post.php:161
+#: admin/manage-post.php:237
+#: admin/manage-post.php:246
+#: admin/manage-post.php:252
 #: admin/manage-post.php:255
 msgid "pending"
 msgstr "قيد الإنتظار"
 
 #: admin/manage-post.php:167
 msgid "Number of posts"
-msgstr "عدد المواضيع"
+msgstr "عدد المنشورات"
 
 #: admin/manage-post.php:178
 msgid "List of the posts"
-msgstr "قائمة المواضيع"
+msgstr "قائمة المنشورات"
 
 #: admin/manage-post.php:180
-msgid ""
-"NOTE: If you delete a post which is too recent, it will be refetched next "
-"time the update happen !!"
-msgstr "إذا قمت بحذف موضوع حديث، سيتم إستعادته ونشره عند التحديث القادم !!"
+msgid "NOTE: If you delete a post which is too recent, it will be refetched next time the update happen !!"
+msgstr "إذا قمت بحذف منشور حديث، سيتم استعادته ونشره عند التحديث القادم !!"
 
-#: admin/manage-post.php:216 admin/api/manage-tagging_api.php:135
+#: admin/manage-post.php:216
+#: admin/api/manage-tagging_api.php:135
 #: admin/api/manage-moderation_api.php:156
 msgid "Date"
 msgstr "التاريخ"
 
-#: admin/manage-post.php:217 admin/index.php:68
+#: admin/manage-post.php:217
+#: admin/index.php:68
 #: admin/api/manage-tagging_api.php:136
 #: admin/api/manage-moderation_api.php:158
 msgid "Title"
@@ -1722,9 +2029,12 @@ msgstr "الحالة"
 msgid "Nb votes"
 msgstr "عدد الأصوات"
 
-#: admin/manage-post.php:220 admin/manage-newsletter.php:254
-#: admin/manage-logs.php:72 admin/api/manage-pendinguser_api.php:218
-#: admin/api/manage-feed_api.php:477 admin/api/manage-moderation_api.php:159
+#: admin/manage-post.php:220
+#: admin/manage-newsletter.php:254
+#: admin/manage-logs.php:72
+#: admin/api/manage-pendinguser_api.php:218
+#: admin/api/manage-feed_api.php:477
+#: admin/api/manage-moderation_api.php:159
 #: admin/api/manage-user_api.php:403
 msgid "Action"
 msgstr "إجراء"
@@ -1733,14 +2043,16 @@ msgstr "إجراء"
 msgid "Change"
 msgstr "تغيير"
 
-#: admin/manage-post.php:270 admin/manage-logs.php:88
-#: admin/api/manage-feed_api.php:560 admin/api/manage-user_api.php:463
+#: admin/manage-post.php:270
+#: admin/manage-logs.php:88
+#: admin/api/manage-feed_api.php:560
+#: admin/api/manage-user_api.php:463
 msgid "Delete"
 msgstr "حذف"
 
 #: admin/manage-post.php:286
 msgid "Show items by : "
-msgstr "إظهار العناصر بواسطة :"
+msgstr "إظهار العناصر حسب :"
 
 #: admin/manage-database.php:52
 msgid "Your file could not be downloaded"
@@ -1748,82 +2060,78 @@ msgstr "تعذّر تنزيل الملف"
 
 #: admin/manage-database.php:55
 msgid "Your file could not be imported"
-msgstr "تعذّر إستيراد الملف"
+msgstr "تعذّر استيراد الملف"
 
 #: admin/manage-database.php:62
 msgid "Your file doesn't have the right format : "
-msgstr "هيئة الملف غير صحيحة"
+msgstr "تهيئة الملف غير صحيحة :"
 
 #: admin/manage-database.php:65
 msgid "Congratulations! You imported an old data configuration successfully"
-msgstr "تهانينا! تم إستيراد بيانات الإعدادات القديمة بنجاح"
+msgstr "هنيئاً لك! تم استيراد بيانات إعداداتك القديمة بنجاح"
 
 #: admin/manage-database.php:66
 msgid "File name: "
-msgstr "إسم الملف:"
+msgstr "اسم الملف :"
 
 #: admin/manage-database.php:67
 msgid "Size: "
-msgstr "الحجم:"
+msgstr "الحجم :"
 
 #: admin/manage-database.php:67
 msgid "Kb"
 msgstr "Kb"
 
 #: admin/manage-database.php:189
-msgid ""
-"Two users have the same name, impossible to import. Please try again. "
-"Username : "
+msgid "Two users have the same name, impossible to import. Please try again. Username : "
 msgstr ""
-"يوجد مستخدمان لهما نفس الاسم، تعذّر الإستيراد. يرجى المحاولة مرة أخرى. إسم "
+"يوجد مستخدمان لهما نفس الاسم، تعذّر الاستيراد. يرجى المحاولة مرة أخرى. اسم "
 "المستخدم :"
 
 #: admin/manage-database.php:227
 msgid "You can not import 'flux' table without importing the 'membres' table"
-msgstr "لا يمكنك استيراد الجدول 'flux' من دون استيراد الجدول 'membres'"
+msgstr "لا يمكنك استيراد الجدول 'flux' دون استيراد الجدول 'membres'"
 
 #: admin/manage-database.php:273
 msgid "site_id should not be null for user "
-msgstr ""
+msgstr "الحقل site_id لا يجب تركه فارغا لهذا المستخدم"
 
 #: admin/manage-database.php:279
-msgid ""
-"You can not import 'articles' table without importing the 'membres' table"
-msgstr "لا يمكنك استيراد الجدول 'articles' من دون استيراد الجدول 'membres'"
+msgid "You can not import 'articles' table without importing the 'membres' table"
+msgstr "لا يمكنك استيراد الجدول 'articles' دون استيراد الجدول 'membres'"
 
 #: admin/manage-database.php:283
 msgid "You can not import 'articles' table without importing the 'flux' table"
-msgstr "لا يمكنك استيراد الجدول 'articles' من دون استيراد الجدول 'flux'"
+msgstr "لا يمكنك استيراد الجدول 'articles' دون استيراد الجدول 'flux'"
 
-#: admin/manage-database.php:351 user/api/post_api.php:115
+#: admin/manage-database.php:351
+#: user/api/post_api.php:115
 msgid "Forbidden"
 msgstr "غير مسموح"
 
 #: admin/manage-database.php:374
 msgid "Import successfully with warning :"
-msgstr "تم الإستيراد بنجاح مع بعض التحذيرات"
+msgstr "تم الاستيراد بنجاح مع بعض الإنذارات"
 
 #: admin/manage-database.php:386
 msgid "Export planet configuration"
-msgstr "تصدير إعدادات الكوكب"
+msgstr "تصدير بيانات الكوكب"
 
 #: admin/manage-database.php:389
 msgid "Please select the data you want to export"
-msgstr "الرجاء اختيار البيانات التي تريد تصديرها"
+msgstr "الرجاء اختيار البيانات المراد تصديرها"
 
 #: admin/manage-database.php:390
-msgid ""
-"This will export the data to a file that you'll be able to import later on "
-"another installation"
-msgstr "سيتم تصدير البيانات في ملف، الذي يمكنك إستيراده لاحقا لتثبيت آخر"
+msgid "This will export the data to a file that you'll be able to import later on another installation"
+msgstr "سيتم تصدير البيانات في ملف يمكنك استيراده لاحقا لتثبيت آخر"
 
 #: admin/manage-database.php:394
 msgid "Exported data"
-msgstr "البيانات المصدرة"
+msgstr "البيانات المصدّرة"
 
 #: admin/manage-database.php:403
 msgid "User table"
-msgstr "حدول المستخدمين"
+msgstr "جدول المستخدمين"
 
 #: admin/manage-database.php:408
 msgid "Site table"
@@ -1835,7 +2143,7 @@ msgstr "جدول التلقيمات"
 
 #: admin/manage-database.php:418
 msgid "Post table"
-msgstr "جدول المواضيع"
+msgstr "جدول المنشورات"
 
 #: admin/manage-database.php:423
 msgid "Votes table"
@@ -1855,28 +2163,25 @@ msgstr "تصدير"
 
 #: admin/manage-database.php:443
 msgid "Import planet configuration"
-msgstr "إستيراد تضبيطات الكوكب"
+msgstr "استيراد إعدادات الكوكب"
 
 #: admin/manage-database.php:446
 msgid "Please select the file you want to restore."
-msgstr "الرجاء اختيار الملف الذي تريد استعادته."
+msgstr "الرجاء اختيار الملف المراد استعادته."
 
 #: admin/manage-database.php:447
 msgid "TAKE CARE !"
-msgstr "تحذير !"
+msgstr "انتبه !"
 
 #: admin/manage-database.php:447
-msgid ""
-"If you apply the content of one of this file, this action can not be "
-"cancelled"
+msgid "If you apply the content of one of this file, this action can not be cancelled"
 msgstr "إذا قمت بتطبيق محتوى أحد هذه الملفات فلا يمكنك إلغاء العملية"
 
 #: admin/manage-database.php:448
-msgid ""
-"This action can take several minutes. Be patient and don't cancel the "
-"process during execution"
+msgid "This action can take several minutes. Be patient and don't cancel the process during execution"
 msgstr ""
-"هذا الإجراء يمكن أن يستغرق عدة دقائق. المرجو التحلي بالصبر وعدم إلغاء العملية"
+"هذا الإجراء يمكن أن يستغرق عدة دقائق. المرجو التحلي بالصبر وعدم إلغاء "
+"العملية"
 
 #: admin/manage-database.php:453
 msgid "Imported data"
@@ -1884,62 +2189,64 @@ msgstr "البيانات المستوردة"
 
 #: admin/manage-database.php:460
 msgid "Select your backup file"
-msgstr "إختر ملف النسخ الاحتياطي"
+msgstr "اختيار ملف النسخ الاحتياطي"
 
 #: admin/manage-database.php:462
 msgid "Specify the original version of your file"
-msgstr "حدّد الإصدار الأصليي للمف"
+msgstr "حدّد الإصدار الأصلي للمف"
 
 #: admin/manage-database.php:467
 msgid "Import"
-msgstr "إستيراد"
+msgstr "استيراد"
 
 #: admin/manage-database.php:471
-msgid ""
-"NOTE : to import a backup file, the file needs to have the *.json.gz "
-"extension !"
-msgstr ""
-"ملاحظة : ملف النسخ الإحتياطي المستورد يجب أن يكون بالإمتداد *.json.gz !"
+msgid "NOTE : to import a backup file, the file needs to have the *.json.gz extension !"
+msgstr "ملاحظة : ملف النسخ الإحتياطي المستورد يجب أن يكون بالإمتداد *.json.gz !"
 
 #: admin/manage-tagging.php:48
 #, fuzzy
 msgid "Tagging interface"
-msgstr "واجهة الإدارة"
+msgstr "واجهة الوَسْم"
 
 #: admin/manage-tagging.php:50
 msgid "Tag posts and put them together by theme."
-msgstr ""
+msgstr "وَسْم المنشورات وتجميعها حسب الموضوع"
 
-#: admin/manage-tagging.php:58 admin/manage-selection.php:57
+#: admin/manage-tagging.php:58
+#: admin/manage-selection.php:57
 #: admin/manage-moderation.php:66
 msgid "Elements to display"
 msgstr "عناصر العرض"
 
-#: admin/manage-tagging.php:60 admin/manage-selection.php:59
+#: admin/manage-tagging.php:60
+#: admin/manage-selection.php:59
 #: admin/manage-moderation.php:68
 msgid "Filter by user"
-msgstr "الرشح بالمستخدمين"
+msgstr "رشح حسب المستخدمين"
 
 #: admin/manage-newsletter.php:60
 #, php-format
 msgid "You shoud have selected %s"
-msgstr "كان يجدر بك إختيار %s"
+msgstr "كان يجدر بك اختيار %s"
 
-#: admin/manage-newsletter.php:87 admin/manage-newsletter.php:225
+#: admin/manage-newsletter.php:87
+#: admin/manage-newsletter.php:225
 msgid "Sender"
-msgstr "المرسل"
+msgstr "المرسِل"
 
-#: admin/manage-newsletter.php:89 admin/manage-newsletter.php:205
+#: admin/manage-newsletter.php:89
+#: admin/manage-newsletter.php:205
 msgid "Recipients"
-msgstr "المستلمون"
+msgstr "المستلمين"
 
-#: admin/manage-newsletter.php:93 admin/manage-newsletter.php:239
+#: admin/manage-newsletter.php:93
+#: admin/manage-newsletter.php:239
 msgid "Message"
 msgstr "الرسالة"
 
 #: admin/manage-newsletter.php:101
 msgid "Are you sure you want to send this newsletter?"
-msgstr "هل أنت متأكد من رغبتك في إرسال القائمة البريدية؟"
+msgstr "متأكد من رغبتك في إرسال هذه القائمة البريدية؟"
 
 #: admin/manage-newsletter.php:107
 msgid "Yes"
@@ -1951,11 +2258,11 @@ msgstr "لا"
 
 #: admin/manage-newsletter.php:150
 msgid "Select all members"
-msgstr "إختيار جميع الأعضاء"
+msgstr "اختيار كافة الأعضاء"
 
 #: admin/manage-newsletter.php:209
 msgid "Select recipients of the newsletter"
-msgstr "إختيار المستلمين للقائمة البريدية"
+msgstr "اختيار المستلمين للقائمة البريدية"
 
 #: admin/manage-newsletter.php:217
 msgid "Content"
@@ -1963,13 +2270,14 @@ msgstr "المحتوى"
 
 #: admin/manage-newsletter.php:221
 msgid "Complete the informations of the newsletter"
-msgstr "أتمم معلومات القائمة البريدية"
+msgstr "إتمام معلومات القائمة البريدية"
 
 #: admin/manage-newsletter.php:229
 msgid "Default"
 msgstr "مبدئي"
 
-#: admin/manage-newsletter.php:258 admin/api/manage-option_api.php:617
+#: admin/manage-newsletter.php:258
+#: admin/api/manage-option_api.php:617
 #: admin/api/manage-option_api.php:841
 msgid "Preview"
 msgstr "معاينة"
@@ -1978,18 +2286,20 @@ msgstr "معاينة"
 msgid "Selection of the week"
 msgstr "منتقى الأسبوع"
 
-#: admin/manage-selection.php:50 admin/manage-selection.php:97
+#: admin/manage-selection.php:50
+#: admin/manage-selection.php:97
 msgid "Make your selection of the week"
-msgstr "إنشاء منتقى الأسبوع"
+msgstr "شكّل منتقى الأسبوع"
 
 #: admin/manage-selection.php:95
 #, php-format
 msgid "Pool of selectionned posts between %s and %s"
-msgstr "حوض المواضيع المنتقات بين %s و %s"
+msgstr "حوض المنشورات المنتقات بين %s و %s"
 
-#: admin/manage-selection.php:109 admin/manage-moderation.php:103
+#: admin/manage-selection.php:109
+#: admin/manage-moderation.php:103
 msgid "Moderation of your post"
-msgstr "الإشراف على موضوعك"
+msgstr "الإشراف على منشورك"
 
 #: admin/manage-selection.php:111
 msgid "Your email address"
@@ -1997,87 +2307,83 @@ msgstr "عنوان بريدك الإلكتروني"
 
 #: admin/manage-selection.php:113
 msgid "This is your own email"
-msgstr "هذا هو بريدك"
+msgstr "هذا هو بريدك الإلكتروني"
 
-#: admin/manage-selection.php:115 admin/manage-pendinguser.php:58
-#: admin/manage-pendinguser.php:71 admin/manage-moderation.php:105
+#: admin/manage-selection.php:115
+#: admin/manage-pendinguser.php:58
+#: admin/manage-pendinguser.php:71
+#: admin/manage-moderation.php:105
 msgid "Comment"
-msgstr "تعليق"
+msgstr "التعليق"
 
 #: admin/manage-pendinguser.php:46
-#, fuzzy
 msgid "List of pending users"
-msgstr "قائمة المستخدمين"
+msgstr "قائمة انتظار المستخدمين"
 
 #: admin/manage-pendinguser.php:48
-#, fuzzy
 msgid "List of pending users for the Planet"
-msgstr "قائمة أعضاء الكوكب"
+msgstr "قائمة انتظار المستخدمين على الكوكب"
 
 #: admin/manage-pendinguser.php:57
-#, fuzzy
 msgid "Refuse subscription"
-msgstr "تفعيل التسجيل"
+msgstr "رفض التسجيل"
 
 #: admin/manage-pendinguser.php:70
-#, fuzzy
 msgid "Accept subscription"
-msgstr "تفعيل التسجيل"
+msgstr "قبول التسجيل"
 
 #: admin/head.php:56
 msgid "Back on the Bilboplanet"
-msgstr "الرجوع إلى Bilboplanet"
+msgstr "العودة للكوكب"
 
 #: admin/head.php:59
 msgid "Logout"
 msgstr "خروج"
 
-#: admin/head.php:60 admin/head.php:66
+#: admin/head.php:60
+#: admin/head.php:66
 msgid "About"
-msgstr "حول"
+msgstr "عن Bilboplanet"
 
 #: admin/head.php:68
 msgid "Bilboplanet was developed by"
-msgstr "Bilboplanet مبرمجة من طرف"
+msgstr "Bilboplanet طوّره"
 
 #: admin/head.php:76
 msgid "BilboPlanet : Useful links"
 msgstr "BilboPlanet : وصلات مفيدة"
 
 #: admin/head.php:79
-#, fuzzy
 msgid "Official WebSite: "
-msgstr "- الموقع الرسمي:"
+msgstr "الموقع الرسمي:"
 
 #: admin/head.php:80
-#, fuzzy
 msgid "Official Forum: "
-msgstr "- المنتدى الرسمي:"
+msgstr "المنتدى الرسمي:"
 
 #: admin/head.php:81
-#, fuzzy
 msgid "Official Documentation: "
-msgstr "- التوثيق الرسمي:"
+msgstr "التوثيق الرسمي:"
 
 #: admin/head.php:82
 msgid "Tracker: "
-msgstr ""
+msgstr "المقتفي :"
 
-#: admin/manage-moderation.php:48 admin/sidebar.php:91
+#: admin/manage-moderation.php:48
+#: admin/sidebar.php:91
 msgid "Moderation interface"
 msgstr "واجهة الإشراف"
 
 #: admin/manage-moderation.php:50
 msgid "Moderate some posts."
-msgstr "الإشراف على بعض المواضيع"
+msgstr "الإشراف على بعض المنشورات"
 
 #: admin/manage-moderation.php:54
-msgid ""
-"The moderation functionnality is disabled. If you want to enable it, please "
-"go to the configuration page"
-msgstr "وظيفة الإشراف معطلة. إذا أردت تفعيلها توجه إلى صفحة الضبط"
+msgid "The moderation functionnality is disabled. If you want to enable it, please go to the configuration page"
+msgstr "وظيفة الإشراف معطّلة. إذا أردت تفعيلها توجه إلى صفحة الإعدادات"
 
-#: admin/manage-moderation.php:55 admin/sidebar.php:68
+#: admin/manage-moderation.php:55
+#: admin/sidebar.php:68
 msgid "Planet Configuration"
 msgstr "ضبط الكوكب"
 
@@ -2087,7 +2393,7 @@ msgstr "الكوكب"
 
 #: admin/manage-logs.php:63
 msgid "All the log files"
-msgstr "كل ملفات السجل"
+msgstr "كافة ملفات السجل"
 
 #: admin/manage-logs.php:65
 msgid "Management planet log files (Advanced users)."
@@ -2095,7 +2401,7 @@ msgstr "إدارة ملفات سجل الكوكب (للمستخدمين المت
 
 #: admin/manage-logs.php:109
 msgid "Purge all the log files"
-msgstr "حذف كل ملفات السجل نهائيا"
+msgstr "حذف كافة ملفات السجل نهائيا"
 
 #: admin/sidebar.php:27
 msgid "Common"
@@ -2103,11 +2409,12 @@ msgstr "شائع"
 
 #: admin/sidebar.php:30
 msgid "Access the quick summary of the planet"
-msgstr "الوصول للملخص السريع للكوكب"
+msgstr "النفاذ للملخص السريع للكوكب"
 
-#: admin/sidebar.php:30 admin/index.php:144
+#: admin/sidebar.php:30
+#: admin/index.php:144
 msgid "Dashboard"
-msgstr "dashboard"
+msgstr "لوحة التحكم"
 
 #: admin/sidebar.php:31
 msgid "Manage your profile account"
@@ -2122,33 +2429,33 @@ msgid "Manage users"
 msgstr "إدارة المستخدمين"
 
 #: admin/sidebar.php:45
-#, fuzzy
 msgid "Pending users"
-msgstr "إدارة المستخدمين"
+msgstr "إدارة المستخدمين قيد الإنتظار"
 
 #: admin/sidebar.php:51
 msgid "Manage posts"
-msgstr "إدارة المواضيع"
+msgstr "إدارة المنشورات"
 
 #: admin/sidebar.php:54
 msgid "Manage newsletter of the planet"
-msgstr "Manage newsletter of the planet"
+msgstr "إدارة القائمة البريدية للكوكب"
 
 #: admin/sidebar.php:54
 msgid "Newsletter"
 msgstr "القائمة البريدية"
 
-#: admin/sidebar.php:61 admin/api/manage-permissions_api.php:163
+#: admin/sidebar.php:61
+#: admin/api/manage-permissions_api.php:163
 msgid "Configuration"
 msgstr "الضبط"
 
 #: admin/sidebar.php:65
 msgid "Author configuration"
-msgstr "ضبط مؤلف الكوكب"
+msgstr "ضبط مؤسس الكوكب"
 
 #: admin/sidebar.php:65
 msgid "Planet Author"
-msgstr "مؤلف الكوكب"
+msgstr "مؤسس الكوكب"
 
 #: admin/sidebar.php:68
 msgid "Planet configuration"
@@ -2164,19 +2471,19 @@ msgstr "ملفات السجل"
 
 #: admin/sidebar.php:74
 msgid "Import/Export Planet configuration"
-msgstr "إستيراد/تصدير إعدادات الكوكب"
+msgstr "استيراد/تصدير إعدادات الكوكب"
 
 #: admin/sidebar.php:74
 msgid "Import/Export"
-msgstr "إستيراد/تصدير"
+msgstr "استيراد/تصدير"
 
 #: admin/sidebar.php:77
 msgid "Clear Planet cache"
-msgstr "محو ذاكرة التخزين المؤقت للكوكب"
+msgstr "محو التخزين المؤقت للكوكب"
 
 #: admin/sidebar.php:77
 msgid "Clear cache"
-msgstr "محو ذاكرة التخزين المؤقت"
+msgstr "محو التخزين المؤقت"
 
 #: admin/sidebar.php:80
 msgid "Feed fetching system configuration"
@@ -2186,43 +2493,44 @@ msgstr "ضبط نظام جلب التلقيمات"
 msgid "Feed fetching"
 msgstr "جلب التلقيمات"
 
-#: admin/sidebar.php:86 admin/sidebar.php:92
+#: admin/sidebar.php:86
+#: admin/sidebar.php:92
 #: admin/api/manage-permissions_api.php:169
 msgid "Moderation"
 msgstr "الإشراف"
 
 #: admin/sidebar.php:96
-#, fuzzy
 msgid "Tag the last posts"
-msgstr "كل المواضيع"
+msgstr "وَسْم اخر المنشورات"
 
 #: admin/sidebar.php:97
 msgid "Tagging"
-msgstr ""
+msgstr "الوَسْم"
 
 #: admin/sidebar.php:113
 msgid "System"
 msgstr "النظام"
 
-#: admin/sidebar.php:119 admin/api/manage-permissions_api.php:110
+#: admin/sidebar.php:119
+#: admin/api/manage-permissions_api.php:110
 msgid "Permissions"
 msgstr "الصلاحيات"
 
 #: admin/manage-cache.php:54
 msgid "The cache files were correctly deleted."
-msgstr "تم حذف ملفات ذاكرة التخزين المؤقت بشكل صحيح."
+msgstr "تم حذف ملفات التخزين المؤقت بنجاح."
 
 #: admin/manage-cache.php:70
 msgid "Manage cache"
-msgstr "إدارة ذاكرة التخزين المؤقت"
+msgstr "إدارة التخزين المؤقت"
 
 #: admin/manage-cache.php:72
 msgid "Remove the cache files"
-msgstr "إزالة ملفات ذاكرة التخزين المؤقت"
+msgstr "إزالة ملفات التخزين المؤقت"
 
 #: admin/manage-cache.php:78
 msgid "Delete cache"
-msgstr "حذف ذاكرة التخزين المؤقت"
+msgstr "حذف التخزين المؤقت"
 
 #: admin/manage-cache.php:83
 msgid "The following files were deleted :"
@@ -2230,9 +2538,10 @@ msgstr "تم حذف الملفات التالية :"
 
 #: admin/index.php:40
 msgid "Latest articles :"
-msgstr "آخر المواضيع :"
+msgstr "آخر المقالات :"
 
-#: admin/index.php:68 admin/api/manage-feed_api.php:474
+#: admin/index.php:68
+#: admin/api/manage-feed_api.php:474
 msgid "User"
 msgstr "المستخدم"
 
@@ -2242,20 +2551,19 @@ msgstr "أخبار BilboPlanet - الموقع الرسمي :"
 
 #: admin/index.php:146
 msgid "Quick summary of the planet"
-msgstr "ملخص سريع عن كوكب"
+msgstr "ملخص سريع عن الكوكب"
 
 #: admin/index.php:151
-#, fuzzy
 msgid "WARNING : please remove /admin/install folder for maximum security"
-msgstr "تحذير : إحذف المجلد  /admin/install"
+msgstr "تنبيه : المرجو حذف المجلد  /admin/install"
 
 #: admin/index.php:161
 msgid "Statistics :"
-msgstr "الإحصائيات"
+msgstr "الإحصائيات :"
 
 #: admin/index.php:172
 msgid "The update on loading of index page enabled"
-msgstr "التحديث عند تحميل صفحة الفهرس المفعلة"
+msgstr "التحديث عند تحميل صفحة الفهرس مُفعّل"
 
 #: admin/index.php:174
 msgid "Current size of the database :"
@@ -2263,19 +2571,19 @@ msgstr "الحجم الحالي لقاعدة البيانات :"
 
 #: admin/index.php:175
 msgid "Number of articles in the DB :"
-msgstr "عدد المواضيع :"
+msgstr "عدد المنشورات في قاعدة البيانات :"
 
 #: admin/index.php:176
 msgid "Number of votes in the DB :"
-msgstr "عدد الأصوات :"
+msgstr "عدد الأصوات في قاعدة البيانات :"
 
 #: admin/index.php:177
 msgid "Number of members in the DB :"
-msgstr "عدد الأعضاء :"
+msgstr "عدد الأعضاء في قاعدة البيانات :"
 
 #: admin/index.php:178
 msgid "Number of feeds in the DB :"
-msgstr "عدد التلقيمات :"
+msgstr "عدد التلقيمات في قاعدة البيانات :"
 
 #: admin/index.php:184
 msgid "System information :"
@@ -2307,32 +2615,34 @@ msgstr "الذاكرة :"
 
 #: admin/index.php:192
 msgid "Your BilboPlanet version :"
-msgstr "إصدار BilboPlanet :"
+msgstr "إصدار Bilboplanet :"
 
 #: admin/install/check.php:34
 #, php-format
 msgid "PHP version is %s (5.0 or earlier needed)."
-msgstr "إصدار PHP هو %s (مطلوب 5.0 فما فوق)"
+msgstr "إصدار PHP هو %s (مطلوب 5.0 فما فوق)."
 
 #: admin/install/check.php:38
+#, fuzzy
 msgid "Multibyte string module (mbstring) is not available."
-msgstr "وحدة التتابع متعددة البايت (mbstring) غير متوفرة."
+msgstr "وحدة مقطع متعدد البايت (mbstring) غير متوفرة."
 
 #: admin/install/check.php:42
 msgid "Iconv module is not available."
-msgstr "وحدة Iconv غير متوفرة."
+msgstr "الوحدة Iconv غير متوفرة."
 
 #: admin/install/check.php:46
+#, fuzzy
 msgid "Output control functions are not available."
-msgstr ""
+msgstr "التحكّم في خَرْج الوظائف غير متوفر"
 
 #: admin/install/check.php:50
 msgid "SimpleXML module is not available."
-msgstr "وحدة SimpleXML غير متوفرة."
+msgstr "الوحدة SimpleXML غير متوفرة."
 
 #: admin/install/check.php:54
 msgid "DOM XML module is not available."
-msgstr "وحدة DOM XML غير متوفرة."
+msgstr "الوحدة DOM XML غير متوفرة."
 
 #: admin/install/check.php:59
 msgid "PCRE engine does not support UTF-8 strings."
@@ -2340,7 +2650,7 @@ msgstr "المحرك PCRE لا يدعم مقاطع UTF-8."
 
 #: admin/install/check.php:63
 msgid "SPL module is not available."
-msgstr "وحدة SPL غير متوفرة."
+msgstr "الوحدة SPL غير متوفرة."
 
 #: admin/install/check.php:70
 #, php-format
@@ -2354,56 +2664,54 @@ msgstr "إصدار PostgreSQL هو %s (مطلوب 8.0 فما فوق)."
 
 #: admin/install/wizard.php:74
 msgid "The Bilboplanet could not be installed."
-msgstr "لا يمكن تثبيت Bilboplanet"
+msgstr "تعذّر تثبيت Bilboplanet."
 
 #: admin/install/wizard.php:80
-msgid ""
-"The Bilboplanet is already installed. Please remove the tables in the "
-"database before."
-msgstr "Bilboplanet متبّث بالفعل. المرجو إزالة الجداول من قاعدة البيانات."
+#, fuzzy
+msgid "The Bilboplanet is already installed. Please remove the tables in the database before."
+msgstr "ـBilboplanet متبّث بالفعل. المرجو إزالة الجداول من قاعدة البيانات."
 
 #: admin/install/wizard.php:86
 #, php-format
 msgid "File %s does not exist."
 msgstr "الملف %s غير موجود."
 
-#: admin/install/wizard.php:91 admin/install/wizard.php:105
+#: admin/install/wizard.php:91
+#: admin/install/wizard.php:105
 #, php-format
 msgid "Cannot write %s file."
-msgstr "لا يمكن الكتابة في الملف %s"
+msgstr "لا يمكن الكتابة في الملف %s."
 
 #: admin/install/wizard.php:142
 msgid "Bilboplanet Install Wizard"
-msgstr "مرشد تثبيت Bilboplanet"
+msgstr "مرشد مثبّت Bilboplanet"
 
 #: admin/install/wizard.php:158
 msgid "Installation wizard of the Bilboplanet"
-msgstr "مرشد تثبيت Bilboplanet"
+msgstr "مرشد مثبّت Bilboplanet"
 
-#: admin/install/wizard.php:161 admin/install/index.php:284
+#: admin/install/wizard.php:161
+#: admin/install/index.php:284
 msgid "Errors:"
 msgstr "الأخطاء:"
 
 #: admin/install/wizard.php:165
 #, php-format
-msgid ""
-"The file <strong>%s</strong> already exists. If you need to reinitialize on "
-"of the configuration elements in this file, please remove the configuration "
-"file first or <a href=\"%s\">continue the installation</a>."
+msgid "The file <strong>%s</strong> already exists. If you need to reinitialize on of the configuration elements in this file, please remove the configuration file first or <a href=\"%s\">continue the installation</a>."
 msgstr ""
+"الملف <strong>%s</strong> موجود بالفعل، إذا أردت تصفير إعداداته المرجو حذفه "
+"أولا أو <a href=\"%s\">إكمال التثبيت</a>."
 
 #: admin/install/wizard.php:170
 msgid ""
-"Welcome to the BilboPlanet. Before you begin, we need some informations "
-"concerning the database. You'll need to provide the following information to "
-"begin the installation and to create the configuration file.<br /><br />\n"
+"Welcome to the BilboPlanet. Before you begin, we need some informations concerning the database. You'll need to provide the following information to begin the installation and to create the configuration file.<br /><br />\n"
 "   1. The host of the database.<br/>\n"
 "   2. The name of the database.<br/>\n"
 "   3. Your username to the database.<br/>\n"
 "   4. Your password to the database.<br/>\n"
 "   4. Table prefix for your database.<br/><br/>"
 msgstr ""
-"مرحبابك في BilboPlanet. قبل أن تبدأ، أنت بحاجة لمعرفة بعض المعلومات المتعلقة "
+"مرحبا بك في BilboPlanet. قبل أن تبدأ أنت بحاجة لمعرفة بعض المعلومات المتعلقة "
 "بقاعدة البيانات. ستحتاج إلى توفير المعلومات التالية لبدء التثبيت وإنشاء ملف "
 "الإعدادات.<br /><br />\n"
 "   1. مضيف قاعدة البيانات.<br/>\n"
@@ -2414,55 +2722,57 @@ msgstr ""
 
 #: admin/install/wizard.php:184
 msgid "Host of the database"
-msgstr "مضيف قاعدة البيانات:"
+msgstr "مضيف قاعدة البيانات"
 
 #: admin/install/wizard.php:186
 msgid "ex: localhost"
-msgstr "مثال: localhost"
+msgstr "مثال : localhost"
 
 #: admin/install/wizard.php:188
 msgid "Name of the database:"
-msgstr "إسم قاعدة البيانات:"
+msgstr "اسم قاعدة البيانات:"
 
 #: admin/install/wizard.php:190
 msgid "ex: bilboplanet"
-msgstr "مثال: bilboplanet"
+msgstr "مثال : bilboplanet"
 
 #: admin/install/wizard.php:194
 msgid "Your username depends of your provider"
-msgstr "إسم المستخدم يعتمد على مزود الخدمة"
+msgstr "اسم المستخدم يعتمد على موفّر الخدمة"
 
 #: admin/install/wizard.php:198
 msgid "Your password depends of your provider"
-msgstr "كلمة السّر تعتمد على مزود الخدمة"
+msgstr "كلمة السّر تعتمد على موفّر الخدمة"
 
-#: admin/install/wizard.php:200 admin/install/index.php:339
-#: admin/install/index.php:342 admin/install/index.php:345
+#: admin/install/wizard.php:200
+#: admin/install/index.php:339
+#: admin/install/index.php:342
+#: admin/install/index.php:345
 msgid "Required field"
 msgstr "حقل ضروري"
 
 #: admin/install/wizard.php:200
 msgid "Database Tables Prefix:"
-msgstr "بادئة جداول قاعدة البيانات:"
+msgstr "سابقة جداول قاعدة البيانات:"
 
 #: admin/install/wizard.php:202
 msgid "bp_ is the default prefix"
 msgstr "السابقة الإفتراضية هي bp_"
 
-#: admin/install/wizard.php:204 admin/install/index.php:350
+#: admin/install/wizard.php:204
+#: admin/install/index.php:350
 msgid "Save"
 msgstr "حفظ"
 
 #: admin/install/index.php:32
 msgid "No configuration file"
-msgstr "لايجود أي ملف إعدادات"
+msgstr "لا يوجد أي ملف إعدادات"
 
 #: admin/install/index.php:33
-msgid ""
-"There is no configuration file, you need to create one. Therefor you can use "
-"the wizard to generate a configuration file. Click \"Next\" to go to the "
-"setup page."
+msgid "There is no configuration file, you need to create one. Therefor you can use the wizard to generate a configuration file. Click \"Next\" to go to the setup page."
 msgstr ""
+"لا يوجد أي ملف إعدادات، يمكنك استخدام المرشد لإنشاء واحد. انقْر على \"التالي\" "
+"للذهاب لصفحة التثبيت."
 
 #: admin/install/index.php:34
 msgid "Next"
@@ -2470,7 +2780,7 @@ msgstr "التالي"
 
 #: admin/install/index.php:50
 msgid "The Bilboplanet is already installed."
-msgstr "Bilboplanet متبّث بالفعل"
+msgstr "ـBilboplanet متبّث بالفعل."
 
 #: admin/install/index.php:56
 msgid "The Bilboplanet can not be installed"
@@ -2479,36 +2789,35 @@ msgstr "لا يمكن تثبيت Bilboplanet"
 #: admin/install/index.php:92
 #, php-format
 msgid "Unable to read %s file."
-msgstr "غير قادر على قراءة الملف %s"
+msgstr "عدم القدرة على قراءة الملف %s."
 
 #: admin/install/index.php:101
 msgid "Please fill the title in."
-msgstr "المرجو ملئ العنوان."
+msgstr "المرجو ملء العنوان."
 
 #: admin/install/index.php:104
 msgid "Please fill the user email in."
-msgstr "المرجو ملئ البريد الإلكتروني للمستخدم."
+msgstr "المرجو ملء البريد الإلكتروني للمستخدم."
 
 #: admin/install/index.php:107
 msgid "Please fill the username in."
-msgstr "المرجو ملئ إسم المستخدم."
+msgstr "المرجو ملء اسم المستخدم."
 
-#: admin/install/index.php:110 admin/api/manage-user_api.php:86
-msgid ""
-"Please do not use special chars in user_id field. Allowed chars are only a-"
-"z, A-Z and 0-9"
+#: admin/install/index.php:110
+#: admin/api/manage-user_api.php:86
+msgid "Please do not use special chars in user_id field. Allowed chars are only a-z, A-Z and 0-9"
 msgstr ""
-"المرجو عدم إستخدام محارف خاصة في الحقل user_id. الأحرف المسموح بها هي a-z، A-"
-"Z و 0-9"
+"المرجو عدم إستخدام محارف خاصة في الحقل user_id. المحارف المسموح بها هي a-z و "
+"A-Z و 0-9"
 
 #: admin/install/index.php:114
-msgid ""
-"The username has to be formed of minimum 2 characters with letters of numbers"
-msgstr "إسم المستخدم يجب أن يحتوي على محرفان على الأقل مع أحرف و أرقام"
+msgid "The username has to be formed of minimum 2 characters with letters of numbers"
+msgstr ""
+"اسم المستخدم يجب أن يحتوي على محرفان على الأقل باستخدام الأحرف و الأرقام"
 
 #: admin/install/index.php:117
 msgid "Invalid email address"
-msgstr "عنوان البريد غير صالح"
+msgstr "عنوان بريد غير صالح"
 
 #: admin/install/index.php:123
 msgid "The passwords don't match"
@@ -2516,9 +2825,10 @@ msgstr "كلمتا السّر غير متطابقتان"
 
 #: admin/install/index.php:126
 msgid "The password have to contain minimum 6 characters."
-msgstr "كلمة السّر يجب أن تحتوي على ستة محارف كحد أدنى."
+msgstr "كلمة السّر يجب أن تحتوي على 6 محارف على الأقل."
 
-#: admin/install/index.php:267 admin/install/index.php:281
+#: admin/install/index.php:267
+#: admin/install/index.php:281
 msgid "Installation of the Bilboplanet"
 msgstr "تثبيت Bilboplanet"
 
@@ -2531,14 +2841,14 @@ msgid "Information on the BilboPlanet"
 msgstr "معلومات عن BilboPlanet"
 
 #: admin/install/index.php:310
-msgid ""
-"Thank you for taking somes minutes to answer those questions to help to the "
-"configuration of the bilboplanet."
+#, fuzzy
+msgid "Thank you for taking somes minutes to answer those questions to help to the configuration of the bilboplanet."
 msgstr ""
+"المرجو تخصيص بضعة دقائق للإجابة على هذه الأسئلة للمساعدة في ضبط Bilboplanet."
 
 #: admin/install/index.php:311
 msgid "Fields marked with an asterisk are obligatory"
-msgstr ""
+msgstr "الحقول المعلّمة بـ (*) ضرورية"
 
 #: admin/install/index.php:314
 msgid "Information of the user"
@@ -2546,7 +2856,7 @@ msgstr "معلومات المستخدم"
 
 #: admin/install/index.php:317
 msgid "Enter your fullname or the name you want to be displayed"
-msgstr "أدخل إسمك الكامل أو الاسم الذي تريد عرضه"
+msgstr "أدخل اسمك الكامل أو الاسم الذي تريد عرضه"
 
 #: admin/install/index.php:320
 msgid "Enter your email address"
@@ -2562,16 +2872,17 @@ msgstr "أدخل عنوان موقعك أو مدونتك (اختياري)"
 
 #: admin/install/index.php:326
 msgid "Information on the Planet"
-msgstr "معلومات عن  الكوكب"
+msgstr "معلومات الكوكب"
 
-#: admin/install/index.php:327 admin/api/manage-option_api.php:358
+#: admin/install/index.php:327
+#: admin/api/manage-option_api.php:358
 #: admin/api/manage-option_api.php:676
 msgid "Title of the Planet"
 msgstr "عنوان الكوكب"
 
 #: admin/install/index.php:329
 msgid "Fill the title of your planet"
-msgstr "إملأ عنوان الكوكب"
+msgstr "املأ عنوان الكوكب"
 
 #: admin/install/index.php:330
 msgid "Description"
@@ -2579,7 +2890,7 @@ msgstr "الوصف"
 
 #: admin/install/index.php:332
 msgid "Give a description of your planet"
-msgstr "إعطي وصفاً للكوكب"
+msgstr "أعطي وصفاً للكوكب"
 
 #: admin/install/index.php:333
 msgid "Planet Language"
@@ -2587,19 +2898,19 @@ msgstr "لغة الكوكب"
 
 #: admin/install/index.php:335
 msgid "Choose your langage"
-msgstr "إختر اللغة"
+msgstr "اختر اللغة"
 
 #: admin/install/index.php:338
 msgid "Administration username and password"
-msgstr "Administration username and password"
+msgstr "اسم وكلمة سرّ الإدارة"
 
 #: admin/install/index.php:341
 msgid "Enter your username"
-msgstr "أدخل إسم المستخدم"
+msgstr "أدخل اسم المستخدم"
 
 #: admin/install/index.php:344
 msgid "Enter your password"
-msgstr "أدخل كلمة السّر"
+msgstr "أدخل كلمة السرّ"
 
 #: admin/install/index.php:345
 msgid "Confirm your password"
@@ -2607,25 +2918,24 @@ msgstr "تأكيد كلمة السّر"
 
 #: admin/install/index.php:347
 msgid "Re-enter your password for verification"
-msgstr "أعد إدخال كلمة السّر للتحقق منها "
+msgstr "أعد إدخال كلمة السرّ للتحقق منها"
 
 #: admin/install/index.php:361
 msgid "Install succeeded"
-msgstr "نجح التثبيت"
+msgstr "نجاح التثبيت"
 
 #: admin/install/index.php:363
-msgid ""
-"The Bilboplanet was successfully installed. Here you can find a resume of "
-"the configuration"
-msgstr ""
+msgid "The Bilboplanet was successfully installed. Here you can find a resume of the configuration"
+msgstr "تم تثبيت Bilboplanet بنجاح. ستجد هنا ملخّص لإعدادات الكوكب"
 
 #: admin/install/index.php:365
 msgid "Your account"
 msgstr "حسابك"
 
 #: admin/install/index.php:371
+#, fuzzy
 msgid "Your Bilboplanet"
-msgstr ""
+msgstr "ـBilboplanet خاصّتك"
 
 #: admin/install/index.php:373
 msgid "URL of the BilboPlanet:"
@@ -2639,15 +2949,16 @@ msgstr "واجهة الإدارة"
 msgid "Go to the administration interface"
 msgstr "الذهاب إلى واجهة الإدارة"
 
-#: admin/api/manage-site_api.php:58 admin/api/manage-site_api.php:121
+#: admin/api/manage-site_api.php:58
+#: admin/api/manage-site_api.php:121
 #, php-format
 msgid "The user %s already own the website %s"
-msgstr "المستخدم %s بالفعل يملك الموقع %s"
+msgstr "المستخدم %s يملك الموقع %s بالفعل"
 
 #: admin/api/manage-site_api.php:61
 #, php-format
 msgid "The website %s owns to user %s"
-msgstr "الموقع %s ملك للمستخدم %s"
+msgstr "الموقع %s يملكه للمستخدم %s"
 
 #: admin/api/manage-site_api.php:81
 #, php-format
@@ -2657,7 +2968,7 @@ msgstr "تم إضافة الموقع %s للمستخدم %s بنجاح"
 #: admin/api/manage-site_api.php:124
 #, php-format
 msgid "The website %s is owned by user %s"
-msgstr "الموقع %s مستخدم بالفعل من طرف المستخدم %s"
+msgstr "الموقع %s يملكه المستخدم %s بالفعل"
 
 #: admin/api/manage-site_api.php:135
 #, php-format
@@ -2665,28 +2976,31 @@ msgid "Website %s successfully updated"
 msgstr "تم تحديث الموقع %s بنجاح"
 
 #: admin/api/manage-site_api.php:175
+#, fuzzy
 msgid "Site status toggled"
-msgstr ""
+msgstr "حالة الموقع تبدّلت"
 
 #: admin/api/manage-site_api.php:184
 #, php-format
 msgid "Are you sure you want to remove site %s ?"
-msgstr "هل أنت متأكد أنك تريد إزالة الموقع %s ؟"
+msgstr "متأكد أنك تريد إزالة الموقع %s ؟"
 
-#: admin/api/manage-site_api.php:186 admin/api/manage-feed_api.php:252
+#: admin/api/manage-site_api.php:186
+#: admin/api/manage-feed_api.php:252
 #: admin/api/manage-user_api.php:281
 msgid "This action can not be canceled"
 msgstr "لا يمكن إلغاء هذا الإجراء"
 
 #: admin/api/manage-site_api.php:187
 msgid "All the posts comming from this site will be removed"
-msgstr "كل المواضيع القادمة من هذا الموقع سيتم حذفها"
+msgstr "سيتم إزالة كافة المنشورات القادمة من هذا الموقع"
 
 #: admin/api/manage-site_api.php:188
 msgid "All the feeds of this site will be removed"
-msgstr "كل تلقيمات هذا الموقع سيتم حذفها"
+msgstr "سيتم إزالة كافة تلقيمات هذا الموقع"
 
-#: admin/api/manage-site_api.php:191 admin/api/manage-feed_api.php:256
+#: admin/api/manage-site_api.php:191
+#: admin/api/manage-feed_api.php:256
 #: admin/api/manage-user_api.php:287
 msgid "Confirm"
 msgstr "تأكيد"
@@ -2694,13 +3008,13 @@ msgstr "تأكيد"
 #: admin/api/manage-site_api.php:208
 #, php-format
 msgid "Delete of site %s succeeded"
-msgstr "تمّ حذف الموقع %s بنجاح"
+msgstr "تم حذف الموقع %s بنجاح"
 
 #: admin/api/manage-pendinguser_api.php:62
 #: admin/api/manage-moderation_api.php:121
 #, php-format
 msgid "Dear %s,"
-msgstr "عزيزي %s,"
+msgstr "عزيزي %s،"
 
 #: admin/api/manage-pendinguser_api.php:64
 #: admin/api/manage-moderation_api.php:123
@@ -2709,30 +3023,32 @@ msgstr "عزيزي المستخدم،"
 
 #: admin/api/manage-pendinguser_api.php:80
 msgid "Regards,"
-msgstr ""
+msgstr "تحياتي،"
 
 #: admin/api/manage-pendinguser_api.php:102
 #: admin/api/manage-moderation_api.php:88
 msgid "Mail could not be send"
-msgstr "لا يمكن إرسال البريد"
+msgstr "تعذّر إرسال البريد"
 
 #: admin/api/manage-pendinguser_api.php:105
-#, fuzzy
 msgid "Subscription successfully refused"
-msgstr "تم رفض الموضوع بنجاح"
+msgstr "تم رفض التسجيل بنجاح"
 
-#: admin/api/manage-pendinguser_api.php:187 admin/api/manage-user_api.php:145
+#: admin/api/manage-pendinguser_api.php:187
+#: admin/api/manage-user_api.php:145
 #, php-format
 msgid "User %s successfully added"
 msgstr "تم إضافة المستخدم %s بنجاح"
 
 #: admin/api/manage-pendinguser_api.php:215
-#: admin/api/manage-permissions_api.php:107 admin/api/manage-user_api.php:400
+#: admin/api/manage-permissions_api.php:107
+#: admin/api/manage-user_api.php:400
 msgid "Avatar"
 msgstr "أفتار"
 
 #: admin/api/manage-pendinguser_api.php:216
-#: admin/api/manage-permissions_api.php:108 admin/api/manage-user_api.php:401
+#: admin/api/manage-permissions_api.php:108
+#: admin/api/manage-user_api.php:401
 msgid "User Informations"
 msgstr "معلومات المستخدم"
 
@@ -2751,35 +3067,35 @@ msgstr "قبول"
 #: admin/api/manage-feed_api.php:90
 #, php-format
 msgid "This user already owns the feed %s"
-msgstr "هذا المستخدم يملك بالفعل التلقيم %s"
+msgstr "هذا المستخدم يملك التلقيم %s بالفعل"
 
 #: admin/api/manage-feed_api.php:93
 #, php-format
 msgid "The feed %s is owned by site %s"
-msgstr "التلقيم %s مستخدم بالفعل من طرف الموقع %s"
+msgstr "التلقيم %s يملكه الموقع %s"
 
 #: admin/api/manage-feed_api.php:96
-#, php-format
+#, fuzzy, php-format
 msgid "They are already multiple use of feed %s"
-msgstr "هناك فعلا إستعمال متعدد للتلقيم %s"
+msgstr "يوجد فعلا استخدام متعدد للتلقيم %s"
 
 #: admin/api/manage-feed_api.php:117
 #, php-format
 msgid "Feed %s was successfully added"
-msgstr "تم إضافة التلقيم %s بنجاح"
+msgstr "تم إضافة التقيم %s بنجاح"
 
 #: admin/api/manage-feed_api.php:128
 msgid "Please select the user to you want to add the feed"
-msgstr "المرجو إختيار المستخدم المراد إضافة التلقيم له"
+msgstr "المرجو اختيار المستخدم المراد إضافة التلقيم له"
 
 #: admin/api/manage-feed_api.php:131
 msgid "Please select the site to you wand to add the feed"
-msgstr "المرجو إختيار الموقع المراد إضافة التلقيم له"
+msgstr "المرجو اختيار الموقع المراد إضافة التلقيم له"
 
 #: admin/api/manage-feed_api.php:174
 #, php-format
 msgid "The feed %s is already used by user %s"
-msgstr "التلقيم %s مستخدم بالفعل من طرف المستخدم %s"
+msgstr "التلقيم %s مستخدم من طرف المستخدم %s بالفعل"
 
 #: admin/api/manage-feed_api.php:184
 #, php-format
@@ -2787,17 +3103,19 @@ msgid "Feed %s successfully updated"
 msgstr "تم تحديث التلقيم %s بنجاح"
 
 #: admin/api/manage-feed_api.php:223
+#, fuzzy
 msgid "Feed status toggled"
-msgstr ""
+msgstr "حالة التلقيم تبدّلت"
 
 #: admin/api/manage-feed_api.php:241
+#, fuzzy
 msgid "Feed trust changed"
-msgstr ""
+msgstr "التقة في التلقيم تغيّرت"
 
 #: admin/api/manage-feed_api.php:250
 #, php-format
 msgid "Are you sure you want to remove feed %s ?"
-msgstr "هل أنت متأكد من أنك تريد إزالة التلقيم %s ؟"
+msgstr "متأكد أنك تريد إزالة التلقيم %s ؟"
 
 #: admin/api/manage-feed_api.php:269
 #, php-format
@@ -2805,33 +3123,39 @@ msgid "Delete of feed %s succeeded"
 msgstr "تم حذف التلقيم %s بنجاح"
 
 #: admin/api/manage-feed_api.php:271
-#, fuzzy
 msgid "This feed does not exist in the database"
-msgstr "هذا المفتاح غير موجود في قاعدة البيانات"
+msgstr "هذا التلقيم غير موجود في قاعدة البيانات"
 
-#: admin/api/manage-feed_api.php:290 user/api/tagging_api.php:142
+#: admin/api/manage-feed_api.php:290
+#: user/api/tagging_api.php:142
 msgid "The tag you want to remove doesn't exist on this feed"
-msgstr ""
+msgstr "الوَسْم المراد إزالته غير موجود في قاعدة البيانات"
 
-#: admin/api/manage-feed_api.php:295 admin/api/manage-tagging_api.php:48
-#: user/api/tagging_api.php:52 user/api/tagging_api.php:147
-#, fuzzy
+#: admin/api/manage-feed_api.php:295
+#: admin/api/manage-tagging_api.php:48
+#: user/api/tagging_api.php:52
+#: user/api/tagging_api.php:147
 msgid "The tag was successfuly removed"
-msgstr "تم إضافة التلقيم %s بنجاح"
+msgstr "تم إزالة الوَسْم بنجاح"
 
-#: admin/api/manage-feed_api.php:334 admin/api/manage-tagging_api.php:90
-#: user/api/tagging_api.php:100 user/api/tagging_api.php:190
+#: admin/api/manage-feed_api.php:334
+#: admin/api/manage-tagging_api.php:90
+#: user/api/tagging_api.php:100
+#: user/api/tagging_api.php:190
 msgid "Tags added : "
-msgstr ""
+msgstr "الوُسوم المضافة:"
 
-#: admin/api/manage-feed_api.php:370 admin/api/manage-option_api.php:857
-#: user/api/feed_api.php:44 user/api/post_api.php:105
-msgid "Nothing to do"
-msgstr "لا يجود شيء لعمله"
-
-#: admin/api/manage-feed_api.php:376 user/api/feed_api.php:50
-#: user/api/post_api.php:111
+#: admin/api/manage-feed_api.php:370
+#: admin/api/manage-option_api.php:857
+#: user/api/feed_api.php:44
+#: user/api/post_api.php:105
 #, fuzzy
+msgid "Nothing to do"
+msgstr "لا شيء لعمله"
+
+#: admin/api/manage-feed_api.php:376
+#: user/api/feed_api.php:50
+#: user/api/post_api.php:111
 msgid "Feed successfully updated"
 msgstr "تم تحديث التلقيم %s بنجاح"
 
@@ -2843,11 +3167,13 @@ msgstr "معلومات عن موقع المستخدم"
 msgid "Disable feed"
 msgstr "تعطيل التلقيم"
 
-#: admin/api/manage-feed_api.php:491 admin/api/manage-feed_api.php:495
+#: admin/api/manage-feed_api.php:491
+#: admin/api/manage-feed_api.php:495
 msgid "Enable feed"
 msgstr "تفعيل التلقيم"
 
 #: admin/api/manage-feed_api.php:500
+#, fuzzy
 msgid "Untrust this feed"
 msgstr "عدم الثقة في هذا التلقيم"
 
@@ -2856,23 +3182,20 @@ msgid "Trust this feed"
 msgstr "الثقة في هذا التلقيم"
 
 #: admin/api/manage-feed_api.php:508
-#, fuzzy
 msgid "Disable comments on this feed"
-msgstr "تعطيل التعليقات"
+msgstr "تعطيل التعليقات على هذا التلقيم"
 
 #: admin/api/manage-feed_api.php:512
-#, fuzzy
 msgid "Allow comments on this feed"
-msgstr "السماح بالتعليقات"
+msgstr "السماح التعليقات على هذا التلق"
 
 #: admin/api/manage-feed_api.php:531
-#, fuzzy
 msgid "Tag feed"
-msgstr "إدارة التلقيمات"
+msgstr "وَسْم التلقيم"
 
 #: admin/api/manage-feed_api.php:536
 msgid "Feed name : "
-msgstr "إسم التلقيم :"
+msgstr "اسم التلقيم :"
 
 #: admin/api/manage-feed_api.php:537
 msgid "Site URL : "
@@ -2881,26 +3204,26 @@ msgstr "مسار الموقع :"
 #: admin/api/manage-database_api.php:74
 #, php-format
 msgid "Unable to write %s file."
-msgstr "لا يمكن الكتابة على الملف %s"
+msgstr "عدم القدرة على الكتابة في الملف %s."
 
 #: admin/api/manage-database_api.php:74
 msgid "Please check you /admin/cache directory permissions"
-msgstr ""
+msgstr "المرجو التأكد من صلاحيات المجلّد /admin/cache"
 
 #: admin/api/manage-database_api.php:81
-msgid ""
-"A snapshot of your current database was successfully created. Please "
-"download the following file and put it in some safe place."
+msgid "A snapshot of your current database was successfully created. Please download the following file and put it in some safe place."
 msgstr ""
+"تم أخد نسخة احتياطية من قاعدة البيانات بنجاح، المرجو تنزيل الملف التالي "
+"لحفظه في مأمن."
 
 #: admin/api/manage-database_api.php:86
 msgid "Please select at least one table to export"
-msgstr ""
+msgstr "المرجو اختيار جدول واحد على الأقل لتصديره"
 
 #: admin/api/manage-permissions_api.php:36
 #: admin/api/manage-permissions_api.php:70
 msgid "Impossible to change your own role"
-msgstr "لا يمكنك تغيير دَورك"
+msgstr "لا يمكن تغيير دورك"
 
 #: admin/api/manage-permissions_api.php:41
 #, php-format
@@ -2909,7 +3232,7 @@ msgstr "المستخدم %s معروف الآن بـ %s"
 
 #: admin/api/manage-permissions_api.php:44
 msgid "There was a problem during toggling user role"
-msgstr ""
+msgstr "حدث خطأ أثناء تغيير دور المستخدم"
 
 #: admin/api/manage-permissions_api.php:74
 #, php-format
@@ -2918,7 +3241,7 @@ msgstr "المستخدم %s يملك صلاحيات جديدة : %s"
 
 #: admin/api/manage-permissions_api.php:109
 msgid "Role"
-msgstr "الدور"
+msgstr "الدّور"
 
 #: admin/api/manage-permissions_api.php:114
 msgid "Normal user"
@@ -2929,12 +3252,13 @@ msgid "Website manager"
 msgstr "مدير الموقع"
 
 #: admin/api/manage-permissions_api.php:116
+#, fuzzy
 msgid "Super user"
 msgstr "مستخدم خارق"
 
 #: admin/api/manage-option_api.php:40
 msgid "The title can not be empty"
-msgstr "لايمكن ترك العنوان فارغاً"
+msgstr "العنوان لا يمكن أن يكون فارغا"
 
 #: admin/api/manage-option_api.php:128
 msgid "Only numeric value are allowed for number of posts by page"
@@ -2942,55 +3266,64 @@ msgstr "مسموح فقط بالقيم الرقمية لعدد المشاركا�
 
 #: admin/api/manage-option_api.php:169
 msgid "Subscription page content can not be empty"
-msgstr ""
+msgstr "محتوى صفحة التسجيل لا يمكن أن يكون فارغاً"
 
 #: admin/api/manage-option_api.php:253
-msgid ""
-"Impossible to reach statusnet server : the service could not be activated"
-msgstr ""
+msgid "Impossible to reach statusnet server : the service could not be activated"
+msgstr "تعذّر الوصول لخادم statusnet : من الممكن أن يكون الخادم غير نشِيط"
 
-#: admin/api/manage-option_api.php:353 admin/api/manage-option_api.php:671
+#: admin/api/manage-option_api.php:353
+#: admin/api/manage-option_api.php:671
 msgid "Option"
 msgstr "الخيار"
 
-#: admin/api/manage-option_api.php:354 admin/api/manage-option_api.php:672
+#: admin/api/manage-option_api.php:354
+#: admin/api/manage-option_api.php:672
 msgid "Value"
 msgstr "القيمة"
 
-#: admin/api/manage-option_api.php:362 admin/api/manage-option_api.php:680
+#: admin/api/manage-option_api.php:362
+#: admin/api/manage-option_api.php:680
 msgid "Description of the Planet"
 msgstr "وصف الكوكب"
 
-#: admin/api/manage-option_api.php:366 admin/api/manage-option_api.php:684
+#: admin/api/manage-option_api.php:366
+#: admin/api/manage-option_api.php:684
 msgid "Graphical theme"
 msgstr "السِّمة"
 
-#: admin/api/manage-option_api.php:381 admin/api/manage-option_api.php:688
+#: admin/api/manage-option_api.php:381
+#: admin/api/manage-option_api.php:688
 msgid "Language of the Planet"
 msgstr "لغة الكوكب"
 
-#: admin/api/manage-option_api.php:402 admin/api/manage-option_api.php:692
+#: admin/api/manage-option_api.php:402
+#: admin/api/manage-option_api.php:692
+#, fuzzy
 msgid "Information message (optional)"
-msgstr ""
+msgstr "رسالة المعلومات (اختياري)"
 
-#: admin/api/manage-option_api.php:406 admin/api/manage-option_api.php:696
+#: admin/api/manage-option_api.php:406
+#: admin/api/manage-option_api.php:696
 msgid "Reserved tags"
-msgstr ""
+msgstr "الوُسوم المحجوزة"
 
 #: admin/api/manage-option_api.php:408
-#, fuzzy
 msgid "comma separated tags (i.e : pl-agenda, pl-selected)"
-msgstr "تُفصل الوُسوم بفواصل (مثال: لينكس،وِب،حدث)"
+msgstr "يُفصل بين الكلمات المفتاحية بفواصل (مثال: لينكس،وِب،حدث)"
 
-#: admin/api/manage-option_api.php:414 admin/api/manage-option_api.php:700
+#: admin/api/manage-option_api.php:414
+#: admin/api/manage-option_api.php:700
 msgid "Show the contact page"
-msgstr "إظهار صفحة الإتصال"
+msgstr "عرض صفحة المراسلة"
 
-#: admin/api/manage-option_api.php:423 admin/api/manage-option_api.php:709
+#: admin/api/manage-option_api.php:423
+#: admin/api/manage-option_api.php:709
 msgid "Enable voting"
-msgstr "تفعيل التصويت"
+msgstr "تفعيل التّصويت"
 
-#: admin/api/manage-option_api.php:433 admin/api/manage-option_api.php:714
+#: admin/api/manage-option_api.php:433
+#: admin/api/manage-option_api.php:714
 msgid "Votes system"
 msgstr "نظام التصويت"
 
@@ -3004,187 +3337,215 @@ msgstr "إجابي وسلبي"
 
 #: admin/api/manage-option_api.php:438
 msgid "yes-warn"
-msgstr "نعم-تحذير"
+msgstr "نعم-إنذار"
 
 #: admin/api/manage-option_api.php:438
 msgid "Positive and Warning"
-msgstr "إجابي وسلبي"
+msgstr "إجابي وإنذار"
 
-#: admin/api/manage-option_api.php:456 admin/api/manage-option_api.php:723
+#: admin/api/manage-option_api.php:456
+#: admin/api/manage-option_api.php:723
 msgid "Option of moderation"
 msgstr "خيار الإشراف"
 
 #: admin/api/manage-option_api.php:466
-#, fuzzy
 msgid "Allow comments on posts"
 msgstr "السماح بالتعليقات"
 
 #: admin/api/manage-option_api.php:469
 msgid "This will allow some post to accept some comments"
-msgstr ""
+msgstr "سيسمح هذا بالتعليق على بعض المنشوات"
 
-#: admin/api/manage-option_api.php:482 admin/api/manage-option_api.php:741
+#: admin/api/manage-option_api.php:482
+#: admin/api/manage-option_api.php:741
 msgid "Enable avatar"
 msgstr "تفعيل الأفتار"
 
 #: admin/api/manage-option_api.php:485
+#, fuzzy
 msgid "Work with"
-msgstr ""
+msgstr "العمل حسب"
 
-#: admin/api/manage-option_api.php:497 admin/api/manage-option_api.php:750
+#: admin/api/manage-option_api.php:497
+#: admin/api/manage-option_api.php:750
 msgid "Maintenance mode"
 msgstr "وضع الصيانة"
 
-#: admin/api/manage-option_api.php:506 admin/api/manage-option_api.php:759
+#: admin/api/manage-option_api.php:506
+#: admin/api/manage-option_api.php:759
 msgid "Log level"
-msgstr "مستوى السجل"
+msgstr "مستوى السّجل"
 
-#: admin/api/manage-option_api.php:521 admin/api/manage-option_api.php:763
+#: admin/api/manage-option_api.php:521
+#: admin/api/manage-option_api.php:763
 msgid "Number of posts by page"
-msgstr "عدد المواضيع في كل صفحة"
+msgstr "عدد المنشورات في لكل صفحة"
 
 #: admin/api/manage-option_api.php:525
 msgid "Analytics engine"
-msgstr "محرك التحليلات (Analytics engine)"
+msgstr "محرّك التحليلات"
 
 #: admin/api/manage-option_api.php:537
 msgid "Google-Analytics"
-msgstr "تحليلات غوغل (Google-Analytics)"
+msgstr "Google-Analytics"
 
 #: admin/api/manage-option_api.php:538
 msgid "Piwik"
 msgstr "Piwik"
 
-#: admin/api/manage-option_api.php:539 admin/api/manage-option_api.php:705
-#: admin/api/manage-option_api.php:719 admin/api/manage-option_api.php:728
-#: admin/api/manage-option_api.php:737 admin/api/manage-option_api.php:746
-#: admin/api/manage-option_api.php:755 admin/api/manage-option_api.php:769
-#: admin/api/manage-option_api.php:798 admin/api/manage-option_api.php:826
+#: admin/api/manage-option_api.php:539
+#: admin/api/manage-option_api.php:705
+#: admin/api/manage-option_api.php:719
+#: admin/api/manage-option_api.php:728
+#: admin/api/manage-option_api.php:737
+#: admin/api/manage-option_api.php:746
+#: admin/api/manage-option_api.php:755
+#: admin/api/manage-option_api.php:769
+#: admin/api/manage-option_api.php:798
+#: admin/api/manage-option_api.php:826
 #: admin/api/manage-option_api.php:847
 msgid "Disabled"
-msgstr "معطل"
+msgstr "معطّل"
 
-#: admin/api/manage-option_api.php:543 admin/api/manage-option_api.php:776
+#: admin/api/manage-option_api.php:543
+#: admin/api/manage-option_api.php:776
+#, fuzzy
 msgid "Google Analytics id"
-msgstr "معرّف تحليلات غوغل"
+msgstr "Google Analytics id"
 
 #: admin/api/manage-option_api.php:547
 msgid "Piwik site URL"
-msgstr "مسار موقع Piwik"
+msgstr "مسار Piwik"
 
 #: admin/api/manage-option_api.php:551
+#, fuzzy
 msgid "Piwik site id"
-msgstr "معرّف موقع Piwik"
+msgstr "Piwik site id"
 
-#: admin/api/manage-option_api.php:555 admin/api/manage-option_api.php:793
+#: admin/api/manage-option_api.php:555
+#: admin/api/manage-option_api.php:793
 msgid "Enable Internal links"
-msgstr "تفعيل الوصلات الداخلية"
+msgstr "تقعيل الوصلات الداخلية"
 
 #: admin/api/manage-option_api.php:568
 msgid "Planet statusnet host"
-msgstr ""
+msgstr "مضيف statusnet الخاص بالكوكب"
 
 #: admin/api/manage-option_api.php:569
 msgid "(ex: http://identi.ca)"
-msgstr "(مثال: http://identi.ca)"
+msgstr "(مثال : http://identi.ca)"
 
-#: admin/api/manage-option_api.php:573 admin/api/manage-option_api.php:812
+#: admin/api/manage-option_api.php:573
+#: admin/api/manage-option_api.php:812
 msgid "Planet statusnet username"
-msgstr ""
+msgstr "اسم مستخدم statusnet الخاص بالكوكب"
 
 #: admin/api/manage-option_api.php:578
 msgid "Planet statusnet password"
-msgstr ""
+msgstr "كلمة سرّ statusnet"
 
-#: admin/api/manage-option_api.php:583 admin/api/manage-option_api.php:817
+#: admin/api/manage-option_api.php:583
+#: admin/api/manage-option_api.php:817
 msgid "Statusnet messages format"
-msgstr ""
+msgstr "تهيئة رسائل statusnet"
 
 #: admin/api/manage-option_api.php:584
-msgid ""
-"(ex: \"[Site name] %(author)s %(title)s\" where \"%(author)s\" is the author "
-"of the post and \"%(title)s is the title\")"
+msgid "(ex: \"[Site name] %(author)s %(title)s\" where \"%(author)s\" is the author of the post and \"%(title)s is the title\")"
 msgstr ""
+"[اسم الموقع] %(author)s %(title)s\" بحيث \"%(author)s\" هو صاحب المنشور و \"%"
+"(title)s هو العنوان\")"
 
-#: admin/api/manage-option_api.php:588 admin/api/manage-option_api.php:822
+#: admin/api/manage-option_api.php:588
+#: admin/api/manage-option_api.php:822
 msgid "Statusnet activate automatic post"
-msgstr ""
+msgstr "تفعيل النشر الآلي على Statusnet"
 
-#: admin/api/manage-option_api.php:598 admin/api/manage-option_api.php:831
+#: admin/api/manage-option_api.php:598
+#: admin/api/manage-option_api.php:831
 msgid "Enable subscription"
 msgstr "تفعيل التسجيل"
 
-#: admin/api/manage-option_api.php:609 admin/api/manage-option_api.php:835
+#: admin/api/manage-option_api.php:609
+#: admin/api/manage-option_api.php:835
 msgid "Subscription page content"
-msgstr ""
+msgstr "محتوى صفحة التسجيل "
 
-#: admin/api/manage-option_api.php:702 admin/api/manage-option_api.php:711
-#: admin/api/manage-option_api.php:725 admin/api/manage-option_api.php:734
-#: admin/api/manage-option_api.php:743 admin/api/manage-option_api.php:752
-#: admin/api/manage-option_api.php:795 admin/api/manage-option_api.php:824
+#: admin/api/manage-option_api.php:702
+#: admin/api/manage-option_api.php:711
+#: admin/api/manage-option_api.php:725
+#: admin/api/manage-option_api.php:734
+#: admin/api/manage-option_api.php:743
+#: admin/api/manage-option_api.php:752
+#: admin/api/manage-option_api.php:795
+#: admin/api/manage-option_api.php:824
 #: admin/api/manage-option_api.php:833
 msgid "Enabled"
-msgstr "مفعّل"
+msgstr "مُفعّل"
 
 #: admin/api/manage-option_api.php:732
-#, fuzzy
 msgid "Allow post comments"
 msgstr "السماح بالتعليقات"
 
 #: admin/api/manage-option_api.php:767
 msgid "Planet Analytics Engine"
-msgstr "محرك تحليلات الكوكب"
+msgstr "محرّك تحليلات الكوكب"
 
 #: admin/api/manage-option_api.php:785
 msgid "Piwik URL (don't forget the \"/\" at the end)"
-msgstr ""
+msgstr "مسار Piwik (لاتنسى \"/\" في الأخير)"
 
 #: admin/api/manage-option_api.php:789
+#, fuzzy
 msgid "Piwik Site ID"
-msgstr "معرّف موقع Piwik"
+msgstr "Piwik site id"
 
 #: admin/api/manage-option_api.php:807
 msgid "Planet statusnet host (ex: http://identi.ca)"
-msgstr ""
+msgstr "مضيف statusnet الخاص بالكوكب (مثال : http://identi.ca)"
 
-#: admin/api/manage-tagging_api.php:43 user/api/tagging_api.php:47
+#: admin/api/manage-tagging_api.php:43
+#: user/api/tagging_api.php:47
 msgid "The tag you want to remove doesn't exist on this post"
-msgstr ""
+msgstr "الوَسْم المراد حذفه غير موجود في هذا المنشور"
 
 #: admin/api/manage-tagging_api.php:158
-#, fuzzy
 msgid "Tag post"
-msgstr "إدارة المواضيع"
+msgstr "وَسْم الموضوع"
 
 #: admin/api/manage-tagging_api.php:166
 #: admin/api/manage-moderation_api.php:187
 #, php-format
 msgid "%s last posts :"
-msgstr ""
+msgstr "%s آخر المنشورات :"
 
-#: admin/api/manage-moderation_api.php:41 user/api/post_api.php:41
+#: admin/api/manage-moderation_api.php:41
+#: user/api/post_api.php:41
 msgid "The post is already accepted"
-msgstr "تمت الموافقة على هذا الموضوع بالفعل"
+msgstr "المنشور مقبول بالفعل"
 
-#: admin/api/manage-moderation_api.php:47 user/api/post_api.php:47
+#: admin/api/manage-moderation_api.php:47
+#: user/api/post_api.php:47
 msgid "Post successfully updated"
-msgstr "تم تحديث الموضوع بنجاح"
+msgstr "تم تحديث المنشور بنجاح"
 
 #: admin/api/manage-moderation_api.php:84
 msgid "The post is already refused"
-msgstr "تمت رفض على هذا الموضوع بالفعل"
+msgstr "المنشور مرفوض بالفعل"
 
-#: admin/api/manage-moderation_api.php:93 user/api/post_api.php:83
+#: admin/api/manage-moderation_api.php:93
+#: user/api/post_api.php:83
 msgid "Post successfully refused"
-msgstr "تم رفض الموضوع بنجاح"
+msgstr "تم رفض المنشور بنجاح"
 
 #: admin/api/manage-moderation_api.php:126
+#, fuzzy
 msgid "We took the decision to moderate the following post :"
-msgstr "اتخذنا قرار الإشراف على المواضيع التالية :"
+msgstr "لقد اتخدنا قرار الإشراف على هذا المنشور :"
 
 #: admin/api/manage-moderation_api.php:128
+#, fuzzy
 msgid "The reasons of this moderation are :"
-msgstr "سبب الإشراف هو :"
+msgstr "أسباب هذا الإشراف هي :"
 
 #: admin/api/manage-moderation_api.php:131
 #, php-format
@@ -3197,15 +3558,17 @@ msgstr "مع خالص التقدير"
 
 #: admin/api/manage-moderation_api.php:157
 msgid "Author"
-msgstr "المؤلف"
+msgstr "المؤسس"
 
-#: admin/api/manage-account_api.php:58 admin/api/manage-user_api.php:228
+#: admin/api/manage-account_api.php:58
+#: admin/api/manage-user_api.php:228
 #: user/api/account_api.php:58
 #, php-format
 msgid "The email address %s is already in use by %s"
-msgstr "عنوان البريد %s مستخدم فعلا من طرف المستخدم %s"
+msgstr "عنوان البريد الإلكتروني %s مستخدم بالفعل من طرف %s"
 
-#: admin/api/manage-account_api.php:72 admin/api/manage-user_api.php:242
+#: admin/api/manage-account_api.php:72
+#: admin/api/manage-user_api.php:242
 #: user/api/account_api.php:72
 #, php-format
 msgid "User %s successfully updated"
@@ -3213,28 +3576,30 @@ msgstr "تم تحديث المستخدم %s بنجاح"
 
 #: admin/api/manage-user_api.php:193
 msgid "User status toggled"
-msgstr ""
+msgstr "حالة المستخدم تبدّلت"
 
-#: admin/api/manage-user_api.php:276 admin/api/manage-user_api.php:300
+#: admin/api/manage-user_api.php:276
+#: admin/api/manage-user_api.php:300
+#, fuzzy
 msgid "You are not allowed to remove a super user"
-msgstr "غير مسموح لك بحذف المستخدم الخارق"
+msgstr "غير مسموح لك إزالة مستخدم خارق"
 
 #: admin/api/manage-user_api.php:280
 #, php-format
 msgid "Are you sure you want to remove user %s ?"
-msgstr "هل أنت متأكد أنك تريد إزالة المستخدم %s ؟"
+msgstr "متأكد أنك تريد إزالة المستخدم %s ؟"
 
 #: admin/api/manage-user_api.php:282
 msgid "All the posts of the user will be removed"
-msgstr "كل مواضيع هذا المستخدم ستتم إزالتها"
+msgstr "سيتم إزالة كافة منشورات هذا المستخدم"
 
 #: admin/api/manage-user_api.php:283
 msgid "All the votes on these posts will be removed"
-msgstr "كل الأصوات على هذه المواضيع ستتم إزالتها"
+msgstr "سيتم إزالة كافة الأصوات على هذا المنشور"
 
 #: admin/api/manage-user_api.php:284
 msgid "All the feeds of this user will be removed"
-msgstr "كل تلقيمات هذا المستخدم سيتم حذفها"
+msgstr "سيتم إزالة كافة تلقيمات هذا المستخدم"
 
 #: admin/api/manage-user_api.php:314
 #, php-format
@@ -3251,58 +3616,28 @@ msgstr "تفعيل المستخدم"
 
 #: admin/api/manage-user_api.php:435
 msgid "Planet author"
-msgstr "مؤلف الكوكب"
+msgstr "مؤسس الكوكب"
 
 #: admin/api/manage-user_api.php:453
 msgid "Add a new website"
 msgstr "إضافة موقع جديد"
 
 #: user/api/util.php:114
-#, fuzzy
 msgid "Disable newsletter"
-msgstr "تعطيل المستخدم"
+msgstr "تعطيل القائمة البريدية"
 
 #: user/api/util.php:118
 msgid "Every day"
-msgstr ""
+msgstr "كل يوم"
 
 #: user/api/util.php:122
 msgid "Every week"
-msgstr ""
+msgstr "كل أسبوع"
 
 #: user/api/util.php:126
 msgid "Every month"
-msgstr ""
+msgstr "كل شهر"
 
 #: user/api/post_api.php:77
-#, fuzzy
 msgid "The post is already removed"
-msgstr "تمت رفض على هذا الموضوع بالفعل"
-
-#~ msgid "What's new in BilboPlanet 1.0"
-#~ msgstr "ما الجديد في BilboPlanet 1.0"
-
-#~ msgid ""
-#~ "- New administration panel with user permissions, moderation interface "
-#~ "for website manager, <br />multiple feed per site, new configuration "
-#~ "system, newsletter and optimized dashboard."
-#~ msgstr ""
-#~ "- لوحة تحكم جديدة بإدارة الصاحيات، واجهة إشراف لمدير الموقع، <br /"
-#~ ">تلقيمات متعددة لكل موقع، نظام ضبط جديد، قائمة بريدية و dashboard  محسن"
-
-#~ msgid ""
-#~ "- Easy templating system allowing you to draw personnalize own Planet"
-#~ msgstr "- نظام قوالب سهل يمكّنك من تخصيص الكوكب"
-
-#~ msgid ""
-#~ "- New database, new installer, more security, more ajax in admin panel, "
-#~ "and a lot of more cool stuff !!"
-#~ msgstr ""
-#~ "- قاعدة بيانات جديدة، متبث جديد، مزيد من الحماية، المزيد من أجاكس في لوحة "
-#~ "الإدارة، والمزيد من الإضافات الرائعة !!"
-
-#~ msgid "All the posts comming from this feed will be removed"
-#~ msgstr "سيتم إزالة كل المواضيع القادمة من هذه التلقيم"
-
-#~ msgid "Piwik URL"
-#~ msgstr "مسار Piwik"
+msgstr "تم إزالة هذا المنشور بالفعل"

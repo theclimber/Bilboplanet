@@ -149,6 +149,7 @@ function postToStatusNet($hostname,$username,$password,$message){
 		curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
 		curl_setopt($ch, CURLOPT_POST, 1);
 		curl_setopt($ch, CURLOPT_HTTPHEADER, array('Expect:'));
+		curl_setopt( $curl, CURLOPT_SSL_VERIFYPEER, false);
 
 		$result = curl_exec($ch);
 		// Look at the returned header

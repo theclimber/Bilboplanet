@@ -62,13 +62,13 @@ $tribe = array(
 $core->tpl->setVar('tribe', $tribe);
 
 $popular_sql = generate_SQL(
-		0,
-		10,
-		null,
-		null,
-		null,
-		null,
-		true);
+		0, // num start
+		10, // nb items
+		array(), // users
+		array(), // tags
+		null, // search
+		null, // period
+		true); // popular
 showTribe($popular_sql, true);
 
 $core->tpl->render("content.portal");

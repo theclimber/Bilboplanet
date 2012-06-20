@@ -67,7 +67,7 @@ $popular_sql = generate_SQL(
 		array(), // users
 		array(), // tags
 		null, // search
-		null, // period
+		"week", // period
 		true); // popular
 showTribe($popular_sql, true);
 

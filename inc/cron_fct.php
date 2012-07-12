@@ -207,7 +207,7 @@ function getItemsFromFeeds ($rs, $print) {
 				# check if some existing tags are in the title
 				foreach (explode(' ', $item_title) as $word) {
 					$word = strtolower($word);
-					$tagRq = $core->con->select('SELECT tag_id FROM '.$core->prefix.'post_tag WHERE tag_id = "'.$word.'"');
+					$tagRq = $core->con->select('SELECT tag_id FROM '.$core->prefix.'post_tag WHERE tag_id = \''.$word."'");
 					if ($tagRq->count() > 1
 						&& !in_array($word, $item_tags)
 						&& !in_array($word, $reserved_tags)
@@ -297,7 +297,7 @@ function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_c
 			post_content,
 			post_pubdate
 		FROM ".$core->prefix."post
-		WHERE `post_permalink` = '".addslashes($item_permalink)."'";
+		WHERE post_permalink = '".addslashes($item_permalink)."'";
 	$rs2 = $core->con->select($sql);
 
 	# There is no such permalink, we can insert the new item

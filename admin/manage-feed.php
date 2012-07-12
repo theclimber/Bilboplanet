@@ -61,7 +61,8 @@ include_once(dirname(__FILE__).'/sidebar.php');
 # Traitement de la liste
 $rs = $core->con->select('SELECT DISTINCT
 		'.$core->prefix.'user.user_id,
-		user_fullname
+		user_fullname,
+		lower(user_fullname) AS user_fullname_lower
 	FROM '.$core->prefix.'user, '.$core->prefix.'feed
 	WHERE '.$core->prefix.'feed.user_id = '.$core->prefix.'user.user_id
 	ORDER BY lower(user_fullname) ASC;');
@@ -106,7 +107,8 @@ echo
 # Traitement de la liste
 $rs = $core->con->select('SELECT DISTINCT
 		'.$core->prefix.'user.user_id,
-		user_fullname
+		user_fullname,
+		lower(user_fullname) AS user_fullname_lower
 	FROM '.$core->prefix.'user, '.$core->prefix.'site
 	WHERE '.$core->prefix.'site.user_id = '.$core->prefix.'user.user_id
 	ORDER BY lower(user_fullname) ASC;');

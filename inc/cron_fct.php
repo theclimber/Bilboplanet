@@ -339,6 +339,7 @@ function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_c
 			foreach ($item_tags as $tag) {
 				$cur2 = $core->con->openCursor($core->prefix.'post_tag');
 				$cur2->post_id = $next_post_id;
+				$cur2->user_id = $rs->user_id;
 				$cur2->tag_id = $tag;
 				$cur2->insert();
 			}

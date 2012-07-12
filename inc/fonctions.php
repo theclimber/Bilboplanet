@@ -521,12 +521,9 @@ function generate_SQL(
 			MAX(post_score) as max_score,
 			MAX(nb_share) as max_share
 			FROM ".$core->prefix."post, ".$core->prefix."post_share");
-		$max_view = $max->f('max_view');
-		if (!$max_view) $max_view = '1';
-		$max_score = $max->f('max_score') or '1';
-		if (!$max_score) $max_score = '1';
-		$max_share = $max->f('max_share') or '1';
-		if (!$max_share) $max_share = '1';
+		$max_view = !$max->f('max_view') ? 1 : $max->f('max_view');
+		$max_score = !$max->f('max_score') ? 1 : $max->f('max_score');
+		$max_share = !$max->f('max_share') ? 1 : $max->f('max_share');
 		# Complete the SQL query
 		$select .= ",
 			post_score/".$max_score." + post_nbview/".$max_view." + nb_share/".$max_share." as total_score";

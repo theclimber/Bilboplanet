@@ -76,7 +76,7 @@ class SafeHtmlChecker {
     var $stack = array();
     function SafeHtmlChecker() {
         $this->parser = xml_parser_create();
-        xml_set_object($this->parser, &$this);
+        xml_set_object($this->parser, $this);
         xml_set_element_handler($this->parser, 'tag_open', 'tag_close');
         xml_set_character_data_handler($this->parser, 'cdata');
         xml_parser_set_option($this->parser, XML_OPTION_CASE_FOLDING, false);

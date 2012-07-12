@@ -36,26 +36,19 @@ if(isset($_POST['action'])) {
 			$tables = $_POST['list'];
 			foreach ($tables as $table) {
 				# Creation de la ligne de titres
-				$header = array();
-				$result = mysql_query("SHOW COLUMNS FROM ".$core->prefix.$table."");
-				$i = 0;
-				if (mysql_num_rows($result) > 0) {
-					while ($row = mysql_fetch_assoc($result)) {
-						$header[] = $row['Field'];
-						$i++;
-					}
-				}
+				$schema = dbSchema::init($core->con);
+				$header = array_keys($schema->getColumns($core->prefix.$table));
 				$JSON_array[$table]['head'] = $header;
 				$JSON_array[$table]['name'] = $table;
 
 				# Creation du contenu
-				$values = mysql_query("SELECT * FROM ".$core->prefix.$table."");
-				while ($rowr = mysql_fetch_row($values)) {
+				$rs = $core->con->select("SELECT ".implode(",", $header)." FROM ".$core->prefix.$table."");
+				while ($rs->fetch()) {
 					$line = array();
-					for ($j=1;$j<$i;$j++) {
-						$line[] = $rowr[$j];
+					foreach ($header as $h) {
+						$line[] = $rs->f($h);
 					}
-					$JSON_array[$table]['content'][$rowr[0]] = $line;
+					$JSON_array[$table]['content'][$header[0]] = $line;
 				}
 			}
 
@@ -68,7 +61,7 @@ if(isset($_POST['action'])) {
 			$snapshot_path = dirname(__FILE__)."/../cache";
 			$filename = 'planet-export.'.$date.'.json.gz';
 			$snapshot_file = $snapshot_path.'/'.$filename;
-			unlink($snapshot_file);
+			@unlink($snapshot_file);
 			$fp = @fopen($snapshot_file,'wb');
 			if ($fp === false) {
 				$output = '<div class="flash error">'.sprintf(T_('Unable to write %s file.'),$snapshot_file).'<br />'.T_('Please check you /admin/cache directory permissions').'</div>';

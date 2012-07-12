@@ -287,7 +287,7 @@ function getNbVotes($con, $user_id = null) {
 				AND ".$core->prefix."user.user_id = ".$core->prefix."post.user_id
 				AND ".$core->prefix."user.user_id = '".$user_id."'
 				AND user_status = 1
-			GROUP BY user_id";
+			GROUP BY ".$core->prefix."user.user_id";
 	} else {
 		$sql = 'SELECT COUNT(1) as nb FROM '.$core->prefix.'votes';
 	}
@@ -636,7 +636,7 @@ function getSimilarPosts_SQL($post_id,$post_tags) {
 			AND ".$core->prefix."user.user_id = ".$core->prefix."post.user_id
 			AND NOT ".$core->prefix."post.post_id = ".$post_id."
 			AND tag_id IN (".$tags_string.")
-		GROUP BY ".$core->prefix."post.post_id
+		GROUP BY ".$core->prefix."post.post_id, ".$core->prefix."user.user_fullname
 		HAVING COUNT(".$core->prefix."post.post_id) > 2
 		ORDER BY tag_count DESC
 		LIMIT 5";

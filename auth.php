@@ -207,7 +207,7 @@ elseif ($user_id !== null && ($user_pwd !== null || $user_key !== null))
 		}
 
 		$rs = $core->con->select('SELECT user_token, user_id, user_fullname, user_pwd
-			FROM '.$core->prefix.'user WHERE user_id="'.$user_id.'"');
+			FROM '.$core->prefix.'user WHERE user_id=\''.$user_id.'\'');
 		# if no token exists, create one
 		$rs->extend('rsExtUser');
 		if ($rs->user_token == '') {

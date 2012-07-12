@@ -65,7 +65,7 @@ if(isset($_POST) && isset($_POST['submit'])) {
 			fwrite($fp,time());
 			fclose($fp);
 			$flash[] = T_("The automatical update is disabled ").$result;
-			header("Location: ./gestion-update.php");
+			header("Location: ./manage-update.php");
 		}
 		elseif ($_POST['action'] == '1') {
 			if (get_cron_running())
@@ -73,7 +73,7 @@ if(isset($_POST) && isset($_POST['submit'])) {
 			else
 				$flash[] = T_('The automatic update is enabled');
 			unlink(dirname(__FILE__).'/../inc/STOP');
-			header("Location: ./gestion-update.php");
+			header("Location: ./manage-update.php");
 		}
 		else {
 			$update = true;

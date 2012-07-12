@@ -115,7 +115,7 @@ if(isset($_POST['action'])) {
 		$count = !empty($_POST['nb_items']) ? $_POST['nb_items'] : 20;
 		$filter = "";
 		if (!empty($_POST['user_id'])) {
-			$filter = ' AND '.$core->prefix.'post.user_id = "'.urldecode($_POST['user_id']).'" ';
+			$filter = ' AND '.$core->prefix.'post.user_id = \''.urldecode($_POST['user_id']).'\' ';
 		}
 		$sql = "SELECT user_fullname, post_pubdate, post_title, post_permalink, post_status, post_id
 			FROM ".$core->prefix."post, ".$core->prefix."user
@@ -123,7 +123,7 @@ if(isset($_POST['action'])) {
 			AND user_status = '1'
             AND post_status = '1' ".$filter."
 			ORDER BY post_pubdate DESC
-			LIMIT 0,".$count;
+			LIMIT ".$count;
 
 		$list = '<table id="post-list" class="table-member">';
 		$list .= '<thead>';

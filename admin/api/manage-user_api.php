@@ -370,7 +370,7 @@ if(isset($_POST['action'])) {
 			user_status
 			FROM '.$core->prefix.'user
 			ORDER by lower(user_fullname)
-			ASC LIMIT '.$num_start.','.$nb_items;
+			ASC LIMIT '.$nb_items.' OFFSET '.$num_start;
 
 		print getOutput($sql, $num_page, $nb_items);
 		break;

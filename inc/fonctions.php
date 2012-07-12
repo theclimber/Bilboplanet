@@ -287,7 +287,7 @@ function getNbVotes($con, $user_id = null) {
 				AND ".$core->prefix."user.user_id = ".$core->prefix."post.user_id
 				AND ".$core->prefix."user.user_id = '".$user_id."'
 				AND user_status = 1
-			GROUP BY user_id";
+			GROUP BY ".$core->prefix."user.user_id";
 	} else {
 		$sql = 'SELECT COUNT(1) as nb FROM '.$core->prefix.'votes';
 	}
@@ -521,9 +521,9 @@ function generate_SQL(
 			MAX(post_score) as max_score,
 			MAX(nb_share) as max_share
 			FROM ".$core->prefix."post, ".$core->prefix."post_share");
-		$max_view = $max->f('max_view');
-		$max_score = $max->f('max_score');
-		$max_share = $max->f('max_share');
+		$max_view = !$max->f('max_view') ? 1 : $max->f('max_view');
+		$max_score = !$max->f('max_score') ? 1 : $max->f('max_score');
+		$max_share = !$max->f('max_share') ? 1 : $max->f('max_share');
 		# Complete the SQL query
 		$select .= ",
 			post_score/".$max_score." + post_nbview/".$max_view." + nb_share/".$max_share." as total_score";
@@ -541,7 +541,7 @@ function generate_SQL(
 		$order_sql = " ORDER BY post_pubdate DESC";
 	}
 	if (!$count && $nb_items > 0) {
-		$limit_sql = "LIMIT $num_start,".$nb_items;
+		$limit_sql = "LIMIT $nb_items OFFSET $num_start";
 	} else {
 		$limit_sql = "";
 	}
@@ -613,7 +613,7 @@ function generate_tribe_SQL($tribe_id, $num_start = 0, $nb_items = 10) {
 function getSimilarPosts_SQL($post_id,$post_tags) {
 	global $core;
 	for($i=0; $i<sizeof($post_tags); $i++) {
-		$post_tags[$i] = "'".addslashes($post_tags[$i])."'";
+		$post_tags[$i] = "'".$core->con->escape($post_tags[$i])."'";
 	}
 	$tags_string = implode(",",$post_tags);
 	$sql_sim = "SELECT
@@ -633,10 +633,10 @@ function getSimilarPosts_SQL($post_id,$post_tags) {
 			AND ".$core->prefix."user.user_id = ".$core->prefix."post.user_id
 			AND NOT ".$core->prefix."post.post_id = ".$post_id."
 			AND tag_id IN (".$tags_string.")
-		GROUP BY ".$core->prefix."post.post_id
+		GROUP BY ".$core->prefix."post.post_id, ".$core->prefix."user.user_fullname
 		HAVING COUNT(".$core->prefix."post.post_id) > 2
 		ORDER BY tag_count DESC
-		LIMIT 0,5";
+		LIMIT 5";
 	return $sql_sim;
 }
 
@@ -1103,10 +1103,18 @@ function get_cron_running() {
 }
 
 function get_database_size(){
-	$request = mysql_query("SHOW TABLE STATUS") or die("Error with request $sql : ".mysql_error());
-	$dbsize = 0;
-	while( $row = mysql_fetch_array($request) ) {
-		$dbsize += $row[ "Data_length" ] + $row[ "Index_length" ];
+	global $core;
+	if ($core->con->driver() == "mysql") {
+		$request = mysql_query("SHOW TABLE STATUS") or die("Error with request $sql : ".mysql_error());
+		$dbsize = 0;
+		while( $row = mysql_fetch_array($request) ) {
+			$dbsize += $row[ "Data_length" ] + $row[ "Index_length" ];
+		}
+	} elseif ($core->con->driver() == "pgsql") {
+		$rs = $core->con->select("SELECT pg_database_size('".$core->con->database()."')");
+		$dbsize = $rs->f(0);
+	} else {
+		$dbsize = "N/A";
 	}
 	return $dbsize;
 }

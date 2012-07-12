@@ -68,7 +68,7 @@ $_s->post
 	->post_pubdate	('timestamp',	0,	false, 'now()')
 	->post_permalink	('text',	0,	true, null)
 	->post_title		('text',	0,	true, null)
-	->post_content	('text',		255,true, null)
+	->post_content	('text',		0,  true, null)
 	->post_status	('smallint',	0,	false, 1)
 	->post_comment	('smallint',	0,	false, 1)
 	->post_score	('integer',		0,	false, 0)
@@ -81,7 +81,7 @@ $_s->post
 	;
 
 $_s->post_share
-	->post_id		('varchar',		255, false)
+	->post_id		('integer',		0, false)
 	->engine		('varchar',		255, false)
 	->nb_share		('integer',		0, false)
 	->created		('timestamp',	0,	true, 'now()')
@@ -131,7 +131,7 @@ $_s->comment
 	->user_fullname	('varchar',		128,false)
 	->user_email	('varchar',		128,false)
 	->user_site		('text',		0,	false)
-	->content		('text',		255,true, null)
+	->content		('text',		0,  true, null)
 	->created		('timestamp',	0,	true, 'now()')
 	->modified		('timestamp',	0,	true, 'now()')
 
@@ -196,10 +196,10 @@ $_s->tribe
 	->ordering		('integer',		0, true, 100)
 	->visibility	('smallint',	0,	false, 0)
 	->tribe_name	('varchar',		128,false)
-	->tribe_search	('text',		0,	false)
-	->tribe_tags	('text',		0,	false)
-	->tribe_users	('text',		0,	false)
-	->tribe_icon	('text',		0,	false)
+	->tribe_search	('text',		0,	true, null)
+	->tribe_tags	('text',		0,	true, null)
+	->tribe_users	('text',		0,	true, null)
+	->tribe_icon	('text',		0,	true, null)
 	->created		('timestamp',	0,	true, 'now()')
 	->modified		('timestamp',	0,	true, 'now()')
 

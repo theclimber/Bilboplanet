@@ -45,7 +45,7 @@ if(isset($_POST['action'])) {
 			created
 			FROM '.$core->prefix.'pending_user
 			ORDER by created ASC
-			LIMIT '.$num_start.','.$nb_items;
+			LIMIT '.$nb_items.' OFFSET '.$num_start;
 
 		print getOutput($sql, $num_page, $nb_items);
 		break;

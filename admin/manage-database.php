@@ -141,7 +141,7 @@ if (isset($_POST)) {
 								# On ajoute la valeur si elle n'est pas dans $cols_to_remove
 								if (!in_array($n, $cols_to_remove)){
 									if ($table['name'] == 'post') {
-										$values .= ",'".addslashes($value[$n])."'";
+										$values .= ",'".$core->con->escape($value[$n])."'";
 									} else {
 										$values .= ",'".$value[$n]."'";
 									}

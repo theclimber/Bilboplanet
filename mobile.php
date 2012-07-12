@@ -44,7 +44,7 @@ $core->tpl->setVar('planet', array(
 
 # On recupere le nombre d'article si definit
 if(isset($_GET) && isset($_GET['nb_posts']) && is_numeric(trim($_GET['nb_posts'])) ) {
-	$nb_posts = addslashes(trim($_GET['nb_posts']));
+	$nb_posts = $core->con->escape(trim($_GET['nb_posts']));
 	if ($nb_posts > 50) { # Max 50 posts shown
 		$nb_posts = 50;
 	}
@@ -80,7 +80,7 @@ $sql = "SELECT
 	AND user_status = '1'
 	AND post_score > ".$blog_settings->get('planet_votes_limit')."
 	ORDER BY post_pubdate DESC
-	LIMIT 0,$nb_posts";
+	LIMIT $nb_posts";
 $rs = $core->con->select($sql);
 
 $i = 0;

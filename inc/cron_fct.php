@@ -207,7 +207,7 @@ function getItemsFromFeeds ($rs, $print) {
 				# check if some existing tags are in the title
 				foreach (explode(' ', $item_title) as $word) {
 					$word = strtolower($word);
-					$tagRq = $core->con->select('SELECT tag_id FROM '.$core->prefix.'post_tag WHERE tag_id = "'.$word.'"');
+					$tagRq = $core->con->select('SELECT tag_id FROM '.$core->prefix.'post_tag WHERE tag_id = \''.$word."'");
 					if ($tagRq->count() > 1
 						&& !in_array($word, $item_tags)
 						&& !in_array($word, $reserved_tags)
@@ -297,7 +297,7 @@ function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_c
 			post_content,
 			post_pubdate
 		FROM ".$core->prefix."post
-		WHERE `post_permalink` = '".addslashes($item_permalink)."'";
+		WHERE post_permalink = '".$core->con->escape($item_permalink)."'";
 	$rs2 = $core->con->select($sql);
 
 	# There is no such permalink, we can insert the new item
@@ -327,7 +327,7 @@ function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_c
 			$cur->post_id = $next_post_id;
 			$cur->user_id = $rs->user_id;
 			$cur->post_pubdate = $item_date;
-			$cur->post_permalink = addslashes($item_permalink);
+			$cur->post_permalink = $core->con->escape($item_permalink);
 			$cur->post_title = $item_title;
 			$cur->post_content = $item_content;
 			$cur->post_status = $rs->feed_trust == 1 ? 1 : 2;
@@ -339,6 +339,7 @@ function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_c
 			foreach ($item_tags as $tag) {
 				$cur2 = $core->con->openCursor($core->prefix.'post_tag');
 				$cur2->post_id = $next_post_id;
+				$cur2->user_id = $rs->user_id;
 				$cur2->tag_id = $tag;
 				$cur2->insert();
 			}
@@ -351,7 +352,7 @@ function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_c
 		elseif ($rs4->count() == 1) {
 			# Update post permalink in database
 			$cur = $core->con->openCursor($core->prefix.'post');
-			$cur->post_permalink = addslashes($item_permalink);
+			$cur->post_permalink = $core->con->escape($item_permalink);
 			$cur->modified = array('NOW()');
 			$cur->update("WHERE ".$core->prefix."post.user_id = '".$rs->user_id."'
 				AND ".$core->prefix."post.post_title = '".$item_title."'");
@@ -438,7 +439,7 @@ function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_c
 			$cur = $core->con->openCursor($core->prefix.'post');
 			$cur->post_pubdate = $item_date;
 			$cur->modified = array('NOW()');
-			$cur->update("WHERE ".$core->prefix."post.post_permalink = '".addslashes($item_permalink)."'");
+			$cur->update("WHERE ".$core->prefix."post.post_permalink = '".$core->con->escape($item_permalink)."'");
 			# On informe que tout est ok
 			return logMsg("Date updated: ".$item_permalink, "", 1, $print);
 		}
@@ -449,7 +450,7 @@ function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_c
 				$cur = $core->con->openCursor($core->prefix.'post');
 				$cur->modified = array('NOW()');
 				$cur->post_title = $item_title;
-				$cur->update("WHERE ".$core->prefix."post.post_permalink = '".addslashes($item_permalink)."'");
+				$cur->update("WHERE ".$core->prefix."post.post_permalink = '".$core->con->escape($item_permalink)."'");
 				$log_msg = logMsg("Changement de titre pour l'article: ".$item_permalink, "", 2, $print);
 				if ($log == "debug") {
 					$log_msg .= logMsg("Old : ".$title2, "", 4, $print);
@@ -460,7 +461,7 @@ function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_c
 				$cur = $core->con->openCursor($core->prefix.'post');
 				$cur->modified = array('NOW()');
 				$cur->post_content = $item_content;
-				$cur->update("WHERE ".$core->prefix."post.post_permalink = '".addslashes($item_permalink)."'");
+				$cur->update("WHERE ".$core->prefix."post.post_permalink = '".$core->con->escape($item_permalink)."'");
 				$log_msg = logMsg("Changement du contenu pour l'article: ".$item_permalink, "", 2, $print);
 				if ($log == "debug") {
 					$log_msg .= logMsg("Old : ".$content2, "", 4, $print);

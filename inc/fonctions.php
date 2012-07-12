@@ -541,7 +541,7 @@ function generate_SQL(
 		$order_sql = " ORDER BY post_pubdate DESC";
 	}
 	if (!$count && $nb_items > 0) {
-		$limit_sql = "LIMIT $num_start,".$nb_items;
+		$limit_sql = "LIMIT $nb_items OFFSET $num_start";
 	} else {
 		$limit_sql = "";
 	}
@@ -636,7 +636,7 @@ function getSimilarPosts_SQL($post_id,$post_tags) {
 		GROUP BY ".$core->prefix."post.post_id
 		HAVING COUNT(".$core->prefix."post.post_id) > 2
 		ORDER BY tag_count DESC
-		LIMIT 0,5";
+		LIMIT 5";
 	return $sql_sim;
 }
 

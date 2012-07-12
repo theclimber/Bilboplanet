@@ -445,7 +445,7 @@ if(isset($_POST['action'])) {
 			FROM '.$core->prefix.'feed, '.$core->prefix.'site
 			WHERE '.$core->prefix.'feed.site_id = '.$core->prefix.'site.site_id
 			ORDER by lower('.$core->prefix.'feed.user_id)
-			ASC LIMIT '.$num_start.','.$nb_items;
+			ASC LIMIT '.$nb_items.' OFFSET '.$num_start;
 
 		print getOutput($sql, $num_page, $nb_items);
 		break;

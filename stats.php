@@ -55,7 +55,7 @@ $sql = "SELECT
 		AND user_status = 1
 	GROUP BY user_fullname
 	ORDER BY nb_post DESC
-	LIMIT 0,$nb";
+	LIMIT $nb";
 $rs = $core->con->select($sql);
 while ($rs->fetch()) {
 	$core->tpl->setVar("active", array(
@@ -81,7 +81,7 @@ if ($blog_settings->get('planet_vote')) {
 			AND user_status = 1
 		GROUP BY user_fullname
 		ORDER BY score DESC
-		LIMIT 0,$nb";
+		LIMIT $nb";
 	$rs = $core->con->select($sql);
 
 	while ($rs->fetch()){

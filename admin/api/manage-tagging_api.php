@@ -123,7 +123,7 @@ if(isset($_POST['action'])) {
 			AND user_status = '1'
             AND post_status = '1' ".$filter."
 			ORDER BY post_pubdate DESC
-			LIMIT 0,".$count;
+			LIMIT ".$count;
 
 		$list = '<table id="post-list" class="table-member">';
 		$list .= '<thead>';

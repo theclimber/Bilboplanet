@@ -148,7 +148,7 @@ if(isset($_POST['action'])) {
 			WHERE ".$core->prefix."post.user_id = ".$core->prefix."user.user_id
 			AND user_status = '1' ".$filter."
 			ORDER BY post_pubdate DESC
-			LIMIT 0,".$count;
+			LIMIT ".$count;
 
 		$list = '<table id="post-list" class="table-member">';
 		$list .= '<thead>';

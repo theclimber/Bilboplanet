@@ -51,7 +51,7 @@ function showArticleSummary($con){
 		AND post_status = '1'
 		AND user_status = '1'
 		ORDER BY pubdate DESC
-		LIMIT 0,5";
+		LIMIT 5";
 	$rs = $con->select($sql);
 	$list_articles = "<ul>";
 	$max_title_length = 50;

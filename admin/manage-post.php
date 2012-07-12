@@ -201,7 +201,7 @@ if($num_membre != '0') $sql .= "AND ".$core->prefix."post.user_id = '".$num_memb
 if($status_article != "all" && is_numeric($status_article)) $sql .= " AND ".$core->prefix."post.post_status = '$status_article'";
 
 # Fin de la requete
-$sql .= "ORDER by pubdate DESC LIMIT $num_start,$nb_items";
+$sql .= "ORDER by pubdate DESC LIMIT $nb_items OFFSET $num_start";
 
 # Execution de la requete
 $rs = $core->con->select($sql);

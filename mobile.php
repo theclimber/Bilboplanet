@@ -80,7 +80,7 @@ $sql = "SELECT
 	AND user_status = '1'
 	AND post_score > ".$blog_settings->get('planet_votes_limit')."
 	ORDER BY post_pubdate DESC
-	LIMIT 0,$nb_posts";
+	LIMIT $nb_posts";
 $rs = $core->con->select($sql);
 
 $i = 0;

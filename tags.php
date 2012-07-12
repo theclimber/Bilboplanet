@@ -62,7 +62,7 @@ $sql_tags = "SELECT
 	FROM ".$core->prefix."post_tag
 	GROUP BY ".$core->prefix."post_tag.tag_id
 	ORDER BY weigth DESC
-	LIMIT 0,100";
+	LIMIT 100";
 $rs = $core->con->select($sql_tags);
 $max = $rs->f('weight');
 while ($rs->fetch()) {

@@ -93,7 +93,7 @@ function publishedArticles($current_user_id, $count = 0, $filtre_membre = 0){
 		$limit = '';
 	} else {
 		$head = $count." derniers articles publiés";
-		$limit = ' LIMIT 0,'.$count.' ';
+		$limit = ' LIMIT '.$count.' ';
 	}
 	$filtre = ($filtre_membre==0) ? '' : ' AND article.num_membre = '.$filtre_membre.' ';
 

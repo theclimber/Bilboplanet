@@ -1103,10 +1103,18 @@ function get_cron_running() {
 }
 
 function get_database_size(){
-	$request = mysql_query("SHOW TABLE STATUS") or die("Error with request $sql : ".mysql_error());
-	$dbsize = 0;
-	while( $row = mysql_fetch_array($request) ) {
-		$dbsize += $row[ "Data_length" ] + $row[ "Index_length" ];
+	global $core;
+	if ($core->con->driver() == "mysql") {
+		$request = mysql_query("SHOW TABLE STATUS") or die("Error with request $sql : ".mysql_error());
+		$dbsize = 0;
+		while( $row = mysql_fetch_array($request) ) {
+			$dbsize += $row[ "Data_length" ] + $row[ "Index_length" ];
+		}
+	} elseif ($core->con->driver() == "pgsql") {
+		$rs = $core->con->select("SELECT pg_database_size('".$core->con->database()."')");
+		$dbsize = $rs->f(0);
+	} else {
+		$dbsize = "N/A";
 	}
 	return $dbsize;
 }

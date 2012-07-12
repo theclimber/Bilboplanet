@@ -126,11 +126,8 @@ $nb_feeds = $rs->nb;
 include_once(dirname(__FILE__).'/head.php');
 include_once(dirname(__FILE__).'/sidebar.php');
 
-# Version MySQL
-$version_mysql = "N/C";
-if (function_exists('mysql_get_client_info')){
-	$version_mysql = mysql_get_client_info();
-}
+# Version SQL
+$version_sql = $core->con->version();
 # Version PHP
 $version_php = "N/C";
 if (function_exists('phpversion')){
@@ -186,7 +183,7 @@ if ($blog_settings->get('planet_index_update'))
 			<li><div id="BP_system_date"><?php echo T_('Date server :'); echo ' <strong>'. timeserver(0, '%A %d %B %Y - %H:%M:%S') .'</strong>';?></div></li>
 			<li><div id="BP_system_os"><?php echo T_('Operating System :'); echo ' <strong>'. PHP_OS .'</strong>';?></div></li>
 			<li><div id="BP_system_php"><?php echo T_('PHP version :'); echo ' <strong>'. $version_php .'</strong>';?></div></li>
-			<li><div id="BP_system_mysql"><?php echo T_('MySQL version :'); echo ' <strong>'. $version_mysql .'</strong>';?></div></li>
+			<li><div id="BP_system_mysql"><?php echo T_('Database version :'); echo ' <strong>'. $version_sql .'</strong>';?></div></li>
 			<li><div id="BP_system_apache"><?php echo T_('Server :');  echo ' <strong>'. $_SERVER['SERVER_SOFTWARE'] .'</strong>';?></div></li>
 			<li><div id="BP_system_memory"><?php echo T_('Memory :');  echo ' <strong>'. @ini_get('memory_limit') .'</strong>';?></div></li>
 			<li><div id="BP_system_bilboplanet"><?php echo T_('Your BilboPlanet version :'); echo ' <strong>'. $blog_settings->get('planet_version') .'</strong>';?></div></li>

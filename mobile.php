@@ -44,7 +44,7 @@ $core->tpl->setVar('planet', array(
 
 # On recupere le nombre d'article si definit
 if(isset($_GET) && isset($_GET['nb_posts']) && is_numeric(trim($_GET['nb_posts'])) ) {
-	$nb_posts = addslashes(trim($_GET['nb_posts']));
+	$nb_posts = $core->con->escape(trim($_GET['nb_posts']));
 	if ($nb_posts > 50) { # Max 50 posts shown
 		$nb_posts = 50;
 	}

@@ -616,7 +616,7 @@ function generate_tribe_SQL($tribe_id, $num_start = 0, $nb_items = 10) {
 function getSimilarPosts_SQL($post_id,$post_tags) {
 	global $core;
 	for($i=0; $i<sizeof($post_tags); $i++) {
-		$post_tags[$i] = "'".addslashes($post_tags[$i])."'";
+		$post_tags[$i] = "'".$core->con->escape($post_tags[$i])."'";
 	}
 	$tags_string = implode(",",$post_tags);
 	$sql_sim = "SELECT

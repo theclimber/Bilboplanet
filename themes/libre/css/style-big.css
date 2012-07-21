@@ -40,4 +40,5 @@ ul#categories li a{
 	background-color: #FFF;
 	margin: 20px 5px;
 	display: inline-block;
+	vertical-align: top;
 }

@@ -1,0 +1,43 @@
+@import url(style.css);
+.content{
+    width:960px;
+    margin:0 auto;
+    text-align:left;
+}
+.fullwidth {
+
+    float: none !important;
+    margin: 0 !important;
+    width: 960px !important;
+}
+.pages {
+    margin-left: 0px !important;
+    width: 698px !important;
+}
+.pages-left {
+    margin: 0px !important;
+    float: right !important;
+    width: 698px !important;
+}
+.post div.post-text-collapsed {
+	max-height: 400px;
+	width: 100%;
+	overflow: auto;
+/*	overflow-y: scroll;*/
+	display: block;
+}
+ul#categories li a{
+    color:#5c5c5c;
+    padding:10px 20px;
+    display:block;
+}
+
+.portalbox {
+	border-radius : 5px;
+	width: 350px;
+	padding: 0px;
+	font-size: 0.8em;
+	background-color: #FFF;
+	margin: 20px 5px;
+	display: inline-block;
+}

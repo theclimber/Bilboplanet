@@ -53,7 +53,7 @@ $_s->pending_feed
 	->created		('timestamp',	0,	true, 'now()')
 	->modified		('timestamp',	0,	true, 'now()')
 
-	->primary('pk_pending_user','puser_id')
+	->primary('pk_pending_user','user_id')
 	;
 
 $_s->post

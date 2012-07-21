@@ -105,6 +105,20 @@ function render_page ($page) {
 			}
 			$tpl->render('userfeed.item');
 		}
+
+		$rs_pfeed = $core->con->select("SELECT * FROM ".$core->prefix."pending_feed
+			WHERE user_id ='".$user_id."'");
+		if ($rs_pfeed->count() > 0) {
+			while ($rs_pfeed->fetch()) {
+				$feed = array(
+					"site" => $rs_pfeed->site_url,
+					"url" => $rs_pfeed->feed_url
+					);
+				$tpl->setVar('pfeed', $feed);
+				$tpl->render('userpfeed.item');
+			}
+			$tpl->render('pendingfeed');
+		}
 		break;
 	case 'social':
 		$newsletter_options = array(

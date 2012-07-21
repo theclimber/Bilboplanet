@@ -6,7 +6,7 @@
 * Website : www.bilboplanet.com
 * Tracker : http://chili.kiwais.com/projects/bilboplanet
 * Blog : www.bilboplanet.com
-* 
+*
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License as
@@ -43,13 +43,13 @@ include_once(dirname(__FILE__).'/sidebar.php');
 			<div id="flash-msg"><!-- spanner --></div>
 		</div>
 		<fieldset>
-			<legend><?php echo T_('List of pending users');?></legend>
+			<legend><?php echo T_('List of pending feeds');?></legend>
 			<div class="message">
-				<p><?php echo T_('List of pending users for the Planet');?></p>
+				<p><?php echo T_('List of pending feeds for the Planet');?></p>
 			</div>
-			<div id="pendinguser-list"></div>
+			<div id="pendingfeed-list"></div>
 	</fieldset>
-	
+
 	<div id="refuse-subscription-form" style="display:none">
 	<?php
 	echo '<form>'.form::hidden('from',$core->auth->getInfo('user_email')).
@@ -62,7 +62,7 @@ include_once(dirname(__FILE__).'/sidebar.php');
 	'</form>';
 	?>
 	</div>
-	
+
 	<div id="accept-subscription-form" style="display:none">
 	<?php
 	echo '<form>'.form::hidden('from',$core->auth->getInfo('user_email')).
@@ -75,8 +75,8 @@ include_once(dirname(__FILE__).'/sidebar.php');
 	'</form>';
 	?>
 	</div>
-	
-	<script type="text/javascript" src="meta/js/manage-pendinguser.js"></script>
+
+	<script type="text/javascript" src="meta/js/manage-pendingfeed.js"></script>
 <?php
 include(dirname(__FILE__).'/footer.php');
 

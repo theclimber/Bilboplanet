@@ -104,12 +104,12 @@ if(isset($_POST) && isset($_POST['ajax'])) {
 		}
 		require_once(dirname(__FILE__).'/manage-option_api.php');
 		break;
-	case 'pendinguser':
+	case 'pendingfeed':
 		if (!$core->hasPermission('administration')){
 			print 'Permission denied';
 			exit;
 		}
-		require_once(dirname(__FILE__).'/manage-pendinguser_api.php');
+		require_once(dirname(__FILE__).'/manage-pendingfeed_api.php');
 		break;
 	default:
 		print '<div class="flash error">'.T_('bad call, this ajax call does not exist').'</div>';

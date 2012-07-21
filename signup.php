@@ -6,7 +6,7 @@
 * Website : www.bilboplanet.com
 * Tracker : http://chili.kiwais.com/projects/bilboplanet
 * Blog : www.bilboplanet.com
-* 
+*
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License as
@@ -25,16 +25,22 @@
 ?>
 <?php
 require_once(dirname(__FILE__).'/inc/prepend.php');
+
+if ($core->auth->sessionExists()){
+	http::redirect($blog_settings->get('planet_url').'/index.php');
+	exit;
+}
+
 $scripts = array();
 $scripts[] = "javascript/functions.js";
 include dirname(__FILE__).'/tpl.php';#
 header('Content-type: text/html; charset=utf-8');
-	
 
 $form_values = array(
 	"user_id" => "",
 	"fullname" => "",
-	"email" => ""
+	"email" => "",
+	"password" => ""
 );
 $flash='';
 session_start();
@@ -51,22 +57,26 @@ if(isset($_POST) && isset($_POST['submit'])){
 	$user_id = check_field('user_id',trim($_POST['user_id']),'not_empty');
 	$fullname = check_field('fullname',trim($_POST['fullname']),'',false);
 	$email = check_field('email',trim($_POST['email']),'email');
+	$password = check_field('password',trim($_POST['pass']), 'not_empty');
 
 	if($user_id)	$form_values["user_id"] = $user_id['value'];
 	if($fullname)	$form_values["fullname"] = $fullname['value'];
-	if($email)	$form_values["email"] = $email['value'];
-	
+	if($email)		$form_values["email"] = $email['value'];
+	if($password)	$form_values["password"] = $password['value'];
+
 	if (!$captcha->is_valid) {
 		$flash = array('type' => 'error', 'msg' => sprintf(T_("The reCAPTCHA wasn't entered correctly. Go back and try it again. (reCAPTCHA said: %s)"),$captcha->error));
 	} else {
 		$ip = getIP();
 		if ($user_id['success'] && $fullname['success'] && $email['success']){
 			# Build email
-			$objet = "[".$blog_settings->get('planet_name')."] Signup of user ".$user_id['value'];
+			$objet = "[".$blog_settings->get('planet_name')."] ".
+				sprintf(T_("Signup of user %s"),$user_id['value']);
 			$msg = T_("User id : ").$user_id['value'];
 			$msg .= "\n".T_("Fullname : ").$fullname['value'];
 			$msg .= "\n".T_("Email : ").$email['value'];
 			$msg .= "\nIP : $ip";
+			$msg .= "\n\n".T_("Your account will be validated by the webmaster.");
 			# TODO : the mail should contain a special token to signup
 
 			# Send email to new user to confirm email
@@ -78,13 +88,14 @@ if(isset($_POST) && isset($_POST['submit'])){
 			if($envoi1 && $envoi2) {
 
 				# Add Pending User and waiting for confirmation
-				$addPendingUser = addPendingUserSignup($user_id['value'], $fullname['value'], $email['value'], $blog_settings->get('planet_lang'));
-				
+				$addPendingUser = addUserSignup($user_id['value'], $fullname['value'], $email['value'], $password['value'], $blog_settings->get('planet_lang'));
+
 				# Check error
 				if (empty($addPendingUser)) {
-					$flash = array('type' => 'notice', 'msg' => T_("Your email has been sent"));
+					$flash = array('type' => 'notice', 'msg' => T_("Thank you for your registration."));
 				} else {
-					$flash = array('type' => 'error', 'msg' => '');
+					$flash = array('type' => 'error', 'msg' => T_("There was an error,
+						please report to the website administrator if the same error occurs several times :\n"));
 					foreach($addPendingUser as $value) {
 						$flash['msg'] .= "<br/>".$value;
 					}
@@ -109,6 +120,9 @@ if(isset($_POST) && isset($_POST['submit'])){
 			if(!$email['success']){
 				$flash = array('type' => 'error', 'msg' => $email['error']);
 			}
+			if(!$password['success']){
+				$flash = array('type' => 'error', 'msg' => $password['error']);
+			}
 		}
 	}
 }
@@ -125,15 +139,17 @@ else {
 		$msg = '<div class="flash '.$flash['type'].'">'.$flash['msg'].'</div>';
 		if ($flash['type'] != "error") {
 			$msg .= "<div class='informations'><h2 class='informations'>".T_("In case of problem")."</h2>";
-			$msg .= "<p>".sprintf(T_("If you don't recieve any new from the administration team in the 5 days do not hesitate to contact us via %s with this information :"),$blog_settings->get('planet_mail'))."<br /><ul>";
+			$msg .= "<p>".sprintf(T_("If you don't recieve any new from the administration team within the 5 days do not hesitate to contact us via %s with this information :"),$blog_settings->get('planet_mail'))."<br /><ul>";
 			$msg .= "<li><b>".T_("Subject")."</b> : ".$blog_settings->get('planet_title') ." - ".$choice['value']."</li>";
 			$msg .= "<li><b>".T_("Username")."</b> : ".$user_id['value']."</li>";
 			$msg .= "<li><b>".T_("Fullname")."</b> : ".$fullname['value']."</li>";
 			$msg .= "<li><b>".T_("Email")."</b> : ".$email['value']."</li>";
 			$msg .= "</ul></p></div>";
+			$msg .= T_("To login, you can go on the login page : ")."<a href='".$blog_settings->get('planet_theme')."/auth.php'>here</a>";
 		}
 		$core->tpl->setVar('flashmsg', $msg);
-		$core->tpl->render('subscription.flash');
+		$core->tpl->render('signup.flash');
+
 	}
 
 	$content = $blog_settings->get('planet_subscription_content');
@@ -151,12 +167,13 @@ else {
 	$core->tpl->setVar('captcha_html', $captcha_html);
 	$core->tpl->render('content.signup');
 	echo $core->tpl->render();
+
 }
 
 #---------------------------------------------------#
 # Function to add pending user			    #
 #---------------------------------------------------#
-function addPendingUserSignup($user_id, $user_fullname, $user_email, $lang) {
+function addUserSignup($user_id, $user_fullname, $user_email, $password, $lang) {
 
 	global $core;
 
@@ -164,65 +181,43 @@ function addPendingUserSignup($user_id, $user_fullname, $user_email, $lang) {
 	$user_id = preg_replace("( )", "_", $user_id);
 	$user_id = cleanString($user_id);
 
-
-	# Check if user have already sent subscription
-	$rs0 = $core->con->select("SELECT puser_id, user_fullname, user_email
-		FROM ".$core->prefix."pending_user
-		WHERE lower(puser_id) = '".strtolower($user_id)."'
+	# Check if user's information already exist in not pending users
+	$rs1 = $core->con->select("SELECT user_id, user_fullname, user_email
+		FROM ".$core->prefix."user
+		WHERE lower(user_id) = '".strtolower($user_id)."'
 		OR lower(user_fullname) = '".strtolower($user_fullname)."'
 		OR lower(user_email) = '".strtolower($user_email)."'");
-
-	if ($rs0->count() > 0){
-		if ($rs0->f('puser_id') == $user_id) {
-			$error[] = sprintf(T_('A registration request have been already sent with this username: %s'), $user_id);
+	if ($rs1->count() > 0){
+		if ($rs1->f('user_id') == $user_id) {
+			$error[] = sprintf(T_('The user %s already exists'),$user_id);
 		}
-		if ($rs0->f('user_fullname') == $user_fullname) {
-			$error[] = sprintf(T_('A registration request have been already sent with this fullname: %s'), $user_fullname);
+		if ($rs1->f('user_fullname') == $user_fullname) {
+			$error[] = sprintf(T_('The user %s already exists'),$user_fullname);
 		}
-		if ($rs0->f('user_email') == $user_email) {
-			$error[] = sprintf(T_('A registration request have been already sent with this email adress: %s'), $user_email);
+		if ($rs1->f('user_email') == $user_email) {
+			$error[] = sprintf(T_('The email address %s is already in use'),$user_email);
 		}
-	}
-
-	if (empty($error)) {
-		# Check if user's information already exist
-		$rs1 = $core->con->select("SELECT user_id, user_fullname, user_email
-			FROM ".$core->prefix."user
-			WHERE lower(user_id) = '".strtolower($user_id)."'
-			OR lower(user_fullname) = '".strtolower($user_fullname)."'
-			OR lower(user_email) = '".strtolower($user_email)."'");
-		if ($rs1->count() > 0){
-			if ($rs1->f('user_id') == $user_id) {
-				$error[] = sprintf(T_('The user %s already exists'),$user_id);
-			}
-			if ($rs1->f('user_fullname') == $user_fullname) {
-				$error[] = sprintf(T_('The user %s already exists'),$user_fullname);
-			}
-			if ($rs1->f('user_email') == $user_email) {
-				$error[] = sprintf(T_('The email address %s is already in use'),$user_email);
-			}
-		} else {
-			# Check if website is already in use
-			$rs2 = $core->con->select("SELECT ".$core->prefix."user.user_id
-				FROM ".$core->prefix."user, ".$core->prefix."site
-				WHERE ".$core->prefix."site.user_id = ".$core->prefix."user.user_id
-				AND site_url = '".$url."'");
-			if ($rs2->count() > 0){
-				$error[] = sprintf(T_('The website %s is already assigned to the user %s'),$url, $user_id);
-			}
+	} else {
+		# Check if website is already in use
+		$rs2 = $core->con->select("SELECT ".$core->prefix."user.user_id
+			FROM ".$core->prefix."user, ".$core->prefix."site
+			WHERE ".$core->prefix."site.user_id = ".$core->prefix."user.user_id
+			AND site_url = '".$url."'");
+		if ($rs2->count() > 0){
+			$error[] = sprintf(T_('The website %s is already assigned to the user %s'),$url, $user_id);
 		}
 	}
 
 	# All OK
 	if (empty($error)) {
-		$cur = $core->con->openCursor($core->prefix.'pending_user');
-		$cur->puser_id = $user_id;
+		$cur = $core->con->openCursor($core->prefix.'user');
+		$cur->user_id = $user_id;
 		$cur->user_fullname = $user_fullname;
 		$cur->user_email = $user_email;
-		$cur->user_pwd = crypt::hmac('BP_MASTER_KEY', createRandomPassword());
+		$cur->user_pwd = crypt::hmac('BP_MASTER_KEY', $password);
+		$cur->user_token = '';
+		$cur->user_status = 1;
 		$cur->user_lang = $lang;
-		$cur->site_url = $url;
-		$cur->feed_url = $feed;
 		$cur->created = array(' NOW() ');
 		$cur->modified = array(' NOW() ');
 		$cur->insert();

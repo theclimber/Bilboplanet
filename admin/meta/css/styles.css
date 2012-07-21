@@ -232,7 +232,7 @@ div#bp_pannel a#accountm {
 div#bp_pannel a#members {
 	background-image:url('../icons/users.png');
 }
-div#bp_pannel a#pendinguser {
+div#bp_pannel a#pendingfeed {
 	background-image:url('../icons/contact-new.png');
 }
 div#bp_pannel a#feed {

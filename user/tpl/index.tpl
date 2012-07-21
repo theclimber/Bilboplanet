@@ -3,6 +3,7 @@
 <head>
 	<meta name="description" content="{$planet.desc_meta}" />
 	<meta name="keywords" content="{$planet.keywords}" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<title>{$planet.title} - {$title}</title>
 
 	<link href="{$planet.url}/user/tpl/css/blueprint/screen.css" rel="stylesheet" type="text/css" />

@@ -46,16 +46,10 @@ $_s->user
 	->primary('pk_user','user_id')
 	;
 
-$_s->pending_user
-	->puser_id		('varchar',		64,	false)
-	->user_fullname	('varchar',		128,true)
-	->user_email	('varchar',		128,false)
-	->user_pwd		('varchar',		255,true)
-	->user_lang		('varchar',		5,	true, null)
-	->licence		('varchar',		255,true, null)
+$_s->pending_feed
+	->user_id		('varchar',		64,	false)
 	->site_url		('text',		0,	false)
 	->feed_url		('text',		0,	false)
-	->feed_tags		('text',		0,	false)
 	->created		('timestamp',	0,	true, 'now()')
 	->modified		('timestamp',	0,	true, 'now()')
 

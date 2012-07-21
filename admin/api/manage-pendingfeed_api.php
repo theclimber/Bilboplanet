@@ -37,13 +37,14 @@ if(isset($_POST['action'])) {
 
 		# Build SQL query
 		$sql = 'SELECT
-			puser_id,
+			'.$core->prefix.'pending_feed.user_id as puser_id,
 			user_fullname,
-			user_email ,
+			user_email,
 			site_url,
 			feed_url,
-			created
-			FROM '.$core->prefix.'pending_user
+			'.$core->prefix.'pending_feed.created
+			FROM '.$core->prefix.'pending_feed, '.$core->prefix.'user
+			WHERE  '.$core->prefix.'user.user_id = '.$core->prefix.'pending_feed.user_id
 			ORDER by created ASC
 			LIMIT '.$nb_items.' OFFSET '.$num_start;
 
@@ -90,6 +91,7 @@ if(isset($_POST['action'])) {
 	case 'refuse':
 		$puserid = urldecode(trim($_POST['puserid']));
 		$useremail = urldecode(trim($_POST['useremail']));
+		$feed_url = urldecode(trim($_POST['feed_url']));
 
 		$from = $blog_settings->get('author_mail');
 		$to = $userfullname.', '.$from;
@@ -101,7 +103,7 @@ if(isset($_POST['action'])) {
 		if (!sendmail($from, $to, $subject, $content, 'normal', $reply_to)) {
 			$error[] = T_("Mail could not be send");
 		} else {
-			$core->con->execute("DELETE FROM ".$core->prefix."pending_user WHERE puser_id = '$puserid'");
+			$core->con->execute("DELETE FROM ".$core->prefix."pending_feed WHERE user_id = '$puserid' AND feed_url= '$feed_url'");
 			$output = T_("Subscription successfully refused");
 		}
 
@@ -128,7 +130,6 @@ if(isset($_POST['action'])) {
 		$useremail = urldecode(trim($_POST['useremail']));
 		$siteurl = urldecode(trim($_POST['siteurl']));
 		$feedurl = urldecode(trim($_POST['feedurl']));
-		$password = createRandomPassword();
 
 		$from = $blog_settings->get('author_mail');
 		$to = $userfullname.', '.$from;
@@ -136,19 +137,6 @@ if(isset($_POST['action'])) {
 
 		$subject = html_entity_decode(stripslashes($_POST['subject']), ENT_QUOTES, 'UTF-8');
 		$content = html_entity_decode(stripslashes($_POST['content']), ENT_QUOTES, 'UTF-8');
-
-		# Add user
-		$cur = $core->con->openCursor($core->prefix.'user');
-		$cur->user_id = $puserid;
-		$cur->user_fullname = $userfullname;
-		$cur->user_email = $useremail;
-		$cur->user_pwd = crypt::hmac('BP_MASTER_KEY',$password);
-		$cur->user_token = '';
-		$cur->user_status = 1;
-		$cur->user_lang = $blog_settings->get('planet_lang');
-		$cur->created = array(' NOW() ');
-		$cur->modified = array(' NOW() ');
-		$cur->insert();
 
 		# Get next site id
 		$rs = $core->con->select("SELECT MAX(site_id) FROM ".$core->prefix."site");
@@ -182,7 +170,7 @@ if(isset($_POST['action'])) {
 		$cur->insert();
 
 		# Remove pending subsciption content
-		$core->con->execute("DELETE FROM ".$core->prefix."pending_user WHERE puser_id = '$puserid'");
+		$core->con->execute("DELETE FROM ".$core->prefix."pending_feed WHERE user_id = '$puserid' AND feed_url= '$feedurl'");
 
 		$output = sprintf(T_("User %s successfully added"),$userfullname);
 
@@ -205,7 +193,7 @@ function getOutput($sql, $num_page=0, $nb_items=30) {
 	global $core, $blog_settings;
 
 	$rs = $core->con->select($sql);
-	$output = showPagination($rs->count(), $num_page, $nb_items, 'updateUserList');
+	$output = showPagination($rs->count(), $num_page, $nb_items, 'updateFeedList');
 
 	$output .= '
 <br />
@@ -220,6 +208,7 @@ function getOutput($sql, $num_page=0, $nb_items=30) {
 </thead>';
 
 	while($rs->fetch()) {
+
 		$avatar_email = strtolower($rs->user_email);
 		$avatar_url = "http://cdn.libravatar.org/avatar/".md5($avatar_email)."?d=".urlencode($blog_settings->get('planet_url')."/themes/".$blog_settings->get('planet_theme')."/images/gravatar.png")."&s=40";
 
@@ -244,18 +233,18 @@ function getOutput($sql, $num_page=0, $nb_items=30) {
 				</ul>
 			</td>';
 		$output .= '<td style="text-align: center;">
-				<a href="#" onclick="javascript:refusePendingUser(\''.urlencode($rs->puser_id).'\',\''.urlencode($rs->site_url).'\',\''.urlencode($rs->feed_url).'\',\''.urlencode($rs->user_email).'\',\''.urlencode($rs->user_fullname).'\')" >
+				<a href="#" onclick="javascript:refusePendingFeed(\''.urlencode($rs->puser_id).'\',\''.urlencode($rs->site_url).'\',\''.urlencode($rs->feed_url).'\',\''.urlencode($rs->user_email).'\',\''.urlencode($rs->user_fullname).'\')" >
 					<img src="meta/icons/action-remove.png" title="'.T_("Refuse").'"/>
 				</a>
 				&nbsp;&nbsp;
-				<a href="#" onclick="javascript:acceptPendingUser(\''.urlencode($rs->puser_id).'\',\''.urlencode($rs->site_url).'\',\''.urlencode($rs->feed_url).'\',\''.urlencode($rs->user_email).'\',\''.urlencode($rs->user_fullname).'\')" >
+				<a href="#" onclick="javascript:acceptPendingFeed(\''.urlencode($rs->puser_id).'\',\''.urlencode($rs->site_url).'\',\''.urlencode($rs->feed_url).'\',\''.urlencode($rs->user_email).'\',\''.urlencode($rs->user_fullname).'\')" >
 					<img src="meta/icons/action-add.png" title="'.T_("Accept").'"/>
 				</a>
 			</td>';
 		$output .= '</tr>';
 	}
 	$output .= '</table>';
-	$output .= showPagination($rs->count(), $num_page, $nb_items, 'updatePendingUserList');
+	$output .= showPagination($rs->count(), $num_page, $nb_items, 'updatePendingFeedList');
 
 	return $output;
 }

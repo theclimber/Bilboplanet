@@ -29,6 +29,7 @@
 	<p>&nbsp;</p>
 	<div class="user-feed-list dashbox">
 		<h2>{_Your feeds}</h2>
+		<a href="javascript:add_feed()"><img title="{_Add new feeds}" src="tpl/images/add.png" /></a>
 		<table>
 		<!-- BEGIN userfeed.item -->
 			<tr class="user-feed {$feed.status}" id="{$feed.id}">
@@ -58,6 +59,9 @@
 				<span class="action">
 					<a href="javascript:add_feed_tags('{$feed.id}')"><img title="{_Add tag}" src="tpl/images/add_tag.png"></a>
 				</span>
+				<span class="action">
+					<a href="javascript:rm_feed('{$feed.id}')"><img title="{_Remove feed}" src="tpl/images/action-remove.png"></a>
+				</span>
 				<!-- END userfeed.action.activate -->
 			</td>
 			</tr>
@@ -66,6 +70,30 @@
 		<!-- END userfeed.item -->
 		</table>
 	</div>
+
+	<p>&nbsp;</p>
+
+	<!-- BEGIN pendingfeed -->
+	<div class="user-feed-list dashbox">
+		<h2>{_Your pending for validation feeds}</h2>
+		{_Theses feeds need the validation of the site administrator. Please read the charter before submitting new feeds.}
+		<br/><a href="{$planet.url}/charter.php">{_Go to the charter}</a>
+		<table>
+		<!-- BEGIN userpfeed.item -->
+			<tr class="user-feed">
+			<td class="element">
+				<span class="feed-title"><a href="{$pfeed.url}">{$pfeed.url}</a></span>
+			</td>
+			<td class="action">
+				<span class="action">
+					<a href="javascript:rm_pending_feed('{$pfeed.url}')"><img title="{_Remove pending feed}" src="tpl/images/action-remove.png"></a>
+				</span>
+			</td>
+			</tr>
+		<!-- END userpfeed.item -->
+		</table>
+	</div>
+	<!-- END pendingfeed -->
 </div>
 <div id="tag-feed-form" style="display:none">
 <form>
@@ -74,6 +102,17 @@
 	<span class="description">{_Comma separated tags (ex: linux,web,event)}</span>
 	<div class="button">
 		<input type="submit" name="apply" class="add_tags" value="{_Apply}" />
+	</div>
+</form>
+</div>
+<div id="new-feed-form" style="display:none">
+<form>
+	<label class="required" for="site">{_Site url}</label>
+	<input type="text" id="site" name="site" value=""><br/>
+	<label class="required" for="feed">{_Feed url}</label>
+	<input type="text" id="feed" name="feed" value=""><br/>
+	<div class="button">
+		<input type="submit" name="apply" class="add_feed" value="{_Add}" />
 	</div>
 </form>
 </div>

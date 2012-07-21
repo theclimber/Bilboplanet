@@ -6,7 +6,7 @@
 * Website : www.bilboplanet.com
 * Tracker : http://chili.kiwais.com/projects/bilboplanet
 * Blog : www.bilboplanet.com
-* 
+*
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License as
@@ -23,12 +23,11 @@
 *
 ***** END LICENSE BLOCK *****/
 ?>
-<?php 
+<?php
 # Inclusion des fonctions
 require_once(dirname(__FILE__).'/../inc/prepend.php');
 
-# Verification du contenu envoye
-if ( isset($_POST) && isset($_POST['num_article']) && is_numeric(trim($_POST['num_article'])) 
+if ($core->auth->sessionExists() && isset($_POST) && isset($_POST['num_article']) && is_numeric(trim($_POST['num_article']))
 	&& isset($_POST['token']) && isset($_POST['type']) ) {
 
 	# On recuepre la valeur du post
@@ -51,7 +50,7 @@ if ( isset($_POST) && isset($_POST['num_article']) && is_numeric(trim($_POST['nu
 		$rs = $core->con->select($sql);
 		$nb_art = $rs->count();
 		$post_current_score = $rs->f('post_score');
-		
+
 		#Verification s'il a deja vote
 		$sql = "SELECT COUNT(*) as nb from ".$core->prefix."votes WHERE post_id = $num_article AND vote_ip = '$ip'";
 		$rs = $core->con->select($sql);
@@ -60,15 +59,16 @@ if ( isset($_POST) && isset($_POST['num_article']) && is_numeric(trim($_POST['nu
 		if($nb_art>0 && $nb_vote==0) {
 			# Ajout de l'ip a la liste
 			# FIXME : we have to handle the vote with a user logged in !!! Instead of admin.rand()
+			$user_id = $core->auth->userID();
 			$cur = $core->con->openCursor($core->prefix.'votes');
 			$cur->post_id = $num_article;
-			$cur->user_id = 'admin'.rand();
+			$cur->user_id = $user_id; //'admin'.rand();
 			$cur->vote_ip = $ip;
 			$cur->vote_value = $value;
 			$cur->created = array( 'NOW()' );
 			$cur->insert();
 
-			# Mise a jour du score 
+			# Mise a jour du score
 			$cur = $core->con->openCursor($core->prefix.'post');
 			$cur->post_score = $post_current_score + $value;
 			$cur->update("WHERE post_id = '$num_article'");

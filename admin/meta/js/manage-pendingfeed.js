@@ -1,28 +1,28 @@
 $(document).ready(function() {
-	$("#pendinguser-list").ready( function() {
-		updatePendingUserList();
+	$("#pendingfeed-list").ready( function() {
+		updatePendingFeedList();
 	});
 });
 
-function updatePendingUserList(num_page, nb_items) {
+function updatePendingFeedList(num_page, nb_items) {
 	$.ajax({
 		type: "POST",
 		url: "api/",
-		data : {'ajax' : 'pendinguser', 'action': 'list', 'num_page': num_page, 'nb_items': nb_items},
+		data : {'ajax' : 'pendingfeed', 'action': 'list', 'num_page': num_page, 'nb_items': nb_items},
 		success: function(msg){
-			$("#pendinguser-list").html(msg);
+			$("#pendingfeed-list").html(msg);
 		}
 	});
 }
 
-function refusePendingUser(pUserId, siteUrl, feedUrl, userEmail, userFullname) {
+function refusePendingFeed(pUserId, siteUrl, feedUrl, userEmail, userFullname) {
 	$('#flash-log').css('display','');
 	$('#flash-msg').addClass('ajax-loading');
 	$('#flash-msg').html('Loading');
 	$.ajax({
 		type: "POST",
 		url: "api/",
-		data : {'ajax' : 'pendinguser', 'action': 'emailText', 'userfullname': userFullname, 'feedurl': feedUrl},
+		data : {'ajax' : 'pendingfeed', 'action': 'emailText', 'userfullname': userFullname, 'feedurl': feedUrl},
 		success: function(msg){
 			$('#refuse-subscription-form #content').text(msg);
 			var content = $('#refuse-subscription-form form').clone();
@@ -30,12 +30,12 @@ function refusePendingUser(pUserId, siteUrl, feedUrl, userEmail, userFullname) {
 				$.ajax({
 					type: "POST",
 					url: "api/",
-					data : {'ajax' : 'pendinguser', 'action': 'refuse', 'puserid': pUserId, 'useremail': userEmail},
+					data : {'ajax' : 'pendingfeed', 'action': 'refuse', 'puserid': pUserId, 'useremail': userEmail, 'feed_url' : feedUrl},
 					success: function(msg){
 						$('#flash-msg').html('');
 						$('#flash-log').css('display','');
 						$('#flash-msg').removeClass('ajax-loading');
-						updatePendingUserList();
+						updatePendingFeedList();
 						$(msg).flashmsg();
 					}
 				});
@@ -46,14 +46,14 @@ function refusePendingUser(pUserId, siteUrl, feedUrl, userEmail, userFullname) {
 	return false;
 }
 
-function acceptPendingUser(pUserId, siteUrl, feedUrl, userEmail, userFullname) {
+function acceptPendingFeed(pUserId, siteUrl, feedUrl, userEmail, userFullname) {
 	$('#flash-log').css('display','');
 	$('#flash-msg').addClass('ajax-loading');
 	$('#flash-msg').html('Loading');
 	$.ajax({
 		type: "POST",
 		url: "api/",
-		data : {'ajax' : 'pendinguser', 'action': 'emailText', 'userfullname': userFullname, 'feedurl': feedUrl, 'type': 'accept'},
+		data : {'ajax' : 'pendingfeed', 'action': 'emailText', 'userfullname': userFullname, 'feedurl': feedUrl, 'type': 'accept'},
 			success: function(msg){
 				$('#accept-subscription-form #content').text(msg);
 				var content = $('#accept-subscription-form form').clone();
@@ -61,12 +61,12 @@ function acceptPendingUser(pUserId, siteUrl, feedUrl, userEmail, userFullname) {
 					$.ajax({
 						type: "POST",
 						url: "api/",
-						data : {'ajax' : 'pendinguser', 'action': 'accept', 'puserid': pUserId, 'useremail': userEmail, 'userfullname': userFullname, 'siteurl': siteUrl, 'feedurl': feedUrl},
+						data : {'ajax' : 'pendingfeed', 'action': 'accept', 'puserid': pUserId, 'useremail': userEmail, 'userfullname': userFullname, 'siteurl': siteUrl, 'feedurl': feedUrl},
 						success: function(msg){
 						$('#flash-msg').html('');
 						$('#flash-log').css('display','');
 						$('#flash-msg').removeClass('ajax-loading');
-						updatePendingUserList();
+						updatePendingFeedList();
 						$(msg).flashmsg();
 					}
 				});

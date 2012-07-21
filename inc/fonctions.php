@@ -528,7 +528,7 @@ function generate_SQL(
 		$select .= ",
 			post_score/".$max_score." + post_nbview/".$max_view." + nb_share/".$max_share." as total_score";
 		$tables .= ", ".$core->prefix."post_share";
-		$where_clause .= " AND post_score > 0 
+		$where_clause .= " AND post_score > 0
 			AND ".$core->prefix."post_share.post_id = ".$core->prefix."post.post_id
 			AND ".$core->prefix."post_share.engine = 'identica'";
 		if (!isset($period) || empty($period)) {
@@ -628,7 +628,7 @@ function getSimilarPosts_SQL($post_id,$post_tags) {
 			".$core->prefix."post,
 			".$core->prefix."post_tag,
 			".$core->prefix."user
-		WHERE 
+		WHERE
 		".$core->prefix."post.post_id = ".$core->prefix."post_tag.post_id
 			AND ".$core->prefix."user.user_id = ".$core->prefix."post.user_id
 			AND NOT ".$core->prefix."post.post_id = ".$post_id."
@@ -732,7 +732,7 @@ function showPosts($rs, $tpl, $search_value="", $strip_tags=false) {
 
 			$tpl->render('post.block.gravatar');
 		}
-		if ($blog_settings->get('planet_vote')) {
+		if ($blog_settings->get('planet_vote') && $core->auth->sessionExists()) {
 			$votes = array("html" => afficheVotes($rs->score, $rs->post_id));
 			$tpl->setVar('votes', $votes);
 			$tpl->render('post.block.votes');
@@ -846,8 +846,10 @@ function showPostsSummary($rs, $tpl) {
 }
 
 function afficheVotes($nb_votes, $num_article) {
-
 	global $blog_settings, $core;
+	if (!$core->auth->sessionExists()){
+		return "";
+	}
 
 	# On met un s a vote si il le faut
 	$vote = "vote";

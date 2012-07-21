@@ -40,6 +40,45 @@ function add_feed_tags(feed_id) {
     });
 }
 
+function add_feed() {
+    var content = $('#new-feed-form form').clone();
+    Boxy.askform(content, function(val) {
+		var data = content.serialize().split('&');
+		var site = data[0].split('=')[1];
+		var feed = data[1].split('=')[1];
+        $.ajax({
+            type: "POST",
+            url: "api/",
+			data : {'ajax' : 'feed', 'action' : 'add_feed', 'feed_url' : feed, 'site_url' : site},
+            success: function(msg){
+                updatePage('profile');
+            }
+        });
+    }, {
+        title: "Add a new feed",
+    });
+}
+function rm_feed(feed_id) {
+    $.ajax({
+        type: "POST",
+        url: "api/",
+        data : {'ajax' : 'feed', 'action' : 'rm_feed', 'feed_id' : feed_id},
+        success: function(msg){
+            updatePage('profile');
+        }
+    });
+}
+function rm_pending_feed(feed_url) {
+    $.ajax({
+        type: "POST",
+        url: "api/",
+        data : {'ajax' : 'feed', 'action' : 'rm_pending_feed', 'feed_url' : feed_url},
+        success: function(msg){
+            updatePage('profile');
+        }
+    });
+}
+
 function disallow_comments(feed_id) {
 	comment(feed_id, 0);
 }

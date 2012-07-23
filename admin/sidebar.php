@@ -38,6 +38,9 @@
 		<ul>
 		<li>
 			</li>
+            <li>
+            	<a href="manage-tribe.php" class="tips" rel="<?php echo T_('Manage tribes');?>." id="tribes" ><?php echo T_('Tribes');?></a>
+			</li>
 			<li>
 				<a href="manage-user.php" class="tips" rel="<?php echo T_('Manage users');?>." id="members" ><?php echo T_('Manage users');?></a>
 			</li>

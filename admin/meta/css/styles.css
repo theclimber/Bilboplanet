@@ -262,6 +262,9 @@ div#bp_pannel a#config {
 div#bp_pannel a#newsletter {
 	background-image:url('../icons/newsletter.png');
 }
+div#bp_pannel a#tribes {
+	background-image:url('../icons/tribe.png');
+}
 div#bp_pannel a#permissions {
 	background-image:url('../icons/cadenas.png');
 }
@@ -1453,4 +1456,24 @@ a.flash_box_close{
 }
 .message_install p {
     margin: 2px 0;
+}
+
+div.tribesbox {
+	display: inline-block;
+	margin: 5px;
+	border-radius: 2px;
+	border: 1px solid #CCC;
+	width: 150px;
+	overflow: hidden;
+	padding: 5px;
+	font-size: 0.9em;
+	background-color: #FFF;
+}
+
+div.tribesbox p {
+	display: block;
+	margin: 10px auto;
+}
+div.tribesbox .feedlink {
+	float: right;
 }

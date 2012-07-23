@@ -21,7 +21,6 @@ if ($core->auth->sessionExists()) {
 }
 
 $sql_tribes = "SELECT
-		tribe_id,
 		user_id,
 		tribe_name,
 		tribe_tags,

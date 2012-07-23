@@ -575,8 +575,10 @@ function generate_tribe_SQL($tribe_id, $num_start = 0, $nb_items = 10) {
 	$rs = $core->con->select($sql_tribes);
 
 	if ($rs->f('user_id') != "root") {
-		if (!$core->auth->sessionExists() || $core->auth->userID() != $rs->f('user_id')) {
-			return "";
+		if (!$core->hasPermission('administration')) {
+			if (!$core->auth->sessionExists() || $core->auth->userID() != $rs->f('user_id')) {
+				return "";
+			}
 		}
 	}
 

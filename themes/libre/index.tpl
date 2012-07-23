@@ -76,7 +76,7 @@
 			</label>
 			<input class="submit button" type="submit" value="{_Connect}" />
 			</p><p>
-			<a href="{$planet.url}/auth.php?recover=1" class="forgot">{_Password forgotten?}</a> | 
+			<a href="{$planet.url}/auth.php?recover=1" class="forgot">{_Password forgotten?}</a> |
 				<br>
 			</p>
 			</form>
@@ -88,6 +88,9 @@
 			<ul class="content" id="navigation">
 				<li style="border-left: 1px solid #2F2F2F;"><a href="{$planet.url}/contact.php">{_Contact us}</a></li>
 				<li style="border-left: 1px solid #2F2F2F;"><a href="{$planet.url}/charter.php">{_Charter}</a></li>
+				<li style="border-left: 1px solid #2F2F2F;"><a href="{$planet.url}/users.php">{_Users}</a></li>
+				<li style="border-left: 1px solid #2F2F2F;"><a href="{$planet.url}/tags.php">{_Tribes and tags}</a></li>
+				<li style="border-left: 1px solid #2F2F2F;"><a href="{$planet.url}/stats.php">{_Stats}</a></li>
 				</li>
 			</ul>
 	</div>

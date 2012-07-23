@@ -69,6 +69,13 @@ if(isset($_POST) && isset($_POST['ajax'])) {
 		}
 		require_once(dirname(__FILE__).'/manage-feed_api.php');
 		break;
+	case 'tribe':
+		if (!$core->hasPermission('administration')){
+			print 'Permission denied';
+			exit;
+		}
+		require_once(dirname(__FILE__).'/manage-tribe_api.php');
+		break;
 	case 'moderation':
 		if (!$core->hasPermission('moderation')){
 			print 'Permission denied';

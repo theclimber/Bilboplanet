@@ -396,6 +396,7 @@ function getOutput($sql, $num_page=0, $nb_items=30) {
 					<li>Remove user</li>
 					<li>Add search</li>
 					<li>Remove search</li>
+					<li>Add / remove icon</li>
 				</ul>
 				<div class="feedlink"><a href="'.$blog_settings->get('planet_url').'/index.php?list=1&tribe_id='.$rs->tribe_id.'">
 						<img alt="RSS" src="'.$blog_settings->get('planet_url').'/themes/'.$blog_settings->get('planet_theme').'/images/rss_24.png" /></a></div>

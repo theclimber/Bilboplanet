@@ -1469,6 +1469,12 @@ div.tribesbox {
 	font-size: 0.9em;
 	background-color: #FFF;
 }
+div.tribesbox .private{
+	background: transparent url(../icons/lock_locked) no-repeat top left;
+}
+div.tribesbox .private{
+	background: transparent url(../icons/lock_unlock) no-repeat top left;
+}
 
 div.tribesbox p {
 	display: block;

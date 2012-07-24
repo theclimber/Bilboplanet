@@ -470,6 +470,10 @@ function getOutput($sql, $num_page=0, $nb_items=30) {
 				$user_list .= '</a></span>';
 			}
 
+			if (!empty($rs->tribe_search)) {
+				$rm_search_action = '(<a href="javascript:rm_search('.$num_page.', '.$nb_items.',\''.$rs->tribe_id.'\')">'.T_('clear').'</a>)';
+			}
+
 
 			$output .= '<div class="tribesbox '.$tribe_state.'" id="tribe-'.$rs->tribe_id.'">
 				<a href="'.$blog_settings->get('planet_url').'/index.php?list=1&tribe_id='.$rs->tribe_id.'">'.$rs->tribe_name.'</a>
@@ -477,9 +481,9 @@ function getOutput($sql, $num_page=0, $nb_items=30) {
 					Tribe owner : '.$tribe_owner.'<br/>
 					Tags : <div class="tag-line">'.$tag_list.'</div><br/>
 					Users : <div class="user-line">'.$user_list.'</div><br/>
-					search : '.$rs->tribe_search.' (<a href="javascript:rm_search('.$num_page.', '.$nb_items.',\''.$rs->tribe_id.'\')">clear</a>)<br/>
+					search : '.$rs->tribe_search.' '.$rm_search_action.'<br/>
 					Last post : '.mysqldatetime_to_date("d/m/Y",$rs_post->last).'<br/>
-					Post count : '.$rs_post->count.'
+					Post count : '.$rs_post->count.'<br/>
 					Ordering : '.$rs->ordering.'
 				</p>
 				<ul class="actions">

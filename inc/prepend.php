@@ -128,7 +128,7 @@ if (in_array($core->prefix.'setting', $schema->getTables())) {
 	$log = $blog_settings->get('planet_log');
 
 	# Add the global values needed in template
-	if (is_file(dirname(__FILE__).'/../themes/'.$blog_settings->get('planet_theme').'/index.tpl') {
+	if (is_file(dirname(__FILE__).'/../themes/'.$blog_settings->get('planet_theme').'/index.tpl')) {
 		$core->tpl->importFile('index','index.tpl', dirname(__FILE__).'/../themes/'.$blog_settings->get('planet_theme'));
 		$core->tpl->setVar('planet', array(
 			"url"	=>	$blog_settings->get('planet_url'),

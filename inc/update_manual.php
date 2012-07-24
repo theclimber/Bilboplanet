@@ -33,7 +33,7 @@ if (isset($_GET['token'])) {
 		WHERE user_token = '".$token."'");
 	if ($rs_user->count() == 1) {
 		
-		$user_perms = $this->getUserRolePermissions($rs_user->f('user_id'));
+		$user_perms = $core->auth->getUserRolePermissions($rs_user->f('user_id'));
 		if ($user_perms->{'role'} == 'administrator') {
 			// The user has the rights
 			$can_execute = 1;

@@ -107,8 +107,9 @@ if(isset($_POST['action'])) {
 
 				$rs_user = $core->con->select("SELECT * FROM ".$core->prefix."user WHERE user_id = '".$user_id."'");
 
+				$ip = getIP();
 				$objet = "[".$blog_settings->get('planet_name')."] ".
-					sprintf(T_("Feed validation request for "),$user_id);
+					sprintf(T_("Feed validation request for %s"),$user_id);
 				$msg = T_("User id : ").$user_id;
 				$msg .= "\n".T_("Fullname : ").$rs_user->f('user_fullname');
 				$msg .= "\n".T_("Site url : ").$site_url['value'];

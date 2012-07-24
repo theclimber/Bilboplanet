@@ -55,7 +55,7 @@
 			| <a href="?logout={$planet.url}">Logout</a>
 		</div>
 	<!-- ELSE page.loginbox -->
-		<div id="loginBox"><a href="{$planet.url}/signup.php">{_Register or }</a> <a><span id="dropdown">Login <span id="login-dropdown">&nbsp;</span></span></a></div>
+		<div id="loginBox"><a href="{$planet.url}/signup.php">{_Register}</a> {_or} <a><span id="dropdown">Login <span id="login-dropdown">&nbsp;</span></span></a></div>
 		<div id="loginForm" style="display:none;">
 			<form class="login" method="POST" action="{$planet.url}/auth.php">
 			<input type="hidden" name="came_from" value="{$planet.url}">

@@ -223,6 +223,93 @@ if(isset($_POST['action'])) {
 
 
 ##########################################################
+# Remove user on tribe
+##########################################################
+	case 'rm_user':
+		$tribe_id = $_POST['tribe_id'];
+        $user_to_rm = $_POST['user'];
+        $error = array();
+
+		$sql = "SELECT tribe_users
+			FROM ".$core->prefix."tribe
+            WHERE tribe_id = '".$tribe_id."'";
+		$rs = $core->con->select($sql);
+		$tribe_users = preg_split('/,/',$rs->f('tribe_users'), -1, PREG_SPLIT_NO_EMPTY);
+
+		foreach ($tribe_users as $k=>$user) {
+            if ($tag == $user_to_rm) {
+                unset($tribe_users[$k]);
+            }
+        }
+
+		$cur = $core->con->openCursor($core->prefix.'tribe');
+		$cur->tribe_users = implode(',', $tribe_users);
+		$cur->update("WHERE tribe_id='".$tribe_id."'");
+
+        $output = T_("The tag was successfuly removed");
+
+		if (!empty($error)) {
+			$output .= "<ul>";
+			foreach($error as $value) {
+				$output .= "<li>".$value."</li>";
+			}
+			$output .= "</ul>";
+			print '<div class="flash_error">'.$output.'</div>';
+		}
+		else {
+			print '<div class="flash_notice">'.$output.'</div>';
+		}
+		break;
+
+##########################################################
+# Add users to tribe
+##########################################################
+	case 'add_users':
+		$tribe_id = $_POST['tribe_id'];
+        $patterns = array( '/, /', '/ ,/');
+        $replacement = array(',', ',');
+        $users = urldecode($_POST['users']);
+        $users = preg_replace($patterns, $replacement, $users);
+        $new_users = preg_split('/,/',$users, -1, PREG_SPLIT_NO_EMPTY);
+
+		$sql = "SELECT tribe_users
+			FROM ".$core->prefix."tribe
+            WHERE tribe_id = '".$tribe_id."'";
+		$rs = $core->con->select($sql);
+		$tribe_users = preg_split('/,/',$rs->f('tribe_users'), -1, PREG_SPLIT_NO_EMPTY);
+
+		foreach ($new_users as $user) {
+            if (!in_array($user, $tribe_users)) {
+				// check if user_id exist before adding
+				$rs_search = $core->con->select("SELECT * FROM ".$core->prefix."user WHERE user_id='".$user."'");
+				if ($rs_search->count() == 1) {
+					$tribe_users[] = $user;
+				}
+            }
+        }
+
+        $output .= T_("Users added : ");
+		$all_users_string=implode(',',$tribe_users);
+		$output .= $all_users_string;
+		$cur = $core->con->openCursor($core->prefix.'tribe');
+		$cur->tribe_users = $all_users_string;
+		$cur->update("WHERE tribe_id='".$tribe_id."'");
+
+		if (!empty($error)) {
+			$output .= "<ul>";
+			foreach($error as $value) {
+				$output .= "<li>".$value."</li>";
+			}
+			$output .= "</ul>";
+			print '<div class="flash_error">'.$output.'</div>';
+		}
+		else {
+			print '<div class="flash_notice">'.$output.'</div>';
+		}
+		break;
+
+
+##########################################################
 # Remove tag on tribe
 ##########################################################
 	case 'rm_tag':
@@ -241,8 +328,6 @@ if(isset($_POST['action'])) {
                 unset($tribe_tags[$k]);
             }
         }
-
-		$output .= var_export(($tribe_tags));
 
 		$cur = $core->con->openCursor($core->prefix.'tribe');
 		$cur->tribe_tags = implode(',', $tribe_tags);
@@ -264,7 +349,7 @@ if(isset($_POST['action'])) {
 		break;
 
 ##########################################################
-# Add tags to feed
+# Add tags to tribe
 ##########################################################
 	case 'add_tags':
 		$tribe_id = $_POST['tribe_id'];
@@ -378,26 +463,32 @@ function getOutput($sql, $num_page=0, $nb_items=30) {
 				$tag_list .= '</a></span>';
 			}
 
+			$tribe_users = preg_split('/,/',$rs->tribe_users, -1, PREG_SPLIT_NO_EMPTY);
+			$user_list = "";
+			foreach ($tribe_users as $user_item) {
+				$user_list .= '<span class="user">'.$user_item.' <a href="javascript:rm_user('.$num_page.','.$nb_items.',\''.$rs->tribe_id.'\',\''.$user_item.'\')">x</a>';
+				$user_list .= '</a></span>';
+			}
+
 
 			$output .= '<div class="tribesbox '.$tribe_state.'" id="tribe-'.$rs->tribe_id.'">
 				<a href="'.$blog_settings->get('planet_url').'/index.php?list=1&tribe_id='.$rs->tribe_id.'">'.$rs->tribe_name.'</a>
 				<p class="nickname">
 					Tribe owner : '.$tribe_owner.'<br/>
 					Tags : <div class="tag-line">'.$tag_list.'</div><br/>
-					Users : '.$rs->tribe_users.'<br/>
-					search : '.$rs->tribe_search.'<br/>
+					Users : <div class="user-line">'.$user_list.'</div><br/>
+					search : '.$rs->tribe_search.' (<a href="javascript:rm_search('.$num_page.', '.$nb_items.',\''.$rs->tribe_id.'\')">clear</a>)<br/>
 					Last post : '.mysqldatetime_to_date("d/m/Y",$rs_post->last).'<br/>
 					Post count : '.$rs_post->count.'
+					Ordering : '.$rs->ordering.'
 				</p>
 				<ul class="actions">
 					<li><a href="javascript:toggleTribeVisibility(\''.$rs->tribe_id.'\','.$num_page.','.$nb_items.')">Toggle visibility (public/private)</a></li>
 					<li>Edit</li>
 					<li><a href="javascript:removeTribe(\''.$rs->tribe_id.'\','.$num_page.','.$nb_items.')">Remove</a></li>
-					<li><a href="javascript:add_tags('.$num_page.','.$nb_items.',\''.$rs->tribe_id.'\',\''.$rs->tribe_name.'\')">Add tags</a></li>
-					<li>Remove tag</li>
-					<li>Add user</li>
-					<li>Remove user</li>
-					<li>Add search</li>
+					<li><a href="javascript:add_tags('.$num_page.','.$nb_items.',\''.$rs->tribe_id.'\',\''.$rs->tribe_name.'\')"><img src="meta/icons/add_tag.png" />Add tags</a></li>
+					<li><img src="meta/icons/add_user.png" />Add user</li>
+					<li><img src="meta/icons/add_search.png" />Add search</li>
 					<li>Remove search</li>
 					<li>Add / remove icon</li>
 				</ul>

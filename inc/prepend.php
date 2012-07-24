@@ -128,16 +128,21 @@ if (in_array($core->prefix.'setting', $schema->getTables())) {
 	$log = $blog_settings->get('planet_log');
 
 	# Add the global values needed in template
-	$core->tpl->importFile('index','index.tpl', dirname(__FILE__).'/../themes/'.$blog_settings->get('planet_theme'));
-	$core->tpl->setVar('planet', array(
-		"url"	=>	$blog_settings->get('planet_url'),
-		"theme"	=>	$blog_settings->get('planet_theme'),
-		"title"	=>	$blog_settings->get('planet_title'),
-		"desc"	=>	$blog_settings->get('planet_desc'),
-		"keywords"	=>	$blog_settings->get('planet_keywords'),
-		"desc_meta"	=>	$blog_settings->get('planet_desc_meta'),
-		"msg_info" => $blog_settings->get('planet_msg_info'),
-	));
+	if (is_file(dirname(__FILE__).'/../themes/'.$blog_settings->get('planet_theme').'/index.tpl') {
+		$core->tpl->importFile('index','index.tpl', dirname(__FILE__).'/../themes/'.$blog_settings->get('planet_theme'));
+		$core->tpl->setVar('planet', array(
+			"url"	=>	$blog_settings->get('planet_url'),
+			"theme"	=>	$blog_settings->get('planet_theme'),
+			"title"	=>	$blog_settings->get('planet_title'),
+			"desc"	=>	$blog_settings->get('planet_desc'),
+			"keywords"	=>	$blog_settings->get('planet_keywords'),
+			"desc_meta"	=>	$blog_settings->get('planet_desc_meta'),
+			"msg_info" => $blog_settings->get('planet_msg_info'),
+		));
+	} else {
+		print sprintf(T_("ERROR : The theme '%s' that is configured is not existing in the theme folder."), $blog_settings->get('planet_theme'));
+		exit;
+	}
 
 
 	if ($core->auth->sessionExists()) {

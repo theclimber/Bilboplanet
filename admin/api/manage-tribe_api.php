@@ -85,6 +85,9 @@ if(isset($_POST['action'])) {
 				$cur->tribe_id = $tribe_id;
 				$cur->user_id = $user_id;
 				$cur->tribe_name = $tribe_name['value'];
+				if (!empty($ordering) && is_int($ordering)) {
+					$cur->ordering = $ordering;
+				}
 				$cur->visibility = 1;
 				$cur->created = array(' NOW() ');
 				$cur->modified = array(' NOW() ');

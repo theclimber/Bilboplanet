@@ -25,6 +25,27 @@
 ?>
 <?php
 require_once(dirname(__FILE__).'/prepend.php');
+
+$can_execute = 0;
+if (isset($_GET['token'])) {
+	$token = $core->con->escape($_GET['token']);
+	$rs_user = $core->con->select("SELECT user_id FROM ".$core->prefix."user
+		WHERE user_token = '".$token."'");
+	if ($rs_user->count() == 1) {
+		
+		$user_perms = $this->getUserRolePermissions($rs_user->f('user_id'));
+		if ($user_perms->{'role'} == 'administrator') {
+			// The user has the rights
+			$can_execute = 1;
+		}
+	}
+}
+
+if ($can_execute == 0) {
+	print T_('Forbidden');
+	exit;
+}
+
 require_once(dirname(__FILE__).'/cron_fct.php');
 
 $log_file = dirname(__FILE__).'/../logs/cron_job.log';

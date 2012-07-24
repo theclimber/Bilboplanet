@@ -154,7 +154,10 @@ echo '<label for="enable_on_index"><input id="enable_on_index" type="checkbox" n
 </div>
 
 <p><?php echo T_('You can setup a manual crontab update by calling automatically every X time the following page :'); ?><br/>
-<b><?php echo $blog_settings->get('planet_url')."/inc/update_manual.php"; ?></b><br />
+
+<b><?php 
+$token = $core->auth->userToken();
+echo $blog_settings->get('planet_url')."/inc/update_manual.php?token=".$token; ?></b><br />
 <?php echo T_('This will automatically launch the update and log it into the log files.'); ?></p>
 </fieldset>
 <?php

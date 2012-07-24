@@ -42,6 +42,7 @@ class bpAuth
 	protected $perm_table;	///< <b>string</b>	Perm table name
 
 	protected $user_id;					///< <b>string</b>		Current user ID
+	protected $user_token;
 	protected $user_info = array();		///< <b>array</b>		Array with user information
 	protected $user_options = array();		///< <b>a<rray</b>		Array with user options
 	protected $user_admin;				///< <b>boolean</b>		User is super admin
@@ -123,6 +124,7 @@ class bpAuth
 
 		$this->user_id = $rs->user_id;
 		$this->user_admin = false;
+		$this->user_token = $rs->user_token;
 
 		$this->user_info['user_pwd'] = $rs->user_pwd;
 		$this->user_info['user_fullname'] = $rs->user_fullname;
@@ -267,6 +269,12 @@ class bpAuth
 	public function userID()
 	{
 		return $this->user_id;
+	}
+
+
+	public function userToken()
+	{
+		return $this->user_token;
 	}
 
 	/**

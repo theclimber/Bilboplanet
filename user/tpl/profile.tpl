@@ -107,7 +107,15 @@
 </div>
 <div id="new-feed-form" style="display:none">
 <form>
-	<label class="required" for="site">{_Site url}</label>
+	<label class="required" for="existing_site">{_Existing site url}</label>
+	<input type="checkbox" name="existing_site"/>
+	<select name="site_id">
+		<option value="">{_-- choose existing site}</option>
+		<!-- BEGIN existing.site -->
+		<option value="{$esite.id}">{$esite.url}</option>
+		<!-- END existing.site -->
+	</select><br/>
+	<label class="required" for="site">{_New site url}</label>
 	<input type="text" id="site" name="site" value=""><br/>
 	<label class="required" for="feed">{_Feed url}</label>
 	<input type="text" id="feed" name="feed" value=""><br/>

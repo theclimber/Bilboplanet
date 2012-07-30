@@ -119,6 +119,14 @@ function render_page ($page) {
 			}
 			$tpl->render('pendingfeed');
 		}
+
+		$rs_esite = $core->con->select("SELECT * FROM ".$core->prefix."site WHERE user_id='".$user_id."'");
+		while ($rs_esite->fetch()) {
+			$tpl->setVar("esite", array(
+				"id" => $rs_esite->site_id,
+				"url" => $rs_esite->site_url));
+			$tpl->render("existing.site");
+		}
 		break;
 	case 'social':
 		$newsletter_options = array(

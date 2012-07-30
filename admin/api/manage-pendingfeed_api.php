@@ -138,43 +138,64 @@ if(isset($_POST['action'])) {
 		$subject = html_entity_decode(stripslashes($_POST['subject']), ENT_QUOTES, 'UTF-8');
 		$content = html_entity_decode(stripslashes($_POST['content']), ENT_QUOTES, 'UTF-8');
 
-		# Get next site id
-		$rs = $core->con->select("SELECT MAX(site_id) FROM ".$core->prefix."site");
-		$next_site_id = (integer) $rs->f(0) + 1;
+		if (!sendmail($from, $to, $subject, $content, 'normal', $reply_to)) {
+			$error[] = T_("Mail could not be send");
+		} else {
+			$sql = "SELECT site_id FROM ".$core->prefix."site WHERE site_url='".$siteurl."' AND user_id='".$puserid."'";
+			$rs_esite = $core->con->select($sql);
+			if ($rs_esite->count() == 1) { # the site is already existing
+				$next_site_id = $rs_esite->f('site_id');
+			} else {
+				# Get next site id
+				$rs = $core->con->select("SELECT MAX(site_id) FROM ".$core->prefix."site");
+				$next_site_id = (integer) $rs->f(0) + 1;
 
-		# Add Website
-		$cur = $core->con->openCursor($core->prefix.'site');
-		$cur->site_id = $next_site_id;
-		$cur->user_id = $puserid;
-		$cur->site_name = T_("Website");
-		$cur->site_url = $siteurl;
-		$cur->site_status = 1;
-		$cur->created = array(' NOW() ');
-		$cur->modified = array(' NOW() ');
-		$cur->insert();
+				# Add Website
+				$cur = $core->con->openCursor($core->prefix.'site');
+				$cur->site_id = $next_site_id;
+				$cur->user_id = $puserid;
+				$cur->site_name = T_("Website");
+				$cur->site_url = $siteurl;
+				$cur->site_status = 1;
+				$cur->created = array(' NOW() ');
+				$cur->modified = array(' NOW() ');
+				$cur->insert();
+			}
 
-		# Get next feed id
-		$rs2 = $core->con->select("SELECT MAX(feed_id) FROM ".$core->prefix."feed");
-		$next_feed_id = (integer) $rs2->f(0) + 1;
+			# Get next feed id
+			$rs2 = $core->con->select("SELECT MAX(feed_id) FROM ".$core->prefix."feed");
+			$next_feed_id = (integer) $rs2->f(0) + 1;
 
-		# Add Feed
-		$cur = $core->con->openCursor($core->prefix.'feed');
-		$cur->feed_id = $next_feed_id;
-		$cur->user_id = $puserid;
-		$cur->site_id = $next_site_id;
-		$cur->feed_name = T_("Feed");
-		$cur->feed_url = $feedurl;
-		$cur->feed_trust = '1';
-		$cur->created = array(' NOW() ');
-		$cur->modified = array(' NOW() ');
-		$cur->insert();
+			# Add Feed
+			$cur = $core->con->openCursor($core->prefix.'feed');
+			$cur->feed_id = $next_feed_id;
+			$cur->user_id = $puserid;
+			$cur->site_id = $next_site_id;
+			$cur->feed_name = T_("Feed");
+			$cur->feed_url = $feedurl;
+			$cur->feed_trust = '1';
+			$cur->created = array(' NOW() ');
+			$cur->modified = array(' NOW() ');
+			$cur->insert();
 
-		# Remove pending subsciption content
-		$core->con->execute("DELETE FROM ".$core->prefix."pending_feed WHERE user_id = '$puserid' AND feed_url= '$feedurl'");
+			# Remove pending subsciption content
+			$core->con->execute("DELETE FROM ".$core->prefix."pending_feed WHERE user_id = '$puserid' AND feed_url= '$feedurl'");
 
-		$output = sprintf(T_("User %s successfully added"),$userfullname);
+			$output = sprintf(T_("User %s successfully added"),$userfullname);
 
-		print '<div class="flash_notice">'.$output.'</div>';
+		}
+
+		if (!empty($error)) {
+			$output .= "<ul>";
+			foreach($error as $value) {
+				$output .= "<li>".$value."</li>";
+			}
+			$output .= "</ul>";
+			print '<div class="flash_error">'.$output.'</div>';
+		}
+		else {
+			print '<div class="flash_notice">'.$output.'</div>';
+		}
 
 	break;
 

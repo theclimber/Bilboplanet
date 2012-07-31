@@ -448,8 +448,10 @@ function getOutput($sql, $num_page=0, $nb_items=30) {
 			$rs_post = $core->con->select($sql_post);
 
 			$tribe_state = "private";
+			$tribe_state_img="lock_locked";
 			if ($rs->visibility == 1) {
 				$tribe_state = "public";
+				$tribe_state_img="lock_unlock";
 			}
 			$tribe_owner = T_('Admin');
 			if ($rs->user_id != "root") {
@@ -472,11 +474,14 @@ function getOutput($sql, $num_page=0, $nb_items=30) {
 
 			if (!empty($rs->tribe_search)) {
 				$rm_search_action = '(<a href="javascript:rm_search('.$num_page.', '.$nb_items.',\''.$rs->tribe_id.'\')">'.T_('clear').'</a>)';
+			} else {
+				$rm_search_action = T_('(empty)');
 			}
 
 
-			$output .= '<div class="tribesbox '.$tribe_state.'" id="tribe-'.$rs->tribe_id.'">
-				<a href="'.$blog_settings->get('planet_url').'/index.php?list=1&tribe_id='.$rs->tribe_id.'">'.$rs->tribe_name.'</a>
+			$output .= '<div class="tribesbox tribe-'.$tribe_state.'" id="tribe-'.$rs->tribe_id.'">
+				<h3><a href="'.$blog_settings->get('planet_url').'/index.php?list=1&tribe_id='.$rs->tribe_id.'">'.$rs->tribe_name.'</a></h3>
+				<img class="tribe-icon" src="" border="1" width=100 height=100 />
 				<p class="nickname">
 					Tribe owner : '.$tribe_owner.'<br/>
 					Tags : <div class="tag-line">'.$tag_list.'</div><br/>
@@ -487,14 +492,12 @@ function getOutput($sql, $num_page=0, $nb_items=30) {
 					Ordering : '.$rs->ordering.'
 				</p>
 				<ul class="actions">
-					<li><a href="javascript:toggleTribeVisibility(\''.$rs->tribe_id.'\','.$num_page.','.$nb_items.')">Toggle visibility (public/private)</a></li>
-					<li>Edit</li>
-					<li><a href="javascript:removeTribe(\''.$rs->tribe_id.'\','.$num_page.','.$nb_items.')">Remove</a></li>
-					<li><a href="javascript:add_tags('.$num_page.','.$nb_items.',\''.$rs->tribe_id.'\',\''.$rs->tribe_name.'\')"><img src="meta/icons/add_tag.png" />Add tags</a></li>
-					<li><img src="meta/icons/add_user.png" />Add user</li>
-					<li><img src="meta/icons/add_search.png" />Add search</li>
-					<li>Remove search</li>
-					<li>Add / remove icon</li>
+					<li><a href="javascript:toggleTribeVisibility(\''.$rs->tribe_id.'\','.$num_page.','.$nb_items.')"><img src="meta/icons/'.$tribe_state_img.'.png" title="'.T_('Toggle tribe visibility').'"/></a></li>
+					<li><img src="meta/icons/action-edit.png" title="'.T_('Edit tribe').'" /></li>
+					<li><a href="javascript:removeTribe(\''.$rs->tribe_id.'\','.$num_page.','.$nb_items.')"><img src="meta/icons/cross.png" title="'.T_('Remove tribe').'" /></a></li>
+					<li><a href="javascript:add_tags('.$num_page.','.$nb_items.',\''.$rs->tribe_id.'\',\''.$rs->tribe_name.'\')"><img src="meta/icons/add_tag.png" title="'.T_('Add tags to tribe').'"/></a></li>
+					<li><img src="meta/icons/add_user.png" title="'.T_('Add users to tribe').'" /></li>
+					<li><img src="meta/icons/add_search.png" title="'.T_('Add search to tribe').'" /></li>
 				</ul>
 				<div class="feedlink"><a href="'.$blog_settings->get('planet_url').'/index.php?list=1&tribe_id='.$rs->tribe_id.'">
 						<img alt="RSS" src="'.$blog_settings->get('planet_url').'/themes/'.$blog_settings->get('planet_theme').'/images/rss_24.png" /></a></div>

@@ -60,6 +60,33 @@ if ($core->auth->sessionExists() ) {
 }
 
 #######################
+# RENDER TRIBES LIST
+#######################
+$user_id = '';
+if ($core->auth->sessionExists()) {
+	$user_id = $core->auth->userID();
+}
+
+$sql_tribes = "SELECT
+		user_id,
+		tribe_name,
+		tribe_id
+	FROM ".$core->prefix."tribe
+	WHERE (user_id = 'root' OR user_id = '".$user_id."')
+		AND visibility = 1
+	ORDER BY ordering
+		";
+
+$rs = $core->con->select($sql_tribes);
+while($rs->fetch()) {
+	$core->tpl->setVar('tribe', array(
+		'id' => $rs->tribe_id,
+		'name' => $rs->tribe_name
+		));
+	$core->tpl->render('menu.tribes');
+}
+
+#######################
 # RENDER SIDEBAR
 #######################
 global $current_page;

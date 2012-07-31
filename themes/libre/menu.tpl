@@ -1,8 +1,11 @@
 <div id="categories-bg">
 	<ul class="content" id="categories">
 		<li><a href="{$planet.url}/?portal=1">{_Portal}</a></li>
-		<li><a href="{$planet.url}/?list=1">{_Main feed}</a></li>
+	<!-- BEGIN menu.tribes -->
+		<li><a href="{$planet.url}/?list=1&tribe_id={$tribe.id}">{$tribe.name}</a></li>
+	<!-- END menu.tribes -->
 		<li><a href="{$planet.url}/?list=1&popular=true&filter=week">{_Popular}</a></li>
+		<li><a href="{$planet.url}/?list=1">{_All posts}</a></li>
 	</ul>
 </div>
 

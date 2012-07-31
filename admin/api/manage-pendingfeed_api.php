@@ -94,7 +94,7 @@ if(isset($_POST['action'])) {
 		$feed_url = urldecode(trim($_POST['feed_url']));
 
 		$from = $blog_settings->get('author_mail');
-		$to = $userfullname.', '.$from;
+		$to = $useremail.', '.$from;
 		$reply_to = $from;
 
 		$subject = html_entity_decode(stripslashes($_POST['subject']), ENT_QUOTES, 'UTF-8');
@@ -132,7 +132,7 @@ if(isset($_POST['action'])) {
 		$feedurl = urldecode(trim($_POST['feedurl']));
 
 		$from = $blog_settings->get('author_mail');
-		$to = $userfullname.', '.$from;
+		$to = $useremail.', '.$from;
 		$reply_to = $from;
 
 		$subject = html_entity_decode(stripslashes($_POST['subject']), ENT_QUOTES, 'UTF-8');

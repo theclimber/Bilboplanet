@@ -191,3 +191,100 @@ function add_tags(num_page, nb_items, tribe_id, tribe_name) {
         title: "Tagging : " + tribe_name,
     });
 }
+
+function rm_user(num_page, nb_items, tribe_id, user) {
+	$('#flash-log').css('display','');
+	$('#flash-msg').addClass('ajax-loading');
+	$('#flash-msg').html('Loading');
+    $.ajax({
+        type: "POST",
+        url: "api/",
+        data : {'ajax' : 'tribe', 'action' : 'rm_user', 'tribe_id' : tribe_id, 'user' : user},
+        success: function(msg){
+//            $("#tag_action"+tribe_id)[0].removeAttribute('class','ajax-loading');
+            $('#flash-msg').removeClass('ajax-loading');
+            $('#flash-msg').html('');
+            $('#flash-log').css('display', 'none');
+			updateTribeList(num_page, nb_items);
+            $(msg).flashmsg();
+        }
+    });
+}
+
+function add_users(num_page, nb_items, tribe_id, tribe_name) {
+    var content = $('span#user-tribe-form').clone();
+	content.find('select#user_combo').change(function() {
+		var user_id = content.find('select#user_combo').val();
+		var current_text = content.find('input#users_selected').val();
+		if (current_text=='') {
+			content.find('input#users_selected').val(user_id)
+		} else {
+			content.find('input#users_selected').val(current_text + ',' + user_id)
+		}
+	});
+
+    Boxy.askform(content, function(val) {
+        $('#flash-log').css('display','');
+        $('#flash-msg').addClass('ajax-loading');
+        $("#flash-msg").html('Sending');
+		var data = content.find('form').serialize().split('=');
+		console.debug(data);
+        $.ajax({
+            type: "POST",
+            url: "api/",
+			data : {'ajax' : 'tribe', 'action' : 'add_users', 'tribe_id' : tribe_id, 'users' : data[1]},
+            success: function(msg){
+                $('#flash-msg').removeClass('ajax-loading');
+                $('#flash-log').css('display', 'none');
+                $(msg).flashmsg();
+				updateTribeList(num_page, nb_items);
+            }
+        });
+    }, {
+        title: "Add users : " + tribe_name,
+    });
+}
+
+function rm_search(num_page, nb_items, tribe_id) {
+	$('#flash-log').css('display','');
+	$('#flash-msg').addClass('ajax-loading');
+	$('#flash-msg').html('Loading');
+    $.ajax({
+        type: "POST",
+        url: "api/",
+        data : {'ajax' : 'tribe', 'action' : 'rm_search', 'tribe_id' : tribe_id},
+        success: function(msg){
+//            $("#tag_action"+tribe_id)[0].removeAttribute('class','ajax-loading');
+            $('#flash-msg').removeClass('ajax-loading');
+            $('#flash-msg').html('');
+            $('#flash-log').css('display', 'none');
+			updateTribeList(num_page, nb_items);
+            $(msg).flashmsg();
+        }
+    });
+}
+
+function add_search(num_page, nb_items, tribe_id, tribe_name) {
+    var content = $('#search-tribe-form form').clone();
+
+    Boxy.askform(content, function(val) {
+        $('#flash-log').css('display','');
+        $('#flash-msg').addClass('ajax-loading');
+        $("#flash-msg").html('Sending');
+		var data = content.serialize().split('=');
+        $.ajax({
+            type: "POST",
+            url: "api/",
+			data : {'ajax' : 'tribe', 'action' : 'add_search', 'tribe_id' : tribe_id, 'search' : data[1]},
+            success: function(msg){
+//                $("#tag_action"+tribe_id)[0].removeAttribute('class','ajax-loading');
+                $('#flash-msg').removeClass('ajax-loading');
+                $('#flash-log').css('display', 'none');
+                $(msg).flashmsg();
+				updateTribeList(num_page, nb_items);
+            }
+        });
+    }, {
+        title: "Add search : " + tribe_name,
+    });
+}

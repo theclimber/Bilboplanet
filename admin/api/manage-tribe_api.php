@@ -308,6 +308,56 @@ if(isset($_POST['action'])) {
 		}
 		break;
 
+##########################################################
+# Remove search on tribe
+##########################################################
+	case 'rm_search':
+		$tribe_id = $_POST['tribe_id'];
+        $error = array();
+
+		$cur = $core->con->openCursor($core->prefix.'tribe');
+		$cur->tribe_search = '';
+		$cur->update("WHERE tribe_id='".$tribe_id."'");
+
+        $output = T_("The search was successfuly removed");
+
+		if (!empty($error)) {
+			$output .= "<ul>";
+			foreach($error as $value) {
+				$output .= "<li>".$value."</li>";
+			}
+			$output .= "</ul>";
+			print '<div class="flash_error">'.$output.'</div>';
+		}
+		else {
+			print '<div class="flash_notice">'.$output.'</div>';
+		}
+		break;
+
+##########################################################
+# Add search to tribe
+##########################################################
+	case 'add_search':
+		$tribe_id = $_POST['tribe_id'];
+		$search = trim($_POST['search']);
+
+        $output .= T_("Search added : ".$search);
+		$cur = $core->con->openCursor($core->prefix.'tribe');
+		$cur->tribe_search = $search;
+		$cur->update("WHERE tribe_id='".$tribe_id."'");
+
+		if (!empty($error)) {
+			$output .= "<ul>";
+			foreach($error as $value) {
+				$output .= "<li>".$value."</li>";
+			}
+			$output .= "</ul>";
+			print '<div class="flash_error">'.$output.'</div>';
+		}
+		else {
+			print '<div class="flash_notice">'.$output.'</div>';
+		}
+		break;
 
 ##########################################################
 # Remove tag on tribe
@@ -472,12 +522,10 @@ function getOutput($sql, $num_page=0, $nb_items=30) {
 				$user_list .= '</a></span>';
 			}
 
-			if (!empty($rs->tribe_search)) {
+			$rm_search_action = '('.T_('empty').')';
+			if ($rs->tribe_search) {
 				$rm_search_action = '(<a href="javascript:rm_search('.$num_page.', '.$nb_items.',\''.$rs->tribe_id.'\')">'.T_('clear').'</a>)';
-			} else {
-				$rm_search_action = T_('(empty)');
-			}
-
+			} 
 
 			$output .= '<div class="tribesbox tribe-'.$tribe_state.'" id="tribe-'.$rs->tribe_id.'">
 				<h3><a href="'.$blog_settings->get('planet_url').'/index.php?list=1&tribe_id='.$rs->tribe_id.'">'.$rs->tribe_name.'</a></h3>
@@ -496,8 +544,8 @@ function getOutput($sql, $num_page=0, $nb_items=30) {
 					<li><img src="meta/icons/action-edit.png" title="'.T_('Edit tribe').'" /></li>
 					<li><a href="javascript:removeTribe(\''.$rs->tribe_id.'\','.$num_page.','.$nb_items.')"><img src="meta/icons/cross.png" title="'.T_('Remove tribe').'" /></a></li>
 					<li><a href="javascript:add_tags('.$num_page.','.$nb_items.',\''.$rs->tribe_id.'\',\''.$rs->tribe_name.'\')"><img src="meta/icons/add_tag.png" title="'.T_('Add tags to tribe').'"/></a></li>
-					<li><img src="meta/icons/add_user.png" title="'.T_('Add users to tribe').'" /></li>
-					<li><img src="meta/icons/add_search.png" title="'.T_('Add search to tribe').'" /></li>
+					<li><a href="javascript:add_users('.$num_page.','.$nb_items.',\''.$rs->tribe_id.'\',\''.$rs->tribe_name.'\')"><img src="meta/icons/add_user.png" title="'.T_('Add users to tribe').'" /></a></li>
+					<li><a href="javascript:add_search('.$num_page.','.$nb_items.',\''.$rs->tribe_id.'\',\''.$rs->tribe_name.'\')"><img src="meta/icons/add_search.png" title="'.T_('Add search to tribe').'" /></a></li>
 				</ul>
 				<div class="feedlink"><a href="'.$blog_settings->get('planet_url').'/index.php?list=1&tribe_id='.$rs->tribe_id.'">
 						<img alt="RSS" src="'.$blog_settings->get('planet_url').'/themes/'.$blog_settings->get('planet_theme').'/images/rss_24.png" /></a></div>

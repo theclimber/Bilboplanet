@@ -138,6 +138,41 @@ form::field('tags',30,255,html::escapeHTML(""), 'input').'</label><br/>
 ?>
 </div>
 
+<div id="search-tribe-form" style="display:none">
+<?php
+echo '<form>'.
+
+'<label class="required" for="content">'.T_('Add a search').' : <br />'.
+form::field('search',30,255,html::escapeHTML(""), 'input').'</label><br/>
+<span class="description"><i>'.T_('Write your search in the text field').'</i></span><br /><br />'.
+
+'<div class="button"><input type="button" class="cancel" name="cancel" onClick="Boxy.get($(\'form.boxform\')).hide()" value="'.T_('Cancel').'"></div>'.
+'<div class="button"><input type="submit" name="send" class="add_site" value="'.T_('Send').'" /></div>'.
+'</form>';
+?>
+</div>
+
+<div id="user-tribe-form" style="display:none">
+<span id="user-tribe-form">
+<?php
+$rs_users = $core->con->select("SELECT user_id, user_fullname, user_email
+	FROM ".$core->prefix."user");
+$user_options = "<option>".T_('Select the users to add')."</option>";
+while($rs_users->fetch()){
+	$user_options .= '<option value="'.$rs_users->user_id.'">'.$rs_users->user_fullname.'</option>';
+}
+echo '<label for="user_id">'.T_('Add new users').' : '.
+	'<select id="user_combo" name="user_id">'.$user_options.'</select><br />';
+echo '<form>'.
+form::field('users_selected',30,255,html::escapeHTML(""), 'input').'</label><br/>
+<span class="description"><i>'.T_('Comma separated user id\'s (ex: john22,jack,flipper)').'</i></span><br /><br />'.
+
+'<div class="button"><input type="button" class="cancel" name="cancel" onClick="Boxy.get($(\'form.boxform\')).hide()" value="'.T_('Cancel').'"></div>'.
+'<div class="button"><input type="submit" name="send" class="add_site" value="'.T_('Send').'" /></div>'.
+'</form>';
+?></span>
+</div>
+
 
 <script type="text/javascript" src="meta/js/manage-tribe.js"></script>
 <script type="text/javascript" src="meta/js/jquery.boxy.js"></script>

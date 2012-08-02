@@ -109,6 +109,18 @@ if (!isset($locale)) {
 	}
 }
 
+# Check for SQL injection attacks
+if (isset($_GET)) {
+	foreach ($_GET as $k => $v) {
+		if (preg_match('[\']', $v)) {
+			print "Bad request ! Please contact site administrator.";
+			exit;
+		} else {
+			$_GET[$k] = $core->con->escape($v);
+		}
+	}
+}
+
 # Check if setting table exist
 $schema = dbSchema::init($core->con);
 if (in_array($core->prefix.'setting', $schema->getTables())) {

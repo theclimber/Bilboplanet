@@ -6,7 +6,7 @@
 * Website : www.bilboplanet.com
 * Tracker : http://chili.kiwais.com/projects/bilboplanet
 * Blog : www.bilboplanet.com
-* 
+*
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License as
@@ -35,7 +35,7 @@ if(isset($_POST['action'])) {
 			FROM ".$core->prefix."post
 			WHERE post_id = ".$post_id;
 		$rs = $core->con->select($sql);
-		
+
 		if ($rs->count() > 0){
 			if ($rs->f('post_status') == 1) {
 				$error[] = T_('The post is already accepted');
@@ -75,10 +75,10 @@ if(isset($_POST['action'])) {
 			WHERE post_id = ".$post_id."
 			AND ".$core->prefix."post.user_id = ".$core->prefix."user.user_id";
 		$rs = $core->con->select($sql);
-		
+
 		$to = $rs->user_email.', '.$blog_settings->get('author_mail');
 		$reply_to = $blog_settings->get('author_mail');
-		
+
 		if ($rs->count() > 0){
 			if ($rs->f('post_status') == 0) {
 				$error[] = T_('The post is already refused');
@@ -94,7 +94,7 @@ if(isset($_POST['action'])) {
 				}
 			}
 		}
-		
+
 		sleep (2);
 
 		if (!empty($error)) {
@@ -123,12 +123,16 @@ if(isset($_POST['action'])) {
 			$text_opening = T_("Dear user,");
 		}
 
-		$text_content = T_("We took the decision to moderate the following post :");
-		$text_content .= "\n".$post_permalink."\n\n";
-		$text_content .= T_("The reasons of this moderation are :");
-		$text_content .= "\n- \n- \n-";
+		$text_content = sprintf(T_("Our team has carefully read your latest post :".
+				"\n%s\n\n".
+				"However, this article raised questions among us and we hesitate to keep it ".
+				"in the feed of our website. Indeed :"), $post_permalink);
+		$text_content .= "\n- \n- \n- \n";
+		$text_content .= T_("We decided to remove your post from our main feed. ".
+				"We are of course disposed to answer to any question and to discuss with you about this.");
 
-		$text_closing = sprintf(T_("Thank you for your contribution on the %s"), html_entity_decode(stripslashes($blog_settings->get('planet_title')), ENT_QUOTES, 'UTF-8'));
+		$text_closing = sprintf(T_("Thank you for your contribution on the %s"),
+				html_entity_decode(stripslashes($blog_settings->get('planet_title')), ENT_QUOTES, 'UTF-8'));
 		$text_closing .= "\n".T_("Sincerely yours");
 
 		print $text_opening."\n\n".$text_content."\n\n".$text_closing;

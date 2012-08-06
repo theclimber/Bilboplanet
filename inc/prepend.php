@@ -126,6 +126,7 @@ $schema = dbSchema::init($core->con);
 if (in_array($core->prefix.'setting', $schema->getTables())) {
 
 	$blog_settings = new bpSettings($core, 'root');
+	$user_settings = null;
 
 	# Set timezone
 	$timezone_default = $blog_settings->get('planet_timezone');
@@ -169,6 +170,8 @@ if (in_array($core->prefix.'setting', $schema->getTables())) {
 
 				http::redirect($blog_settings->get('planet_url').'/auth.php');
 				//http::redirect('auth.php');
+			} else {
+				$user_settings = new bpSettings($core, $core->auth->userID());
 			}
 		} catch (Exception $e) {
 			__error(T_('Database error')

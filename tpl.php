@@ -168,6 +168,17 @@ if (is_array($widget_files)) {
 		}
 	}
 }
+#####################
+# RENDER SOCIAL
+#####################
+if ($user_settings != null) {
+	if ($user_settings->get('social.google')) {
+		$core->tpl->render('social.google.script');
+	}
+	if ($user_settings->get('social.twitter')) {
+		$core->tpl->render('social.twitter.script');
+	}
+}
 
 #####################
 # RENDER FOOTER

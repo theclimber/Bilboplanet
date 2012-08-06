@@ -55,6 +55,13 @@ if(isset($_POST) && isset($_POST['ajax'])) {
 		}
 		require_once(dirname(__FILE__).'/feed_api.php');
 		break;
+	case 'social':
+		if (!$core->hasRole('user')){
+			print 'Permission denied';
+			exit;
+		}
+		require_once(dirname(__FILE__).'/social_api.php');
+		break;
 	case 'tagging':
 		if (!$blog_settings->get('allow_tagging_everything') && !$core->hasRole('user')){
 			print 'Permission denied';

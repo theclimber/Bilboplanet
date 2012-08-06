@@ -1,9 +1,11 @@
 <?php
 
 function render_page ($page) {
-	global $core, $blog_settings;
+	global $core, $blog_settings, $user_settings;
 	$user_id = $core->auth->userID();
-	$user_settings = new bpSettings($core, $user_id);
+	if($user_settings == null) {
+		$user_settings = new bpSettings($core, $user_id);
+	}
 
 	$tpl = new Hyla_Tpl(dirname(__FILE__).'/../tpl/');
 	$tpl->importFile($page, $page.'.tpl');
@@ -154,9 +156,9 @@ function render_page ($page) {
 		}
 		$checked = array(
 			"comments" => $user_settings->get('comments'),
-			"twitter" => $user_settings->get('twitter_share'),
-			"facebook" => $user_settings->get('facebook_share'),
-			"statusnet" => $user_settings->get('statusnet_share')
+			"twitter" => $user_settings->get('social.twitter'),
+			"statusnet" => $user_settings->get('social.statusnet'),
+			"google" => $user_settings->get('social.google')
 			);
 		$tpl->setVar('checked', $checked);
 		$tpl->setVar('statusnet_account', $user_settings->get('statusnet_account'));

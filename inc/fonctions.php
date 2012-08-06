@@ -685,7 +685,7 @@ function showTribe($sql_posts) {
 }
 
 function showPosts($rs, $tpl, $search_value="", $strip_tags=false) {
-	global $blog_settings, $core;
+	global $blog_settings, $core, $user_settings;
 	$avatar = $blog_settings->get('planet_avatar');
 
 	while($rs->fetch()){
@@ -757,6 +757,17 @@ function showPosts($rs, $tpl, $search_value="", $strip_tags=false) {
 				if($core->auth->userID() == $rs->user_id) {
 					$tpl->render('post.action.tags');
 				}
+			}
+		}
+		if ($user_settings != null) {
+			if ($user_settings->get("social.twitter")) {
+				$tpl->render('social.twitter');
+			}
+			if ($user_settings->get("social.google")) {
+				$tpl->render('social.google');
+			}
+			if ($user_settings->get("social.statusnet")) {
+				$tpl->render('social.statusnet');
 			}
 		}
 		if ($blog_settings->get('show_similar_posts') && !empty($post_tags)) {

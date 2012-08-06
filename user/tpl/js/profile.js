@@ -46,7 +46,7 @@ function add_feed() {
 		var sdata = content.serialize();
 		sdata += '&ajax=feed'
 		sdata += '&action=add_feed'
-		console.debug(sdata);
+//		console.debug(sdata);
         $.ajax({
             type: "POST",
             url: "api/",

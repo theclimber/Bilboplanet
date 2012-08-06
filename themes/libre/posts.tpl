@@ -94,10 +94,7 @@
 		<div id="text-{$post.id}" class="post-text" post_id="{$post.id}">{$post.content}</div>
 		<!-- [post footer] -->
 		<div class="postbox">
-<iframe height="61" width="61" scrolling="no" frameborder="0" src="{$planet.url}/api/identishare.php?post_id={$post.id}&title={$post.title}&noscript" border="0" marginheight="0" marginwidth="0" allowtransparency="true" class="identishare">
-<div id="identishare" style="vertical-align: bottom;"></div>
-<script type="text/javascript" src="{$planet.url}/api/identishare.php?post_id={$post.id}" defer="defer"></script>
-</iframe>
+		{!include:'social.tpl'}
 
 			<div id="expand-button-{$post.id}" class="collapse-button" onclick="javascript:expand_block({$post.id})">&nbsp;</div>
 			Cet article a été vu {$post.nbview} fois. <a href="#" onclick="javascript:add_user('{$post.author_id}')">{$post.author_fullname}</a> a déjà publié <b>{$post.user_posts}</b> articles sur ce planet.<br />

@@ -1,6 +1,6 @@
 <div class="profileContent">
 	<h1>{_Share and interact}</h1>
-	<form name="social_form">
+	<form name="social_form" id="social_form">
 		<p>
 			<label for="newsletter">{_Subscribe to a newsletter}</label>
 			<select id="newsletter">
@@ -14,15 +14,15 @@
 			<input type="checkbox" id="comments" {$checked.comments}>
 		</p>
 		<p>
-			<label for="twitter">{_Share on twitter}</label>
+			<label for="twitter">{_Share on Twitter}</label>
 			<input type="checkbox" id="twitter" {$checked.twitter}>
 		</p>
 		<p>
-			<label for="facebook">{_Share on facebook}</label>
-			<input type="checkbox" id="facebook" {$checked.facebook}>
+			<label for="google">{_Share on Google+}</label>
+			<input type="checkbox" id="google" {$checked.google}>
 		</p>
 		<p>
-			<label for="statusnet">{_Share on statusnet}</label>
+			<label for="statusnet">{_Share on StatusNet}</label>
 			<input type="checkbox" id="statusnet" {$checked.statusnet}>
 		</p>
 		<p>

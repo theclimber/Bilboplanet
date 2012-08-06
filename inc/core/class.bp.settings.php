@@ -135,7 +135,7 @@ class bpSettings
 	*/
 	public function put($id,$value,$type=null,$label=null,$value_change=true,$global=false)
 	{
-		if (!preg_match('/^[a-zA-Z][a-zA-Z0-9_]+$/',$id)) {
+		if (!preg_match('/^[a-zA-Z][a-zA-Z0-9_.]+$/',$id)) {
 			throw new Exception(sprintf(T_('%s is not a valid setting id'),$id));
 		}
 		

@@ -149,19 +149,24 @@ function render_page ($page) {
 				"value" => "monthly",
 				"text" => T_('Every month'))
 			);
-		$newsletter_options[$user_settings->get('newsletter')]['selected'] = "selected";
+		$option = $user_settings->get('social.newsletter');
+		if (!isset($option))
+			$option = 'nomail';
+		$newsletter_options[$option]['selected'] = "selected";
+		
 		foreach ($newsletter_options as $news) {
 			$tpl->setVar('news', $news);
 			$tpl->render('newsletter.option');
 		}
 		$checked = array(
-			"comments" => $user_settings->get('comments'),
-			"twitter" => $user_settings->get('social.twitter'),
-			"statusnet" => $user_settings->get('social.statusnet'),
-			"google" => $user_settings->get('social.google')
+			"twitter" => $user_settings->get('social.twitter') ? 'checked' : '',
+			"statusnet" => $user_settings->get('social.statusnet') ? 'checked' : '',
+			"shaarli" => $user_settings->get('social.shaarli') ? 'checked' : '',
+			"google" => $user_settings->get('social.google') ? 'checked' : ''
 			);
 		$tpl->setVar('checked', $checked);
-		$tpl->setVar('statusnet_account', $user_settings->get('statusnet_account'));
+		$tpl->setVar('statusnet_account', $user_settings->get('social.statusnet.account'));
+		$tpl->setVar('shaarli_instance', $user_settings->get('social.shaarli.instance'));
 		break;
 	default:
 		break;

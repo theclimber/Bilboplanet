@@ -15,3 +15,7 @@
 <!-- BEGIN social.twitter -->
 <a href="https://twitter.com/share" class="twitter-share-button" data-url="{$planet.url}/?post_id={$post.id}" data-lang="{$planet.lang}" data-hashtags="{$planet.title}">{_Tweeter}</a>
 <!-- END social.twitter -->
+
+<!-- BEGIN social.shaarli -->
+<a class="social-shaarli-button" href="javascript:shaare({$post.id})">{_Shaare link}</a>
+<!-- END social.shaarli -->

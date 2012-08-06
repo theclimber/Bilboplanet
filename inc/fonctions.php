@@ -763,6 +763,9 @@ function showPosts($rs, $tpl, $search_value="", $strip_tags=false) {
 			if ($user_settings->get("social.twitter")) {
 				$tpl->render('social.twitter');
 			}
+			if ($user_settings->get("social.shaarli")) {
+				$tpl->render('social.shaarli');
+			}
 			if ($user_settings->get("social.google")) {
 				$tpl->render('social.google');
 			}

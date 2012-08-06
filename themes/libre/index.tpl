@@ -225,5 +225,22 @@
 <!-- BEGIN social.twitter.script -->
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 <!-- END social.twitter.script -->
+
+<!-- BEGIN social.shaarli.script -->
+<script type="text/javascript">
+function shaare(id) {
+	var url = '{$planet.url}/?post_id='+id;
+	var title = url;
+	window.open(
+		'{$shaarli_instance}/index.php?post=' + 
+		encodeURIComponent(url)+'&title=' + 
+		encodeURIComponent(title)+'&source=bookmarklet',
+		'_blank',
+		'menubar=no,height=390,width=600,toolbar=no,scrollbars=no,status=no'
+		);
+}
+</script>
+<!-- END social.shaarli.script -->
+
 </body>
 </html>

@@ -32,6 +32,50 @@ if(isset($_POST['action'])) {
 	case 'update':
 		$user_id = $core->auth->userID();
 
+		$newsletter = $_POST['newsletter'];
+		$twitter = $_POST['twitter']=='true' ? 1 : 0;
+		$google = $_POST['google']=='true' ? 1 : 0;
+		$shaarli = $_POST['shaarli']=='true' ? 1 : 0;
+		$shaarli_instance = check_field(T_('Shaarli instance'),$_POST['shaarli-instance'], 'url');
+		$statusnet = $_POST['statusnet']=='true' ? 1 : 0;
+		$statusnet_account = check_field(T_('Statusnet Account'),$_POST['statusnet-account'], 'url');
+
+		if (!in_array($newsletter,array('nomail','dayly','weekly','monthly'))) {
+			$error[] = T_('Error detected');
+		}
+		if ($statusnet == 1) {
+			if (!$statusnet_account['success']) {
+				$error[] = T_("Please check statusnet URL : Invalid URL");
+			}
+		}
+		if ($shaarli == 1) {
+			if (!$shaarli_instance['success']) {
+				$error[] = T_("Please check shaarli URL : Invalid URL");
+			}
+		}
+		
+		if (empty($error)) {
+			$user_settings->put(
+				'social.newsletter', $newsletter, 'string');
+			$user_settings->put(
+				'social.twitter', $twitter, 'boolean');
+			$user_settings->put(
+				'social.google', $google, 'boolean');
+			$user_settings->put(
+				'social.shaarli', $shaarli, 'boolean');
+			if ($shaarli == 1) {
+				$user_settings->put(
+					'social.shaarli.instance', $shaarli_instance['value'], 'string');
+			}
+			$user_settings->put(
+				'social.statusnet', $statusnet, 'boolean');
+			if ($statusnet == 1) {
+				$user_settings->put(
+					'social.statusnet.account', $statusnet_account['value'], 'string');
+			}
+
+			$output = T_('Social settings successfully configured.');
+		}
 
 		if (!empty($error)) {
 			$output .= "<ul>";

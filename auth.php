@@ -203,7 +203,7 @@ elseif ($user_id !== null && ($user_pwd !== null || $user_key !== null))
 		$_SESSION['sess_browser_uid'] = http::browserUID('BP_MASTER_KEY');
 
 		if (!empty($_POST['user_remember'])) {
-			setcookie('bp_admin',$cookie_admin,strtotime('+15 days'),'','');
+			setcookie('bp_admin',$cookie_admin,strtotime('+30 days'),'','');
 		}
 
 		$rs = $core->con->select('SELECT user_token, user_id, user_fullname, user_pwd

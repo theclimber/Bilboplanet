@@ -124,6 +124,25 @@ form::field('ef_url',30,255,html::escapeHTML(""), 'input').'</label>
 ?>
 </div>
 
+<div id="icon-tribe-form" style="display:none">
+<?php
+echo '<form id="icon-tribe"
+	enctype="multipart/form-data">'.
+
+'<label class="required" for="icon">'.T_('Add tribe icon').' : <br />'.
+'<input name="icon" size="30" type="file"> </label><br />
+<input name="ajax" value="tribe" type="hidden" />
+<input name="action" value="add_icon" type="hidden" />
+<input type="hidden" name="MAX_FILE_SIZE" value="2097152">
+<span class="description"><i>'.T_('The image have to be 64px*64px or will be cropped').'</i></span><br /><br />'.
+
+'<div class="button"><input type="button" class="cancel" name="cancel" onClick="Boxy.get($(\'form.boxform\')).hide()" value="'.T_('Cancel').'"></div>'.
+'<div class="button"><input type="submit" name="send" id="send-icon" class="add_icon" value="'.T_('Send').'" /></div>'.
+'</form>';
+?>
+</div>
+
+
 <div id="tag-tribe-form" style="display:none">
 <?php
 echo '<form>'.
@@ -176,6 +195,7 @@ form::field('users_selected',30,255,html::escapeHTML(""), 'input').'</label><br/
 
 <script type="text/javascript" src="meta/js/manage-tribe.js"></script>
 <script type="text/javascript" src="meta/js/jquery.boxy.js"></script>
+<script type="text/javascript" src="meta/js/jquery.form.js"></script>
 <?php
 include(dirname(__FILE__).'/footer.php');
 finCache();

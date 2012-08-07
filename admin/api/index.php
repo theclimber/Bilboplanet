@@ -124,6 +124,6 @@ if(isset($_POST) && isset($_POST['ajax'])) {
 	}
 }
 else {
-	print 'forbidden';
+	print '- forbidden -';
 }
 ?>

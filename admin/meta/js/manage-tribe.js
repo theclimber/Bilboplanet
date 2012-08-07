@@ -288,3 +288,48 @@ function add_search(num_page, nb_items, tribe_id, tribe_name) {
         title: "Add search : " + tribe_name,
     });
 }
+
+
+function add_icon(num_page, nb_items, tribe_id, tribe_name) {
+    var content = $('#icon-tribe-form form').clone();
+	var options =
+	{
+		target: '#flash-msg',
+		url: "api/",
+		type: 'post',
+		success: function(msg){
+/*			$('#flash-msg').removeClass('ajax-loading');
+			$('#flash-log').css('display', 'none');
+			$(msg).flashmsg();
+			updateTribeList(num_page, nb_items);*/
+			console.debug(msg);
+		},
+	};
+/*	content.find('input#send-icon').onclick(function() {
+		console.debug(options);
+		$(this).ajaxSubmit(options);
+		return false;
+	});*/
+
+    Boxy.askform(content, function(val) {
+        $('#flash-log').css('display','');
+        $('#flash-msg').addClass('ajax-loading');
+        $("#flash-msg").html('Sending');
+
+		$('form#icon-tribe').ajaxSubmit(options);
+		/*
+        $.ajax({
+            type: "POST",
+			data : {'ajax' : 'tribe', 'action' : 'add_icon', 'tribe_id' : tribe_id, 'icon' : data[1]},
+            success: function(msg){
+//                $("#tag_action"+tribe_id)[0].removeAttribute('class','ajax-loading');
+                $('#flash-msg').removeClass('ajax-loading');
+                $('#flash-log').css('display', 'none');
+                $(msg).flashmsg();
+				updateTribeList(num_page, nb_items);
+            }
+        });*/
+    }, {
+        title: "Add tribe icon : " + tribe_name,
+    });
+}

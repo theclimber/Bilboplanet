@@ -443,6 +443,20 @@ if(isset($_POST['action'])) {
 		}
 		break;
 
+##########################################################
+# ADD TRIBE ICON
+##########################################################
+	case 'add_icon':
+		$icon = $_POST['icon'];
+		$userfile_name = $_FILES["image"]["name"];  
+		$userfile_tmp = $_FILES["image"]["tmp_name"];  
+		$userfile_size = $_FILES["image"]["size"];  
+		$filename = basename($_FILES["image"]["name"]);  
+		$file_ext = substr($filename, strrpos($filename, ".") + 1);  
+
+		print "this is the way";
+		break;
+
 
 ##########################################################
 # GET TRIBE LIST
@@ -546,6 +560,7 @@ function getOutput($sql, $num_page=0, $nb_items=30) {
 					<li><a href="javascript:add_tags('.$num_page.','.$nb_items.',\''.$rs->tribe_id.'\',\''.$rs->tribe_name.'\')"><img src="meta/icons/add_tag.png" title="'.T_('Add tags to tribe').'"/></a></li>
 					<li><a href="javascript:add_users('.$num_page.','.$nb_items.',\''.$rs->tribe_id.'\',\''.$rs->tribe_name.'\')"><img src="meta/icons/add_user.png" title="'.T_('Add users to tribe').'" /></a></li>
 					<li><a href="javascript:add_search('.$num_page.','.$nb_items.',\''.$rs->tribe_id.'\',\''.$rs->tribe_name.'\')"><img src="meta/icons/add_search.png" title="'.T_('Add search to tribe').'" /></a></li>
+					<li><a href="javascript:add_icon('.$num_page.','.$nb_items.',\''.$rs->tribe_id.'\',\''.$rs->tribe_name.'\')"><img src="meta/icons/add_icon.png" title="'.T_('Add icon to tribe').'" /></a></li>
 				</ul>
 				<div class="feedlink"><a href="'.$blog_settings->get('planet_url').'/index.php?list=1&tribe_id='.$rs->tribe_id.'">
 						<img alt="RSS" src="'.$blog_settings->get('planet_url').'/themes/'.$blog_settings->get('planet_theme').'/images/rss_24.png" /></a></div>

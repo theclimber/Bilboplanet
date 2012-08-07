@@ -448,12 +448,25 @@ if(isset($_POST['action'])) {
 ##########################################################
 	case 'add_icon':
 		$icon = $_POST['icon'];
-		$userfile_name = $_FILES["image"]["name"];  
-		$userfile_tmp = $_FILES["image"]["tmp_name"];  
-		$userfile_size = $_FILES["image"]["size"];  
-		$filename = basename($_FILES["image"]["name"]);  
-		$file_ext = substr($filename, strrpos($filename, ".") + 1);  
+		$userfile_name = $_FILES["image"]["name"];
+		$userfile_tmp = $_FILES["image"]["tmp_name"];
+		$userfile_size = $_FILES["image"]["size"];
+		$filename = basename($_FILES["image"]["name"]);
+		$file_ext = substr($filename, strrpos($filename, ".") + 1);
 
+		// check file size
+		// check image size
+		// crop image
+		// move to right directory
+
+
+/*		if (move_uploaded_file($_FILES['uploadfile']['tmp_name'], $file)) {
+		  echo "success";
+		} else {
+			echo "error";
+		}*/
+
+		print_r($_FILES);
 		print "this is the way";
 		break;
 

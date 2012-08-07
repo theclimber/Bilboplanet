@@ -126,8 +126,7 @@ form::field('ef_url',30,255,html::escapeHTML(""), 'input').'</label>
 
 <div id="icon-tribe-form" style="display:none">
 <?php
-echo '<form id="icon-tribe"
-	enctype="multipart/form-data">'.
+echo '<form id="icon-tribe" enctype="multipart/form-data">'.
 
 '<label class="required" for="icon">'.T_('Add tribe icon').' : <br />'.
 '<input name="icon" size="30" type="file"> </label><br />

@@ -332,8 +332,8 @@ $(document).ready(function($) {
 		$('#flash_box_close, #flash_overlay, #flash_box, input[type="button"], input[type="submit"]').click(function(){
 			$('#flash_box').animate({'top':'-200px'},500,function(){
 				$('#flash_overlay').fadeOut('fast');
-				flash_class.empty;
-				flash_content.empty;
+				//flash_class.empty;
+				//flash_content.empty;
 				flash_box.remove();
 				flash_overlay.remove();
 			});

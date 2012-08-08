@@ -447,27 +447,89 @@ if(isset($_POST['action'])) {
 # ADD TRIBE ICON
 ##########################################################
 	case 'add_icon':
+		$tribe_id = $_POST['tribe_id'];
+
 		$icon = $_POST['icon'];
-		$userfile_name = $_FILES["image"]["name"];
-		$userfile_tmp = $_FILES["image"]["tmp_name"];
-		$userfile_size = $_FILES["image"]["size"];
-		$filename = basename($_FILES["image"]["name"]);
+		$userfile_name = $_FILES["icon"]["name"];
+		$userfile_tmp = $_FILES["icon"]["tmp_name"];
+		$userfile_size = $_FILES["icon"]["size"];
+		$userfile_type = $_FILES["icon"]["type"];
+		$filename = basename($_FILES["icon"]["name"]);
 		$file_ext = substr($filename, strrpos($filename, ".") + 1);
 
+		$tribe_icon_folder = 'data/images';
+		$folder = dirname(__FILE__).'/../../'.$tribe_icon_folder;
+
+		// check upload
+		if (intval($_FILES['icon']['error']) != 0) {
+			$error[] = T_('There was an error during file upload');
+		}
+
+		// check destination folder
+		if (!is_dir($folder)) {
+			$error[] = T_('The folder data/images does not exists !');
+		}
+		if (!is_writable($folder)) {
+			$error[] = T_('The folder data/images must writable !');
+		}
+
 		// check file size
+		if (intval($userfile_size) > 150000) {
+			$error[] = T_('The image file should not exceed 150Kb');
+		}
+
+		// check extension and format
+		$extensions = array('jpg' => 'image/jpeg', 'jpeg'=>'image/jpeg', 'png'=>'image/png');
+        $IE_extensions = array('jpg' => 'image/pjpeg', 'jpeg'=>'image/pjpeg');
+		$userfile_ext = explode('.', $ImageNews);
+		$userfile_ext = strtolower($ExtensionPresumee[count($ExtensionPresumee)-1]);
+		if (!in_array($userfile_ext, array($extensions)) {
+			$error[] = T_('The format of the file is not supported : ').$userfile_type;
+		}
+		$userfile_imgsize = getimagesize($userfile_tmp);
+		if ($userfile_imgsize['mime'] != $extensions[$userfile_ext]) {
+			$error[] = T_('This file has the wrong file extension');
+		}
+
+		// check the image size
+		$allowed_ratio = 0.9;
+		if ($userfile_imgsize[0]/$userfile_imgsize[1] < $allowed_ratio
+			|| $userfile_imgsize[1]/$userfile_imgsize[0] < $allowed_ratio) {
+			$error[] = T_('The tribe icon has to be almost square (allowed rate of 0.9)');
+		}
+		
 		// check image size
 		// crop image
 		// move to right directory
-
-
-/*		if (move_uploaded_file($_FILES['uploadfile']['tmp_name'], $file)) {
-		  echo "success";
-		} else {
-			echo "error";
-		}*/
-
 		print_r($_FILES);
-		print "this is the way";
+		break;
+
+
+		if (empty($error)) {
+			$file_fullpath = $folder.'/'.strtolower($filename);
+			$file_relativepath = $tribe_icon_folder.'/'.strtolower($filename);
+			if (move_uploaded_file($_FILES['uploadfile']['tmp_name'], $file_fullpath)) {
+				$cur = $core->con->openCursor($core->prefix.'tribe');
+				$cur->tribe_icon = $file_relativepath;
+				$cur->update("WHERE tribe_id='".$tribe_id."'");
+				$output = "success";
+			} else {
+				$error[] = sprintf(T_('The file could not be uploaded to %s'), $file);
+			}
+			$output .= 'this is the way';
+		}
+
+		if (!empty($error)) {
+			$output .= "<ul>";
+			foreach($error as $value) {
+				$output .= "<li>".$value."</li>";
+			}
+			$output .= "</ul>";
+			print '<div class="flash_error">'.$output.'</div>';
+		}
+		else {
+			print '<div class="flash_notice">'.$output.'</div>';
+		}
 		break;
 
 

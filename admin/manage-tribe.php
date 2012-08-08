@@ -132,6 +132,7 @@ echo '<form id="icon-tribe" enctype="multipart/form-data">'.
 '<input name="icon" size="30" type="file"> </label><br />
 <input name="ajax" value="tribe" type="hidden" />
 <input name="action" value="add_icon" type="hidden" />
+<input id="tribe-id" name="tribe_id" value="" type="hidden" />
 <input type="hidden" name="MAX_FILE_SIZE" value="2097152">
 <span class="description"><i>'.T_('The image have to be 64px*64px or will be cropped').'</i></span><br /><br />'.
 

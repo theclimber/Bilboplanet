@@ -292,6 +292,8 @@ function add_search(num_page, nb_items, tribe_id, tribe_name) {
 
 function add_icon(num_page, nb_items, tribe_id, tribe_name) {
     var content = $('#icon-tribe-form form').clone();
+	content.find('input#tribe-id').attr('value',tribe_id);
+
 	var options =
 	{
 		target: '#flash-msg',

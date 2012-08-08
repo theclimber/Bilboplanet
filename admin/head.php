@@ -43,7 +43,7 @@ if ($blog_settings->get('planet_rtl')) {
 	<script type="text/javascript" src="meta/js/ed.js"></script>
 	<script type="text/javascript" src="meta/js/jquery-1.4.2.min.js"></script>
 	<script type="text/javascript" src="meta/js/jquery.boxy.js"></script>
-	<script type="text/javascript" src="meta/js/jquery.bilboplanet.min.js"></script>
+	<script type="text/javascript" src="meta/js/jquery.bilboplanet.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$(".tips").tips({type:'rel', delay: 5});

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>
+        </title>
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.1.1/jquery.mobile-1.1.1.min.css" />
+        <link rel="stylesheet" href="my.css" />
+        <style>
+            /* App custom styles */
+        </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
+        </script>
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.1.1/jquery.mobile-1.1.1.min.js">
+        </script>
+        <script src="my.js">
+        </script>
+    </head>
+    <body>
+        <!-- Home -->
+        <div data-role="page" id="page1">
+            <div data-theme="c" data-role="header">
+                <h2>
+                    Planet-Libre
+                </h2>
+                <div data-role="fieldcontain">
+                    <label for="selectmenu2">
+                    </label>
+                    <select name="selectmenu2" id="selectmenu2" data-mini="true">
+                        <option value="option1">
+                            Tribe 1
+                        </option>
+                        <option value="value">
+                            Tribe 2
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div data-role="content" style="padding: 15px">
+                <div data-role="collapsible-set" data-theme="a" data-content-theme="">
+                    <div data-role="collapsible" data-collapsed="false">
+                        <h3>
+                            Section1
+                        </h3>
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup">
+                                <label for="textarea1">
+                                    My Article
+                                </label>
+                                <textarea name="article" id="textarea1" placeholder="">
+                                    blablablabla
+                                </textarea>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <div data-role="collapsible" data-collapsed="false">
+                        <h3>
+                            Section2
+                        </h3>
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup">
+                                <label for="textarea2">
+                                    Article2
+                                </label>
+                                <textarea name="post-name" id="textarea2" placeholder="">
+                                    this is port 2
+                                </textarea>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div data-theme="a" data-role="footer">
+                <h2>
+                    Powered by Greg
+                </h2>
+            </div>
+        </div>
+        <script>
+            //App custom javascript
+        </script>
+    </body>
+</html>

@@ -8,4 +8,7 @@ logs/*
 sitemap.xml
 themes/planetlibre*
 planet-libre_logo.png
+data/images/*.jpg
+data/images/*.png
+data/images/*.git
 *~

@@ -134,7 +134,7 @@ echo '<form id="icon-tribe" enctype="multipart/form-data">'.
 <input name="action" value="add_icon" type="hidden" />
 <input id="tribe-id" name="tribe_id" value="" type="hidden" />
 <input type="hidden" name="MAX_FILE_SIZE" value="2097152">
-<span class="description"><i>'.T_('The image have to be 64px*64px or will be cropped').'</i></span><br /><br />'.
+<span class="description"><i>'.T_('The image have to be 100px*100px or will be resized').'</i></span><br /><br />'.
 
 '<div class="button"><input type="button" class="cancel" name="cancel" onClick="Boxy.get($(\'form.boxform\')).hide()" value="'.T_('Cancel').'"></div>'.
 '<div class="button"><input type="submit" name="send" id="send-icon" class="add_icon" value="'.T_('Send').'" /></div>'.

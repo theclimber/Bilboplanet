@@ -455,7 +455,6 @@ if(isset($_POST['action'])) {
 		$userfile_size = $_FILES["icon"]["size"];
 		$userfile_type = $_FILES["icon"]["type"];
 		$filename = basename($_FILES["icon"]["name"]);
-		$file_ext = substr($filename, strrpos($filename, ".") + 1);
 
 		$tribe_icon_folder = 'data/images';
 		$folder = dirname(__FILE__).'/../../'.$tribe_icon_folder;
@@ -480,11 +479,10 @@ if(isset($_POST['action'])) {
 
 		// check extension and format
 		$extensions = array('jpg' => 'image/jpeg', 'jpeg'=>'image/jpeg', 'png'=>'image/png');
-        $IE_extensions = array('jpg' => 'image/pjpeg', 'jpeg'=>'image/pjpeg');
-		$userfile_ext = explode('.', $ImageNews);
-		$userfile_ext = strtolower($ExtensionPresumee[count($ExtensionPresumee)-1]);
-		if (!in_array($userfile_ext, array($extensions)) {
-			$error[] = T_('The format of the file is not supported : ').$userfile_type;
+		$userfile_ext = explode('.', $userfile_name);
+		$userfile_ext = strtolower($userfile_ext[count($userfile_ext)-1]);
+		if (!array_key_exists($userfile_ext, $extensions)) {
+			$error[] = T_('The format of the file is not supported : ').$userfile_ext.' ; '.$userfile_type;
 		}
 		$userfile_imgsize = getimagesize($userfile_tmp);
 		if ($userfile_imgsize['mime'] != $extensions[$userfile_ext]) {
@@ -497,26 +495,82 @@ if(isset($_POST['action'])) {
 			|| $userfile_imgsize[1]/$userfile_imgsize[0] < $allowed_ratio) {
 			$error[] = T_('The tribe icon has to be almost square (allowed rate of 0.9)');
 		}
-		
-		// check image size
-		// crop image
-		// move to right directory
-		print_r($_FILES);
-		break;
-
 
 		if (empty($error)) {
+			// resize image
+			$image = imagecreatefromjpeg($userfile_tmp);
+			$height = 100; // defined height
+			$width = ( ($userfile_imgsize[0] * (($height)/$userfile_imgsize[1]))); // relative width
+			$final_image = imagecreatetruecolor($width , $height)
+				or $error[] = T_('Error when creating final image');
+			imagecopyresampled($final_image ,$image , 0,0, 0,0, $width, $height, $userfile_imgsize[0],$userfile_imgsize[1])
+				or $error[] = T_('Error while resizing final image');
+			imagedestroy($image)
+				or $error[] = T_('Error while deleting temporary image');
+			
+			$filename = $tribe_id.'-'.time().'.'.$userfile_ext;
 			$file_fullpath = $folder.'/'.strtolower($filename);
-			$file_relativepath = $tribe_icon_folder.'/'.strtolower($filename);
-			if (move_uploaded_file($_FILES['uploadfile']['tmp_name'], $file_fullpath)) {
-				$cur = $core->con->openCursor($core->prefix.'tribe');
-				$cur->tribe_icon = $file_relativepath;
-				$cur->update("WHERE tribe_id='".$tribe_id."'");
-				$output = "success";
+			if (is_file($file_fullpath)) {
+				$error[] = T_('The file you want to copy is alreay existing. Please try again.');
 			} else {
-				$error[] = sprintf(T_('The file could not be uploaded to %s'), $file);
+				$file_relativepath = $tribe_icon_folder.'/'.strtolower($filename);
+
+				// save image to folder
+				if ($userfile_ext == 'jpg') {
+					$save = imagejpeg($final_image , $file_fullpath, 100);
+				}
+				if ($userfile_ext == 'png') {
+					$save = imagepng($final_image , $file_fullpath, 0);
+				}
+				if ($save) {
+					$cur = $core->con->openCursor($core->prefix.'tribe');
+					$cur->tribe_icon = $file_relativepath;
+					$cur->update("WHERE tribe_id='".$tribe_id."'");
+					$output = T_("The image was successfully uplaoded to the tribe");
+				} else {
+					$error[] = sprintf(T_('The file could not be saved to %s'), $file);
+				}
 			}
-			$output .= 'this is the way';
+		}
+
+		if (!empty($error)) {
+			$output .= "<ul>";
+			foreach($error as $value) {
+				$output .= "<li>".$value."</li>";
+			}
+			$output .= "</ul>";
+			print '<div class="flash_error">'.$output.'</div>';
+		}
+		else {
+			print '<div class="flash_notice">'.$output.'</div>';
+		}
+		break;
+
+##########################################################
+# REMOVE TRIBE ICON
+##########################################################
+	case 'rm_icon':
+		$tribe_id = $_POST['tribe_id'];
+
+		$rs_tribe = $core->con->select("SELECT tribe_icon FROM ".$core->prefix."tribe
+				WHERE tribe_id = '".$tribe_id."'");
+		if ($rs_tribe->count() != 1) {
+			$error[] = T_('This tribe have no icons');
+		}
+		$iconfile = dirname(__FILE__).'/../../'.$rs_tribe->f('tribe_icon');
+		if (!is_file($iconfile)) {
+			$error[] = sprintf(T_('The icon file %s does not exists'),$iconfile);
+		}
+		if (empty($error)) {
+			$del = unlink($iconfile);
+			if ($del) {
+					$cur = $core->con->openCursor($core->prefix.'tribe');
+					$cur->tribe_icon = '';
+					$cur->update("WHERE tribe_id='".$tribe_id."'");
+					$output = T_("The icon was successfully removed from the tribe");
+			} else {
+				$error[] = T_('Impossible to delete file');
+			}
 		}
 
 		if (!empty($error)) {
@@ -549,6 +603,7 @@ if(isset($_POST['action'])) {
 			tribe_tags,
 			tribe_users,
 			tribe_search,
+			tribe_icon,
 			visibility,
 			ordering
 			FROM '.$core->prefix.'tribe
@@ -616,9 +671,18 @@ function getOutput($sql, $num_page=0, $nb_items=30) {
 				$rm_search_action = '(<a href="javascript:rm_search('.$num_page.', '.$nb_items.',\''.$rs->tribe_id.'\')">'.T_('clear').'</a>)';
 			} 
 
+			$tribe_icon = '';
+			$icon_action = '<a href="javascript:add_icon('.$num_page.','.$nb_items.',\''.$rs->tribe_id.'\',\''.$rs->tribe_name.'\')">
+				<img src="meta/icons/add_icon.png" title="'.T_('Add icon to tribe').'" /></a>';
+			if ($rs->tribe_icon) {
+				$tribe_icon = '<img class="tribe-icon" src="../'.$rs->tribe_icon.'" />';
+				$icon_action = '<a href="javascript:rm_icon('.$num_page.','.$nb_items.',\''.$rs->tribe_id.'\')">
+				<img src="meta/icons/rm_icon.png" title="'.T_('Remove icon from tribe').'" /></a>';
+			}
+
 			$output .= '<div class="tribesbox tribe-'.$tribe_state.'" id="tribe-'.$rs->tribe_id.'">
 				<h3><a href="'.$blog_settings->get('planet_url').'/index.php?list=1&tribe_id='.$rs->tribe_id.'">'.$rs->tribe_name.'</a></h3>
-				<img class="tribe-icon" src="" border="1" width=100 height=100 />
+				'.$tribe_icon.'
 				<p class="nickname">
 					Tribe owner : '.$tribe_owner.'<br/>
 					Tags : <div class="tag-line">'.$tag_list.'</div><br/>
@@ -635,7 +699,7 @@ function getOutput($sql, $num_page=0, $nb_items=30) {
 					<li><a href="javascript:add_tags('.$num_page.','.$nb_items.',\''.$rs->tribe_id.'\',\''.$rs->tribe_name.'\')"><img src="meta/icons/add_tag.png" title="'.T_('Add tags to tribe').'"/></a></li>
 					<li><a href="javascript:add_users('.$num_page.','.$nb_items.',\''.$rs->tribe_id.'\',\''.$rs->tribe_name.'\')"><img src="meta/icons/add_user.png" title="'.T_('Add users to tribe').'" /></a></li>
 					<li><a href="javascript:add_search('.$num_page.','.$nb_items.',\''.$rs->tribe_id.'\',\''.$rs->tribe_name.'\')"><img src="meta/icons/add_search.png" title="'.T_('Add search to tribe').'" /></a></li>
-					<li><a href="javascript:add_icon('.$num_page.','.$nb_items.',\''.$rs->tribe_id.'\',\''.$rs->tribe_name.'\')"><img src="meta/icons/add_icon.png" title="'.T_('Add icon to tribe').'" /></a></li>
+					<li>'.$icon_action.'</li>
 				</ul>
 				<div class="feedlink"><a href="'.$blog_settings->get('planet_url').'/index.php?list=1&tribe_id='.$rs->tribe_id.'">
 						<img alt="RSS" src="'.$blog_settings->get('planet_url').'/themes/'.$blog_settings->get('planet_theme').'/images/rss_24.png" /></a></div>

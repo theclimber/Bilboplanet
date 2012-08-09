@@ -1476,11 +1476,12 @@ div.tribesbox {
 	margin: 5px;
 	border-radius: 2px;
 	border: 1px solid #CCC;
-	width: 250px;
+	width: 260px;
 	overflow: hidden;
 	padding: 5px;
 	font-size: 0.9em;
 	background-color: #FFF;
+	vertical-align:top;
 }
 div.tribe-private{
 	background-color: #EFEFEF;

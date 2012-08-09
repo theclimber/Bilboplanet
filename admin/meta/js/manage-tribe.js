@@ -317,3 +317,22 @@ function add_icon(num_page, nb_items, tribe_id, tribe_name) {
         title: "Add tribe icon : " + tribe_name,
     });
 }
+
+function rm_icon(num_page, nb_items, tribe_id) {
+	$('#flash-log').css('display','');
+	$('#flash-msg').addClass('ajax-loading');
+	$('#flash-msg').html('Loading');
+    $.ajax({
+        type: "POST",
+        url: "api/",
+        data : {'ajax' : 'tribe', 'action' : 'rm_icon', 'tribe_id' : tribe_id},
+        success: function(msg){
+//            $("#tag_action"+tribe_id)[0].removeAttribute('class','ajax-loading');
+            $('#flash-msg').removeClass('ajax-loading');
+            $('#flash-msg').html('');
+            $('#flash-log').css('display', 'none');
+			updateTribeList(num_page, nb_items);
+            $(msg).flashmsg();
+        }
+    });
+}

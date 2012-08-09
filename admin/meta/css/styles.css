@@ -1502,6 +1502,9 @@ div.tribesbox p {
 	display: block;
 	margin: 10px auto;
 }
+div.tribesbox p.tribe-icon {
+	float: right;
+}
 div.tribesbox .feedlink {
 	float: right;
 }

@@ -27,6 +27,7 @@ if ($core->auth->sessionExists() ) {
 $sql_tribes = "SELECT
 		tribe_id,
 		user_id,
+		tribe_icon,
 		tribe_name
 	FROM ".$core->prefix."tribe
 	WHERE visibility = 1
@@ -42,6 +43,7 @@ while ($rs->fetch()) {
 	$tribe = array(
 		"title" => $rs->tribe_name,
 		"id" => $rs->tribe_id,
+		"icon" => $rs->tribe_icon,
 		"align" => $align
 		);
 	$core->tpl->setVar('tribe', $tribe);
@@ -57,6 +59,7 @@ $align = $align=='right'? 'left' : 'right';
 $tribe = array(
 	"title" => T_('Popular posts'),
 	"id" => 'popular',
+	"tribe_icon" => '',
 	"align" => $align
 	);
 $core->tpl->setVar('tribe', $tribe);

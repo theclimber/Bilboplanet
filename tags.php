@@ -26,6 +26,7 @@ $sql_tribes = "SELECT
 		tribe_tags,
 		tribe_users,
 		tribe_search,
+		tribe_icon,
 		tribe_id
 	FROM ".$core->prefix."tribe
 	WHERE (user_id = 'root' OR user_id = '".$user_id."')
@@ -47,6 +48,7 @@ while ($rs->fetch()) {
 		"tags" => $rs->tribe_tags,
 		"users" => $rs->tribe_users,
 		"search" => $rs->tribe_search,
+		"icon" => $rs->tribe_icon,
 		"last" => mysqldatetime_to_date("d/m/Y",$rs_post->last),
 		"nb_post" => $rs_post->count
 		);

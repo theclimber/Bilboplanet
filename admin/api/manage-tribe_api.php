@@ -478,7 +478,7 @@ if(isset($_POST['action'])) {
 		}
 
 		// check extension and format
-		$extensions = array('jpg' => 'image/jpeg', 'jpeg'=>'image/jpeg', 'png'=>'image/png');
+		$extensions = array('jpg' => 'image/jpeg', 'jpeg'=>'image/jpeg', 'png'=>'image/png', 'gif'=>'image/gif');
 		$userfile_ext = explode('.', $userfile_name);
 		$userfile_ext = strtolower($userfile_ext[count($userfile_ext)-1]);
 		if (!array_key_exists($userfile_ext, $extensions)) {
@@ -490,15 +490,26 @@ if(isset($_POST['action'])) {
 		}
 
 		// check the image size
-		$allowed_ratio = 0.9;
+		$allowed_ratio = 0.75;
 		if ($userfile_imgsize[0]/$userfile_imgsize[1] < $allowed_ratio
 			|| $userfile_imgsize[1]/$userfile_imgsize[0] < $allowed_ratio) {
 			$error[] = T_('The tribe icon has to be almost square (allowed rate of 0.9)');
 		}
 
+		// create virtual image resource
+		$image = null;
+		switch($userfile_ext) {
+		case 'jpg': $image = imagecreatefromjpeg($userfile_tmp); break;
+		case 'jpeg': $image = imagecreatefromjpeg($userfile_tmp); break;
+		case 'png': $image = imagecreatefrompng($userfile_tmp); break;
+		case 'gif': $image = imagecreatefromgif($userfile_tmp); break;
+		}
+		if ($image == null) {
+			$error[] = sprintf(T_('The image could not be modified. (File extension is %s)'),$userfile_ext);
+		}
+
 		if (empty($error)) {
 			// resize image
-			$image = imagecreatefromjpeg($userfile_tmp);
 			$height = 100; // defined height
 			$width = ( ($userfile_imgsize[0] * (($height)/$userfile_imgsize[1]))); // relative width
 			$final_image = imagecreatetruecolor($width , $height)
@@ -522,11 +533,14 @@ if(isset($_POST['action'])) {
 				if ($userfile_ext == 'png') {
 					$save = imagepng($final_image , $file_fullpath, 0);
 				}
+				if ($userfile_ext == 'gif') {
+					$save = imagegif($final_image, $file_fullpath);
+				}
 				if ($save) {
 					$cur = $core->con->openCursor($core->prefix.'tribe');
 					$cur->tribe_icon = $file_relativepath;
 					$cur->update("WHERE tribe_id='".$tribe_id."'");
-					$output = T_("The image was successfully uplaoded to the tribe");
+					$output = T_("The image was successfully uploaded to the tribe");
 				} else {
 					$error[] = sprintf(T_('The file could not be saved to %s'), $file);
 				}
@@ -675,7 +689,7 @@ function getOutput($sql, $num_page=0, $nb_items=30) {
 			$icon_action = '<a href="javascript:add_icon('.$num_page.','.$nb_items.',\''.$rs->tribe_id.'\',\''.$rs->tribe_name.'\')">
 				<img src="meta/icons/add_icon.png" title="'.T_('Add icon to tribe').'" /></a>';
 			if ($rs->tribe_icon) {
-				$tribe_icon = '<img class="tribe-icon" src="../'.$rs->tribe_icon.'" />';
+				$tribe_icon = '<p class="tribe-icon"><img class="tribe-icon" src="../'.$rs->tribe_icon.'" /></p>';
 				$icon_action = '<a href="javascript:rm_icon('.$num_page.','.$nb_items.',\''.$rs->tribe_id.'\')">
 				<img src="meta/icons/rm_icon.png" title="'.T_('Remove icon from tribe').'" /></a>';
 			}

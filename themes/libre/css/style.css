@@ -1606,6 +1606,7 @@ div.tribesbox {
 	padding: 5px;
 	font-size: 0.8em;
 	background-color: #FFF;
+	vertical-align: top;
 }
 
 div.tribesbox p {

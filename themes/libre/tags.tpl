@@ -4,6 +4,7 @@
 	<!-- BEGIN tribe.block -->
 		<div class="tribesbox" id="tribe-{$tribe.id}">
 			<a href="{$planet.url}/index.php?list=1&tribe_id={$tribe.id}">{$tribe.name}</a>
+			<p><img src="{$tribe.icon}"></p>
 			<p class="nickname">
 				Tags : {$tribe.tags}<br/>
 				Users : {$tribe.users}<br/>

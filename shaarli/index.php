@@ -1,4 +1,26 @@
 <?php
+/**
+Added for matching with bilboplanet
+*/
+require_once(dirname(__FILE__).'/../inc/prepend.php');
+$username = '';
+if ($core->auth->sessionExists()) {
+	$username = $core->auth->userID();
+}
+if (!empty($_GET) && $_GET['user'] != '') {
+	$username = trim($_GET['user']);
+}
+$continue = false;
+if ($username != '') {
+	$rs_user = $core->con->select("SELECT user_id FROM ".$core->prefix."user WHERE user_id='".$username."'");
+	if ($rs_user->count() == 1) $continue = true;
+}
+if (!$continue) {
+	print T_('Forbidden');
+	exit;
+}
+
+
 // Shaarli 0.0.39 beta - Shaare your links...
 // The personal, minimalist, super-fast, no-database delicious clone. By sebsauvage.net
 // http://sebsauvage.net/wiki/doku.php?id=php:shaarli
@@ -8,7 +30,7 @@
 // (but autocomplete fields will only work if you have php 5.2.x)
 // -----------------------------------------------------------------------------------------------
 // Hardcoded parameter (These parameters can be overwritten by creating the file /config/options.php)
-$GLOBALS['config']['DATADIR'] = 'data'; // Data subdirectory
+$GLOBALS['config']['DATADIR'] = dirname(__FILE__).'/../data/shaarli/'.$username; // Data subdirectory
 $GLOBALS['config']['CONFIG_FILE'] = $GLOBALS['config']['DATADIR'].'/config.php'; // Configuration file (user login/password)
 $GLOBALS['config']['DATASTORE'] = $GLOBALS['config']['DATADIR'].'/datastore.php'; // Data storage file.
 $GLOBALS['config']['LINKS_PER_PAGE'] = 20; // Default links per page.
@@ -18,7 +40,7 @@ $GLOBALS['config']['BAN_DURATION'] = 1800;  // Ban duration for IP address after
 $GLOBALS['config']['OPEN_SHAARLI'] = false; // If true, anyone can add/edit/delete links without having to login
 $GLOBALS['config']['HIDE_TIMESTAMPS'] = true; // If true, the moment when links were saved are not shown to users that are not logged in.
 $GLOBALS['config']['ENABLE_THUMBNAILS'] = true; // Enable thumbnails in links.
-$GLOBALS['config']['CACHEDIR'] = 'cache'; // Cache directory for thumbnails for SLOW services (like flickr)
+$GLOBALS['config']['CACHEDIR'] = dirname(__FILE__).'/../data/cache'; // Cache directory for thumbnails for SLOW services (like flickr)
 $GLOBALS['config']['PAGECACHE'] = 'pagecache'; // Page cache directory.
 $GLOBALS['config']['ENABLE_LOCALCACHE'] = true; // Enable Shaarli to store thumbnail in a local cache. Disable to reduce webspace usage.
 $GLOBALS['config']['PUBSUBHUB_URL'] = ''; // PubSubHubbub support. Put an empty string to disable, or put your hub url here to enable.
@@ -49,7 +71,7 @@ error_reporting(E_ALL^E_WARNING);  // See all error except warnings.
 
 include "inc/rain.tpl.class.php"; //include Rain TPL
 raintpl::$tpl_dir = "tpl_planetlibre/"; // template directory
-raintpl::$cache_dir = "tmp/"; // cache directory
+raintpl::$cache_dir = dirname(__FILE__)."/../data/tmp/"; // cache directory
 
 ob_start();  // Output buffering for the page cache.
 
@@ -70,17 +92,19 @@ header("Cache-Control: post-check=0, pre-check=0", false);
 header("Pragma: no-cache");
 
 // Directories creations (Note that your web host may require differents rights than 705.)
-if (!is_dir($GLOBALS['config']['DATADIR'])) { mkdir($GLOBALS['config']['DATADIR'],0705); chmod($GLOBALS['config']['DATADIR'],0705); }
-if (!is_dir('tmp')) { mkdir('tmp',0705); chmod('tmp',0705); } // For RainTPL temporary files.
-if (!is_file($GLOBALS['config']['DATADIR'].'/.htaccess')) { file_put_contents($GLOBALS['config']['DATADIR'].'/.htaccess',"Allow from none\nDeny from all\n"); } // Protect data files.
-if ($GLOBALS['config']['ENABLE_LOCALCACHE'])
-{
-    if (!is_dir($GLOBALS['config']['CACHEDIR'])) { mkdir($GLOBALS['config']['CACHEDIR'],0705); chmod($GLOBALS['config']['CACHEDIR'],0705); }
-    if (!is_file($GLOBALS['config']['CACHEDIR'].'/.htaccess')) { file_put_contents($GLOBALS['config']['CACHEDIR'].'/.htaccess',"Allow from none\nDeny from all\n"); } // Protect data files.
-}
+if ($core->auth->sessionExists() && $username == $core->auth->userID()) {
+	if (!is_dir($GLOBALS['config']['DATADIR'])) { mkdir($GLOBALS['config']['DATADIR'],0705); chmod($GLOBALS['config']['DATADIR'],0705); }
+	if (!is_dir('tmp')) { mkdir('tmp',0705); chmod('tmp',0705); } // For RainTPL temporary files.
+	if (!is_file($GLOBALS['config']['DATADIR'].'/.htaccess')) { file_put_contents($GLOBALS['config']['DATADIR'].'/.htaccess',"Allow from none\nDeny from all\n"); } // Protect data files.
+	if ($GLOBALS['config']['ENABLE_LOCALCACHE'])
+	{
+		if (!is_dir($GLOBALS['config']['CACHEDIR'])) { mkdir($GLOBALS['config']['CACHEDIR'],0705); chmod($GLOBALS['config']['CACHEDIR'],0705); }
+		if (!is_file($GLOBALS['config']['CACHEDIR'].'/.htaccess')) { file_put_contents($GLOBALS['config']['CACHEDIR'].'/.htaccess',"Allow from none\nDeny from all\n"); } // Protect data files.
+	}
 
-// Run config screen if first run:
-if (!is_file($GLOBALS['config']['CONFIG_FILE'])) install();
+	// Run config screen if first run:
+	if (!is_file($GLOBALS['config']['CONFIG_FILE'])) install();
+}
 
 require $GLOBALS['config']['CONFIG_FILE'];  // Read login/password hash into $GLOBALS.
 
@@ -267,7 +291,7 @@ ini_set('session.use_cookies', 1);       // Use cookies to store session.
 ini_set('session.use_only_cookies', 1);  // Force cookies for session (phpsessionID forbidden in URL)
 ini_set('session.use_trans_sid', false); // Prevent php to use sessionID in URL if cookies are disabled.
 session_name('shaarli');
-session_start();
+//session_start();
 
 // Returns the IP address of the client (Used to prevent session cookie hijacking.)
 function allIPs()
@@ -299,8 +323,14 @@ function check_auth($login,$password)
 // Returns true if the user is logged in.
 function isLoggedIn()
 {
+	global $core;
     if ($GLOBALS['config']['OPEN_SHAARLI']) return true;
 
+	if ($core->auth->sessionExists()) {
+		return true;
+	}
+	return false;
+	/*
     // If session does not exist on server side, or IP address has changed, or session has expired, logout.
     if (empty($_SESSION['uid']) || $_SESSION['ip']!=allIPs() || time()>=$_SESSION['expires_on'])
     {
@@ -311,6 +341,7 @@ function isLoggedIn()
     else $_SESSION['expires_on']=time()+INACTIVITY_TIMEOUT; // Standard session expiration date.
 
     return true;
+	*/
 }
 
 // Force logout.
@@ -594,6 +625,7 @@ class pageBuilder
 
     private function initialize()
     {
+		global $blog_settings;
         $this->tpl = new RainTPL;
         $this->tpl->assign('newversion',checkUpdate());
         $this->tpl->assign('feedurl',htmlspecialchars(indexUrl()));
@@ -609,6 +641,7 @@ class pageBuilder
         if (!empty($GLOBALS['title'])) $this->tpl->assign('pagetitle',$GLOBALS['title']);
         if (!empty($GLOBALS['pagetitle'])) $this->tpl->assign('pagetitle',$GLOBALS['pagetitle']);
         $this->tpl->assign('shaarlititle',empty($GLOBALS['title']) ? 'Shaarli': $GLOBALS['title'] );
+		$this->tpl->assign('planet_url',$blog_settings->get('planet_url'));
         return;
     }
 
@@ -2232,10 +2265,11 @@ function lazyThumbnail($url,$href=false)
 // This function should NEVER be called if the file data/config.php exists.
 function install()
 {
+	 global $core;
     // On free.fr host, make sure the /sessions directory exists, otherwise login will not work.
     if (endsWith($_SERVER['SERVER_NAME'],'.free.fr') && !is_dir($_SERVER['DOCUMENT_ROOT'].'/sessions')) mkdir($_SERVER['DOCUMENT_ROOT'].'/sessions',0705);
 
-    if (!empty($_POST['setlogin']) && !empty($_POST['setpassword']))
+    if ($core->auth->sessionExists() && !empty($_POST['setlogin']))
     {
         $tz = 'UTC';
         if (!empty($_POST['continent']) && !empty($_POST['city']))
@@ -2243,9 +2277,9 @@ function install()
                 $tz = $_POST['continent'].'/'.$_POST['city'];
         $GLOBALS['timezone'] = $tz;
         // Everything is ok, let's create config file.
-        $GLOBALS['login'] = $_POST['setlogin'];
+		$GLOBALS['login'] = $core->auth->userID();
         $GLOBALS['salt'] = sha1(uniqid('',true).'_'.mt_rand()); // Salt renders rainbow-tables attacks useless.
-        $GLOBALS['hash'] = sha1($_POST['setpassword'].$GLOBALS['login'].$GLOBALS['salt']);
+		$GLOBALS['hash'] = sha1($core->auth->userToken().$GLOBALS['login'].$GLOBALS['salt']);
         $GLOBALS['title'] = (empty($_POST['title']) ? 'Shared links on '.htmlspecialchars(indexUrl()) : $_POST['title'] );
         writeConfig();
         echo '<script language="JavaScript">alert("Shaarli is now configured. Please enter your login/password and start shaaring your links !");document.location=\'?do=login\';</script>';
@@ -2257,6 +2291,7 @@ function install()
     $timezone_html=''; if ($timezone_form!='') $timezone_html='<tr><td valign="top"><b>Timezone:</b></td><td>'.$timezone_form.'</td></tr>';
 
     $PAGE = new pageBuilder;
+	$PAGE->assign('login_html',$core->auth->userID());
     $PAGE->assign('timezone_html',$timezone_html);
     $PAGE->assign('timezone_js',$timezone_js);
     $PAGE->renderPage('install');

@@ -85,7 +85,7 @@ error_reporting(E_ALL^E_WARNING);  // See all error except warnings.
 //error_reporting(-1); // See all errors (for debugging only)
 
 include "inc/rain.tpl.class.php"; //include Rain TPL
-raintpl::$tpl_dir = "tpl_planetlibre/"; // template directory
+raintpl::$tpl_dir = "tpl_bilbo/"; // template directory
 raintpl::$cache_dir = dirname(__FILE__)."/../data/tmp/"; // cache directory
 
 ob_start();  // Output buffering for the page cache.

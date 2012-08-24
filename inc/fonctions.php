@@ -378,6 +378,9 @@ function convert_iso_special_html_char($string) {
 }
 
 function getArrayFromList($list) {
+	if ($list == null) {
+		return array();
+	}
 	$patterns = array( '/, /', '/ ,/');
 	$replacement = array(',', ',');
 	$list = urldecode($list);
@@ -404,7 +407,9 @@ function generate_SQL(
 		$popular = false,
 		$post_id = null,
 		$post_status = 1,
-		$count = false)
+		$count = false,
+		$notags = array(),
+		$nousers = array())
 	{
 	global $blog_settings, $core;
 	if (!isset($nb_items)) {
@@ -412,7 +417,7 @@ function generate_SQL(
 	}
 
 	$tables = $core->prefix."post, ".$core->prefix."user";
-	if (!empty($tags)) {
+	if (!empty($tags) || !empty($notags)) {
 		$tables .= ", ".$core->prefix."post_tag";
 	}
 
@@ -452,6 +457,7 @@ function generate_SQL(
 		return $sql;
 	}
 
+	// find all posts with users
 	if (!empty($users)) {
 		$sql_users = "(";
 		foreach ($users as $key=>$user) {
@@ -463,6 +469,19 @@ function generate_SQL(
 		$where_clause .= ' AND '.$sql_users.' ';
 	}
 
+	// find all posts without this users
+	if (!empty($nousers)) {
+		$sql_nousers = "(";
+		foreach ($nousers as $key=>$user) {
+			$sql_nousers .= "LOWER(".$core->prefix."post.user_id) != '".strtolower($user)."'";
+			$and = ($key == count($nousers)-1) ? "" : " AND ";
+			$sql_nousers .= $and;
+		}
+		$sql_nousers .= ")";
+		$where_clause .= ' AND '.$sql_nousers.' ';
+	}
+
+	// find all posts with theses tags
 	if (!empty($tags)) {
 		$sql_tags = "(";
 		foreach ($tags as $key=>$tag) {
@@ -473,6 +492,21 @@ function generate_SQL(
 		$sql_tags .= ")";
 		$where_clause .= " AND ".$core->prefix."post.post_id = ".$core->prefix."post_tag.post_id";
 		$where_clause .= ' AND '.$sql_tags.' ';
+	}
+
+	// find all posts without theses tags
+	if (!empty($notags)) {
+		$sql_notags = "(";
+		foreach ($notags as $key=>$tag) {
+//			$sql_notags .= "LOWER(".$core->prefix."post_tag.tag_id) != '".strtolower($tag)."'";
+			$and = ($key == count($notags)-1) ? "'".$tag."'" : "'".$tag."', ";
+			$sql_notags .= $and;
+		}
+		$sql_notags .= ") NOT IN (SELECT 
+			LOWER(".$core->prefix."post_tag.tag_id) FROM ".$core->prefix."post_tag
+			WHERE ".$core->prefix."post_tag.post_id = ".$core->prefix."post.post_id)";
+		$where_clause .= " AND ".$core->prefix."post.post_id = ".$core->prefix."post_tag.post_id";
+		$where_clause .= ' AND '.$sql_notags.' ';
 	}
 
 	if (isset($search) && !empty($search)){
@@ -566,7 +600,9 @@ function generate_tribe_SQL($tribe_id, $num_start = 0, $nb_items = 10) {
 			tribe_name,
 			tribe_search,
 			tribe_tags,
-			tribe_users
+			tribe_notags,
+			tribe_users,
+			tribe_nousers
 		FROM ".$core->prefix."tribe
 		WHERE tribe_id = '".$tribe_id."'
 		AND visibility = 1";
@@ -585,31 +621,31 @@ function generate_tribe_SQL($tribe_id, $num_start = 0, $nb_items = 10) {
 	$tribe_name = $rs->f('tribe_name');
 	$tribe_search = $rs->f('tribe_search');//getArrayFromList($rs->tribe_search);
 	$tribe_tags = getArrayFromList($rs->f('tribe_tags'));
+	$tribe_notags = getArrayFromList($rs->f('tribe_notags'));
 	$tribe_users = getArrayFromList($rs->f('tribe_users'));
+	$tribe_nousers = getArrayFromList($rs->f('tribe_nousers'));
 	$align = $align=='right'? 'left' : 'right';
 
-	// Generating the SQL request
+	$count = true;
 	if ($nb_items > 0) {
-		return generate_SQL(
-			$num_start,
-			$nb_items,
-			$tribe_users,
-			$tribe_tags,
-			$tribe_search);
-	} else {
-		return generate_SQL(
-			$num_start,
-			$nb_items,
-			$tribe_users,
-			$tribe_tags,
-			$tribe_search,
-			null, // period
-			false, // popular
-			null, // post_id
-			1, // post_status
-			true // count
-		);
+		$count = false; // we just need to count the number of posts
 	}
+	// Generating the SQL request
+
+	return generate_SQL(
+		$num_start,
+		$nb_items,
+		$tribe_users,
+		$tribe_tags,
+		$tribe_search,
+		null, // period
+		false, // popular
+		null, // post_id
+		1, // post_status
+		$count, // count
+		$tribe_notags,
+		$tribe_nousers
+	);
 }
 
 function getSimilarPosts_SQL($post_id,$post_tags) {
@@ -1020,8 +1056,8 @@ function check_url($url){
 	$urlregex .= "([a-z0-9+!*(),;?&=\$_.-]+(\:[a-z0-9+!*(),;?&=\$_.-]+)?@)?";
 
 	// HOSTNAME OR IP
-	//$urlregex .= "[a-z0-9+\$_-]+(\.[a-z0-9+\$_-]+)*";  // http://x = allowed (ex. http://localhost, http://routerlogin)
-	$urlregex .= "[a-z0-9+\$_-]+(\.[a-z0-9+\$_-]+)+";  // http://x.x = minimum
+	$urlregex .= "[a-z0-9+\$_-]+(\.[a-z0-9+\$_-]+)*";  // http://x = allowed (ex. http://localhost, http://routerlogin)
+	//$urlregex .= "[a-z0-9+\$_-]+(\.[a-z0-9+\$_-]+)+";  // http://x.x = minimum
 	//$urlregex .= "([a-z0-9+\$_-]+\.)*[a-z0-9+\$_-]{2,3}";  // http://x.xx(x) = minimum
 	//use only one of the above
 

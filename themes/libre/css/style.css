@@ -1586,6 +1586,9 @@ div.userbox p {
 div.userbox .feedlink {
 	float: right;
 }
+div.userbox .shaarlilink {
+	float: right;
+}
 
 /*********************
 * Design of the tags page

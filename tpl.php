@@ -56,6 +56,11 @@ if ($core->auth->sessionExists() ) {
 	if ($core->hasRole('manager')) {
 		$core->tpl->render('page.loginadmin');
 	}
+
+	if ($user_settings != null && $user_settings->get('social.shaarli')) {
+		$core->tpl->setVar('shaarli_instance', $user_settings->get('social.shaarli.instance'));
+		$core->tpl->render('menu.shaarli');
+	}
 	$core->tpl->render('page.loginbox');
 }
 

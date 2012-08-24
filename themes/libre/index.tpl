@@ -48,11 +48,14 @@
 	<!-- BEGIN page.loginbox -->
 		<div id="loginBox">
 			{_Welcome} {$login.username}
-			| <a href="javascript:popup('{$planet.url}/user/')">Dashboard</a>
+		<!-- BEGIN menu.shaarli -->
+			| <a href="javascript:popup('{$shaarli_instance}')">{_Shaarli}</a>
+		<!-- END menu.shaarli -->
+			| <a href="javascript:popup('{$planet.url}/user/')">{_Dashboard}</a>
 		<!-- BEGIN page.loginadmin -->
-			| <a href="{$planet.url}/admin/">Administration</a>
+			| <a href="{$planet.url}/admin/">{_Administration}</a>
 		<!-- END page.loginadmin -->
-			| <a href="?logout={$planet.url}">Logout</a>
+			| <a href="?logout={$planet.url}">{_Logout}</a>
 		</div>
 	<!-- ELSE page.loginbox -->
 		<div id="loginBox"><a href="{$planet.url}/signup.php">{_Register}</a> {_or} <a><span id="dropdown">Login <span id="login-dropdown">&nbsp;</span></span></a></div>
@@ -232,8 +235,8 @@ function shaare(id) {
 	var url = '{$planet.url}/?post_id='+id;
 	var title = url;
 	window.open(
-		'{$shaarli_instance}/index.php?post=' + 
-		encodeURIComponent(url)+'&title=' + 
+		'{$shaarli_instance}/index.php?post=' +
+		encodeURIComponent(url)+'&title=' +
 		encodeURIComponent(title)+'&source=bookmarklet',
 		'_blank',
 		'menubar=no,height=390,width=600,toolbar=no,scrollbars=no,status=no'

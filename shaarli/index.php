@@ -30,11 +30,11 @@ if (!empty($errors)) {
 }
 
 // if the user configured his own shaarli instance
-$user_share = $core->con->select("SELECT setting_value FROM ".$core->prefix."setting WHERE setting_id='user_shaarli' AND user_id='".$username."'");
+/*$user_share = $core->con->select("SELECT setting_value FROM ".$core->prefix."setting WHERE setting_id='social.shaarli.instance' AND user_id='".$username."'");
 if ($user_share->count()==1 && $user_share->f('setting_value') != '') {
 	http::head('301');
 	http::redirect($user_share->f('setting_value'));
-}
+}*/
 
 // Shaarli 0.0.39 beta - Shaare your links...
 // The personal, minimalist, super-fast, no-database delicious clone. By sebsauvage.net

@@ -11,7 +11,14 @@
 				Last post : {$user.last}<br/>
 				Post count : {$user.nb_post}
 			</p>
-			<div class="feedlink"><a href="{$planet.url}/feed.php?type=atom&users={$user.id}"><img alt="RSS" src="{$planet.url}/themes/{$planet.theme}/images/rss_24.png" /></a></div>
+			<!-- BEGIN user.shaarli -->
+			<div class="shaarlilink"><a href="{$user_shaarli}">
+				<img alt="Links" src="{$planet.url}/themes/{$planet.theme}/images/shaarli_24.png" /></a>
+			</div>
+			<!-- END user.shaarli -->
+			<div class="feedlink"><a href="{$planet.url}/feed.php?type=atom&users={$user.id}">
+				<img alt="RSS" src="{$planet.url}/themes/{$planet.theme}/images/rss_24.png" /></a>
+			</div>
 		</div>
 	<!-- ELSE user.block -->
 		<div class="userbox">

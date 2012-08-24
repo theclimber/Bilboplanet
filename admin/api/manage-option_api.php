@@ -160,6 +160,27 @@ if(isset($_POST) && isset($_POST['action'])) {
 				$blog_settings->put('internal_links', '0', "boolean");
 			}
 
+			if (isset($_POST['allow_uncensored_feed'])) {
+				$blog_settings->put('allow_uncensored_feed', '1', "boolean");
+			}
+			else {
+				$blog_settings->put('allow_uncensored_feed', '0', "boolean");
+			}
+
+			if (isset($_POST['show_similar_posts'])) {
+				$blog_settings->put('show_similar_posts', '1', "boolean");
+			}
+			else {
+				$blog_settings->put('show_similar_posts', '0', "boolean");
+			}
+
+			if (isset($_POST['planet_shaarli'])) {
+				$blog_settings->put('planet_shaarli', '1', "boolean");
+			}
+			else {
+				$blog_settings->put('planet_shaarli', '0', "boolean");
+			}
+
 			if (isset($_POST['subscription']) && !empty($_POST['subscription_content'])) {
 				$blog_settings->put('planet_subscription', '1', "boolean");
 				$subscription_content = htmlentities(stripslashes(trim($_POST['subscription_content'])), ENT_QUOTES, 'UTF-8');
@@ -306,6 +327,9 @@ if(isset($_POST) && isset($_POST['action'])) {
 			$piwik_url = $blog_settings->get('piwik_url');
 			$piwik_id = $blog_settings->get('piwik_id');
 			$internal_links = $blog_settings->get('internal_links');
+			$allow_uncensored_feed = $blog_settings->get('allow_uncensored_feed');
+			$show_similar_posts = $blog_settings->get('show_similar_posts');
+			$planet_shaarli = $blog_settings->get('planet_shaarli');
 
 			# statusnet options :
 			$statusnet = array(
@@ -559,6 +583,27 @@ if(isset($_POST) && isset($_POST['action'])) {
 			else {
 				$output .= '<td><input type="checkbox" class="input field" id="internal_links" name="internal_links" /></td>';
 			}
+
+			if($allow_uncensored_feed) {
+				$output .= '<td><input type="checkbox" class="input field" id="allow_uncensored_feed" name="allow_uncensored_feed" checked /></td>';
+			}
+			else {
+				$output .= '<td><input type="checkbox" class="input field" id="allow_uncensored_feed" name="allow_uncensored_feed" /></td>';
+			}
+
+			if($show_similar_posts) {
+				$output .= '<td><input type="checkbox" class="input field" id="show_similar_posts" name="show_similar_posts" checked /></td>';
+			}
+			else {
+				$output .= '<td><input type="checkbox" class="input field" id="show_similar_posts" name="show_similar_posts" /></td>';
+			}
+
+			if($planet_shaarli) {
+				$output .= '<td><input type="checkbox" class="input field" id="planet_shaarli" name="planet_shaarli" checked /></td>';
+			}
+			else {
+				$output .= '<td><input type="checkbox" class="input field" id="planet_shaarli" name="planet_shaarli" /></td>';
+			}
 			$output .= '</tr>';
 			############
 			# Add post values for statusNet
@@ -654,6 +699,9 @@ if(isset($_POST) && isset($_POST['action'])) {
 			$piwik_url = $blog_settings->get('piwik_url');
 			$piwik_id = $blog_settings->get('piwik_id');
 			$internal_links = $blog_settings->get('internal_links');
+			$allow_uncensored_feed = $blog_settings->get('allow_uncensored_feed');
+			$show_similar_posts = $blog_settings->get('show_similar_posts');
+			$planet_shaarli = $blog_settings->get('planet_shaarli');
 
 			# statusnet options :
 			$statusnet = array(
@@ -791,61 +839,93 @@ if(isset($_POST) && isset($_POST['action'])) {
 			$output .= '</tr>
 			<tr>
 				<td>'.T_('Enable Internal links').'</td>';
-				if($internal_links) {
-					$output .= '<td>'.T_('Enabled').'</td>';
-				}
-				else {
-					$output .= '<td>'.T_('Disabled').'</td>';
-				}
-				$output .= '</tr>';
+			if($internal_links) {
+				$output .= '<td>'.T_('Enabled').'</td>';
+			}
+			else {
+				$output .= '<td>'.T_('Disabled').'</td>';
+			}
 
-				############
-				# Add post values for statusNet
-				############
+			$output .= '</tr>
+			<tr>
+				<td>'.sprintf(T_('Allow using feed with no moderation at <br/>%s'),
+					'<a href="'.$blog_settings->get('planet_url').'/feed.php?type=atom&uncensored=true">'.
+						$blog_settings->get('planet_url').'/feed.php?type=atom&uncensored=true'.'</a>').'</td>';
+			if($allow_uncensored_feed) {
+				$output .= '<td>'.T_('Enabled').'</td>';
+			}
+			else {
+				$output .= '<td>'.T_('Disabled').'</td>';
+			}
 
-				# statusnet_host :
-				$output .= '<tr><td>'.T_('Planet statusnet host (ex: http://identi.ca)').'</td>';
-				$output .= '<td>'.$statusnet['host'].'</td>';
-				$output .= '</tr>';
+			$output .= '</tr>
+			<tr>
+				<td>'.T_('Show similar posts at the bottom of each post').'</td>';
+			if($show_similar_posts) {
+				$output .= '<td>'.T_('Enabled').'</td>';
+			}
+			else {
+				$output .= '<td>'.T_('Disabled').'</td>';
+			}
 
-				# statusnet_username :
-				$output .= '<tr><td>'.T_('Planet statusnet username').'</td>';
-				$output .= '<td>'.$statusnet['username'].'</td>';
-				$output .= '</tr>';
+			$output .= '</tr>
+			<tr>
+				<td>'.T_('Enable shaarli instances on /shaarli').'</td>';
+			if($planet_shaarli) {
+				$output .= '<td>'.T_('Enabled').'</td>';
+			}
+			else {
+				$output .= '<td>'.T_('Disabled').'</td>';
+			}
+			$output .= '</tr>';
 
-				# statusnet_post_format :
-				$output .= '<tr><td>'.T_('Statusnet messages format').'</td>';
-				$output .= '<td>'.$statusnet['post_format'].'</td>';
-				$output .= '</tr>';
+			############
+			# Add post values for statusNet
+			############
 
-				# statusnet_auto_post :
-				$output .= '<tr><td>'.T_('Statusnet activate automatic post').'</td>';
-				if($statusnet['auto_post']) {
-					$output .= '<td>'.T_('Enabled').'</td>';
-				} else {
-					$output .= '<td>'.T_('Disabled').'</td>';
-				}
-				$output .= '</tr>';
+			# statusnet_host :
+			$output .= '<tr><td>'.T_('Planet statusnet host (ex: http://identi.ca)').'</td>';
+			$output .= '<td>'.$statusnet['host'].'</td>';
+			$output .= '</tr>';
 
-				$output .= '<tr>
-				<td>'.T_('Enable subscription').'</td>';
-				if($subscription) {
-					$output .= '<td>'.T_('Enabled').'</td>
-				<tr>
-					<td>'.T_('Subscription page content').'</td>
-						<td>
-							<div style="display:none;">
-								<textarea id="list_subscription_content" name="subscription_content" >'.$subscription_content.'</textarea>
-							</div>
-							<div class="button br3px">
-								<input type="button" class="preview field" name="preview" onclick="javascript:call_preview(\'list_subscription_content\')" value="'.T_('Preview').'" />
-							</div>
-						</td>
-				</tr>';
-				}
-				else {
-					$output .= '<td>'.T_('Disabled').'</td>';
-				}
+			# statusnet_username :
+			$output .= '<tr><td>'.T_('Planet statusnet username').'</td>';
+			$output .= '<td>'.$statusnet['username'].'</td>';
+			$output .= '</tr>';
+
+			# statusnet_post_format :
+			$output .= '<tr><td>'.T_('Statusnet messages format').'</td>';
+			$output .= '<td>'.$statusnet['post_format'].'</td>';
+			$output .= '</tr>';
+
+			# statusnet_auto_post :
+			$output .= '<tr><td>'.T_('Statusnet activate automatic post').'</td>';
+			if($statusnet['auto_post']) {
+				$output .= '<td>'.T_('Enabled').'</td>';
+			} else {
+				$output .= '<td>'.T_('Disabled').'</td>';
+			}
+			$output .= '</tr>';
+
+			$output .= '<tr>
+			<td>'.T_('Enable subscription').'</td>';
+			if($subscription) {
+				$output .= '<td>'.T_('Enabled').'</td>
+			<tr>
+				<td>'.T_('Subscription page content').'</td>
+					<td>
+						<div style="display:none;">
+							<textarea id="list_subscription_content" name="subscription_content" >'.$subscription_content.'</textarea>
+						</div>
+						<div class="button br3px">
+							<input type="button" class="preview field" name="preview" onclick="javascript:call_preview(\'list_subscription_content\')" value="'.T_('Preview').'" />
+						</div>
+					</td>
+			</tr>';
+			}
+			else {
+				$output .= '<td>'.T_('Disabled').'</td>';
+			}
 			$output .= '</tr>
 			</table>';
 

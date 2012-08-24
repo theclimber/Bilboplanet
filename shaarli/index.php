@@ -10,16 +10,31 @@ if ($core->auth->sessionExists()) {
 if (!empty($_GET) && $_GET['user'] != '') {
 	$username = trim($_GET['user']);
 }
-$continue = false;
+$errors = array();
 if ($username != '') {
 	$rs_user = $core->con->select("SELECT user_id FROM ".$core->prefix."user WHERE user_id='".$username."'");
-	if ($rs_user->count() == 1) $continue = true;
+	if ($rs_user->count() != 1) $errors[] = T_('This user does not exists');
+} else {
+	$errors[] = T_('You must specify a valid user');
 }
-if (!$continue) {
-	print T_('Forbidden');
+if (!$blog_settings->get('planet_shaarli')) {
+	$errors[] = T_('User links are disabled on this planet');
+}
+if (!is_dir(dirname(__FILE__).'/../data/shaarli/'.$username) &&
+	$username != $core->auth->userID()) {
+	$errors[] = T_('This user have no shared links on this planet');
+}
+if (!empty($errors)) {
+	print_r($errors);
 	exit;
 }
 
+// if the user configured his own shaarli instance
+$user_share = $core->con->select("SELECT setting_value FROM ".$core->prefix."setting WHERE setting_id='user_shaarli' AND user_id='".$username."'");
+if ($user_share->count()==1 && $user_share->f('setting_value') != '') {
+	http::head('301');
+	http::redirect($user_share->f('setting_value'));
+}
 
 // Shaarli 0.0.39 beta - Shaare your links...
 // The personal, minimalist, super-fast, no-database delicious clone. By sebsauvage.net
@@ -2282,7 +2297,7 @@ function install()
 		$GLOBALS['hash'] = sha1($core->auth->userToken().$GLOBALS['login'].$GLOBALS['salt']);
         $GLOBALS['title'] = (empty($_POST['title']) ? 'Shared links on '.htmlspecialchars(indexUrl()) : $_POST['title'] );
         writeConfig();
-        echo '<script language="JavaScript">alert("Shaarli is now configured. Please enter your login/password and start shaaring your links !");document.location=\'?do=login\';</script>';
+        echo '<script language="JavaScript">alert("Shaarli is now configured !");document.location=\'\';</script>';
         exit;
     }
 

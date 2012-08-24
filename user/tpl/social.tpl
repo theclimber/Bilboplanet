@@ -24,7 +24,9 @@
 		<p>
 			<label for="shaarli_instance">{_Shaarli instance}</label>
 			<input type="text" id="shaarli-instance" value="{$shaarli_instance}"><br/>
-			<span class="description">{_(eg. http://website.tld/shaarli}</span>
+			<span class="description">{_(eg. http://website.tld/shaarli}<br/>
+			{_NOTE : if you have no shaarli instance, you can create one on this planet.}<br/>
+			{_Please go here and follow the steps : }<a href="{$planet.url}/shaarli">{$planet.url}/shaarli</a></span>
 		</p>
 		<p>
 			<label for="statusnet">{_Share on StatusNet}</label>

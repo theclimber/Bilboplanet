@@ -584,6 +584,11 @@ if(isset($_POST) && isset($_POST['action'])) {
 				$output .= '<td><input type="checkbox" class="input field" id="internal_links" name="internal_links" /></td>';
 			}
 
+			$output .= '</tr>
+		<tr>
+				<td>'.sprintf(T_('Allow using feed with no moderation at <br/>%s'),
+					'<a href="'.$blog_settings->get('planet_url').'/feed.php?type=atom&uncensored=true">'.
+						$blog_settings->get('planet_url').'/feed.php?type=atom&uncensored=true'.'</a>').'</td>';
 			if($allow_uncensored_feed) {
 				$output .= '<td><input type="checkbox" class="input field" id="allow_uncensored_feed" name="allow_uncensored_feed" checked /></td>';
 			}
@@ -591,6 +596,9 @@ if(isset($_POST) && isset($_POST['action'])) {
 				$output .= '<td><input type="checkbox" class="input field" id="allow_uncensored_feed" name="allow_uncensored_feed" /></td>';
 			}
 
+			$output .= '</tr>
+		<tr>
+				<td>'.T_('Show similar posts at the bottom of each post').'</td>';
 			if($show_similar_posts) {
 				$output .= '<td><input type="checkbox" class="input field" id="show_similar_posts" name="show_similar_posts" checked /></td>';
 			}
@@ -598,6 +606,9 @@ if(isset($_POST) && isset($_POST['action'])) {
 				$output .= '<td><input type="checkbox" class="input field" id="show_similar_posts" name="show_similar_posts" /></td>';
 			}
 
+			$output .= '</tr>
+		<tr>
+				<td>'.T_('Enable shaarli instances on /shaarli').'</td>';
 			if($planet_shaarli) {
 				$output .= '<td><input type="checkbox" class="input field" id="planet_shaarli" name="planet_shaarli" checked /></td>';
 			}

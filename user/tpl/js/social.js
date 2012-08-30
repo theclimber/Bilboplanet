@@ -1,4 +1,5 @@
 $(document).ready(function() {
+	selectChange();
 	$('form#social_form').submit(function(){
 		var id = $(this).attr('id');
 		$.ajax({
@@ -24,10 +25,14 @@ $(document).ready(function() {
 	$('input#shaarli').change(function() {
 		var checked = $('input#shaarli').is(':checked');
 		if (checked) {
-			$('input#shaarli-instance').removeAttr("disabled");
+			$('div#shaarli-details').css('display','block');
+			selectChange();
 		} else {
-			$('input#shaarli-instance').attr("disabled", "disabled");
+			$('div#shaarli-details').css('display','none');
 		}
+	});
+	$('select#shaarli-type').change(function() {
+		selectChange();
 	});
 	$('input#statusnet').change(function() {
 		var checked = $('input#statusnet').is(':checked');
@@ -39,3 +44,13 @@ $(document).ready(function() {
 	});
 });
 
+function selectChange() {
+	var value = $('select#shaarli-type').attr('value');
+	if (value == 'remote') {
+		$('p#shaarli-remote-instance').css('display','block');
+		$('p#shaarli-local-instance').css('display','none');
+	} else {
+		$('p#shaarli-local-instance').css('display','block');
+		$('p#shaarli-remote-instance').css('display','none');
+	}
+}

@@ -20,13 +20,24 @@
 		<p>
 			<label for="shaarli">{_Share on Shaarli}</label>
 			<input type="checkbox" id="shaarli" {$checked.shaarli}>
-		</p>
-		<p>
-			<label for="shaarli_instance">{_Shaarli instance}</label>
-			<input type="text" id="shaarli-instance" value="{$shaarli_instance}"><br/>
-			<span class="description">{_(eg. http://website.tld/shaarli}<br/>
-			{_NOTE : if you have no shaarli instance, you can create one on this planet.}<br/>
-			{_Please go here and follow the steps : }<a href="{$planet.url}/shaarli">{$planet.url}/shaarli</a></span>
+		<div id="shaarli-details">
+			<p>
+				<label for="type">{_Where is your Shaarli?}</label>
+				<select name="shaarli-type" id="shaarli-type">
+					<option value="local" $checked.shaarli-type-local>{_Local instance}</option>
+					<option value="remote" $checked.shaarli-type-remote>{_Remote shaarli}</option>
+				</select>
+			</p>
+			<p id="shaarli-remote-instance" style="display:none;">
+				<label for="shaarli_instance">{_Shaarli instance}</label>
+				<input type="text" id="shaarli-instance" value="{$shaarli_instance}"><br/>
+				<span class="description">{_(eg. http://website.tld/shaarli}</span>
+			</p>
+			<p id="shaarli-local-instance" style="display:none;">
+				{_NOTE : if you have no shaarli instance, you can create one on this planet.}<br/>
+				<a href="{$planet.url}/shaarli">{_Go on Shaarli}</a>
+			</p>
+		</div>
 		</p>
 		<p>
 			<label for="statusnet">{_Share on StatusNet}</label>

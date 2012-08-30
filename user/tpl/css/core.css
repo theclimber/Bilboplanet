@@ -174,3 +174,8 @@ div.button {
 	font-size: 12px;
 	text-align: center;
 }
+div#shaarli-details {
+	margin-left: 50px;
+	border: 1px solid #DDDDDD;
+	padding: 5px;
+}

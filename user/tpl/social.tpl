@@ -24,8 +24,8 @@
 			<p>
 				<label for="type">{_Where is your Shaarli?}</label>
 				<select name="shaarli-type" id="shaarli-type">
-					<option value="local" $checked.shaarli-type-local>{_Local instance}</option>
-					<option value="remote" $checked.shaarli-type-remote>{_Remote shaarli}</option>
+					<option value="local" {$checked.shaarli-type.local}>{_Local instance}</option>
+					<option value="remote" {$checked.shaarli-type.remote}>{_Remote shaarli}</option>
 				</select>
 			</p>
 			<p id="shaarli-remote-instance" style="display:none;">

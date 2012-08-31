@@ -179,3 +179,9 @@ div#shaarli-details {
 	border: 1px solid #DDDDDD;
 	padding: 5px;
 }
+p#shaarli-local-instance {
+	display:block;
+	width: 300px;
+	margin-left:150px;
+	text-align: right;
+}

@@ -1,5 +1,8 @@
 $(document).ready(function() {
 	selectChange();
+	if (!$('input#shaarli').is(':checked')) {
+		$('div#shaarli-details').css('display','none');
+	}
 	$('form#social_form').submit(function(){
 		var id = $(this).attr('id');
 		$.ajax({
@@ -14,7 +17,8 @@ $(document).ready(function() {
 				'statusnet' : $('input#statusnet').is(':checked'),
 				'newsletter' : $('select#newsletter').val(),
 				'statusnet-account' : $('input#statusnet-account').val(),
-				'shaarli-instance' : $('input#shaarli-instance').val()
+				'shaarli-instance' : $('input#shaarli-instance').val(),
+				'shaarli-type' : $('select#shaarli-type').val()
 			},
 			success: function(msg){
 				updatePage('social');

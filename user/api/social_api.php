@@ -36,7 +36,10 @@ if(isset($_POST['action'])) {
 		$twitter = $_POST['twitter']=='true' ? 1 : 0;
 		$google = $_POST['google']=='true' ? 1 : 0;
 		$shaarli = $_POST['shaarli']=='true' ? 1 : 0;
-		$shaarli_instance = check_field(T_('Shaarli instance'),$_POST['shaarli-instance'], 'url');
+		$shaarli_type = $_POST['shaarli-type'];
+		if (!in_array($shaarli_type, array('local', 'remote'))) {
+			$shaarli = 0;
+		}
 		$statusnet = $_POST['statusnet']=='true' ? 1 : 0;
 		$statusnet_account = check_field(T_('Statusnet Account'),$_POST['statusnet-account'], 'url');
 
@@ -48,9 +51,17 @@ if(isset($_POST['action'])) {
 				$error[] = T_("Please check statusnet URL : Invalid URL");
 			}
 		}
+		$shaarli_instance = '';
 		if ($shaarli == 1) {
-			if (!$shaarli_instance['success']) {
-				$error[] = T_("Please check shaarli URL : Invalid URL");
+			if ($shaarli_type == 'remote') {
+				$instance = check_field(T_('Shaarli instance'),$_POST['shaarli-instance'], 'url');
+				if (!$instance['success']) {
+					$error[] = T_("Please check shaarli URL : Invalid URL");
+				} else {
+					$shaarli_instance = $instance['value'];
+				}
+			} else {
+				$shaarli_instance = $blog_settings->get('planet_url').'/shaarli/?user='.$user_id;
 			}
 		}
 		
@@ -65,7 +76,9 @@ if(isset($_POST['action'])) {
 				'social.shaarli', $shaarli, 'boolean');
 			if ($shaarli == 1) {
 				$user_settings->put(
-					'social.shaarli.instance', $shaarli_instance['value'], 'string');
+					'social.shaarli.type', $shaarli_type, 'string');
+				$user_settings->put(
+					'social.shaarli.instance', $shaarli_instance, 'string');
 			}
 			$user_settings->put(
 				'social.statusnet', $statusnet, 'boolean');

@@ -172,7 +172,7 @@ $_s->setting
 	->created		('timestamp',	0,	true, 'now()')
 	->modified		('timestamp',	0,	true, 'now()')
 
-	->primary('pk_setting','setting_id')
+	->primary('pk_setting','setting_id', 'user_id')
 	;
 
 $_s->session

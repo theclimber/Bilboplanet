@@ -36,13 +36,11 @@ if ($user_share->count()==1 && $user_share->f('setting_value') != '') {
 	http::redirect($user_share->f('setting_value'));
 }*/
 
-// Shaarli 0.0.39 beta - Shaare your links...
+// Shaarli 0.0.40 beta - Shaare your links...
 // The personal, minimalist, super-fast, no-database delicious clone. By sebsauvage.net
 // http://sebsauvage.net/wiki/doku.php?id=php:shaarli
 // Licence: http://www.opensource.org/licenses/zlib-license.php
-
-// Requires: php 5.1.x
-// (but autocomplete fields will only work if you have php 5.2.x)
+// Requires: php 5.1.x  (but autocomplete fields will only work if you have php 5.2.x)
 // -----------------------------------------------------------------------------------------------
 // Hardcoded parameter (These parameters can be overwritten by creating the file /config/options.php)
 $GLOBALS['config']['DATADIR'] = dirname(__FILE__).'/../data/shaarli/'.$username; // Data subdirectory
@@ -67,7 +65,7 @@ $GLOBALS['config']['UPDATECHECK_INTERVAL'] = 86400 ; // Updates check frequency 
 // Optionnal config file.
 if (is_file($GLOBALS['config']['DATADIR'].'/options.php')) require($GLOBALS['config']['DATADIR'].'/options.php');
 
-define('shaarli_version','0.0.39 beta');
+define('shaarli_version','0.0.40 beta');
 define('PHPPREFIX','<?php /* '); // Prefix to encapsulate data in php code.
 define('PHPSUFFIX',' */ ?>'); // Suffix to encapsulate data in php code.
 
@@ -86,6 +84,7 @@ error_reporting(E_ALL^E_WARNING);  // See all error except warnings.
 
 include "inc/rain.tpl.class.php"; //include Rain TPL
 raintpl::$tpl_dir = "tpl_bilbo/"; // template directory
+if (!is_dir('tmp')) { mkdir('tmp',0705); chmod('tmp',0705); }
 raintpl::$cache_dir = dirname(__FILE__)."/../data/tmp/"; // cache directory
 
 ob_start();  // Output buffering for the page cache.
@@ -123,9 +122,11 @@ if ($core->auth->sessionExists() && $username == $core->auth->userID()) {
 
 require $GLOBALS['config']['CONFIG_FILE'];  // Read login/password hash into $GLOBALS.
 
-// Small protection against dodgy config files:
+// Handling of old config file which do not have the new parameters.
 if (empty($GLOBALS['title'])) $GLOBALS['title']='Shared links on '.htmlspecialchars(indexUrl());
 if (empty($GLOBALS['timezone'])) $GLOBALS['timezone']=date_default_timezone_get();
+if (empty($GLOBALS['disablesessionprotection'])) $GLOBALS['disablesessionprotection']=false;
+
 
 autoLocale(); // Sniff browser language and set date format accordingly.
 header('Content-Type: text/html; charset=utf-8'); // We use UTF-8 for proper international characters handling.
@@ -170,18 +171,18 @@ function checkUpdate()
 
 class pageCache
 {
-    private $query; // The query in URL (typically $_SERVER["QUERY_STRING"])
-    private $shouldBeCached; // boolean: Should this query be cached ?
-    private $filename; // Name of the cache file for this query
+    private $url; // Full URL of the page to cache (typically the value returned by pageUrl())
+    private $shouldBeCached; // boolean: Should this url be cached ?
+    private $filename; // Name of the cache file for this url
 
-    /*
-         $query = query (typically $_SERVER["QUERY_STRING"])
+    /* 
+         $url = url (typically the value returned by pageUrl())
          $shouldBeCached = boolean. If false, the cache will be disabled.
     */
-    public function __construct($query,$shouldBeCached)
+    public function __construct($url,$shouldBeCached)
     {
-        $this->query = $query;
-        $this->filename = $GLOBALS['config']['PAGECACHE'].'/'.sha1($query).'.cache';
+        $this->url = $url;
+        $this->filename = $GLOBALS['config']['PAGECACHE'].'/'.sha1($url).'.cache';
         $this->shouldBeCached = $shouldBeCached;
     }
 
@@ -209,12 +210,15 @@ class pageCache
         if (is_dir($GLOBALS['config']['PAGECACHE']))
         {
             $handler = opendir($GLOBALS['config']['PAGECACHE']);
-            while ($filename = readdir($handler))
+            if ($handle!==false)
             {
-                if (endsWith($filename,'.cache')) { unlink($GLOBALS['config']['PAGECACHE'].'/'.$filename); }
+                while (($filename = readdir($handler))!==false) 
+                {
+                    if (endsWith($filename,'.cache')) { unlink($GLOBALS['config']['PAGECACHE'].'/'.$filename); }
+                }
+                closedir($handler);
             }
         }
-        closedir($handler);
     }
 
 }
@@ -347,7 +351,7 @@ function isLoggedIn()
 	return false;
 	/*
     // If session does not exist on server side, or IP address has changed, or session has expired, logout.
-    if (empty($_SESSION['uid']) || $_SESSION['ip']!=allIPs() || time()>=$_SESSION['expires_on'])
+    if (empty($_SESSION['uid']) || ($GLOBALS['disablesessionprotection']==false && $_SESSION['ip']!=allIPs()) || time()>=$_SESSION['expires_on'])
     {
         logout();
         return false;
@@ -458,15 +462,23 @@ if (isset($_POST['login']))
 // You can append $_SERVER['SCRIPT_NAME'] to get the current script URL.
 function serverUrl()
 {
-        $https = (!empty($_SERVER['HTTPS']) && (strtolower($_SERVER['HTTPS'])=='on')) || $_SERVER["SERVER_PORT"]=='443'; // HTTPS detection.
-        $serverport = ($_SERVER["SERVER_PORT"]=='80' || ($https && $_SERVER["SERVER_PORT"]=='443') ? '' : ':'.$_SERVER["SERVER_PORT"]);
-        return 'http'.($https?'s':'').'://'.$_SERVER["SERVER_NAME"].$serverport;
+    $https = (!empty($_SERVER['HTTPS']) && (strtolower($_SERVER['HTTPS'])=='on')) || $_SERVER["SERVER_PORT"]=='443'; // HTTPS detection.
+    $serverport = ($_SERVER["SERVER_PORT"]=='80' || ($https && $_SERVER["SERVER_PORT"]=='443') ? '' : ':'.$_SERVER["SERVER_PORT"]);
+    return 'http'.($https?'s':'').'://'.$_SERVER["SERVER_NAME"].$serverport;
 }
 
-// Returns the absolute URL of current script.
+// Returns the absolute URL of current script, without the query.
+// (eg. http://sebsauvage.net/links/)
 function indexUrl()
 {
-        return serverUrl() . ($_SERVER["SCRIPT_NAME"] == '/index.php' ? '/' : $_SERVER["SCRIPT_NAME"]);
+    return serverUrl() . ($_SERVER["SCRIPT_NAME"] == '/index.php' ? '/' : $_SERVER["SCRIPT_NAME"]);
+}
+
+// Returns the absolute URL of current script, WITH the query.
+// (eg. http://sebsauvage.net/links/?toto=titi&spamspamspam=humbug)
+function pageUrl()
+{
+    return indexUrl().(!empty($_SERVER["QUERY_STRING"]) ? '?'.$_SERVER["QUERY_STRING"] : '');
 }
 
 // Convert post_max_size/upload_max_filesize (eg.'16M') parameters to bytes.
@@ -928,7 +940,7 @@ function showRSS()
 
     // Cache system
     $query = $_SERVER["QUERY_STRING"];
-    $cache = new pageCache($query,startsWith($query,'do=rss') && !isLoggedIn());
+    $cache = new pageCache(pageUrl(),startsWith($query,'do=rss') && !isLoggedIn());
     $cached = $cache->cachedVersion(); if (!empty($cached)) { echo $cached; exit; }
 
     // If cached was not found (or not usable), then read the database and build the response:
@@ -971,7 +983,7 @@ function showRSS()
     }
     echo '</channel></rss>';
 
-    $cache->cache(ob_get_contents().'<!-- cached version -->');
+    $cache->cache(ob_get_contents());
     ob_end_flush();
     exit;
 }
@@ -984,7 +996,7 @@ function showATOM()
 
     // Cache system
     $query = $_SERVER["QUERY_STRING"];
-    $cache = new pageCache($query,startsWith($query,'do=atom') && !isLoggedIn());
+    $cache = new pageCache(pageUrl(),startsWith($query,'do=atom') && !isLoggedIn());
     $cached = $cache->cachedVersion(); if (!empty($cached)) { echo $cached; exit; }
     // If cached was not found (or not usable), then read the database and build the response:
 
@@ -1036,8 +1048,8 @@ function showATOM()
     $feed.=$entries;
     $feed.='</feed>';
     echo $feed;
-
-    $cache->cache(ob_get_contents().'<!-- cached version -->');
+    
+    $cache->cache(ob_get_contents());
     ob_end_flush();
     exit;
 }
@@ -1050,7 +1062,7 @@ function showDailyRSS()
 {
     // Cache system
     $query = $_SERVER["QUERY_STRING"];
-    $cache = new pageCache($query,startsWith($query,'do=dailyrss') && !isLoggedIn());
+    $cache = new pageCache(pageUrl(),startsWith($query,'do=dailyrss') && !isLoggedIn());
     $cached = $cache->cachedVersion(); if (!empty($cached)) { echo $cached; exit; }
     // If cached was not found (or not usable), then read the database and build the response:
     $LINKSDB=new linkdb(isLoggedIn() || $GLOBALS['config']['OPEN_SHAARLI']);  // Read links from database (and filter private links if used it not logged in).
@@ -1119,8 +1131,7 @@ function showDailyRSS()
 
     }
     echo '</channel></rss>';
-
-    $cache->cache(ob_get_contents().'<!-- cached version -->');
+    $cache->cache(ob_get_contents());
     ob_end_flush();
     exit;
 }
@@ -1191,12 +1202,17 @@ function showDaily()
 
 
 // Weekly RSS feed: 1 RSS entry per week giving all the links on that week.
-// Gives the last 7 weeks (which have links) and is published every monday
+// Gives the last 7 weeks (which have links).
 // This RSS feed cannot be filtered.
 function showWeeklyRSS()
 {
-    global $LINKSDB;
-
+    // Cache system
+    $query = $_SERVER["QUERY_STRING"];
+    $cache = new pageCache(pageUrl(),startsWith($query,'do=weeklyrss') && !isLoggedIn());
+    $cached = $cache->cachedVersion(); if (!empty($cached)) { echo $cached; exit; }
+    // If cached was not found (or not usable), then read the database and build the response:
+    $LINKSDB=new linkdb(isLoggedIn() || $GLOBALS['config']['OPEN_SHAARLI']);  // Read links from database (and filter private links if used it not logged in).
+    
     /* Some Shaarlies may have very few links, so we need to look
        back in time (rsort()) until we have enough weeks ($nb_of_weeks).
      */
@@ -1275,12 +1291,17 @@ function showWeeklyRSS()
 // This RSS feed cannot be filtered.
 function showMonthlyRSS()
 {
-    global $LINKSDB;
-
+    // Cache system
+    $query = $_SERVER["QUERY_STRING"];
+    $cache = new pageCache(pageUrl(),startsWith($query,'do=weeklyrss') && !isLoggedIn());
+    $cached = $cache->cachedVersion(); if (!empty($cached)) { echo $cached; exit; }
+    // If cached was not found (or not usable), then read the database and build the response:
+    $LINKSDB=new linkdb(isLoggedIn() || $GLOBALS['config']['OPEN_SHAARLI']);  // Read links from database (and filter private links if used it not logged in).
+    
     /* Some Shaarlies may have very few links, so we need to look
        back in time (rsort()) until we have enough weeks ($nb_of_weeks).
      */
-    $linkdates=array(); foreach($LINKSDB as $linkdate=>$value) { $linkdates[]=$linkdate; }
+    $linkdates=array(); foreach($LINKSDB as $linkdate=>$value) { $linkdates[]=$linkdate; } 
     rsort($linkdates);
     $nb_of_days=7; // We take 7 days.
     $today=Date('Ym');
@@ -1497,10 +1518,10 @@ function renderPage()
             $linksToDisplay[$key]['formatedDescription']=nl2br(keepMultipleSpaces(text2clickable(htmlspecialchars($link['description']))));
             $linksToDisplay[$key]['thumbnail'] = thumbnail($link['url']);
         }
-
+        
         /* We need to spread the articles on 3 columns.
            I did not want to use a javascript lib like http://masonry.desandro.com/
-           so I manually spread entries with a simple method: I roughly evaluate the
+           so I manually spread entries with a simple method: I roughly evaluate the 
            height of a div according to title and description length.
         */
         $columns=array(array(),array(),array()); // Entries to display, for each column.
@@ -1557,10 +1578,10 @@ function renderPage()
             $linksToDisplay[$key]['formatedDescription']=nl2br(keepMultipleSpaces(text2clickable(htmlspecialchars($link['description']))));
             $linksToDisplay[$key]['thumbnail'] = thumbnail($link['url']);
         }
-
+        
         /* We need to spread the articles on 3 columns.
            I did not want to use a javascript lib like http://masonry.desandro.com/
-           so I manually spread entries with a simple method: I roughly evaluate the
+           so I manually spread entries with a simple method: I roughly evaluate the 
            height of a div according to title and description length.
         */
         $columns=array(array(),array(),array()); // Entries to display, for each column.
@@ -1660,6 +1681,7 @@ function renderPage()
             $GLOBALS['timezone'] = $tz;
             $GLOBALS['title']=$_POST['title'];
             $GLOBALS['redirector']=$_POST['redirector'];
+            $GLOBALS['disablesessionprotection']=!empty($_POST['disablesessionprotection']);
             writeConfig();
             echo '<script language="JavaScript">alert("Configuration was saved.");document.location=\'?do=tools\';</script>';
             exit;
@@ -1825,6 +1847,7 @@ function renderPage()
                 list($status,$headers,$data) = getHTTP($url,4); // Short timeout to keep the application responsive.
                 // FIXME: Decode charset according to specified in either 1) HTTP response headers or 2) <head> in html
                 if (strpos($status,'200 OK')!==false) $title=html_entity_decode(html_extract_title($data),ENT_QUOTES,'UTF-8');
+
             }
             if ($url=='') $url='?'.smallHash($linkdate); // In case of empty URL, this is just a text (with a link that point to itself)
             $link = array('linkdate'=>$linkdate,'title'=>$title,'url'=>$url,'description'=>$description,'tags'=>$tags,'private'=>0);
@@ -2005,13 +2028,13 @@ function buildLinkList($PAGE,$LINKSDB)
     $linksToDisplay=array();
     $search_type='';
     $search_crits='';
-    if (!empty($_GET['searchterm'])) // Fulltext search
+    if (isset($_GET['searchterm'])) // Fulltext search
     {
         $linksToDisplay = $LINKSDB->filterFulltext(trim($_GET['searchterm']));
         $search_crits=htmlspecialchars(trim($_GET['searchterm']));
         $search_type='fulltext';
     }
-    elseif (!empty($_GET['searchtags'])) // Search by tag
+    elseif (isset($_GET['searchtags'])) // Search by tag
     {
         $linksToDisplay = $LINKSDB->filterTags(trim($_GET['searchtags']));
         $search_crits=explode(' ',trim($_GET['searchtags']));
@@ -2023,7 +2046,7 @@ function buildLinkList($PAGE,$LINKSDB)
         if (count($linksToDisplay)==0)
         {
             header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found");
-            echo '<h1>404 Not found.</h1>Oh crap. This permalink does not seem to be very permanent, afterall. The link seems to have been deleted.';
+            echo '<h1>404 Not found.</h1>Oh crap. The link you are trying to reach does not exist or has been deleted.';
             echo '<br>You would mind <a href="?">clicking here</a> ?';
             exit;
         }
@@ -2423,9 +2446,11 @@ function writeConfig()
 {
     if (is_file($GLOBALS['config']['CONFIG_FILE']) && !isLoggedIn()) die('You are not authorized to alter config.'); // Only logged in user can alter config.
     if (empty($GLOBALS['redirector'])) $GLOBALS['redirector']='';
+    if (empty($GLOBALS['disablesessionprotection'])) $GLOBALS['disablesessionprotection']=false;
     $config='<?php $GLOBALS[\'login\']='.var_export($GLOBALS['login'],true).'; $GLOBALS[\'hash\']='.var_export($GLOBALS['hash'],true).'; $GLOBALS[\'salt\']='.var_export($GLOBALS['salt'],true).'; ';
     $config .='$GLOBALS[\'timezone\']='.var_export($GLOBALS['timezone'],true).'; date_default_timezone_set('.var_export($GLOBALS['timezone'],true).'); $GLOBALS[\'title\']='.var_export($GLOBALS['title'],true).';';
     $config .= '$GLOBALS[\'redirector\']='.var_export($GLOBALS['redirector'],true).'; ';
+    $config .= '$GLOBALS[\'disablesessionprotection\']='.var_export($GLOBALS['disablesessionprotection'],true).'; ';
     $config .= ' ?>';
     if (!file_put_contents($GLOBALS['config']['CONFIG_FILE'],$config) || strcmp(file_get_contents($GLOBALS['config']['CONFIG_FILE']),$config)!=0)
     {
@@ -2472,20 +2497,14 @@ function genThumbnail()
 
     if ($domain=='flickr.com' || endsWith($domain,'.flickr.com'))
     {
-        // WTF ? I need a flickr API key to get a fucking thumbnail ? No way.
-        // I'll extract the thumbnail URL myself. First, we have to get the flickr HTML page.
-        // All images in Flickr are in the form:
-        // http://farm[farm].static.flickr.com/[server]/[id]_[secret]_[size].jpg
-        // Example: http://farm7.static.flickr.com/6205/6088513739_fc158467fe_z.jpg
-        // We want the 240x120 format, which is _m.jpg.
-        // We search for the first image in the page which does not have the _s size,
-        // when use the _m to get the thumbnail.
+        // Crude replacement to handle new Flickr domain policy (They prefer www. now)
+        $url = str_replace('http://flickr.com/','http://www.flickr.com/',$url);
 
         // Is this a link to an image, or to a flickr page ?
         $imageurl='';
         if (endswith(parse_url($url,PHP_URL_PATH),'.jpg'))
-        {  // This is a direct link to an image. eg. http://farm1.static.flickr.com/5/5921913_ac83ed27bd_o.jpg
-            preg_match('!(http://farm\d+.static.flickr.com/\d+/\d+_\w+_)\w.jpg!',$url,$matches);
+        {  // This is a direct link to an image. eg. http://farm1.staticflickr.com/5/5921913_ac83ed27bd_o.jpg
+            preg_match('!(http://farm\d+\.staticflickr\.com/\d+/\d+_\w+_)\w.jpg!',$url,$matches);
             if (!empty($matches[1])) $imageurl=$matches[1].'m.jpg';
         }
         else // this is a flickr page (html)
@@ -2493,10 +2512,21 @@ function genThumbnail()
             list($httpstatus,$headers,$data) = getHTTP($url,20); // Get the flickr html page.
             if (strpos($httpstatus,'200 OK')!==false)
             {
-                preg_match('!(http://farm\d+.static.flickr.com/\d+/\d+_\w+_)[^s].jpg!',$data,$matches);
-                if (!empty($matches[1])) $imageurl=$matches[1].'m.jpg';
+                // Flickr now nicely provides the URL of the thumbnail in each flickr page.
+                preg_match('!<link rel=\"image_src\" href=\"(.+?)\"!',$data,$matches);
+                if (!empty($matches[1])) $imageurl=$matches[1];
+
+                // In albums (and some other pages), the link rel="image_src" is not provided,
+                // but flickr provides:
+                // <meta property="og:image" content="http://farm4.staticflickr.com/3398/3239339068_25d13535ff_z.jpg" />
+                if ($imageurl=='')
+                {
+                    preg_match('!<meta property=\"og:image\" content=\"(.+?)\"!',$data,$matches);
+                    if (!empty($matches[1])) $imageurl=$matches[1];
+                }
             }
         }
+
         if ($imageurl!='')
         {   // Let's download the image.
             list($httpstatus,$headers,$data) = getHTTP($imageurl,10); // Image is 240x120, so 10 seconds to download should be enough.

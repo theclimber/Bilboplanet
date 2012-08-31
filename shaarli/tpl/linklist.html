@@ -14,16 +14,19 @@
 
     {include="linklist.paging"}
 
-    {if="$search_type=='fulltext'"}
-        <div id="searchcriteria">{$result_count} results for <i>{$search_crits}</i></div>
+    {if="count($links)==0"}
+        <div id="searchcriteria">Nothing found.</i></div>
+    {else}
+        {if="$search_type=='fulltext'"}
+            <div id="searchcriteria">{$result_count} results for <i>{$search_crits}</i></div>
+        {/if}
+        {if="$search_type=='tags'"}
+            <div id="searchcriteria">{$result_count} results for tags <i>
+            {loop="search_crits"}
+                <span class="linktag" title="Remove tag"><a href="?removetag={$value|htmlspecialchars}">{$value|htmlspecialchars} <span style="border-left:1px solid #aaa; padding-left:5px; color:#6767A7;">x</span></a></span>
+            {/loop}</i></div>
+        {/if}
     {/if}
-    {if="$search_type=='tags'"}
-        <div id="searchcriteria">{$result_count} results for tags <i>
-        {loop="search_crits"}
-            <span class="linktag" title="Remove tag"><a href="?removetag={$value|htmlspecialchars}">{$value|htmlspecialchars} <span style="border-left:1px solid #aaa; padding-left:5px; color:#6767A7;">x</span></a></span>
-        {/loop}</i></div>
-    {/if}
-
     <ul>
         {loop="links"}
         <li{if="$value.class"} class="{$value.class}"{/if}>

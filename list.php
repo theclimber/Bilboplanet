@@ -208,6 +208,7 @@ $core->tpl->render('menu.filter');
 #######################
 # RENDER PAGINATION
 #######################
+/*
 if (!isset($_GET['post_id']) | empty($_GET['post_id'])){
 	if((!isset($params['page']) || $params["page"] == 0) & $rs->count()>=10) {
 		# if we are on the first page
@@ -228,19 +229,27 @@ if (!isset($_GET['post_id']) | empty($_GET['post_id'])){
 		}
 	}
 }
+ */
 
 ######################
 # RENDER POST LIST
 ######################
 
+/*
 if (!isset($_GET['post_id']) | empty($_GET['post_id'])){
 	$core->tpl = showPostsSummary($rs, $core->tpl);
 	$core->tpl->render('summary.block');
 }
+ */
 
 # Liste des articles
-$core->tpl = showPosts($rs, $core->tpl, $search_value, $popular);
-$core->tpl->render("content.posts");
+if (isset($_GET['post_id']) && !empty($_GET['post_id'])){
+	$core->tpl = showPosts($rs, $core->tpl, $search_value, $popular);
+	$core->tpl->render("content.single");
+} else {
+	$core->tpl = showPosts($rs, $core->tpl, $search_value, $popular);
+	$core->tpl->render("content.posts");
+}
 
 # Show result
 $analytics_code = getAnalyticsCode();

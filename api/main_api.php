@@ -98,28 +98,7 @@ if(isset($_POST['action'])) {
 			'theme' => $blog_settings->get('planet_theme')
 		));
 
-		if($num_page == 0 & $rs->count()>= $nb_items) {
-			# if we are on the first page
-			$tpl->render('pagination.up.next');
-			$tpl->render('pagination.low.next');
-		} elseif($num_page == 0 & $rs->count()< $nb_items) {
-			# we don't show any button
-		} else {
-			if($rs->count() == 0 | $rs->count() < $nb_items) {
-				# if we are on the last page
-				$tpl->render('pagination.up.prev');
-				$tpl->render('pagination.low.prev');
-			} else {
-				$tpl->render('pagination.up.prev');
-				$tpl->render('pagination.up.next');
-				$tpl->render('pagination.low.prev');
-				$tpl->render('pagination.low.next');
-			}
-		}
 		$tpl->render('menu.filter');
-
-		$tpl = showPostsSummary($rs, $tpl);
-		$tpl->render('summary.block');
 
 		# Liste des articles
 		$tpl = showPosts($rs, $tpl, $search_value, $popular);

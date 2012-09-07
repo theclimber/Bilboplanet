@@ -13,4 +13,5 @@ data/images/*.png
 data/images/*.gif
 data/tmp/*
 data/shaarli/*
+*.swp
 *~

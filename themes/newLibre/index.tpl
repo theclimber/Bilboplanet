@@ -154,6 +154,10 @@
 					{!include:'posts.tpl'}
 				<!-- END content.posts -->
 
+				<!-- BEGIN content.single -->
+					{!include:'single.tpl'}
+				<!-- END content.single -->
+
 				<!-- BEGIN content.portal -->
 					{!include:'portal.tpl'}
 				<!-- END content.portal -->

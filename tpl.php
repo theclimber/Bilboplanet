@@ -65,7 +65,7 @@ if ($core->auth->sessionExists() ) {
 }
 
 #######################
-# RENDER TRIBES LIST
+# RENDER TRIBES MENU
 #######################
 $user_id = '';
 if ($core->auth->sessionExists()) {
@@ -82,14 +82,30 @@ $sql_tribes = "SELECT
 	ORDER BY ordering
 		";
 
+$tribe_id = $_GET['tribe_id'];
 $rs = $core->con->select($sql_tribes);
 while($rs->fetch()) {
+	$selected='';
+	if (!empty($tribe_id) && $tribe_id==$rs->tribe_id){
+		$selected='selected';
+	}
 	$core->tpl->setVar('tribe', array(
 		'id' => $rs->tribe_id,
-		'name' => $rs->tribe_name
+		'name' => $rs->tribe_name,
+		'selected' => $selected
 		));
 	$core->tpl->render('menu.tribes');
 }
+
+$nav = array(
+	'portal' => '',
+	'popular' => '',
+	'list' => '');
+if ($tribe_id == '') {
+	$nav[$current_page] = 'selected';
+}
+$core->tpl->setVar('nav',$nav);
+$core->tpl->render('menu.nav');
 
 #######################
 # RENDER SIDEBAR
@@ -97,33 +113,9 @@ while($rs->fetch()) {
 global $current_page;
 if ($current_page == "list") {
 	if ($blog_settings->get('planet_msg_info')) {
-		$core->tpl->render('sidebar.alert');
-	}
-	if($blog_settings->get('planet_vote')) {
-		$core->tpl->render('sidebar.popular');
-	}
-	$sql_side = "SELECT
-		user_fullname as fullname,
-		".$core->prefix."user.user_id as id,
-		".$core->prefix."site.site_url as site_url,
-		".$core->prefix."site.site_name as site_name
-		FROM ".$core->prefix."user, ".$core->prefix."site
-		WHERE ".$core->prefix."user.user_id = ".$core->prefix."site.user_id
-		AND user_status = '1'
-		ORDER BY lower(user_fullname)";
-	$rs_side = $core->con->select($sql_side);
-
-	while ($rs_side->fetch()) {
-		$user_info = array(
-			"id" => urlencode($rs_side->f('id')),
-			"fullname" => $rs_side->f('fullname'),
-			"site_url" => $rs_side->f('site_url')
-			);
-		$core->tpl->setVar("user", $user_info);
-		$core->tpl->render("sidebar.users.list");
+		$core->tpl->render('main.alert');
 	}
 	$core->tpl->render('postlist.state');
-	$core->tpl->render('memberlist.box');
 }
 if ($current_page != "users") {
 	$core->tpl->render('search.box');

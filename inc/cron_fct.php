@@ -100,7 +100,8 @@ function getItemsFromFeeds ($rs, $print) {
 		}
 		echo $rs->feed_url."\n";
 
-		require_once(dirname(__FILE__).'/lib/simplepie/SimplePieAutoloader.php');
+//		require_once(dirname(__FILE__).'/lib/simplepie/SimplePieAutoloader.php');
+		require_once(dirname(__FILE__).'/lib/simplepie/simplepie_1.3.compiled.php');
 		# On cree un objet SimplePie et on ajuste les parametres de base
 		$feed = new SimplePie();
 		$feed->set_feed_url($rs->feed_url);

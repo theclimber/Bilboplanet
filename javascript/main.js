@@ -138,7 +138,7 @@ function arrayToString(array) {
 
 function updatePostList() {
 	$('#filter-status').attr('style', '');
-	var main_div = "body";
+	var main_div = "main-body";
 	$('div#'+main_div).fadeTo('slow', 0.5, function(){});
 	$.ajax({
 		type: "POST",

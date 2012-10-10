@@ -119,7 +119,7 @@ if ($current_page == "list") {
 }
 if ($current_page != "users") {
 	$core->tpl->render('search.box');
-	$core->tpl->render("content.sidebar");
+	$core->tpl->render("content.topbar");
 }
 
 #####################

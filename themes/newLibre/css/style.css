@@ -13,7 +13,6 @@ Author: Thomas Bourcey and Gregoire de Hemptinne
 @import url(reset.css);
 @import url(boxy.css);
 body{
-    /*font-family:Georgia, "Times New Roman", Times, Serif;*/
     background-color:#dfdfdf;
 }
 a{
@@ -34,7 +33,6 @@ h1, h1 a{
 	font-size: 24px;
 	letter-spacing: -1px;
 	line-height: 100%;
-	/*font-family: Georgia, "Times New Roman", Times, serif;*/
 }
 h1 a:hover {
 	color: #1FA2E1;
@@ -42,7 +40,6 @@ h1 a:hover {
 }
 h1.no-box{
     font-size:20px;
-    /*font-family:Georgia, "Times New Roman", Times, Serif;*/
     color:#464646;
     margin-bottom:15px;
 }
@@ -138,19 +135,28 @@ color:#333;
 }
 .box{
     background-color:white;
-    padding:15px;
-    margin:25px 0;
+    padding:5px 10px;
+    margin:10px 0;
     /* overflow:auto; http://www.sitepoint.com/blogs/2005/02/26/simple-clearing-of-floats/ */
 
     -moz-border-radius:5px;
     -khtml-border-radius:5px;
     -webkit-border-radius:5px;
     border-radius:5px;
-
-/*    box-shadow:0px 1px 2px #ababab;
-    -moz-box-shadow:0px 1px 2px #ababab;
-    -webkit-box-shadow:0px 1px 2px #ababab;
-    -khtml-box-shadow:0px 1px 2px #ababab;*/
+}
+div.flash{
+	background: #a1e798 url('../images/information.png') no-repeat left top;
+	color: #227617;
+	border: 1px solid #227617;
+	padding-left: 80px;
+	min-height: 60px;
+}
+div.page-status{
+	background: #f6ed8c url('../images/lightbulb.png') no-repeat left top;
+	color: #8f8516;
+	border: 1px solid #8f8516;
+	padding-left: 80px;
+	min-height: 60px;
 }
 /*
 div.membersBox {
@@ -158,9 +164,9 @@ div.membersBox {
     overflow-y: auto;
 }
 */
-.firstbox {
+/*.firstbox {
 	margin: 5px 0 25px 0px;
-}
+}*/
 
 .post-nav a {
     color:#5b5b5b;
@@ -191,6 +197,7 @@ div.membersBox {
     color:#5c5c5c;
     font-size:12px;
     line-height:22px;
+	margin: 40px 0;
 }
 .post div.post-text {
 	width: 100%;
@@ -277,8 +284,7 @@ div.post-meta{
 
 .post p {
     margin: 7px;
-    font-size: 14px;
-    line-height: 22px;
+    font-size: 12px;
 }
 
 div#posts-list div.post {
@@ -296,7 +302,7 @@ padding: 20px;
 margin-right: 2px;
 overflow: hidden;
 text-shadow: 1px 1px white;
-margin: 30px -15px 10px -15px;
+margin: 30px -10px 10px;
 }
 
 .postbox p {
@@ -304,6 +310,10 @@ margin: 30px -15px 10px -15px;
 	/*font-family: 'georgia', arial, serif;*/
     font-size: 14px;
 	line-height: 16px;
+}
+.postbox .socialbar {
+	display: block;
+	height: 20px;
 }
 .post-summary-return {
     background:url(../images/go-top.png) no-repeat;
@@ -613,15 +623,17 @@ ul#categories li ul li a {
 }
 /* Header */
 div#header-bg{
-    text-align:center;
-    background:black url('../images/header-bg.png') scroll top left repeat;
+    background:black url('../images/header-bg-mid.png') scroll top left repeat;
+	border-bottom: black solid 3px;
 }
 div#header{
-    background-image:url('../images/header-bg-mid.png');
-    height:92px;
+    height:60px;
+	display: inline-block;
+	width: 350px;
+    text-align:left;
+	margin-left: 20px;
 }
 img#logo{
-    margin-top:15px;
     font-size:30px; /* Affects size of alt text if image is missing */
 	display:inline-block;
 }
@@ -632,8 +644,9 @@ a#planet-title {
 	color: #cfcfcf;
     font-size:24px;
 	font-style:bold;
+    font-family:Georgia, "Times New Roman", Times, Serif;
 }
-div.description{
+/*div.description{
     font-size:14px;
     font-style:italic;
     color:#cfcfcf;
@@ -641,6 +654,52 @@ div.description{
 	vertical-align: top;
 	padding-top: 26px;
 	padding-left: 50px;
+}*/
+div#header-menu {
+	display: inline-block;
+	float: right;
+	height: 60px;
+	width: 60px;
+	margin-right: 20px;
+}
+div#header-menu:hover {
+	background: #000;
+}
+div#body-bg {
+	margin: 0px;
+}
+/* Body Wrapper */
+div#body{
+	display: block;
+	margin-left: 250px;
+	padding : 1px 15px;
+}
+div#tribes-bg {
+	float: left;
+	display: block;
+	width: 250px;
+	font-family: Arial;
+	font-style: bold;
+	font-size: 15px;
+	background: url('../images/header-bg.png');
+	padding: 25px 0;
+}
+div#tribes-bg ul#tribes {
+	list-style: none;
+}
+div#tribes-bg ul#tribes li {
+	padding: 10px;
+	border-radius: 5px 0 0 5px;
+}
+div#tribes-bg ul#tribes li.entry:hover {
+	background-color: #b7b7b7;
+}
+div#tribes-bg ul#tribes li a{
+	color: #5C5C5C;
+}
+div#tribes-bg ul#tribes li.selected {
+/*	background-color: #e4e4e4;*/
+    background-color:#dfdfdf;
 }
 div#followers{ /* Followers */
 	background:transparent url('../images/followers-bg.png') repeat;
@@ -727,10 +786,6 @@ ul#categories li{
 }
 
 
-/* Body Wrapper */
-div#body{
-    margin-top:15px;
-}
 /* Left Sidebar */
 div#primary{
     width:185px;
@@ -756,10 +811,10 @@ div#primary li{
     margin-bottom:2px;
 }
 /* Main Body */
-div#content{
-    width:700px;
-    float:left;
-    margin:0 17px 0 0;
+.content{
+    margin:0 auto;
+    text-align:left;
+	font-family: Arial;
 }
 
 /* Right Sidebar */
@@ -774,8 +829,12 @@ div#secondary{
 }
 .search{ /* Search Widget */
          padding:8px;
-         border:1px solid white;
-         background:white url('../images/search-bg.png') top left repeat-x;
+         border:1px solid gray;
+         background: top left repeat-x;
+		 display: inline-block;
+		 vertical-align: top;
+		 height: 20px;
+		 margin: 10px 0;
 }
 .search-field{
     border:0;
@@ -1676,11 +1735,6 @@ div.similar-block {
 	border: 1px #000;
 	margin : 10px 0 25px;
 }
-.content{
-    width:1100px;
-    margin:0 auto;
-    text-align:left;
-}
 .fullwidth {
 
     float: none !important;
@@ -1688,8 +1742,8 @@ div.similar-block {
     width: 1100px !important;
 }
 .pages {
-    margin-left: 0px !important;
-    width: 838px !important;
+    margin-left: 60px !important;
+/*    width: 838px !important;*/
 }
 .pages-left {
     margin: 0px !important;

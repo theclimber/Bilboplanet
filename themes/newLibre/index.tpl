@@ -1,6 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
+<meta charset="utf-8" />
 <meta name="description" content="{$planet.desc}" />
 <title>{$params.title}</title>
 
@@ -46,14 +47,13 @@
 		<div id="header">
 			<!-- Logo -->
 			<div id="logo">
-				<a href="{$planet.url}"><img alt="{$planet.title}" src="{$planet.url}/themes/{$planet.theme}/images/planet.png" id="logo" /></a>
-				<a href="{$planet.url}" id="planet-title">{$planet.title}</a>
-				<div class="description">{$planet.desc}</div>
+				<a href="{$planet.url}"><img alt="{$planet.title}" src="{$planet.url}/themes/{$planet.theme}/images/logo.png" id="logo" /></a>
+				<a href="{$planet.url}" id="planet-title" title="{$planet.desc}">{$planet.title}</a>
 			</div>
 		</div>
 
 		<!-- BEGIN search.box -->
-		<div class="search box firstbox">
+		<div class="search">
 			<form id="search_form">
 				<!-- BEGIN search.popular -->
 				<input type="hidden" id="popular" name="popular"
@@ -78,7 +78,10 @@
 		</div>
 		<!-- END search.box -->
 
-		<div id="navigation-bg"><a name="top"></a>
+		<div id="header-menu">
+			<img src="{$planet.url}/themes/{$planet.theme}/images/menu_bullets.png" title="{_Main menu}" alt="{_Main menu}">
+		</div>
+		<div id="navigation-bg" style="display:none"><a name="top"></a>
 			<ul class="content" id="navigation">
 			<!-- BEGIN menu.contact -->
 				<li><a href="{$planet.url}/contact.php">{_Contact us}</a></li>
@@ -92,7 +95,7 @@
 
 		<!-- BEGIN page.loginbox -->
 			<!-- BEGIN menu.shaarli -->
-				<li><a href="{$shaarli_instance}">{_Shaarli}</a></li>
+				<li><a href="{$shaarli_instance}">{_My Shaarli}</a></li>
 			<!-- END menu.shaarli -->
 				<li><a href="{$planet.url}/user/">{_Dashboard} - {$login.username}</a></li>
 			<!-- BEGIN page.loginadmin -->
@@ -113,43 +116,23 @@
 
 
 	<div class="clear" id="body-bg">
+		<!-- ADD TRIBES HERE 
+			on the left : -->
+		<div id="tribes-bg">
+			{!include:'menu.tpl'}
+		</div>
 
-		<!-- ADD TRIBES HERE -->
-		{!include:'menu.tpl'}
-
+		<!-- On the right : -->
 		<div class="content" id="body">
-			<!-- BEGIN menu.filter -->
-			<div id="submenu">
-				<ul>
-					<li class="{$filter.day}">
-						<a class="first" href="index.php?{$filter_url}filter=day">
-							{_Posts of the day}</a>
-					</li>
-					<li class="{$filter.week}">
-						<a class="filter" href="index.php?{$filter_url}filter=week">
-							{_Posts of the week}</a>
-					</li>
-					<li class="{$filter.month}">
-						<a class="filter" href="index.php?{$filter_url}filter=month">
-							{_Posts of the month}</a>
-					</li>
-					<li>
-						<a class="filter" href="index.php?{$filter_url}">
-							{_All posts}</a>
-					</li>
-				</ul>
+
+			<div id="top-area">
+				<!-- BEGIN content.topbar -->
+				{!include:'topbar.tpl'}
+				<!-- END content.topbar -->
 			</div>
 
-			<!-- BEGIN main.alert -->
-			<div class="box">
-				<h2>Info Flash</h2>
-				<p>{$planet.msg_info}</p>
-			</div>
-			<!-- END main.alert -->
-
-			<!-- END menu.filter -->
-
-				<!-- ADD CONTENT HERE -->
+			<!-- ADD CONTENT HERE -->
+			<div id="main-body">
 				<!-- BEGIN content.posts -->
 					{!include:'posts.tpl'}
 				<!-- END content.posts -->
@@ -197,13 +180,6 @@
 				<!-- BEGIN content.archives -->
 					{!include:'archives.tpl'}
 				<!-- END content.archives -->
-
-			</div>
-
-			<div class="widget-area" id="secondary">
-				<!-- BEGIN content.sidebar -->
-				{!include:'sidebar.tpl'}
-				<!-- END content.sidebar -->
 			</div>
 
 		</div><!-- end content -->

@@ -405,11 +405,12 @@ function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_c
 		if(count($tags_to_remove) > 0) {
 			foreach ($tags_to_remove as $tag) {
 				$core->con->execute("DELETE FROM ".$core->prefix."post_tag
-					WHERE tag_id ='$tag' AND post_id = ".$post_id);
+					WHERE tag_id ='".$core->con->escape($tag)."' AND post_id = ".$post_id);
 			}
 		}
 		if(count($tags_to_append) > 0) {
 			foreach ($tags_to_append as $tag) {
+//				$tag = $core->con->escape($tag);
 				$cur = $core->con->openCursor($core->prefix.'post_tag');
 				$cur->tag_id = $tag;
 				$cur->post_id = $post_id;

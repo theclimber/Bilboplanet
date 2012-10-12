@@ -62,6 +62,8 @@ if ($core->auth->sessionExists() ) {
 		$core->tpl->render('menu.shaarli');
 	}
 	$core->tpl->render('page.loginbox');
+} else {
+	$core->tpl->setVar('login-came-from', curPageURL());
 }
 
 #######################

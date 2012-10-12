@@ -78,10 +78,10 @@
 		</div>
 		<!-- END search.box -->
 
-		<div id="header-menu">
+		<div id="header-menu" onclick="javascript:showNavigationMenu()">
 			<img src="{$planet.url}/themes/{$planet.theme}/images/menu_bullets.png" title="{_Main menu}" alt="{_Main menu}">
 		</div>
-		<div id="navigation-bg" style="display:none"><a name="top"></a>
+		<div id="navigation-bg" style="display:none">
 			<ul class="content" id="navigation">
 			<!-- BEGIN menu.contact -->
 				<li><a href="{$planet.url}/contact.php">{_Contact us}</a></li>
@@ -93,6 +93,7 @@
 				<li><a href="{$planet.url}/stats.php">{_Stats}</a></li>
 			<!-- END menu.votes -->
 
+		<hr>
 		<!-- BEGIN page.loginbox -->
 			<!-- BEGIN menu.shaarli -->
 				<li><a href="{$shaarli_instance}">{_My Shaarli}</a></li>
@@ -103,19 +104,20 @@
 			<!-- END page.loginadmin -->
 				<li><a href="?logout={$planet.url}">{_Logout}</a></li>
 		<!-- ELSE page.loginbox -->
-				<li><a href="{$planet.url}/auth.php?came_from={$login.came_from}">
+				<li><a href="{$planet.url}/auth.php?came_from={$login-came-from}">
 					{_Login}</a></li>
-		<!-- END page.loginbox -->
-
 		<!-- BEGIN menu.subscription -->
 				<li><a href="{$planet.url}/signup.php">{_Register}</a></li>
 		<!-- END menu.subscription -->
+		<!-- END page.loginbox -->
+
 			</ul>
 		</div>
 	</div>
 
 
 	<div class="clear" id="body-bg">
+		<a name="top"></a>
 		<!-- ADD TRIBES HERE 
 			on the left : -->
 		<div id="tribes-bg">

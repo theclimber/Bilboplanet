@@ -85,8 +85,39 @@ $(document).ready(function() {
 		});
 	}
 
-
+	$('div#more-button').click(function() {
+		showMore();
+	});
 });
+
+function showMore() {
+	this.page += 1;
+	$('#filter-status').attr('style', '');
+	var main_div = "main-body";
+	$('div#'+main_div).fadeTo('slow', 0.5, function(){});
+	$.ajax({
+		type: "POST",
+		url: "api/",
+		data: {
+			'ajax' : 'main',
+			'action' : 'list',
+			'page' : this.page,
+			'nb_items' : this.nb_items,
+			'search' : this.search,
+			'popular' : this.popular,
+			'tags' : arrayToString(this.tags),
+			'users' : arrayToString(this.users),
+			'period' : this.period,
+			'post_status' : this.post_status
+		},
+		success: function(msg){
+			var postlist = $(msg).find('#posts-list');
+			$('div#'+main_div).find('#posts-list').append(postlist.html());
+			$('div#'+main_div).fadeTo('slow', 1, function(){});
+			$('div#'+main_div).trigger('ready');
+		}
+	});
+}
 
 function expand_block (id) {
 	var block = $('div#text-'+id);

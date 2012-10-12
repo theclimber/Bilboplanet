@@ -183,9 +183,6 @@ if (isset($_GET)) {
 	if (isset($_GET['popular']) && !empty($_GET['popular'])){
 		$core->tpl->render('search.popular');
 	}
-	if (isset($_GET['search']) && !empty($_GET['search'])){
-		$core->tpl->render('search.line');
-	}
 	if ((isset($_GET['tags']) && !empty($_GET['tags'])) ||
 		(isset($_GET['user_id']) && !empty($_GET['user_id']))){
 		$core->tpl->render('feed.tags');

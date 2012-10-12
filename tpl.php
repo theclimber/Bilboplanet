@@ -77,7 +77,8 @@ if ($core->auth->sessionExists()) {
 $sql_tribes = "SELECT
 		user_id,
 		tribe_name,
-		tribe_id
+		tribe_id,
+		tribe_icon
 	FROM ".$core->prefix."tribe
 	WHERE (user_id = 'root' OR user_id = '".$user_id."')
 		AND visibility = 1
@@ -94,6 +95,7 @@ while($rs->fetch()) {
 	$core->tpl->setVar('tribe', array(
 		'id' => $rs->tribe_id,
 		'name' => $rs->tribe_name,
+		'icon' => $rs->tribe_icon,
 		'selected' => $selected
 		));
 	$core->tpl->render('menu.tribes');

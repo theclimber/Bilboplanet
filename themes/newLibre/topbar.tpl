@@ -23,6 +23,9 @@
 
 	<!-- BEGIN postlist.state -->
 	<div class="box page-status">
+		<div id="filter-order">
+			Order by <a href="#">{_latest first}</a> - <a href="#">{_popular first}</a>
+		</div>
 		<div id="filter-status">
 			<h2 id="filter-title">{_Etat de la page}</h2>
 			<div id="filter-nb-items">{_Nombre d'articles :} <span id="filter-nb-items-content">

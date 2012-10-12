@@ -1,12 +1,5 @@
 <div id="content" class="pages">
 
-	<!-- BEGIN search.line -->
-	<div class="post box">
-		<p>Vous avez effectué une recherche dans tous les articles avec le mot:
-		<b>&laquo;&nbsp;{$search_value}&nbsp;&raquo;</b></p>
-	</div>
-	<!-- END search.line -->
-
 	<div id="posts-list">
 
 		<!-- BEGIN post.block -->
@@ -19,15 +12,15 @@
 				<a href="{$planet.url}/index.php?post_id={$post.id}" title="{$post.title}">{_Voir l'article}</a>-->
 
 			<!-- [title] -->
-			<h1 class="post-title"><a name="post{$post.id}" href="{$planet.url}/?post_id={$post.id}" title="Visitez la source">{$post.title}</a></h1>
+			<h1 class="post-title"><a name="post{$post.id}" href="{$planet.url}/?post_id={$post.id}" title="{_Visit the source}">{$post.title}</a></h1>
 			<div class="post-author">
 			<!-- BEGIN post.block.gravatar -->
 				<div class="post-avatar">
-					<a href="#" onclick="javascript:add_user('{$post.author_id}')" title="Afficher les articles de l'utilisateur">
+					<a href="#" onclick="javascript:add_user('{$post.author_id}')" title="{_Display posts of this user}">
 					<img src="{$avatar_url}&size=32" class="gravatar" /></a>
 				</div>
 			<!-- END post.block.gravatar -->
-			{_Par} <a href="#" onclick="javascript:add_user('{$post.author_id}')">{$post.author_fullname}</a>, {_à} {$post.hour}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{$post.permalink}" alt="Permalien">Permalien</a>
+			{_Par} <a href="#" onclick="javascript:add_user('{$post.author_id}')">{$post.author_fullname}</a>, {_à} {$post.hour}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{$post.permalink}" alt="{_Permalink}">{_Permalink}</a>
 			<!-- BEGIN post.block.votes -->
 			<div class="post-vote">{$votes.html}</div>
 			<!-- END post.block.votes -->
@@ -39,7 +32,7 @@
 			<!-- [meta] -->
 
 			<!-- [post content] -->
-			<div id="text-{$post.id}" class="post-text" post_id="{$post.id}">{$post.content}</div>
+			<div id="text-{$post.id}" class="post-text" post_id="{$post.id}">{$post.short_content}</div>
 			<!-- [post footer] -->
 			<div class="postbox">
 
@@ -55,21 +48,26 @@
 				</div>
 
 				<div id="expand-button-{$post.id}" class="collapse-button" onclick="javascript:expand_block({$post.id})">&nbsp;</div>
-				Cet article a été vu {$post.nbview} fois. <a href="#" onclick="javascript:add_user('{$post.author_id}')">{$post.author_fullname}</a> a déjà publié <b>{$post.user_posts}</b> articles sur ce planet.<br />
-				Aller voir <a href="{$post.permalink}">l'article original</a><br />
+				{_Number of times this post was viewed :} {$post.nbview}<br/>
+				{_Number of posts published by }<a href="#" onclick="javascript:add_user('{$post.author_id}')">{$post.author_fullname}</a> : <b>{$post.user_posts}</b><br />
+				Have a look on the <a href="{$post.permalink}">{_original post}</a><br />
 			</div>
 
 			<!-- BEGIN post.backsummary -->
-			<a href="#top" class="post-summary-return" title="Retour au sommaire">&nbsp;</a>
+			<a href="#top" class="post-summary-return" title="{_Back to summary}">&nbsp;</a>
 			<!-- END post.backsummary -->
 
 		</div>
 		<!-- ELSE post.block -->
 		<div class="post box">
-			<h1 class="post-title">Aucun article trouvé</h1>
-			<p>Vous pouvez effectuer une nouvelle recherche :</p>
+			<h1 class="post-title">{_No post found}</h1>
+			<p>{_You can launch a new search}</p>
 		</div>
 		<!-- END post.block -->
+	</div>
+
+	<div id="more-button">
+		<a href="#">{_More}</a>
 	</div>
 
 </div>

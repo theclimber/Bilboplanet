@@ -13,7 +13,9 @@ Author: Thomas Bourcey and Gregoire de Hemptinne
 @import url(reset.css);
 @import url(boxy.css);
 body{
-    background-color:#dfdfdf;
+/*    background-color:#dfdfdf;
+	background-color : #b7b7b7;*/
+	background: url('../images/header-bg.png');
 }
 a{
     color:#247ca5;
@@ -492,14 +494,15 @@ div#navigation-bg{
 	border-radius: 0 0 10px 10px;
 	font-size:11px;
 /*	text-transform:uppercase;*/
+    background:#000; /* url('../images/nav-bg2.png') scroll top left repeat-x;*/
     text-align:right;
-    background:black; /* url('../images/nav-bg2.png') scroll top left repeat-x;*/
 	width: 200px;
 	padding: 0 15px 10px 0;
 }
 ul#navigation{
     color:#acacac;
     list-style-image:none;
+    background:#000; /* url('../images/nav-bg2.png') scroll top left repeat-x;*/
 }
 ul#navigation li a{
     display: block;
@@ -707,6 +710,7 @@ div#primary li{
     margin:0 auto;
     text-align:left;
 	font-family: Arial;
+    background-color:#dfdfdf;
 }
 
 /* Right Sidebar */
@@ -1270,6 +1274,11 @@ padding-bottom:13px;
 padding-right:21px;
 text-align:left;
 }
+#filter-order {
+	display:block;
+	float: right;
+	font-size: 10px;
+}
 div.post_description div.tag-line {
     margin : 5px 5px;
 }
@@ -1350,6 +1359,7 @@ div#filter-feed {
 	background: url('../images/rss_24.png') no-repeat;
 	padding-left : 25px;
 	margin: 5px;
+	line-height: 25px;
 }
 div#userMenu {
 	padding: 5px 0;

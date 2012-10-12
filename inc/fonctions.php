@@ -431,7 +431,7 @@ function generate_SQL(
 				post_content	as content,
 				post_nbview		as nbview,
 				last_viewed		as last_viewed,
-				SUBSTRING(post_content,1,400) as short_content,
+				SUBSTRING(post_content,1,1200) as short_content,
 				".$core->prefix."post.post_id		as post_id,
 				post_score		as score,
 				post_status		as status,
@@ -742,6 +742,7 @@ function showPosts($rs, $tpl, $search_value="", $strip_tags=false) {
 			"permalink" => urldecode($post_permalink),
 			"title" => html_entity_decode($rs->title, ENT_QUOTES, 'UTF-8'),
 			"content" => html_entity_decode($rs->content, ENT_QUOTES, 'UTF-8'),
+			"short_content" => html_entity_decode($rs->short_content, ENT_QUOTES, 'UTF-8'),
 			"author_id" => $rs->user_id,
 			"author_fullname" => $rs->user_fullname,
 			"author_email" => $rs->user_email,
@@ -761,6 +762,12 @@ function showPosts($rs, $tpl, $search_value="", $strip_tags=false) {
 			# Format the occurences of the search request in the posts title
 			$post['title'] = split_balise($search_value, '<span class="search_title">'.$search_value.'</span>', $post['title'], 'str_ireplace', 1);
 		}
+		$post['short_content'] = strip_tags($post['short_content'])."&nbsp;[...]".
+				'<br /><a href="'.$post['permalink'].'" title="'.$post['title'].'">'.T_('Read more').'</a>';
+		if($strip_tags) {
+			$post['content'] = $post['short_content'];
+		}
+		$post_tags = getPostTags($rs->post_id);
 
 		$tpl->setVar('post', $post);
 		# Gravatar
@@ -775,11 +782,6 @@ function showPosts($rs, $tpl, $search_value="", $strip_tags=false) {
 			$tpl->setVar('votes', $votes);
 			$tpl->render('post.block.votes');
 		}
-		if($strip_tags) {
-			$post['content'] .= strip_tags($post['content'])."&nbsp;[...]".
-				'<br /><a href="'.$post['permalink'].'" title="'.$post['title'].'">'.T_('Read more').'</a>';
-		}
-		$post_tags = getPostTags($rs->post_id);
 		if (!empty($post_tags)){
 			foreach ($post_tags as $tag) {
 				$tpl->setVar('post_tag', $tag);

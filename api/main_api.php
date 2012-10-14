@@ -76,7 +76,41 @@ if(isset($_POST['action'])) {
 		$popular = !empty($_POST['popular']) ? true : false;
 		$post_status = !empty($_POST['post_status']) ? trim($_POST['post_status']) : 1;
 
+		$tribe_id = !empty($_POST['tribe']) ? trim($_POST['tribe']) : '';
+
 		# On recupere les informtions sur les membres
+		$sql = '';
+		if ($tribe_id != '') {
+			$rs_tribe = $core->con->select("SELECT 
+				tribe_tags,
+				tribe_notags,
+				tribe_users,
+				tribe_nousers,
+				tribe_search
+				FROM ".$core->prefix."tribe
+				WHERE tribe_id = '".$tribe_id."'");
+			if ($rs_tribe->count() == 1) {
+				$tribe_tags = preg_split('/,/',$rs_tribe->f('tribe_tags'), -1, PREG_SPLIT_NO_EMPTY);
+				foreach($tribe_tags as $tag) {
+					$tags[] = $tag;
+				}
+				$tribe_users = preg_split('/,/',$rs_tribe->f('tribe_users'), -1, PREG_SPLIT_NO_EMPTY);
+				foreach($tribe_users as $user) {
+					$users[] = $user;
+				}
+				$tribe_notags = preg_split('/,/',$rs_tribe->f('tribe_notags'), -1, PREG_SPLIT_NO_EMPTY);
+				foreach($tribe_notags as $notag) {
+					$key = array_search($notag, $tags);
+					unset($tags[$key]);
+				}
+				$tribe_nousers = preg_split('/,/',$rs_tribe->f('tribe_nousers'), -1, PREG_SPLIT_NO_EMPTY);
+				foreach($tribe_nousers as $nouser) {
+					$key = array_search($nouser, $users);
+					unset($users[$key]);
+				}
+			}
+		}
+		# Terminaison de la commande SQL
 		$sql = generate_SQL(
 			$num_start,
 			$nb_items,
@@ -87,8 +121,8 @@ if(isset($_POST['action'])) {
 			$popular,
 			null,
 			$post_status);
-		#print $sql;
-		#exit;
+#		print $sql;
+#		exit;
 		$rs = $core->con->select($sql);
 
 		$tpl = new Hyla_Tpl(dirname(__FILE__).'/../themes/'.$blog_settings->get('planet_theme').'/');
@@ -101,7 +135,7 @@ if(isset($_POST['action'])) {
 		$tpl->render('menu.filter');
 
 		# Liste des articles
-		$tpl = showPosts($rs, $tpl, $search_value, $popular);
+		$tpl = showPosts($rs, $tpl, $search_value, true, $popular);
 
 		$result = array(
 			"posts" => $tpl->render('content.posts'),

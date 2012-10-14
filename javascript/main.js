@@ -2,6 +2,7 @@ this.page = 0;
 this.nb_items = 10;
 this.search = getUrlParameter('search');
 this.popular = getUrlParameter('popular');
+this.tribe = getUrlParameter('tribe_id');
 this.tags = new Array();
 this.users = new Array();
 this.period = '';
@@ -12,6 +13,7 @@ $(document).ready(function() {
 	this.nb_items = 10;
 	this.search = getUrlParameter('search');
 	this.popular = getUrlParameter('popular');
+	this.tribe = getUrlParameter('tribe_id');
 	if (this.popular == 'true') {
 		$('#filter-popular').attr('style', '');
 	}
@@ -151,6 +153,7 @@ function updatePostList() {
 			'search' : this.search,
 			'popular' : this.popular,
 			'tags' : arrayToString(this.tags),
+			'tribe' : this.tribe,
 			'users' : arrayToString(this.users),
 			'period' : this.period,
 			'post_status' : this.post_status
@@ -426,4 +429,47 @@ function getUrlVars()
         vars[hash[0]] = hash[1];
     }
     return vars;
+}
+
+$('div#more-button').ready(function() {
+	if ($('div#more-button').length > 0) {
+		$(window).scroll(function(){
+			if  ($(window).scrollTop() == $(document).height() - $(window).height()){
+				showMore();
+			}
+		});
+		$('div#more-button').click(function() {
+			showMore();
+		});
+	}
+});
+
+function showMore() {
+	this.page += 1;
+	$('#filter-status').attr('style', '');
+	var main_div = "main-body";
+	//$('div#'+main_div).fadeTo('slow', 0.5, function(){});
+	$.ajax({
+		type: "POST",
+		url: "api/",
+		data: {
+			'ajax' : 'main',
+			'action' : 'list',
+			'page' : this.page,
+			'nb_items' : this.nb_items,
+			'search' : this.search,
+			'popular' : this.popular,
+			'tags' : arrayToString(this.tags),
+			'tribe' : this.tribe,
+			'users' : arrayToString(this.users),
+			'period' : this.period,
+			'post_status' : this.post_status
+		},
+		success: function(msg){
+			var postlist = $(msg).find('#posts-list');
+			$('div#'+main_div).find('#posts-list').append(postlist.html());
+			//$('div#'+main_div).fadeTo('slow', 1, function(){});
+			$('div#'+main_div).trigger('ready');
+		}
+	});
 }

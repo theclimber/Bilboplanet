@@ -113,7 +113,7 @@ if(isset($_POST['action'])) {
 		$tpl->render('menu.filter');
 
 		# Liste des articles
-		$tpl = showPosts($rs, $tpl, $search_value, $popular);
+		$tpl = showPosts($rs, $tpl, $search_value, true,$popular);
 
 		$result = array(
 			"posts" => $tpl->render('content.posts'),

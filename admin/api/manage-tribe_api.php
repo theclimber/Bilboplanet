@@ -603,7 +603,7 @@ if(isset($_POST['action'])) {
 			imagedestroy($image)
 				or $error[] = T_('Error while deleting temporary image');
 
-			$filename = $tribe_id.'-'.time().'.'.$userfile_ext;
+			$filename = 'tribe-'.$tribe_id.'-'.time().'.'.$userfile_ext;
 			$file_fullpath = $folder.'/'.strtolower($filename);
 			if (is_file($file_fullpath)) {
 				$error[] = T_('The file you want to copy is alreay existing. Please try again.');

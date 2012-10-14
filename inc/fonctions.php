@@ -429,6 +429,7 @@ function generate_SQL(
 				post_title		as title,
 				post_permalink	as permalink,
 				post_content	as content,
+				post_image		as image,
 				post_nbview		as nbview,
 				last_viewed		as last_viewed,
 				SUBSTRING(post_content,1,1200) as short_content,
@@ -703,6 +704,7 @@ function showTribe($sql_posts) {
 				"permalink" => urldecode($post_permalink),
 				"title" => html_entity_decode($rs_posts->title, ENT_QUOTES, 'UTF-8'),
 				"content" => html_entity_decode($rs_posts->content, ENT_QUOTES, 'UTF-8'),
+				"image" => $rs_posts->image,
 				"author_id" => $rs_posts->user_id,
 				"author_fullname" => $rs_posts->user_fullname,
 				"author_email" => $rs_posts->user_email,
@@ -720,7 +722,7 @@ function showTribe($sql_posts) {
 	}
 }
 
-function showPosts($rs, $tpl, $search_value="", $strip_tags=false) {
+function showPosts($rs, $tpl, $search_value="", $multiview=true, $strip_tags=false) {
 	global $blog_settings, $core, $user_settings;
 	$avatar = $blog_settings->get('planet_avatar');
 
@@ -743,6 +745,7 @@ function showPosts($rs, $tpl, $search_value="", $strip_tags=false) {
 			"title" => html_entity_decode($rs->title, ENT_QUOTES, 'UTF-8'),
 			"content" => html_entity_decode($rs->content, ENT_QUOTES, 'UTF-8'),
 			"short_content" => html_entity_decode($rs->short_content, ENT_QUOTES, 'UTF-8'),
+			"image" => $rs->image,
 			"author_id" => $rs->user_id,
 			"author_fullname" => $rs->user_fullname,
 			"author_email" => $rs->user_email,
@@ -776,6 +779,12 @@ function showPosts($rs, $tpl, $search_value="", $strip_tags=false) {
 			$tpl->setVar('avatar_url', "http://cdn.libravatar.org/avatar/".md5($avatar_email)."?d=".urlencode($blog_settings->get('planet_url')."/themes/".$blog_settings->get('planet_theme')."/images/gravatar.png"));
 
 			$tpl->render('post.block.gravatar');
+		}
+		if ($multiview) {
+			if ($post['image'] != '') {
+				$tpl->render('post.image');
+			}
+			$tpl->render('post.multi');
 		}
 		if ($blog_settings->get('planet_vote') && $core->auth->sessionExists()) {
 			$votes = array("html" => afficheVotes($rs->score, $rs->post_id));
@@ -1628,6 +1637,22 @@ function curPageURL() {
 		$pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
 	}
 	return $pageURL;
+}
+
+function startsWith($haystack, $needle)
+{
+    $length = strlen($needle);
+    return (substr($haystack, 0, $length) === $needle);
+}
+
+function endsWith($haystack, $needle)
+{
+    $length = strlen($needle);
+    if ($length == 0) {
+        return true;
+    }
+
+    return (substr($haystack, -$length) === $needle);
 }
 
 ?>

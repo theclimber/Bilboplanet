@@ -63,6 +63,7 @@ $_s->post
 	->post_permalink	('text',	0,	true, null)
 	->post_title		('text',	0,	true, null)
 	->post_content	('text',		0,  true, null)
+	->post_image	('text',		0,	true, null)
 	->post_status	('smallint',	0,	false, 1)
 	->post_comment	('smallint',	0,	false, 1)
 	->post_score	('integer',		0,	false, 0)

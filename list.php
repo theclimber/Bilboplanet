@@ -232,19 +232,13 @@ if (!isset($_GET['post_id']) | empty($_GET['post_id'])){
 # RENDER POST LIST
 ######################
 
-/*
-if (!isset($_GET['post_id']) | empty($_GET['post_id'])){
-	$core->tpl = showPostsSummary($rs, $core->tpl);
-	$core->tpl->render('summary.block');
-}
- */
 
 # Liste des articles
 if (isset($_GET['post_id']) && !empty($_GET['post_id'])){
-	$core->tpl = showPosts($rs, $core->tpl, $search_value, $popular);
+	$core->tpl = showPosts($rs, $core->tpl, $search_value, false, $popular);
 	$core->tpl->render("content.single");
 } else {
-	$core->tpl = showPosts($rs, $core->tpl, $search_value, $popular);
+	$core->tpl = showPosts($rs, $core->tpl, $search_value, true, $popular);
 	$core->tpl->render("content.posts");
 }
 

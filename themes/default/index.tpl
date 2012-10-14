@@ -28,7 +28,7 @@
 <link rel="icon" type="image/png" href="{$planet.url}/themes/{$planet.theme}/favicon.png" />
 
 <!-- JS -->
-<script type="text/javascript" src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 <script type="text/javascript" src="{$planet.url}/themes/{$planet.theme}/js/jquery.boxy.js"></script>
 <script type="text/javascript" src="{$planet.url}/themes/{$planet.theme}/js/planet_fct.js"></script>
 <script type="text/javascript" src="{$planet.url}/themes/{$planet.theme}/js/votes.js"></script>

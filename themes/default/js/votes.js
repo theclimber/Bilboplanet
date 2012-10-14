@@ -1,6 +1,6 @@
 /* Fonction de vote */
 function vote(num_article, token, type) {
-  $.ajax({
+  jQuery.ajax({
   type: "POST",
   url: "api/votes.php",
   data: "num_article=" + num_article + "&token=" + token + "&type=" + type,

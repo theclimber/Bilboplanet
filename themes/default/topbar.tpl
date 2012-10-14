@@ -24,7 +24,7 @@
 	<!-- BEGIN postlist.state -->
 	<div class="box page-status">
 		<div id="filter-order">
-			Order by <a href="#">{_latest first}</a> - <a href="#">{_popular first}</a>
+			Order by <a href="javascript:order_by('latest')">{_latest first}</a> - <a href="javascript:order_by('popular')">{_popular first}</a>
 		</div>
 		<div id="filter-status">
 			<h2 id="filter-title">{_Page status}</h2>
@@ -34,7 +34,7 @@
 				<span id="filter-search-content"></span></div>
 			<div id="filter-period" style="display:none">{_Period of posts :}
 				<span id="filter-period-content"></span></div>
-			<div id="filter-popular" style="display:none">{_Popular posts}</div>
+			<div id="filter-order" style="display:none">{_Order by popularity}</div>
 			<div id="filter-tags" style="display:none">{_Filter on tags :}
 				<span id="filter-tags-content"></span></div>
 			<div id="filter-users" style="display:none">{_Filter on authors :}

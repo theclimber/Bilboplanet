@@ -74,6 +74,10 @@ if(isset($_POST['action'])) {
 		$period = !empty($_POST['period']) ? trim($_POST['period']) : '';
 		# Order by most popular
 		$popular = !empty($_POST['popular']) ? true : false;
+		$order = !empty($_POST['order']) ? $_POST['order'] : 'latest';
+		if ($order == 'popular') {
+			$popular = true;
+		}
 		$post_status = !empty($_POST['post_status']) ? trim($_POST['post_status']) : 1;
 
 		$tribe_id = !empty($_POST['tribe']) ? trim($_POST['tribe']) : '';

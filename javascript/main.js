@@ -2,6 +2,7 @@ this.page = 0;
 this.nb_items = 10;
 this.search = getUrlParameter('search');
 this.popular = getUrlParameter('popular');
+this.order = getUrlParameter('order');
 this.tribe = getUrlParameter('tribe_id');
 this.tags = new Array();
 this.users = new Array();
@@ -12,10 +13,10 @@ $(document).ready(function() {
 	this.page = getUrlParameter('num_page');
 	this.nb_items = 10;
 	this.search = getUrlParameter('search');
-	this.popular = getUrlParameter('popular');
+	this.order = getUrlParameter('order');
 	this.tribe = getUrlParameter('tribe_id');
-	if (this.popular == 'true') {
-		$('#filter-popular').attr('style', '');
+	if (this.order == 'popular') {
+		$('#filter-order').attr('style', '');
 	}
 	this.tags = new Array();
 	this.users = new Array();
@@ -152,6 +153,7 @@ function updatePostList() {
 			'nb_items' : this.nb_items,
 			'search' : this.search,
 			'popular' : this.popular,
+			'order' : this.order,
 			'tags' : arrayToString(this.tags),
 			'tribe' : this.tribe,
 			'users' : arrayToString(this.users),
@@ -283,6 +285,18 @@ function set_period(period) {
 	$('#filter-page').attr('style', 'display:none;');
 	$('#filter-period-content').html(period+' <a href="#" onclick="javascript:rm_period()">(x)</a>');
 	$('#filter-period').attr('style', '');
+}
+function order_by(type) {
+	this.page = 0;
+	if (type == "popular") {
+		this.order = "popular";
+		$('#filter-order').attr('style', '');
+	} else {
+		this.order = "latest";
+		$('#filter-order').attr('style', 'display:none;');
+	}
+	updatePostList();
+	$('#filter-page').attr('style', 'display:none;');
 }
 function rm_period() {
 	this.page = 0;
@@ -459,6 +473,7 @@ function showMore() {
 			'nb_items' : this.nb_items,
 			'search' : this.search,
 			'popular' : this.popular,
+			'order' : this.order,
 			'tags' : arrayToString(this.tags),
 			'tribe' : this.tribe,
 			'users' : arrayToString(this.users),

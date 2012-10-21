@@ -63,6 +63,7 @@ $_s->post
 	->post_permalink	('text',	0,	true, null)
 	->post_title		('text',	0,	true, null)
 	->post_content	('text',		0,  true, null)
+	->post_image	('text',		0,	true, null)
 	->post_status	('smallint',	0,	false, 1)
 	->post_comment	('smallint',	0,	false, 1)
 	->post_score	('integer',		0,	false, 0)
@@ -172,7 +173,7 @@ $_s->setting
 	->created		('timestamp',	0,	true, 'now()')
 	->modified		('timestamp',	0,	true, 'now()')
 
-	->primary('pk_setting','setting_id')
+	->primary('pk_setting','setting_id', 'user_id')
 	;
 
 $_s->session
@@ -192,7 +193,9 @@ $_s->tribe
 	->tribe_name	('varchar',		128,false)
 	->tribe_search	('text',		0,	true, null)
 	->tribe_tags	('text',		0,	true, null)
+	->tribe_notags	('text',		0,	true, null)
 	->tribe_users	('text',		0,	true, null)
+	->tribe_nousers	('text',		0,	true, null)
 	->tribe_icon	('text',		0,	true, null)
 	->created		('timestamp',	0,	true, 'now()')
 	->modified		('timestamp',	0,	true, 'now()')

@@ -1,4 +1,8 @@
 $(document).ready(function() {
+	selectChange();
+	if (!$('input#shaarli').is(':checked')) {
+		$('div#shaarli-details').css('display','none');
+	}
 	$('form#social_form').submit(function(){
 		var id = $(this).attr('id');
 		$.ajax({
@@ -13,7 +17,8 @@ $(document).ready(function() {
 				'statusnet' : $('input#statusnet').is(':checked'),
 				'newsletter' : $('select#newsletter').val(),
 				'statusnet-account' : $('input#statusnet-account').val(),
-				'shaarli-instance' : $('input#shaarli-instance').val()
+				'shaarli-instance' : $('input#shaarli-instance').val(),
+				'shaarli-type' : $('select#shaarli-type').val()
 			},
 			success: function(msg){
 				updatePage('social');
@@ -24,10 +29,14 @@ $(document).ready(function() {
 	$('input#shaarli').change(function() {
 		var checked = $('input#shaarli').is(':checked');
 		if (checked) {
-			$('input#shaarli-instance').removeAttr("disabled");
+			$('div#shaarli-details').css('display','block');
+			selectChange();
 		} else {
-			$('input#shaarli-instance').attr("disabled", "disabled");
+			$('div#shaarli-details').css('display','none');
 		}
+	});
+	$('select#shaarli-type').change(function() {
+		selectChange();
 	});
 	$('input#statusnet').change(function() {
 		var checked = $('input#statusnet').is(':checked');
@@ -39,3 +48,13 @@ $(document).ready(function() {
 	});
 });
 
+function selectChange() {
+	var value = $('select#shaarli-type').attr('value');
+	if (value == 'remote') {
+		$('p#shaarli-remote-instance').css('display','block');
+		$('p#shaarli-local-instance').css('display','none');
+	} else {
+		$('p#shaarli-local-instance').css('display','block');
+		$('p#shaarli-remote-instance').css('display','none');
+	}
+}

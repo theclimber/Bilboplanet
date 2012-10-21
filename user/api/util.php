@@ -162,6 +162,10 @@ function render_page ($page) {
 			"twitter" => $user_settings->get('social.twitter') ? 'checked' : '',
 			"statusnet" => $user_settings->get('social.statusnet') ? 'checked' : '',
 			"shaarli" => $user_settings->get('social.shaarli') ? 'checked' : '',
+			"shaarli-type.remote" => 
+				$user_settings->get('social.shaarli.type')=='remote' ? 'selected="selected"' : '',
+			"shaarli-type.local" => 
+				$user_settings->get('social.shaarli.type')=='local' ? 'selected="selected"' : '',
 			"google" => $user_settings->get('social.google') ? 'checked' : ''
 			);
 		$tpl->setVar('checked', $checked);

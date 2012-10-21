@@ -35,6 +35,12 @@ $sql_users = "SELECT
 $rs = $core->con->select($sql_users);
 
 while ($rs->fetch()) {
+	$puser_settings = new bpSettings($core,$rs->user_id);
+	if ($puser_settings != null && $puser_settings->get('social.shaarli')) {
+		$shaarli = $puser_settings->get('social.shaarli.instance');
+		$core->tpl->setVar('user_shaarli', $shaarli);
+		$core->tpl->render('user.shaarli');
+	}
 	$user = array(
 		"id" => $rs->user_id,
 		"fullname" => $rs->user_fullname,

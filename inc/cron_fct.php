@@ -98,9 +98,10 @@ function getItemsFromFeeds ($rs, $print) {
 			if ($print) $output .= $log_msg;
 			break;
 		}
-		echo $rs->feed_url."\n";
+//		echo $rs->feed_url."\n";
 
-		require_once(dirname(__FILE__).'/lib/simplepie/SimplePieAutoloader.php');
+//		require_once(dirname(__FILE__).'/lib/simplepie/SimplePieAutoloader.php');
+		require_once(dirname(__FILE__).'/lib/simplepie_1.3.compiled.php');
 		# On cree un objet SimplePie et on ajuste les parametres de base
 		$feed = new SimplePie();
 		$feed->set_feed_url($rs->feed_url);
@@ -155,6 +156,8 @@ function getItemsFromFeeds ($rs, $print) {
 				}
 				# Permalink
 				$permalink = $item->get_permalink();
+
+				$item_image = getFirstPostImageUrl($item->get_content());
 
 				# Analyse the possible tags of the item
 				##########################################
@@ -229,6 +232,7 @@ function getItemsFromFeeds ($rs, $print) {
 						$item_title,
 						$item_content,
 						$item_tags,
+						$item_image,
 						$print,
 						$rs->feed_id
 					);
@@ -280,7 +284,7 @@ function getItemsFromFeeds ($rs, $print) {
 	return $output;
 }
 
-function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_content, $item_tags, $print, $feed_id) {
+function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_content, $item_tags, $item_image, $print, $feed_id) {
 	global $log, $core;
 	# Date
 	if (!$date) {
@@ -295,7 +299,8 @@ function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_c
 			user_id,
 			post_title,
 			post_content,
-			post_pubdate
+			post_pubdate,
+			post_image
 		FROM ".$core->prefix."post
 		WHERE post_permalink = '".$core->con->escape($item_permalink)."'";
 	$rs2 = $core->con->select($sql);
@@ -323,6 +328,8 @@ function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_c
 				);
 			$next_post_id = (integer) $rs3->f(0) + 1;
 
+			$image_url = savePostImage($next_post_id, $item_image);
+
 			$cur = $core->con->openCursor($core->prefix.'post');
 			$cur->post_id = $next_post_id;
 			$cur->user_id = $rs->user_id;
@@ -330,6 +337,7 @@ function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_c
 			$cur->post_permalink = $core->con->escape($item_permalink);
 			$cur->post_title = $item_title;
 			$cur->post_content = $item_content;
+			$cur->post_image = $image_url;
 			$cur->post_status = $rs->feed_trust == 1 ? 1 : 2;
 			$cur->post_comment = $rs->feed_comment;
 			$cur->created = array(' NOW() ');
@@ -404,11 +412,12 @@ function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_c
 		if(count($tags_to_remove) > 0) {
 			foreach ($tags_to_remove as $tag) {
 				$core->con->execute("DELETE FROM ".$core->prefix."post_tag
-					WHERE tag_id ='$tag' AND post_id = ".$post_id);
+					WHERE tag_id ='".$core->con->escape($tag)."' AND post_id = ".$post_id);
 			}
 		}
 		if(count($tags_to_append) > 0) {
 			foreach ($tags_to_append as $tag) {
+//				$tag = $core->con->escape($tag);
 				$cur = $core->con->openCursor($core->prefix.'post_tag');
 				$cur->tag_id = $tag;
 				$cur->post_id = $post_id;
@@ -458,9 +467,11 @@ function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_c
 				}
 			}
 			if(strcmp($item_content, $content2) != 0) {
+				$image_url = savePostImage($rs2->f('post_id'), $item_image);
 				$cur = $core->con->openCursor($core->prefix.'post');
 				$cur->modified = array('NOW()');
 				$cur->post_content = $item_content;
+				$cur->post_image = $image_url;
 				$cur->update("WHERE ".$core->prefix."post.post_permalink = '".$core->con->escape($item_permalink)."'");
 				$log_msg = logMsg("Changement du contenu pour l'article: ".$item_permalink, "", 2, $print);
 				if ($log == "debug") {
@@ -598,6 +609,126 @@ function traitementEncodage($chaine) {
 #-------------------------------------#
 #   Fonctions pour les mises a jour   #
 #-------------------------------------#
+function getFirstPostImageUrl($post_content) {
+	$contenttograbimagefrom = $post_content;
+	$firstImage = "";
+	$output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $contenttograbimagefrom, $ContentImages);
+	$firstImage = $ContentImages[1] [0]; // To grab the first image
+	return $firstImage;
+}
+function savePostImage($post_id,$file_url) {
+	global $blog_settings;
+	//echo "<br/>saving image ..." . $file_url. " ----";
+	if ($file_url != '') {
+		$post_icon_folder = 'data/images';
+		$folder = dirname(__FILE__).'/../'.$post_icon_folder;
+
+		// check destination folder
+		if (!is_dir($folder)) {
+			print T_('The folder data/images does not exists !');
+			return '';
+		}
+		if (!is_writable($folder)) {
+			print T_('The folder data/images must writable !');
+			return '';
+		}
+		$tmp_folder = dirname(__FILE__).'/../data/tmp';
+		// check destination folder
+		if (!is_dir($tmp_folder)) {
+			print T_('The folder data/tmp does not exists !');
+			return '';
+		}
+		if (!is_writable($tmp_folder)) {
+			print T_('The folder data/tmp must writable !');
+			return '';
+		}
+
+		$file_extension = null;
+		if (endsWith(strtolower($file_url), '.png')) {
+			$file_extension = '.png';
+		} elseif (endsWith(strtolower($file_url), '.gif')) {
+			$file_extension = '.gif';
+		} elseif (endsWith(strtolower($file_url), '.jpg') || endsWith(strtolower($file_url), '.jpeg')) {
+			$file_extension = '.jpg';
+		} else {
+			print T_('Unknown file extension');
+			return '';
+		}
+
+		#copy to post_id.png
+		$tmp_file = $tmp_folder.'/post'.$post_id.'-'.time().'-tmp'.$file_extension;
+		if (!is_file($tmp_file)) {
+			unlink($tmp_file);
+		}
+		file_put_contents($tmp_file, file_get_contents($file_url));
+		if (!is_file($tmp_file)) {
+			print T_('File not found');
+			return '';
+		}
+
+		#resize image
+		$imgsize = getimagesize($tmp_file);
+		// check the image size
+		$allowed_ratio = 0.40;
+		if ($imgsize[0]/$imgsize[1] < $allowed_ratio
+			|| $imgsize[1]/$imgsize[0] < $allowed_ratio) {
+			unlink($tmp_file);
+			print T_('Bad image ratio');
+			return '';
+		}
+
+		$image = null;
+		switch($file_extension) {
+		case '.jpg': $image = imagecreatefromjpeg($tmp_file); break;
+		case '.jpeg': $image = imagecreatefromjpeg($tmp_file); break;
+		case '.png': $image = imagecreatefrompng($tmp_file); break;
+		case '.gif': $image = imagecreatefromgif($tmp_file); break;
+		}
+		if ($image == null) {
+			unlink($tmp_file);
+			print T_('Unable to create image object');
+			return '';
+		}
+
+		$width = 250; // defined width
+		$height = ( ($imgsize[1] * (($width)/$imgsize[0]))); // relative height
+		$final_image = imagecreatetruecolor($width , $height)
+			or $error[] = T_('Error when creating final image');
+		imagecopyresampled($final_image ,$image , 0,0, 0,0, $width, $height, $imgsize[0],$imgsize[1])
+			or $error[] = T_('Error while resizing final image');
+		imagedestroy($image)
+			or $error[] = T_('Error while deleting temporary image');
+
+		$filename = 'post'.$post_id.'-'.time().$file_extension;
+		$file_url = $blog_settings->get('planet_url').'/data/images/'.$filename;
+		$file_fullpath = $folder.'/'.strtolower($filename);
+
+		if (is_file($file_fullpath)) {
+			unlink($file_fullpath);
+		}
+
+		// save image to folder
+		if ($file_extension == '.jpg') {
+			$save = imagejpeg($final_image , $file_fullpath, 100);
+		}
+		if ($file_extension == '.png') {
+			$save = imagepng($final_image , $file_fullpath, 0);
+		}
+		if ($file_extension == '.gif') {
+			$save = imagegif($final_image, $file_fullpath);
+		}
+
+		unlink($tmp_file);
+		if ($save) {
+			#return image URL
+			return $file_url;
+		} else {
+			unlink($file_fullpath);
+			print T_('Problem during saving process');
+			return '';
+		}
+	}
+}
 
 # Fonction qui met a jour la date a laquelle le planet a subit un update
 function updateDateMaj() {

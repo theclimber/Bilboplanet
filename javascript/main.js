@@ -2,6 +2,8 @@ this.page = 0;
 this.nb_items = 10;
 this.search = getUrlParameter('search');
 this.popular = getUrlParameter('popular');
+this.order = getUrlParameter('order');
+this.tribe = getUrlParameter('tribe_id');
 this.tags = new Array();
 this.users = new Array();
 this.period = '';
@@ -11,9 +13,10 @@ $(document).ready(function() {
 	this.page = getUrlParameter('num_page');
 	this.nb_items = 10;
 	this.search = getUrlParameter('search');
-	this.popular = getUrlParameter('popular');
-	if (this.popular == 'true') {
-		$('#filter-popular').attr('style', '');
+	this.order = getUrlParameter('order');
+	this.tribe = getUrlParameter('tribe_id');
+	if (this.order == 'popular') {
+		$('#filter-order').attr('style', '');
 	}
 	this.tags = new Array();
 	this.users = new Array();
@@ -138,7 +141,7 @@ function arrayToString(array) {
 
 function updatePostList() {
 	$('#filter-status').attr('style', '');
-	var main_div = "body";
+	var main_div = "main-body";
 	$('div#'+main_div).fadeTo('slow', 0.5, function(){});
 	$.ajax({
 		type: "POST",
@@ -150,7 +153,9 @@ function updatePostList() {
 			'nb_items' : this.nb_items,
 			'search' : this.search,
 			'popular' : this.popular,
+			'order' : this.order,
 			'tags' : arrayToString(this.tags),
+			'tribe' : this.tribe,
 			'users' : arrayToString(this.users),
 			'period' : this.period,
 			'post_status' : this.post_status
@@ -280,6 +285,18 @@ function set_period(period) {
 	$('#filter-page').attr('style', 'display:none;');
 	$('#filter-period-content').html(period+' <a href="#" onclick="javascript:rm_period()">(x)</a>');
 	$('#filter-period').attr('style', '');
+}
+function order_by(type) {
+	this.page = 0;
+	if (type == "popular") {
+		this.order = "popular";
+		$('#filter-order').attr('style', '');
+	} else {
+		this.order = "latest";
+		$('#filter-order').attr('style', 'display:none;');
+	}
+	updatePostList();
+	$('#filter-page').attr('style', 'display:none;');
 }
 function rm_period() {
 	this.page = 0;
@@ -426,4 +443,48 @@ function getUrlVars()
         vars[hash[0]] = hash[1];
     }
     return vars;
+}
+
+$('div#more-button').ready(function() {
+	if ($('div#more-button').length > 0) {
+		$(window).scroll(function(){
+			if  ($(window).scrollTop() == $(document).height() - $(window).height()){
+				showMore();
+			}
+		});
+		$('div#more-button').click(function() {
+			showMore();
+		});
+	}
+});
+
+function showMore() {
+	this.page += 1;
+	$('#filter-status').attr('style', '');
+	var main_div = "main-body";
+	//$('div#'+main_div).fadeTo('slow', 0.5, function(){});
+	$.ajax({
+		type: "POST",
+		url: "api/",
+		data: {
+			'ajax' : 'main',
+			'action' : 'list',
+			'page' : this.page,
+			'nb_items' : this.nb_items,
+			'search' : this.search,
+			'popular' : this.popular,
+			'order' : this.order,
+			'tags' : arrayToString(this.tags),
+			'tribe' : this.tribe,
+			'users' : arrayToString(this.users),
+			'period' : this.period,
+			'post_status' : this.post_status
+		},
+		success: function(msg){
+			var postlist = $(msg).find('#posts-list');
+			$('div#'+main_div).find('#posts-list').append(postlist.html());
+			//$('div#'+main_div).fadeTo('slow', 1, function(){});
+			$('div#'+main_div).trigger('ready');
+		}
+	});
 }

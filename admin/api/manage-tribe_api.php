@@ -444,6 +444,90 @@ if(isset($_POST['action'])) {
 		break;
 
 ##########################################################
+# Remove notag on tribe
+##########################################################
+	case 'rm_notag':
+		$tribe_id = $_POST['tribe_id'];
+        $tag_to_rm = $_POST['tag'];
+        $error = array();
+
+		$sql = "SELECT tribe_notags
+			FROM ".$core->prefix."tribe
+            WHERE tribe_id = '".$tribe_id."'";
+		$rs = $core->con->select($sql);
+		$tribe_notags = preg_split('/,/',$rs->f('tribe_notags'), -1, PREG_SPLIT_NO_EMPTY);
+
+		foreach ($tribe_notags as $k=>$tag) {
+            if ($tag == $tag_to_rm) {
+                unset($tribe_notags[$k]);
+            }
+        }
+
+		$cur = $core->con->openCursor($core->prefix.'tribe');
+		$cur->tribe_notags = implode(',', $tribe_notags);
+		$cur->update("WHERE tribe_id='".$tribe_id."'");
+
+        $output = T_("The unwanted tag was successfuly removed");
+
+		if (!empty($error)) {
+			$output .= "<ul>";
+			foreach($error as $value) {
+				$output .= "<li>".$value."</li>";
+			}
+			$output .= "</ul>";
+			print '<div class="flash_error">'.$output.'</div>';
+		}
+		else {
+			print '<div class="flash_notice">'.$output.'</div>';
+		}
+		break;
+
+##########################################################
+# Add notags to tribe
+##########################################################
+	case 'add_notags':
+		$tribe_id = $_POST['tribe_id'];
+        $patterns = array( '/, /', '/ ,/');
+        $replacement = array(',', ',');
+        $tags = urldecode($_POST['tags']);
+        $tags = preg_replace($patterns, $replacement, $tags);
+        $new_tags = preg_split('/,/',$tags, -1, PREG_SPLIT_NO_EMPTY);
+
+		$sql = "SELECT tribe_notags
+			FROM ".$core->prefix."tribe
+            WHERE tribe_id = '".$tribe_id."'";
+		$rs = $core->con->select($sql);
+		$tribe_notags = preg_split('/,/',$rs->f('tribe_notags'), -1, PREG_SPLIT_NO_EMPTY);
+
+		foreach ($tribe_notags as $tag) {
+            if (in_array($tag, $new_tags)) {
+                $key = array_keys($new_tags, $tag);
+                unset($new_tags[$key]);
+            }
+        }
+
+        $output .= T_("Notags added : ");
+		$all_tags = array_merge($tribe_notags, $new_tags);
+		$all_tags_string=implode(',',$all_tags);
+		$output .= $all_tags_string;
+		$cur = $core->con->openCursor($core->prefix.'tribe');
+		$cur->tribe_notags = $all_tags_string;
+		$cur->update("WHERE tribe_id='".$tribe_id."'");
+
+		if (!empty($error)) {
+			$output .= "<ul>";
+			foreach($error as $value) {
+				$output .= "<li>".$value."</li>";
+			}
+			$output .= "</ul>";
+			print '<div class="flash_error">'.$output.'</div>';
+		}
+		else {
+			print '<div class="flash_notice">'.$output.'</div>';
+		}
+		break;
+
+##########################################################
 # ADD TRIBE ICON
 ##########################################################
 	case 'add_icon':
@@ -518,8 +602,8 @@ if(isset($_POST['action'])) {
 				or $error[] = T_('Error while resizing final image');
 			imagedestroy($image)
 				or $error[] = T_('Error while deleting temporary image');
-			
-			$filename = $tribe_id.'-'.time().'.'.$userfile_ext;
+
+			$filename = 'tribe-'.$tribe_id.'-'.time().'.'.$userfile_ext;
 			$file_fullpath = $folder.'/'.strtolower($filename);
 			if (is_file($file_fullpath)) {
 				$error[] = T_('The file you want to copy is alreay existing. Please try again.');
@@ -615,7 +699,9 @@ if(isset($_POST['action'])) {
 			tribe_id,
 			tribe_name,
 			tribe_tags,
+			tribe_notags,
 			tribe_users,
+			tribe_nousers,
 			tribe_search,
 			tribe_icon,
 			visibility,
@@ -673,6 +759,13 @@ function getOutput($sql, $num_page=0, $nb_items=30) {
 				$tag_list .= '</a></span>';
 			}
 
+			$tribe_notags = preg_split('/,/',$rs->tribe_notags, -1, PREG_SPLIT_NO_EMPTY);
+			$notag_list = "";
+			foreach ($tribe_notags as $tag_item) {
+				$notag_list .= '<span class="tag">'.$tag_item.' <a href="javascript:rm_notag('.$num_page.','.$nb_items.',\''.$rs->tribe_id.'\',\''.$tag_item.'\')">x</a>';
+				$notag_list .= '</a></span>';
+			}
+
 			$tribe_users = preg_split('/,/',$rs->tribe_users, -1, PREG_SPLIT_NO_EMPTY);
 			$user_list = "";
 			foreach ($tribe_users as $user_item) {
@@ -683,7 +776,7 @@ function getOutput($sql, $num_page=0, $nb_items=30) {
 			$rm_search_action = '('.T_('empty').')';
 			if ($rs->tribe_search) {
 				$rm_search_action = '(<a href="javascript:rm_search('.$num_page.', '.$nb_items.',\''.$rs->tribe_id.'\')">'.T_('clear').'</a>)';
-			} 
+			}
 
 			$tribe_icon = '';
 			$icon_action = '<a href="javascript:add_icon('.$num_page.','.$nb_items.',\''.$rs->tribe_id.'\',\''.$rs->tribe_name.'\')">
@@ -700,6 +793,7 @@ function getOutput($sql, $num_page=0, $nb_items=30) {
 				<p class="nickname">
 					Tribe owner : '.$tribe_owner.'<br/>
 					Tags : <div class="tag-line">'.$tag_list.'</div><br/>
+					No-tags : <div class="notag-line">'.$notag_list.'</div><br/>
 					Users : <div class="user-line">'.$user_list.'</div><br/>
 					search : '.$rs->tribe_search.' '.$rm_search_action.'<br/>
 					Last post : '.mysqldatetime_to_date("d/m/Y",$rs_post->last).'<br/>
@@ -711,6 +805,7 @@ function getOutput($sql, $num_page=0, $nb_items=30) {
 					<li><img src="meta/icons/action-edit.png" title="'.T_('Edit tribe').'" /></li>
 					<li><a href="javascript:removeTribe(\''.$rs->tribe_id.'\','.$num_page.','.$nb_items.')"><img src="meta/icons/cross.png" title="'.T_('Remove tribe').'" /></a></li>
 					<li><a href="javascript:add_tags('.$num_page.','.$nb_items.',\''.$rs->tribe_id.'\',\''.$rs->tribe_name.'\')"><img src="meta/icons/add_tag.png" title="'.T_('Add tags to tribe').'"/></a></li>
+					<li><a href="javascript:add_notags('.$num_page.','.$nb_items.',\''.$rs->tribe_id.'\',\''.$rs->tribe_name.'\')"><img src="meta/icons/add_notag.png" title="'.T_('Add unwanted tags to tribe').'"/></a></li>
 					<li><a href="javascript:add_users('.$num_page.','.$nb_items.',\''.$rs->tribe_id.'\',\''.$rs->tribe_name.'\')"><img src="meta/icons/add_user.png" title="'.T_('Add users to tribe').'" /></a></li>
 					<li><a href="javascript:add_search('.$num_page.','.$nb_items.',\''.$rs->tribe_id.'\',\''.$rs->tribe_name.'\')"><img src="meta/icons/add_search.png" title="'.T_('Add search to tribe').'" /></a></li>
 					<li>'.$icon_action.'</li>

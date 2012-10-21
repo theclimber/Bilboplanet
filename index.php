@@ -28,7 +28,6 @@
 require_once(dirname(__FILE__).'/inc/prepend.php');
 $scripts = array();
 $scripts[] = "javascript/main.js";
-$scripts[] = "javascript/jquery.boxy.js";
 
 $default_home = $blog_settings->get('planet_homepage');
 $current_page = "portal";

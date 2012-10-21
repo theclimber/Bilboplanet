@@ -1,0 +1,24 @@
+
+	<div id="logo" title="Share your links !" onclick="document.location='{$planet_url}';"></div>
+    <div style="float:right; font-style:italic; color:#bbb; text-align:right; padding:0 5 0 0;" class="nomobile">Shaare your links...<br>{$linkcount} links</div>
+    <span id="shaarli_title"><a href="?">{$shaarlititle}</a></span>
+
+{if="!empty($_GET['source']) && $_GET['source']=='bookmarklet'"}
+    {ignore} When called as a popup from bookmarklet, do not display menu. {/ignore}
+{else}
+    {if="isLoggedIn()"}
+        <a href="?do=tools">Outils</a><a href="?do=addlink"><b>Ajouter un lien</b></a>
+    {elseif="$GLOBALS['config']['OPEN_SHAARLI']"}
+        <a href="?do=tools">Outils</a><a href="?do=addlink"><b>Ajouter un lien</b></a>
+    {else}
+		<a href="{$planet_url}/auth.php?came_from={$planet_url}shaarli/index.php">Identification</a>
+    {/if}
+    <a href="?do=tagcloud">Nuage de tags</a>
+    <a href="?do=picwall{$searchcrits}">Mur de photos</a>
+    <a href="?do=daily">Quotidien</a>
+    <a href="?do=weekly">Hebdomadaire</a>
+    <a href="?do=monthly">Mensuel</a>
+{/if}
+    <div class="clear"></div>
+
+

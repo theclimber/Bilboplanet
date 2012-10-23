@@ -53,34 +53,36 @@
 			</div>
 		</div>
 
-		<!-- BEGIN search.box -->
-		<div class="search">
-			<form id="search_form">
-				<!-- BEGIN search.popular -->
-				<input type="hidden" id="popular" name="popular"
-					value="{$params.popular}" />
-				<!-- END search.popular -->
-				<!-- BEGIN search.user_id -->
-				<input type="hidden" id="user_id" name="user_id"
-					value="{$params.user_id}" />
-				<!-- END search.user_id -->
-				<!-- BEGIN search.filter -->
-				<input type="hidden" id="filter" name="filter"
-					value="{$params.filter}" />
-				<!-- END search.filter -->
+		<div id="header-right">
+			<!-- BEGIN search.box -->
+			<div class="search">
+				<form id="search_form">
+					<!-- BEGIN search.popular -->
+					<input type="hidden" id="popular" name="popular"
+						value="{$params.popular}" />
+					<!-- END search.popular -->
+					<!-- BEGIN search.user_id -->
+					<input type="hidden" id="user_id" name="user_id"
+						value="{$params.user_id}" />
+					<!-- END search.user_id -->
+					<!-- BEGIN search.filter -->
+					<input type="hidden" id="filter" name="filter"
+						value="{$params.filter}" />
+					<!-- END search.filter -->
 
-				<input type="text" id="search_text" class="search-field"
-					name="search"
-					onFocus="if (this.value=='Rechercher ...') this.value='';"
-					onblur="if (this.value=='') this.value='Rechercher ...';"
-					value="Rechercher ..." />
-				<input type="submit" class="search-submit" value="" />
-			</form>
-		</div>
-		<!-- END search.box -->
+					<input type="text" id="search_text" class="search-field"
+						name="search"
+						onFocus="if (this.value=='Rechercher ...') this.value='';"
+						onblur="if (this.value=='') this.value='Rechercher ...';"
+						value="Rechercher ..." />
+					<input type="submit" class="search-submit" value="" />
+				</form>
+			</div>
+			<!-- END search.box -->
 
-		<div id="header-menu" onclick="javascript:showNavigationMenu()">
-			<img src="{$planet.url}/themes/{$planet.theme}/images/menu_bullets.png" title="{_Main menu}" alt="{_Main menu}">
+			<div id="header-menu" onclick="javascript:showNavigationMenu()">
+				<img src="{$planet.url}/themes/{$planet.theme}/images/menu_bullets.png" title="{_Main menu}" alt="{_Main menu}">
+			</div>
 		</div>
 		<div id="navigation-bg" style="display:none">
 			<ul class="content" id="navigation">
@@ -119,7 +121,7 @@
 
 	<div class="clear" id="body-bg">
 		<a name="top"></a>
-		<!-- ADD TRIBES HERE 
+		<!-- ADD TRIBES HERE
 			on the left : -->
 		<div id="tribes-bg">
 			{!include:'menu.tpl'}

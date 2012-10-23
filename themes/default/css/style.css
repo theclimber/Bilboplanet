@@ -533,6 +533,11 @@ div#header{
     text-align:left;
 	margin-left: 20px;
 }
+div#header-right {
+	display:inline-block;
+	float:right;
+	width: 350px;
+}
 img#logo{
     font-size:30px; /* Affects size of alt text if image is missing */
 	display:inline-block;

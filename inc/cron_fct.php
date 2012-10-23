@@ -270,6 +270,23 @@ function getItemsFromFeeds ($rs, $print) {
 				$cur = $core->con->openCursor($core->prefix.'feed');
 				$cur->feed_status = 2;
 				$cur->update("WHERE feed_id = '$rs->feed_id'");
+
+				$from = $blog_settings->get('author_mail');
+				$to = $from;
+				$reply_to = $from;
+
+				$subject = T_("Due to errors, a feed has been disabled on ".$blog_settings->get('planet_title'));
+				$content = T_("The following feed has been disabled :\n");
+				$content .= $rs->feed_url."\n";
+				$content .= sprintf(T_("The feed was in error during more than %s hours"), $tooling/3600);
+
+				if (!sendmail($from, $to, $subject, $content, 'normal', $reply_to)) {
+					$log_msg = logMsg(T_("Email alert could not be send"))
+					if ($print) $output .= $log_msg;
+				} else {
+					$log_msg = logMsg(T_("Feed disabled and email alert sent !"))
+					if ($print) $output .= $log_msg;
+				}
 			}
 		}
 	} # fin du while

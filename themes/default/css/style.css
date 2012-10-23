@@ -525,6 +525,9 @@ ul#navigation li:hover{
 div#header-bg{
     background:black url('../images/header-bg-mid.png') scroll top left repeat;
 	border-bottom: black solid 3px;
+	position:fixed;
+	width: 100%;
+	z-index: 100;
 }
 div#header{
     height:60px;
@@ -582,6 +585,7 @@ div#body{
 div#tribes-bg {
 	float: left;
 	display: block;
+	margin-top: 60px;
 	width: 250px;
 	font-family: Arial;
 	font-style: bold;
@@ -721,6 +725,9 @@ div#primary li{
     text-align:left;
 	font-family: Arial;
     background-color:#dfdfdf;
+}
+div#top-area {
+	margin-top: 80px;
 }
 
 /* Right Sidebar */

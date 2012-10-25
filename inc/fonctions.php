@@ -503,7 +503,7 @@ function generate_SQL(
 			$and = ($key == count($notags)-1) ? "'".$tag."'" : "'".$tag."', ";
 			$sql_notags .= $and;
 		}
-		$sql_notags .= ") NOT IN (SELECT 
+		$sql_notags .= ") NOT IN (SELECT
 			LOWER(".$core->prefix."post_tag.tag_id) FROM ".$core->prefix."post_tag
 			WHERE ".$core->prefix."post_tag.post_id = ".$core->prefix."post.post_id)";
 		$where_clause .= " AND ".$core->prefix."post.post_id = ".$core->prefix."post_tag.post_id";
@@ -1639,13 +1639,13 @@ function curPageURL() {
 	return $pageURL;
 }
 
-function startsWith($haystack, $needle)
+function startWith($haystack, $needle)
 {
     $length = strlen($needle);
     return (substr($haystack, 0, $length) === $needle);
 }
 
-function endsWith($haystack, $needle)
+function endWith($haystack, $needle)
 {
     $length = strlen($needle);
     if ($length == 0) {

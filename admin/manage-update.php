@@ -35,7 +35,6 @@ if ($core->auth->sessionExists()):
 include_once(dirname(__FILE__).'/head.php');
 include_once(dirname(__FILE__).'/sidebar.php');
 include_once(dirname(__FILE__).'/../inc/cron_fct.php');
-
 $flash = array();
 $update = false;
 $index_update = $blog_settings->get('planet_index_update');
@@ -155,7 +154,7 @@ echo '<label for="enable_on_index"><input id="enable_on_index" type="checkbox" n
 
 <p><?php echo T_('You can setup a manual crontab update by calling automatically every X time the following page :'); ?><br/>
 
-<b><?php 
+<b><?php
 $token = $core->auth->userToken();
 echo $blog_settings->get('planet_url')."/inc/update_manual.php?token=".$token; ?></b><br />
 <?php echo T_('This will automatically launch the update and log it into the log files.'); ?></p>

@@ -32,7 +32,6 @@
 <script type="text/javascript" src="{$planet.url}/themes/{$planet.theme}/js/jquery.boxy.js"></script>
 <script type="text/javascript" src="{$planet.url}/themes/{$planet.theme}/js/planet_fct.js"></script>
 <script type="text/javascript" src="{$planet.url}/themes/{$planet.theme}/js/votes.js"></script>
-<script type="text/javascript" src="{$planet.url}/themes/{$planet.theme}/js/mobile.js"></script>
 <script type="text/javascript" src="{$planet.url}/themes/{$planet.theme}/js/fancy/jquery.fancybox-1.3.1.pack.js"></script>
 <script type="text/javascript" src="{$planet.url}/themes/{$planet.theme}/js/fancy/jquery.easing-1.3.pack.js"></script>
 

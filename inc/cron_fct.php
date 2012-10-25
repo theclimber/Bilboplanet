@@ -281,10 +281,10 @@ function getItemsFromFeeds ($rs, $print) {
 				$content .= sprintf(T_("The feed was in error during more than %s hours"), $tooling/3600);
 
 				if (!sendmail($from, $to, $subject, $content, 'normal', $reply_to)) {
-					$log_msg = logMsg(T_("Email alert could not be send"))
+					$log_msg = logMsg(T_("Email alert could not be send"));
 					if ($print) $output .= $log_msg;
 				} else {
-					$log_msg = logMsg(T_("Feed disabled and email alert sent !"))
+					$log_msg = logMsg(T_("Feed disabled and email alert sent !"));
 					if ($print) $output .= $log_msg;
 				}
 			}
@@ -661,11 +661,11 @@ function savePostImage($post_id,$file_url) {
 		}
 
 		$file_extension = null;
-		if (endsWith(strtolower($file_url), '.png')) {
+		if (endWith(strtolower($file_url), '.png')) {
 			$file_extension = '.png';
-		} elseif (endsWith(strtolower($file_url), '.gif')) {
+		} elseif (endWith(strtolower($file_url), '.gif')) {
 			$file_extension = '.gif';
-		} elseif (endsWith(strtolower($file_url), '.jpg') || endsWith(strtolower($file_url), '.jpeg')) {
+		} elseif (endWith(strtolower($file_url), '.jpg') || endWith(strtolower($file_url), '.jpeg')) {
 			$file_extension = '.jpg';
 		} else {
 			print T_('Unknown file extension');

@@ -32,7 +32,7 @@ $scripts[] = "javascript/main.js";
 $default_home = $blog_settings->get('planet_homepage');
 $current_page = "portal";
 if ($default_home == "portal") {
-	if (isset($_GET['list'])) {
+	if (isset($_GET['list']) || isset($_GET['post_id'])) {
 		$current_page = "list";
 	}
 } else {

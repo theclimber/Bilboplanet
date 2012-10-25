@@ -592,6 +592,7 @@ div#tribes-bg {
 	font-size: 15px;
 	background: url('../images/header-bg.png');
 	padding: 25px 0;
+	position: fixed;
 }
 div#tribes-bg ul#tribes {
 	list-style: none;

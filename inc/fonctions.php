@@ -1655,4 +1655,41 @@ function endWith($haystack, $needle)
     return (substr($haystack, -$length) === $needle);
 }
 
+function getAllSupportedLanguages() {
+	$i18n_folder = dirname(__FILE__).'/../i18n';
+	$directories = glob($i18n_folder.'/*',GLOB_ONLYDIR);
+	$directories = scandir($i18n_folder);
+	$lang = array(
+		array("code" => "en", "name" => T_("English")));
+	foreach ($directories as $dir) {
+		if ($dir != ".." && $dir != ".") {
+			if (is_dir($i18n_folder.'/'.$dir)) {
+				$lang[] = array("code" => $dir, "name" => getLanguageName($dir));
+			}
+		}
+	}
+	return $lang;
+}
+
+function getLanguageName($lang) {
+	switch ($lang) {
+	case 'en':
+		return T_("English");
+	case 'fr':
+		return T_("French");
+	case 'de':
+		return T_("German");
+	case 'nl':
+		return T_("Dutch");
+	case 'ar':
+		return T_("Arab");
+	case 'it':
+		return T_("Italian");
+	case 'es':
+		return T_("Spanish");
+	default:
+			return "";
+	}
+}
+
 ?>

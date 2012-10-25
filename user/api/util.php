@@ -79,6 +79,14 @@ function render_page ($page) {
 			);
 		$tpl->setVar('user', $user);
 
+		foreach (getAllSupportedLanguages() as $lang) {
+			$tpl->setVar('lang', array(
+				"code" => $lang['code'],
+				"name" => $lang['name'],
+				"selected" => $lang['code']==$rs->f('user_lang') ? 'selected="selected"' : ""));
+			$tpl->render("lang.select");
+		}
+
 		$rs_feed = $core->con->select("SELECT * FROM ".$core->prefix."feed
 			WHERE user_id ='".$user_id."'");
 		while ($rs_feed->fetch()) {
@@ -153,7 +161,7 @@ function render_page ($page) {
 		if (!isset($option))
 			$option = 'nomail';
 		$newsletter_options[$option]['selected'] = "selected";
-		
+
 		foreach ($newsletter_options as $news) {
 			$tpl->setVar('news', $news);
 			$tpl->render('newsletter.option');
@@ -162,9 +170,9 @@ function render_page ($page) {
 			"twitter" => $user_settings->get('social.twitter') ? 'checked' : '',
 			"statusnet" => $user_settings->get('social.statusnet') ? 'checked' : '',
 			"shaarli" => $user_settings->get('social.shaarli') ? 'checked' : '',
-			"shaarli-type.remote" => 
+			"shaarli-type.remote" =>
 				$user_settings->get('social.shaarli.type')=='remote' ? 'selected="selected"' : '',
-			"shaarli-type.local" => 
+			"shaarli-type.local" =>
 				$user_settings->get('social.shaarli.type')=='local' ? 'selected="selected"' : '',
 			"google" => $user_settings->get('social.google') ? 'checked' : ''
 			);

@@ -10,7 +10,7 @@
 	<link href="{$planet.url}/user/tpl/css/core.css" rel="stylesheet" type="text/css" />
 	<link href="{$planet.url}/user/tpl/css/boxy.css" rel="stylesheet" type="text/css" />
 
-	<script type="text/javascript" src="{$planet.url}/javascript/jquery.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 	<script type="text/javascript" src="{$planet.url}/user/tpl/js/main.js" ></script>
 </head>
 <body>

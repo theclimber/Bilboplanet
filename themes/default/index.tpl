@@ -71,9 +71,9 @@
 
 					<input type="text" id="search_text" class="search-field"
 						name="search"
-						onFocus="if (this.value=='Rechercher ...') this.value='';"
-						onblur="if (this.value=='') this.value='Rechercher ...';"
-						value="Rechercher ..." />
+						onFocus="if (this.value=='{_Search} ...') this.value='';"
+						onblur="if (this.value=='') this.value='{_Search} ...';"
+						value="{_Search} ..." />
 					<input type="submit" class="search-submit" value="" />
 				</form>
 			</div>

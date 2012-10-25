@@ -23,6 +23,14 @@
 			<input type="password" name=password2 id="password2">
 		</p>
 		<p>
+			<label for="user_lang">{_Language}</label>
+			<select id="user_lang" name="elang">
+				<!-- BEGIN lang.select -->
+				<option value="{$lang.code}" {$lang.selected}>{$lang.name}</option>
+				<!-- END lang.select -->
+			</select>
+		</p>
+		<p>
 			<input type="submit" id="apply" class="button" value="{_Update}">
 		</p>
 	</form>

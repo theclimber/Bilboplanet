@@ -6,7 +6,7 @@
 * Website : www.bilboplanet.com
 * Tracker : http://chili.kiwais.com/projects/bilboplanet
 * Blog : www.bilboplanet.com
-* 
+*
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Affero General Public License as
@@ -36,16 +36,17 @@ if(isset($_POST['action'])) {
 		$new_fullname = check_field(T_('Fullname'), trim($_POST['efullname']));
 		$new_email = check_field(T_('Email'), trim($_POST['eemail']), 'email');
 		$new_password = check_field('password', array("password" => trim($_POST['password']), "password2" => trim($_POST['password2'])), 'password', false);
+		$new_lang = !empty($_POST['elang']) ? trim($_POST['elang']) : 'en';
 
 		$error = array();
 
-		if ($new_email['success'] 
+		if ($new_email['success']
 			&& $new_fullname['success']
 			&& $new_password['success'])
 		{
 			$new_fullname['value'] = htmlentities($new_fullname['value'],ENT_QUOTES,mb_detect_encoding($new_fullname['value']));
 
-			$sql = "SELECT user_id, user_fullname, user_email FROM ".$core->prefix."user
+			$sql = "SELECT user_id, user_fullname, user_email, user_lang FROM ".$core->prefix."user
 				WHERE user_id != '".$user_id."'
 				AND (user_fullname = '".$new_fullname['value']."'
 				OR user_email = '".$new_email['value']."')";
@@ -66,6 +67,7 @@ if(isset($_POST['action'])) {
 				if (!empty($new_password['value'])) {
 					$cur->user_pwd = crypt::hmac('BP_MASTER_KEY',$new_password['value']);
 				}
+				$cur->user_lang = $new_lang;
 				$cur->modified = array(' NOW() ');
 				$cur->update("WHERE user_id = '$user_id'");
 
@@ -96,7 +98,7 @@ if(isset($_POST['action'])) {
 		}
 		break;
 
-		
+
 ##########################################################
 # DEFAULT RETURN
 ##########################################################

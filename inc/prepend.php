@@ -172,6 +172,10 @@ if (in_array($core->prefix.'setting', $schema->getTables())) {
 				//http::redirect('auth.php');
 			} else {
 				$user_settings = new bpSettings($core, $core->auth->userID());
+				$rs_lang = $core->con->select(
+					"SELECT user_lang FROM ".$core->prefix."user
+					WHERE user_id='".$core->auth->userID()."'");
+				$locale = $rs_lang->f('user_lang');
 			}
 		} catch (Exception $e) {
 			__error(T_('Database error')

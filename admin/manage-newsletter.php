@@ -33,50 +33,8 @@ if ($core->auth->sessionExists()):
 		exit;
 	}
 
-# Fonction permettant de pré-cocher une checkbox si la valeur de celle-ci est dans un tableau
-function checkCheckbox($array, $field) {
-	if($array['value']) {
-		$email = split(',', $array['value']);
-		while (list ($key,$value) = @each ($email)) {
-			if($value == $field) {
-				return true;
-			}
-		}
-	}
-}
-
-# Fonction de vérification des destinataires
-function check_recipients($fieldname, $array) {
-	$success = true;
-	$value = "";
-	$error = "";
-	if(is_array($array) && count($array) > 0) {
-		while (list ($key,$email) = @each ($array)) {
-			$value .= $email.',';
-		}
-	}
-	else {
-		$success = false;
-		$error = sprintf(T_('You shoud have selected %s'), T_($fieldname));
-	}
-	return array(
-		"success" => $success,
-		"value" => $value,
-		"error" => $error
-		);
-}
-
-# Fonction permettant de "nettoyer" du texte
-function cleanupString($string) {
-	$string = trim($string);
-	if (get_magic_quotes_gpc()) {
-		$string = stripslashes($string);
-	}
-	return $string;
-}
-
 ### Mise en cache
-debutCache();
+#debutCache();
 
 ### Initialisation variables de traitement
 $flash = array(); 	# Tableau pour l'affichage des messages d'erreurs, d'avertissement, de notice, ...
@@ -267,16 +225,57 @@ include_once(dirname(__FILE__).'/sidebar.php');
                 </div>
             </fieldset>
 		</form>
-<?
-
+<?php
 ### Inclusion du footer
 include(dirname(__FILE__).'/footer.php');
 
 ## Fin du cache
-finCache();
+#finCache();
 
 else:
 	$page_url = urlencode(http::getHost().$_SERVER['REQUEST_URI']);
 	http::redirect('../auth.php?came_from='.$page_url);
 endif;
+
+# Fonction permettant de pré-cocher une checkbox si la valeur de celle-ci est dans un tableau
+function checkCheckbox($array, $field) {
+	if($array['value']) {
+		$email = split(',', $array['value']);
+		while (list ($key,$value) = @each ($email)) {
+			if($value == $field) {
+				return true;
+			}
+		}
+	}
+}
+
+# Fonction de vérification des destinataires
+function check_recipients($fieldname, $array) {
+	$success = true;
+	$value = "";
+	$error = "";
+	if(is_array($array) && count($array) > 0) {
+		while (list ($key,$email) = @each ($array)) {
+			$value .= $email.',';
+		}
+	}
+	else {
+		$success = false;
+		$error = sprintf(T_('You shoud have selected %s'), T_($fieldname));
+	}
+	return array(
+		"success" => $success,
+		"value" => $value,
+		"error" => $error
+		);
+}
+
+# Fonction permettant de "nettoyer" du texte
+function cleanupString($string) {
+	$string = trim($string);
+	if (get_magic_quotes_gpc()) {
+		$string = stripslashes($string);
+	}
+	return $string;
+}
 ?>

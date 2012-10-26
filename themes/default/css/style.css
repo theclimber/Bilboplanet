@@ -209,7 +209,7 @@ div.membersBox {
 	display: inline-block;
 	text-align: justify;
 	vertical-align: top;
-	max-width: 65%;
+	/*max-width: 65%;*/
 }
 .post h1, .post h1 a{
     color:#464646;

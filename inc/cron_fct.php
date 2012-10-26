@@ -538,7 +538,7 @@ function postNewsOnSocialNetwork($title, $author, $post_id) {
 function logMsg($message, $filename="", $type=0, $print=false) {
 	# On recupere la date
 	$print_style = '';
-	$date_log = '['.date("Y-m-d").' '.date("H:i:s").'] ';
+	$date_log = "\n".'['.date("Y-m-d").' '.date("H:i:s").'] ';
 	switch($type){
 		case 1:
 			$message_type='SUCCESS : ';

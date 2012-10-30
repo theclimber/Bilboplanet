@@ -42,6 +42,7 @@ function update($core, $print=false) {
 	$sql = "SELECT
 			".$core->prefix."feed.user_id as user_id,
 			user_fullname,
+			user_email,
 			feed_id,
 			feed_url,
 			site_url,
@@ -275,13 +276,19 @@ function getItemsFromFeeds ($rs, $print) {
 				$cur->update("WHERE feed_id = '$rs->feed_id'");
 
 				$from = $blog_settings->get('author_mail');
-				$to = $from;
+				$to = $from;//.','.$rs->user_email;
 				$reply_to = $from;
 
 				$subject = T_("Due to errors, a feed has been disabled on ".$blog_settings->get('planet_title'));
-				$content = T_("The following feed has been disabled :\n");
+				$content = sprintf(T_("The feed of %s has been disabled :\n"), $rs->user_fullname);
 				$content .= $rs->feed_url."\n";
-				$content .= sprintf(T_("The feed was in error during more than %s hours"), $tooling/3600);
+				$content .= sprintf(T_("The feed was in error during more than %s hours"), $toolong/3600);
+				$content .= "\n\n".T_("Details :");
+				$content .= "\n".T_("User id : ").$rs->user_id;
+				$content .= "\n".T_("User name : ").$rs->user_fullname;
+				$content .= "\n".T_("User email : ").$rs->user_email;
+				$content .= "\n".T_("Feed url : ").$rs->feed_url;
+				$content .= "\n".T_("Website : ").$rs->site_url;
 
 				if (!sendmail($from, $to, $subject, $content, 'normal', $reply_to)) {
 					$log_msg = logMsg(T_("Email alert could not be send"));

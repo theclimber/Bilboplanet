@@ -25,6 +25,7 @@
 ?>
 <?php
 require_once(dirname(__FILE__).'/prepend.php');
+require_once(dirname(__FILE__).'/cron_fct.php');
 
 $can_execute = 0;
 if (isset($_GET['token'])) {
@@ -40,13 +41,15 @@ if (isset($_GET['token'])) {
 		}
 	}
 }
+if (isCli()) {
+	$can_execute = 1;
+}
 
 if ($can_execute == 0) {
 	print T_('Forbidden');
 	exit;
 }
 
-require_once(dirname(__FILE__).'/cron_fct.php');
 
 $log_file = dirname(__FILE__).'/../logs/cron_job.log';
 
@@ -62,7 +65,10 @@ if (file_exists(dirname(__FILE__).'/STOP')) {
 }
 
 logMsg("Start update script", $log_file);
-echo update($core, true);
+$output = update($core, true);
+if (!isCli()) {
+	echo $output;
+}
 
 $cache_dir = dirname(__FILE__).'/../admin/cache';
 $dir_handle = @opendir($cache_dir) or die("Unable to open $cache_dir");

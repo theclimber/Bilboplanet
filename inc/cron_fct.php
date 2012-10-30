@@ -98,7 +98,10 @@ function getItemsFromFeeds ($rs, $print) {
 			if ($print) $output .= $log_msg;
 			break;
 		}
-//		echo $rs->feed_url."\n";
+		$log_msg = logMsg(T_("Check feed : ").$rs->feed_url, "", 0, $print);
+		if ($print) {
+			$output .= $log_msg;
+		}
 
 //		require_once(dirname(__FILE__).'/lib/simplepie/SimplePieAutoloader.php');
 		require_once(dirname(__FILE__).'/lib/simplepie_1.3.compiled.php');
@@ -535,31 +538,41 @@ function postNewsOnSocialNetwork($title, $author, $post_id) {
 # type = 2 : INFO
 # type = 3 : ERROR
 # type = 4 : DEBUG
-function logMsg($message, $filename="", $type=0, $print=false) {
+function logMsg($message, $filename="", $type=0, $print=false, $style='cli') {
 	# On recupere la date
-	$print_style = '';
+	if (!isCli()) {
+		$style = 'html';
+	}
+	$message_type='INFO    : ';
+	$msg = 'INFO';
+	$color = 'blue';
 	$date_log = "\n".'['.date("Y-m-d").' '.date("H:i:s").'] ';
 	switch($type){
 		case 1:
 			$message_type='SUCCESS : ';
-			$print_style = "[<font color=\"green\">SUCCESS</font>] ";
+			$msg = 'SUCCESS';
+			$color = 'green';
 			break;
 		case 2:
 			$message_type='INFO    : ';
-			$print_style = "[<font color=\"blue\">INFO</font>] ";
+			$msg = 'INFO';
+			$color = 'blue';
 			break;
 		case 3:
 			$message_type='ERROR   : ';
-			$print_style = "[<font color=\"red\">ERROR</font>] ";
+			$msg = 'ERROR';
+			$color = 'red';
 			break;
 		case 4:
 			$message_type='DEBUG   : ';
-			$print_style = "[<font color=\"pink\">DEBUG</font>] ";
+			$msg = 'DEBUG';
+			$color = 'pink';
 			break;
-		default:
-			$message_type='INFO    : ';
-			$print_style = "[<font color=\"blue\">INFO</font>] ";
-			break;
+	}
+	if ($style=='html') {
+		$print_style = "[<font color=\"".$color."\">".$msg."</font>] ";
+	} else {
+		$print_style = "[".$msg."]";
 	}
 
 	if ($filename == "") {
@@ -595,6 +608,9 @@ function logMsg($message, $filename="", $type=0, $print=false) {
 		fclose($file);
 	}*/
 	# On log a l'ecran
+	if ($style == 'cli') {
+		echo $date_log.$message_type.$message;
+	}
 	if ($print)
 		return $print_style.$message."<br/>";
 	else
@@ -824,5 +840,12 @@ function checkUrl($url) {
 	return  @fclose(@fopen($url, 'r'));
 }
 
+function isCli() {
+	if(php_sapi_name() == 'cli' && empty($_SERVER['REMOTE_ADDR'])) {
+		return true;
+	} else {
+		return false;
+	}
+}
 
 ?>

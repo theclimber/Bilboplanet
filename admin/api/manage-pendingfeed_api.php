@@ -231,7 +231,7 @@ function getOutput($sql, $num_page=0, $nb_items=30) {
 	while($rs->fetch()) {
 
 		$avatar_email = strtolower($rs->user_email);
-		$avatar_url = "http://cdn.libravatar.org/avatar/".md5($avatar_email)."?d=".urlencode($blog_settings->get('planet_url')."/themes/".$blog_settings->get('planet_theme')."/images/gravatar.png")."&s=40";
+		$avatar_url = "http://cdn.libravatar.org/avatar/".md5($avatar_email)."?d=".urlencode(BP_PLANET_URL."/themes/".$blog_settings->get('planet_theme')."/images/gravatar.png")."&s=40";
 
 		$output .= '<tr class="line">
 			<td style="text-align: center;">

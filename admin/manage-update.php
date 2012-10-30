@@ -156,7 +156,7 @@ echo '<label for="enable_on_index"><input id="enable_on_index" type="checkbox" n
 
 <b><?php
 $token = $core->auth->userToken();
-echo $blog_settings->get('planet_url')."/inc/update_manual.php?token=".$token; ?></b><br />
+echo BP_PLANET_URL."/inc/update_manual.php?token=".$token; ?></b><br />
 <?php echo T_('This will automatically launch the update and log it into the log files.'); ?></p>
 </fieldset>
 <?php

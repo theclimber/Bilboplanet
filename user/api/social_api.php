@@ -61,7 +61,7 @@ if(isset($_POST['action'])) {
 					$shaarli_instance = $instance['value'];
 				}
 			} else {
-				$shaarli_instance = $blog_settings->get('planet_url').'/shaarli/?user='.$user_id;
+				$shaarli_instance = BP_PLANET_URL.'/shaarli/?user='.$user_id;
 			}
 		}
 		

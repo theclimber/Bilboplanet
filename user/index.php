@@ -36,7 +36,7 @@ if ($core->auth->sessionExists()):
 
 $core->tpl->importFile('index','index.tpl', dirname(__FILE__).'/tpl/');
 $core->tpl->setVar('planet', array(
-	"url"	=>	$blog_settings->get('planet_url'),
+	"url"	=>	BP_PLANET_URL,
 	"theme"	=>	$blog_settings->get('planet_theme'),
 	"title"	=>	$blog_settings->get('planet_title'),
 	"desc"	=>	$blog_settings->get('planet_desc'),

@@ -132,7 +132,7 @@ if(isset($_POST['action'])) {
 		$tpl = new Hyla_Tpl(dirname(__FILE__).'/../themes/'.$blog_settings->get('planet_theme').'/');
 		$tpl->importFile('index', 'index.tpl');
 		$tpl->setVar('planet', array(
-			'url' => $blog_settings->get('planet_url'),
+			'url' => BP_PLANET_URL,
 			'theme' => $blog_settings->get('planet_theme')
 		));
 

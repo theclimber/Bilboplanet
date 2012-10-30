@@ -788,7 +788,7 @@ function getOutput($sql, $num_page=0, $nb_items=30) {
 			}
 
 			$output .= '<div class="tribesbox tribe-'.$tribe_state.'" id="tribe-'.$rs->tribe_id.'">
-				<h3><a href="'.$blog_settings->get('planet_url').'/index.php?list=1&tribe_id='.$rs->tribe_id.'">'.$rs->tribe_name.'</a></h3>
+				<h3><a href="'.BP_PLANET_URL.'/index.php?list=1&tribe_id='.$rs->tribe_id.'">'.$rs->tribe_name.'</a></h3>
 				'.$tribe_icon.'
 				<p class="nickname">
 					Tribe owner : '.$tribe_owner.'<br/>
@@ -810,8 +810,8 @@ function getOutput($sql, $num_page=0, $nb_items=30) {
 					<li><a href="javascript:add_search('.$num_page.','.$nb_items.',\''.$rs->tribe_id.'\',\''.$rs->tribe_name.'\')"><img src="meta/icons/add_search.png" title="'.T_('Add search to tribe').'" /></a></li>
 					<li>'.$icon_action.'</li>
 				</ul>
-				<div class="feedlink"><a href="'.$blog_settings->get('planet_url').'/index.php?list=1&tribe_id='.$rs->tribe_id.'">
-						<img alt="RSS" src="'.$blog_settings->get('planet_url').'/themes/'.$blog_settings->get('planet_theme').'/images/rss_24.png" /></a></div>
+				<div class="feedlink"><a href="'.BP_PLANET_URL.'/index.php?list=1&tribe_id='.$rs->tribe_id.'">
+						<img alt="RSS" src="'.BP_PLANET_URL.'/themes/'.$blog_settings->get('planet_theme').'/images/rss_24.png" /></a></div>
 				</div>';
 		}
 	} else {

@@ -179,17 +179,17 @@ if (isset($_GET) && isset($_GET['type'])) {
 	xmlns:slash="http://purl.org/rss/1.0/modules/slash/">
 		<channel>
 			<title><?php echo $title; ?></title>
-			<atom:link href="<?php echo $blog_settings->get('planet_url')."/".$params;?>" rel="self" type="application/rss+xml" />
-			<link><?php echo $blog_settings->get('planet_url'); ?></link>
+			<atom:link href="<?php echo BP_PLANET_URL."/".$params;?>" rel="self" type="application/rss+xml" />
+			<link><?php echo BP_PLANET_URL; ?></link>
 			<description><?php echo $planet_desc;?></description>
 			<lastBuildDate><?php echo date('r'); ?></lastBuildDate>
 			<language><?php echo $blog_settings->get('planet_lang'); ?></language>
 			<generator>Bilboplanet v<?php echo str_replace(array("\r\n", "\r", "\n"), null, $blog_settings->get('planet_version')); ?></generator>
 			<webMaster><?php echo strtolower($blog_settings->get('author_mail'))." (".$blog_settings->get('author').")"; ?></webMaster>
 			<image>
-				<url><?php echo $blog_settings->get('planet_url').'/themes/'.$blog_settings->get('planet_theme').'/images/logo.png';?></url>
+				<url><?php echo BP_PLANET_URL.'/themes/'.$blog_settings->get('planet_theme').'/images/logo.png';?></url>
 				<title><?php echo $title; ?></title>
-				<link><?php echo $blog_settings->get('planet_url'); ?></link>
+				<link><?php echo BP_PLANET_URL; ?></link>
 				<description><?php echo $planet_desc;?></description>
 			</image>
 
@@ -197,7 +197,7 @@ if (isset($_GET) && isset($_GET['type'])) {
 	}
 	elseif($_GET['type']=="atom") {
 	#Header of Atom Content
-		$authority = parse_url($blog_settings->get('planet_url'));
+		$authority = parse_url(BP_PLANET_URL);
 		$authority = $authority['host'];
 
 ?>
@@ -206,18 +206,18 @@ if (isset($_GET) && isset($_GET['type'])) {
 		<title><?php echo $title; ?></title>
 		<subtitle type="text"><?php echo $planet_desc; ?></subtitle>
 		<updated><?php echo date('c') ?></updated>
-		<icon><?php echo $blog_settings->get('planet_url').'/themes/'.$blog_settings->get('planet_theme').'/favicon.ico';?></icon>
-		<logo><?php echo $blog_settings->get('planet_url').'/themes/'.$blog_settings->get('planet_theme').'/images/logo.png';?></logo>
+		<icon><?php echo BP_PLANET_URL.'/themes/'.$blog_settings->get('planet_theme').'/favicon.ico';?></icon>
+		<logo><?php echo BP_PLANET_URL.'/themes/'.$blog_settings->get('planet_theme').'/images/logo.png';?></logo>
 		<id>tag:<?php
-		echo $authority.','.date('Y').':'.$blog_settings->get('planet_url');
+		echo $authority.','.date('Y').':'.BP_PLANET_URL;
 		?></id>
 		<author>
 			<name><?php echo $blog_settings->get('author'); ?></name>
 			<email><?php echo strtolower($blog_settings->get('author_mail')); ?></email>
-			<uri><?php echo $blog_settings->get('planet_url'); ?></uri>
+			<uri><?php echo BP_PLANET_URL; ?></uri>
 		</author>
-		<link rel="alternate" type="text/html" href="<?php echo $blog_settings->get('planet_url'); ?>" />
-		<link rel="self" href="<?php echo $blog_settings->get('planet_url')."/".$params; ?>" />
+		<link rel="alternate" type="text/html" href="<?php echo BP_PLANET_URL; ?>" />
+		<link rel="self" href="<?php echo BP_PLANET_URL."/".$params; ?>" />
 		<generator uri="http://www.bilboplanet.com" version="<?php echo str_replace(array("\r\n", "\r", "\n"), null, $blog_settings->get('planet_version')); ?>">
 			Bilboplanet
 		</generator>
@@ -233,7 +233,7 @@ if (isset($_GET) && isset($_GET['type'])) {
 
 		$url = $post_list->permalink;
 		if ($blog_settings->get('internal_links')) {
-			$url = $blog_settings->get('planet_url').
+			$url = BP_PLANET_URL.
 				"/index.php?post_id=".$post_list->post_id.
 				"&go=external";
 		}
@@ -241,7 +241,7 @@ if (isset($_GET) && isset($_GET['type'])) {
 
 		# Other link
 		$links =  '<i>'.sprintf('Original post of <a href="%s" title="Visit the source">%s</a>.',$url, $nom);
-		$links .= sprintf(T_('Vote for this post on <a href="%s" title="Go on the planet">%s</a>.'),$blog_settings->get('planet_url'), $blog_settings->get('planet_title')).'</i>';
+		$links .= sprintf(T_('Vote for this post on <a href="%s" title="Go on the planet">%s</a>.'),BP_PLANET_URL, $blog_settings->get('planet_title')).'</i>';
 
 		# Remove html tag to post content
 		$desc = strip_tags($item);
@@ -251,7 +251,7 @@ if (isset($_GET) && isset($_GET['type'])) {
 		# Gravatar
 		if($blog_settings->get('planet_avatar')) {
 			$avatar_email = strtolower($post_list->user_email);
-			$avatar_url = "http://cdn.libravatar.org/avatar/".md5($avatar_email)."?d=".urlencode($blog_settings->get('planet_url')."/themes/".$blog_settings->get('planet_theme')."/images/gravatar.png")."&s=40";
+			$avatar_url = "http://cdn.libravatar.org/avatar/".md5($avatar_email)."?d=".urlencode(BP_PLANET_URL."/themes/".$blog_settings->get('planet_theme')."/images/gravatar.png")."&s=40";
 			$avatar = '<img src="'.$avatar_url.'" alt="'.sprintf(T_('Gravatar of %s'),$post_list->user_fullname).'" class="gravatar" />';
 		}
 
@@ -272,7 +272,7 @@ if (isset($_GET) && isset($_GET['type'])) {
 				while ($rsimilar->fetch()) {
 					$post_permalink = $rsimilar->permalink;
 					if ($blog_settings->get('internal_links')) {
-						$post_permalink = $blog_settings->get('planet_url').
+						$post_permalink = BP_PLANET_URL.
 							"/index.php?post_id=".$rsimilar->post_id;
 					}
 					$sim_html .= "<li>";
@@ -331,10 +331,10 @@ if (isset($_GET) && isset($_GET['type'])) {
 }
 else {
 	http::head(301);
-	http::redirect($blog_settings->get('planet_url')."/feed.php?type=rss");
+	http::redirect(BP_PLANET_URL."/feed.php?type=rss");
 }
 
-$root_url = $blog_settings->get('planet_url');
+$root_url = BP_PLANET_URL;
 $analytics = $blog_settings->get('planet_analytics');
 if(!empty($analytics)) {
 	$analyzed_url = $root_url.'/feed/'.$_GET['type'];

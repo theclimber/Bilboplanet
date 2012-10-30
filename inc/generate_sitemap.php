@@ -25,7 +25,7 @@ function generate_sitemap () {
 	$xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
 	while($rs->fetch()) {
 		$xml .= "\n\t".'<url>';
-		$xml .= "\n\t\t".'<loc>'.$blog_settings->get('planet_url').'/?post_id='.$rs->post_id.'</loc>';
+		$xml .= "\n\t\t".'<loc>'.BP_PLANET_URL.'/?post_id='.$rs->post_id.'</loc>';
 		$xml .= "\n\t\t".'<priority>0.5000</priority>';
 		$xml .= "\n\t".'</url>';
 	}

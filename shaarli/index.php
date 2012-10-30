@@ -668,7 +668,7 @@ class pageBuilder
         if (!empty($GLOBALS['title'])) $this->tpl->assign('pagetitle',$GLOBALS['title']);
         if (!empty($GLOBALS['pagetitle'])) $this->tpl->assign('pagetitle',$GLOBALS['pagetitle']);
         $this->tpl->assign('shaarlititle',empty($GLOBALS['title']) ? 'Shaarli': $GLOBALS['title'] );
-		$this->tpl->assign('planet_url',$blog_settings->get('planet_url'));
+		$this->tpl->assign('planet_url',BP_PLANET_URL);
         return;
     }
 

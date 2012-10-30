@@ -128,6 +128,11 @@ if (in_array($core->prefix.'setting', $schema->getTables())) {
 	$blog_settings = new bpSettings($core, 'root');
 	$user_settings = null;
 
+	/* Set backward compatibility */
+	if (!defined('BP_PLANET_URL')) {
+		define('BP_PLANET_URL',$blog_settings->get('planet_url'));
+	}
+
 	# Set timezone
 	$timezone_default = $blog_settings->get('planet_timezone');
 	if (!empty($timezone_default))
@@ -144,7 +149,7 @@ if (in_array($core->prefix.'setting', $schema->getTables())) {
 	if (is_file(dirname(__FILE__).'/../themes/'.$blog_settings->get('planet_theme').'/index.tpl')) {
 		$core->tpl->importFile('index','index.tpl', dirname(__FILE__).'/../themes/'.$blog_settings->get('planet_theme'));
 		$core->tpl->setVar('planet', array(
-			"url"	=>	$blog_settings->get('planet_url'),
+			"url"	=>	BP_PLANET_URL,
 			"theme"	=>	$blog_settings->get('planet_theme'),
 			"title"	=>	$blog_settings->get('planet_title'),
 			"desc"	=>	$blog_settings->get('planet_desc'),
@@ -168,7 +173,7 @@ if (in_array($core->prefix.'setting', $schema->getTables())) {
 				$p[3] = '/';
 				call_user_func_array('setcookie',$p);
 
-				http::redirect($blog_settings->get('planet_url').'/auth.php');
+				http::redirect(BP_PLANET_URL.'/auth.php');
 				//http::redirect('auth.php');
 			} else {
 				$user_settings = new bpSettings($core, $core->auth->userID());
@@ -195,11 +200,12 @@ if (in_array($core->prefix.'setting', $schema->getTables())) {
 			http::redirect($_GET['logout']);
 		}
 		else {
-			http::redirect($blog_settings->get('planet_url'));
+			http::redirect(BP_PLANET_URL);
 		}
 		exit;
 	}
 }
+
 
 
 # Definition of the language

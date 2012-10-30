@@ -53,10 +53,10 @@ if ($blog_settings->get('planet_rtl')) {
 <body class="admin">
 <div id="BP_head" class="toolbar bgbox bdbox"><div class="grad bdinbox">
 	<p class="site_info">
-	<span class="ctitle"><a class="tips" title="<?php echo $blog_settings->get('planet_title'); ?>" rel="<?php echo T_('Back on the Bilboplanet');?>" href="<?php echo $blog_settings->get('planet_url'); ?>" target="_blank"><?php echo T_('Back on the Bilboplanet');?></a></span>
+	<span class="ctitle"><a class="tips" title="<?php echo $blog_settings->get('planet_title'); ?>" rel="<?php echo T_('Back on the Bilboplanet');?>" href="<?php echo BP_PLANET_URL; ?>" target="_blank"><?php echo T_('Back on the Bilboplanet');?></a></span>
 	</p>
 	<ul id="BP_userbar">
-		<li><a id="BP_Logout" href="#" rel="?logout=<?php echo $blog_settings->get('planet_url'); ?>" class="button minbutton br3px"><?php echo T_('Logout');?></a></li>
+		<li><a id="BP_Logout" href="#" rel="?logout=<?php echo BP_PLANET_URL; ?>" class="button minbutton br3px"><?php echo T_('Logout');?></a></li>
 		<li><a id="BP_About" href="#about" name="modal" class="button minbutton br3px"><?php echo T_('About');?></a></li>
 	</ul>
 	<hr class="clear" />

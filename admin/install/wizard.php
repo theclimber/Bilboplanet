@@ -99,6 +99,7 @@ if (!empty($_POST))
 		writeConfigValue('BP_DBNAME',$DBNAME,$full_conf);
 		writeConfigValue('BP_DBPREFIX',strtolower($DBPREFIX),$full_conf);
 		writeConfigValue('BP_DBENCRYPTED_PASSWORD','1',$full_conf);
+		writeConfigValue('BP_PLANET_URL',http::getHost().$root_url,$full_conf);
 
 		$fp = @fopen(BP_CONFIG_PATH,'wb');
 		if ($fp === false) {

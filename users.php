@@ -52,7 +52,7 @@ while ($rs->fetch()) {
 	$core->tpl->setVar('user', $user);
 
 	$avatar_email = strtolower($rs->user_email);
-	$core->tpl->setVar('avatar_url', "http://cdn.libravatar.org/avatar/".md5($avatar_email)."?d=".urlencode($blog_settings->get('planet_url')."/themes/".$blog_settings->get('planet_theme')."/images/gravatar.png"));
+	$core->tpl->setVar('avatar_url', "http://cdn.libravatar.org/avatar/".md5($avatar_email)."?d=".urlencode(BP_PLANET_URL."/themes/".$blog_settings->get('planet_theme')."/images/gravatar.png"));
 
 	$core->tpl->render("user.block");
 }

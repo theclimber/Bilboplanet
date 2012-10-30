@@ -21,4 +21,5 @@ define('BP_DBPERSIST',false);
 
 # Session name for cookie
 define('BP_SESSION_NAME','bpxd');
+define('BP_PLANET_URL','http://www.your-website.com/bilboplanet');
 ?>

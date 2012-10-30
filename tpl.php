@@ -193,7 +193,7 @@ $core->tpl->setVar('footer1', array(
 	'url' => 'http://www.bilboplanet.com'));
 $core->tpl->setVar('footer2', array(
 	'text' => T_('Valid CSS - Xhtml'),
-	'url' => 'http://validator.w3.org/check?verbose=1&uri='.$blog_settings->get('planet_url')));
+	'url' => 'http://validator.w3.org/check?verbose=1&uri='.BP_PLANET_URL));
 $core->tpl->setVar('footer3', array(
 	'text' => T_('Designed by BilboPlanet'),
 	'url' => 'http://www.bilboplanet.com'));

@@ -123,7 +123,7 @@ if(isset($_POST['action'])) {
 				$status = 'inactive';
 			}
 			$avatar_email = strtolower($rs->user_email);
-			$avatar_url = "http://cdn.libravatar.org/avatar/".md5($avatar_email)."?d=".urlencode($blog_settings->get('planet_url')."/themes/".$blog_settings->get('planet_theme')."/images/gravatar.png")."&s=40";
+			$avatar_url = "http://cdn.libravatar.org/avatar/".md5($avatar_email)."?d=".urlencode(BP_PLANET_URL."/themes/".$blog_settings->get('planet_theme')."/images/gravatar.png")."&s=40";
 
 			# Affichage de la ligne de tableau
 			$output .= '<tr class="line '.$status.'"><td><img src="'.$avatar_url.'"></td>

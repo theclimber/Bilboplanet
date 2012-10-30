@@ -21,7 +21,7 @@ require_once(dirname(__FILE__).'/../inc/prepend.php');
 
 $post_id = isset($_GET['post_id']) ? intval(trim($_GET['post_id'])) : -1;
 $url = isset($_GET['url']) ? trim($_GET['url']) : '';
-$planet_url = $blog_settings->get('planet_url');
+$planet_url = BP_PLANET_URL;
 
 if (!is_int($post_id) || ($url != '' && !check_url($url))) {
 	print T_("Permission denied");

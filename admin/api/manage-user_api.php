@@ -424,7 +424,7 @@ function getOutput($sql, $num_page=0, $nb_items=30) {
 			$status = 'inactive';
 		}
 		$avatar_email = strtolower($rs->user_email);
-		$avatar_url = "http://cdn.libravatar.org/avatar/".md5($avatar_email)."?d=".urlencode($blog_settings->get('planet_url')."/themes/".$blog_settings->get('planet_theme')."/images/gravatar.png")."&s=40";
+		$avatar_url = "http://cdn.libravatar.org/avatar/".md5($avatar_email)."?d=".urlencode(BP_PLANET_URL."/themes/".$blog_settings->get('planet_theme')."/images/gravatar.png")."&s=40";
 		# Affichage de la ligne de tableau
 		$output .= '<tr class="line '.$status.'"><td class="'.$god_class.'" style="text-align: center;"><img src="'.$avatar_url.'"></td>
 			<td class="'.$god_class.'"><ul>

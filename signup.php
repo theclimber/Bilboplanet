@@ -27,7 +27,7 @@
 require_once(dirname(__FILE__).'/inc/prepend.php');
 
 if ($core->auth->sessionExists()){
-	http::redirect($blog_settings->get('planet_url').'/index.php');
+	http::redirect(BP_PLANET_URL.'/index.php');
 	exit;
 }
 

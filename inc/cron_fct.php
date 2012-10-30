@@ -505,7 +505,7 @@ function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_c
 
 function postNewsOnSocialNetwork($title, $author, $post_id) {
 	global $blog_settings;
-	$post_url = $blog_settings->get('planet_url').'/?post_id='.$post_id;
+	$post_url = BP_PLANET_URL.'/?post_id='.$post_id;
 	$formating = $blog_settings->get('statusnet_post_format');
 	$textlimit = $blog_settings->get('statusnet_textlimit');
 
@@ -717,7 +717,7 @@ function savePostImage($post_id,$file_url) {
 			or $error[] = T_('Error while deleting temporary image');
 
 		$filename = 'post'.$post_id.'-'.time().$file_extension;
-		$file_url = $blog_settings->get('planet_url').'/data/images/'.$filename;
+		$file_url = BP_PLANET_URL.'/data/images/'.$filename;
 		$file_fullpath = $folder.'/'.strtolower($filename);
 
 		if (is_file($file_fullpath)) {

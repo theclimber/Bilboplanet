@@ -48,7 +48,7 @@ if (isset($_GET)) {
 			$_GET['go'] == "external" &&
 			!$res->isEmpty() &&
 			$blog_settings->get('internal_links')){
-			$root_url = $blog_settings->get('planet_url');
+			$root_url = BP_PLANET_URL;
 			$analytics = $blog_settings->get('planet_analytics');
 
 			if(!empty($analytics)) {

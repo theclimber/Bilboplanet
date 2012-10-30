@@ -109,7 +109,7 @@ function piwik_analytics($aid,$purl,$name, $go, $html = 1) {
 function ga($gaid,$url,$name) {
 	global $blog_settings;
 	$var_utmac=$gaid; //enter the new urchin code
-	$var_utmhn=$blog_settings->get('planet_url'); //enter your domain
+	$var_utmhn=BP_PLANET_URL; //enter your domain
 	$var_utmn=rand(1000000000,9999999999);//random request number
 	$var_cookie=rand(10000000,99999999);//random cookie number
 	$var_random=rand(1000000000,2147483647); //number under 2147483647
@@ -689,7 +689,7 @@ function showTribe($sql_posts) {
 			######################
 			$post_permalink = $rs_posts->permalink;
 			if ($blog_settings->get('internal_links')) {
-				$post_permalink = $blog_settings->get('planet_url').
+				$post_permalink = BP_PLANET_URL.
 					"/index.php?post_id=".$rs_posts->post_id.
 					"&go=external";
 			}
@@ -729,7 +729,7 @@ function showPosts($rs, $tpl, $search_value="", $multiview=true, $strip_tags=fal
 	while($rs->fetch()){
 		$post_permalink = $rs->permalink;
 		if ($blog_settings->get('internal_links')) {
-			$post_permalink = $blog_settings->get('planet_url').
+			$post_permalink = BP_PLANET_URL.
 				"/index.php?post_id=".$rs->post_id.
 				"&go=external";
 		}
@@ -758,7 +758,7 @@ function showPosts($rs, $tpl, $search_value="", $multiview=true, $strip_tags=fal
 		$post['description'] = sprintf(T_('By %s, on %s at %s.'),
 			'<a href="#" onclick="javascript:add_user(\''.$rs->user_id.'\')">'.$rs->user_fullname.'</a>',
 			$post["date"],$post["hour"]);
-		$post['description'].= ' <a href="'.$blog_settings->get('planet_url').'/index.php?post_id='.$rs->post_id.'" title="'.$post['title'].'">'.T_("View post detail").'</a>';
+		$post['description'].= ' <a href="'.BP_PLANET_URL.'/index.php?post_id='.$rs->post_id.'" title="'.$post['title'].'">'.T_("View post detail").'</a>';
 		if (!empty($search_value)){
 			# Format the occurences of the search request in the posts list
 			$post['content'] = split_balise($search_value, '<span class="search-content">'.$search_value.'</span>', $post['content'], 'str_ireplace', 1);
@@ -776,7 +776,7 @@ function showPosts($rs, $tpl, $search_value="", $multiview=true, $strip_tags=fal
 		# Gravatar
 		if($avatar) {
 			$avatar_email = strtolower($post['author_email']);
-			$tpl->setVar('avatar_url', "http://cdn.libravatar.org/avatar/".md5($avatar_email)."?d=".urlencode($blog_settings->get('planet_url')."/themes/".$blog_settings->get('planet_theme')."/images/gravatar.png"));
+			$tpl->setVar('avatar_url', "http://cdn.libravatar.org/avatar/".md5($avatar_email)."?d=".urlencode(BP_PLANET_URL."/themes/".$blog_settings->get('planet_theme')."/images/gravatar.png"));
 
 			$tpl->render('post.block.gravatar');
 		}
@@ -827,7 +827,7 @@ function showPosts($rs, $tpl, $search_value="", $multiview=true, $strip_tags=fal
 				while ($rsimilar->fetch()) {
 					$post_permalink = $rsimilar->permalink;
 					if ($blog_settings->get('internal_links')) {
-						$post_permalink = $blog_settings->get('planet_url').
+						$post_permalink = BP_PLANET_URL.
 							"/index.php?post_id=".$rsimilar->post_id;
 					}
 					$similar = array(
@@ -1505,7 +1505,7 @@ function strip_script($string, $rm = 1) {
 
 function getNbTweet($post_id) {
 	global $blog_settings, $core;
-	$planet_url = $blog_settings->get('planet_url');
+	$planet_url = BP_PLANET_URL;
 
 	/*
 	# Check for planet URL
@@ -1535,7 +1535,7 @@ function getNbTweet($post_id) {
 
 function getNbDent($post_id) {
 	global $blog_settings, $core;
-	$planet_url = $blog_settings->get('planet_url');
+	$planet_url = BP_PLANET_URL;
 
 	# Check for planet URL
 	$referer = $planet_url.'?post_id='.$post_id;

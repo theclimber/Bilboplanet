@@ -587,8 +587,8 @@ if(isset($_POST) && isset($_POST['action'])) {
 			$output .= '</tr>
 		<tr>
 				<td>'.sprintf(T_('Allow using feed with no moderation at <br/>%s'),
-					'<a href="'.$blog_settings->get('planet_url').'/feed.php?type=atom&uncensored=true">'.
-						$blog_settings->get('planet_url').'/feed.php?type=atom&uncensored=true'.'</a>').'</td>';
+					'<a href="'.BP_PLANET_URL.'/feed.php?type=atom&uncensored=true">'.
+						BP_PLANET_URL.'/feed.php?type=atom&uncensored=true'.'</a>').'</td>';
 			if($allow_uncensored_feed) {
 				$output .= '<td><input type="checkbox" class="input field" id="allow_uncensored_feed" name="allow_uncensored_feed" checked /></td>';
 			}
@@ -860,8 +860,8 @@ if(isset($_POST) && isset($_POST['action'])) {
 			$output .= '</tr>
 			<tr>
 				<td>'.sprintf(T_('Allow using feed with no moderation at <br/>%s'),
-					'<a href="'.$blog_settings->get('planet_url').'/feed.php?type=atom&uncensored=true">'.
-						$blog_settings->get('planet_url').'/feed.php?type=atom&uncensored=true'.'</a>').'</td>';
+					'<a href="'.BP_PLANET_URL.'/feed.php?type=atom&uncensored=true">'.
+						BP_PLANET_URL.'/feed.php?type=atom&uncensored=true'.'</a>').'</td>';
 			if($allow_uncensored_feed) {
 				$output .= '<td>'.T_('Enabled').'</td>';
 			}

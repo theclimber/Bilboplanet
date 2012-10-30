@@ -593,7 +593,7 @@ function generate_SQL(
 	return $sql;
 }
 
-function generate_tribe_SQL($tribe_id, $num_start = 0, $nb_items = 10) {
+function generate_tribe_SQL($tribe_id, $num_start = 0, $nb_items = 10, $popular=false) {
 	global $core;
 	$sql_tribes = "SELECT
 			tribe_id,
@@ -640,7 +640,7 @@ function generate_tribe_SQL($tribe_id, $num_start = 0, $nb_items = 10) {
 		$tribe_tags,
 		$tribe_search,
 		null, // period
-		false, // popular
+		$popular, // popular
 		null, // post_id
 		1, // post_status
 		$count, // count

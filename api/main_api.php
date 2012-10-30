@@ -115,7 +115,7 @@ if(isset($_POST['action'])) {
 			}
 		}
 		# Terminaison de la commande SQL
-		$sql = generate_SQL(
+		/*$sql = generate_SQL(
 			$num_start,
 			$nb_items,
 			$users,
@@ -124,7 +124,26 @@ if(isset($_POST['action'])) {
 			$period,
 			$popular,
 			null,
-			$post_status);
+			$post_status);*/
+		if ($tribe_id != null) {
+			$sql = generate_tribe_SQL(
+				$tribe_id,
+				$num_start,
+				$nb_items,
+				$popular);
+		} else {
+			# Terminaison de la commande SQL
+			$sql = generate_SQL(
+				$num_start,
+				$nb_items,
+				$users,
+				$tags,
+				$search_value,
+				$period,
+				$popular,
+				null,
+				$post_status);
+		}
 #		print $sql;
 #		exit;
 		$rs = $core->con->select($sql);

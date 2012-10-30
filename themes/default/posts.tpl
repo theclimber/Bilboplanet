@@ -34,7 +34,7 @@
 			<!-- [post content] -->
 			<!-- BEGIN post.multi -->
 			<!-- BEGIN post.image -->
-			<div id="image-{$post.id}" class="post-image"><img src="{$post.image}" /></div>
+			<div id="image-{$post.id}" class="post-image"><img src="{$planet.url}/{$post.image}" /></div>
 			<!-- END post.image -->
 			<div id="text-{$post.id}" class="post-text" post_id="{$post.id}">{$post.short_content}</div>
 			<!-- ELSE post.multi -->

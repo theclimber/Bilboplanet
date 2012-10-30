@@ -717,7 +717,7 @@ function savePostImage($post_id,$file_url) {
 			or $error[] = T_('Error while deleting temporary image');
 
 		$filename = 'post'.$post_id.'-'.time().$file_extension;
-		$file_url = BP_PLANET_URL.'/data/images/'.$filename;
+		$file_url = 'data/images/'.$filename;
 		$file_fullpath = $folder.'/'.strtolower($filename);
 
 		if (is_file($file_fullpath)) {

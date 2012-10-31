@@ -123,7 +123,11 @@
 		<!-- ADD TRIBES HERE
 			on the left : -->
 		<div id="tribes-bg">
-			{!include:'menu.tpl'}
+			<!-- BEGIN user.menu -->
+				{!include:'user/menu.tpl'}
+			<!-- ELSE user.menu -->
+				{!include:'menu.tpl'}
+			<!-- END user.menu -->
 		</div>
 
 		<!-- On the right : -->

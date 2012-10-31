@@ -34,38 +34,36 @@ if ($core->auth->sessionExists()):
 		exit;
 	}
 
-$core->tpl->importFile('index','index.tpl', dirname(__FILE__).'/tpl/');
-$core->tpl->setVar('planet', array(
-	"url"	=>	BP_PLANET_URL,
-	"theme"	=>	$blog_settings->get('planet_theme'),
-	"title"	=>	$blog_settings->get('planet_title'),
-	"desc"	=>	$blog_settings->get('planet_desc'),
-	"keywords"	=>	$blog_settings->get('planet_keywords'),
-	"desc_meta"	=>	$blog_settings->get('planet_desc_meta'),
-	"msg_info" => $blog_settings->get('planet_msg_info'),
-));
+//$scripts[] = "themes/default/user/js/main.js";
+//$styles[] = "themes/default/user/css/blueprint/screen.css";
+//$styles[] = "themes/default/user/css/core.css";
+require_once(dirname(__FILE__).'/../tpl.php');
+
+$current_page = 'dashboard';
+if (isset($_GET['page']) && !empty($_GET['page'])) {
+	if (in_array($_GET['page'], array(
+		'dashboard','profile','social','write','tribes'
+		))){
+		$current_page = trim($_GET['page']);
+	}
+}
+$params['title'] = $params['title'].' - '.T_('User dashboard');
+$core->tpl->setVar('params', $params);
 $menu_selected =  array(
 	'dashboard' => '',
 	'profile'=> '',
 	'social' => '',
 	'write' => '',
 	'tribes' => '');
-$page = 'dashboard';
 
-if (isset($_GET)) {
-	# if user want to read a unique post
-	if (isset($_GET['page']) && !empty($_GET['page'])){
-		$page = trim($_GET['page']);
-	}
-}
+$menu_selected[$current_page] = "selected";
 
-$menu_selected[$page] = "selected";
-$core->tpl->setVar('title', 'User dashboard');
-
-$core->tpl->setVar('html', render_page($page));
+$core->tpl->setVar('html', render_page($current_page));
 $core->tpl->setVar('menu', $menu_selected);
-echo $core->tpl->render();
+$core->tpl->render('user.menu');
+$core->tpl->render('content.html');
 
+echo $core->tpl->render();
 
 else:
 	$page_url = urlencode(http::getHost().$_SERVER['REQUEST_URI']);

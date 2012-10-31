@@ -581,6 +581,7 @@ div#body{
 	display: block;
 	margin-left: 250px;
 	padding : 1px 15px;
+	min-height: 800px;
 }
 div#tribes-bg {
 	float: left;
@@ -594,20 +595,20 @@ div#tribes-bg {
 	padding: 25px 0;
 	position: fixed;
 }
-div#tribes-bg ul#tribes {
+div#tribes-bg ul.menu {
 	list-style: none;
 }
-div#tribes-bg ul#tribes li {
+div#tribes-bg ul.menu li {
 	padding: 10px;
 	border-radius: 5px 0 0 5px;
 }
-div#tribes-bg ul#tribes li.entry:hover {
+div#tribes-bg ul.menu li.entry:hover {
 	background-color: #b7b7b7;
 }
-div#tribes-bg ul#tribes li a{
+div#tribes-bg ul.menu a li{
 	color: #5C5C5C;
 }
-div#tribes-bg ul#tribes li.selected {
+div#tribes-bg ul.menu li.selected {
 /*	background-color: #e4e4e4;*/
     background-color:#dfdfdf;
 }

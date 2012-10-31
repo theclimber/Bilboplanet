@@ -515,7 +515,8 @@ function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_c
 
 function postNewsOnSocialNetwork($title, $author, $post_id) {
 	global $blog_settings;
-	$post_url = BP_PLANET_URL.'/?post_id='.$post_id;
+	$planet_url = $blog_settings->get('planet_url'); // BP_PLANET_URL
+	$post_url = $planet_url.'/?post_id='.$post_id;
 	$formating = $blog_settings->get('statusnet_post_format');
 	$textlimit = $blog_settings->get('statusnet_textlimit');
 

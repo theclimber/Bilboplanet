@@ -28,7 +28,7 @@ require_once(dirname(__FILE__).'/lib/checkValidHTML.php');
 
 function finished() {
 	$log_file = dirname(__FILE__).'/../logs/cron_job.log';
-	logMsg("The Cron is stopped and exited", $log_file);
+	logMsg(T_("The Cron is stopped and exited"), $log_file);
 }
 
 function update($core, $print=false) {
@@ -95,7 +95,7 @@ function getItemsFromFeeds ($rs, $print) {
 	while ($rs->fetch()) {
 		# On verifie si on n'a pas demandé l'arrêt de l'algo
 		if (file_exists(dirname(__FILE__).'/STOP')) {
-			$log_msg = logMsg("STOP file detected, trying to shut down cron job", "", 2, $print);
+			$log_msg = logMsg(T_("STOP file detected, trying to shut down cron job"), "", 2, $print);
 			if ($print) $output .= $log_msg;
 			break;
 		}
@@ -124,9 +124,9 @@ function getItemsFromFeeds ($rs, $print) {
 
 			# Affichage du message d'erreur
 			if (ereg($rs->feed_url, $error)) {
-				$log_msg = logMsg("Aucun article trouve ".$error, "", 3, $print);
+				$log_msg = logMsg(T_("No feed found : ").$error, "", 3, $print);
 			} else {
-				$log_msg = logMsg("Aucun article trouve sur $rs->feed_url ($rs->user_id): ".$error, "", 3, $print);
+				$log_msg = logMsg(sprintf(T_("No feed found on %s (owner : %s)"),$rs->feed_url,$rs->user_id).$error, "", 3, $print);
 			}
 			if ($print) $output .= $log_msg;
 		} else {
@@ -139,7 +139,7 @@ function getItemsFromFeeds ($rs, $print) {
 				# open log file and write activity down
 				$fp = @fopen($cron_file,'wb');
 				if ($fp === false) {
-					throw new Exception(sprintf(__('Cannot write %s file.'),$cron_file));
+					throw new Exception(sprintf(T_('Cannot write %s file.'),$cron_file));
 				}
 				fwrite($fp,time());
 				fclose($fp);
@@ -225,9 +225,9 @@ function getItemsFromFeeds ($rs, $print) {
 				}
 
 				if (empty($item_content)) {
-					$log_msg = logMsg("Pas de contenu sur $rs->feed_url", "", 3, $print);
+					$log_msg = logMsg(sprintf(T_("No content on feed %s"),$rs->feed_url), "", 3, $print);
 				} elseif(empty($permalink)) {
-					$log_msg = logMsg("Erreur de decoupage du lien ".$permalink, "", 3, $print);
+					$log_msg = logMsg(T_("Error in link cutting : ").$permalink, "", 3, $print);
 				} else {
 					$log_msg = insertPostToDatabase(
 						$rs,
@@ -249,7 +249,7 @@ function getItemsFromFeeds ($rs, $print) {
 			$cur = $core->con->openCursor($core->prefix.'feed');
 			$cur->feed_checked = array('NOW()');
 			$cur->update("WHERE feed_id = '$rs->feed_id'");
-			$log_msg = logMsg("Le flux ".$rs->feed_url." est mis a jour", "", 2, $print);
+			$log_msg = logMsg(sprintf(T_("The feed %s is updated"),$rs->feed_url), "", 2, $print);
 			if ($print) $output .= $log_msg;
 
 			# On fait un reset du foreach
@@ -267,7 +267,7 @@ function getItemsFromFeeds ($rs, $print) {
 			$last_checked = mysqldatetime_to_timestamp($rs_check->f('feed_checked'));
 			if ($last_checked < $toolong) {
 				$diff = ($toolong - $last_checked)/60;
-				$log_msg = logMsg("Le flux n'a plus ete mis a jour depuis $diff minutes. Il sera donc desactive : ".$rs->feed_url, "", 2, $print);
+				$log_msg = logMsg(sprintf(T_("The feed was not updated since %s minutes. It'll be disabled : "),$diff).$rs->feed_url, "", 2, $print);
 				if ($print) $output .= $log_msg;
 
 				# if feed was in error for too long, let's disable it
@@ -487,7 +487,7 @@ function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_c
 				$cur->modified = array('NOW()');
 				$cur->post_title = $item_title;
 				$cur->update("WHERE ".$core->prefix."post.post_permalink = '".$core->con->escape($item_permalink)."'");
-				$log_msg = logMsg("Changement de titre pour l'article: ".$item_permalink, "", 2, $print);
+				$log_msg = logMsg(T_("Title change of : ").$item_permalink, "", 2, $print);
 				if ($log == "debug") {
 					$log_msg .= logMsg("Old : ".$title2, "", 4, $print);
 					$log_msg .= logMsg("New : ".$item_title, "", 4, $print);
@@ -500,7 +500,7 @@ function insertPostToDatabase ($rs, $item_permalink, $date, $item_title, $item_c
 				$cur->post_content = $item_content;
 				$cur->post_image = $image_url;
 				$cur->update("WHERE ".$core->prefix."post.post_permalink = '".$core->con->escape($item_permalink)."'");
-				$log_msg = logMsg("Changement du contenu pour l'article: ".$item_permalink, "", 2, $print);
+				$log_msg = logMsg(T_("Content change of : ").$item_permalink, "", 2, $print);
 				if ($log == "debug") {
 					$log_msg .= logMsg("Old : ".$content2, "", 4, $print);
 					$log_msg .= logMsg("New : ".$item_content, "", 4, $print);

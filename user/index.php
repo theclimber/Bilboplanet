@@ -34,10 +34,6 @@ if ($core->auth->sessionExists()):
 		exit;
 	}
 
-//$scripts[] = "themes/default/user/js/main.js";
-//$styles[] = "themes/default/user/css/blueprint/screen.css";
-//$styles[] = "themes/default/user/css/core.css";
-require_once(dirname(__FILE__).'/../tpl.php');
 
 $current_page = 'dashboard';
 if (isset($_GET['page']) && !empty($_GET['page'])) {
@@ -47,6 +43,13 @@ if (isset($_GET['page']) && !empty($_GET['page'])) {
 		$current_page = trim($_GET['page']);
 	}
 }
+
+$planet_theme = $blog_settings->get('planet_theme');
+$styles[] = "themes/".$planet_theme."/user/css/core.css";
+$scripts[] = "themes/".$planet_theme."/user/js/main.js";
+$scripts[] = "themes/".$planet_theme."/user/js/".$current_page.".js";
+require_once(dirname(__FILE__).'/../tpl.php');
+
 $params['title'] = $params['title'].' - '.T_('User dashboard');
 $core->tpl->setVar('params', $params);
 $menu_selected =  array(

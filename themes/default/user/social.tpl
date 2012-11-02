@@ -1,6 +1,6 @@
 <div class="profileContent">
 	<h1>{_Share and interact}</h1>
-	<form name="social_form" id="social_form">
+	<form class="user" name="social_form" id="social_form">
 		<p style="display:none">
 			<label for="newsletter">{_Subscribe to a newsletter}</label>
 			<select id="newsletter">
@@ -53,4 +53,3 @@
 		</p>
 	</form>
 </div>
-<script type="text/javascript" src="{$planet.url}/user/tpl/js/social.js" ></script>

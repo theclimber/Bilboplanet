@@ -9,7 +9,7 @@
 <!-- CSS -->
 <link rel="stylesheet" type="text/css" title="default"
 	href="{$planet.url}/themes/{$planet.theme}/css/style.css" />
-<link rel="stylesheet" type="text/css" title="big"
+<link rel="stylesheet" type="text/css"
 	href="{$planet.url}/themes/{$planet.theme}/js/fancy/jquery.fancybox-1.3.1.css" />
 <!-- BEGIN css.import -->
 	<link rel="stylesheet" type="text/css" href="{$planet.url}/{$css_file}"/>

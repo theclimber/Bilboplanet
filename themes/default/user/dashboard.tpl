@@ -64,5 +64,3 @@
 </form>
 </div>
 
-<script type="text/javascript" src="{$planet.url}/user/tpl/js/jquery.boxy.js" ></script>
-<script type="text/javascript" src="{$planet.url}/user/tpl/js/dashboard.js" ></script>

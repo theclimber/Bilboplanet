@@ -162,8 +162,8 @@ function addEvent( obj, type, fn ){
 } 
 
 //Run dynamicLayout function when page loads and when it resizes
-addEvent(window, 'load', dynamicLayout);
-addEvent(window, 'resize', dynamicLayout);
+//addEvent(window, 'load', dynamicLayout);
+//addEvent(window, 'resize', dynamicLayout);
 
 function showNavigationMenu() {
 	var display = $("div#navigation-bg").css('display');

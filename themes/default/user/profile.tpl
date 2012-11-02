@@ -1,6 +1,6 @@
 <div class="profileContent">
 	<h1>{_Configure your profile}</h1>
-	<form id="profile_form">
+	<form class="user" id="profile_form">
 		<p>
 			<label for="user_fullname">{_User id}</label>
 			<input type="text" id="user_fullname" name="user_id" value="{$user.user_id}" disabled=true>
@@ -133,5 +133,3 @@
 </form>
 </div>
 
-<script type="text/javascript" src="{$planet.url}/user/tpl/js/jquery.boxy.js" ></script>
-<script type="text/javascript" src="{$planet.url}/user/tpl/js/profile.js" ></script>

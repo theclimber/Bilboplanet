@@ -3,7 +3,11 @@
 	<div id="portal">
 	<!-- BEGIN portal.block -->
 		<div class="portalbox {$tribe.align}box">
-			<div class="title"><a href="{$planet.url}/?list=1&tribe_id={$tribe.id}">{$tribe.title}</a></div>
+			<div class="title">
+				<a href="{$planet.url}/?list=1&tribe_id={$tribe.id}">
+				<img src="{$tribe.icon}" height="24px"/>
+				<span class="box-title">{$tribe.title}</span></a>
+			</div>
 			<div class="list">
 				<ul>
 			<!-- BEGIN portal.entry -->

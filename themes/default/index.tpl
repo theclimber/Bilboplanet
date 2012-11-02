@@ -125,9 +125,10 @@
 		<div id="tribes-bg">
 			<!-- BEGIN user.menu -->
 				{!include:'user/menu.tpl'}
-			<!-- ELSE user.menu -->
-				{!include:'menu.tpl'}
 			<!-- END user.menu -->
+			<!-- BEGIN main.menu -->
+				{!include:'menu.tpl'}
+			<!-- END main.menu -->
 		</div>
 
 		<!-- On the right : -->

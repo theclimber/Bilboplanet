@@ -74,42 +74,50 @@ if ($core->auth->sessionExists()) {
 	$user_id = $core->auth->userID();
 }
 
-$sql_tribes = "SELECT
-		user_id,
-		tribe_name,
-		tribe_id,
-		tribe_icon
-	FROM ".$core->prefix."tribe
-	WHERE (user_id = 'root' OR user_id = '".$user_id."')
-		AND visibility = 1
-	ORDER BY ordering
-		";
-
-$tribe_id = $_GET['tribe_id'];
-$rs = $core->con->select($sql_tribes);
-while($rs->fetch()) {
-	$selected='';
-	if (!empty($tribe_id) && $tribe_id==$rs->tribe_id){
-		$selected='selected';
+if (!isset($current_page) || in_array($current_page, array('portal', 'list', 'popular', 'users', 'tags', 'stats'))) {
+	if ($user_id != '') {
+		$user_condition = "OR user_id = '".$user_id."'";
 	}
-	$core->tpl->setVar('tribe', array(
-		'id' => $rs->tribe_id,
-		'name' => $rs->tribe_name,
-		'icon' => $rs->tribe_icon,
-		'selected' => $selected
-		));
-	$core->tpl->render('menu.tribes');
-}
+	$sql_tribes = "SELECT
+			user_id,
+			tribe_name,
+			tribe_id,
+			tribe_icon
+		FROM ".$core->prefix."tribe
+		WHERE (user_id = 'root' ".$user_condition.")
+			AND visibility = 1
+		ORDER BY ordering DESC
+			";
+	//print $sql_tribes;
+	//exit;
 
-$nav = array(
-	'portal' => '',
-	'popular' => '',
-	'list' => '');
-if ($tribe_id == '') {
-	$nav[$current_page] = 'selected';
+	$tribe_id = $_GET['tribe_id'];
+	$rs = $core->con->select($sql_tribes);
+	while($rs->fetch()) {
+		$selected='';
+		if (!empty($tribe_id) && $tribe_id==$rs->tribe_id){
+			$selected='selected';
+		}
+		$core->tpl->setVar('tribe', array(
+			'id' => $rs->tribe_id,
+			'name' => $rs->tribe_name,
+			'icon' => $rs->tribe_icon,
+			'selected' => $selected
+			));
+		$core->tpl->render('menu.tribes');
+	}
+
+	$nav = array(
+		'portal' => '',
+		'popular' => '',
+		'list' => '');
+	if ($tribe_id == '') {
+		$nav[$current_page] = 'selected';
+	}
+	$core->tpl->setVar('nav',$nav);
+	$core->tpl->render('menu.nav');
+	$core->tpl->render('main.menu');
 }
-$core->tpl->setVar('nav',$nav);
-$core->tpl->render('menu.nav');
 
 #######################
 # RENDER SIDEBAR
@@ -121,7 +129,7 @@ if ($current_page == "list") {
 	}
 	$core->tpl->render('postlist.state');
 }
-if ($current_page != "users") {
+if (in_array($current_page, array('list','single'))) {
 	$core->tpl->render('search.box');
 	$core->tpl->render("content.topbar");
 }

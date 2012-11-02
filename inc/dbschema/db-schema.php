@@ -85,6 +85,14 @@ $_s->post_share
 	->primary('pk_post_id', 'post_id', 'engine')
 	;
 
+$_s->post_click
+	->post_id		('integer',		0, false)
+	->surfer_id		('varchar',		255, false)
+	->created		('timestamp',	0,	true, 'now()')
+
+	->primary('pk_post_id', 'post_id', 'surfer_id')
+	;
+
 $_s->feed
 	->feed_id		('integer',		0,	false)
 	->user_id		('varchar',		64,	false)

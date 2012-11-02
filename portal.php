@@ -59,7 +59,7 @@ $align = $align=='right'? 'left' : 'right';
 $tribe = array(
 	"title" => T_('Popular posts'),
 	"id" => 'popular',
-	"tribe_icon" => '',
+	"icon" => '',
 	"align" => $align
 	);
 $core->tpl->setVar('tribe', $tribe);

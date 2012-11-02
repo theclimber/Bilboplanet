@@ -63,6 +63,7 @@ $(document).ready(function() {
 
 	$('#search_form').submit(function() {
 		var data = $('#search_form').serializeArray();
+		$('#search_form #search_text').val('')
 		jQuery.each(data, function(i, field){
 			if (field.name == 'search') {
 				add_search(field.value);

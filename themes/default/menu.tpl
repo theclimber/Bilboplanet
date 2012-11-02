@@ -2,20 +2,20 @@
 	<ul class="menu" id="tribes">
 		<a href="{$planet.url}/?portal=1">
 			<li id="portal" class="entry {$nav.portal}">
-				{_Portal}
+				<img src="{$planet.url}/themes/{$planet.theme}/images/portal.png" height="24px">
+				<span class="menu-text">{_Portal}</span>
 		</li></a>
 		<a href="{$planet.url}/?list=1">
 			<li id="list" class="entry {$nav.list}">
-				{_All posts}
+				<img src="{$planet.url}/themes/{$planet.theme}/images/all.png" height="24px">
+				<span class="menu-text">{_All posts}</span>
 		</li></a>
 	<!-- BEGIN menu.tribes -->
 		<a href="{$planet.url}/?list=1&tribe_id={$tribe.id}">
 			<li id="{$tribe.id}" class="entry {$tribe.selected}">
-				<img src="{$tribe.icon}" width="16px" height="16px"/> {$tribe.name}
+				<img src="{$tribe.icon}" height="24px"/>
+				<span class="menu-text">{$tribe.name}</span>
 		</li></a>
 	<!-- END menu.tribes -->
-<!--		<li id="popular" class="entry {$nav.popular}">
-			<a href="{$planet.url}/?list=1&popular=true&filter=week">{_Popular}</a>
-		</li>-->
 	</ul>
 	<!-- END menu.nav -->

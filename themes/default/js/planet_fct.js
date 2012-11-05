@@ -173,3 +173,13 @@ function showNavigationMenu() {
 		$("div#navigation-bg").css('display','none');
 	}
 }
+function display_login() {
+	$('div.login-box').css('display','block');
+	$('div.login-box').css('z-index','1000');
+	$('div.login-box').fadeTo('slow', 1, function(){});
+}
+function hide_login() {
+	$('div.login-box').fadeTo('slow', 0, function(){});
+	$('div.login-box').css('display','none');
+	$('div.login-box').css('z-index','-100');
+}

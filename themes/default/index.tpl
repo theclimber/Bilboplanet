@@ -106,7 +106,7 @@
 			<!-- END page.loginadmin -->
 				<li><a href="?logout={$planet.url}">{_Logout}</a></li>
 		<!-- ELSE page.loginbox -->
-				<li><a href="{$planet.url}/auth.php?came_from={$login-came-from}">
+				<li><a href="javascript:display_login()">
 					{_Login}</a></li>
 		<!-- BEGIN menu.subscription -->
 				<li><a href="{$planet.url}/signup.php">{_Register}</a></li>
@@ -195,6 +195,7 @@
 
 	</div><!-- end main -->
 
+	{!include:'popup.tpl'}
 
 	<!-- ADD FOOTER HERE -->
 	{!include:'footer.tpl'}

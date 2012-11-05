@@ -32,6 +32,27 @@ if(isset($_POST['action'])) {
 		print render_page($page);
 		break;
 
+	case 'post':
+		$post_id = $_POST['post_id'];
+		$search_value = trim($POST['search_value']);
+
+		$sql = generate_SQL(
+			0, // nbitems
+			10, // nbitems
+			array(), // users
+			array(), // tags
+			'', // search_value
+			null, //period
+			false, //popular
+			$post_id,
+			1);
+		$rs = $core->con->select($sql);
+		
+		$tpl = showSinglePost($rs,$core->tpl,$search_value,true,true);
+		print $tpl->render('post.block');
+		break;
+
+
 ##########################################################
 # DEFAULT RETURN
 ##########################################################

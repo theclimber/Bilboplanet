@@ -200,31 +200,6 @@ if ($sql != "") {
 #######################
 $core->tpl->render('menu.filter');
 
-#######################
-# RENDER PAGINATION
-#######################
-/*
-if (!isset($_GET['post_id']) | empty($_GET['post_id'])){
-	if((!isset($params['page']) || $params["page"] == 0) & $rs->count()>=10) {
-		# if we are on the first page
-		$core->tpl->render('pagination.up.next');
-		$core->tpl->render('pagination.low.next');
-	} elseif($params["page"] == 0 & $rs->count()<10) {
-		# we don't show any button
-	} else {
-		if($rs->count() == 0 | $rs->count() < 10) {
-			# if we are on the last page
-			$core->tpl->render('pagination.up.prev');
-			$core->tpl->render('pagination.low.prev');
-		} else {
-			$core->tpl->render('pagination.up.prev');
-			$core->tpl->render('pagination.up.next');
-			$core->tpl->render('pagination.low.prev');
-			$core->tpl->render('pagination.low.next');
-		}
-	}
-}
- */
 
 ######################
 # RENDER POST LIST

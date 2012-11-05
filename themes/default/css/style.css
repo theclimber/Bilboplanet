@@ -1402,6 +1402,86 @@ div#userMenu a, div#userMenu a:hover, div#userMenu a:visited {
 div#userMenu a:hover {
 	text-decoration: underline;
 }
+div.login-box {
+	z-index: -100;
+	display:none;
+	position: fixed;
+	left: 30%;
+	top: 120px;
+	border: 2px solid #000;
+	background: none repeat scroll 0 0 #DDD;
+	overflow: hidden;
+	width:500px;
+}
+div.login-box .close-popup-button {
+	float:right;
+}
+div.login-box h2 {
+	text-align: center;
+	text-decoration:none;
+	padding: 20px 0;
+	line-height: 35px;
+}
+div.login-box form{ padding: 5px; margin: 10px; }
+div.login-box form .field { width: 100%; }
+div.login-box form .field_help { margin-left: 145px; font-size: 90%; color: #777; }
+div.login-box form label, 
+div.login-box form span.label { margin-right: 10px; padding-right: 10px; width: 200px; display: block; float: left;  font-weight: bold; text-align: right; position: relative; }
+div.login-box form label em, 
+div.login-box form span.label em { position: absolute; right: 0; font-size: 120%; font-style: normal; color: #C00; }
+div.login-box form input:focus,
+div.login-box form input.error:focus, 
+div.login-box form textarea:focus {	background-color: #FFC; border-color: #FC6; }
+div.login-box form .field { margin-bottom: 1.5em; }
+div.login-box form .field input{
+	padding: 4px;
+	border: 1px solid #CCC;
+	width: 200px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+div.login-box button { 
+	position: relative;
+	border: 0; 
+	padding: 0;
+	cursor: pointer;
+	overflow: visible; /* removes extra side padding in IE */
+}
+div.login-box button::-moz-focus-inner {
+	border: none;  /* overrides extra padding in Firefox */
+}
+div.login-box button span { 
+	position: relative;
+	display: block; 
+	white-space: nowrap;	
+}
+div.login-box button,
+div.login-box button span
+{
+	background: transparent url(../images/button_sprite.png) no-repeat;
+}	
+div.login-box button,
+div.login-box button .btn-pri { 
+	padding: 0 15px 0 0; 
+	margin-right:5px; 
+	text-align: center; 
+	background-position: right -50px !important; 
+}	
+div.login-box button span,
+div.login-box button .btn-pri span {
+	font-family: arial, sans-serif;
+	padding: 0 0 0 15px; 
+	height:30px; 
+	font-size:13px;
+	line-height: 28px; 
+	font-weight: bold;
+	font-style: italic;
+	background-position: left top; 
+	color:#FFF; 
+}
+div.login-box button.btn-sec { background-position: right -150px !important; }
+div.login-box button.btn-sec span { background-position: left -100px !important; }
+
 div#popup {
 	position: absolute;
 	left: 64px;
@@ -1416,44 +1496,6 @@ div#popup .window-bar {
 	padding: 2px 5px 2px 0;
 	text-align: right;
 	background-color: #E3ECF3;
-}
-div#loginBox {
-	cursor: pointer;
-	display: inline-block;
-	height: 10px;
-	padding: 7px 15px 2px;
-	vertical-align: top;
-	white-space: nowrap;
-	font-weight: bold;
-	margin: 0 50px;;
-}
-div#loginBox span#login-dropdown {
-	background: url('../images/sprite-icons.png') no-repeat scoll -79px -68px transparent;
-	display: inline-block;
-	height: 7px;
-	margin-left: 1px;
-	margin-top: 8px;
-	vertical-align: top;
-	width: 7px;
-}
-/*div#loginBox:hover, div#loginBox.open{
-	background: #333;
-}*/
-div#loginForm {
-	background: #333;
-	position: absolute;
-	top: 30px;
-	right: 10px;
-	margin: 0 50px;
-	padding: 20px;
-	border: 1px solid #fff;
-	-moz-box-shadow: -1px -1px 0 #ddd, -1px -1px 0 #ddd inset;
-	-webkit-box-shadow: -1px -1px 0 #ddd, -1px -1px 0 #ddd inset;
-	box-shadow: -1px -1px 0 #ddd, -1px -1px 0 #ddd inset;
-	-moz-border-radius: 20px;
-	-webkit-border-radius: 20px;
-	border-radius: 20px;
-
 }
 div.comment-form {
 	display: block;

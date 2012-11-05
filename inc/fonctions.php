@@ -722,11 +722,174 @@ function showTribe($sql_posts) {
 	}
 }
 
+function showSinglePost($rs, $tpl, $search_value, $multiview=true, $strip_tags=false) {
+	global $blog_settings, $core, $user_settings;
+	$avatar = $blog_settings->get('planet_avatar');
+
+	$post_permalink = $rs->f('permalink');
+	if ($blog_settings->get('internal_links')) {
+		$post_permalink = BP_PLANET_URL.
+			"/index.php?post_id=".$rs->f('post_id').
+			"&go=external";
+	}
+
+	$post = array(
+		"id" => $rs->f('post_id'),
+		"date" => mysqldatetime_to_date("d/m/Y",$rs->f('pubdate')),
+		"day" => mysqldatetime_to_date("d",$rs->f('pubdate')),
+		"month" => mysqldatetime_to_date("m",$rs->f('pubdate')),
+		"year" => mysqldatetime_to_date("Y",$rs->f('pubdate')),
+		"hour" => mysqldatetime_to_date("H:i",$rs->f('pubdate')),
+		"permalink" => urldecode($post_permalink),
+		"title" => html_entity_decode($rs->f('title'), ENT_QUOTES, 'UTF-8'),
+		"content" => html_entity_decode($rs->f('content'), ENT_QUOTES, 'UTF-8'),
+		"short_content" => html_entity_decode($rs->f('short_content'), ENT_QUOTES, 'UTF-8'),
+		"image" => $rs->f('image'),
+		"author_id" => $rs->f('user_id'),
+		"author_fullname" => $rs->f('user_fullname'),
+		"author_email" => $rs->f('user_email'),
+		"nbview" => $rs->f('nbview'),
+		"last_viewed" => mysqldatetime_to_date('d/m/Y H:i',$rs->f('last_viewed')),
+		"user_votes" => getNbVotes(null,$rs->f('user_id')),
+		"user_posts" => getNbPosts(null,$rs->f('user_id'))
+		);
+
+	$post['description'] = sprintf(T_('By %s, on %s at %s.'),
+		'<a href="#" onclick="javascript:add_user(\''.$rs->f('user_id').'\')">'.$rs->f('user_fullname').'</a>',
+		$post["date"],$post["hour"]);
+	$post['description'].= ' <a href="'.BP_PLANET_URL.'/index.php?post_id='.$rs->f('post_id').'" title="'.$post['title'].'">'.T_("View post detail").'</a>';
+	if (!empty($search_value)){
+		# Format the occurences of the search request in the posts list
+		$post['content'] = split_balise($search_value, '<span class="search-content">'.$search_value.'</span>', $post['content'], 'str_ireplace', 1);
+		# Format the occurences of the search request in the posts title
+		$post['title'] = split_balise($search_value, '<span class="search_title">'.$search_value.'</span>', $post['title'], 'str_ireplace', 1);
+	}
+	$post['short_content'] = strip_tags($post['short_content'])."&nbsp;[...]".
+			'<br /><a href="'.$post['permalink'].'" title="'.$post['title'].'">'.T_('Read more').'</a>';
+	if($strip_tags) {
+		$post['content'] = $post['short_content'];
+	}
+	$post_tags = getPostTags($rs->f('post_id'));
+
+	$tpl->setVar('post', $post);
+	# Gravatar
+	if($avatar) {
+		$avatar_email = strtolower($post['author_email']);
+		$tpl->setVar('avatar_url', "http://cdn.libravatar.org/avatar/".md5($avatar_email)."?d=".urlencode(BP_PLANET_URL."/themes/".$blog_settings->get('planet_theme')."/images/gravatar.png"));
+
+		$tpl->render('post.block.gravatar');
+	}
+	if ($multiview) {
+		if ($post['image'] != '') {
+			$tpl->render('post.image');
+		}
+		$tpl->render('post.multi');
+	}
+	if ($blog_settings->get('planet_vote')) {
+		$votes = array("html" => afficheVotes($rs->f('score'), $rs->f('post_id')));
+		$tpl->setVar('votes', $votes);
+		$tpl->render('post.block.votes');
+	}
+	if (!empty($post_tags)){
+		foreach ($post_tags as $tag) {
+			$tpl->setVar('post_tag', $tag);
+			$tpl->render('post.tags');
+		}
+	}
+	if ($blog_settings->get('allow_post_modification')) {
+		if($blog_settings->get('allow_tagging_everything')) {
+			$tpl->render('post.action.tags');
+		} else {
+			if($core->auth->userID() == $rs->f('user_id')) {
+				$tpl->render('post.action.tags');
+			}
+		}
+	}
+	if ($user_settings != null) {
+		if ($user_settings->get("social.twitter")) {
+			$tpl->render('social.twitter');
+		}
+		if ($user_settings->get("social.shaarli")) {
+			$tpl->render('social.shaarli');
+		}
+		if ($user_settings->get("social.google")) {
+			$tpl->render('social.google');
+		}
+		if ($user_settings->get("social.statusnet")) {
+			$tpl->render('social.statusnet');
+		}
+	}
+	if ($blog_settings->get('show_similar_posts') && !empty($post_tags)) {
+		$sql_sim = getSimilarPosts_SQL($rs->f('post_id'), $post_tags);
+		$rsimilar = $core->con->select($sql_sim);
+		if ($rsimilar->count() > 0) {
+			while ($rsimilar->fetch()) {
+				$post_permalink = $rsimilar->permalink;
+				if ($blog_settings->get('internal_links')) {
+					$post_permalink = BP_PLANET_URL.
+						"/index.php?post_id=".$rsimilar->post_id;
+				}
+				$similar = array(
+					"author" => $rsimilar->user_fullname,
+					"title" => $rsimilar->post_title,
+					"permalink" => urldecode($post_permalink),
+					"pubdate" => mysqldatetime_to_date("d/m/Y",$rsimilar->post_pubdate)
+				);
+				$tpl->setVar('similar', $similar);
+				$tpl->render("post.similar.item");
+			}
+			$tpl->render("post.similar.block");
+		}
+	}
+	if ($blog_settings->get('allow_post_comments')) {
+		if($core->auth->userID() == $rs->f('user_id') || $core->hasRole('manager')) {
+			if ($rs->f('comment')) {
+				$tpl->render('post.action.uncomment');
+			} else {
+				$tpl->render('post.action.comment');
+			}
+		}
+	}
+	if ($blog_settings->get('allow_post_comments') && $rs->f('comment') == 1) {
+		$sql = "SELECT * FROM ".$core->prefix."comment
+			WHERE post_id=".$rs->f('post_id');
+//		print $sql;
+//		exit;
+		$rs_comment = $core->con->select($sql);
+		while ($rs_comment->fetch()) {
+			$fullname = $rs_comment->user_fullname;
+			if (!empty($rs_comment->user_site)) {
+				$fullname = '<a href="'.$rs_comment->user_site.'">'.$fullname.'</a>';
+			}
+			$content = $core->wikiTransform($rs_comment->content);
+			$comment = array(
+				"id" => $rs_comment->comment_id,
+				"post_id" => $rs_comment->post_id,
+				"user_fullname_link" => $fullname,
+				"user_fullname" => $rs_comment->user_fullname,
+				"user_site" => $rs_comment->user_site,
+				"content" => $content,
+				"pubdate" => mysqldatetime_to_date("d/m/Y",$rs_comment->created)
+				);
+			$tpl->setVar("comment", $comment);
+			$tpl->render('post.comment.element');
+		}
+		$tpl->render('post.comment.block');
+	}
+	if ($rs->count()>1) {
+		$tpl->render('post.backsummary');
+	}
+	return $tpl;
+}
+
 function showPosts($rs, $tpl, $search_value="", $multiview=true, $strip_tags=false) {
 	global $blog_settings, $core, $user_settings;
 	$avatar = $blog_settings->get('planet_avatar');
 
 	while($rs->fetch()){
+		$tpl = showSinglePost($rs,$tpl,$search_value,$multiview,$strip_tags);
+		$tpl->render('post.block');
+/*
 		$post_permalink = $rs->permalink;
 		if ($blog_settings->get('internal_links')) {
 			$post_permalink = BP_PLANET_URL.
@@ -880,7 +1043,7 @@ function showPosts($rs, $tpl, $search_value="", $multiview=true, $strip_tags=fal
 		if ($rs->count()>1) {
 			$tpl->render('post.backsummary');
 		}
-		$tpl->render('post.block');
+		$tpl->render('post.block');*/
 	}
 	return $tpl;
 }
@@ -910,9 +1073,6 @@ function showPostsSummary($rs, $tpl) {
 
 function afficheVotes($nb_votes, $num_article) {
 	global $blog_settings, $core;
-	if (!$core->auth->sessionExists()){
-		return "";
-	}
 
 	# On met un s a vote si il le faut
 	$vote = "vote";

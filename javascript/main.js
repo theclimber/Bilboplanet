@@ -83,18 +83,6 @@ $(document).ready(function() {
 		}
 	});
 
-	$('div#loginBox span#dropdown').click(function() {
-		var form_status = $('div#loginBox').attr('status');
-		if (form_status == 'open') {
-			$('div#loginBox').attr('status', 'close');
-			$('div#loginBox').attr('class', 'close');
-			toggle_login_dropdown('close');
-		} else {
-			$('div#loginBox').attr('class', 'open');
-			$('div#loginBox').attr('status', 'open');
-			toggle_login_dropdown('open');
-		}
-	});
 	$("form.comment-form").submit(function() {
 		var id = $(this).attr('postid');
 		data = {
@@ -385,6 +373,23 @@ function toggle_login_dropdown(position, url) {
 		$("div#loginForm").attr('style', 'z-index: -100;display:none');
 	}
 }
+function refresh_post(post_id){
+	var search = this.search;
+	$.ajax({
+			type:"POST",
+			url: "user/api/",
+			data: {'ajax' : 'main', 'action':'post', 'post_id':post_id,'search_value':search},
+			success: function(msg) {
+				// find post on page and replace
+				var post_div = 'div#post'+post_id;
+				$(post_div).fadeTo('slow', 0, function(){});
+				$(post_div).replaceWith(msg);
+				$(post_div).fadeTo('slow', 1, function(){});
+				$(post_div).trigger('ready');
+//				console.debug(msg);
+			}
+	});
+}
 function tag_post(post_id, post_title) {
     var content = $('#tag-post-form form').clone();
     Boxy.askform(content, function(val) {
@@ -394,7 +399,8 @@ function tag_post(post_id, post_title) {
             url: "user/api/",
 			data : {'ajax' : 'tagging', 'action' : 'add_tags', 'post_id' : post_id, 'tags' : data[1]},
             success: function(msg){
-                updatePostList();
+				refresh_post(post_id);
+				//updatePostList();
             }
         });
     }, {

@@ -63,7 +63,8 @@ if ($core->auth->sessionExists() ) {
 	}
 	$core->tpl->render('page.loginbox');
 } else {
-	$core->tpl->setVar('login-came-from', curPageURL());
+	$core->tpl->setVar('came_from',curPageURL());
+	$core->tpl->render('login.popup');
 }
 
 #######################

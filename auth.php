@@ -190,6 +190,12 @@ elseif ($change_pwd and $data = unserialize(base64_decode($_POST['login_data']))
 # Try to log
 elseif ($user_id !== null && ($user_pwd !== null || $user_key !== null))
 {
+	if (check_email_address($user_id)) {
+		$rs_user = $core->con->select("SELECT user_id FROM ".$core->prefix."user WHERE user_email = '".$user_id."'");
+		if ($rs_user->count() == 1) {
+			$user_id = $rs_user->user_id;
+		}
+	}
 	# We check the user
 	$check_user = $core->auth->checkUser($user_id,$user_pwd,$user_key) === true;
 
@@ -326,11 +332,11 @@ else
 			'<div class="content_front">'.
 			'<div class="pad">'.
 			'<div class="field">'.
-			'<label>'.T_('Username:').'</label><div class=""><span class="input">'.
+			'<label>'.T_('Username or email').'</label><div class=""><span class="input">'.
 			form::field(array('user_id'),2,32,html::escapeHTML($user_id),'text',1).'</span></div></div>'.
 
 			'<div class="field">'.
-			'<label>'.T_('Password:').'</label><div class=""><span class="input">'.
+			'<label>'.T_('Password').'</label><div class=""><span class="input">'.
 			form::password(array('user_pwd'),2,255,'','text',2,'','id=login_password').''.
 			$passw_change.'</span></div></div>'.
 
@@ -338,7 +344,7 @@ else
 			'<span class="label">&nbsp;</span>'.
 			'<label for="checkbox1" style="float:left; padding:0; padding-left: 24px; margin:1px; width:300px;">'.
 			form::checkbox(array('user_remember'),1,'','crirHiddenJS',3,'','id="checkbox1"').''.
-			T_('Remember my ID on this computer').'</label></div>'.
+			T_('Remember me').'</label></div>'.
 
 			'<div class="field">'.
 			'<span class="label">&nbsp;</span>'.

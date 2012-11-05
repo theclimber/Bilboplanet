@@ -83,7 +83,7 @@ if ($core->auth->sessionExists() && isset($_POST) && isset($_POST['num_article']
 	}
 } else {
 	# On previent que la tentative a echouee
-	echo T_('Error: refused access');
+	echo 'needlogin';
 }
 
 ?>

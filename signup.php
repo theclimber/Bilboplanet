@@ -151,7 +151,7 @@ else {
 			$msg .= "<li><b>".T_("Fullname")."</b> : ".$fullname['value']."</li>";
 			$msg .= "<li><b>".T_("Email")."</b> : ".$email['value']."</li>";
 			$msg .= "</ul></p></div>";
-			$msg .= T_("To login, you can go on the login page : ")."<a href='".$blog_settings->get('planet_theme')."/auth.php'>here</a>";
+			$msg .= T_("To login, you can go on the login page : ")."<a href='".BP_PLANET_URL."/auth.php'>here</a>";
 		}
 		$core->tpl->setVar('flashmsg', $msg);
 		$core->tpl->render('signup.flash');

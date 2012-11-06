@@ -80,7 +80,7 @@
 			<!-- END search.box -->
 
 			<div id="header-menu" onclick="javascript:showNavigationMenu()">
-				<img src="{$planet.url}/themes/{$planet.theme}/images/menu_bullets.png" title="{_Main menu}" alt="{_Main menu}">
+				<img src="{$planet.url}/themes/{$planet.theme}/images/menu_arrow.png" title="{_Main menu}" alt="{_Main menu}">
 			</div>
 		</div>
 		<div id="navigation-bg" style="display:none">

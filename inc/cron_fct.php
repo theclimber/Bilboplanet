@@ -733,6 +733,9 @@ function savePostImage($post_id,$file_url) {
 
 		$width = 250; // defined width
 		$height = ( ($imgsize[1] * (($width)/$imgsize[0]))); // relative height
+		if ($imgsize[0] < $width*0.8) {
+		}
+
 		$final_image = imagecreatetruecolor($width , $height)
 			or $error[] = T_('Error when creating final image');
 		imagecopyresampled($final_image ,$image , 0,0, 0,0, $width, $height, $imgsize[0],$imgsize[1])
@@ -747,6 +750,13 @@ function savePostImage($post_id,$file_url) {
 		if (is_file($file_fullpath)) {
 			unlink($file_fullpath);
 		}
+
+		// Adding Alpha channel to created image :
+		imagesavealpha($final_image, true);
+		$trans_colour = imagecolorallocatealpha($final_image, 0, 0, 0, 127);
+		imagefill($final_image, 0, 0, $trans_colour);
+		$red = imagecolorallocate($final_image, 255, 0, 0);
+		imagefilledellipse($final_image, 400, 300, 400, 300, $red);
 
 		// save image to folder
 		if ($file_extension == '.jpg') {

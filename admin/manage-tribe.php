@@ -102,28 +102,6 @@ echo
 	<div id="tribe-list"></div>
 </fieldset>
 
-<div id="tribe-edit-form" style="display:none">
-<?php
-echo '<form>'.
-form::hidden('ef_id','').
-
-'<label class="required" for="ef_user_id">'.T_('User id').' : '.
-form::field('ef_user_id',30,255,html::escapeHTML(""), 'input').'</label><br />'.
-
-'<label for="ef_name">'.T_('Feed name').' : '.
-form::field('ef_name',30,255,html::escapeHTML(""), 'input').'</label>
-<span class="description">'.T_('ex: GNU/Linux posts').'</span><br />'.
-
-'<label class="required" for="ef_url">'.T_('Feed URL').' : '.
-form::field('ef_url',30,255,html::escapeHTML(""), 'input').'</label>
-<span class="description">'.T_('ex: http://www.bilboplanet.com/feed/').'</span><br />'.
-
-'<div class="button br3px"><input type="button" class="notvalide" name="cancel" onClick="Boxy.get($(\'form.boxform\')).hide()" value="'.T_('Cancel').'"></div>&nbsp;&nbsp;'.
-'<div class="button br3px"><input type="submit" name="add_user" class="valide" value="'.T_('Update').'" /></div>'.
-'</form>';
-?>
-</div>
-
 <div id="icon-tribe-form" style="display:none">
 <?php
 echo '<form id="icon-tribe" enctype="multipart/form-data">'.
@@ -138,6 +116,23 @@ echo '<form id="icon-tribe" enctype="multipart/form-data">'.
 
 '<div class="button"><input type="button" class="cancel" name="cancel" onClick="Boxy.get($(\'form.boxform\')).hide()" value="'.T_('Cancel').'"></div>'.
 '<div class="button"><input type="submit" name="send" id="send-icon" class="add_icon" value="'.T_('Send').'" /></div>'.
+'</form>';
+?>
+</div>
+
+<div id="tribe-edit-form" style="display:none">
+<?php
+echo '<form>'.
+form::hidden('tribe_id','').
+
+'<label class="required" for="tribe_name">'.T_('Tribe name').' : <br />'.
+form::field('tribe_name',30,255,html::escapeHTML(""), 'input').'</label><br/>'.
+
+'<label class="required" for="tribe_order">'.T_('Tribe order').' : <br />'.
+form::field('tribe_order',30,255,html::escapeHTML(""), 'input').'</label><br/>'.
+
+'<div class="button"><input type="button" class="cancel" name="cancel" onClick="Boxy.get($(\'form.boxform\')).hide()" value="'.T_('Cancel').'"></div>'.
+'<div class="button"><input type="submit" name="send" class="add_site" value="'.T_('Update').'" /></div>'.
 '</form>';
 ?>
 </div>
@@ -191,7 +186,6 @@ form::field('users_selected',30,255,html::escapeHTML(""), 'input').'</label><br/
 '</form>';
 ?></span>
 </div>
-
 
 <script type="text/javascript" src="meta/js/manage-tribe.js"></script>
 <script type="text/javascript" src="meta/js/jquery.boxy.js"></script>

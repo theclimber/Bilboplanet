@@ -72,7 +72,8 @@ if(isset($_POST['action'])) {
 		{
 			$patterns = array('/ /');
 			$replacement = array('_');
-			$tribe_id = urldecode($tribe_name['value']);
+			$tribe_id = stripAccents($tribe_name['value']);
+			$tribe_id = urldecode(strtolower($tribe_id));
 			$tribe_id = $user_id.'-'.preg_replace($patterns, $replacement, $tribe_id);
 
 			# Get next ID
@@ -129,7 +130,7 @@ if(isset($_POST['action'])) {
 		$rs_tribe = $core->con->select("SELECT * FROM ".$core->prefix."tribe WHERE tribe_id = '$tribe_id'");
 
 		$new_name = !empty($_POST['tribe_name']) ? $_POST['tribe_name'] : $rs_tribe->f('tribe_name');
-		$new_ordering = !empty($_POST['tribe_order']) ? $_POST['tribe_order'] : $rs_tribe->f('ordering');
+		$new_ordering = !empty($_POST['tribe_order']) ? intval($_POST['tribe_order']) : $rs_tribe->f('ordering');
 
 		$new_name = check_field('Tribe name',$new_name);
 
@@ -603,6 +604,13 @@ if(isset($_POST['action'])) {
 			imagedestroy($image)
 				or $error[] = T_('Error while deleting temporary image');
 
+			// Adding Alpha channel to created image :
+			imagesavealpha($final_image, true);
+			$trans_colour = imagecolorallocatealpha($final_image, 0, 0, 0, 127);
+			imagefill($final_image, 0, 0, $trans_colour);
+			$red = imagecolorallocate($final_image, 255, 0, 0);
+			imagefilledellipse($final_image, 400, 300, 400, 300, $red);
+
 			$filename = 'tribe-'.$tribe_id.'-'.time().'.'.$userfile_ext;
 			$file_fullpath = $folder.'/'.strtolower($filename);
 			if (is_file($file_fullpath)) {
@@ -802,7 +810,7 @@ function getOutput($sql, $num_page=0, $nb_items=30) {
 				</p>
 				<ul class="actions">
 					<li><a href="javascript:toggleTribeVisibility(\''.$rs->tribe_id.'\','.$num_page.','.$nb_items.')"><img src="meta/icons/'.$tribe_state_img.'.png" title="'.T_('Toggle tribe visibility').'"/></a></li>
-					<li><img src="meta/icons/action-edit.png" title="'.T_('Edit tribe').'" /></li>
+					<li><a href="javascript:edit(\''.$rs->tribe_id.'\', '.$num_page.', '.$nb_items.')"><img src="meta/icons/action-edit.png" title="'.T_('Edit tribe').'" /></a></li>
 					<li><a href="javascript:removeTribe(\''.$rs->tribe_id.'\','.$num_page.','.$nb_items.')"><img src="meta/icons/cross.png" title="'.T_('Remove tribe').'" /></a></li>
 					<li><a href="javascript:add_tags('.$num_page.','.$nb_items.',\''.$rs->tribe_id.'\',\''.stripslashes($rs->tribe_name).'\')"><img src="meta/icons/add_tag.png" title="'.T_('Add tags to tribe').'"/></a></li>
 					<li><a href="javascript:add_notags('.$num_page.','.$nb_items.',\''.$rs->tribe_id.'\',\''.stripslashes($rs->tribe_name).'\')"><img src="meta/icons/add_notag.png" title="'.T_('Add unwanted tags to tribe').'"/></a></li>

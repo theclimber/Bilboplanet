@@ -83,6 +83,7 @@ if ($can_install && !empty($_POST))
 	$p_desc = !empty($_POST['p_desc']) ? htmlentities(stripslashes($_POST['p_desc']), ENT_QUOTES, 'UTF-8') : null;
 	$p_title = !empty($_POST['p_title']) ? htmlentities(stripslashes($_POST['p_title']), ENT_QUOTES, 'UTF-8') : null;
 	$p_lang = !empty($_POST['p_lang']) ? $_POST['p_lang'] : null;
+	$p_comm = !empty($_POST['p_comm']) ? true : false;
 	define('BP_PROT_PATH',dirname(__FILE__).'/../../.htpasswd');
 
 	# Version of the planet
@@ -248,6 +249,18 @@ if ($can_install && !empty($_POST))
 		$blog_settings->put('show_similar_posts','1', "boolean");
 		$blog_settings->put('planet_shaarli','1', "boolean");
 
+		if ($p_comm) { // user enabled the checkbox
+			$objet = T_("A new Bilboplanet joined the community");
+			$to = "dev@bilboplanet.com";
+			$msg .= "\n".T_("Url : ").$blog_settings->get('planet_url');
+			$msg .= "\n".T_("Title : ").$blog_settings->get('planet_title');
+			$msg .= "\n".T_("Description : ").$blog_settings->get('planet_desc');
+			$msg .= "\n\n".T_("Author : ").$blog_settings->get('author');
+			$msg .= "\n".T_("Email : ").$blog_settings->get('author_mail');
+
+			$envoi1 = sendmail($blog_settings->get('author_mail'), $to, $objet, $msg);
+		}
+
 		# Create planet salt :
 		$base_string = sha1(time().$u_fullname.$u_email.$u_pwd.'~'.microtime(TRUE).$default_tz);
 		$salt = substr($base_string, rand(0, strlen($base_string)), 32);
@@ -347,6 +360,9 @@ closedir($dir_handle);
 	'<label>'.T_('Planet Language').' '.
 	form::combo('p_lang',$lang_array, $p_lang).'</label>
 	<span class="description">'.T_('Choose your langage').'</span>'.
+	'<label>'.T_('Join the Bilboplanet community').' '.
+	form::checkbox('p_comm',true,true).'</label>
+	<span class="description">'.T_('This will notify the developpers of the Bilboplanet that you are using their work. Your planet will be added to the community and you will be informed when new important features will be released. You will also be able to ask for new features to the development team.').'</span>'.
 	'</fieldset><br/>'.
 
 	'<fieldset><legend><strong>'.T_('Administration username and password').'</strong></legend>'.

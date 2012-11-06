@@ -70,8 +70,7 @@ if(isset($_POST) && isset($_POST['submit'])){
 		$ip = getIP();
 		if ($user_id['success'] && $fullname['success'] && $email['success']){
 			# Build email
-			$objet = "[".$blog_settings->get('planet_name')."] ".
-				sprintf(T_("Signup of user %s"),$user_id['value']);
+			$objet = sprintf(T_("Signup of user %s"),$user_id['value']);
 			$msg = T_("User id : ").$user_id['value'];
 			$msg .= "\n".T_("Fullname : ").$fullname['value'];
 			$msg .= "\n".T_("Email : ").$email['value'];

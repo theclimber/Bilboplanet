@@ -103,13 +103,11 @@ function edit(tribe_id, num_page, nb_items) {
 		url: "api/",
 		data: {'ajax' : 'tribe', 'action' : 'get', 'tribe_id' : tribe_id},
 		dataType: 'json',
-		success: function(feed){
-			$('#feed-edit-form #ef_id').val(feed.feed_id);
-			$('#feed-edit-form #ef_user_id').val(feed.user_id);
-			$('#feed-edit-form #ef_user_id').attr('disabled', 'true');
-			$('#feed-edit-form #ef_name').val(feed.feed_name);
-			$('#feed-edit-form #ef_url').val(feed.feed_url);
-			var content = $('#feed-edit-form form').clone();
+		success: function(tribe){
+			$('#tribe-edit-form #tribe_id').val(tribe.tribe_id);
+			$('#tribe-edit-form #tribe_name').val(tribe.tribe_name);
+			$('#tribe-edit-form #tribe_order').val(tribe.ordering);
+			var content = $('#tribe-edit-form form').clone();
 
 			Boxy.askform(content, function(val) {
 				val['ajax'] = "tribe";
@@ -119,24 +117,21 @@ function edit(tribe_id, num_page, nb_items) {
 					url: "api/",
 					data : val,
 					success: function(msg){
-						$('#feed-edit-form #ef_user_id').removeAttr('disabled');
-						$('#feed-edit-form #ef_user_id').val('');
-						$('#feed-edit-form #ef_id').val('');
-						$('#feed-edit-form #ef_name').val('');
-						$('#feed-edit-form #ef_url').val('');
+						$('#tribe-edit-form #tribe_id').val('');
+						$('#tribe-edit-form #tribe_name').val('');
 						$('#flash-msg').removeClass('ajax-loading');
 						$('#flash-log').css('display', 'none');
-						updateTribeList(num_page, nb_items);
 						$(msg).flashmsg();
+						updateTribeList(num_page, nb_items);
 					}
 				});
 			}, {
-				title: "Update "+tribe.user_id+" tribes",
-				closeable: true,
+				title: "Update tribe",
+				closeable: true
 			});
+			return false;
 		}
 	});
-	return false;
 }
 
 function openAdd() {

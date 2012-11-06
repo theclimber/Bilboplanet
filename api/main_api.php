@@ -168,7 +168,6 @@ if(isset($_POST['action'])) {
 			"tags" => $tags,
 			"search" => $search_value
 			);
-#		print json_encode($result);
 		print $result['posts'];
 		break;
 ##########################################################

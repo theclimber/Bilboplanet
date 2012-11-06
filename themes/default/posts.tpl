@@ -1,7 +1,6 @@
 <div id="content" class="pages">
 
 	<div id="posts-list">
-
 		<!-- BEGIN post.block -->
 		<div class="post box post-content" id="post{$post.id}" name="{$post.id}" hide="1">
 				<div class="post-date">
@@ -64,19 +63,15 @@
 			<!-- BEGIN post.backsummary -->
 			<a href="#top" class="post-summary-return" title="{_Back to summary}">&nbsp;</a>
 			<!-- END post.backsummary -->
-
 		</div>
-		<!-- ELSE post.block -->
-<!--		<div class="post box">
-			<h1 class="post-title">{_No post found}</h1>
-			<p>{_You can launch a new search}</p>
-		</div>-->
 		<!-- END post.block -->
 	</div>
 
+	<!-- BEGIN post.morebutton -->
 	<a><div id="more-button">
 		{_More}
 	</div></a>
+	<!-- END post.morebutton -->
 
 </div>
 

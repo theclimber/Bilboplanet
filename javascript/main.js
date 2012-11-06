@@ -466,6 +466,9 @@ $('div#more-button').ready(function() {
 });
 
 function showMore() {
+	if ($('div#more-button').css('display') == 'none') {
+		return;
+	}
 	this.page += 1;
 	$('#filter-status').attr('style', '');
 	var main_div = "main-body";
@@ -490,7 +493,9 @@ function showMore() {
 		success: function(msg){
 			var postlist = $(msg).find('#posts-list');
 			$('div#'+main_div).find('#posts-list').append(postlist.html());
-			//$('div#'+main_div).fadeTo('slow', 1, function(){});
+			if (postlist.html().length<10) {
+				$('div#more-button').css('display', 'none');
+			}
 			$('div#'+main_div).trigger('ready');
 		}
 	});

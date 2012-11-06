@@ -24,7 +24,7 @@
 	<!-- BEGIN postlist.state -->
 	<div class="box page-status">
 		<div id="filter-order">
-			Order by <a href="javascript:order_by('latest')">{_latest first}</a> - <a href="javascript:order_by('popular')">{_popular first}</a>
+			{_Select only} <a href="javascript:order_by('latest')">{_latest posts}</a> - <a href="javascript:order_by('popular')">{_popular of the week}</a>
 		</div>
 		<div id="filter-status">
 			<h2 id="filter-title">{_Page status}</h2>

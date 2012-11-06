@@ -23,25 +23,25 @@
 				<span class="action">
 					<!-- BEGIN userpost.action -->
 					<a id="action-post{$post.id}" href="javascript:add_post('{$post.id}')">
-						<img title="{_Accept post}" src="tpl/images/post-refuse.png">
+						<img title="{_Accept post}" src="{$planet.url}/themes/{$planet.theme}/user/images/post-refuse.png">
 					</a>
 					<!-- ELSE userpost.action -->
 					<a id="action-post{$post.id}" href="javascript:rm_post('{$post.id}')">
-						<img title="{_Remove post}" src="tpl/images/post-accept.png">
+						<img title="{_Remove post}" src="{$planet.url}/themes/{$planet.theme}/user/images/post-accept.png">
 					</a>
 					<!-- END userpost.action -->
 				</span>
 				<span class="action">
-					<a href="javascript:add_tags('{$post.id}','{$post.title2}')"><img title="{_Add tag}" src="tpl/images/add_tag.png"></a>
+					<a href="javascript:add_tags('{$post.id}','{$post.title2}')"><img title="{_Add tag}" src="{$planet.url}/themes/{$planet.theme}/user/images/add_tag.png"></a>
 				</span>
 				<!-- BEGIN userpost.action.nocomment -->
 				<span class="action">
-					<a href="javascript:toggle_post_comments('{$post.id}',0)"><img title="{_Disable comments on post}" src="tpl/images/comment.png"></a>
+					<a href="javascript:toggle_post_comments('{$post.id}',0)"><img title="{_Disable comments on post}" src="{$planet.url}/themes/{$planet.theme}/user/images/comment.png"></a>
 				</span>
 				<!-- END userpost.action.nocomment -->
 				<!-- BEGIN userpost.action.comment -->
 				<span class="action">
-					<a href="javascript:toggle_post_comments('{$post.id}',1)"><img title="{_Allow comments on post}" src="tpl/images/nocomment.png"></a>
+					<a href="javascript:toggle_post_comments('{$post.id}',1)"><img title="{_Allow comments on post}" src="{$planet.url}/themes/{$planet.theme}/user/images/nocomment.png"></a>
 				</span>
 				<!-- END userpost.action.comment -->
 				<!-- END userpost.action.activate -->

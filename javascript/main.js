@@ -472,7 +472,6 @@ function showMore() {
 	this.page += 1;
 	$('#filter-status').attr('style', '');
 	var main_div = "main-body";
-	//$('div#'+main_div).fadeTo('slow', 0.5, function(){});
 	$.ajax({
 		type: "POST",
 		url: "api/",

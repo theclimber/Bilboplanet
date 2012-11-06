@@ -71,7 +71,7 @@ if(isset($_POST['action'])) {
 		$tags = !empty($_POST['tags']) ? getArrayFromList($_POST['tags']) : array();
 		$users = !empty($_POST['users']) ? getArrayFromList($_POST['users']) : array();
 		# Get the period
-		$period = !empty($_POST['period']) ? trim($_POST['period']) : '';
+		$period = !empty($_POST['period']) ? trim($_POST['period']) : null;
 		# Order by most popular
 		$popular = !empty($_POST['popular']) ? true : false;
 		$order = !empty($_POST['order']) ? $_POST['order'] : 'latest';
@@ -115,16 +115,6 @@ if(isset($_POST['action'])) {
 			}
 		}
 		# Terminaison de la commande SQL
-		/*$sql = generate_SQL(
-			$num_start,
-			$nb_items,
-			$users,
-			$tags,
-			$search_value,
-			$period,
-			$popular,
-			null,
-			$post_status);*/
 		if ($tribe_id != null) {
 			$sql = generate_tribe_SQL(
 				$tribe_id,

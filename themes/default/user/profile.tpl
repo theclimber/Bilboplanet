@@ -37,7 +37,7 @@
 	<p>&nbsp;</p>
 	<div class="user-feed-list dashbox">
 		<h2>{_Your feeds}</h2>
-		<a href="javascript:add_feed()"><img title="{_Add new feeds}" src="tpl/images/add.png" /></a>
+		<a href="javascript:add_feed()"><img title="{_Add new feeds}" src="{$planet.url}/themes/{$planet.theme}/user/images/add.png" /></a>
 		<table>
 		<!-- BEGIN userfeed.item -->
 			<tr class="user-feed {$feed.status}" id="{$feed.id}">
@@ -56,19 +56,19 @@
 				<span class="action">
 				<!-- BEGIN userfeed.action -->
 				<a id="action-{$feed.id}" href="javascript:allow_comments('{$feed.id}')">
-					<img title="{_Allow comments on this feed}" src="tpl/images/nocomment.png">
+					<img title="{_Allow comments on this feed}" src="{$planet.url}/themes/{$planet.theme}/user/images/nocomment.png">
 				</a>
 				<!-- ELSE userfeed.action -->
 				<a id="action-{$feed.id}" href="javascript:disallow_comments('{$feed.id}')">
-					<img title="{_Disallow comments on this feed}" src="tpl/images/comment.png">
+					<img title="{_Disallow comments on this feed}" src="{$planet.url}/themes/{$planet.theme}/user/images/comment.png">
 				</a>
 				<!-- END userfeed.action -->
 				</span>
 				<span class="action">
-					<a href="javascript:add_feed_tags('{$feed.id}')"><img title="{_Add tag}" src="tpl/images/add_tag.png"></a>
+					<a href="javascript:add_feed_tags('{$feed.id}')"><img title="{_Add tag}" src="{$planet.url}/themes/{$planet.theme}/user/images/add_tag.png"></a>
 				</span>
 				<span class="action">
-					<a href="javascript:rm_feed('{$feed.id}')"><img title="{_Remove feed}" src="tpl/images/action-remove.png"></a>
+					<a href="javascript:rm_feed('{$feed.id}')"><img title="{_Remove feed}" src="{$planet.url}/themes/{$planet.theme}/user/images/action-remove.png"></a>
 				</span>
 				<!-- END userfeed.action.activate -->
 			</td>
@@ -94,7 +94,7 @@
 			</td>
 			<td class="action">
 				<span class="action">
-					<a href="javascript:rm_pending_feed('{$pfeed.url}')"><img title="{_Remove pending feed}" src="tpl/images/action-remove.png"></a>
+					<a href="javascript:rm_pending_feed('{$pfeed.url}')"><img title="{_Remove pending feed}" src="{$planet.url}/themes/{$planet.theme}/user/images/action-remove.png"></a>
 				</span>
 			</td>
 			</tr>

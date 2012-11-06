@@ -157,6 +157,7 @@ if ($can_install && !empty($_POST))
 		$cur->user_fullname = (string) $u_fullname;
 		$cur->user_email = (string) $u_email;
 		$cur->user_pwd = crypt::hmac('BP_MASTER_KEY',$u_pwd);
+		$cur->user_token = generateUserToken($u_fullname,$u_email,$u_pwd);
 		$cur->user_lang = $p_lang;
 		$cur->created = array('NOW()');
 		$cur->modified = array('NOW()');

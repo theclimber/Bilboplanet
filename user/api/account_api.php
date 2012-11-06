@@ -23,7 +23,58 @@
 *
 ***** END LICENSE BLOCK *****/
 ?><?php
-if(isset($_POST['action'])) {
+if(isset($_GET['action'])) {
+	switch (trim($_GET['action'])){
+
+##########################################################
+# VALIDATE EMAIL
+##########################################################
+	case 'validate':
+		$token = trim($_GET['user']);
+		if ($token != "") {
+			$rs_user = $core->con->select("SELECT user_id,user_fullname,created
+				FROM ".$core->prefix."user
+				WHERE user_token='".$token."'");
+			if ($rs_user->count() == 1) {
+				if ($rs_user->f('created') > time()+3*24*3600) {
+					$error[] = T_("This link is expired");
+				}
+			} else {
+				$error[] = T_("Invalid link");
+			}
+		} else {
+			$error[] = T_("Invalid link token");
+		}
+
+		if (empty($error)) {
+			$cur = $core->con->openCursor($core->prefix.'user');
+			$cur->user_status = 1;
+			$cur->modified = array(' NOW() ');
+			$cur->update("WHERE user_id='".$rs_user->f('user_id')."'");
+			$output = T_("Thank you for validating your account !");
+		}
+		
+		if (!empty($error)) {
+			$output .= "<ul>";
+			foreach($error as $value) {
+				$output .= "<li>".$value."</li>";
+			}
+			$output .= "</ul>";
+			print '<div class="flash_error">'.$output.'</div>';
+		}
+		else {
+			print '<div class="flash_notice">'.$output.'</div>';
+		}
+		break;
+		
+##########################################################
+# DEFAULT RETURN
+##########################################################
+	default:
+		print '<div class="flash_error">'.T_('User bad call').'</div>';
+		break;
+	}
+} elseif(isset($_POST['action'])) {
 	switch (trim($_POST['action'])){
 
 ##########################################################

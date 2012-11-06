@@ -24,7 +24,15 @@
 ***** END LICENSE BLOCK *****/
 ?>
 <?php
-if(isset($_POST) && isset($_POST['ajax'])) {
+
+$ajax = "";
+if (isset($_POST) && isset($_POST['ajax']) ) {
+	$ajax = trim($_POST['ajax']);
+}
+if (isset($_GET) && isset($_GET['ajax']) ) {
+	$ajax = trim($_GET['ajax']);
+}
+if ($ajax != "") {
 	# Inclusion des fonctions
 	require_once(dirname(__FILE__).'/../../inc/user/prepend.php');
 
@@ -33,7 +41,7 @@ if(isset($_POST) && isset($_POST['ajax'])) {
 		exit;
 	}
 
-	switch(trim($_POST['ajax'])) {
+	switch($ajax) {
 	case 'main':
 		if (!$core->hasRole('user')){
 			print 'Permission denied';

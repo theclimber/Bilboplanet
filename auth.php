@@ -212,13 +212,12 @@ elseif ($user_id !== null && ($user_pwd !== null || $user_key !== null))
 			setcookie('bp_admin',$cookie_admin,strtotime('+30 days'),'','');
 		}
 
-		$rs = $core->con->select('SELECT user_token, user_id, user_fullname, user_pwd
+		$rs = $core->con->select('SELECT user_token, user_email, user_id, user_fullname, user_pwd
 			FROM '.$core->prefix.'user WHERE user_id=\''.$user_id.'\'');
 		# if no token exists, create one
 		$rs->extend('rsExtUser');
 		if ($rs->user_token == '') {
-			$salt = $blog_settings->get('planet_salt') ;
-			$token = sha1($rs->user_pwd.$rs->user_fullname.$salt.$rs->user_id);
+			$token = generateUserToken($rs->user_fullname,$rs->user_email,$rs->user_pwd);
 			$curt = $core->con->openCursor($core->prefix.'user');
 			$curt->user_token = $token;
 			$curt->modified = array(' NOW() ');

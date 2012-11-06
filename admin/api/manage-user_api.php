@@ -116,7 +116,7 @@ if(isset($_POST['action'])) {
 				$cur->user_fullname = $user_fullname['value'];
 				$cur->user_email = $user_email['value'];
 				$cur->user_pwd = crypt::hmac('BP_MASTER_KEY',$user_password['value']);
-				$cur->user_token = '';
+				$cur->user_token = generateUserToken($user_fullname['value'],$user_email['value'],$password['value']);
 				$cur->user_status = 1;
 				$cur->user_lang = 'en';
 				$cur->created = array(' NOW() ');

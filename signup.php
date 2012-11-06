@@ -44,9 +44,11 @@ $form_values = array(
 );
 $flash='';
 session_start();
+require_once(dirname(__FILE__).'/inc/lib/recaptchalib.php');
+$privatekey = "6LdEeQgAAAAAABrweqchK5omdyYS_fUeDqvDRq3Q";
+$publickey = "6LdEeQgAAAAAACLccbiO8TNaptSmepfMFEDL3hj2";
+
 if(isset($_POST) && isset($_POST['submit'])){
-	require_once(dirname(__FILE__).'/inc/lib/recaptchalib.php');
-	$privatekey = "6LdEeQgAAAAAABrweqchK5omdyYS_fUeDqvDRq3Q";
 	$captcha = recaptcha_check_answer (
 		$privatekey,
 		$_SERVER["REMOTE_ADDR"],
@@ -69,13 +71,19 @@ if(isset($_POST) && isset($_POST['submit'])){
 	} else {
 		$ip = getIP();
 		if ($user_id['success'] && $fullname['success'] && $email['success']){
+
+			$token = generateUserToken($fullname,$email,$password);
+			$validation_url = BP_PLANET_URL."/user/api/index.php?ajax=account&action=validate&user=".$token;
+
 			# Build email
 			$objet = sprintf(T_("Signup of user %s"),$user_id['value']);
 			$msg = T_("User id : ").$user_id['value'];
 			$msg .= "\n".T_("Fullname : ").$fullname['value'];
 			$msg .= "\n".T_("Email : ").$email['value'];
 			$msg .= "\nIP : $ip";
-			$msg .= "\n\n".T_("Your account will be validated by the webmaster.");
+			$msg .= "\n\n".T_("Please validate your account by going on the following link :");
+			$msg .= "\n".$validation_url;
+			$msg .= "\n\n".T_("NOTE: the link will expire in 3 days.");
 			# TODO : the mail should contain a special token to signup
 
 			# Send email to new user to confirm email
@@ -86,8 +94,7 @@ if(isset($_POST) && isset($_POST['submit'])){
 			# Information message
 			if($envoi1 && $envoi2) {
 
-				# Add Pending User and waiting for confirmation
-				$addPendingUser = addUserSignup($user_id['value'], $fullname['value'], $email['value'], $password['value'], $blog_settings->get('planet_lang'));
+				$addPendingUser = addUserSignup($user_id['value'], $fullname['value'], $email['value'], $password['value'], $blog_settings->get('planet_lang'), $token);
 
 				# Check error
 				if (empty($addPendingUser)) {
@@ -156,8 +163,6 @@ else {
 	$content = html_entity_decode($content, ENT_QUOTES, 'UTF-8');
 	$content = code_htmlentities($content, 'code', 'code', 1);
 
-	require_once(dirname(__FILE__).'/inc/lib/recaptchalib.php');
-	$publickey = "6LdEeQgAAAAAACLccbiO8TNaptSmepfMFEDL3hj2";
 	$captcha_html = recaptcha_get_html($publickey);
 
 	$core->tpl->setVar('params', $params);
@@ -172,7 +177,7 @@ else {
 #---------------------------------------------------#
 # Function to add pending user			    #
 #---------------------------------------------------#
-function addUserSignup($user_id, $user_fullname, $user_email, $password, $lang) {
+function addUserSignup($user_id, $user_fullname, $user_email, $password, $lang, $token) {
 
 	global $core;
 
@@ -214,8 +219,8 @@ function addUserSignup($user_id, $user_fullname, $user_email, $password, $lang) 
 		$cur->user_fullname = $user_fullname;
 		$cur->user_email = $user_email;
 		$cur->user_pwd = crypt::hmac('BP_MASTER_KEY', $password);
-		$cur->user_token = '';
-		$cur->user_status = 1;
+		$cur->user_token = $token;
+		$cur->user_status = 0;
 		$cur->user_lang = $lang;
 		$cur->created = array(' NOW() ');
 		$cur->modified = array(' NOW() ');

@@ -765,7 +765,7 @@ function showSinglePost($rs, $tpl, $search_value, $multiview=true, $strip_tags=f
 		$post['title'] = split_balise($search_value, '<span class="search_title">'.$search_value.'</span>', $post['title'], 'str_ireplace', 1);
 	}
 	$post['short_content'] = strip_tags($post['short_content'])."&nbsp;[...]".
-			'<br /><a href="'.$post['permalink'].'" title="'.$post['title'].'">'.T_('Read more').'</a>';
+			'<br /><a href="'.BP_PLANET_URL.'/?post_id='.$post['id'].'" title="'.$post['title'].'">'.T_('Read more').'</a>';
 	if($strip_tags) {
 		$post['content'] = $post['short_content'];
 	}

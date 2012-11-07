@@ -8,24 +8,24 @@
 	<!-- END contact.flash -->
 
 		<div class="post box">
-			<h1>Nous contacter</h1>
-			<p>Vous pouvez contacter les administrateurs avec le formulaire ci-dessous.</p>
+			<h1>{_Contact us}</h1>
+			<p>{_You can contact the administration team through the contact form below.}</p>
 
 			<form method="post" id="commentform">
 				<p>
-					<label for="author" class="authorinpout">Nom : <span style="color:red">*</span></label><br>
+					<label for="author" class="authorinpout">{_Name} <span style="color:red">*</span></label><br>
 					<input type="text" class="short" id="author" class="contact" tabindex="1" size="40" name="name" value="{$form.name}" />
 				</p>
 				<p>
-					<label for="email">Email : <span style="color:red">*</span></label><br>
+					<label for="email">{_Email} <span style="color:red">*</span></label><br>
 					<input id="email" name="email" class="short" tabindex="2" size="40" type="text" name="email" value="{$form.email}" />
 				</p>
 				<p>
-					<label for="subject">Sujet : <span style="color:red">*</span></label><br>
+					<label for="subject">{_Subject} <span style="color:red">*</span></label><br>
 					<input id="url" class="short" tabindex="3" size="40" type="text" name="subject" value="{$form.subject}" />
 				</p>
 				<p>
-					<label for="comment">Contenu : <span style="color:red">*</span></label><br />
+					<label for="comment">{_Content} <span style="color:red">*</span></label><br />
 					<textarea tabindex="4" rows="10" cols="61" id="comment" name="content">{$form.content}</textarea>
 				</p>
 				<p>{$captcha_html}</p>

@@ -1,4 +1,4 @@
-<div id="content" class="pages">
+<div id="content" class="page-posts">
 
 	<div id="posts-list">
 		<!-- BEGIN post.block -->

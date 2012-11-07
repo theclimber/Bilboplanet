@@ -3,7 +3,8 @@ this.nb_items = 10;
 this.search = getUrlParameter('search');
 this.popular = getUrlParameter('popular');
 this.order = getUrlParameter('order');
-this.tribe = getUrlParameter('tribe_id');
+//this.tribe = getUrlParameter('tribe_id');
+this.tribe = new Array();
 this.tags = new Array();
 this.users = new Array();
 this.period = '';
@@ -14,7 +15,7 @@ $(document).ready(function() {
 	this.nb_items = 10;
 	this.search = getUrlParameter('search');
 	this.order = getUrlParameter('order');
-	this.tribe = getUrlParameter('tribe_id');
+//	this.tribe = getUrlParameter('tribe_id');
 	if (this.order == 'popular') {
 		$('#filter-order').attr('style', '');
 	}
@@ -24,6 +25,15 @@ $(document).ready(function() {
 	this.post_status = 1;
 
 	var urlVars = getUrlVars();
+	if (urlVars['tribe_id']) {
+		var tribeList = urlVars['tribe_id'];
+		if(tribeList.search('#')) {
+			tribeList = tribeList.split('#')[0];
+		}
+		jQuery.each(tribeList.split(','), function (i, v) {
+			add_tribe(v, true);
+		});
+	}
 	if (urlVars['tags']) {
 		var tagList = urlVars['tags'];
 		if(tagList.search('#')) {
@@ -176,6 +186,45 @@ function prev_page() {
 		$('#filter-page').attr('style', '');
 	}
 }
+function add_tribe(tribe, disable_update) {
+	this.page = 0;
+	var already_exists = false;
+	jQuery.each(this.tribe, function(i, val) {
+		if (val == tribe) {
+			already_exists = true;
+		}
+	});
+	if (!already_exists) {
+		this.tribe.push(tribe);
+		if (!disable_update) {
+			updatePostList();
+		}
+		var tribelist = '';
+		jQuery.each(this.tribe, function(i, val) {
+			tribelist += '<span class="tribe"><a href="#" onclick="javascript:rm_tribe(\''+val+'\')">'+val+' x</a></span>';
+		});
+		$('#filter-page').attr('style', 'display:none;');
+		$('#filter-tribe-content').html(tribelist);
+		$('#filter-tribe').attr('style', '');
+	}
+}
+function rm_tribe(tribe) {
+	this.page = 0;
+	this.tribe.pop(tribe);
+	updatePostList();
+	$('#filter-page').attr('style', 'display:none;');
+	if (this.tribe.length == 0) {
+		$('#filter-tribe').attr('style', 'display:none;');
+	} else {
+		var tribelist = '';
+		jQuery.each(this.tribe, function(i, tribe) {
+			tribelist += '<span class="tribe"><a href="#" onclick="javascript:rm_tribe(\''+tribe+'\')">'+tribe+'</a></span>';
+		});
+		$('#filter-tribe-content').html(tribelist);
+		$('#filter-tribe').attr('style', '');
+	}
+}
+
 function add_tag(tag, disable_update) {
 	this.page = 0;
 	var already_exists = false;
@@ -279,7 +328,7 @@ function order_by(type) {
 	this.page = 0;
 	if (type == "popular") {
 		this.order = "popular";
-		$('#filter-order').attr('style', '');
+		$('#filter-order').attr('style', 'display:block;');
 	} else {
 		this.order = "latest";
 		$('#filter-order').attr('style', 'display:none;');

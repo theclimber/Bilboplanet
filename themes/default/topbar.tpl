@@ -23,18 +23,20 @@
 
 	<!-- BEGIN postlist.state -->
 	<div class="box page-status">
-		<div id="filter-order">
+		<div id="filter-order-action">
 			{_Select only} <a href="javascript:order_by('latest')">{_latest posts}</a> - <a href="javascript:order_by('popular')">{_popular of the week}</a>
 		</div>
 		<div id="filter-status">
 			<h2 id="filter-title">{_Page status}</h2>
+			<div id="filter-tribe" style="display:none">{_Tribe :}
+				<span id="filter-tribe-content"></span></div>
 			<div id="filter-page" style="display:none">{_Page :}
 				<span id="filter-page-content"></span></div>
 			<div id="filter-search" style="display:none">{_Search with :}
 				<span id="filter-search-content"></span></div>
 			<div id="filter-period" style="display:none">{_Period of posts :}
 				<span id="filter-period-content"></span></div>
-			<div id="filter-order" style="display:none">{_Order by popularity}</div>
+			<div id="filter-order" style="display:none">{_Ordered by popularity}</div>
 			<div id="filter-tags" style="display:none">{_Filter on tags :}
 				<span id="filter-tags-content"></span></div>
 			<div id="filter-users" style="display:none">{_Filter on authors :}

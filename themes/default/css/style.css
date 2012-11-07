@@ -1013,17 +1013,13 @@ div.bio{
     cursor: pointer;
     /*font-family:Georgia,"Times New Roman",Times,Serif;*/
     display:block;
-    float:left;
+/*    float:left;*/
     line-height: 12px !important;
 
     text-shadow:1px 1px 1px white;
-    -moz-border-radius:21px;
     -moz-box-shadow:0px 1px 2px #ababab;
-    -khtml-border-radius:21px;
     -khtml-box-shadow:0px 1px 2px #ababab;
-    -webkit-border-radius:21px;
     -webkit-box-shadow:0px 1px 2px #ababab;
-    border-radius:21px;
     box-shadow:0px 1px 2px #ababab;
 }
 #donate {
@@ -1298,7 +1294,7 @@ padding-bottom:13px;
 padding-right:21px;
 text-align:left;
 }
-#filter-order {
+#filter-order-action {
 	display:block;
 	float: right;
 	font-size: 10px;
@@ -1706,8 +1702,11 @@ div.similar-block {
     margin: 0 !important;
     width: 1100px !important;
 }
-.pages {
+div.page-posts {
     margin-left: 60px !important;
+}
+div.pages {
+/*    margin-left: 60px !important;*/
 /*    width: 838px !important;*/
 }
 .pages-left {

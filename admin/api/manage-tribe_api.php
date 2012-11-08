@@ -787,7 +787,7 @@ function getOutput($sql, $num_page=0, $nb_items=30) {
 			}
 
 			$tribe_icon = '';
-			$icon_action = '<a href="javascript:add_icon('.$num_page.','.$nb_items.',\''.$rs->tribe_id.'\',\''.stripslashes($rs->tribe_name).'\')">
+			$icon_action = '<a href="javascript:add_icon('.$num_page.','.$nb_items.',\''.$rs->tribe_id.'\',\''.addslashes($rs->tribe_name).'\')">
 				<img src="meta/icons/add_icon.png" title="'.T_('Add icon to tribe').'" /></a>';
 			if ($rs->tribe_icon) {
 				$tribe_icon = '<p class="tribe-icon"><img class="tribe-icon" src="../'.$rs->tribe_icon.'" /></p>';
@@ -795,8 +795,9 @@ function getOutput($sql, $num_page=0, $nb_items=30) {
 				<img src="meta/icons/rm_icon.png" title="'.T_('Remove icon from tribe').'" /></a>';
 			}
 
+			$tribe_name = html_entity_decode($rs->tribe_name, ENT_QUOTES, 'UTF-8');
 			$output .= '<div class="tribesbox tribe-'.$tribe_state.'" id="tribe-'.$rs->tribe_id.'">
-				<h3><a href="'.BP_PLANET_URL.'/index.php?list=1&tribe_id='.$rs->tribe_id.'">'.$rs->tribe_name.'</a></h3>
+				<h3><a href="'.BP_PLANET_URL.'/index.php?list=1&tribe_id='.$rs->tribe_id.'">'.$tribe_name.'</a></h3>
 				'.$tribe_icon.'
 				<p class="nickname">
 					Tribe owner : '.$tribe_owner.'<br/>
@@ -812,10 +813,10 @@ function getOutput($sql, $num_page=0, $nb_items=30) {
 					<li><a href="javascript:toggleTribeVisibility(\''.$rs->tribe_id.'\','.$num_page.','.$nb_items.')"><img src="meta/icons/'.$tribe_state_img.'.png" title="'.T_('Toggle tribe visibility').'"/></a></li>
 					<li><a href="javascript:edit(\''.$rs->tribe_id.'\', '.$num_page.', '.$nb_items.')"><img src="meta/icons/action-edit.png" title="'.T_('Edit tribe').'" /></a></li>
 					<li><a href="javascript:removeTribe(\''.$rs->tribe_id.'\','.$num_page.','.$nb_items.')"><img src="meta/icons/cross.png" title="'.T_('Remove tribe').'" /></a></li>
-					<li><a href="javascript:add_tags('.$num_page.','.$nb_items.',\''.$rs->tribe_id.'\',\''.stripslashes($rs->tribe_name).'\')"><img src="meta/icons/add_tag.png" title="'.T_('Add tags to tribe').'"/></a></li>
-					<li><a href="javascript:add_notags('.$num_page.','.$nb_items.',\''.$rs->tribe_id.'\',\''.stripslashes($rs->tribe_name).'\')"><img src="meta/icons/add_notag.png" title="'.T_('Add unwanted tags to tribe').'"/></a></li>
-					<li><a href="javascript:add_users('.$num_page.','.$nb_items.',\''.$rs->tribe_id.'\',\''.stripslashes($rs->tribe_name).'\')"><img src="meta/icons/add_user.png" title="'.T_('Add users to tribe').'" /></a></li>
-					<li><a href="javascript:add_search('.$num_page.','.$nb_items.',\''.$rs->tribe_id.'\',\''.stripslashes($rs->tribe_name).'\')"><img src="meta/icons/add_search.png" title="'.T_('Add search to tribe').'" /></a></li>
+					<li><a href="javascript:add_tags('.$num_page.','.$nb_items.',\''.$rs->tribe_id.'\',\''.addslashes($tribe_name).'\')"><img src="meta/icons/add_tag.png" title="'.T_('Add tags to tribe').'"/></a></li>
+					<li><a href="javascript:add_notags('.$num_page.','.$nb_items.',\''.$rs->tribe_id.'\',\''.addslashes($tribe_name).'\')"><img src="meta/icons/add_notag.png" title="'.T_('Add unwanted tags to tribe').'"/></a></li>
+					<li><a href="javascript:add_users('.$num_page.','.$nb_items.',\''.$rs->tribe_id.'\',\''.addslashes($tribe_name).'\')"><img src="meta/icons/add_user.png" title="'.T_('Add users to tribe').'" /></a></li>
+					<li><a href="javascript:add_search('.$num_page.','.$nb_items.',\''.$rs->tribe_id.'\',\''.addslashes($tribe_name).'\')"><img src="meta/icons/add_search.png" title="'.T_('Add search to tribe').'" /></a></li>
 					<li>'.$icon_action.'</li>
 				</ul>
 				<div class="feedlink"><a href="'.BP_PLANET_URL.'/index.php?list=1&tribe_id='.$rs->tribe_id.'">

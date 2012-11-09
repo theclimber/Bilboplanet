@@ -10,6 +10,7 @@ this.users = new Array();
 this.period = '';
 this.post_status = 1;
 this.trigger = function() {};
+this.sidebar_hidden = 0;
 $(document).ready(function() {
 	this.page = getUrlParameter('num_page');
 	this.nb_items = 10;
@@ -547,4 +548,18 @@ function showMore() {
 			$('div#'+main_div).trigger('ready');
 		}
 	});
+}
+
+function showSidebar() {
+	if (this.sidebar_hidden == 1) {
+		this.sidebar_hidden = 0;
+		$('#tribes-bg').css('display','block');
+		$('.content').css('margin-left','250px');
+		$('#show-hide img').attr('src','javascript/sidebar-hide.png');
+	} else {
+		this.sidebar_hidden = 1;
+		$('#tribes-bg').css('display','none');
+		$('.content').css('margin-left','0px');
+		$('#show-hide img').attr('src','javascript/sidebar-show.png');
+	}
 }

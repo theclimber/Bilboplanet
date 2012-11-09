@@ -543,6 +543,10 @@ div#header-right {
 	float:right;
 	width: 350px;
 }
+div#show-hide{
+	display:inline-block;
+}
+
 img#logo{
     font-size:30px; /* Affects size of alt text if image is missing */
 	display:inline-block;

@@ -16,6 +16,7 @@ body{
 /*    background-color:#dfdfdf;
 	background-color : #b7b7b7;*/
 	background: url('../images/header-bg.png');
+	font-family:'lucida grande',tahoma,verdana,arial,sans-serif;
 }
 a{
     color:#247ca5;
@@ -344,6 +345,7 @@ h1.post-title a:hover {
 }
 .post-date {
     background:url(../images/post-date.png) 0 0 no-repeat;
+	font-family: Arial;
     width:62px;
     height:89px;
     left:-61px;
@@ -552,7 +554,6 @@ a#planet-title {
 	color: #cfcfcf;
     font-size:24px;
 	font-style:bold;
-    font-family:Georgia, "Times New Roman", Times, Serif;
 }
 /*div.description{
     font-size:14px;
@@ -589,7 +590,7 @@ div#tribes-bg {
 	display: block;
 	margin-top: 60px;
 	width: 250px;
-	font-family: Arial;
+/*	font-family: Arial;*/
 	font-style: bold;
 	font-size: 15px;
 	background: url('../images/header-bg.png');
@@ -654,7 +655,7 @@ img.followers-icon{
     display:block;
 }
 .followers-num{
-    font-family:Arial;
+/*    font-family:Arial;*/
     font-weight:bold;
     font-size:21px;
     text-decoration:none;
@@ -679,7 +680,7 @@ ul#categories{
     padding:0 0 0 0;
     background:white url('../images/cats-bg.png') repeat-x;
     height:30px;
-    font-family:Arial;
+/*    font-family:Arial;*/
     font-weight:bold;
     font-size:12px;
 	-webkit-border-bottom-right-radius: 5px;
@@ -730,7 +731,7 @@ div#primary li{
 .content{
     margin:0 auto;
     text-align:left;
-	font-family: Arial;
+/*	font-family: Arial;*/
     background-color:#dfdfdf;
 }
 div#top-area {

@@ -64,7 +64,7 @@ if(isset($_POST['action'])) {
 	case 'add':
 		$user_id = urldecode(trim($_POST['user_id']));
 		$tribe_name = check_field('tribe_name',trim($_POST['tribe_name']));
-		$ordering = trim($_POST['ordering']);
+		$ordering = intval(trim($_POST['ordering']));
 		$error = array();
 
 		if ($tribe_name['success']

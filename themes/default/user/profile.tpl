@@ -1,3 +1,7 @@
+<div id="flash-log" style="display:none;">
+	<div id="flash-msg"><!-- spanner --></div>
+</div>
+
 <div class="profileContent">
 	<h1>{_Configure your profile}</h1>
 	<form class="user" id="profile_form">

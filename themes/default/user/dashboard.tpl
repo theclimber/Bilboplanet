@@ -1,3 +1,7 @@
+<div id="flash-log" style="display:none;">
+	<div id="flash-msg"><!-- spanner --></div>
+</div>
+
 <div class="dashboardContent">
 	<h1>{_User dashboard}</h1>
 	<span class="tooltip">{_Welcome on the new user interface of the Bilboplanet.

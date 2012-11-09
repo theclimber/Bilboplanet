@@ -4,7 +4,7 @@ function rm_tag(post_id, tag) {
         url: "api/",
         data : {'ajax' : 'tagging', 'action' : 'rm_tag', 'post_id' : post_id, 'tag' : tag},
         success: function(msg){
-            updatePage('dashboard');
+            updatePage('dashboard', msg);
         }
     });
 }
@@ -17,7 +17,7 @@ function add_tags(post_id, post_title) {
             url: "api/",
 			data : {'ajax' : 'tagging', 'action' : 'add_tags', 'post_id' : post_id, 'tags' : data[1]},
             success: function(msg){
-                updatePage('dashboard');
+                updatePage('dashboard', msg);
             }
         });
     }, {
@@ -30,7 +30,7 @@ function rm_post(post_id) {
         url: "api/",
         data : {'ajax' : 'post', 'action' : 'rm_post', 'post_id' : post_id},
         success: function(msg){
-            updatePage('dashboard');
+            updatePage('dashboard', msg);
         }
     });
 }
@@ -40,7 +40,7 @@ function add_post(post_id) {
         url: "api/",
         data : {'ajax' : 'post', 'action' : 'add_post', 'post_id' : post_id},
         success: function(msg){
-            updatePage('dashboard');
+            updatePage('dashboard', msg);
         }
     });
 }
@@ -53,7 +53,7 @@ function toggle_post_comments(post_id, comment_status) {
 			'post_id' : post_id,
 			'status': comment_status},
         success: function(msg){
-            updatePage('dashboard');
+            updatePage('dashboard', msg);
         }
     });
 }

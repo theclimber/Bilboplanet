@@ -6,7 +6,7 @@ $(document).ready(function() {
 			url: "api/",
 			data: 'ajax=account&action=update&'+data,
 			success: function(msg){
-				//updatePage('profile');
+				updatePage('profile', msg);
 			}
 		});
 		return false;
@@ -19,7 +19,7 @@ function rm_feed_tag(feed_id, tag) {
         url: "api/",
         data : {'ajax' : 'tagging', 'action' : 'rm_feed_tag', 'feed_id' : feed_id, 'tag' : tag},
         success: function(msg){
-            updatePage('profile');
+            updatePage('profile', msg);
         }
     });
 }
@@ -32,7 +32,7 @@ function add_feed_tags(feed_id) {
             url: "api/",
 			data : {'ajax' : 'tagging', 'action' : 'add_feed_tags', 'feed_id' : feed_id, 'tags' : data[1]},
             success: function(msg){
-                updatePage('profile');
+                updatePage('profile', msg);
             }
         });
     }, {
@@ -52,7 +52,7 @@ function add_feed() {
             url: "api/",
 			data: sdata,
             success: function(msg){
-                updatePage('profile');
+                updatePage('profile', msg);
             }
         });
     }, {
@@ -65,7 +65,7 @@ function rm_feed(feed_id) {
         url: "api/",
         data : {'ajax' : 'feed', 'action' : 'rm_feed', 'feed_id' : feed_id},
         success: function(msg){
-            updatePage('profile');
+            updatePage('profile', msg);
         }
     });
 }
@@ -75,7 +75,7 @@ function rm_pending_feed(feed_url) {
         url: "api/",
         data : {'ajax' : 'feed', 'action' : 'rm_pending_feed', 'feed_url' : feed_url},
         success: function(msg){
-            updatePage('profile');
+            updatePage('profile', msg);
         }
     });
 }
@@ -95,7 +95,7 @@ function comment(feed_id, comment_status) {
 			'feed_id' : feed_id,
 			'status': comment_status},
         success: function(msg){
-            updatePage('profile');
+            updatePage('profile', msg);
         }
     });
 }

@@ -1,4 +1,4 @@
-function updatePage(id) {
+function updatePage(id, state) {
 	$('div#main-body').fadeTo('fast', 0.1, function(){});
 	$.ajax({
 		type: "POST",
@@ -11,6 +11,12 @@ function updatePage(id) {
 		success: function(msg){
 			$('div#main-body').html(msg);
 			$('div#main-body').fadeTo('fast', 1, function(){});
+			showFlash(state);
 		}
 	});
+}
+
+function showFlash(msg) {
+	$('#flash-log').css('display','block');
+	$('#flash-msg').html(msg);
 }

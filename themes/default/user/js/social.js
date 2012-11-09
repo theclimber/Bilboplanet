@@ -21,7 +21,7 @@ $(document).ready(function() {
 				'shaarli-type' : $('select#shaarli-type').val()
 			},
 			success: function(msg){
-				updatePage('social');
+				updatePage('social', msg);
 			}
 		});
 		return false;

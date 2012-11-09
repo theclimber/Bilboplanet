@@ -1737,3 +1737,42 @@ div#more-button {
 	border-radius: 10px;
 	color: #062652;
 }
+div.flash {
+	margin: 10px 5px;
+	width:95%;
+}
+#flash-msg {
+	margin: 10px 5px;
+/*	padding-left: 28px;*/
+	width:95%;
+/*	border: 1px solid #000000;*/
+	color: #550000;
+	height: 20px;
+}
+#flash-msg ul {
+	list-style: none;
+}
+
+div.flash_error {
+    background: url(../images/false.png) 8px no-repeat;
+	background-color: #ffe3e3;
+	border-color: #dd0000;
+	color: #550000;
+	padding: 5px 5px 5px 30px;
+}
+div.flash_notice {
+    background: url(../images/true.png) 8px no-repeat;
+	background-color: #dfffdf;
+	border-color: #9fcf9f;
+	color: #005f00;
+	padding: 5px 5px 5px 30px;
+}
+div.flash_warning {
+	background: url(../images/warn.png) 8px no-repeat;
+	background-color: #FFEBC1;
+	border-color: #FDBF3B;
+	color: #A6750C;
+	padding: 5px 5px 5px 30px;
+	text-align: left;
+	/* width:98%; */
+}

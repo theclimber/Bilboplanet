@@ -1,3 +1,7 @@
+<div id="flash-log" style="display:none;">
+	<div id="flash-msg"><!-- spanner --></div>
+</div>
+
 <div class="profileContent">
 	<h1>{_Share and interact}</h1>
 	<form class="user" name="social_form" id="social_form">

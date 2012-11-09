@@ -82,6 +82,7 @@ $(document).ready(function() {
 		});
 		return false;
 	});
+	detectSmartPhone()
 
 	$.ajax({
 		type: "POST",
@@ -561,5 +562,16 @@ function showSidebar() {
 		$('#tribes-bg').css('display','none');
 		$('.content').css('margin-left','0px');
 		$('#show-hide img').attr('src','javascript/sidebar-show.png');
+	}
+}
+function detectSmartPhone() {
+	var uagent = navigator.userAgent.toLowerCase();
+	switch(uagent) {
+	case 'android':
+	case 'iphone':
+	case 'ipod':
+	case 'blackberry':
+	case 'palm':
+		showSidebar();
 	}
 }

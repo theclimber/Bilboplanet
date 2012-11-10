@@ -38,7 +38,7 @@ h1, h1 a{
 	line-height: 100%;
 }
 h1 a:hover {
-	color: #1FA2E1;
+	color: #333;
 	text-decoration: none;
 }
 h1.no-box{
@@ -142,10 +142,10 @@ color:#333;
     margin:10px 0;
     /* overflow:auto; http://www.sitepoint.com/blogs/2005/02/26/simple-clearing-of-floats/ */
 
-    -moz-border-radius:5px;
+/*    -moz-border-radius:5px;
     -khtml-border-radius:5px;
     -webkit-border-radius:5px;
-    border-radius:5px;
+    border-radius:5px;*/
 }
 div.flash{
 	background: #a1e798 url('../images/information.png') no-repeat left top;
@@ -196,25 +196,40 @@ div.membersBox {
 .post-nav-prev {
 	float:left;
 }
+.page-posts{
+	color:#333333;
+}
 .post{
-    color:#5c5c5c;
-    font-size:12px;
-    line-height:22px;
+    font-size:11px;
 	margin: 40px 0;
+	position:relative;
+	display: inline-block;
+	margin: 10px;
+	vertical-align: top;
+}
+.post div.post-data {
+	border-top: solid 3px #000;
+	margin-left: 70px;
+	width:650px;
+	display: inline-block;
+}
+.post div.meta-data {
+    color:#5c5c5c;
 }
 .post div.post-image {
-	display: inline-block;
 	width: 255px;
+	margin: 0 auto;
 }
 .post div.post-text {
 	display: inline-block;
 	text-align: justify;
 	vertical-align: top;
-	/*max-width: 65%;*/
+	margin-top: 20px;
 }
 .post h1, .post h1 a{
     color:#464646;
     text-decoration:none;
+	font-size:1.1em;
 }
 .post h2, .post h2 a{
     font-size:20px;
@@ -244,7 +259,6 @@ div.membersBox {
     line-height: 33px;
 }
 .post a:hover {
-	color: #1FA2E1;
 	text-decoration:underline;
 }
 div.post-meta{
@@ -253,23 +267,27 @@ div.post-meta{
     font-style:italic;
     padding-left:5px;
 }
+/*
 .post-avatar img{
 	float:left;
 	margin-right: 10px;
 	margin-top: -10px;
 	padding: 4px;
-	background: white;
 	vertical-align: top;
-}
-.post-atavar {
-	float:left;
-	width:60px;
+}*/
+.post-avatar {
+	width:64px;
+	height:64px;
+	display: block;
+	position: absolute;
+	background: url('../images/gravatar.png') no-repeat;
+	left: -10px;
+	top: 35px;
 }
 .post-author{
 /*    background:url('../images/ico_author.png') center left no-repeat;*/
     padding:15px 5px 0 5px;
     height:42px;
-    font-size:14px;
     font-style:italic;
 	letter-spacing:-1px;
 	font-family:Arial;
@@ -285,9 +303,6 @@ div.post-meta{
 .post-comments{
     background:url('../images/comments.png') center left no-repeat;
     padding:0 5px 0 15px;
-}
-.post {
-	position:relative;
 }
 
 .post p {
@@ -310,7 +325,10 @@ padding: 20px;
 margin-right: 2px;
 overflow: hidden;
 text-shadow: 1px 1px white;
-margin: 30px -10px 10px;
+margin: 30px 10px 10px;
+display: inline-block;
+width: 300px;
+vertical-align: top;
 }
 
 .postbox p {
@@ -338,34 +356,6 @@ h1.post-title, h1.post-title a{
     color:#464646;
     text-decoration:none;
     padding-bottom:10px;
-}
-h1.post-title a:hover {
-	color: #1FA2E1;
-	text-decoration: none;
-}
-.post-date {
-    background:url(../images/post-date.png) 0 0 no-repeat;
-	font-family: Arial;
-    width:62px;
-    height:89px;
-    left:-61px;
-    top:13px;
-    text-align:center;
-    position:absolute;
-    font-size:11px;
-    color:#C5ECFC;
-    padding-top:20px;
-}
-.post-date-min {
-font-size: 18px;
-font-weight: bold;
-color: white;
-text-shadow: 1px 1px 1px black;
-}
-.post-date-year {
-font-size: 18px;
-color: white;
-text-shadow: 1px 1px 1px black;
 }
 .alignleft {
 	float:left;
@@ -1255,11 +1245,13 @@ div.nested{
 .post-vote {
 background: no-repeat scroll 14% 50% #CDCDCD;
 border-radius: 3px 3px 3px 3px;
-float: right;
 font-size: 0.9em;
 height: 20px;
 padding: 4px 7px;
 width: 80px;
+position: absolute;
+bottom: 80px;
+right: 20px;
 }
 .vote span#imgoui, .avote span#imgoui {
 display:block;
@@ -1426,12 +1418,12 @@ div.login-box h2 {
 div.login-box form{ padding: 5px; margin: 10px; }
 div.login-box form .field { width: 100%; }
 div.login-box form .field_help { margin-left: 145px; font-size: 90%; color: #777; }
-div.login-box form label, 
+div.login-box form label,
 div.login-box form span.label { margin-right: 10px; padding-right: 10px; width: 200px; display: block; float: left;  font-weight: bold; text-align: right; position: relative; }
-div.login-box form label em, 
+div.login-box form label em,
 div.login-box form span.label em { position: absolute; right: 0; font-size: 120%; font-style: normal; color: #C00; }
 div.login-box form input:focus,
-div.login-box form input.error:focus, 
+div.login-box form input.error:focus,
 div.login-box form textarea:focus {	background-color: #FFC; border-color: #FC6; }
 div.login-box form .field { margin-bottom: 1.5em; }
 div.login-box form .field input{
@@ -1441,9 +1433,9 @@ div.login-box form .field input{
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
 }
-div.login-box button { 
+div.login-box button {
 	position: relative;
-	border: 0; 
+	border: 0;
 	padding: 0;
 	cursor: pointer;
 	overflow: visible; /* removes extra side padding in IE */
@@ -1451,34 +1443,34 @@ div.login-box button {
 div.login-box button::-moz-focus-inner {
 	border: none;  /* overrides extra padding in Firefox */
 }
-div.login-box button span { 
+div.login-box button span {
 	position: relative;
-	display: block; 
-	white-space: nowrap;	
+	display: block;
+	white-space: nowrap;
 }
 div.login-box button,
 div.login-box button span
 {
 	background: transparent url(../images/button_sprite.png) no-repeat;
-}	
+}
 div.login-box button,
-div.login-box button .btn-pri { 
-	padding: 0 15px 0 0; 
-	margin-right:5px; 
-	text-align: center; 
-	background-position: right -50px !important; 
-}	
+div.login-box button .btn-pri {
+	padding: 0 15px 0 0;
+	margin-right:5px;
+	text-align: center;
+	background-position: right -50px !important;
+}
 div.login-box button span,
 div.login-box button .btn-pri span {
 	font-family: arial, sans-serif;
-	padding: 0 0 0 15px; 
-	height:30px; 
+	padding: 0 0 0 15px;
+	height:30px;
 	font-size:13px;
-	line-height: 28px; 
+	line-height: 28px;
 	font-weight: bold;
 	font-style: italic;
-	background-position: left top; 
-	color:#FFF; 
+	background-position: left top;
+	color:#FFF;
 }
 div.login-box button.btn-sec { background-position: right -150px !important; }
 div.login-box button.btn-sec span { background-position: left -100px !important; }
@@ -1706,9 +1698,6 @@ div.similar-block {
     float: none !important;
     margin: 0 !important;
     width: 1100px !important;
-}
-div.page-posts {
-    margin-left: 60px !important;
 }
 div.pages {
 /*    margin-left: 60px !important;*/

@@ -66,10 +66,11 @@ $(document).ready(function() {
 		'transitionOut'	: 'elastic'
 	});
 
+	/*
 	$('div#header-bg').click(function () {
 		$('html, body').animate({scrollTop:0}, 'slow');
 		return false;
-	});
+	});*/
 
 	// Expand and remove scroll when click on text
 /*	$('div.post-text').click(function() {
@@ -198,11 +199,11 @@ function hide_login() {
 
 function show_post_info(post_id) {
 	var div = $('div#'+post_id).find('div.postbox');
-	$(div).css('display','inline-block');
+//	$(div).css('display','inline-block');
 	$(div).fadeTo('slow', 1, function(){});
 }
 function hide_post_info(post_id) {
 	var div = $('div#'+post_id).find('div.postbox');
 	$(div).fadeTo('slow', 0, function(){});
-	$(div).css('display','none');
+//	$(div).css('display','none');
 }

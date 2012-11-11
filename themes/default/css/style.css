@@ -206,11 +206,12 @@ div.membersBox {
 	display: inline-block;
 	margin: 10px;
 	vertical-align: top;
+	width: 100%;
 }
 .post div.post-data {
 	border-top: solid 3px #000;
 	margin-left: 70px;
-	width:650px;
+	width:70%;
 	display: inline-block;
 }
 .post div.meta-data {
@@ -324,15 +325,14 @@ div#posts-list div.post {
 
 .postbox {
 background: #F8F8F8;
-border-top: 3px solid #E2E2E2;
-border-bottom: 3px solid #E2E2E2;
-padding: 20px;
-margin-right: 2px;
+padding: 5px;;
 overflow: hidden;
-text-shadow: 1px 1px white;
-margin: 30px 10px 10px;
-display: none;
-width: 300px;
+margin: 10px 10px;
+border-top: solid 3px #000;
+display: inline-block;
+opacity:0;
+width: 15%;
+height: 100%;
 vertical-align: top;
 }
 
@@ -342,9 +342,11 @@ vertical-align: top;
     font-size: 14px;
 	line-height: 16px;
 }
-.postbox .socialbar {
-	display: block;
-	height: 20px;
+.postbox .socialbar ul {
+	list-style:none;
+}
+.postbox .socialbar li {
+	line-height: 30px;
 }
 .post-summary-return {
     background:url(../images/go-top.png) no-repeat;
@@ -1306,6 +1308,7 @@ span.tag a, span.user a {
 }
 div.tag-line span.tag a {
     /*color: #5C5C5C;*/
+	color:#999;
 }
 div.tag-line span.tag {
 	margin: 2px 2px;
@@ -1317,7 +1320,7 @@ div.tag-line span.tag:before {
 }
 div.tag-line span.tag:after {
 	background: none;
-	content: ','
+	content: ''
 }
 /*span.user {
 	margin: 0px 5px;
@@ -1528,12 +1531,6 @@ span.search-content {
 	background: #FF4C4C;
 	color: #000;
 	border-radius: 3px;
-}
-iframe.identishare {
-	display:block;
-	float: right;
-	height: 64px;
-	width: 64px;
 }
 
 /*********************

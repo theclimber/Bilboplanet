@@ -1,4 +1,4 @@
-				<div class="tags">
+				<div class="tag-line">
 					{_tags :}
 				<!-- BEGIN post.tags -->
 					<span class="tag"><a href="#" onclick="javascript:add_tag('{$post_tag}')">{$post_tag}</a> <!--<a href="#" onclick="javascript:rm_tag_post('{$post.id}','{$post_tag}')">x</a>--></span>

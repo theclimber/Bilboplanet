@@ -39,20 +39,14 @@
 
 			<!-- [post footer] -->
 			<div class="postbox">
-				<!-- BEGIN social.statusnet -->
-				<iframe height="61" width="61" scrolling="no" frameborder="0" src="{$planet.url}/api/identishare.php?post_id={$post.id}&title={$post.title}&noscript" border="0" marginheight="0" marginwidth="0" allowtransparency="true" class="identishare">
-				<div id="identishare" style="vertical-align: bottom;"></div>
-				<script type="text/javascript" src="{$planet.url}/api/identishare.php?post_id={$post.id}" defer="defer"></script>
-				</iframe>
-				<!-- END social.statusnet -->
 
 				<div class="socialbar">
 					{!include:'social.tpl'}
 				</div>
 
 <!--				<div id="expand-button-{$post.id}" class="collapse-button" onclick="javascript:expand_block({$post.id})">&nbsp;</div>-->
-				{_Number of times this post was viewed :} {$post.nbview}<br/>
-				{_Number of posts published by }<a href="#" onclick="javascript:add_user('{$post.author_id}')">{$post.author_fullname}</a> : <b>{$post.user_posts}</b><br />
+				{_Viewed :} {$post.nbview}<br/>
+				{_Published by }<a href="#" onclick="javascript:add_user('{$post.author_id}')">{$post.author_fullname}</a> : <b>{$post.user_posts}</b><br />
 			</div>
 
 			<!-- BEGIN post.backsummary -->

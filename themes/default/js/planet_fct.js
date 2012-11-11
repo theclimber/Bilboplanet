@@ -66,6 +66,10 @@ $(document).ready(function() {
 		'transitionOut'	: 'elastic'
 	});
 
+	$('div#header-bg').click(function () {
+		$('html, body').animate({scrollTop:0}, 'slow');
+		return false;
+	});
 
 	// Expand and remove scroll when click on text
 /*	$('div.post-text').click(function() {
@@ -89,7 +93,7 @@ $(document).ready(function() {
 	$("div.post").hover(
 	function () {
 		show_post_info(this.id);
-	}, 
+	},
 	function () {
 		hide_post_info(this.id);
 	}
@@ -124,7 +128,7 @@ $('div#body').live('ready', function() {
 	}
 });
 
-
+/*
 function getBrowserWidth(){
 	if (window.innerWidth){
 		return window.innerWidth;}
@@ -155,7 +159,7 @@ function changeLayout(description){
 		   else if(row.getAttribute("title") != "default"){row.disabled = true;}
 	   }
    }
-}
+}*/
 //
 //addEvent() by John Resig
 function addEvent( obj, type, fn ){

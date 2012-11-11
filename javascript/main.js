@@ -506,7 +506,8 @@ function getUrlVars()
 $('div#more-button').ready(function() {
 	if ($('div#more-button').length > 0) {
 		$(window).scroll(function(){
-			if  ($(window).scrollTop() == $(document).height() - $(window).height()){
+			if  ($(window).scrollTop() == $(document).height() - $(window).height() - 1000 ||
+			$(window).scrollTop() == $(document).height() - $(window).height()){
 				showMore();
 			}
 		});

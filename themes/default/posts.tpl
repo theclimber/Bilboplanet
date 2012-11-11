@@ -19,11 +19,14 @@
 					</div>
 				</div>
 				<div class="meta-data">
+					<!-- BEGIN post.block.votes -->
+					<div class="post-vote">{$votes.html}</div>
+					<!-- END post.block.votes -->
 					<div class="post-date">
 						{$post.day}/{$post.month}/{$post.year} {$post.hour}
 					</div>
 					<div class="post-author">
-						{_By} <a href="#" onclick="javascript:add_user('{$post.author_id}')">{$post.author_fullname}</a> - <a href="{$post.permalink}" alt="{_Permalink}">{_Permalink}</a>
+						{_Written by} <a href="#" onclick="javascript:add_user('{$post.author_id}')">{$post.author_fullname}</a> - <a href="{$post.permalink}" alt="{_Permalink}" title="{_Permalink}">{_See original post}</a>
 					</div>
 					<!-- BEGIN post.block.gravatar -->
 					<div class="post-avatar">
@@ -31,9 +34,6 @@
 						<img src="{$avatar_url}&size=64" class="gravatar" /></a>
 					</div>
 					<!-- END post.block.gravatar -->
-					<!-- BEGIN post.block.votes -->
-					<div class="post-vote">{$votes.html}</div>
-					<!-- END post.block.votes -->
 				</div>
 			</div>
 
@@ -53,7 +53,6 @@
 <!--				<div id="expand-button-{$post.id}" class="collapse-button" onclick="javascript:expand_block({$post.id})">&nbsp;</div>-->
 				{_Number of times this post was viewed :} {$post.nbview}<br/>
 				{_Number of posts published by }<a href="#" onclick="javascript:add_user('{$post.author_id}')">{$post.author_fullname}</a> : <b>{$post.user_posts}</b><br />
-				Have a look on the <a href="{$post.permalink}">{_original post}</a><br />
 			</div>
 
 			<!-- BEGIN post.backsummary -->

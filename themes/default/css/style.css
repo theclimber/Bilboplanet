@@ -215,6 +215,8 @@ div.membersBox {
 }
 .post div.meta-data {
     color:#5c5c5c;
+	display:block;
+	margin: 5px 0;
 }
 .post div.post-image {
 	width: 255px;
@@ -224,7 +226,11 @@ div.membersBox {
 	display: inline-block;
 	text-align: justify;
 	vertical-align: top;
-	margin-top: 20px;
+	padding-bottom: 10px;
+}
+.post div.post-tags {
+	display:block;
+	margin: 10px 0;
 }
 .post h1, .post h1 a{
     color:#464646;
@@ -261,20 +267,16 @@ div.membersBox {
 .post a:hover {
 	text-decoration:underline;
 }
+div.title-data {
+	display:block;
+	margin: 5px 0;
+}
 div.post-meta{
     font-size:12px;
     margin:10px 0;
     font-style:italic;
     padding-left:5px;
 }
-/*
-.post-avatar img{
-	float:left;
-	margin-right: 10px;
-	margin-top: -10px;
-	padding: 4px;
-	vertical-align: top;
-}*/
 .post-avatar {
 	width:64px;
 	height:64px;
@@ -285,12 +287,15 @@ div.post-meta{
 	top: 35px;
 }
 .post-author{
-/*    background:url('../images/ico_author.png') center left no-repeat;*/
+	margin: 10px 0;
     padding:15px 5px 0 5px;
-    height:42px;
-    font-style:italic;
-	letter-spacing:-1px;
-	font-family:Arial;
+	font-size:1.1em;
+	display:inline;
+}
+.post-date {
+	margin: 10px 0;
+	display:inline;
+	font-size:1.1em;
 }
 .post-category{
     background:url('../images/category.png') center left no-repeat;
@@ -326,7 +331,7 @@ margin-right: 2px;
 overflow: hidden;
 text-shadow: 1px 1px white;
 margin: 30px 10px 10px;
-display: inline-block;
+display: none;
 width: 300px;
 vertical-align: top;
 }
@@ -1246,12 +1251,9 @@ div.nested{
 background: no-repeat scroll 14% 50% #CDCDCD;
 border-radius: 3px 3px 3px 3px;
 font-size: 0.9em;
-height: 20px;
 padding: 4px 7px;
 width: 80px;
-position: absolute;
-bottom: 80px;
-right: 20px;
+float:right;
 }
 .vote span#imgoui, .avote span#imgoui {
 display:block;

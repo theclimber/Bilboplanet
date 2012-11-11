@@ -86,6 +86,14 @@ $(document).ready(function() {
 		});
 	}
 */
+	$("div.post").hover(
+	function () {
+		show_post_info(this.id);
+	}, 
+	function () {
+		hide_post_info(this.id);
+	}
+	);
 
 });
 
@@ -119,7 +127,7 @@ $('div#body').live('ready', function() {
 
 function getBrowserWidth(){
 	if (window.innerWidth){
-		return window.innerWidth;}	
+		return window.innerWidth;}
 	else if (document.documentElement && document.documentElement.clientWidth != 0){
 		return document.documentElement.clientWidth;	}
 	else if (document.body){return document.body.clientWidth;}
@@ -137,7 +145,7 @@ function dynamicLayout(){
 		changeLayout("big");
 	}
 }
-// changeLayout is based on setActiveStyleSheet function by Paul Sowdon 
+// changeLayout is based on setActiveStyleSheet function by Paul Sowdon
 // http://www.alistapart.com/articles/alternate/
 function changeLayout(description){
    var rows = document.getElementsByTagName('link');
@@ -150,16 +158,16 @@ function changeLayout(description){
 }
 //
 //addEvent() by John Resig
-function addEvent( obj, type, fn ){ 
-	if (obj.addEventListener){ 
+function addEvent( obj, type, fn ){
+	if (obj.addEventListener){
 		obj.addEventListener( type, fn, false );
 	}
-	else if (obj.attachEvent){ 
-		obj["e"+type+fn] = fn; 
-		obj[type+fn] = function(){ obj["e"+type+fn]( window.event ); } 
-		obj.attachEvent( "on"+type, obj[type+fn] ); 
-	} 
-} 
+	else if (obj.attachEvent){
+		obj["e"+type+fn] = fn;
+		obj[type+fn] = function(){ obj["e"+type+fn]( window.event ); }
+		obj.attachEvent( "on"+type, obj[type+fn] );
+	}
+}
 
 //Run dynamicLayout function when page loads and when it resizes
 //addEvent(window, 'load', dynamicLayout);
@@ -182,4 +190,15 @@ function hide_login() {
 	$('div.login-box').fadeTo('slow', 0, function(){});
 	$('div.login-box').css('display','none');
 	$('div.login-box').css('z-index','-100');
+}
+
+function show_post_info(post_id) {
+	var div = $('div#'+post_id).find('div.postbox');
+	$(div).css('display','inline-block');
+	$(div).fadeTo('slow', 1, function(){});
+}
+function hide_post_info(post_id) {
+	var div = $('div#'+post_id).find('div.postbox');
+	$(div).fadeTo('slow', 0, function(){});
+	$(div).css('display','none');
 }

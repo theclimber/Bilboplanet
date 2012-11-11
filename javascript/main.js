@@ -84,6 +84,11 @@ $(document).ready(function() {
 	});
 	detectSmartPhone()
 
+	// set posts refresh every X miliseconds
+	setInterval(function() {
+		updatePostList();
+	}, 1000*60*40);
+
 	$.ajax({
 		type: "POST",
 		url: "api/",
@@ -156,7 +161,7 @@ function updatePostList() {
 			'popular' : this.popular,
 			'order' : this.order,
 			'tags' : arrayToString(this.tags),
-			'tribe' : this.tribe,
+			'tribe' : this.tribe[0],
 			'users' : arrayToString(this.users),
 			'period' : this.period,
 			'post_status' : this.post_status
@@ -569,10 +574,19 @@ function detectSmartPhone() {
 	var uagent = navigator.userAgent.toLowerCase();
 	switch(uagent) {
 	case 'android':
+		showSidebar();
+		break;
 	case 'iphone':
+		showSidebar();
+		break;
 	case 'ipod':
+		showSidebar();
+		break;
 	case 'blackberry':
+		showSidebar();
+		break;
 	case 'palm':
 		showSidebar();
+		break;
 	}
 }

@@ -593,7 +593,7 @@ function generate_SQL(
 	return $sql;
 }
 
-function generate_tribe_SQL($tribe_id, $num_start = 0, $nb_items = 10, $popular=false) {
+function generate_tribe_SQL($tribe_id, $num_start = 0, $nb_items = 10, $popular=false, $search = '') {
 	global $core;
 	$sql_tribes = "SELECT
 			tribe_id,
@@ -621,6 +621,9 @@ function generate_tribe_SQL($tribe_id, $num_start = 0, $nb_items = 10, $popular=
 
 	$tribe_name = $rs->f('tribe_name');
 	$tribe_search = $rs->f('tribe_search');//getArrayFromList($rs->tribe_search);
+	if ($search != '') {
+		$tribe_search = $search;
+	}
 	$tribe_tags = getArrayFromList($rs->f('tribe_tags'));
 	$tribe_notags = getArrayFromList($rs->f('tribe_notags'));
 	$tribe_users = getArrayFromList($rs->f('tribe_users'));

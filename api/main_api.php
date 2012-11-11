@@ -85,7 +85,7 @@ if(isset($_POST['action'])) {
 		# On recupere les informtions sur les membres
 		$sql = '';
 		if ($tribe_id != '') {
-			$rs_tribe = $core->con->select("SELECT 
+			$rs_tribe = $core->con->select("SELECT
 				tribe_tags,
 				tribe_notags,
 				tribe_users,
@@ -120,7 +120,8 @@ if(isset($_POST['action'])) {
 				$tribe_id,
 				$num_start,
 				$nb_items,
-				$popular);
+				$popular,
+				$search_value);
 		} else {
 			# Terminaison de la commande SQL
 			$sql = generate_SQL(

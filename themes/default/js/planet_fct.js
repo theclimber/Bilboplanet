@@ -66,6 +66,11 @@ $(document).ready(function() {
 		'transitionOut'	: 'elastic'
 	});
 
+	// set posts refresh every X miliseconds
+	setInterval(function() {
+		updatePostList();
+	}, 1000*60*40);
+
 	/*
 	$('div#header-bg').click(function () {
 		$('html, body').animate({scrollTop:0}, 'slow');

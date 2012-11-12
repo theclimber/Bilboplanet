@@ -182,9 +182,6 @@ function render_page ($page) {
 		$tpl->setVar('shaarli_instance', $user_settings->get('social.shaarli.instance'));
 		break;
 	case 'tribes':
-		$num_page = !empty($_POST['num_page']) ? $_POST['num_page'] : 0;
-		$nb_items = !empty($_POST['nb_items']) ? $_POST['nb_items'] : 30;
-		$num_start = $num_page * $nb_items;
 
 		# On recupere les informtions sur les membres
 		$sql = 'SELECT
@@ -202,9 +199,71 @@ function render_page ($page) {
 			FROM '.$core->prefix.'tribe
 			WHERE user_id=\''.$user_id.'\'
 			ORDER by ordering
-			ASC LIMIT '.$nb_items.' OFFSET '.$num_start;
+			ASC LIMIT 100 OFFSET 0';
 
-	//	print getOutput($sql, $num_page, $nb_items);
+		$rs = $core->con->select($sql);
+		if ($rs->count > 0) {
+			while($rs->fetch()) {
+
+				$sql_post = generate_tribe_SQL(
+					$rs->tribe_id,
+					0,
+					0);
+				$rs_post = $core->con->select($sql_post);
+
+				$tribe_state = "private";
+				if ($rs->visibility == 1) {
+					$tribe_state = "public";
+				}
+
+				$tribe_tags = preg_split('/,/',$rs->tribe_tags, -1, PREG_SPLIT_NO_EMPTY);
+				foreach ($tribe_tags as $tag_item) {
+					$tpl->setVar('tribe_tag', $tag_item);
+					$tpl->setVar('tribe_id', $rs->tribe_id);
+					$tpl->render('tribes.tag');
+				}
+
+				$tribe_notags = preg_split('/,/',$rs->tribe_notags, -1, PREG_SPLIT_NO_EMPTY);
+				foreach ($tribe_notags as $tag_item) {
+					$tpl->setVar('tribe_notag', $tag_item);
+					$tpl->setVar('tribe_id', $rs->tribe_id);
+					$tpl->render('tribes.notag');
+				}
+
+				$tribe_users = preg_split('/,/',$rs->tribe_users, -1, PREG_SPLIT_NO_EMPTY);
+				foreach ($tribe_users as $user_item) {
+					$tpl->setVar('tribe_user', $user_item);
+					$tpl->setVar('tribe_id', $rs->tribe_id);
+					$tpl->render('tribes.user');
+				}
+
+				if ($rs->tribe_search) {
+					$tpl->setVar('tribe_id', $rs->tribe_id);
+					$tpl->render('tribes.search');
+				}
+
+				$tribe_icon = '';
+				if ($rs->tribe_icon) {
+					$tribe_icon = $rs->tribe_icon;
+					$tpl->setVar('tribe_id', $rs->tribe_id);
+					$tpl->render('tribes.icon.action');
+				}
+
+				$tribe_name = html_entity_decode($rs->tribe_name, ENT_QUOTES, 'UTF-8');
+
+				$tpl->setVar('tribe', array(
+					'id' => $rs->tribe_id,
+					'stripped_name' => addslashes($rs->tribe_name),
+					'state' => $tribe_state,
+					'icon' => $tribe_icon,
+					'last_post' => mysqldatetime_to_date("d/m/Y",$rs_post->last),
+					'count' => $rs_post->count,
+					'ordering' => $rs->ordering,
+					'search' => $rs->tribe_search
+					));
+				$tpl->render('tribes.box');
+			}
+		}
 		break;
 	default:
 		break;

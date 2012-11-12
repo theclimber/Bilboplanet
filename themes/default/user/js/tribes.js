@@ -3,9 +3,6 @@ $(document).ready(function() {
 	this.isfilter=false;
 	$('#addtribe_form').submit(function() {
 		var data = $('#addtribe_form').serialize();
-		$('#flash-log').css('display','');
-		$('#flash-msg').addClass('ajax-loading');
-		$('#flash-msg').html('Loading');
 		$.ajax({
 			type: "POST",
 			url: "api/",
@@ -16,76 +13,41 @@ $(document).ready(function() {
 				$('#user_id').val('');
 				$('#tribe_name').val('');
 				$('#ordering').val('');
-				updateTribeList();
-				$('#flash-msg').html('');
-				$('#flash-msg').removeClass('ajax-loading');
-				$('#flash-log').css('display', 'none');
-				$(msg).flashmsg();
+				updatePage('tribes', msg);
 			}
 		});
 		return false;
 	});
 	$("#tribe-list").ready( function() {
-		updateTribeList();
+		updatePage('tribes', '');
 	});
 });
 
-function updateTribeList(num_page, nb_items) {
-	$.ajax({
-		type: "POST",
-		url: "api/",
-		data : {'ajax' : 'tribe', 'action' : 'list', 'num_page': num_page, 'nb_items' : nb_items},
-		success: function(msg){
-			$("#tribe-list").html(msg);
-		}
-	});
-}
-
-function toggleTribeVisibility(tribe_id, num_page, nb_items) {
-	$('#flash-log').css('display','');
-	$('#flash-msg').addClass('ajax-loading');
-	$('#flash-msg').html('Loading');
+function toggleTribeVisibility(tribe_id) {
 	$.ajax({
 		type: "POST",
 		url: "api/",
 		data : {'ajax' : 'tribe', 'action' : 'toggle', 'tribe_id' : tribe_id},
 		success: function(msg){
-			$('#flash-msg').removeClass('ajax-loading');
-			$('#flash-log').css('display', 'none');
-			updateTribeList(num_page, nb_items);
-			$(msg).flashmsg();
+			updatePage('tribes', msg);
 		}
 	});
 }
 
-
-function removeTribe(tribe_id, num_page, nb_items) {
-	$('#flash-log').css('display','');
-	$('#flash-msg').addClass('ajax-loading');
-	$('#flash-msg').html('Loading');
+function removeTribe(tribe_id) {
 	$.ajax({
 		type: "POST",
 		url: "api/",
 		data : {'ajax' : 'tribe', 'action' : 'remove', 'tribe_id' : tribe_id},
 		success: function(msg){
-			$('#flash-msg').removeClass('ajax-loading');
-			$('#flash-msg').html('');
-			$(msg).flashmsg();
 			$('#removeTribeConfirm_form').submit(function() {
 				var data = $('#removeTribeConfirm_form').serialize().split('=');
-				$('#flash-msg').addClass('ajax-loading');
-				$('#flash-msg').html('Loading');
 				$.ajax({
 					type: "POST",
 					url: "api/",
 					data : {'ajax' : 'tribe', 'action' : 'removeConfirm', 'tribe_id' : data[1]},
 					success: function(msg){
-						updateTribeList(num_page, nb_items);
-						$('#flash-msg').removeClass('ajax-loading');
-						$('#flash-msg').html('');
-						$('#flash-log').css('display', 'none');
-						updateTribeList(num_page, nb_items);
-						$(msg).flashmsg();
+						updatePage('tribes', msg);
 					}
 				});
 				return false;
@@ -94,10 +56,7 @@ function removeTribe(tribe_id, num_page, nb_items) {
 	});
 }
 
-function edit(tribe_id, num_page, nb_items) {
-	$('#flash-log').css('display','');
-	$('#flash-msg').addClass('ajax-loading');
-	$('#flash-msg').html('Loading');
+function edit(tribe_id) {
 	$.ajax({
 		type: "POST",
 		url: "api/",
@@ -119,10 +78,7 @@ function edit(tribe_id, num_page, nb_items) {
 					success: function(msg){
 						$('#tribe-edit-form #tribe_id').val('');
 						$('#tribe-edit-form #tribe_name').val('');
-						$('#flash-msg').removeClass('ajax-loading');
-						$('#flash-log').css('display', 'none');
-						$(msg).flashmsg();
-						updateTribeList(num_page, nb_items);
+						updatePage('tribes', msg);
 					}
 				});
 			}, {
@@ -142,32 +98,22 @@ function closeAdd() {
 	jQuery('#addtribe-field').css('display', 'none');
 }
 
-function rm_tag(num_page, nb_items, tribe_id, tag) {
-	$('#flash-log').css('display','');
-	$('#flash-msg').addClass('ajax-loading');
-	$('#flash-msg').html('Loading');
+function rm_tag(tribe_id, tag) {
     $.ajax({
         type: "POST",
         url: "api/",
         data : {'ajax' : 'tribe', 'action' : 'rm_tag', 'tribe_id' : tribe_id, 'tag' : tag},
         success: function(msg){
 //            $("#tag_action"+tribe_id)[0].removeAttribute('class','ajax-loading');
-            $('#flash-msg').removeClass('ajax-loading');
-            $('#flash-msg').html('');
-            $('#flash-log').css('display', 'none');
-			updateTribeList(num_page, nb_items);
-            $(msg).flashmsg();
+			updatePage('tribes', msg);
         }
     });
 }
 
-function add_tags(num_page, nb_items, tribe_id, tribe_name) {
+function add_tags(tribe_id, tribe_name) {
     var content = $('#tag-tribe-form form').clone();
 
     Boxy.askform(content, function(val) {
-        $('#flash-log').css('display','');
-        $('#flash-msg').addClass('ajax-loading');
-        $("#flash-msg").html('Sending');
 //        $("#tag_action"+tribe_id)[0].setAttribute('class','ajax-loading');
 		var data = content.serialize().split('=');
         $.ajax({
@@ -176,10 +122,7 @@ function add_tags(num_page, nb_items, tribe_id, tribe_name) {
 			data : {'ajax' : 'tribe', 'action' : 'add_tags', 'tribe_id' : tribe_id, 'tags' : data[1]},
             success: function(msg){
 //                $("#tag_action"+tribe_id)[0].removeAttribute('class','ajax-loading');
-                $('#flash-msg').removeClass('ajax-loading');
-                $('#flash-log').css('display', 'none');
-                $(msg).flashmsg();
-				updateTribeList(num_page, nb_items);
+				updatePage('tribes', msg);
             }
         });
     }, {
@@ -187,32 +130,22 @@ function add_tags(num_page, nb_items, tribe_id, tribe_name) {
     });
 }
 
-function rm_notag(num_page, nb_items, tribe_id, notag) {
-	$('#flash-log').css('display','');
-	$('#flash-msg').addClass('ajax-loading');
-	$('#flash-msg').html('Loading');
+function rm_notag(tribe_id, notag) {
     $.ajax({
         type: "POST",
         url: "api/",
         data : {'ajax' : 'tribe', 'action' : 'rm_notag', 'tribe_id' : tribe_id, 'tag' : notag},
         success: function(msg){
 //            $("#tag_action"+tribe_id)[0].removeAttribute('class','ajax-loading');
-            $('#flash-msg').removeClass('ajax-loading');
-            $('#flash-msg').html('');
-            $('#flash-log').css('display', 'none');
-			updateTribeList(num_page, nb_items);
-            $(msg).flashmsg();
+			updatePage('tribes', msg);
         }
     });
 }
 
-function add_notags(num_page, nb_items, tribe_id, tribe_name) {
+function add_notags(tribe_id, tribe_name) {
     var content = $('#tag-tribe-form form').clone();
 
     Boxy.askform(content, function(val) {
-        $('#flash-log').css('display','');
-        $('#flash-msg').addClass('ajax-loading');
-        $("#flash-msg").html('Sending');
 //        $("#tag_action"+tribe_id)[0].setAttribute('class','ajax-loading');
 		var data = content.serialize().split('=');
         $.ajax({
@@ -221,10 +154,7 @@ function add_notags(num_page, nb_items, tribe_id, tribe_name) {
 			data : {'ajax' : 'tribe', 'action' : 'add_notags', 'tribe_id' : tribe_id, 'tags' : data[1]},
             success: function(msg){
 //                $("#tag_action"+tribe_id)[0].removeAttribute('class','ajax-loading');
-                $('#flash-msg').removeClass('ajax-loading');
-                $('#flash-log').css('display', 'none');
-                $(msg).flashmsg();
-				updateTribeList(num_page, nb_items);
+				updatePage('tribes', msg);
             }
         });
     }, {
@@ -232,26 +162,19 @@ function add_notags(num_page, nb_items, tribe_id, tribe_name) {
     });
 }
 
-function rm_user(num_page, nb_items, tribe_id, user) {
-	$('#flash-log').css('display','');
-	$('#flash-msg').addClass('ajax-loading');
-	$('#flash-msg').html('Loading');
+function rm_user(tribe_id, user) {
     $.ajax({
         type: "POST",
         url: "api/",
         data : {'ajax' : 'tribe', 'action' : 'rm_user', 'tribe_id' : tribe_id, 'user' : user},
         success: function(msg){
 //            $("#tag_action"+tribe_id)[0].removeAttribute('class','ajax-loading');
-            $('#flash-msg').removeClass('ajax-loading');
-            $('#flash-msg').html('');
-            $('#flash-log').css('display', 'none');
-			updateTribeList(num_page, nb_items);
-            $(msg).flashmsg();
+			updatePage('tribes', msg);
         }
     });
 }
 
-function add_users(num_page, nb_items, tribe_id, tribe_name) {
+function add_users(tribe_id, tribe_name) {
     var content = $('span#user-tribe-form').clone();
 	content.find('select#user_combo').change(function() {
 		var user_id = content.find('select#user_combo').val();
@@ -264,9 +187,6 @@ function add_users(num_page, nb_items, tribe_id, tribe_name) {
 	});
 
     Boxy.askform(content, function(val) {
-        $('#flash-log').css('display','');
-        $('#flash-msg').addClass('ajax-loading');
-        $("#flash-msg").html('Sending');
 		var data = content.find('form').serialize().split('=');
 		console.debug(data);
         $.ajax({
@@ -274,10 +194,7 @@ function add_users(num_page, nb_items, tribe_id, tribe_name) {
             url: "api/",
 			data : {'ajax' : 'tribe', 'action' : 'add_users', 'tribe_id' : tribe_id, 'users' : data[1]},
             success: function(msg){
-                $('#flash-msg').removeClass('ajax-loading');
-                $('#flash-log').css('display', 'none');
-                $(msg).flashmsg();
-				updateTribeList(num_page, nb_items);
+				updatePage('tribes', msg);
             }
         });
     }, {
@@ -285,32 +202,22 @@ function add_users(num_page, nb_items, tribe_id, tribe_name) {
     });
 }
 
-function rm_search(num_page, nb_items, tribe_id) {
-	$('#flash-log').css('display','');
-	$('#flash-msg').addClass('ajax-loading');
-	$('#flash-msg').html('Loading');
+function rm_search(tribe_id) {
     $.ajax({
         type: "POST",
         url: "api/",
         data : {'ajax' : 'tribe', 'action' : 'rm_search', 'tribe_id' : tribe_id},
         success: function(msg){
 //            $("#tag_action"+tribe_id)[0].removeAttribute('class','ajax-loading');
-            $('#flash-msg').removeClass('ajax-loading');
-            $('#flash-msg').html('');
-            $('#flash-log').css('display', 'none');
-			updateTribeList(num_page, nb_items);
-            $(msg).flashmsg();
+			updatePage('tribes', msg);
         }
     });
 }
 
-function add_search(num_page, nb_items, tribe_id, tribe_name) {
+function add_search(tribe_id, tribe_name) {
     var content = $('#search-tribe-form form').clone();
 
     Boxy.askform(content, function(val) {
-        $('#flash-log').css('display','');
-        $('#flash-msg').addClass('ajax-loading');
-        $("#flash-msg").html('Sending');
 		var data = content.serialize().split('=');
         $.ajax({
             type: "POST",
@@ -318,10 +225,7 @@ function add_search(num_page, nb_items, tribe_id, tribe_name) {
 			data : {'ajax' : 'tribe', 'action' : 'add_search', 'tribe_id' : tribe_id, 'search' : data[1]},
             success: function(msg){
 //                $("#tag_action"+tribe_id)[0].removeAttribute('class','ajax-loading');
-                $('#flash-msg').removeClass('ajax-loading');
-                $('#flash-log').css('display', 'none');
-                $(msg).flashmsg();
-				updateTribeList(num_page, nb_items);
+				updatePage('tribes', msg);
             }
         });
     }, {
@@ -330,7 +234,7 @@ function add_search(num_page, nb_items, tribe_id, tribe_name) {
 }
 
 
-function add_icon(num_page, nb_items, tribe_id, tribe_name) {
+function add_icon(tribe_id, tribe_name) {
     var content = $('#icon-tribe-form form').clone();
 	content.find('input#tribe-id').attr('value',tribe_id);
 
@@ -340,10 +244,7 @@ function add_icon(num_page, nb_items, tribe_id, tribe_name) {
 		url: "api/",
 		type: 'post',
 		success: function(msg){
-			$('#flash-msg').removeClass('ajax-loading');
-			$('#flash-log').css('display', 'none');
-			$(msg).flashmsg();
-			updateTribeList(num_page, nb_items);
+			updatePage('tribes', msg);
 		},
 	};
 
@@ -358,21 +259,14 @@ function add_icon(num_page, nb_items, tribe_id, tribe_name) {
     });
 }
 
-function rm_icon(num_page, nb_items, tribe_id) {
-	$('#flash-log').css('display','');
-	$('#flash-msg').addClass('ajax-loading');
-	$('#flash-msg').html('Loading');
+function rm_icon(tribe_id) {
     $.ajax({
         type: "POST",
         url: "api/",
         data : {'ajax' : 'tribe', 'action' : 'rm_icon', 'tribe_id' : tribe_id},
         success: function(msg){
 //            $("#tag_action"+tribe_id)[0].removeAttribute('class','ajax-loading');
-            $('#flash-msg').removeClass('ajax-loading');
-            $('#flash-msg').html('');
-            $('#flash-log').css('display', 'none');
-			updateTribeList(num_page, nb_items);
-            $(msg).flashmsg();
+			updatePage('tribes', msg);
         }
     });
 }

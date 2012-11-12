@@ -5,6 +5,12 @@
 	{_Create a tribe}</a>
 </div>
 
+
+<fieldset id="addtribe-field" style="display:none"><legend>{_Create a tribe}</legend>
+	<div class="message">
+		<p>{_Manage tribes. You can add user filters, search filters and tag filters. You can add tribes for all users or for specific users.}</p>
+	</div><br/>
+
 	<!-- Add tribe form -->
 	<form id="addtribe_form">
 		<label class="required" for="tribe_name">{_Tribe name} :
@@ -26,41 +32,61 @@
 
 
 <fieldset><legend>{_Manage tribes}</legend>
-	<div class="message">
-		<p>{_Manage tribes}</p>
-	</div>
 	<div id="tribe-list">
-	
+
 		<!-- BEGIN tribes.box -->
-		<div class="tribesbox tribe-'.$tribe_state.'" id="tribe-{$tribe.id}">
+		<div class="tribesbox tribe-{$tribe.state}" id="tribe-{$tribe.id}">
 			<h3><a href="{$planet.url}/index.php?list=1&tribe_id={$tribe.id}">{$tribe.name}</a></h3>
 			<p class="tribe-icon"><img class="tribe-icon" src="{$tribe.icon}" /></p>
-			<p class="nickname">
-				{_Tags :} <div class="tag-line">{$tribe.tags}</div><br/>
-				{_No-tags :} <div class="notag-line">{$tribe.notags}</div><br/>
-				{_Users :} <div class="user-line">{$tribe.users}</div><br/>
-				{_Search :} {$tribe.search} <a href="">x</a><br/>
-				{_Last post :} {$tribe.last_post}<br/>
-				{_Post count :} {$tribe.count}<br/>
-				{_Ordering :} {$tribe.ordering}
-			</p>
+			<ul class="nickname">
+				<li>{_Tags :} <div class="tag-line">
+					<!-- BEGIN tribes.tag -->
+					<span class="tag">{$tribe_tag} <a href="javascript:rm_tag('{$tribe_id}','{$tribe_tag}')">x</a></span>
+					<!-- END tribes.tag -->
+					</div></li>
+				<li>{_No-tags :} <div class="notag-line">
+					<!-- BEGIN tribes.notag -->
+					<span class="tag">{$tribe_notag} <a href="javascript:rm_notag('{$tribe_id}','{$tribe_notag}')">x</a></span>
+					<!-- END tribes.notag -->
+					</div></li>
+				<li>{_Users :} <div class="user-line">
+					<!-- BEGIN tribes.user -->
+					<span class="user">{$tribe_user} <a href="javascript:rm_user('{$tribe_id}','{$tribe_user}')">x</a></span>
+					<!-- END tribes.user -->
+					</div></li>
+				<li>{_Search :} {$tribe.search} 
+					<!-- BEGIN tribes.search -->
+					(<a href="javascript:rm_search('{$tribe_id}')">{_clear}</a>)
+					<!-- ELSE tribes.search -->
+					({_Empty})
+					<!-- END tribes.search -->
+					</li>
+				<li>{_Last post :} {$tribe.last_post}</li>
+				<li>{_Post count :} {$tribe.count}</li>
+				<li>{_Ordering :} {$tribe.ordering}</li>
+			</ul>
 			<ul class="actions">
-				<li><a href="javascript:toggleTribeVisibility('{$tribe_id}')"><img src="meta/icons/toggle-visibility.png" title="{_Toggle tribe visibility}"/></a></li>
-				<li><a href="javascript:edit(\''.$rs->tribe_id.'\', '.$num_page.', '.$nb_items.')"><img src="meta/icons/action-edit.png" title="'.T_('Edit tribe').'" /></a></li>
-				<li><a href="javascript:removeTribe(\''.$rs->tribe_id.'\','.$num_page.','.$nb_items.')"><img src="meta/icons/cross.png" title="'.T_('Remove tribe').'" /></a></li>
-				<li><a href="javascript:add_tags('.$num_page.','.$nb_items.',\''.$rs->tribe_id.'\',\''.addslashes($tribe_name).'\')"><img src="meta/icons/add_tag.png" title="'.T_('Add tags to tribe').'"/></a></li>
-				<li><a href="javascript:add_notags('.$num_page.','.$nb_items.',\''.$rs->tribe_id.'\',\''.addslashes($tribe_name).'\')"><img src="meta/icons/add_notag.png" title="'.T_('Add unwanted tags to tribe').'"/></a></li>
-				<li><a href="javascript:add_users('.$num_page.','.$nb_items.',\''.$rs->tribe_id.'\',\''.addslashes($tribe_name).'\')"><img src="meta/icons/add_user.png" title="'.T_('Add users to tribe').'" /></a></li>
-				<li><a href="javascript:add_search('.$num_page.','.$nb_items.',\''.$rs->tribe_id.'\',\''.addslashes($tribe_name).'\')"><img src="meta/icons/add_search.png" title="'.T_('Add search to tribe').'" /></a></li>
-				<li>'.$icon_action.'</li>
+				<li><a href="javascript:toggleTribeVisibility('{$tribe.id}')"><img src="meta/icons/tribe-state-{$tribe.state}.png" title="{_Toggle tribe visibility}"/></a></li>
+				<li><a href="javascript:edit('{$tribe.id}')"><img src="meta/icons/action-edit.png" title="{_Edit tribe}" /></a></li>
+				<li><a href="javascript:removeTribe('{$tribe.id}')"><img src="meta/icons/cross.png" title="{_Remove tribe}" /></a></li>
+				<li><a href="javascript:add_tags('{$tribe.id}','{$tribe.stripped_name}')"><img src="meta/icons/add_tag.png" title="{_Add tags to tribe}"/></a></li>
+				<li><a href="javascript:add_notags('{$tribe.id}','{$tribe.stripped_name}')"><img src="meta/icons/add_notag.png" title="{_Add unwanted tags to tribe}"/></a></li>
+				<li><a href="javascript:add_users('{$tribe.id}','{$tribe.stripped_name}')"><img src="meta/icons/add_user.png" title="{_Add users to tribe}" /></a></li>
+				<li><a href="javascript:add_search('{$tribe.id}','{$tribe.stripped_name}')"><img src="meta/icons/add_search.png" title="{_Add search to tribe}" /></a></li>
+				<li>
+				<!-- BEGIN tribes.icon.action -->
+					<a href="javascript:rm_icon('{$tribe_id}')">
+						<img src="meta/icons/rm_icon.png" title="{_Remove icon from tribe}" /></a>
+				<!-- ELSE tribes.icon.action -->
+					<a href="javascript:add_icon('{$tribe.id}','{$tribe.stripped_name}')">
+						<img src="meta/icons/add_icon.png" title="{_Add icon to tribe}" /></a>
+				<!-- END tribes.icon.action -->
+				</li>
 			</ul>
 			<div class="feedlink"><a href="{$planet.url}/index.php?list=1&tribe_id={$tribe.id}">
 					<img alt="RSS" src="{$planet.url}/themes/{$planet.theme}/images/rss_24.png" /></a></div>
 		</div>';
 		<!-- END tribes.box -->
-	
-	
-	
 	</div>
 </fieldset>
 

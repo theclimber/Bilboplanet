@@ -181,6 +181,31 @@ function render_page ($page) {
 		$tpl->setVar('statusnet_account', $user_settings->get('social.statusnet.account'));
 		$tpl->setVar('shaarli_instance', $user_settings->get('social.shaarli.instance'));
 		break;
+	case 'tribes':
+		$num_page = !empty($_POST['num_page']) ? $_POST['num_page'] : 0;
+		$nb_items = !empty($_POST['nb_items']) ? $_POST['nb_items'] : 30;
+		$num_start = $num_page * $nb_items;
+
+		# On recupere les informtions sur les membres
+		$sql = 'SELECT
+			user_id,
+			tribe_id,
+			tribe_name,
+			tribe_tags,
+			tribe_notags,
+			tribe_users,
+			tribe_nousers,
+			tribe_search,
+			tribe_icon,
+			visibility,
+			ordering
+			FROM '.$core->prefix.'tribe
+			WHERE user_id=\''.$user_id.'\'
+			ORDER by ordering
+			ASC LIMIT '.$nb_items.' OFFSET '.$num_start;
+
+	//	print getOutput($sql, $num_page, $nb_items);
+		break;
 	default:
 		break;
 	}

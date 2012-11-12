@@ -62,7 +62,12 @@ if(isset($_POST['action'])) {
 # CREATE TRIBE
 ##########################################################
 	case 'add':
-		$user_id = urldecode(trim($_POST['user_id']));
+
+		if ($core->auth->sessionExists() && $core->hasPermission('administration')){
+			$user_id = urldecode(trim($_POST['user_id']));
+		} else {
+			$user_id = $core->auth->userID();
+		}
 		$tribe_name = check_field('tribe_name',trim($_POST['tribe_name']));
 		$ordering = intval(trim($_POST['ordering']));
 		$error = array();

@@ -20,7 +20,7 @@
 				<span class="menu-text">{_Write or share}</span>
 		</li></a>
 		<a href="{$planet.url}/user/?page=tribes">
-			<li id="tribes" class="entry {$menu.tribes}" style="display:none">
+			<li id="tribes" class="entry {$menu.tribes}">
 				<img src="{$planet.url}/themes/{$planet.theme}/user/images/tribes.png"/>
 				<span class="menu-text">{_Tribes}</span>
 		</li></a>

@@ -84,6 +84,13 @@ if ($ajax != "") {
 		}
 		require_once(dirname(__FILE__).'/post_api.php');
 		break;
+	case 'tribes':
+		if (!$core->hasRole('user')){
+			print 'Permission denied';
+			exit;
+		}
+		require_once(dirname(__FILE__).'/../../admin/api/manage-tribes_api.php');
+		break;
 	default:
 		print '<div class="flash error">'.T_('bad call, this ajax call does not exist').'</div>';
 		break;

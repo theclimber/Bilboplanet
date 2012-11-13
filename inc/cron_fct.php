@@ -733,7 +733,11 @@ function savePostImage($post_id,$file_url) {
 
 		$width = 250; // defined width
 		$height = ( ($imgsize[1] * (($width)/$imgsize[0]))); // relative height
-		if ($imgsize[0] < $width*0.8) {
+
+		// if the image is smaller or equal : do not resize
+		if ($imgsize[1] <= $height) {
+			$height = $imgsize[1];
+			$width = $imgsize[0];
 		}
 
 		$final_image = imagecreatetruecolor($width , $height)

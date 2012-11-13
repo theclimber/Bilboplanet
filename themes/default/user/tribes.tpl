@@ -98,71 +98,68 @@
 
 
 <div id="icon-tribe-form" style="display:none">
-	<form id="icon-tribe" enctype="multipart/form-data">
-		<label class="required" for="icon">{_Add tribe icon} : <br />
-		<input name="icon" size="30" type="file"> </label><br />
+	<form id="icon-tribe" enctype="multipart/form-data" class="boxy">
 		<input name="ajax" value="tribes" type="hidden" />
 		<input name="action" value="add_icon" type="hidden" />
 		<input id="tribe-id" name="tribe_id" value="" type="hidden" />
 		<input type="hidden" name="MAX_FILE_SIZE" value="2097152">
+
+		<label class="required" for="icon">{_Add tribe icon}</label>
+		<input name="icon" size="30" type="file"><br />
 		<span class="description"><i>{_The image have to be 100px*100px or will be resized}</i></span><br /><br />
 
-		<div class="button">
-			<input type="button" class="cancel" name="cancel" onClick="Boxy.get($(\'form.boxform\')).hide()" value="{_Cancel}">
+		<div class="bbutton">
+			<input type="button" class="cancel" name="cancel" onClick="Boxy.get($('form.boxform')).hide()" value="{_Cancel}">
 		</div>
-		'<div class="button">
+		<div class="bbutton">
 			<input type="submit" name="send" id="send-icon" class="add_icon" value="{_Send}" />
 		</div>
 	</form>
 </div>
 
 <div id="tribe-edit-form" style="display:none">
-	<form>
-		<input type="hidden" name="tribe_id" value="" />
-		<label class="required" for="tribe_name">{_Tribe name} : <br />
-			<input name="tribe_name" type="text" value="" />
-		</label><br/>
+	<form class="boxy">
+		<input id="tribe_id" type="hidden" name="tribe_id" value="" />
+		<label class="required" for="tribe_name">{_Tribe name}</label>
+		<input id="tribe_name" name="tribe_name" type="text" value="" /><br/>
 
-		<label class="required" for="tribe_order">{_Tribe order} : <br />
-			<input name="tribe_order" type="text" value="" />
-		</label><br/>
+		<label class="required" for="tribe_order">{_Tribe order}</label>
+		<input id="tribe_order" name="tribe_order" type="text" value="" /><br/>
 
-		<div class="button">
-			<input type="button" class="cancel" name="cancel" onClick="Boxy.get($(\'form.boxform\')).hide()" value="{_Cancel}">
+		<div class="bbutton">
+			<input type="button" class="cancel" name="cancel" onClick="Boxy.get($('form.boxform')).hide()" value="{_Cancel}">
 		</div>
-		<div class="button">
-			<input type="submit" name="send" class="add_site" value="{_Update}" />
+		<div class="bbutton">
+			<input type="submit" name="send" class="button add_site" value="{_Update}" />
 		</div>
 	</form>
 </div>
 
 <div id="tag-tribe-form" style="display:none">
-	<form>
-		<label class="required" for="content">{_Add new tags} : <br />
-			<input name="tags" type="text" value="" />
-		</label><br/>
+	<form class="boxy">
+		<label class="required" for="content">{_Add new tags}</label>
+		<input name="tags" type="text" value="" /><br/>
 		<span class="description"><i>{_Comma separated tags (ex: linux,web,event)}</i></span><br /><br />
 
-		<div class="button">
-			<input type="button" class="cancel" name="cancel" onClick="Boxy.get($(\'form.boxform\')).hide()" value="{_Cancel}">
+		<div class="bbutton">
+			<input type="button" class="cancel" name="cancel" onClick="Boxy.get($('form.boxform')).hide()" value="{_Cancel}">
 		</div>
-		<div class="button">
+		<div class="bbutton">
 			<input type="submit" name="send" class="add_site" value="{_Send}" />
 		</div>
 	</form>
 </div>
 
 <div id="search-tribe-form" style="display:none">
-	<form>
-		<label class="required" for="content">{_Add a search} : <br />
-			<input name="search" type="text" value="" />
-		</label><br/>
+	<form class="boxy">
+		<label class="required" for="content">{_Add a search}</label>
+		<input name="search" type="text" value="" /><br/>
 		<span class="description"><i>{_Write your search in the text field}</i></span><br /><br />
 
-		<div class="button">
-			<input type="button" class="cancel" name="cancel" onClick="Boxy.get($(\'form.boxform\')).hide()" value="{_Cancel}">
+		<div class="bbutton">
+			<input type="button" class="cancel" name="cancel" onClick="Boxy.get($('form.boxform')).hide()" value="{_Cancel}">
 		</div>
-		<div class="button">
+		<div class="bbutton">
 			<input type="submit" name="send" class="add_site" value="{_Send}" />
 		</div>
 	</form>
@@ -171,21 +168,22 @@
 <div id="user-tribe-form" style="display:none">
 	<span id="user-tribe-form">
 
-		<label for="user_id">{_Add new users} :
+		<label for="user_id">{_Add new users}</label>
 			<select id="user_combo" name="user_id">
+				<!-- BEGIN tribe.option.userlist -->
 				<option value="{$option.user_id}">{$option.user_name}</option>
+				<!-- END tribe.option.userlist -->
 			</select>
 		<br />
 
-		<form>
-			<input name="users_selected" type="text" value="" />
-			</label><br/>
-			<span class="description"><i>{_Comma separated user id\'s (ex: john22,jack,flipper)}</i></span><br /><br />
+		<form class="boxy">
+			<input id="users_selected" name="users_selected" type="text" value="" /><br/>
+			<span class="description"><i>{_Comma separated user id's (ex: john22,jack,flipper)}</i></span><br /><br />
 
-			<div class="button">
-				<input type="button" class="cancel" name="cancel" onClick="Boxy.get($(\'form.boxform\')).hide()" value="{_Cancel}">
+			<div class="bbutton">
+				<input type="button" class="cancel" name="cancel" onClick="Boxy.get($('form.boxform')).hide()" value="{_Cancel}">
 			</div>
-			'<div class="button">
+			<div class="bbutton">
 				<input type="submit" name="send" class="add_site" value="{_Send}" />
 			</div>
 		</form>

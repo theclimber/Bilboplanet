@@ -183,6 +183,17 @@ function render_page ($page) {
 		break;
 	case 'tribes':
 
+		$rs_users = $core->con->select('SELECT user_id, user_fullname
+			FROM '.$core->prefix.'user
+			WHERE user_status=1');
+		while($rs_users->fetch()){
+			$tpl->setVar('option', array(
+				"user_id" => $rs_users->user_id,
+				"user_name" => $rs_users->user_fullname
+				));
+			$tpl->render('tribe.option.userlist');
+		}
+
 		# On recupere les informtions sur les membres
 		$sql = 'SELECT
 			user_id,

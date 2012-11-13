@@ -40,6 +40,7 @@ function removeTribe(tribe_id) {
 		url: "api/",
 		data : {'ajax' : 'tribes', 'action' : 'remove', 'tribe_id' : tribe_id},
 		success: function(msg){
+			showFlash(msg);
 			$('#removeTribeConfirm_form').submit(function() {
 				var data = $('#removeTribeConfirm_form').serialize().split('=');
 				$.ajax({
@@ -104,7 +105,6 @@ function rm_tag(tribe_id, tag) {
         url: "api/",
         data : {'ajax' : 'tribes', 'action' : 'rm_tag', 'tribe_id' : tribe_id, 'tag' : tag},
         success: function(msg){
-//            $("#tag_action"+tribe_id)[0].removeAttribute('class','ajax-loading');
 			updatePage('tribes', msg);
         }
     });
@@ -121,7 +121,6 @@ function add_tags(tribe_id, tribe_name) {
             url: "api/",
 			data : {'ajax' : 'tribes', 'action' : 'add_tags', 'tribe_id' : tribe_id, 'tags' : data[1]},
             success: function(msg){
-//                $("#tag_action"+tribe_id)[0].removeAttribute('class','ajax-loading');
 				updatePage('tribes', msg);
             }
         });
@@ -136,7 +135,6 @@ function rm_notag(tribe_id, notag) {
         url: "api/",
         data : {'ajax' : 'tribes', 'action' : 'rm_notag', 'tribe_id' : tribe_id, 'tag' : notag},
         success: function(msg){
-//            $("#tag_action"+tribe_id)[0].removeAttribute('class','ajax-loading');
 			updatePage('tribes', msg);
         }
     });
@@ -153,7 +151,6 @@ function add_notags(tribe_id, tribe_name) {
             url: "api/",
 			data : {'ajax' : 'tribes', 'action' : 'add_notags', 'tribe_id' : tribe_id, 'tags' : data[1]},
             success: function(msg){
-//                $("#tag_action"+tribe_id)[0].removeAttribute('class','ajax-loading');
 				updatePage('tribes', msg);
             }
         });
@@ -168,7 +165,6 @@ function rm_user(tribe_id, user) {
         url: "api/",
         data : {'ajax' : 'tribes', 'action' : 'rm_user', 'tribe_id' : tribe_id, 'user' : user},
         success: function(msg){
-//            $("#tag_action"+tribe_id)[0].removeAttribute('class','ajax-loading');
 			updatePage('tribes', msg);
         }
     });
@@ -208,7 +204,6 @@ function rm_search(tribe_id) {
         url: "api/",
         data : {'ajax' : 'tribes', 'action' : 'rm_search', 'tribe_id' : tribe_id},
         success: function(msg){
-//            $("#tag_action"+tribe_id)[0].removeAttribute('class','ajax-loading');
 			updatePage('tribes', msg);
         }
     });
@@ -224,7 +219,6 @@ function add_search(tribe_id, tribe_name) {
             url: "api/",
 			data : {'ajax' : 'tribes', 'action' : 'add_search', 'tribe_id' : tribe_id, 'search' : data[1]},
             success: function(msg){
-//                $("#tag_action"+tribe_id)[0].removeAttribute('class','ajax-loading');
 				updatePage('tribes', msg);
             }
         });
@@ -265,7 +259,6 @@ function rm_icon(tribe_id) {
         url: "api/",
         data : {'ajax' : 'tribes', 'action' : 'rm_icon', 'tribe_id' : tribe_id},
         success: function(msg){
-//            $("#tag_action"+tribe_id)[0].removeAttribute('class','ajax-loading');
 			updatePage('tribes', msg);
         }
     });

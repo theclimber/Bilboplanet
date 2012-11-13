@@ -35,9 +35,6 @@ function update($core, $print=false) {
 	global $blog_settings;
 	$output = "";
 
-	# Inclusion des fichiers necessaires
-#	require_once(dirname(__FILE__).'/lib/simplepie/simplepie.inc');
-
 	# Requete permettant de recuperer la liste des flux a parser
 	$sql = "SELECT
 			".$core->prefix."feed.user_id as user_id,
@@ -104,8 +101,7 @@ function getItemsFromFeeds ($rs, $print) {
 			$output .= $log_msg;
 		}
 
-//		require_once(dirname(__FILE__).'/lib/simplepie/SimplePieAutoloader.php');
-		require_once(dirname(__FILE__).'/lib/simplepie_1.3.compiled.php');
+		require_once(dirname(__FILE__).'/lib/simplepie_1.3.1.compiled.php');
 		# On cree un objet SimplePie et on ajuste les parametres de base
 		$feed = new SimplePie();
 		$feed->set_feed_url($rs->feed_url);

@@ -34,8 +34,7 @@ if ($core->auth->sessionExists()):
 		exit;
 	}
 
-//require_once(dirname(__FILE__).'/../inc/lib/simplepie/SimplePieAutoloader.php');
-require_once(dirname(__FILE__).'/../inc/lib/simplepie_1.3.compiled.php');
+require_once(dirname(__FILE__).'/../inc/lib/simplepie_1.3.1.compiled.php');
 function showArticleSummary($con){
 	global $core;
 	$content = '<div class="box-dashboard"><div class="top-box-dashboard">'.T_('Latest articles :').'</div>';

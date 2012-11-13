@@ -89,10 +89,10 @@ if ($ajax != "") {
 			print 'Permission denied';
 			exit;
 		}
-		require_once(dirname(__FILE__).'/../../admin/api/manage-tribes_api.php');
+		require_once(dirname(__FILE__).'/../../admin/api/manage-tribe_api.php');
 		break;
 	default:
-		print '<div class="flash error">'.T_('bad call, this ajax call does not exist').'</div>';
+		print '<div class="flash_error">'.T_('bad call, this ajax call does not exist').'</div>';
 		break;
 	}
 }

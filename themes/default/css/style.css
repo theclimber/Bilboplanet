@@ -1306,8 +1306,8 @@ div.post_description div.tag-line {
 span.tag a, span.user a {
 	color:#000;
 }
+/*
 div.tag-line span.tag a {
-    /*color: #5C5C5C;*/
 	color:#999;
 }
 div.tag-line span.tag {

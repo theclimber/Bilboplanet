@@ -6,7 +6,7 @@ $(document).ready(function() {
 		$.ajax({
 			type: "POST",
 			url: "api/",
-			data: 'ajax=tribe&action=add&'+data,
+			data: 'ajax=tribes&action=add&'+data,
 			success: function(msg){
 				$('#addtribe-field').css('display', 'none');
 				$('#addtribe_form').find('input[type=text]').val('');
@@ -27,7 +27,7 @@ function toggleTribeVisibility(tribe_id) {
 	$.ajax({
 		type: "POST",
 		url: "api/",
-		data : {'ajax' : 'tribe', 'action' : 'toggle', 'tribe_id' : tribe_id},
+		data : {'ajax' : 'tribes', 'action' : 'toggle', 'tribe_id' : tribe_id},
 		success: function(msg){
 			updatePage('tribes', msg);
 		}
@@ -38,14 +38,14 @@ function removeTribe(tribe_id) {
 	$.ajax({
 		type: "POST",
 		url: "api/",
-		data : {'ajax' : 'tribe', 'action' : 'remove', 'tribe_id' : tribe_id},
+		data : {'ajax' : 'tribes', 'action' : 'remove', 'tribe_id' : tribe_id},
 		success: function(msg){
 			$('#removeTribeConfirm_form').submit(function() {
 				var data = $('#removeTribeConfirm_form').serialize().split('=');
 				$.ajax({
 					type: "POST",
 					url: "api/",
-					data : {'ajax' : 'tribe', 'action' : 'removeConfirm', 'tribe_id' : data[1]},
+					data : {'ajax' : 'tribes', 'action' : 'removeConfirm', 'tribe_id' : data[1]},
 					success: function(msg){
 						updatePage('tribes', msg);
 					}
@@ -60,7 +60,7 @@ function edit(tribe_id) {
 	$.ajax({
 		type: "POST",
 		url: "api/",
-		data: {'ajax' : 'tribe', 'action' : 'get', 'tribe_id' : tribe_id},
+		data: {'ajax' : 'tribes', 'action' : 'get', 'tribe_id' : tribe_id},
 		dataType: 'json',
 		success: function(tribe){
 			$('#tribe-edit-form #tribe_id').val(tribe.tribe_id);
@@ -69,7 +69,7 @@ function edit(tribe_id) {
 			var content = $('#tribe-edit-form form').clone();
 
 			Boxy.askform(content, function(val) {
-				val['ajax'] = "tribe";
+				val['ajax'] = "tribes";
 				val['action'] = "edit";
 				$.ajax({
 					type: "POST",
@@ -102,7 +102,7 @@ function rm_tag(tribe_id, tag) {
     $.ajax({
         type: "POST",
         url: "api/",
-        data : {'ajax' : 'tribe', 'action' : 'rm_tag', 'tribe_id' : tribe_id, 'tag' : tag},
+        data : {'ajax' : 'tribes', 'action' : 'rm_tag', 'tribe_id' : tribe_id, 'tag' : tag},
         success: function(msg){
 //            $("#tag_action"+tribe_id)[0].removeAttribute('class','ajax-loading');
 			updatePage('tribes', msg);
@@ -119,7 +119,7 @@ function add_tags(tribe_id, tribe_name) {
         $.ajax({
             type: "POST",
             url: "api/",
-			data : {'ajax' : 'tribe', 'action' : 'add_tags', 'tribe_id' : tribe_id, 'tags' : data[1]},
+			data : {'ajax' : 'tribes', 'action' : 'add_tags', 'tribe_id' : tribe_id, 'tags' : data[1]},
             success: function(msg){
 //                $("#tag_action"+tribe_id)[0].removeAttribute('class','ajax-loading');
 				updatePage('tribes', msg);
@@ -134,7 +134,7 @@ function rm_notag(tribe_id, notag) {
     $.ajax({
         type: "POST",
         url: "api/",
-        data : {'ajax' : 'tribe', 'action' : 'rm_notag', 'tribe_id' : tribe_id, 'tag' : notag},
+        data : {'ajax' : 'tribes', 'action' : 'rm_notag', 'tribe_id' : tribe_id, 'tag' : notag},
         success: function(msg){
 //            $("#tag_action"+tribe_id)[0].removeAttribute('class','ajax-loading');
 			updatePage('tribes', msg);
@@ -151,7 +151,7 @@ function add_notags(tribe_id, tribe_name) {
         $.ajax({
             type: "POST",
             url: "api/",
-			data : {'ajax' : 'tribe', 'action' : 'add_notags', 'tribe_id' : tribe_id, 'tags' : data[1]},
+			data : {'ajax' : 'tribes', 'action' : 'add_notags', 'tribe_id' : tribe_id, 'tags' : data[1]},
             success: function(msg){
 //                $("#tag_action"+tribe_id)[0].removeAttribute('class','ajax-loading');
 				updatePage('tribes', msg);
@@ -166,7 +166,7 @@ function rm_user(tribe_id, user) {
     $.ajax({
         type: "POST",
         url: "api/",
-        data : {'ajax' : 'tribe', 'action' : 'rm_user', 'tribe_id' : tribe_id, 'user' : user},
+        data : {'ajax' : 'tribes', 'action' : 'rm_user', 'tribe_id' : tribe_id, 'user' : user},
         success: function(msg){
 //            $("#tag_action"+tribe_id)[0].removeAttribute('class','ajax-loading');
 			updatePage('tribes', msg);
@@ -192,7 +192,7 @@ function add_users(tribe_id, tribe_name) {
         $.ajax({
             type: "POST",
             url: "api/",
-			data : {'ajax' : 'tribe', 'action' : 'add_users', 'tribe_id' : tribe_id, 'users' : data[1]},
+			data : {'ajax' : 'tribes', 'action' : 'add_users', 'tribe_id' : tribe_id, 'users' : data[1]},
             success: function(msg){
 				updatePage('tribes', msg);
             }
@@ -206,7 +206,7 @@ function rm_search(tribe_id) {
     $.ajax({
         type: "POST",
         url: "api/",
-        data : {'ajax' : 'tribe', 'action' : 'rm_search', 'tribe_id' : tribe_id},
+        data : {'ajax' : 'tribes', 'action' : 'rm_search', 'tribe_id' : tribe_id},
         success: function(msg){
 //            $("#tag_action"+tribe_id)[0].removeAttribute('class','ajax-loading');
 			updatePage('tribes', msg);
@@ -222,7 +222,7 @@ function add_search(tribe_id, tribe_name) {
         $.ajax({
             type: "POST",
             url: "api/",
-			data : {'ajax' : 'tribe', 'action' : 'add_search', 'tribe_id' : tribe_id, 'search' : data[1]},
+			data : {'ajax' : 'tribes', 'action' : 'add_search', 'tribe_id' : tribe_id, 'search' : data[1]},
             success: function(msg){
 //                $("#tag_action"+tribe_id)[0].removeAttribute('class','ajax-loading');
 				updatePage('tribes', msg);
@@ -263,7 +263,7 @@ function rm_icon(tribe_id) {
     $.ajax({
         type: "POST",
         url: "api/",
-        data : {'ajax' : 'tribe', 'action' : 'rm_icon', 'tribe_id' : tribe_id},
+        data : {'ajax' : 'tribes', 'action' : 'rm_icon', 'tribe_id' : tribe_id},
         success: function(msg){
 //            $("#tag_action"+tribe_id)[0].removeAttribute('class','ajax-loading');
 			updatePage('tribes', msg);

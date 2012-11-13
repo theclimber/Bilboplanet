@@ -202,7 +202,7 @@ function render_page ($page) {
 			ASC LIMIT 100 OFFSET 0';
 
 		$rs = $core->con->select($sql);
-		if ($rs->count > 0) {
+		if ($rs->count() > 0) {
 			while($rs->fetch()) {
 
 				$sql_post = generate_tribe_SQL(
@@ -253,6 +253,7 @@ function render_page ($page) {
 
 				$tpl->setVar('tribe', array(
 					'id' => $rs->tribe_id,
+					'name' => $rs->tribe_name,
 					'stripped_name' => addslashes($rs->tribe_name),
 					'state' => $tribe_state,
 					'icon' => $tribe_icon,

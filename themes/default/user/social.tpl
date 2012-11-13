@@ -15,15 +15,15 @@
 		</p>
 		<p>
 			<label for="twitter">{_Share on Twitter}</label>
-			<input type="checkbox" id="twitter" {$checked.twitter}>
+			<input class="field" type="checkbox" id="twitter" {$checked.twitter}>
 		</p>
 		<p>
 			<label for="google">{_Share on Google+}</label>
-			<input type="checkbox" id="google" {$checked.google}>
+			<input class="field" type="checkbox" id="google" {$checked.google}>
 		</p>
 		<p>
 			<label for="shaarli">{_Share on Shaarli}</label>
-			<input type="checkbox" id="shaarli" {$checked.shaarli}>
+			<input class="field" type="checkbox" id="shaarli" {$checked.shaarli}>
 		<div id="shaarli-details">
 			<p>
 				<label for="type">{_Where is your Shaarli?}</label>
@@ -34,7 +34,7 @@
 			</p>
 			<p id="shaarli-remote-instance" style="display:none;">
 				<label for="shaarli_instance">{_Shaarli instance}</label>
-				<input type="text" id="shaarli-instance" value="{$shaarli_instance}"><br/>
+				<input class="field" type="text" id="shaarli-instance" value="{$shaarli_instance}"><br/>
 				<span class="description">{_(eg. http://website.tld/shaarli}</span>
 			</p>
 			<p id="shaarli-local-instance" style="display:none;">
@@ -45,11 +45,11 @@
 		</p>
 		<p>
 			<label for="statusnet">{_Share on StatusNet}</label>
-			<input type="checkbox" id="statusnet" {$checked.statusnet}>
+			<input class="field" type="checkbox" id="statusnet" {$checked.statusnet}>
 		</p>
 		<p>
 			<label for="statusnet_account">{_StatusNet account}</label>
-			<input type="text" id="statusnet-account" value="{$statusnet_account}"><br/>
+			<input class="field" type="text" id="statusnet-account" value="{$statusnet_account}"><br/>
 			<span class="description">{_(eg. http://identi.ca/myaccount or http://statusnet.example.com)}</span>
 		</p>
 		<p>

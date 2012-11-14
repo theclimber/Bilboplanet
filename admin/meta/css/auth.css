@@ -3,7 +3,7 @@ h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, code, sup,
 del, dfn, em, img, q, dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td 
+table, caption, tbody, tfoot, thead, tr, th, td
 {
 font-weight: inherit;
 font-style: inherit;
@@ -28,7 +28,7 @@ p.last      	{ margin-bottom: 0 }
 
 a				{ color: #358; text-decoration: underline }
 a:visited		{ color: #667 }
-a:focus, 
+a:focus,
 a:hover     	{ color: #933 }
 
 a:active,
@@ -39,9 +39,9 @@ a:focus { outline: none !important; noFocusLine: expression(this.onFocus=this.bl
 BUTTON
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-button { 
+button {
 	position: relative;
-	border: 0; 
+	border: 0;
 	padding: 0;
 	cursor: pointer;
 	overflow: visible; /* removes extra side padding in IE */
@@ -51,10 +51,10 @@ button::-moz-focus-inner {
 	border: none;  /* overrides extra padding in Firefox */
 }
 
-button span { 
+button span {
 	position: relative;
-	display: block; 
-	white-space: nowrap;	
+	display: block;
+	white-space: nowrap;
 }
 
 @media screen and (-webkit-min-device-pixel-ratio:0) {
@@ -64,33 +64,33 @@ button span {
 	}
 }
 
-/* OPTIONAL BUTTON STYLES for applying custom look and feel: */	
+/* OPTIONAL BUTTON STYLES for applying custom look and feel: */
 
 button,
 button span
 {
 	background: transparent url(../icons/button_sprite.png) no-repeat;
-}	
+}
 
 button,
-button .btn-pri { 
-	padding: 0 15px 0 0; 
-	margin-right:5px; 
-	text-align: center; 
-	background-position: right -50px !important; 
+button .btn-pri {
+	padding: 0 15px 0 0;
+	margin-right:5px;
+	text-align: center;
+	background-position: right -50px !important;
 }
-	
+
 button span,
 button .btn-pri span {
 	font-family: arial, sans-serif;
-	padding: 0 0 0 15px; 
-	height:30px; 
+	padding: 0 0 0 15px;
+	height:30px;
 	font-size:13px;
-	line-height: 28px; 
+	line-height: 28px;
 	font-weight: bold;
 	font-style: italic;
-	background-position: left top; 
-	color:#FFF; 
+	background-position: left top;
+	color:#FFF;
 }
 
 button.btn-sec { background-position: right -150px !important; }
@@ -127,7 +127,7 @@ PAGE
 
 /* -------------------------------------------------------------
 BODY
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */	
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 #body { width: 960px; margin: 0 auto 4.75em auto; position: relative; }
 
 
@@ -140,12 +140,12 @@ FORM
 .form { padding: 5px; margin: 10px; }
 .form .field { width: 100%; }
 .form .field_help { margin-left: 145px; font-size: 90%; color: #777; }
-.form label, 
+.form label,
 .form span.label { margin-right: 10px; padding-right: 10px; width: 125px; display: block; float: left;  font-weight: bold; text-align: right; position: relative; }
-.form label em, 
+.form label em,
 .form span.label em { position: absolute; right: 0; font-size: 120%; font-style: normal; color: #C00; }
 .form input:focus,
-.form input.error:focus, 
+.form input.error:focus,
 .form textarea:focus {	background-color: #FFC; border-color: #FC6; }
 
 
@@ -173,8 +173,8 @@ MISC
 	}
 * html .clearfix             { zoom: 1; } /* IE6 */
 *:first-child+html .clearfix { zoom: 1; } /* IE7 */
-	
-.clear { clear: both; }	
+
+.clear { clear: both; }
 
 .hide { display: none; }
 
@@ -184,9 +184,9 @@ MISC
 /* -------------------------------------------------------------
 LOGIN
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-#login { width: 450px; margin: 100px auto; text-align: center;  }
+#login { width: 600px; margin: 100px auto; text-align: center;  }
 
-#login h1#title 
+#login h1#title
 {
 	color:#FFFFFF;
 	font:bold 34px arial;
@@ -202,8 +202,8 @@ LOGIN
 }
 
 	#login h1#title a { display: block; }
-	
-	#login h2#admin 
+
+	#login h2#admin
 	{
 	color:#FFFFFF;
 	font:16px arial;
@@ -216,22 +216,22 @@ LOGIN
 	-o-text-shadow: 2px 2px 0.8px #000000;
 	text-shadow: 2px 2px 0.8px #000000;
 	text-align:center;
-		
+
 	}
 
 	#login h2#admin a { display: block; }
-	
-#login-body 
-{ 
-	background: #FFF; 
-	padding-bottom: 15px; 
+
+#login-body
+{
+	background: #FFF;
+	padding-bottom: 15px;
 	border: 1px solid #ccc;
-	padding: 0 0 10px 0; 
+	padding: 0 0 10px 0;
 	text-align: left;
-	width: 100%; 
-	overflow: hidden; 
-	-moz-border-radius: 6px; 
-	-webkit-border-radius: 6px;	
+	width: 100%;
+	overflow: hidden;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
 	-moz-box-shadow:1px 1px 12px #afafaf;
 	-webkit-box-shadow:1px 1px 12px #afafaf;
 	-o-box-shadow:1px 1px 12px #afafaf;
@@ -244,7 +244,7 @@ LOGIN
 #login-body input#login_password { width: 170px; position: absolute; top: 4px; left: 5px; }
 
 
-#login-body input.text 
+#login-body input.text
 {
     width: 275px;
 	font: bold 18px Helvetica, Arial, Verdana, sans-serif;
@@ -254,24 +254,24 @@ LOGIN
 
 
 #login-body .field { width: 100%; position: relative; float: left; }
-	
+
 #login-body .pad { padding: 20px 20px 0 20px; }
 
 #login-body label,
-#login-body .label 
+#login-body .label
 {
 	font-size: 12px;
     float: left;
     line-height: 15px;
-    width: 100px;
-    padding: 15px 0 0 0;
+    width: 150px;
+    padding: 15px 10px 0 0;
 	margin: 0;
 	text-align: left;
-	font-weight: bold; 
-	
+	font-weight: bold;
+
 }
 
-#login-body .field div 
+#login-body .field div
 {
      float: left;
      position: relative;
@@ -279,7 +279,7 @@ LOGIN
      padding: 0;
 	 margin: 0;
  }
-             
+
 #login-body .field div span.input { text-align: right; line-height: 3em; font-size: 11px; padding-right: 10px !important; }
 
 #login-body .checkbox input { float: none !important; display: inline !important;}
@@ -287,7 +287,7 @@ LOGIN
 
 #login-body input,
 #login-body select,
-#login-body textarea 
+#login-body textarea
 {
 	margin: 0;
 	padding: 5px;
@@ -300,7 +300,7 @@ LOGIN
 }
 
 #login-body input[type=checkbox] { border: none; }
-		
+
 #login-body span.input,
 #login-body  span.checkbox
 {
@@ -317,7 +317,7 @@ LOGIN
 MESSAGES
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-.error 
+.error
 {
 	font:bold 14px Helvetica,Arial,Verdana,sans-serif;
 	width:84%;
@@ -334,7 +334,7 @@ MESSAGES
 
 .err { padding-left:24px;}
 
-.recover 
+.recover
 {
 	font:bold 14px Helvetica,Arial,Verdana,sans-serif;
 	width:84%;
@@ -351,7 +351,7 @@ MESSAGES
 
 .recov { padding-left:24px;}
 
-.messages 
+.messages
 {
 	font:bold 14px Helvetica,Arial,Verdana,sans-serif;
 	width:84%;
@@ -376,10 +376,10 @@ MESSAGES
 /* -------------------------------------------------------------
 CHECKBOX & RADIO
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-.clearcheckbox 
+.clearcheckbox
 {
 	float:left;
-	padding:0; 
+	padding:0;
 	padding-left:24px;
 	margin:1px;
 	width:400px;
@@ -387,14 +387,14 @@ CHECKBOX & RADIO
 
 /* Checkboxes */
 label.checkbox_checked {
-	background: #fff url(../icons/tick2.png) no-repeat;	
+	background: #fff url(../icons/tick2.png) no-repeat;
 	display: block;
 	margin: 10px 0;
 	padding:0;
 	padding-left: 25px;
 }
 label.checkbox_unchecked  {
-	background: #fff url(../icons/cross2.png) no-repeat;	
+	background: #fff url(../icons/cross2.png) no-repeat;
 	display: block;
 	margin: 10px 0;
 	padding:0;
@@ -403,13 +403,13 @@ label.checkbox_unchecked  {
 
 /* Radio Buttons */
 label.radio_checked {
-	background: #fff url(../icons/bullet_green.png) no-repeat;	
+	background: #fff url(../icons/bullet_green.png) no-repeat;
 	display: block;
 	margin: 10px 0;
 	padding-left: 25px;
 }
 label.radio_unchecked  {
-	background: #fff url(../icons/bullet_white.png) no-repeat;	
+	background: #fff url(../icons/bullet_white.png) no-repeat;
 	display: block;
 	margin: 10px 0;
 	padding-left: 25px;

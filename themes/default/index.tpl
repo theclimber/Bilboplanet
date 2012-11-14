@@ -30,6 +30,7 @@
 <!-- JS -->
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 <script type="text/javascript" src="{$planet.url}/themes/{$planet.theme}/js/jquery.boxy.js"></script>
+<script type="text/javascript" src="{$planet.url}/themes/{$planet.theme}/js/jquery.ba-outside-events.min.js"></script>
 <script type="text/javascript" src="{$planet.url}/themes/{$planet.theme}/js/planet_fct.js"></script>
 <script type="text/javascript" src="{$planet.url}/themes/{$planet.theme}/js/votes.js"></script>
 <script type="text/javascript" src="{$planet.url}/themes/{$planet.theme}/js/fancy/jquery.fancybox-1.3.1.pack.js"></script>

@@ -406,7 +406,7 @@ function getFeedURL() {
 	}
 	return feed_params;
 }
-
+/*
 function popup(url) {
 	var width = $(window).width() * 0.9;
 	var height = $(window).height() * 0.9;
@@ -428,7 +428,7 @@ function toggle_login_dropdown(position, url) {
 	} else {
 		$("div#loginForm").attr('style', 'z-index: -100;display:none');
 	}
-}
+}*/
 function refresh_post(post_id){
 	var search = this.search;
 	$.ajax({

@@ -48,6 +48,7 @@ $schema = dbSchema::init($core->con);
 if (in_array($core->prefix.'feed',$schema->getTables())) {
 	$can_install = false;
 	$err = T_('The Bilboplanet is already installed.');
+	$err .= "<br/>".sprintf(T_('If you are upgrading to a newer version of the Bilboplanet, please upgrade your database by running the %s/inc/upgrade_db.php script'), BP_PLANET_URL);
 }
 
 # Check system capabilites

@@ -191,6 +191,9 @@ function display_login() {
 	$('div.login-box').css('display','block');
 	$('div.login-box').css('z-index','1000');
 	$('div.login-box').fadeTo('slow', 1, function(){});
+	$('div.login-box').bind('clickoutside', function(e) {
+				hide_login();
+            });
 }
 function hide_login() {
 	$('div.login-box').fadeTo('slow', 0, function(){});

@@ -287,6 +287,9 @@ div.post-meta{
 	left: -10px;
 	top: 35px;
 }
+.post-avatar img {
+	background: #FFF;
+}
 .post-author{
 	margin: 10px 0;
     padding:15px 5px 0 5px;
@@ -1368,6 +1371,8 @@ span.tag:after, span.user:after {
 	width: 8px;
 	height: 25px;
 	position: absolute;
+	top: 0px;
+	right: -8px;
 }
 span.tag:after{
 	background: url(../images/tag-end.png);

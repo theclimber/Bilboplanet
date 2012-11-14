@@ -26,7 +26,7 @@
 						{$post.day}/{$post.month}/{$post.year} {$post.hour}
 					</div>
 					<div class="post-author">
-						{_Written by} 
+						{_Written by}
                         <a href="#" onclick="javascript:add_user('{$post.author_id}')">{$post.author_fullname}</a> - <a href="{$post.permalink}" alt="{_Permalink}" title="{_Permalink}">
                         {_See original post}</a>
 					</div>
@@ -48,7 +48,7 @@
 
 <!--				<div id="expand-button-{$post.id}" class="collapse-button" onclick="javascript:expand_block({$post.id})">&nbsp;</div>-->
 				{_Viewed :} {$post.nbview}<br/>
-				{_Published by }<a href="#" onclick="javascript:add_user('{$post.author_id}')">{$post.author_fullname}</a> : <b>{$post.user_posts}</b><br />
+				{_Published by } <a href="#" onclick="javascript:add_user('{$post.author_id}')">{$post.author_fullname}</a> : <b>{$post.user_posts}</b><br />
 			</div>
 
 			<!-- BEGIN post.backsummary -->

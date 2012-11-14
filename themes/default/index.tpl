@@ -48,7 +48,9 @@
 		<div id="header">
 			<!-- Logo -->
 			<div id="logo">
+				<!-- BEGIN sidebar.action -->
 				<div id="show-hide"><a href="javascript:showSidebar()"><img title="{_Hide sidebar}" src="javascript/sidebar-hide.png" /></a></div>
+				<!-- END sidebar.action -->
 				<a href="{$planet.url}"><img alt="{$planet.title}" src="{$planet.url}/themes/{$planet.theme}/images/logo.png" id="logo" /></a>
 				<a href="{$planet.url}" id="planet-title" title="{$planet.desc}">{$planet.title}</a>
 			</div>

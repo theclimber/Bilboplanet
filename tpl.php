@@ -118,6 +118,7 @@ if (!isset($current_page) || in_array($current_page, array('portal', 'list', 'po
 	$core->tpl->setVar('nav',$nav);
 	$core->tpl->render('menu.nav');
 	$core->tpl->render('main.menu');
+	$core->tpl->render('sidebar.action');
 }
 
 #######################

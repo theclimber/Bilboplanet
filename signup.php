@@ -145,7 +145,7 @@ else {
 		$msg = '<div class="flash '.$flash['type'].'">'.$flash['msg'].'</div>';
 		if ($flash['type'] != "error") {
 			$msg .= "<div class='informations'><h2 class='informations'>".T_("In case of problem")."</h2>";
-			$msg .= "<p>".sprintf(T_("If you don't recieve any new from the administration team within the 5 days do not hesitate to contact us via %s with this information :"),$blog_settings->get('planet_mail'))."<br /><ul>";
+			$msg .= "<p>".sprintf(T_("If you don't recieve any news from the administration team within the 5 days do not hesitate to contact us via %s with this information :"),$blog_settings->get('planet_mail'))."<br /><ul>";
 			$msg .= "<li><b>".T_("Subject")."</b> : ".$blog_settings->get('planet_title') ." - ".$choice['value']."</li>";
 			$msg .= "<li><b>".T_("Username")."</b> : ".$user_id['value']."</li>";
 			$msg .= "<li><b>".T_("Fullname")."</b> : ".$fullname['value']."</li>";

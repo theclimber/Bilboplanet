@@ -7,19 +7,19 @@
 				<span class="post-date-min">{$post.day}/{$post.month}</span><br>
 				<span class="post-date-year">{$post.year}</span>
 			</div>
-			<!--{_Par} <a href="{$planet.url}/index.php?user_id={$post.author_id}">{$post.author_fullname}</a>, {_le} {$post.date} {_à} {$post.hour}.
-			<a href="{$planet.url}/index.php?post_id={$post.id}" title="{$post.title}">{_Voir l'article}</a>-->
+			<!--{_Par} <a href="{$planet.url}/index.php?user_id={$post.author_id}">{$post.author_fullname}</a>, {_le} {$post.date} {_at} {$post.hour}.
+			<a href="{$planet.url}/index.php?post_id={$post.id}" title="{$post.title}">{_See post}</a>-->
 
 		<!-- [title] -->
-		<h1 class="post-title"><a name="post{$post.id}" href="{$planet.url}/?post_id={$post.id}" title="Visitez la source">SINGLE : {$post.title}</a></h1>
+		<h1 class="post-title"><a name="post{$post.id}" href="{$planet.url}/?post_id={$post.id}" title="{_Visit source}">SINGLE : {$post.title}</a></h1>
 		<div class="post-author">
 		<!-- BEGIN post.block.gravatar -->
 			<div class="post-avatar">
-				<a href="#" onclick="javascript:add_user('{$post.author_id}')" title="Afficher les articles de l'utilisateur">
+				<a href="#" onclick="javascript:add_user('{$post.author_id}')" title="{_Show posts of the user}">
 				<img src="{$avatar_url}&size=32" class="gravatar" /></a>
 			</div>
 		<!-- END post.block.gravatar -->
-		{_Par} <a href="#" onclick="javascript:add_user('{$post.author_id}')">{$post.author_fullname}</a>, {_à} {$post.hour}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{$post.permalink}" alt="Permalien">Permalien</a>
+		{_Par} <a href="#" onclick="javascript:add_user('{$post.author_id}')">{$post.author_fullname}</a>, {_at} {$post.hour}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{$post.permalink}" alt="Permalien">Permalien</a>
 		<!-- BEGIN post.block.votes -->
 		<div class="post-vote">{$votes.html}</div>
 		<!-- END post.block.votes -->
@@ -37,8 +37,8 @@
 		{!include:'social.tpl'}
 
 			<div id="expand-button-{$post.id}" class="collapse-button" onclick="javascript:expand_block({$post.id})">&nbsp;</div>
-			Cet article a été vu {$post.nbview} fois. <a href="#" onclick="javascript:add_user('{$post.author_id}')">{$post.author_fullname}</a> a déjà publié <b>{$post.user_posts}</b> articles sur ce planet.<br />
-			Aller voir <a href="{$post.permalink}">l'article original</a><br />
+            {_Viewed :} {$post.nbview}<br/>
+            {_Published by }<a href="#" onclick="javascript:add_user('{$post.author_id}')">{$post.author_fullname}</a> : <b>{$post.user_posts}</b><br />
 		</div>
 
 		<!-- BEGIN post.similar.block -->
@@ -101,8 +101,7 @@
 
 		<!-- ELSE post.block -->
 		<div class="post box">
-			<h1 class="post-title">Aucun article trouvé</h1>
-			<p>Vous pouvez effectuer une nouvelle recherche :</p>
+			<h1 class="post-title">{_No post found}</h1>
 		</div>
 		<!-- END post.block -->
 	</div>

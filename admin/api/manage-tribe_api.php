@@ -109,7 +109,7 @@ if(isset($_POST['action'])) {
 				$error[] = $tribe_name['error'];
 			}
 			if (empty($user_id)) {
-				$error[] = T_("Please select the user to you want to add the tribe");
+				$error[] = T_("Please select the user that you want to add to the tribe");
 			}
 		}
 

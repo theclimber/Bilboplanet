@@ -21,21 +21,102 @@ msgstr ""
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
 "X-Generator: Virtaal 0.7.0\n"
 
-#: themes/default/popup.tpl:30
+#: themes/default/index.tpl:95
+msgid "Tribes and tags"
+msgstr ""
+
+#: themes/default/single.tpl:11
 #, fuzzy
-msgid "register"
+msgid "See post"
+msgstr "رشح المواضيع"
+
+#: themes/default/users.tpl:25
+#, fuzzy
+msgid "No users found"
+msgstr "لم يتم العثور على الموضوع"
+
+#: themes/default/tags.tpl:33
+#, fuzzy
+msgid "No tags found"
+msgstr "لم يتم العثور على الموضوع"
+
+#: themes/default/index.tpl:91 themes/default/contact.tpl:11
+msgid "Contact us"
+msgstr "راسلنا"
+
+#: themes/default/menu.tpl:11 themes/default/topbar.tpl:18
+msgid "All posts"
+msgstr "كل المواضيع"
+
+#: themes/default/topbar.tpl:41
+#, fuzzy
+msgid "Filter on tags :"
+msgstr "رشح المواضيع"
+
+#: themes/default/single.tpl:83 inc/cron_fct.php:287
+msgid "Website : "
+msgstr "الموقع :"
+
+#: themes/default/single.tpl:67
+msgid "No comments yet"
+msgstr "لا توجد تعليقات بعد"
+
+#: themes/default/contact.tpl:12
+#, fuzzy
+msgid "You can contact the administration team through the contact form below."
+msgstr "يمكنك مراسلة فريق الإدارة من خلال الإستمارة التالية :"
+
+#: themes/default/stats.tpl:26 themes/default/stats.tpl:46
+msgid "Visit the website"
+msgstr "زيارة الموقع"
+
+#: themes/default/index.tpl:114
+#, fuzzy
+msgid "Register"
 msgstr "التسجيل"
 
-#: themes/default/topbar.tpl:39
+#: themes/default/single.tpl:104
+#, fuzzy
+msgid "No post found"
+msgstr "لم يتم العثور على الموضوع"
+
+#: themes/default/popup.tpl:8 auth.php:334
+#, fuzzy
+msgid "Username or email"
+msgstr "إسم المستخدم"
+
+#: themes/default/single.tpl:79
+#, fuzzy
+msgid "E-mail : "
+msgstr "البريد الإلكتروني :"
+
+#: themes/default/user/menu.tpl:15
+msgid "Social"
+msgstr ""
+
+#: themes/default/topbar.tpl:34
+msgid "Page :"
+msgstr "الصفحة :"
+
+#: themes/default/signup.tpl:33
+msgid "Captcha"
+msgstr ""
+
+#: themes/default/topbar.tpl:31
+msgid "Page status"
+msgstr "حالة الصفحة"
+
+#: themes/default/contact.tpl:24 signup.php:149
+#: admin/manage-moderation.php:102 admin/manage-pendingfeed.php:56
+#: admin/manage-pendingfeed.php:69 admin/manage-selection.php:108
+#: admin/manage-newsletter.php:49 admin/manage-newsletter.php:190
+msgid "Subject"
+msgstr "الموضوع"
+
+#: themes/default/topbar.tpl:40
 #, fuzzy
 msgid "Ordered by popularity"
 msgstr "مدعوم من Bilboplanet"
-
-#: themes/default/posts.tpl:80 themes/default/single.tpl:126
-#: admin/manage-useroption.php:123 admin/api/manage-permissions_api.php:171
-#: admin/api/manage-option_api.php:677
-msgid "Apply"
-msgstr "تطبيق"
 
 #: themes/default/index.tpl:97
 #, fuzzy
@@ -46,103 +127,28 @@ msgstr "الحالة"
 msgid "Posts of the week"
 msgstr "مواضيع الأسبوع :"
 
-#: themes/default/post_tags.tpl:2
-msgid "tags :"
-msgstr ""
-
-#: themes/default/topbar.tpl:6
-msgid "Posts of the day"
-msgstr "مواضيع اليوم"
-
-#: themes/default/index.tpl:107 admin/sidebar.php:36 admin/head.php:31
-#: admin/api/manage-permissions_api.php:166
-msgid "Administration"
-msgstr "الإدارة"
-
-#: themes/default/index.tpl:103
-msgid "My Shaarli"
-msgstr ""
-
 #: themes/default/single.tpl:92
 msgid "Publish"
 msgstr "نشر"
-
-#: themes/default/signup.tpl:11
-#, fuzzy
-msgid "Your Bilboplanet Account"
-msgstr "إصدار BilboPlanet :"
 
 #: themes/default/single.tpl:18
 #, fuzzy
 msgid "Show posts of the user"
 msgstr "إظهار مواضيع المستخدمين"
 
-#: themes/default/single.tpl:10 themes/default/single.tpl:22
-#, fuzzy
-msgid "at"
-msgstr "التاريخ"
-
-#: themes/default/users.tpl:25
-#, fuzzy
-msgid "No users found"
-msgstr "لم يتم العثور على الموضوع"
-
-#: themes/default/signup.tpl:18
-#, fuzzy
-msgid "Your login"
-msgstr "ولوج"
-
-#: themes/default/topbar.tpl:31
-msgid "Tribe :"
-msgstr ""
-
-#: themes/default/index.tpl:91 themes/default/contact.tpl:11
-msgid "Contact us"
-msgstr "راسلنا"
-
-#: themes/default/stats.tpl:26 themes/default/stats.tpl:46
-msgid "Visit the website"
-msgstr "زيارة الموقع"
-
-#: themes/default/posts.tpl:33
+#: themes/default/posts.tpl:35
 #, fuzzy
 msgid "Display posts of this user"
 msgstr "قائمة المستخدمين"
 
-#: themes/default/posts.tpl:60
+#: themes/default/posts.tpl:62
 msgid "More"
 msgstr ""
 
-#: themes/default/user/menu.tpl:10
-msgid "Profile"
-msgstr ""
-
-#: themes/default/menu.tpl:11 themes/default/topbar.tpl:18
-msgid "All posts"
-msgstr "كل المواضيع"
-
-#: themes/default/topbar.tpl:40
+#: themes/default/signup.tpl:22
 #, fuzzy
-msgid "Filter on tags :"
-msgstr "رشح المواضيع"
-
-#: themes/default/topbar.tpl:37
-msgid "Period of posts :"
-msgstr "دورة المواضيع :"
-
-#: themes/default/index.tpl:94 tags.php:13 users.php:14
-msgid "Users"
-msgstr "المستخدمون"
-
-#: themes/default/single.tpl:67
-msgid "No comments yet"
-msgstr "لا توجد تعليقات بعد"
-
-#: themes/default/posts.tpl:76 themes/default/single.tpl:122
-#: themes/default/tags.tpl:25 admin/manage-tagging.php:94
-#: admin/manage-feed.php:185
-msgid "Tags"
-msgstr "الوُسوم"
+msgid "Your full name (Will be displayed)"
+msgstr "أدخل إسمك الكامل أو الاسم الذي تريد عرضه"
 
 #: themes/default/single.tpl:14
 msgid "Visit source"
@@ -151,6 +157,82 @@ msgstr "زيارة المصدر"
 #: themes/default/signup.tpl:15
 msgid "Signup"
 msgstr ""
+
+#: themes/default/archives.tpl:9 admin/api/manage-moderation_api.php:197
+#: admin/api/manage-tagging_api.php:168
+msgid "No posts found"
+msgstr "لم يتم العثور على الموضوع"
+
+#: themes/default/index.tpl:85
+msgid "Main menu"
+msgstr ""
+
+#: themes/default/post_tags.tpl:7
+msgid "Add tag"
+msgstr "إضافة وَسْم"
+
+#: themes/default/topbar.tpl:14
+msgid "Posts of the month"
+msgstr "مواضيع الشهر :"
+
+#: themes/default/post_tags.tpl:10
+msgid "Allow comments"
+msgstr "السماح بالتعليقات"
+
+#: themes/default/posts.tpl:80 themes/default/single.tpl:124
+#: admin/manage-tagging.php:96 admin/manage-feed.php:187
+#: admin/manage-tribe.php:147
+msgid "Comma separated tags (ex: linux,web,event)"
+msgstr "تُفصل الوُسوم بفواصل (مثال: لينكس،وِب،حدث)"
+
+#: themes/default/topbar.tpl:6
+msgid "Posts of the day"
+msgstr "مواضيع اليوم"
+
+#: themes/default/users.tpl:5
+#, fuzzy
+msgid "Show posts of"
+msgstr "إظهار مواضيع المستخدمين"
+
+#: themes/default/signup.tpl:12
+msgid ""
+"Discover the background of all what you can do with Bilboplanet. Read, "
+"share, rate, add your own blog"
+msgstr ""
+
+#: themes/default/user/menu.tpl:20
+msgid "Write or share"
+msgstr ""
+
+#: themes/default/topbar.tpl:27
+#, fuzzy
+msgid "latest posts"
+msgstr "كل المواضيع"
+
+#: themes/default/index.tpl:107 admin/sidebar.php:36 admin/head.php:31
+#: admin/api/manage-permissions_api.php:166
+msgid "Administration"
+msgstr "الإدارة"
+
+#: themes/default/posts.tpl:29
+#, fuzzy
+msgid "Written by"
+msgstr "كتبه"
+
+#: themes/default/index.tpl:112 themes/default/popup.tpl:28
+#, fuzzy
+msgid "Login"
+msgstr "ولوج"
+
+#: themes/default/index.tpl:51
+msgid "Hide sidebar"
+msgstr ""
+
+#: themes/default/posts.tpl:78 themes/default/single.tpl:122
+#: themes/default/tags.tpl:25 admin/manage-tagging.php:94
+#: admin/manage-feed.php:185
+msgid "Tags"
+msgstr "الوُسوم"
 
 #: themes/default/tags.tpl:19 admin/api/manage-tribe_api.php:833
 #, fuzzy
@@ -165,36 +247,6 @@ msgstr "ستجد هنا بعض المساعدة بخصوص الصيغة التا
 msgid "Disable comments"
 msgstr "تعطيل التعليقات"
 
-#: themes/default/archives.tpl:9 admin/api/manage-moderation_api.php:197
-#: admin/api/manage-tagging_api.php:168
-msgid "No posts found"
-msgstr "لم يتم العثور على الموضوع"
-
-#: themes/default/signup.tpl:26 themes/default/contact.tpl:20 signup.php:152
-#: admin/manage-user.php:112 admin/manage-user.php:153
-#: admin/manage-account.php:69 admin/api/manage-pendingfeed_api.php:245
-#: admin/api/manage-account_api.php:37 admin/install/index.php:347
-#: user/api/account_api.php:107
-msgid "Email"
-msgstr "البريد الإلكتروني"
-
-#: themes/default/index.tpl:51
-msgid "Hide sidebar"
-msgstr ""
-
-#: themes/default/index.tpl:85
-msgid "Main menu"
-msgstr ""
-
-#: themes/default/post_tags.tpl:7
-msgid "Add tag"
-msgstr "إضافة وَسْم"
-
-#: themes/default/contact.tpl:12
-#, fuzzy
-msgid "You can contact the administration team through the contact form below."
-msgstr "يمكنك مراسلة فريق الإدارة من خلال الإستمارة التالية :"
-
 #: themes/default/menu.tpl:6 portal.php:16
 msgid "Portal"
 msgstr ""
@@ -208,66 +260,23 @@ msgstr "زيارة المصدر"
 msgid "Logout"
 msgstr "خروج"
 
-#: themes/default/posts.tpl:49 themes/default/single.tpl:41
+#: themes/default/posts.tpl:51 themes/default/single.tpl:41
 #, fuzzy
 msgid "Published by "
 msgstr "نشر"
-
-#: themes/default/signup.tpl:30 themes/default/popup.tpl:14 auth.php:338
-#: admin/manage-user.php:116 admin/install/index.php:374
-msgid "Password"
-msgstr "كلمة السّر"
 
 #: themes/default/popup.tpl:22 auth.php:346
 msgid "Remember me"
 msgstr "تذكّرني"
 
-#: themes/default/topbar.tpl:14
-msgid "Posts of the month"
-msgstr "مواضيع الشهر :"
+#: themes/default/index.tpl:103
+msgid "My Shaarli"
+msgstr ""
 
-#: themes/default/post_tags.tpl:10
-msgid "Allow comments"
-msgstr "السماح بالتعليقات"
-
-#: themes/default/index.tpl:76 themes/default/index.tpl:77
-#: themes/default/index.tpl:78
-msgid "Search"
-msgstr "البحث"
-
-#: themes/default/tags.tpl:33
-#, fuzzy
-msgid "No tags found"
-msgstr "لم يتم العثور على الموضوع"
-
-#: themes/default/topbar.tpl:45
+#: themes/default/topbar.tpl:46
 #, fuzzy
 msgid "Feed with this parameters"
 msgstr "تلقيم بكل المواضيع"
-
-#: themes/default/single.tpl:75 signup.php:81 user/api/feed_api.php:121
-#, fuzzy
-msgid "Fullname : "
-msgstr "الإسم الكامل"
-
-#: themes/default/index.tpl:95
-msgid "Tribes and tags"
-msgstr ""
-
-#: themes/default/signup.tpl:22
-#, fuzzy
-msgid "Your full name (Will be displayed)"
-msgstr "أدخل إسمك الكامل أو الاسم الذي تريد عرضه"
-
-#: themes/default/index.tpl:114
-#, fuzzy
-msgid "Register"
-msgstr "التسجيل"
-
-#: themes/default/topbar.tpl:27
-#, fuzzy
-msgid "popular of the week"
-msgstr "مواضيع الأسبوع :"
 
 #: themes/default/signup.tpl:36 themes/default/contact.tpl:33
 #: admin/manage-moderation.php:109 admin/manage-tagging.php:99
@@ -280,141 +289,147 @@ msgstr "مواضيع الأسبوع :"
 msgid "Send"
 msgstr "إرسال"
 
-#: themes/default/single.tpl:104
-#, fuzzy
-msgid "No post found"
-msgstr "لم يتم العثور على الموضوع"
-
-#: themes/default/posts.tpl:78 themes/default/single.tpl:124
-#: admin/manage-tagging.php:96 admin/manage-feed.php:187
-#: admin/manage-tribe.php:147
-msgid "Comma separated tags (ex: linux,web,event)"
-msgstr "تُفصل الوُسوم بفواصل (مثال: لينكس،وِب،حدث)"
-
-#: themes/default/index.tpl:105 themes/default/user/menu.tpl:5
-#: admin/sidebar.php:30 admin/index.php:141
-msgid "Dashboard"
-msgstr "dashboard"
-
-#: themes/default/single.tpl:79
-#, fuzzy
-msgid "E-mail : "
-msgstr "البريد الإلكتروني :"
-
-#: themes/default/user/menu.tpl:15
-msgid "Social"
-msgstr ""
-
-#: themes/default/users.tpl:5
-#, fuzzy
-msgid "Show posts of"
-msgstr "إظهار مواضيع المستخدمين"
-
-#: themes/default/user/menu.tpl:25 themes/default/tags.tpl:3
-#: admin/sidebar.php:42
-msgid "Tribes"
-msgstr ""
-
-#: themes/default/index.tpl:112 themes/default/popup.tpl:28
-#, fuzzy
-msgid "Login"
-msgstr "ولوج"
-
-#: themes/default/popup.tpl:17 auth.php:328
-msgid "I forgot my password"
-msgstr "نسيتُ كلمة السّر"
-
-#: themes/default/topbar.tpl:42
+#: themes/default/topbar.tpl:43
 #, fuzzy
 msgid "Filter on authors :"
 msgstr "رشح المواضيع"
-
-#: themes/default/posts.tpl:29
-#, fuzzy
-msgid "See original post"
-msgstr "رشح المواضيع"
-
-#: themes/default/single.tpl:83 inc/cron_fct.php:287
-msgid "Website : "
-msgstr "الموقع :"
-
-#: themes/default/signup.tpl:12
-msgid ""
-"Discover the background of all what you can do with Bilboplanet. Read, "
-"share, rate, add your own blog"
-msgstr ""
-
-#: themes/default/contact.tpl:28 admin/manage-newsletter.php:175
-msgid "Content"
-msgstr "المحتوى"
 
 #: themes/default/index.tpl:93 charter.php:34
 msgid "Charter"
 msgstr ""
 
-#: themes/default/popup.tpl:8 auth.php:334
-#, fuzzy
-msgid "Username or email"
-msgstr "إسم المستخدم"
-
-#: themes/default/posts.tpl:48 themes/default/single.tpl:40
+#: themes/default/posts.tpl:50 themes/default/single.tpl:40
 #, fuzzy
 msgid "Viewed :"
 msgstr "التلقيم :"
 
-#: themes/default/user/menu.tpl:20
-msgid "Write or share"
-msgstr ""
-
-#: themes/default/social.tpl:15
-msgid "Tweeter"
-msgstr ""
-
-#: themes/default/topbar.tpl:33
-msgid "Page :"
-msgstr "الصفحة :"
-
-#: themes/default/signup.tpl:33
-msgid "Captcha"
-msgstr ""
-
-#: themes/default/topbar.tpl:35
-#, fuzzy
-msgid "Search with :"
-msgstr "البحث مع :"
-
-#: themes/default/single.tpl:11
-#, fuzzy
-msgid "Voir l'article"
-msgstr "رشح المواضيع"
-
-#: themes/default/contact.tpl:16 admin/manage-post.php:215
-#: admin/manage-logs.php:71
-msgid "Name"
-msgstr "الإسم"
-
-#: themes/default/posts.tpl:69 themes/default/single.tpl:115
+#: themes/default/posts.tpl:71 themes/default/single.tpl:115
 #: admin/manage-option.php:56 admin/manage-feed.php:93
 #: admin/manage-feed.php:147 admin/manage-user.php:89
 #: admin/manage-user.php:129 admin/head.php:88 admin/manage-tribe.php:93
 msgid "Close"
 msgstr "إغلاق"
 
-#: themes/default/topbar.tpl:30
-msgid "Page status"
-msgstr "حالة الصفحة"
-
 #: themes/default/single.tpl:46 feed.php:271
 #, fuzzy
 msgid "Similar posts"
 msgstr "رشح المواضيع"
 
-#: themes/default/contact.tpl:24 signup.php:149
-#: admin/manage-moderation.php:102 admin/manage-pendingfeed.php:56
-#: admin/manage-pendingfeed.php:69 admin/manage-selection.php:108
-#: admin/manage-newsletter.php:49 admin/manage-newsletter.php:190
-msgid "Subject"
-msgstr "الموضوع"
+#: themes/default/single.tpl:75 signup.php:81 user/api/feed_api.php:121
+#, fuzzy
+msgid "Fullname : "
+msgstr "الإسم الكامل"
+
+#: themes/default/post_tags.tpl:2
+msgid "tags :"
+msgstr ""
+
+#: themes/default/index.tpl:76 themes/default/index.tpl:77
+#: themes/default/index.tpl:78
+msgid "Search"
+msgstr "البحث"
+
+#: themes/default/contact.tpl:28 admin/manage-newsletter.php:175
+msgid "Content"
+msgstr "المحتوى"
+
+#: themes/default/single.tpl:10 themes/default/single.tpl:22
+#, fuzzy
+msgid "at"
+msgstr "التاريخ"
+
+#: themes/default/signup.tpl:18
+#, fuzzy
+msgid "Your login"
+msgstr "ولوج"
+
+#: themes/default/topbar.tpl:32
+msgid "Tribe :"
+msgstr ""
+
+#: themes/default/user/menu.tpl:10
+msgid "Profile"
+msgstr ""
+
+#: themes/default/topbar.tpl:38
+msgid "Period of posts :"
+msgstr "دورة المواضيع :"
+
+#: themes/default/index.tpl:94 tags.php:13 users.php:14
+msgid "Users"
+msgstr "المستخدمون"
+
+#: themes/default/signup.tpl:26 themes/default/contact.tpl:20 signup.php:152
+#: admin/manage-user.php:112 admin/manage-user.php:153
+#: admin/manage-account.php:69 admin/api/manage-pendingfeed_api.php:245
+#: admin/api/manage-account_api.php:37 admin/install/index.php:347
+#: user/api/account_api.php:107
+msgid "Email"
+msgstr "البريد الإلكتروني"
+
+#: themes/default/signup.tpl:30 themes/default/popup.tpl:14 auth.php:338
+#: admin/manage-user.php:116 admin/install/index.php:374
+msgid "Password"
+msgstr "كلمة السّر"
+
+#: themes/default/posts.tpl:30
+#, fuzzy
+msgid "Permalink"
+msgstr "الصلاحيات"
+
+#: themes/default/contact.tpl:16 admin/manage-post.php:215
+#: admin/manage-logs.php:71
+msgid "Name"
+msgstr "الإسم"
+
+#: themes/default/topbar.tpl:28
+#, fuzzy
+msgid "popular of the week"
+msgstr "مواضيع الأسبوع :"
+
+#: themes/default/popup.tpl:17 auth.php:328
+msgid "I forgot my password"
+msgstr "نسيتُ كلمة السّر"
+
+#: themes/default/user/menu.tpl:25 themes/default/tags.tpl:3
+#: admin/sidebar.php:42
+msgid "Tribes"
+msgstr ""
+
+#: themes/default/signup.tpl:11
+#, fuzzy
+msgid "Your Bilboplanet Account"
+msgstr "إصدار BilboPlanet :"
+
+#: themes/default/posts.tpl:31
+#, fuzzy
+msgid "See original post"
+msgstr "رشح المواضيع"
+
+#: themes/default/popup.tpl:30
+#, fuzzy
+msgid "register"
+msgstr "التسجيل"
+
+#: themes/default/social.tpl:15
+msgid "Tweeter"
+msgstr ""
+
+#: themes/default/topbar.tpl:36
+#, fuzzy
+msgid "Search with :"
+msgstr "البحث مع :"
+
+#: themes/default/posts.tpl:82 themes/default/single.tpl:126
+#: admin/manage-useroption.php:123 admin/api/manage-permissions_api.php:171
+#: admin/api/manage-option_api.php:677
+msgid "Apply"
+msgstr "تطبيق"
+
+#: themes/default/index.tpl:105 themes/default/user/menu.tpl:5
+#: admin/sidebar.php:30 admin/index.php:141
+msgid "Dashboard"
+msgstr "dashboard"
 
 #: tpl.php:201
 msgid "Powered by Bilboplanet"
@@ -538,7 +553,7 @@ msgstr "لم يتم ارسال الطلب لسبب مجهول.<br/>يرجى ال
 #: signup.php:148
 #, fuzzy, php-format
 msgid ""
-"If you don't recieve any new from the administration team within the 5 days "
+"If you don't recieve any news from the administration team within the 5 days "
 "do not hesitate to contact us via %s with this information :"
 msgstr ""
 "إذا لم تتلقى أي ردّ من الإدارة خلال 5 أيام لا تتردد في الاتصال بنا عبر  هذا "
@@ -2372,7 +2387,7 @@ msgstr ""
 
 #: admin/api/manage-tribe_api.php:112
 #, fuzzy
-msgid "Please select the user to you want to add the tribe"
+msgid "Please select the user that you want to add to the tribe"
 msgstr "المرجو إختيار المستخدم المراد إضافة التلقيم له"
 
 #: admin/api/manage-tribe_api.php:155
@@ -3606,6 +3621,10 @@ msgid "The post is already removed"
 msgstr "تمت رفض على هذا الموضوع بالفعل"
 
 #, fuzzy
+#~ msgid "Voir l'article"
+#~ msgstr "رشح المواضيع"
+
+#, fuzzy
 #~ msgid ""
 #~ "Before to subscribe, do not hesitate to test your RSS/Atom feeds to be "
 #~ "sure they'll be well interpretated by the planet aggregator engine which "
@@ -3759,9 +3778,6 @@ msgstr "تمت رفض على هذا الموضوع بالفعل"
 
 #~ msgid "Subscribe / Unsubscribe"
 #~ msgstr "تسجيل / إلغاء التسجيل"
-
-#~ msgid "Written by :"
-#~ msgstr "كتبه"
 
 #~ msgid "Number of votes :"
 #~ msgstr "عدد الأصوات :"

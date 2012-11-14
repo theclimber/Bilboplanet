@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Bilboplanet\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-10-29 10:55+0200\n"
-"PO-Revision-Date: 2012-11-14 22:59+0100\n"
+"PO-Revision-Date: 2012-11-14 23:11+0100\n"
 "Last-Translator: Gregoire de Hemptinne <greg@theclimber.be>\n"
 "Language-Team: French\n"
 "Language: \n"
@@ -17,21 +17,101 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: themes/default/popup.tpl:30
-msgid "register"
+#: themes/default/index.tpl:95
+msgid "Tribes and tags"
+msgstr "Tribus et tags"
+
+#: themes/default/single.tpl:11
+msgid "See post"
+msgstr "Voir l'article"
+
+#: themes/default/users.tpl:25
+msgid "No users found"
+msgstr "Aucun utilisateur trouvé"
+
+#: themes/default/tags.tpl:33
+msgid "No tags found"
+msgstr "Aucun tag trouvé"
+
+#: themes/default/index.tpl:91
+#: themes/default/contact.tpl:11
+msgid "Contact us"
+msgstr "Contactez nous"
+
+#: themes/default/menu.tpl:11
+#: themes/default/topbar.tpl:18
+msgid "All posts"
+msgstr "Tous les articles"
+
+#: themes/default/topbar.tpl:41
+msgid "Filter on tags :"
+msgstr "Filtrer par tags :"
+
+#: themes/default/single.tpl:83
+#: inc/cron_fct.php:287
+msgid "Website : "
+msgstr "Site web : "
+
+#: themes/default/single.tpl:67
+msgid "No comments yet"
+msgstr "Pas encore de commentaires"
+
+#: themes/default/contact.tpl:12
+msgid "You can contact the administration team through the contact form below."
+msgstr "Vous pouvez contacter les administrateurs via le formulaire ci-dessous : "
+
+#: themes/default/stats.tpl:26
+#: themes/default/stats.tpl:46
+msgid "Visit the website"
+msgstr "Visiter le site"
+
+#: themes/default/index.tpl:114
+msgid "Register"
 msgstr "Inscription"
 
-#: themes/default/topbar.tpl:39
+#: themes/default/single.tpl:104
+msgid "No post found"
+msgstr "Aucun article trouvé"
+
+#: themes/default/popup.tpl:8
+#: auth.php:334
+msgid "Username or email"
+msgstr "Nom d'utilisateur ou email"
+
+#: themes/default/single.tpl:79
+msgid "E-mail : "
+msgstr "Email : "
+
+#: themes/default/user/menu.tpl:15
+msgid "Social"
+msgstr "Social"
+
+#: themes/default/topbar.tpl:34
+msgid "Page :"
+msgstr "Page :"
+
+#: themes/default/signup.tpl:33
+msgid "Captcha"
+msgstr "Captcha"
+
+#: themes/default/topbar.tpl:31
+msgid "Page status"
+msgstr "Statut de la page"
+
+#: themes/default/contact.tpl:24
+#: signup.php:149
+#: admin/manage-moderation.php:102
+#: admin/manage-pendingfeed.php:56
+#: admin/manage-pendingfeed.php:69
+#: admin/manage-selection.php:108
+#: admin/manage-newsletter.php:49
+#: admin/manage-newsletter.php:190
+msgid "Subject"
+msgstr "Sujet"
+
+#: themes/default/topbar.tpl:40
 msgid "Ordered by popularity"
 msgstr "Ordonner par popularité"
-
-#: themes/default/posts.tpl:80
-#: themes/default/single.tpl:126
-#: admin/manage-useroption.php:123
-#: admin/api/manage-permissions_api.php:171
-#: admin/api/manage-option_api.php:677
-msgid "Apply"
-msgstr "Appliquer"
 
 #: themes/default/index.tpl:97
 msgid "Stats"
@@ -41,106 +121,25 @@ msgstr "Statistiques"
 msgid "Posts of the week"
 msgstr "Articles de la semaine"
 
-#: themes/default/post_tags.tpl:2
-msgid "tags :"
-msgstr "tags :"
-
-#: themes/default/topbar.tpl:6
-msgid "Posts of the day"
-msgstr "Articles du jour"
-
-#: themes/default/index.tpl:107
-#: admin/sidebar.php:36
-#: admin/head.php:31
-#: admin/api/manage-permissions_api.php:166
-msgid "Administration"
-msgstr "Administration"
-
-#: themes/default/index.tpl:103
-msgid "My Shaarli"
-msgstr "Mon Shaarli"
-
 #: themes/default/single.tpl:92
 msgid "Publish"
 msgstr "Publier"
-
-#: themes/default/signup.tpl:11
-msgid "Your Bilboplanet Account"
-msgstr "Votre compte sur le Bilboplanet"
 
 #: themes/default/single.tpl:18
 msgid "Show posts of the user"
 msgstr "Afficher les articles de l'utilisateur"
 
-#: themes/default/single.tpl:10
-#: themes/default/single.tpl:22
-msgid "at"
-msgstr "à"
-
-#: themes/default/users.tpl:25
-msgid "No users found"
-msgstr "Aucun utilisateur trouvé"
-
-#: themes/default/signup.tpl:18
-msgid "Your login"
-msgstr "Votre login"
-
-#: themes/default/topbar.tpl:31
-msgid "Tribe :"
-msgstr "Tribu:"
-
-#: themes/default/index.tpl:91
-#: themes/default/contact.tpl:11
-msgid "Contact us"
-msgstr "Contactez nous"
-
-#: themes/default/stats.tpl:26
-#: themes/default/stats.tpl:46
-msgid "Visit the website"
-msgstr "Visiter le site"
-
-#: themes/default/posts.tpl:33
+#: themes/default/posts.tpl:35
 msgid "Display posts of this user"
 msgstr "Afficher les articles de cet utilisateur"
 
-#: themes/default/posts.tpl:60
+#: themes/default/posts.tpl:62
 msgid "More"
 msgstr "Plus"
 
-#: themes/default/user/menu.tpl:10
-msgid "Profile"
-msgstr "Profil"
-
-#: themes/default/menu.tpl:11
-#: themes/default/topbar.tpl:18
-msgid "All posts"
-msgstr "Tous les articles"
-
-#: themes/default/topbar.tpl:40
-msgid "Filter on tags :"
-msgstr "Filtrer par tags :"
-
-#: themes/default/topbar.tpl:37
-msgid "Period of posts :"
-msgstr "Période des artricles :"
-
-#: themes/default/index.tpl:94
-#: tags.php:13
-#: users.php:14
-msgid "Users"
-msgstr "Utilisateurs"
-
-#: themes/default/single.tpl:67
-msgid "No comments yet"
-msgstr "Pas encore de commentaires"
-
-#: themes/default/posts.tpl:76
-#: themes/default/single.tpl:122
-#: themes/default/tags.tpl:25
-#: admin/manage-tagging.php:94
-#: admin/manage-feed.php:185
-msgid "Tags"
-msgstr "Mots-clés"
+#: themes/default/signup.tpl:22
+msgid "Your full name (Will be displayed)"
+msgstr "Votre nom complet (sera affiché)"
 
 #: themes/default/single.tpl:14
 msgid "Visit source"
@@ -149,6 +148,84 @@ msgstr "Visiter la source"
 #: themes/default/signup.tpl:15
 msgid "Signup"
 msgstr "Inscription"
+
+#: themes/default/archives.tpl:9
+#: admin/api/manage-moderation_api.php:197
+#: admin/api/manage-tagging_api.php:168
+msgid "No posts found"
+msgstr "Aucun article trouvé"
+
+#: themes/default/index.tpl:85
+msgid "Main menu"
+msgstr "Menu principal"
+
+#: themes/default/post_tags.tpl:7
+msgid "Add tag"
+msgstr "Ajouter un mot-clé"
+
+#: themes/default/topbar.tpl:14
+msgid "Posts of the month"
+msgstr "Articles du mois"
+
+#: themes/default/post_tags.tpl:10
+msgid "Allow comments"
+msgstr "Autoriser les commentaires"
+
+#: themes/default/posts.tpl:80
+#: themes/default/single.tpl:124
+#: admin/manage-tagging.php:96
+#: admin/manage-feed.php:187
+#: admin/manage-tribe.php:147
+msgid "Comma separated tags (ex: linux,web,event)"
+msgstr "Mot-clés séparés par une virgule (ex. : linux,web,event)"
+
+#: themes/default/topbar.tpl:6
+msgid "Posts of the day"
+msgstr "Articles du jour"
+
+#: themes/default/users.tpl:5
+msgid "Show posts of"
+msgstr "Afficher les articles de "
+
+#: themes/default/signup.tpl:12
+msgid "Discover the background of all what you can do with Bilboplanet. Read, share, rate, add your own blog"
+msgstr "Découvrez tout ce que vous pouvez faire avec le Bilboplanet. Lire, partager, évaluer, ajouter votre propre blog"
+
+#: themes/default/user/menu.tpl:20
+msgid "Write or share"
+msgstr "Rédigez ou partagez"
+
+#: themes/default/topbar.tpl:27
+msgid "latest posts"
+msgstr "derniers articles"
+
+#: themes/default/index.tpl:107
+#: admin/sidebar.php:36
+#: admin/head.php:31
+#: admin/api/manage-permissions_api.php:166
+msgid "Administration"
+msgstr "Administration"
+
+#: themes/default/posts.tpl:29
+msgid "Written by"
+msgstr "Ecrit par"
+
+#: themes/default/index.tpl:112
+#: themes/default/popup.tpl:28
+msgid "Login"
+msgstr "Login"
+
+#: themes/default/index.tpl:51
+msgid "Hide sidebar"
+msgstr "Cacher la barre latérale"
+
+#: themes/default/posts.tpl:78
+#: themes/default/single.tpl:122
+#: themes/default/tags.tpl:25
+#: admin/manage-tagging.php:94
+#: admin/manage-feed.php:185
+msgid "Tags"
+msgstr "Mots-clés"
 
 #: themes/default/tags.tpl:19
 #: admin/api/manage-tribe_api.php:833
@@ -162,41 +239,6 @@ msgstr "Ici vous trouverez de l'aide concernant la syntaxe : "
 #: themes/default/post_tags.tpl:13
 msgid "Disable comments"
 msgstr "Désactiver les commentaires"
-
-#: themes/default/archives.tpl:9
-#: admin/api/manage-moderation_api.php:197
-#: admin/api/manage-tagging_api.php:168
-msgid "No posts found"
-msgstr "Aucun article trouvé"
-
-#: themes/default/signup.tpl:26
-#: themes/default/contact.tpl:20
-#: signup.php:152
-#: admin/manage-user.php:112
-#: admin/manage-user.php:153
-#: admin/manage-account.php:69
-#: admin/api/manage-pendingfeed_api.php:245
-#: admin/api/manage-account_api.php:37
-#: admin/install/index.php:347
-#: user/api/account_api.php:107
-msgid "Email"
-msgstr "Email"
-
-#: themes/default/index.tpl:51
-msgid "Hide sidebar"
-msgstr "Cacher la barre latérale"
-
-#: themes/default/index.tpl:85
-msgid "Main menu"
-msgstr "Menu principal"
-
-#: themes/default/post_tags.tpl:7
-msgid "Add tag"
-msgstr "Ajouter un mot-clé"
-
-#: themes/default/contact.tpl:12
-msgid "You can contact the administration team through the contact form below."
-msgstr "Vous pouvez contacter les administrateurs via le formulaire ci-dessous : "
 
 #: themes/default/menu.tpl:6
 #: portal.php:16
@@ -212,67 +254,23 @@ msgstr "Visiter la source"
 msgid "Logout"
 msgstr "Déconnexion"
 
-#: themes/default/posts.tpl:49
+#: themes/default/posts.tpl:51
 #: themes/default/single.tpl:41
 msgid "Published by "
 msgstr "Publié par"
-
-#: themes/default/signup.tpl:30
-#: themes/default/popup.tpl:14
-#: auth.php:338
-#: admin/manage-user.php:116
-#: admin/install/index.php:374
-msgid "Password"
-msgstr "Mot de passe"
 
 #: themes/default/popup.tpl:22
 #: auth.php:346
 msgid "Remember me"
 msgstr "Se souvenir de moi"
 
-#: themes/default/topbar.tpl:14
-msgid "Posts of the month"
-msgstr "Articles du mois"
+#: themes/default/index.tpl:103
+msgid "My Shaarli"
+msgstr "Mon Shaarli"
 
-#: themes/default/post_tags.tpl:10
-msgid "Allow comments"
-msgstr "Autoriser les commentaires"
-
-#: themes/default/index.tpl:76
-#: themes/default/index.tpl:77
-#: themes/default/index.tpl:78
-msgid "Search"
-msgstr "Recherche"
-
-#: themes/default/tags.tpl:33
-msgid "No tags found"
-msgstr "Aucun tag trouvé"
-
-#: themes/default/topbar.tpl:45
+#: themes/default/topbar.tpl:46
 msgid "Feed with this parameters"
 msgstr "Flux avec ces paramètres"
-
-#: themes/default/single.tpl:75
-#: signup.php:81
-#: user/api/feed_api.php:121
-msgid "Fullname : "
-msgstr "Nom complet :"
-
-#: themes/default/index.tpl:95
-msgid "Tribes and tags"
-msgstr "Tribus et tags"
-
-#: themes/default/signup.tpl:22
-msgid "Your full name (Will be displayed)"
-msgstr "Votre nom complet (sera affiché)"
-
-#: themes/default/index.tpl:114
-msgid "Register"
-msgstr "Inscription"
-
-#: themes/default/topbar.tpl:27
-msgid "popular of the week"
-msgstr "populaires de la semaine"
 
 #: themes/default/signup.tpl:36
 #: themes/default/contact.tpl:33
@@ -292,121 +290,21 @@ msgstr "populaires de la semaine"
 msgid "Send"
 msgstr "Envoyer"
 
-#: themes/default/single.tpl:104
-msgid "No post found"
-msgstr "Aucun article trouvé"
-
-#: themes/default/posts.tpl:78
-#: themes/default/single.tpl:124
-#: admin/manage-tagging.php:96
-#: admin/manage-feed.php:187
-#: admin/manage-tribe.php:147
-msgid "Comma separated tags (ex: linux,web,event)"
-msgstr "Mot-clés séparés par une virgule (ex. : linux,web,event)"
-
-#: themes/default/index.tpl:105
-#: themes/default/user/menu.tpl:5
-#: admin/sidebar.php:30
-#: admin/index.php:141
-msgid "Dashboard"
-msgstr "Tableau de bord"
-
-#: themes/default/single.tpl:79
-msgid "E-mail : "
-msgstr "Email : "
-
-#: themes/default/user/menu.tpl:15
-msgid "Social"
-msgstr "Social"
-
-#: themes/default/users.tpl:5
-msgid "Show posts of"
-msgstr "Afficher les articles de "
-
-#: themes/default/user/menu.tpl:25
-#: themes/default/tags.tpl:3
-#: admin/sidebar.php:42
-msgid "Tribes"
-msgstr "Tribus"
-
-#: themes/default/index.tpl:112
-#: themes/default/popup.tpl:28
-msgid "Login"
-msgstr "Login"
-
-#: themes/default/popup.tpl:17
-#: auth.php:328
-msgid "I forgot my password"
-msgstr "Mot de passe oublié"
-
-#: themes/default/topbar.tpl:42
+#: themes/default/topbar.tpl:43
 msgid "Filter on authors :"
 msgstr "Filtre sur les auteurs :"
-
-#: themes/default/posts.tpl:29
-msgid "See original post"
-msgstr "Afficher l'article originel :"
-
-#: themes/default/single.tpl:83
-#: inc/cron_fct.php:287
-msgid "Website : "
-msgstr "Site web : "
-
-#: themes/default/signup.tpl:12
-msgid "Discover the background of all what you can do with Bilboplanet. Read, share, rate, add your own blog"
-msgstr "Découvrez tout ce que vous pouvez faire avec le Bilboplanet. Lire, partager, évaluer, ajouter votre propre blog"
-
-#: themes/default/contact.tpl:28
-#: admin/manage-newsletter.php:175
-msgid "Content"
-msgstr "Contenu"
 
 #: themes/default/index.tpl:93
 #: charter.php:34
 msgid "Charter"
 msgstr "Charte"
 
-#: themes/default/popup.tpl:8
-#: auth.php:334
-msgid "Username or email"
-msgstr "Nom d'utilisateur ou email"
-
-#: themes/default/posts.tpl:48
+#: themes/default/posts.tpl:50
 #: themes/default/single.tpl:40
 msgid "Viewed :"
 msgstr "Vus :"
 
-#: themes/default/user/menu.tpl:20
-msgid "Write or share"
-msgstr "Rédigez ou partagez"
-
-#: themes/default/social.tpl:15
-msgid "Tweeter"
-msgstr "Tweeter"
-
-#: themes/default/topbar.tpl:33
-msgid "Page :"
-msgstr "Page :"
-
-#: themes/default/signup.tpl:33
-msgid "Captcha"
-msgstr "Captcha"
-
-#: themes/default/topbar.tpl:35
-msgid "Search with :"
-msgstr "Chercher avec :"
-
-#: themes/default/single.tpl:11
-msgid "Voir l'article"
-msgstr "Voir l'article"
-
-#: themes/default/contact.tpl:16
-#: admin/manage-post.php:215
-#: admin/manage-logs.php:71
-msgid "Name"
-msgstr "Nom"
-
-#: themes/default/posts.tpl:69
+#: themes/default/posts.tpl:71
 #: themes/default/single.tpl:115
 #: admin/manage-option.php:56
 #: admin/manage-feed.php:93
@@ -418,25 +316,139 @@ msgstr "Nom"
 msgid "Close"
 msgstr "Fermer"
 
-#: themes/default/topbar.tpl:30
-msgid "Page status"
-msgstr "Statut de la page"
-
 #: themes/default/single.tpl:46
 #: feed.php:271
 msgid "Similar posts"
 msgstr "Articles similaires"
 
-#: themes/default/contact.tpl:24
-#: signup.php:149
-#: admin/manage-moderation.php:102
-#: admin/manage-pendingfeed.php:56
-#: admin/manage-pendingfeed.php:69
-#: admin/manage-selection.php:108
-#: admin/manage-newsletter.php:49
-#: admin/manage-newsletter.php:190
-msgid "Subject"
-msgstr "Sujet"
+#: themes/default/single.tpl:75
+#: signup.php:81
+#: user/api/feed_api.php:121
+msgid "Fullname : "
+msgstr "Nom complet :"
+
+#: themes/default/post_tags.tpl:2
+msgid "tags :"
+msgstr "tags :"
+
+#: themes/default/index.tpl:76
+#: themes/default/index.tpl:77
+#: themes/default/index.tpl:78
+msgid "Search"
+msgstr "Recherche"
+
+#: themes/default/contact.tpl:28
+#: admin/manage-newsletter.php:175
+msgid "Content"
+msgstr "Contenu"
+
+#: themes/default/single.tpl:10
+#: themes/default/single.tpl:22
+msgid "at"
+msgstr "à"
+
+#: themes/default/signup.tpl:18
+msgid "Your login"
+msgstr "Votre login"
+
+#: themes/default/topbar.tpl:32
+msgid "Tribe :"
+msgstr "Tribu:"
+
+#: themes/default/user/menu.tpl:10
+msgid "Profile"
+msgstr "Profil"
+
+#: themes/default/topbar.tpl:38
+msgid "Period of posts :"
+msgstr "Période des artricles :"
+
+#: themes/default/index.tpl:94
+#: tags.php:13
+#: users.php:14
+msgid "Users"
+msgstr "Utilisateurs"
+
+#: themes/default/signup.tpl:26
+#: themes/default/contact.tpl:20
+#: signup.php:152
+#: admin/manage-user.php:112
+#: admin/manage-user.php:153
+#: admin/manage-account.php:69
+#: admin/api/manage-pendingfeed_api.php:245
+#: admin/api/manage-account_api.php:37
+#: admin/install/index.php:347
+#: user/api/account_api.php:107
+msgid "Email"
+msgstr "Email"
+
+#: themes/default/signup.tpl:30
+#: themes/default/popup.tpl:14
+#: auth.php:338
+#: admin/manage-user.php:116
+#: admin/install/index.php:374
+msgid "Password"
+msgstr "Mot de passe"
+
+#: themes/default/posts.tpl:30
+msgid "Permalink"
+msgstr "Permalien"
+
+#: themes/default/contact.tpl:16
+#: admin/manage-post.php:215
+#: admin/manage-logs.php:71
+msgid "Name"
+msgstr "Nom"
+
+#: themes/default/topbar.tpl:28
+msgid "popular of the week"
+msgstr "populaires de la semaine"
+
+#: themes/default/popup.tpl:17
+#: auth.php:328
+msgid "I forgot my password"
+msgstr "Mot de passe oublié"
+
+#: themes/default/user/menu.tpl:25
+#: themes/default/tags.tpl:3
+#: admin/sidebar.php:42
+msgid "Tribes"
+msgstr "Tribus"
+
+#: themes/default/signup.tpl:11
+msgid "Your Bilboplanet Account"
+msgstr "Votre compte sur le Bilboplanet"
+
+#: themes/default/posts.tpl:31
+msgid "See original post"
+msgstr "Afficher l'article originel :"
+
+#: themes/default/popup.tpl:30
+msgid "register"
+msgstr "Inscription"
+
+#: themes/default/social.tpl:15
+msgid "Tweeter"
+msgstr "Tweeter"
+
+#: themes/default/topbar.tpl:36
+msgid "Search with :"
+msgstr "Chercher avec :"
+
+#: themes/default/posts.tpl:82
+#: themes/default/single.tpl:126
+#: admin/manage-useroption.php:123
+#: admin/api/manage-permissions_api.php:171
+#: admin/api/manage-option_api.php:677
+msgid "Apply"
+msgstr "Appliquer"
+
+#: themes/default/index.tpl:105
+#: themes/default/user/menu.tpl:5
+#: admin/sidebar.php:30
+#: admin/index.php:141
+msgid "Dashboard"
+msgstr "Tableau de bord"
 
 #: tpl.php:201
 msgid "Powered by Bilboplanet"
@@ -559,7 +571,7 @@ msgstr ""
 
 #: signup.php:148
 #, php-format
-msgid "If you don't recieve any new from the administration team within the 5 days do not hesitate to contact us via %s with this information :"
+msgid "If you don't recieve any news from the administration team within the 5 days do not hesitate to contact us via %s with this information :"
 msgstr "Si vous n'avez pas reçu de confirmation de la part de l'équipe d'administrateurs dans les 5 jours qui suivent, n'hésitez pas à nous contacter par mail à l'adresse %s"
 
 #: signup.php:150
@@ -2452,7 +2464,7 @@ msgid "This tribe id is already existing. This error should not occur : please r
 msgstr "La tribu existe déjà. Cette erreur ne devrait pas arriver : veuillez prévenir les développeurs."
 
 #: admin/api/manage-tribe_api.php:112
-msgid "Please select the user to you want to add the tribe"
+msgid "Please select the user that you want to add to the tribe"
 msgstr "Veuillez sélectionner l'utilisateur que vous souhaitez ajouter à la tribu"
 
 #: admin/api/manage-tribe_api.php:155
@@ -3683,6 +3695,9 @@ msgstr "Vos préférences sociales ont correctement été configurées"
 msgid "The post is already removed"
 msgstr "Cet article est déjà supprimé"
 
+#~ msgid "Voir l'article"
+#~ msgstr "Voir l'article"
+
 #~ msgid ""
 #~ "Before to subscribe, do not hesitate to test your RSS/Atom feeds to be "
 #~ "sure they'll be well interpretated by the planet aggregator engine which "
@@ -3846,9 +3861,6 @@ msgstr "Cet article est déjà supprimé"
 
 #~ msgid "Subscribe / Unsubscribe"
 #~ msgstr "Inscription / Désinscription"
-
-#~ msgid "Written by :"
-#~ msgstr "Ecrit par : "
 
 #~ msgid "Number of votes :"
 #~ msgstr "Nombre de votes :"

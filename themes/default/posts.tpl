@@ -26,7 +26,9 @@
 						{$post.day}/{$post.month}/{$post.year} {$post.hour}
 					</div>
 					<div class="post-author">
-						{_Written by} <a href="#" onclick="javascript:add_user('{$post.author_id}')">{$post.author_fullname}</a> - <a href="{$post.permalink}" alt="{_Permalink}" title="{_Permalink}">{_See original post}</a>
+						{_Written by} 
+                        <a href="#" onclick="javascript:add_user('{$post.author_id}')">{$post.author_fullname}</a> - <a href="{$post.permalink}" alt="{_Permalink}" title="{_Permalink}">
+                        {_See original post}</a>
 					</div>
 					<!-- BEGIN post.block.gravatar -->
 					<div class="post-avatar">

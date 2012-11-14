@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-14 22:01+0100\n"
+"POT-Creation-Date: 2012-11-14 23:10+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -141,7 +141,7 @@ msgstr ""
 
 #: signup.php:148
 #, php-format
-msgid "If you don't recieve any new from the administration team within the 5 days do not hesitate to contact us via %s with this information :"
+msgid "If you don't recieve any news from the administration team within the 5 days do not hesitate to contact us via %s with this information :"
 msgstr ""
 
 #: signup.php:149 admin/manage-moderation.php:102
@@ -1953,7 +1953,7 @@ msgid "This tribe id is already existing. This error should not occur : please r
 msgstr ""
 
 #: admin/api/manage-tribe_api.php:112
-msgid "Please select the user to you want to add the tribe"
+msgid "Please select the user that you want to add to the tribe"
 msgstr ""
 
 #: admin/api/manage-tribe_api.php:155

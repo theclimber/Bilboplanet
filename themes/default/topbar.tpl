@@ -24,7 +24,9 @@
 	<!-- BEGIN postlist.state -->
 	<div class="box page-status">
 		<div id="filter-order-action">
-			{_Select only} <a href="javascript:order_by('latest')">{_latest posts}</a> - <a href="javascript:order_by('popular')">{_popular of the week}</a>
+			{_Select only} 
+            <a href="javascript:order_by('latest')">{_latest posts}</a>
+            - <a href="javascript:order_by('popular')">{_popular of the week}</a>
 		</div>
 		<div id="filter-status">
 			<h2 id="filter-title">{_Page status}</h2>
@@ -50,7 +52,7 @@
 
 	<!-- BEGIN main.alert -->
 	<div class="box flash">
-		<h2>Info Flash</h2>
+		<h2>{_Info Flash}</h2>
 		<p>{$planet.msg_info}</p>
 	</div>
 	<!-- END main.alert -->

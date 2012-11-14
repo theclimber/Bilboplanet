@@ -18,17 +18,91 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 
-#: themes/default/popup.tpl:30
-msgid "register"
+#: themes/default/index.tpl:95
+msgid "Tribes and tags"
 msgstr ""
 
-#: themes/default/topbar.tpl:39
+#: themes/default/single.tpl:11
+msgid "See post"
+msgstr ""
+
+#: themes/default/users.tpl:25
+msgid "No users found"
+msgstr ""
+
+#: themes/default/tags.tpl:33
+msgid "No tags found"
+msgstr ""
+
+#: themes/default/index.tpl:91
+#: themes/default/contact.tpl:11
+msgid "Contact us"
+msgstr ""
+
+#: themes/default/menu.tpl:11
+#: themes/default/topbar.tpl:18
+msgid "All posts"
+msgstr ""
+
+#: themes/default/topbar.tpl:41
+msgid "Filter on tags :"
+msgstr ""
+
+#: themes/default/single.tpl:83
+msgid "Website : "
+msgstr ""
+
+#: themes/default/single.tpl:67
+msgid "No comments yet"
+msgstr ""
+
+#: themes/default/contact.tpl:12
+msgid "You can contact the administration team through the contact form below."
+msgstr ""
+
+#: themes/default/stats.tpl:26
+#: themes/default/stats.tpl:46
+msgid "Visit the website"
+msgstr ""
+
+#: themes/default/index.tpl:114
+msgid "Register"
+msgstr ""
+
+#: themes/default/single.tpl:104
+msgid "No post found"
+msgstr ""
+
+#: themes/default/popup.tpl:8
+msgid "Username or email"
+msgstr ""
+
+#: themes/default/single.tpl:79
+msgid "E-mail : "
+msgstr ""
+
+#: themes/default/user/menu.tpl:15
+msgid "Social"
+msgstr ""
+
+#: themes/default/topbar.tpl:34
+msgid "Page :"
+msgstr ""
+
+#: themes/default/signup.tpl:33
+msgid "Captcha"
+msgstr ""
+
+#: themes/default/topbar.tpl:31
+msgid "Page status"
+msgstr ""
+
+#: themes/default/contact.tpl:24
+msgid "Subject"
+msgstr ""
+
+#: themes/default/topbar.tpl:40
 msgid "Ordered by popularity"
-msgstr ""
-
-#: themes/default/posts.tpl:80
-#: themes/default/single.tpl:126
-msgid "Apply"
 msgstr ""
 
 #: themes/default/index.tpl:97
@@ -39,99 +113,24 @@ msgstr ""
 msgid "Posts of the week"
 msgstr ""
 
-#: themes/default/post_tags.tpl:2
-#: themes/default/post_tags.tpl:2
-msgid "tags :"
-msgstr ""
-
-#: themes/default/topbar.tpl:6
-msgid "Posts of the day"
-msgstr ""
-
-#: themes/default/index.tpl:107
-msgid "Administration"
-msgstr ""
-
-#: themes/default/index.tpl:103
-msgid "My Shaarli"
-msgstr ""
-
 #: themes/default/single.tpl:92
 msgid "Publish"
-msgstr ""
-
-#: themes/default/signup.tpl:11
-msgid "Your Bilboplanet Account"
 msgstr ""
 
 #: themes/default/single.tpl:18
 msgid "Show posts of the user"
 msgstr ""
 
-#: themes/default/single.tpl:10
-#: themes/default/single.tpl:22
-msgid "at"
-msgstr ""
-
-#: themes/default/users.tpl:25
-msgid "No users found"
-msgstr ""
-
-#: themes/default/signup.tpl:18
-msgid "Your login"
-msgstr ""
-
-#: themes/default/topbar.tpl:31
-msgid "Tribe :"
-msgstr ""
-
-#: themes/default/index.tpl:91
-#: themes/default/contact.tpl:11
-msgid "Contact us"
-msgstr ""
-
-#: themes/default/stats.tpl:26
-#: themes/default/stats.tpl:46
-msgid "Visit the website"
-msgstr ""
-
-#: themes/default/posts.tpl:33
+#: themes/default/posts.tpl:35
 msgid "Display posts of this user"
 msgstr ""
 
-#: themes/default/posts.tpl:60
+#: themes/default/posts.tpl:62
 msgid "More"
 msgstr ""
 
-#: themes/default/user/menu.tpl:10
-msgid "Profile"
-msgstr ""
-
-#: themes/default/menu.tpl:11
-#: themes/default/topbar.tpl:18
-msgid "All posts"
-msgstr ""
-
-#: themes/default/topbar.tpl:40
-msgid "Filter on tags :"
-msgstr ""
-
-#: themes/default/topbar.tpl:37
-msgid "Period of posts :"
-msgstr ""
-
-#: themes/default/index.tpl:94
-msgid "Users"
-msgstr ""
-
-#: themes/default/single.tpl:67
-msgid "No comments yet"
-msgstr ""
-
-#: themes/default/posts.tpl:76
-#: themes/default/single.tpl:122
-#: themes/default/tags.tpl:25
-msgid "Tags"
+#: themes/default/signup.tpl:22
+msgid "Your full name (Will be displayed)"
 msgstr ""
 
 #: themes/default/single.tpl:14
@@ -140,6 +139,76 @@ msgstr ""
 
 #: themes/default/signup.tpl:15
 msgid "Signup"
+msgstr ""
+
+#: themes/default/archives.tpl:9
+msgid "No posts found"
+msgstr ""
+
+#: themes/default/index.tpl:85
+msgid "Main menu"
+msgstr ""
+
+#: themes/default/post_tags.tpl:7
+#: themes/default/post_tags.tpl:7
+msgid "Add tag"
+msgstr ""
+
+#: themes/default/topbar.tpl:14
+msgid "Posts of the month"
+msgstr ""
+
+#: themes/default/post_tags.tpl:10
+#: themes/default/post_tags.tpl:10
+msgid "Allow comments"
+msgstr ""
+
+#: themes/default/posts.tpl:80
+#: themes/default/single.tpl:124
+msgid "Comma separated tags (ex: linux,web,event)"
+msgstr ""
+
+#: themes/default/topbar.tpl:6
+msgid "Posts of the day"
+msgstr ""
+
+#: themes/default/users.tpl:5
+msgid "Show posts of"
+msgstr ""
+
+#: themes/default/signup.tpl:12
+msgid "Discover the background of all what you can do with Bilboplanet. Read, share, rate, add your own blog"
+msgstr ""
+
+#: themes/default/user/menu.tpl:20
+msgid "Write or share"
+msgstr ""
+
+#: themes/default/topbar.tpl:27
+msgid "latest posts"
+msgstr ""
+
+#: themes/default/index.tpl:107
+msgid "Administration"
+msgstr ""
+
+#: themes/default/posts.tpl:29
+msgid "Written by"
+msgstr ""
+
+#: themes/default/index.tpl:112
+#: themes/default/popup.tpl:28
+msgid "Login"
+msgstr ""
+
+#: themes/default/index.tpl:51
+msgid "Hide sidebar"
+msgstr ""
+
+#: themes/default/posts.tpl:78
+#: themes/default/single.tpl:122
+#: themes/default/tags.tpl:25
+msgid "Tags"
 msgstr ""
 
 #: themes/default/tags.tpl:19
@@ -155,32 +224,6 @@ msgstr ""
 msgid "Disable comments"
 msgstr ""
 
-#: themes/default/archives.tpl:9
-msgid "No posts found"
-msgstr ""
-
-#: themes/default/signup.tpl:26
-#: themes/default/contact.tpl:20
-msgid "Email"
-msgstr ""
-
-#: themes/default/index.tpl:51
-msgid "Hide sidebar"
-msgstr ""
-
-#: themes/default/index.tpl:85
-msgid "Main menu"
-msgstr ""
-
-#: themes/default/post_tags.tpl:7
-#: themes/default/post_tags.tpl:7
-msgid "Add tag"
-msgstr ""
-
-#: themes/default/contact.tpl:12
-msgid "You can contact the administration team through the contact form below."
-msgstr ""
-
 #: themes/default/menu.tpl:6
 msgid "Portal"
 msgstr ""
@@ -193,27 +236,57 @@ msgstr ""
 msgid "Logout"
 msgstr ""
 
-#: themes/default/posts.tpl:49
+#: themes/default/posts.tpl:51
 #: themes/default/single.tpl:41
 msgid "Published by "
-msgstr ""
-
-#: themes/default/signup.tpl:30
-#: themes/default/popup.tpl:14
-msgid "Password"
 msgstr ""
 
 #: themes/default/popup.tpl:22
 msgid "Remember me"
 msgstr ""
 
-#: themes/default/topbar.tpl:14
-msgid "Posts of the month"
+#: themes/default/index.tpl:103
+msgid "My Shaarli"
 msgstr ""
 
-#: themes/default/post_tags.tpl:10
-#: themes/default/post_tags.tpl:10
-msgid "Allow comments"
+#: themes/default/topbar.tpl:46
+msgid "Feed with this parameters"
+msgstr ""
+
+#: themes/default/signup.tpl:36
+#: themes/default/contact.tpl:33
+msgid "Send"
+msgstr ""
+
+#: themes/default/topbar.tpl:43
+msgid "Filter on authors :"
+msgstr ""
+
+#: themes/default/index.tpl:93
+msgid "Charter"
+msgstr ""
+
+#: themes/default/posts.tpl:50
+#: themes/default/single.tpl:40
+msgid "Viewed :"
+msgstr ""
+
+#: themes/default/posts.tpl:71
+#: themes/default/single.tpl:115
+msgid "Close"
+msgstr ""
+
+#: themes/default/single.tpl:46
+msgid "Similar posts"
+msgstr ""
+
+#: themes/default/single.tpl:75
+msgid "Fullname : "
+msgstr ""
+
+#: themes/default/post_tags.tpl:2
+#: themes/default/post_tags.tpl:2
+msgid "tags :"
 msgstr ""
 
 #: themes/default/index.tpl:76
@@ -222,63 +295,59 @@ msgstr ""
 msgid "Search"
 msgstr ""
 
-#: themes/default/tags.tpl:33
-msgid "No tags found"
+#: themes/default/contact.tpl:28
+msgid "Content"
 msgstr ""
 
-#: themes/default/topbar.tpl:45
-msgid "Feed with this parameters"
+#: themes/default/single.tpl:10
+#: themes/default/single.tpl:22
+msgid "at"
 msgstr ""
 
-#: themes/default/single.tpl:75
-msgid "Fullname : "
+#: themes/default/signup.tpl:18
+msgid "Your login"
 msgstr ""
 
-#: themes/default/index.tpl:95
-msgid "Tribes and tags"
+#: themes/default/topbar.tpl:32
+msgid "Tribe :"
 msgstr ""
 
-#: themes/default/signup.tpl:22
-msgid "Your full name (Will be displayed)"
+#: themes/default/user/menu.tpl:10
+msgid "Profile"
 msgstr ""
 
-#: themes/default/index.tpl:114
-msgid "Register"
+#: themes/default/topbar.tpl:38
+msgid "Period of posts :"
 msgstr ""
 
-#: themes/default/topbar.tpl:27
+#: themes/default/index.tpl:94
+msgid "Users"
+msgstr ""
+
+#: themes/default/signup.tpl:26
+#: themes/default/contact.tpl:20
+msgid "Email"
+msgstr ""
+
+#: themes/default/signup.tpl:30
+#: themes/default/popup.tpl:14
+msgid "Password"
+msgstr ""
+
+#: themes/default/posts.tpl:30
+msgid "Permalink"
+msgstr ""
+
+#: themes/default/contact.tpl:16
+msgid "Name"
+msgstr ""
+
+#: themes/default/topbar.tpl:28
 msgid "popular of the week"
 msgstr ""
 
-#: themes/default/signup.tpl:36
-#: themes/default/contact.tpl:33
-msgid "Send"
-msgstr ""
-
-#: themes/default/single.tpl:104
-msgid "No post found"
-msgstr ""
-
-#: themes/default/posts.tpl:78
-#: themes/default/single.tpl:124
-msgid "Comma separated tags (ex: linux,web,event)"
-msgstr ""
-
-#: themes/default/index.tpl:105
-#: themes/default/user/menu.tpl:5
-msgid "Dashboard"
-msgstr ""
-
-#: themes/default/single.tpl:79
-msgid "E-mail : "
-msgstr ""
-
-#: themes/default/user/menu.tpl:15
-msgid "Social"
-msgstr ""
-
-#: themes/default/users.tpl:5
-msgid "Show posts of"
+#: themes/default/popup.tpl:17
+msgid "I forgot my password"
 msgstr ""
 
 #: themes/default/user/menu.tpl:25
@@ -286,50 +355,16 @@ msgstr ""
 msgid "Tribes"
 msgstr ""
 
-#: themes/default/index.tpl:112
-#: themes/default/popup.tpl:28
-msgid "Login"
+#: themes/default/signup.tpl:11
+msgid "Your Bilboplanet Account"
 msgstr ""
 
-#: themes/default/popup.tpl:17
-msgid "I forgot my password"
-msgstr ""
-
-#: themes/default/topbar.tpl:42
-msgid "Filter on authors :"
-msgstr ""
-
-#: themes/default/posts.tpl:29
+#: themes/default/posts.tpl:31
 msgid "See original post"
 msgstr ""
 
-#: themes/default/single.tpl:83
-msgid "Website : "
-msgstr ""
-
-#: themes/default/signup.tpl:12
-msgid "Discover the background of all what you can do with Bilboplanet. Read, share, rate, add your own blog"
-msgstr ""
-
-#: themes/default/contact.tpl:28
-msgid "Content"
-msgstr ""
-
-#: themes/default/index.tpl:93
-msgid "Charter"
-msgstr ""
-
-#: themes/default/popup.tpl:8
-msgid "Username or email"
-msgstr ""
-
-#: themes/default/posts.tpl:48
-#: themes/default/single.tpl:40
-msgid "Viewed :"
-msgstr ""
-
-#: themes/default/user/menu.tpl:20
-msgid "Write or share"
+#: themes/default/popup.tpl:30
+msgid "register"
 msgstr ""
 
 #: themes/default/social.tpl:15
@@ -337,40 +372,17 @@ msgstr ""
 msgid "Tweeter"
 msgstr ""
 
-#: themes/default/topbar.tpl:33
-msgid "Page :"
-msgstr ""
-
-#: themes/default/signup.tpl:33
-msgid "Captcha"
-msgstr ""
-
-#: themes/default/topbar.tpl:35
+#: themes/default/topbar.tpl:36
 msgid "Search with :"
 msgstr ""
 
-#: themes/default/single.tpl:11
-msgid "Voir l'article"
+#: themes/default/posts.tpl:82
+#: themes/default/single.tpl:126
+msgid "Apply"
 msgstr ""
 
-#: themes/default/contact.tpl:16
-msgid "Name"
-msgstr ""
-
-#: themes/default/posts.tpl:69
-#: themes/default/single.tpl:115
-msgid "Close"
-msgstr ""
-
-#: themes/default/topbar.tpl:30
-msgid "Page status"
-msgstr ""
-
-#: themes/default/single.tpl:46
-msgid "Similar posts"
-msgstr ""
-
-#: themes/default/contact.tpl:24
-msgid "Subject"
+#: themes/default/index.tpl:105
+#: themes/default/user/menu.tpl:5
+msgid "Dashboard"
 msgstr ""
 

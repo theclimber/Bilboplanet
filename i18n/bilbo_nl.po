@@ -17,21 +17,104 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: themes/default/popup.tpl:30
+#: themes/default/index.tpl:95
+msgid "Tribes and tags"
+msgstr ""
+
+#: themes/default/single.tpl:11
 #, fuzzy
-msgid "register"
+msgid "See post"
+msgstr "Filteren van de berichten"
+
+#: themes/default/users.tpl:25
+#, fuzzy
+msgid "No users found"
+msgstr "Geen berichten gevonden"
+
+#: themes/default/tags.tpl:33
+#, fuzzy
+msgid "No tags found"
+msgstr "Geen berichten gevonden"
+
+#: themes/default/index.tpl:91 themes/default/contact.tpl:11
+msgid "Contact us"
+msgstr "Contacteer ons"
+
+#: themes/default/menu.tpl:11 themes/default/topbar.tpl:18
+msgid "All posts"
+msgstr "Alle berichten"
+
+#: themes/default/topbar.tpl:41
+#, fuzzy
+msgid "Filter on tags :"
+msgstr "Filteren van de berichten"
+
+#: themes/default/single.tpl:83 inc/cron_fct.php:287
+msgid "Website : "
+msgstr "Website"
+
+#: themes/default/single.tpl:67
+msgid "No comments yet"
+msgstr ""
+
+#: themes/default/contact.tpl:12
+#, fuzzy
+msgid "You can contact the administration team through the contact form below."
+msgstr ""
+"U kunt contact opnemen met de administratie team met het formulier hieronder:"
+
+#: themes/default/stats.tpl:26 themes/default/stats.tpl:46
+msgid "Visit the website"
+msgstr "Bezoek de website"
+
+#: themes/default/index.tpl:114
+#, fuzzy
+msgid "Register"
 msgstr "Inschrijving"
 
-#: themes/default/topbar.tpl:39
+#: themes/default/single.tpl:104
+#, fuzzy
+msgid "No post found"
+msgstr "Geen berichten gevonden"
+
+#: themes/default/popup.tpl:8 auth.php:334
+#, fuzzy
+msgid "Username or email"
+msgstr "Gebruikersnaam"
+
+#: themes/default/single.tpl:79
+#, fuzzy
+msgid "E-mail : "
+msgstr "Email :"
+
+#: themes/default/user/menu.tpl:15
+msgid "Social"
+msgstr ""
+
+#: themes/default/topbar.tpl:34
+msgid "Page :"
+msgstr ""
+
+#: themes/default/signup.tpl:33
+msgid "Captcha"
+msgstr ""
+
+#: themes/default/topbar.tpl:31
+#, fuzzy
+msgid "Page status"
+msgstr "Stemmen tabel"
+
+#: themes/default/contact.tpl:24 signup.php:149
+#: admin/manage-moderation.php:102 admin/manage-pendingfeed.php:56
+#: admin/manage-pendingfeed.php:69 admin/manage-selection.php:108
+#: admin/manage-newsletter.php:49 admin/manage-newsletter.php:190
+msgid "Subject"
+msgstr "Onderwerp"
+
+#: themes/default/topbar.tpl:40
 #, fuzzy
 msgid "Ordered by popularity"
 msgstr "Powered by BilboPlanet"
-
-#: themes/default/posts.tpl:80 themes/default/single.tpl:126
-#: admin/manage-useroption.php:123 admin/api/manage-permissions_api.php:171
-#: admin/api/manage-option_api.php:677
-msgid "Apply"
-msgstr "Aanvragen"
 
 #: themes/default/index.tpl:97
 #, fuzzy
@@ -42,104 +125,28 @@ msgstr "Status"
 msgid "Posts of the week"
 msgstr "Berichten van de week"
 
-#: themes/default/post_tags.tpl:2
-msgid "tags :"
-msgstr ""
-
-#: themes/default/topbar.tpl:6
-msgid "Posts of the day"
-msgstr "Berichten van de dag"
-
-#: themes/default/index.tpl:107 admin/sidebar.php:36 admin/head.php:31
-#: admin/api/manage-permissions_api.php:166
-msgid "Administration"
-msgstr "Administratie"
-
-#: themes/default/index.tpl:103
-msgid "My Shaarli"
-msgstr ""
-
 #: themes/default/single.tpl:92
 msgid "Publish"
 msgstr ""
-
-#: themes/default/signup.tpl:11
-#, fuzzy
-msgid "Your Bilboplanet Account"
-msgstr "Uw Bilboplanet"
 
 #: themes/default/single.tpl:18
 #, fuzzy
 msgid "Show posts of the user"
 msgstr "Toon berichten van de lid"
 
-#: themes/default/single.tpl:10 themes/default/single.tpl:22
-#, fuzzy
-msgid "at"
-msgstr "Datum"
-
-#: themes/default/users.tpl:25
-#, fuzzy
-msgid "No users found"
-msgstr "Geen berichten gevonden"
-
-#: themes/default/signup.tpl:18
-#, fuzzy
-msgid "Your login"
-msgstr "login"
-
-#: themes/default/topbar.tpl:31
-msgid "Tribe :"
-msgstr ""
-
-#: themes/default/index.tpl:91 themes/default/contact.tpl:11
-msgid "Contact us"
-msgstr "Contacteer ons"
-
-#: themes/default/stats.tpl:26 themes/default/stats.tpl:46
-msgid "Visit the website"
-msgstr "Bezoek de website"
-
-#: themes/default/posts.tpl:33
+#: themes/default/posts.tpl:35
 #, fuzzy
 msgid "Display posts of this user"
 msgstr "Lijst van de gebruikers"
 
-#: themes/default/posts.tpl:60
+#: themes/default/posts.tpl:62
 msgid "More"
 msgstr ""
 
-#: themes/default/user/menu.tpl:10
-msgid "Profile"
-msgstr ""
-
-#: themes/default/menu.tpl:11 themes/default/topbar.tpl:18
-msgid "All posts"
-msgstr "Alle berichten"
-
-#: themes/default/topbar.tpl:40
+#: themes/default/signup.tpl:22
 #, fuzzy
-msgid "Filter on tags :"
-msgstr "Filteren van de berichten"
-
-#: themes/default/topbar.tpl:37
-#, fuzzy
-msgid "Period of posts :"
-msgstr "Aantal berichten"
-
-#: themes/default/index.tpl:94 tags.php:13 users.php:14
-msgid "Users"
-msgstr "Gebruikers"
-
-#: themes/default/single.tpl:67
-msgid "No comments yet"
-msgstr ""
-
-#: themes/default/posts.tpl:76 themes/default/single.tpl:122
-#: themes/default/tags.tpl:25 admin/manage-tagging.php:94
-#: admin/manage-feed.php:185
-msgid "Tags"
-msgstr ""
+msgid "Your full name (Will be displayed)"
+msgstr "Vul uw volledige naam of de naam die u wilt tonen"
 
 #: themes/default/single.tpl:14
 msgid "Visit source"
@@ -147,6 +154,81 @@ msgstr "Bezoek bron"
 
 #: themes/default/signup.tpl:15
 msgid "Signup"
+msgstr ""
+
+#: themes/default/archives.tpl:9 admin/api/manage-moderation_api.php:197
+#: admin/api/manage-tagging_api.php:168
+msgid "No posts found"
+msgstr "Geen berichten gevonden"
+
+#: themes/default/index.tpl:85
+msgid "Main menu"
+msgstr ""
+
+#: themes/default/post_tags.tpl:7
+msgid "Add tag"
+msgstr ""
+
+#: themes/default/topbar.tpl:14
+msgid "Posts of the month"
+msgstr "Berichten van de maand"
+
+#: themes/default/post_tags.tpl:10
+msgid "Allow comments"
+msgstr ""
+
+#: themes/default/posts.tpl:80 themes/default/single.tpl:124
+#: admin/manage-tagging.php:96 admin/manage-feed.php:187
+#: admin/manage-tribe.php:147
+msgid "Comma separated tags (ex: linux,web,event)"
+msgstr ""
+
+#: themes/default/topbar.tpl:6
+msgid "Posts of the day"
+msgstr "Berichten van de dag"
+
+#: themes/default/users.tpl:5
+#, fuzzy
+msgid "Show posts of"
+msgstr "Toon berichten van de lid"
+
+#: themes/default/signup.tpl:12
+msgid ""
+"Discover the background of all what you can do with Bilboplanet. Read, "
+"share, rate, add your own blog"
+msgstr ""
+
+#: themes/default/user/menu.tpl:20
+msgid "Write or share"
+msgstr ""
+
+#: themes/default/topbar.tpl:27
+#, fuzzy
+msgid "latest posts"
+msgstr "%s laatste berichten"
+
+#: themes/default/index.tpl:107 admin/sidebar.php:36 admin/head.php:31
+#: admin/api/manage-permissions_api.php:166
+msgid "Administration"
+msgstr "Administratie"
+
+#: themes/default/posts.tpl:29
+msgid "Written by"
+msgstr ""
+
+#: themes/default/index.tpl:112 themes/default/popup.tpl:28
+#, fuzzy
+msgid "Login"
+msgstr "login"
+
+#: themes/default/index.tpl:51
+msgid "Hide sidebar"
+msgstr ""
+
+#: themes/default/posts.tpl:78 themes/default/single.tpl:122
+#: themes/default/tags.tpl:25 admin/manage-tagging.php:94
+#: admin/manage-feed.php:185
+msgid "Tags"
 msgstr ""
 
 #: themes/default/tags.tpl:19 admin/api/manage-tribe_api.php:833
@@ -163,37 +245,6 @@ msgstr ""
 msgid "Disable comments"
 msgstr "Disable deze feed"
 
-#: themes/default/archives.tpl:9 admin/api/manage-moderation_api.php:197
-#: admin/api/manage-tagging_api.php:168
-msgid "No posts found"
-msgstr "Geen berichten gevonden"
-
-#: themes/default/signup.tpl:26 themes/default/contact.tpl:20 signup.php:152
-#: admin/manage-user.php:112 admin/manage-user.php:153
-#: admin/manage-account.php:69 admin/api/manage-pendingfeed_api.php:245
-#: admin/api/manage-account_api.php:37 admin/install/index.php:347
-#: user/api/account_api.php:107
-msgid "Email"
-msgstr "E-mail"
-
-#: themes/default/index.tpl:51
-msgid "Hide sidebar"
-msgstr ""
-
-#: themes/default/index.tpl:85
-msgid "Main menu"
-msgstr ""
-
-#: themes/default/post_tags.tpl:7
-msgid "Add tag"
-msgstr ""
-
-#: themes/default/contact.tpl:12
-#, fuzzy
-msgid "You can contact the administration team through the contact form below."
-msgstr ""
-"U kunt contact opnemen met de administratie team met het formulier hieronder:"
-
 #: themes/default/menu.tpl:6 portal.php:16
 msgid "Portal"
 msgstr ""
@@ -207,66 +258,23 @@ msgstr "Bezoek bron"
 msgid "Logout"
 msgstr "Afmelden"
 
-#: themes/default/posts.tpl:49 themes/default/single.tpl:41
+#: themes/default/posts.tpl:51 themes/default/single.tpl:41
 msgid "Published by "
 msgstr ""
-
-#: themes/default/signup.tpl:30 themes/default/popup.tpl:14 auth.php:338
-#: admin/manage-user.php:116 admin/install/index.php:374
-msgid "Password"
-msgstr "Wachtwoord"
 
 #: themes/default/popup.tpl:22 auth.php:346
 #, fuzzy
 msgid "Remember me"
 msgstr "December"
 
-#: themes/default/topbar.tpl:14
-msgid "Posts of the month"
-msgstr "Berichten van de maand"
-
-#: themes/default/post_tags.tpl:10
-msgid "Allow comments"
+#: themes/default/index.tpl:103
+msgid "My Shaarli"
 msgstr ""
 
-#: themes/default/index.tpl:76 themes/default/index.tpl:77
-#: themes/default/index.tpl:78
-msgid "Search"
-msgstr "Zoek"
-
-#: themes/default/tags.tpl:33
-#, fuzzy
-msgid "No tags found"
-msgstr "Geen berichten gevonden"
-
-#: themes/default/topbar.tpl:45
+#: themes/default/topbar.tpl:46
 #, fuzzy
 msgid "Feed with this parameters"
 msgstr "Feed met alle berichten"
-
-#: themes/default/single.tpl:75 signup.php:81 user/api/feed_api.php:121
-#, fuzzy
-msgid "Fullname : "
-msgstr "Naam"
-
-#: themes/default/index.tpl:95
-msgid "Tribes and tags"
-msgstr ""
-
-#: themes/default/signup.tpl:22
-#, fuzzy
-msgid "Your full name (Will be displayed)"
-msgstr "Vul uw volledige naam of de naam die u wilt tonen"
-
-#: themes/default/index.tpl:114
-#, fuzzy
-msgid "Register"
-msgstr "Inschrijving"
-
-#: themes/default/topbar.tpl:27
-#, fuzzy
-msgid "popular of the week"
-msgstr "Berichten van de week"
 
 #: themes/default/signup.tpl:36 themes/default/contact.tpl:33
 #: admin/manage-moderation.php:109 admin/manage-tagging.php:99
@@ -279,143 +287,149 @@ msgstr "Berichten van de week"
 msgid "Send"
 msgstr "Sturen"
 
-#: themes/default/single.tpl:104
-#, fuzzy
-msgid "No post found"
-msgstr "Geen berichten gevonden"
-
-#: themes/default/posts.tpl:78 themes/default/single.tpl:124
-#: admin/manage-tagging.php:96 admin/manage-feed.php:187
-#: admin/manage-tribe.php:147
-msgid "Comma separated tags (ex: linux,web,event)"
-msgstr ""
-
-#: themes/default/index.tpl:105 themes/default/user/menu.tpl:5
-#: admin/sidebar.php:30 admin/index.php:141
-msgid "Dashboard"
-msgstr "Dashboard"
-
-#: themes/default/single.tpl:79
-#, fuzzy
-msgid "E-mail : "
-msgstr "Email :"
-
-#: themes/default/user/menu.tpl:15
-msgid "Social"
-msgstr ""
-
-#: themes/default/users.tpl:5
-#, fuzzy
-msgid "Show posts of"
-msgstr "Toon berichten van de lid"
-
-#: themes/default/user/menu.tpl:25 themes/default/tags.tpl:3
-#: admin/sidebar.php:42
-msgid "Tribes"
-msgstr ""
-
-#: themes/default/index.tpl:112 themes/default/popup.tpl:28
-#, fuzzy
-msgid "Login"
-msgstr "login"
-
-#: themes/default/popup.tpl:17 auth.php:328
-#, fuzzy
-msgid "I forgot my password"
-msgstr "Bevestig uw wachtwoord:"
-
-#: themes/default/topbar.tpl:42
+#: themes/default/topbar.tpl:43
 #, fuzzy
 msgid "Filter on authors :"
 msgstr "Filteren van de berichten"
-
-#: themes/default/posts.tpl:29
-#, fuzzy
-msgid "See original post"
-msgstr "Filteren van de berichten"
-
-#: themes/default/single.tpl:83 inc/cron_fct.php:287
-msgid "Website : "
-msgstr "Website"
-
-#: themes/default/signup.tpl:12
-msgid ""
-"Discover the background of all what you can do with Bilboplanet. Read, "
-"share, rate, add your own blog"
-msgstr ""
-
-#: themes/default/contact.tpl:28 admin/manage-newsletter.php:175
-msgid "Content"
-msgstr "Inhoud"
 
 #: themes/default/index.tpl:93 charter.php:34
 msgid "Charter"
 msgstr ""
 
-#: themes/default/popup.tpl:8 auth.php:334
-#, fuzzy
-msgid "Username or email"
-msgstr "Gebruikersnaam"
-
-#: themes/default/posts.tpl:48 themes/default/single.tpl:40
+#: themes/default/posts.tpl:50 themes/default/single.tpl:40
 #, fuzzy
 msgid "Viewed :"
 msgstr "Feed:"
 
-#: themes/default/user/menu.tpl:20
-msgid "Write or share"
-msgstr ""
-
-#: themes/default/social.tpl:15
-msgid "Tweeter"
-msgstr ""
-
-#: themes/default/topbar.tpl:33
-msgid "Page :"
-msgstr ""
-
-#: themes/default/signup.tpl:33
-msgid "Captcha"
-msgstr ""
-
-#: themes/default/topbar.tpl:35
-#, fuzzy
-msgid "Search with :"
-msgstr "Zoek"
-
-#: themes/default/single.tpl:11
-#, fuzzy
-msgid "Voir l'article"
-msgstr "Filter berichten"
-
-#: themes/default/contact.tpl:16 admin/manage-post.php:215
-#: admin/manage-logs.php:71
-msgid "Name"
-msgstr "Naam"
-
-#: themes/default/posts.tpl:69 themes/default/single.tpl:115
+#: themes/default/posts.tpl:71 themes/default/single.tpl:115
 #: admin/manage-option.php:56 admin/manage-feed.php:93
 #: admin/manage-feed.php:147 admin/manage-user.php:89
 #: admin/manage-user.php:129 admin/head.php:88 admin/manage-tribe.php:93
 msgid "Close"
 msgstr "Sluit"
 
-#: themes/default/topbar.tpl:30
-#, fuzzy
-msgid "Page status"
-msgstr "Stemmen tabel"
-
 #: themes/default/single.tpl:46 feed.php:271
 #, fuzzy
 msgid "Similar posts"
 msgstr "Filteren van de berichten"
 
-#: themes/default/contact.tpl:24 signup.php:149
-#: admin/manage-moderation.php:102 admin/manage-pendingfeed.php:56
-#: admin/manage-pendingfeed.php:69 admin/manage-selection.php:108
-#: admin/manage-newsletter.php:49 admin/manage-newsletter.php:190
-msgid "Subject"
-msgstr "Onderwerp"
+#: themes/default/single.tpl:75 signup.php:81 user/api/feed_api.php:121
+#, fuzzy
+msgid "Fullname : "
+msgstr "Naam"
+
+#: themes/default/post_tags.tpl:2
+msgid "tags :"
+msgstr ""
+
+#: themes/default/index.tpl:76 themes/default/index.tpl:77
+#: themes/default/index.tpl:78
+msgid "Search"
+msgstr "Zoek"
+
+#: themes/default/contact.tpl:28 admin/manage-newsletter.php:175
+msgid "Content"
+msgstr "Inhoud"
+
+#: themes/default/single.tpl:10 themes/default/single.tpl:22
+#, fuzzy
+msgid "at"
+msgstr "Datum"
+
+#: themes/default/signup.tpl:18
+#, fuzzy
+msgid "Your login"
+msgstr "login"
+
+#: themes/default/topbar.tpl:32
+msgid "Tribe :"
+msgstr ""
+
+#: themes/default/user/menu.tpl:10
+msgid "Profile"
+msgstr ""
+
+#: themes/default/topbar.tpl:38
+#, fuzzy
+msgid "Period of posts :"
+msgstr "Aantal berichten"
+
+#: themes/default/index.tpl:94 tags.php:13 users.php:14
+msgid "Users"
+msgstr "Gebruikers"
+
+#: themes/default/signup.tpl:26 themes/default/contact.tpl:20 signup.php:152
+#: admin/manage-user.php:112 admin/manage-user.php:153
+#: admin/manage-account.php:69 admin/api/manage-pendingfeed_api.php:245
+#: admin/api/manage-account_api.php:37 admin/install/index.php:347
+#: user/api/account_api.php:107
+msgid "Email"
+msgstr "E-mail"
+
+#: themes/default/signup.tpl:30 themes/default/popup.tpl:14 auth.php:338
+#: admin/manage-user.php:116 admin/install/index.php:374
+msgid "Password"
+msgstr "Wachtwoord"
+
+#: themes/default/posts.tpl:30
+#, fuzzy
+msgid "Permalink"
+msgstr "Machtigingen"
+
+#: themes/default/contact.tpl:16 admin/manage-post.php:215
+#: admin/manage-logs.php:71
+msgid "Name"
+msgstr "Naam"
+
+#: themes/default/topbar.tpl:28
+#, fuzzy
+msgid "popular of the week"
+msgstr "Berichten van de week"
+
+#: themes/default/popup.tpl:17 auth.php:328
+#, fuzzy
+msgid "I forgot my password"
+msgstr "Bevestig uw wachtwoord:"
+
+#: themes/default/user/menu.tpl:25 themes/default/tags.tpl:3
+#: admin/sidebar.php:42
+msgid "Tribes"
+msgstr ""
+
+#: themes/default/signup.tpl:11
+#, fuzzy
+msgid "Your Bilboplanet Account"
+msgstr "Uw Bilboplanet"
+
+#: themes/default/posts.tpl:31
+#, fuzzy
+msgid "See original post"
+msgstr "Filteren van de berichten"
+
+#: themes/default/popup.tpl:30
+#, fuzzy
+msgid "register"
+msgstr "Inschrijving"
+
+#: themes/default/social.tpl:15
+msgid "Tweeter"
+msgstr ""
+
+#: themes/default/topbar.tpl:36
+#, fuzzy
+msgid "Search with :"
+msgstr "Zoek"
+
+#: themes/default/posts.tpl:82 themes/default/single.tpl:126
+#: admin/manage-useroption.php:123 admin/api/manage-permissions_api.php:171
+#: admin/api/manage-option_api.php:677
+msgid "Apply"
+msgstr "Aanvragen"
+
+#: themes/default/index.tpl:105 themes/default/user/menu.tpl:5
+#: admin/sidebar.php:30 admin/index.php:141
+msgid "Dashboard"
+msgstr "Dashboard"
 
 #: tpl.php:201
 msgid "Powered by Bilboplanet"
@@ -543,7 +557,7 @@ msgstr ""
 #: signup.php:148
 #, fuzzy, php-format
 msgid ""
-"If you don't recieve any new from the administration team within the 5 days "
+"If you don't recieve any news from the administration team within the 5 days "
 "do not hesitate to contact us via %s with this information :"
 msgstr ""
 "Als u geen nieuws van de administratie team in de 5 dagen heeft ontvangen, "
@@ -2438,7 +2452,7 @@ msgstr ""
 
 #: admin/api/manage-tribe_api.php:112
 #, fuzzy
-msgid "Please select the user to you want to add the tribe"
+msgid "Please select the user that you want to add to the tribe"
 msgstr "Selecteer het bestand dat u wil importeren."
 
 #: admin/api/manage-tribe_api.php:155
@@ -3697,6 +3711,10 @@ msgstr "Bericht gewijgerd met succes"
 #, fuzzy
 msgid "The post is already removed"
 msgstr "Het bericht is al gewijgerd"
+
+#, fuzzy
+#~ msgid "Voir l'article"
+#~ msgstr "Filter berichten"
 
 #~ msgid ""
 #~ "Before to subscribe, do not hesitate to test your RSS/Atom feeds to be "

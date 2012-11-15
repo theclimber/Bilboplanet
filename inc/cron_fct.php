@@ -275,7 +275,7 @@ function getItemsFromFeeds ($rs, $print) {
 				$to = $from;//.','.$rs->user_email;
 				$reply_to = $from;
 
-				$subject = T_("Due to errors, a feed has been disabled on ".$blog_settings->get('planet_title'));
+				$subject = sprintf(T_("Due to errors, a feed has been disabled on %s"),$blog_settings->get('planet_title'));
 				$content = sprintf(T_("The feed of %s has been disabled :\n"), $rs->user_fullname);
 				$content .= $rs->feed_url."\n";
 				$content .= sprintf(T_("The feed was in error during more than %s hours"), $toolong/3600);

@@ -62,6 +62,6 @@ $core->tpl->render("content.users");
 # Show result
 $analytics_code = getAnalyticsCode();
 $core->tpl->setVar('analytics_html', $analytics_code);
-echo $core->tpl->render();
+$core->renderTemplate();
 
 ?>

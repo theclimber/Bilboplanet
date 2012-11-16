@@ -106,5 +106,5 @@ $core->tpl->setVar('nb', array(
 ));
 $core->tpl->setVar('params', $params);
 $core->tpl->render('content.stats');
-echo $core->tpl->render();
+$core->renderTemplate();
 ?>

@@ -137,7 +137,7 @@ if(!$blog_settings->get('planet_subscription')) {
 	$content = "<img src=\"themes/".$blog_settings->get('planet_theme')."/images/closed.png\" />";
 	$core->tpl->setVar('html', $content);
 	$core->tpl->render('content.html');
-	echo $core->tpl->render();
+	$core->renderTemplate();
 	exit;
 }
 else {
@@ -170,7 +170,7 @@ else {
 	$core->tpl->setVar('subscription_content', $content);
 	$core->tpl->setVar('captcha_html', $captcha_html);
 	$core->tpl->render('content.signup');
-	echo $core->tpl->render();
+	$core->renderTemplate();
 
 }
 

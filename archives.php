@@ -83,5 +83,5 @@ if ($iter > 0) {
 
 $core->tpl->setVar('params', $params);
 $core->tpl->render('content.archives');
-echo $core->tpl->render();
+$core->renderTemplate();
 ?>

@@ -79,6 +79,6 @@ $core->tpl->render("content.portal");
 # Show result
 $analytics_code = getAnalyticsCode();
 $core->tpl->setVar('analytics_html', $analytics_code);
-echo $core->tpl->render();
+$core->renderTemplate();
 
 ?>

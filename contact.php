@@ -118,5 +118,5 @@ $core->tpl->setVar('params', $params);
 $core->tpl->setVar('captcha_html', $captcha_html);
 $core->tpl->setVar('form', $form_values);
 $core->tpl->render('content.contact');
-echo $core->tpl->render();
+$core->renderTemplate();
 ?>

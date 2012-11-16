@@ -66,7 +66,7 @@ $core->tpl->setVar('menu', $menu_selected);
 $core->tpl->render('user.menu');
 $core->tpl->render('content.html');
 
-echo $core->tpl->render();
+$core->renderTemplate();
 
 else:
 	$page_url = urlencode(http::getHost().$_SERVER['REQUEST_URI']);

@@ -35,5 +35,5 @@ $error = array(
 );
 $core->tpl->setVar("error", $error);
 $core->tpl->render('content.404');
-echo $core->tpl->render();
+$core->renderTemplate();
 ?>

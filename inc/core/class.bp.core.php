@@ -1111,5 +1111,9 @@ class bpCore
 		}
 	}
 	//@}
+	public function renderTemplate() {
+		echo $this->tpl->render();
+		$this->con->close();
+	}
 }
 ?>

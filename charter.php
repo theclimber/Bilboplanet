@@ -42,6 +42,6 @@ $content = code_htmlentities($content, 'code', 'code', 1);
 $core->tpl->setVar('params', $params);
 $core->tpl->setVar('subscription_content', $content);
 $core->tpl->render('content.charter');
-echo $core->tpl->render();
+$core->renderTemplate();
 
 ?>

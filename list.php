@@ -218,5 +218,5 @@ if (isset($_GET['post_id']) && !empty($_GET['post_id'])){
 # Show result
 $analytics_code = getAnalyticsCode();
 $core->tpl->setVar('analytics_html', $analytics_code);
-echo $core->tpl->render();
+$core->renderTemplate();
 ?>

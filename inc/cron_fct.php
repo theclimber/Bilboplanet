@@ -63,6 +63,8 @@ function update($core, $print=false) {
 	$output .= getItemsFromFeeds($rs, $print);
 	$output .= "</fieldset>";
 
+	$core->con->close();
+
 	# On detruit les fichiers de cache des pages web pour les actualiser
 	$cache_dir = dirname(__FILE__).'/../admin/cache';
 	$dir_handle = @opendir($cache_dir) or die("Unable to open $cache_dir");

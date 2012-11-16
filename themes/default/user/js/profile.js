@@ -1,4 +1,7 @@
 $(document).ready(function() {
+	page_ready();
+});
+function page_ready() {
 	$('form#profile_form').submit(function() {
 		var data = $('form#profile_form').serialize();
 		$.ajax({
@@ -11,7 +14,7 @@ $(document).ready(function() {
 		});
 		return false;
 	});
-});
+}
 
 function rm_feed_tag(feed_id, tag) {
     $.ajax({

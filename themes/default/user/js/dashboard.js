@@ -1,3 +1,4 @@
+function page_ready() {}
 function rm_tag(post_id, tag) {
     $.ajax({
         type: "POST",

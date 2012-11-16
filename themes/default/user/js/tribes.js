@@ -1,5 +1,9 @@
 this.isfilter = false;
 $(document).ready(function() {
+	page_ready();
+});
+
+function page_ready() {
 	this.isfilter=false;
 	$('#addtribe_form').submit(function() {
 		var data = $('#addtribe_form').serialize();
@@ -18,10 +22,10 @@ $(document).ready(function() {
 		});
 		return false;
 	});
-	$("#tribe-list").ready( function() {
+/*	$("#tribe-list").ready( function() {
 		updatePage('tribes', '');
-	});
-});
+	});*/
+}
 
 function toggleTribeVisibility(tribe_id) {
 	$.ajax({

@@ -2372,9 +2372,12 @@ function templateTZform($ptz=false)
         $continents = array_keys($continents);
         foreach($continents as $continent)
             $continents_html.='<option  value="'.$continent.'"'.($pcontinent==$continent?'selected':'').'>'.$continent.'</option>';
-        $cities_html = $cities[$pcontinent];
+		$cities_html = '';
+		if ($pcontinent >= 0 && $pcontinent < count($cities)) {
+			$cities_html = $cities[$pcontinent];
+		}
         $timezone_form = "Continent: <select name=\"continent\" id=\"continent\" onChange=\"onChangecontinent();\">${continents_html}</select><br /><br />";
-        $timezone_form .= "City: <select name=\"city\" id=\"city\">${cities[$pcontinent]}</select><br /><br />";
+        $timezone_form .= "City: <select name=\"city\" id=\"city\">".$cities_html."</select><br /><br />";
         $timezone_js = "<script language=\"JavaScript\">";
         $timezone_js .= "function onChangecontinent(){document.getElementById(\"city\").innerHTML = citiescontinent[document.getElementById(\"continent\").value];}";
         $timezone_js .= "var citiescontinent = ".json_encode($cities).";" ;

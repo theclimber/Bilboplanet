@@ -12,6 +12,7 @@ function updatePage(id, state) {
 			$('div#main-body').html(msg);
 			$('div#main-body').fadeTo('fast', 1, function(){});
 			showFlash(state);
+			page_ready();
 		}
 	});
 }

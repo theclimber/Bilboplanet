@@ -1,4 +1,8 @@
 $(document).ready(function() {
+	page_ready();
+});
+
+function page_ready() {
 	selectChange();
 	if (!$('input#shaarli').is(':checked')) {
 		$('div#shaarli-details').css('display','none');
@@ -46,7 +50,7 @@ $(document).ready(function() {
 			$('input#statusnet-account').attr("disabled", "disabled");
 		}
 	});
-});
+}
 
 function selectChange() {
 	var value = $('select#shaarli-type').attr('value');

@@ -1713,7 +1713,8 @@ function generateUserToken($name,$email,$password) {
 	global $blog_settings;
 	$len = strlen($email.$password);
 	$rand = rand(1,20);
-	$salt = $blog_settings->get('planet_salt');
+	if ($blog_settings != null)
+		$salt = $blog_settings->get('planet_salt');
 	$token = sha1(time().substr($salt,0,$len).substr($name,0,$rand).$password);
 	return $token;
 }

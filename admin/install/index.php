@@ -215,7 +215,7 @@ if ($can_install && !empty($_POST))
 		}
 		$blog_settings->put('planet_version', $p_version, "string");
 		$blog_settings->put('planet_log', 'notice', "string");
-		$blog_settings->put('planet_theme', 'gil-galad', "string");
+		$blog_settings->put('planet_theme', 'default', "string");
 		$blog_settings->put('planet_msg_info', 'BilboPlanet - An Open Source RSS feed aggregator written in PHP.', "string");
 		$blog_settings->put('planet_meta', 'BilboPlanet - An Open Source RSS feed aggregator written in PHP.', "string");
 		$blog_settings->put('planet_keywords', 'feed, flux, rss, bilboplanet, cms, agr&eacute;gateur, aggregator, planet, app, open source, free, linux, xml, development, web, php, mysql', "string");

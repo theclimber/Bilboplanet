@@ -74,12 +74,6 @@ if (!empty($_POST))
 			throw new Exception('<p>'.T_('The Bilboplanet could not be installed.').'</p><ul><li>'.implode('</li><li>',$_e).'</li></ul>');
 		}
 		
-		# Check if bilboplanet is already installed
-		$schema = dbSchema::init($con);
-		if (in_array($DBPREFIX.'feed',$schema->getTables())) {
-			throw new Exception(T_('The Bilboplanet is already installed. Please remove the tables in the database before.'));
-		}
-
 		# Does config.php.default exist?
 		$config_in = dirname(__FILE__).'/../../inc/config.php.default';
 		if (!is_file($config_in)) {
@@ -92,6 +86,9 @@ if (!empty($_POST))
 		}
 		
 		# Creates config.php file
+		$root_url = preg_replace('%/admin/install/wizard.php$%','',$_SERVER['REQUEST_URI']);
+		$planet_url = http::getHost().$root_url;
+
 		$full_conf = file_get_contents($config_in);
 		writeConfigValue('BP_DBHOST',$DBHOST,$full_conf);
 		writeConfigValue('BP_DBUSER',$DBUSER,$full_conf);
@@ -99,7 +96,7 @@ if (!empty($_POST))
 		writeConfigValue('BP_DBNAME',$DBNAME,$full_conf);
 		writeConfigValue('BP_DBPREFIX',strtolower($DBPREFIX),$full_conf);
 		writeConfigValue('BP_DBENCRYPTED_PASSWORD','1',$full_conf);
-		writeConfigValue('BP_PLANET_URL',http::getHost().$root_url,$full_conf);
+		writeConfigValue('BP_PLANET_URL',$planet_url,$full_conf);
 
 		$fp = @fopen(BP_CONFIG_PATH,'wb');
 		if ($fp === false) {
@@ -109,6 +106,14 @@ if (!empty($_POST))
 		fclose($fp);
 		chmod(BP_CONFIG_PATH, 0775);
 		#chmod(BP_CONFIG_PATH, 0666);
+		
+		# Check if bilboplanet is already installed
+		$schema = dbSchema::init($con);
+		if (in_array($DBPREFIX.'feed',$schema->getTables())) {
+			throw new Exception(sprintf(T_('The Bilboplanet is already installed. Please remove the tables in the database before.
+				</br> If you want to keep the content of the database, you can also update the database by launching the updating script : %s'),
+				'<a href="'.$planet_url.'/inc/upgrade_db.php">'.T_('Run script').'</a>'));
+		}
 
 		$con->close();
 		http::redirect('index.php?wiz=1');

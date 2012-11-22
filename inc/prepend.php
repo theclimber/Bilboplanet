@@ -70,8 +70,17 @@ if (isset($_SERVER['BP_CONFIG_PATH'])) {
 
 if (!is_file(BP_CONFIG_PATH))
 {
-	$url = 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'].$_SERVER['REQUEST_URI']."admin/install/";
-	header("Location: ".$url,TRUE,302);
+	$install_path = "admin/install/";
+	$length = strlen($install_path);
+	if (substr($_SERVER['REQUEST_URI'], -$length) !== $install_path) {
+
+		$root_url = preg_replace('%\?.*%','',$_SERVER['REQUEST_URI']);
+		$url = 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'].$root_url.$install_path;
+//		print $url;
+		header("Location: ".$url,TRUE,302);
+	} else {
+		print T_('Impossible to detect configuration file : ').BP_CONFIG_PATH;
+	}
 	exit();
 }
 

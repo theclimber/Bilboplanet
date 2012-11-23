@@ -200,9 +200,11 @@ if(isset($_POST['action'])) {
 		$site_id = trim($_POST['site_id']);
 		$rs2 = $core->con->select("SELECT * FROM ".$core->prefix."site WHERE site_id = '$site_id'");
 		$rs = $core->con->select("SELECT feed_id FROM ".$core->prefix."feed WHERE site_id = '$site_id'");
-		while($rs->fetch()) {
-			$core->con->execute("DELETE FROM ".$core->prefix."post WHERE feed_id ='$rs->feed_id'");
-			$core->con->execute("DELETE FROM ".$core->prefix."feed WHERE feed_id ='$rs->feed_id'");
+		if ($rs->count() >0) {
+			while($rs->fetch()) {
+				$core->con->execute("DELETE FROM ".$core->prefix."post WHERE feed_id ='$rs->feed_id'");
+				$core->con->execute("DELETE FROM ".$core->prefix."feed WHERE feed_id ='$rs->feed_id'");
+			}
 		}
 		$core->con->execute("DELETE FROM ".$core->prefix."site WHERE site_id ='$site_id'");
 		print '<div class="flash_notice">'.sprintf(T_("Delete of site %s succeeded"),$rs2->f('site_url')).'</div>';

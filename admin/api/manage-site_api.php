@@ -202,7 +202,7 @@ if(isset($_POST['action'])) {
 		$rs = $core->con->select("SELECT feed_id FROM ".$core->prefix."feed WHERE site_id = '$site_id'");
 		if ($rs->count() >0) {
 			while($rs->fetch()) {
-				$core->con->execute("DELETE FROM ".$core->prefix."post WHERE feed_id ='$rs->feed_id'");
+//				$core->con->execute("DELETE FROM ".$core->prefix."post WHERE feed_id ='$rs->feed_id'");
 				$core->con->execute("DELETE FROM ".$core->prefix."feed WHERE feed_id ='$rs->feed_id'");
 			}
 		}

@@ -397,13 +397,15 @@ elseif ($can_install && $step == 1)
 	'<h3>'.T_('Your account').'</h3>'.
 	'<ul>'.
 	'<li>'.T_('Username:').' <strong>'.html::escapeHTML($u_login).'</strong></li>'.
-	'<li>'.T_('Password:').' <strong>'.html::escapeHTML($u_pwd).'</strong></li>'.
+//	'<li>'.T_('Password:').' <strong>'.html::escapeHTML($u_pwd).'</strong></li>'.
 	'</ul>'.
 
 	'<h3>'.T_('Your Bilboplanet').'</h3>'.
 	'<ul>'.
-	'<li>'.T_('URL of the BilboPlanet:').' <strong>'.html::escapeHTML($bpPath).'</strong></li>'.
-	'<li>'.T_('Administration interface:').' <strong>'.html::escapeHTML($adminPath).'</strong></li>'.
+	'<li>'.T_('URL of the BilboPlanet:').' <a href="'.html::escapeHTML($bpPath).'">
+		<strong>'.html::escapeHTML($bpPath).'</strong></a></li>'.
+	'<li>'.T_('Administration interface:').' <a href="'.html::escapeHTML($adminPath).'">
+		<strong>'.html::escapeHTML($adminPath).'</strong></a></li>'.
 	'</ul>'.
 
 	'<form action="'.html::escapeHTML($adminPath).'" method="post">'.

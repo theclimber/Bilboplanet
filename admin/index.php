@@ -94,7 +94,7 @@ function showBlogLastArticles() {
 			if ($itemlimit==4) {
 				break;
 			}
-			$content .= '<li>'.$item->get_date('j F Y - g:i a').' : ';
+			$content .= '<li>'.$item->get_date('j/m/y').' : ';
 			$content .= '<a class="tips" rel="'.$item->get_title().'" href="'.$item->get_permalink().'" target="_blank">'.$item->get_title().'</a>';
 			$content .= '</li>';
 			$itemlimit = $itemlimit + 1;

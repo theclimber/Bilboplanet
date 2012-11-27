@@ -1,7 +1,7 @@
 <!-- [post social buttons] -->
 <ul>
 <!-- BEGIN social.statusnet -->
-<li><iframe height="32" width="32" scrolling="no" frameborder="0" src="{$planet.url}/api/identishare.php?post_id={$post.id}&title={$post.title}&height=32&nocount" border="0" marginheight="0" marginwidth="0" allowtransparency="true" class="identishare">
+<li><iframe height="32" width="32" scrolling="no" frameborder="0" src="{$planet.url}/api/identishare.php?post_id={$post.id}&title={$stripped_title}&height=32&nocount" border="0" marginheight="0" marginwidth="0" allowtransparency="true" class="identishare">
 <div id="identishare" style="vertical-align: bottom;"></div>
 <script type="text/javascript" src="{$planet.url}/api/identishare.php?post_id={$post.id}" defer="defer"></script>
 </iframe></li>

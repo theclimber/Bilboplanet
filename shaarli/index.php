@@ -4,11 +4,11 @@ Added for matching with bilboplanet
 */
 require_once(dirname(__FILE__).'/../inc/prepend.php');
 $username = '';
-if (!empty($_GET) && $_GET['user'] != '') {
-	$username = trim($_GET['user']);
-}
 if ($core->auth->sessionExists()) {
 	$username = $core->auth->userID();
+}
+if (!empty($_GET) && $_GET['user'] != '') {
+	$username = trim($_GET['user']);
 }
 $errors = array();
 if ($username != '') {

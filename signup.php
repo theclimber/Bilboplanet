@@ -84,6 +84,8 @@ if(isset($_POST) && isset($_POST['submit'])){
 			$msg .= "\n\n".T_("Please validate your account by going on the following link :");
 			$msg .= "\n".$validation_url;
 			$msg .= "\n\n".T_("NOTE: the link will expire in 3 days.");
+			$msg .= "\n\n".T_("Thank you");
+			$msg .= "\n".$blog_settings->get('author');
 			# TODO : the mail should contain a special token to signup
 
 			# Send email to new user to confirm email

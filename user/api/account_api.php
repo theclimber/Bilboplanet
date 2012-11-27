@@ -59,12 +59,14 @@ if(isset($_GET['action'])) {
 			$to = $rs_user->f('user_email');
 
 			$msg .= sprintf(T_("Dear %s,"), $rs_user->f('user_fullname'));
-			$msg .= T_("Congratulations ! Your account was created and validated. You are now able to connnect on the planet and to change your settings. Feel free to do so and discover all the nice features that you can enable for a better surf!");
+			$msg .= "\n\n".T_("Congratulations ! Your account was created and validated. You are now able to connnect on the planet and to change your settings. Feel free to do so and discover all the nice features that you can enable for a better surf!");
 			$msg .= "\n- ".T_("Change your user settings");
-			$msg .= "\n- ".T_("Enable the social networks links that you want to use (Google+, Twitter, Shaarli");
+			$msg .= "\n- ".T_("Enable the social networks links that you want to use (Google+, Twitter, Shaarli)");
 			$msg .= "\n- ".T_("Share your blog and your feeds");
 			$msg .= "\n- ".T_("Add tags on your post blogs to get them in the right tribes");
 			$msg .= "\n- ".T_("Create your own tribes and personalised filtered feeds");
+			$msg .= "\n".T_("To login into your account, go on the following page : ");
+			$msg .= $blog_settings->get('planet_url')."/auth.php";
 			$msg .= "\n\n".T_("We hope you'll enjoy being on this planet and being part of our community.");
 			$msg .= "\n\n".T_("Thank you");
 			$msg .= "\n".$blog_settings->get('author');

@@ -819,6 +819,7 @@ function showSinglePost($rs, $tpl, $search_value, $multiview=true, $strip_tags=f
 			$tpl->render('social.google');
 		}
 		if ($user_settings->get("social.statusnet")) {
+			$tpl->setVar('stripped_title', urlencode($rs->f('title')));
 			$tpl->render('social.statusnet');
 		}
 	}

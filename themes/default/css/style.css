@@ -366,6 +366,7 @@ h1.post-title, h1.post-title a{
     color:#464646;
     text-decoration:none;
     padding-bottom:10px;
+	font-size:1.2em;
 }
 .alignleft {
 	float:left;
@@ -1055,7 +1056,7 @@ div.bio{
     margin-bottom: 20px;
     color: #505050;
 }
-#author, #email, #url, #comment, #name, #feed, #fullname {
+#author, #email, #url, #comment, #name, #feed, #fullname, #pass {
 /*    margin-top: 10px;
     background:url("../images/search-bg.png") repeat-x scroll left top white;
     -moz-border-radius:5px;

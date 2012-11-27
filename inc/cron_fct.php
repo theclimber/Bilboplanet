@@ -280,7 +280,7 @@ function getItemsFromFeeds ($rs, $print) {
 				$subject = sprintf(T_("Due to errors, a feed has been disabled on %s"),$blog_settings->get('planet_title'));
 				$content = sprintf(T_("The feed of %s has been disabled :\n"), $rs->user_fullname);
 				$content .= $rs->feed_url."\n";
-				$content .= sprintf(T_("The feed was in error during more than %s hours"), $toolong/3600);
+				$content .= sprintf(T_("The feed was in error during more than %s minutes"), $diff);
 				$content .= "\n\n".T_("Details :");
 				$content .= "\n".T_("User id : ").$rs->user_id;
 				$content .= "\n".T_("User name : ").$rs->user_fullname;

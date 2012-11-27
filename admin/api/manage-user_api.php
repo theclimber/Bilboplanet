@@ -239,6 +239,12 @@ if(isset($_POST['action'])) {
 				$cur->modified = array(' NOW() ');
 				$cur->update("WHERE user_id = '$user_id'");
 
+				$user_perms = $core->getUserRolePermissions($user_id);
+				if ($user_perms->{'role'} == "god") {
+					$blog_settings->put('author_mail', $new_email['value'], "string");
+					$blog_settings->put('author', $new_fullname['value'], "string");
+				}
+
 				$output = sprintf(T_("User %s successfully updated"),$new_id['value']);
 			}
 		} else {

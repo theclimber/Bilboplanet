@@ -1,5 +1,5 @@
 
-	<div id="logo" title="Share your links !" onclick="document.location='{$planet_url}';"></div>
+<div id="logo" title="Back to Bilboplanet !" onclick="document.location='{$planet_url}';"><span class="page-title">{$planet_title}</span></div>
     <div style="float:right; font-style:italic; color:#bbb; text-align:right; padding:0 5 0 0;" class="nomobile">Shaare your links...<br>{$linkcount} links</div>
     <span id="shaarli_title"><a href="?">{$shaarlititle}</a></span>
 
@@ -11,7 +11,7 @@
     {elseif="$GLOBALS['config']['OPEN_SHAARLI']"}
         <a href="?do=tools">Outils</a><a href="?do=addlink"><b>Ajouter un lien</b></a>
     {else}
-		<a href="{$planet_url}/auth.php?came_from={$planet_url}shaarli/index.php">Identification</a>
+		<a href="{$planet_url}/auth.php?came_from={$planet_url}/shaarli/index.php">Identification</a>
     {/if}
     <a href="?do=tagcloud">Nuage de tags</a>
     <a href="?do=picwall{$searchcrits}">Mur de photos</a>

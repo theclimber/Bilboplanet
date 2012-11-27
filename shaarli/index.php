@@ -4,11 +4,11 @@ Added for matching with bilboplanet
 */
 require_once(dirname(__FILE__).'/../inc/prepend.php');
 $username = '';
-if ($core->auth->sessionExists()) {
-	$username = $core->auth->userID();
-}
 if (!empty($_GET) && $_GET['user'] != '') {
 	$username = trim($_GET['user']);
+}
+if ($core->auth->sessionExists()) {
+	$username = $core->auth->userID();
 }
 $errors = array();
 if ($username != '') {
@@ -342,10 +342,10 @@ function check_auth($login,$password)
 // Returns true if the user is logged in.
 function isLoggedIn()
 {
-	global $core;
+	global $core, $username;
     if ($GLOBALS['config']['OPEN_SHAARLI']) return true;
 
-	if ($core->auth->sessionExists()) {
+	if ($core->auth->sessionExists() && $username == $core->auth->userID()) {
 		return true;
 	}
 	return false;
@@ -669,6 +669,7 @@ class pageBuilder
         if (!empty($GLOBALS['pagetitle'])) $this->tpl->assign('pagetitle',$GLOBALS['pagetitle']);
         $this->tpl->assign('shaarlititle',empty($GLOBALS['title']) ? 'Shaarli': $GLOBALS['title'] );
 		$this->tpl->assign('planet_url',BP_PLANET_URL);
+		$this->tpl->assign('planet_title',$blog_settings->get('planet_title'));
         return;
     }
 
@@ -2040,7 +2041,7 @@ function buildLinkList($PAGE,$LINKSDB)
         $search_crits=explode(' ',trim($_GET['searchtags']));
         $search_type='tags';
     }
-    elseif (isset($_SERVER['QUERY_STRING']) && preg_match('/[a-zA-Z0-9-_@]{6}(&.+?)?/',$_SERVER['QUERY_STRING'])) // Detect smallHashes in URL
+    elseif (isset($_SERVER['QUERY_STRING']) && preg_match('/[a-zA-Z0-9-_@]{6}(&.+?)?/',$_SERVER['QUERY_STRING']) && !isset($_GET['user'])) // Detect smallHashes in URL
     {
         $linksToDisplay = $LINKSDB->filterSmallHash(substr(trim($_SERVER["QUERY_STRING"], '/'),0,6));
         if (count($linksToDisplay)==0)
@@ -2373,7 +2374,7 @@ function templateTZform($ptz=false)
         foreach($continents as $continent)
             $continents_html.='<option  value="'.$continent.'"'.($pcontinent==$continent?'selected':'').'>'.$continent.'</option>';
 		$cities_html = '';
-		if ($pcontinent >= 0 && $pcontinent < count($cities)) {
+		if (count($cities) > 0 && $pcontinent >= 0 && $pcontinent < count($cities)) {
 			$cities_html = $cities[$pcontinent];
 		}
         $timezone_form = "Continent: <select name=\"continent\" id=\"continent\" onChange=\"onChangecontinent();\">${continents_html}</select><br /><br />";

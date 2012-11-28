@@ -2381,7 +2381,7 @@ function templateTZform($ptz=false)
         foreach($continents as $continent)
             $continents_html.='<option  value="'.$continent.'"'.($pcontinent==$continent?'selected':'').'>'.$continent.'</option>';
 		$cities_html = '';
-		if (count($cities) > 0 && $pcontinent >= 0 && $pcontinent < count($cities)) {
+		if (array_key_exists($pcontinent,$cities)) {
 			$cities_html = $cities[$pcontinent];
 		}
         $timezone_form = "Continent: <select name=\"continent\" id=\"continent\" onChange=\"onChangecontinent();\">${continents_html}</select><br /><br />";

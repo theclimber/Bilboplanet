@@ -10,6 +10,9 @@ if ($core->auth->sessionExists()) {
 if (!empty($_GET) && $_GET['user'] != '') {
 	$username = trim($_GET['user']);
 }
+if ($username == '') {
+	$username = $blog_settings->get('author_id');
+}
 $errors = array();
 if ($username != '') {
 	$rs_user = $core->con->select("SELECT user_id FROM ".$core->prefix."user WHERE user_id='".$username."'");
@@ -120,6 +123,10 @@ if ($core->auth->sessionExists() && $username == $core->auth->userID()) {
 	if (!is_file($GLOBALS['config']['CONFIG_FILE'])) install();
 }
 
+if (!is_file($GLOBALS['config']['CONFIG_FILE'])) {
+	print T_("Shaarli is not installed on this server");
+	exit;
+}
 require $GLOBALS['config']['CONFIG_FILE'];  // Read login/password hash into $GLOBALS.
 
 // Handling of old config file which do not have the new parameters.

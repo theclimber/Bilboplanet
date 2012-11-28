@@ -421,7 +421,7 @@ msgstr "Votre compte sur le Bilboplanet"
 
 #: themes/default/posts.tpl:31
 msgid "See original post"
-msgstr "Afficher l'article originel :"
+msgstr "Afficher l'article originel"
 
 #: themes/default/popup.tpl:30
 msgid "register"

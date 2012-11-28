@@ -50,7 +50,7 @@ if(isset($_POST) && isset($_POST['submit'])) {
 	$author = check_field(T_('Contact Name'), trim($_POST['planet_author']), 'not_empty');
 	$planet_author_jabber = trim($_POST['planet_author_jabber']);
 	$planet_author_im = trim($_POST['planet_author_im']);
-	$planet_author_about = htmlentities(trim($_POST['planet_author_about']));
+	$planet_author_about = htmlentities($_POST['planet_author_about'],ENT_QUOTES,mb_detect_encoding($_POST['planet_author_about']));
 
 	if ($email['success'] && $url['success'] && $author['success']){
 		$planet_author_mail = $email['value'];
@@ -118,7 +118,7 @@ include_once(dirname(__FILE__).'/sidebar.php');
 		<input type="text" name="planet_author_im" class="input" size="60" value="<?php echo $planet_author_im; ?>" /><br /><br />
 
 		<?php echo T_('About Me');?><br />
-		<textarea type="text" name="planet_author_about" class="cadre_about" rows="10" value="<?php echo $planet_author_about; ?>" /><?php echo $planet_author_about; ?></textarea><br /><br />
+		<textarea type="text" name="planet_author_about" class="cadre_about" rows="10" /><?php echo $planet_author_about; ?></textarea><br /><br />
 
 		<div class="button"><input type="submit" class="valide" name="submit" value="<?php echo T_('Apply'); ?>"/></div>
 	</form>

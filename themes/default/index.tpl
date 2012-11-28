@@ -49,7 +49,12 @@
 			<!-- Logo -->
 			<div id="logo">
 				<!-- BEGIN sidebar.action -->
-				<div id="show-hide"><a href="javascript:showSidebar()"><img title="{_Hide sidebar}" src="javascript/sidebar-hide.png" /></a></div>
+				<div id="show-hide">
+					<a href="javascript:showSidebar()">
+						<img id="hide-sidebar-button" title="{_Hide sidebar}" src="{$planet.url}/themes/{$planet.theme}/images/sidebar-hide.png" />
+						<img id="show-sidebar-button" title="{_Show sidebar}" src="{$planet.url}/themes/{$planet.theme}/images/sidebar-show.png" style="display:none;"/>
+					</a>
+				</div>
 				<!-- END sidebar.action -->
 				<a href="{$planet.url}"><img alt="{$planet.title}" src="{$planet.url}/themes/{$planet.theme}/images/logo.png" id="logo" /></a>
 				<a href="{$planet.url}" id="planet-title" title="{$planet.desc}">{$planet.title}</a>

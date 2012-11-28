@@ -11,6 +11,7 @@ function getExtension(str) {
 	return str.substring(str.length-4,str.length)
 }
 
+this.sidebar_hidden = 0;
 $(document).ready(function() {
 	var allPageTags = new Array();
 	var allPageTags=document.getElementsByClassName("post");
@@ -66,6 +67,7 @@ $(document).ready(function() {
 		'transitionOut'	: 'elastic'
 	});
 
+	detectSmartPhone()
 
 	/*
 	$('div#header-bg').click(function () {
@@ -210,4 +212,40 @@ function hide_post_info(post_id) {
 	var div = $('div#'+post_id).find('div.postbox');
 	$(div).fadeTo('slow', 0, function(){});
 //	$(div).css('display','none');
+}
+
+function showSidebar() {
+	if (this.sidebar_hidden == 1) {
+		this.sidebar_hidden = 0;
+		$('#tribes-bg').css('display','block');
+		$('.content').css('margin-left','250px');
+		$('img#show-sidebar-button').css('display','none');
+		$('img#hide-sidebar-button').css('display','');
+	} else {
+		this.sidebar_hidden = 1;
+		$('#tribes-bg').css('display','none');
+		$('.content').css('margin-left','0px');
+		$('img#show-sidebar-button').css('display','');
+		$('img#hide-sidebar-button').css('display','none');
+	}
+}
+function detectSmartPhone() {
+	var uagent = navigator.userAgent.toLowerCase();
+	switch(uagent) {
+	case 'android':
+		showSidebar();
+		break;
+	case 'iphone':
+		showSidebar();
+		break;
+	case 'ipod':
+		showSidebar();
+		break;
+	case 'blackberry':
+		showSidebar();
+		break;
+	case 'palm':
+		showSidebar();
+		break;
+	}
 }

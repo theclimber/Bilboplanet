@@ -295,6 +295,14 @@ function getNbVotes($con, $user_id = null) {
 	return $rs->f('nb');
 }
 
+# Fonction qui retourne le nombre de flux en attente
+function getNbPendingFeed() {
+	global $core;
+	$sql = 'SELECT COUNT(1) as nb FROM '.$core->prefix.'pending_feed WHERE 1';
+	$rs = $core->con->select($sql);
+	return $rs->f('nb');
+}
+
 function getUserSite($user_id) {
 	global $core;
 	$sql = "SELECT site_url
@@ -813,6 +821,8 @@ function showSinglePost($rs, $tpl, $search_value, $multiview=true, $strip_tags=f
 			$tpl->render('social.twitter');
 		}
 		if ($user_settings->get("social.shaarli")) {
+			$simple_title = $post['title'];
+			$tpl->setVar('stripped_title', addslashes($simple_title));
 			$tpl->render('social.shaarli');
 		}
 		if ($user_settings->get("social.google")) {

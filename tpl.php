@@ -187,7 +187,8 @@ if ($user_settings != null) {
 		$core->tpl->render('social.google.script');
 	}
 	if ($user_settings->get('social.shaarli')) {
-		$core->tpl->setVar('shaarli_instance', $user_settings->get('social.shaarli.instance'));
+		//$core->tpl->setVar('shaarli_instance', $user_settings->get('social.shaarli.instance'));
+		$core->tpl->setVar('shaarli_instance', $blog_settings->get('planet_url').'/shaarli');
 		$core->tpl->render('social.shaarli.script');
 	}
 	if ($user_settings->get('social.twitter')) {

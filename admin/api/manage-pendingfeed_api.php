@@ -137,7 +137,6 @@ if(isset($_POST['action'])) {
 
 		$subject = html_entity_decode(stripslashes($_POST['subject']), ENT_QUOTES, 'UTF-8');
 		$content = html_entity_decode(stripslashes($_POST['content']), ENT_QUOTES, 'UTF-8');
-
 		if (!sendmail($from, $to, $subject, $content, 'normal', $reply_to)) {
 			$error[] = T_("Mail could not be send");
 		} else {

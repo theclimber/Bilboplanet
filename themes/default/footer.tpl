@@ -34,13 +34,13 @@
 
 <!-- BEGIN social.shaarli.script -->
 <script type="text/javascript">
-function shaare(id) {
+function shaare(id,title) {
 	var url = '{$planet.url}/?post_id='+id;
-	var title = url;
+//	var title = url;
 	window.open(
 		'{$shaarli_instance}/index.php?post=' +
 		encodeURIComponent(url)+'&title=' +
-		encodeURIComponent(title)+'&source=bookmarklet',
+		title+'&source=bookmarklet',
 		'_blank',
 		'menubar=no,height=390,width=600,toolbar=no,scrollbars=no,status=no'
 		);

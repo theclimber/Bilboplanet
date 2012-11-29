@@ -27,10 +27,21 @@ function refusePendingFeed(pUserId, siteUrl, feedUrl, userEmail, userFullname) {
 			$('#refuse-subscription-form #content').text(msg);
 			var content = $('#refuse-subscription-form form').clone();
 			Boxy.askform(content, function(val) {
+				var datav = content.serialize().split('&');
+				var fsubject = datav[1].split('=')[1];
+				var fcontent = datav[2].split('=')[1];
 				$.ajax({
 					type: "POST",
 					url: "api/",
-					data : {'ajax' : 'pendingfeed', 'action': 'refuse', 'puserid': pUserId, 'useremail': userEmail, 'feed_url' : feedUrl},
+					data : {
+						'ajax' : 'pendingfeed',
+						'action': 'refuse',
+						'puserid': pUserId,
+						'useremail': userEmail,
+						'feed_url' : feedUrl,
+						'subject': fsubject,
+						'content': fcontent
+					},
 					success: function(msg){
 						$('#flash-msg').html('');
 						$('#flash-log').css('display','');
@@ -54,15 +65,28 @@ function acceptPendingFeed(pUserId, siteUrl, feedUrl, userEmail, userFullname) {
 		type: "POST",
 		url: "api/",
 		data : {'ajax' : 'pendingfeed', 'action': 'emailText', 'userfullname': userFullname, 'feedurl': feedUrl, 'type': 'accept'},
-			success: function(msg){
-				$('#accept-subscription-form #content').text(msg);
-				var content = $('#accept-subscription-form form').clone();
-				Boxy.askform(content, function(val) {
-					$.ajax({
-						type: "POST",
-						url: "api/",
-						data : {'ajax' : 'pendingfeed', 'action': 'accept', 'puserid': pUserId, 'useremail': userEmail, 'userfullname': userFullname, 'siteurl': siteUrl, 'feedurl': feedUrl},
-						success: function(msg){
+		success: function(msg){
+			$('#accept-subscription-form #content').text(msg);
+			var content = $('#accept-subscription-form form').clone();
+			Boxy.askform(content, function(val) {
+				var datav = content.serialize().split('&');
+				var fsubject = datav[1].split('=')[1];
+				var fcontent = datav[2].split('=')[1];
+				$.ajax({
+					type: "POST",
+					url: "api/",
+					data : {
+						'ajax' : 'pendingfeed',
+						'action': 'accept',
+						'puserid': pUserId,
+						'useremail': userEmail,
+						'userfullname': userFullname,
+						'siteurl': siteUrl,
+						'feedurl': feedUrl,
+						'subject': fsubject,
+						'content': fcontent
+					},
+					success: function(msg){
 						$('#flash-msg').html('');
 						$('#flash-log').css('display','');
 						$('#flash-msg').removeClass('ajax-loading');
@@ -70,7 +94,7 @@ function acceptPendingFeed(pUserId, siteUrl, feedUrl, userEmail, userFullname) {
 						$(msg).flashmsg();
 					}
 				});
-			return false;
+				return false;
 			});
 		}
 	});

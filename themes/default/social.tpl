@@ -8,7 +8,7 @@
 <!-- END social.statusnet -->
 
 <!-- BEGIN social.shaarli -->
-<li><a class="social-shaarli-button" href="javascript:shaare({$post.id})"><img width=32 src="{$planet.url}/themes/{$planet.theme}/user/images/social.png"></a></li>
+<li><a class="social-shaarli-button" href="javascript:shaare({$post.id},'{$stripped_title}')"><img width=32 src="{$planet.url}/themes/{$planet.theme}/user/images/social.png"></a></li>
 <!-- END social.shaarli -->
 
 <!-- BEGIN social.twitter -->

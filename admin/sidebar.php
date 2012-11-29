@@ -22,6 +22,7 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 *
 ***** END LICENSE BLOCK *****/
+$pendingfeed = getNbPendingFeed();
 ?>
 <div id="bp_pannel">
 	<h2 class="toggler headbar bdinbox"><?php echo T_('Common'); ?></h2>
@@ -45,7 +46,13 @@
 				<a href="manage-user.php" class="tips" rel="<?php echo T_('Manage users');?>." id="members" ><?php echo T_('Manage users');?></a>
 			</li>
 			<li>
-				<a href="manage-pendingfeed.php" class="tips" rel="<?php echo T_('Pending feeds');?>." id="pendingfeed" ><?php echo T_('Pending feeds');?></a>
+				<a href="manage-pendingfeed.php" class="tips" rel="<?php echo T_('Pending feeds');?>." id="pendingfeed" ><?php echo T_('Pending feeds');?> 
+<?php 
+if ($pendingfeed > 0) {
+	echo '<span class="pending-nbr">'.$pendingfeed.'</span>';
+}
+?>
+</a>
 			</li>
 			<li>
 				<a href="manage-feed.php" class="tips" rel="<?php echo T_('Manage feeds');?>." id="feed" ><?php echo T_('Manage feeds');?></a>

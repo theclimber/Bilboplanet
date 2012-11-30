@@ -44,6 +44,9 @@ include_once(dirname(__FILE__).'/sidebar.php');
 	<div id="flash-msg"><!-- spanner --></div>
 </div>
 
+<div id="add-user-form" class="button br3px" style="padding: 5px;"><a onclick="javascript:openUserAdd()">
+	<?php echo T_('Add an user'); ?></a>
+</div>
 <div class="button br3px" id="add-form"><a onclick="javascript:openAdd()">
 	<?php echo T_('Add a feed'); ?></a>
 </div>
@@ -52,6 +55,45 @@ include_once(dirname(__FILE__).'/sidebar.php');
 </div></p>
 </p>
 
+<fieldset id="adduser-field" style="display:none"><legend><?php echo T_('Add an user');?></legend>
+	<div class="message">
+		<p><?php echo T_('To add a new member, fill out the form below.');?></p>
+	</div><br />
+
+<?php
+echo
+'<form id="adduser_form">'.
+
+'<label class="required" for="user_id">'.T_('User id').' : '.
+form::field('user_id',30,255,html::escapeHTML(""), 'input').'</label>
+<span class="description">'.T_('ex: Frankenstein').'</span><br />'.
+
+'<label for="fullname">'.T_('Fullname').' : '.
+form::field('fullname',30,255,html::escapeHTML(""), 'input').'</label>
+<span class="description">'.T_('ex: Jean Dupont').'</span><br />'.
+
+'<label class="required" for="email">'.T_('Email').' : '.
+form::field('email',30,255,html::escapeHTML(""), 'input').'</label>
+<span class="description">'.T_('ex: xxx@yyy.zzz').'</span><br />'.
+
+'<label class="required" for="password">'.T_('Password').' : '.
+form::password('password',30,255, '', 'input').'</label>
+<span class="description">'.T_('Minimum 4 chars').'</span><br />'.
+
+'<label class="required" for="password2">'.T_('Confirm password').' : '.
+form::password('password2',30,255, '', 'input').'</label><br />'.
+
+'<label class="required" for="site">'.T_('Website (Optional)').' : '.
+form::field('site',30,255,html::escapeHTML(), 'input').'</label>
+<span class="description">'.T_('ex: http://www.example.com').'</span><br /><br />'.
+
+'<div class="button br3px"><input type="reset" class="reset" name="reset" onClick="this.form.reset()" value="'.T_('Reset').'"></div>&nbsp;&nbsp;'.
+'<div class="button br3px"><input type="submit" name="add_user" class="add_user" value="'.T_('Add').'" /></div>'.
+'<div class="button br3px close-button"><a class="close" onclick="javascript:closeUserAdd()">'.T_('Close').'</a></div>'.
+'</form>';
+?>
+
+</fieldset>
 
 <fieldset id="filterfeed-field" style="display:none"><legend><?php echo T_('Filter');?></legend>
 	<br/>
@@ -79,6 +121,7 @@ $status['-- '.T_('All').' --'] = "all";
 if ($blog_settings->get('auto_feed_disabling')){
 	$status[T_('Auto disabled feeds')] = 2;
 }
+
 echo
 '<form id="filterfeed_form">'.
 

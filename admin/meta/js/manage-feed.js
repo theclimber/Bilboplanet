@@ -28,10 +28,39 @@ $(document).ready(function() {
 		});
 		return false;
 	});
+	$('#adduser_form').submit(function() {
+		var data = $('#adduser_form').serialize();
+		var user_id = $('#adduser_form input#user_id').val();
+		var user_fn = $('#adduser_form input#fullname').val();
+		$('#flash-log').css('display','');
+		$('#flash-msg').addClass('ajax-loading');
+		$('#flash-msg').html('Loading');
+		$.ajax({
+			type: "POST",
+			url: "api/",
+			data: 'ajax=user&action=add&'+data,
+			success: function(msg){
+				$('#adduser-field').css('display', 'none');
+				$('#adduser_form').find('input[type=text], input[type=password]').val('');
+				updateUserList();
+				addUserToCombo(user_id,user_fn);
+				$('#flash-msg').removeClass('ajax-loading');
+				$('#flash-log').css('display', 'none');
+				$(msg).flashmsg();
+			}
+		});
+		return false;
+	});
 	$("#feed-list").ready( function() {
 		updateFeedList();
 	});
 });
+
+function addUserToCombo(user_id, user_fullname) {
+	var html = '<option value="'+user_id+'">'+user_fullname+'</option>';
+	$('select#user_id').append(html);
+//	console.debug(user_id+" "+user_fullname);
+}
 
 
 function updateFilterList() {
@@ -204,8 +233,16 @@ function openAdd() {
 	jQuery('#addfeed-field').css('display', '');
 }
 
+function openUserAdd() {
+	jQuery('#adduser-field').css('display', '');
+}
+
 function closeAdd() {
 	jQuery('#addfeed-field').css('display', 'none');
+}
+
+function closeUserAdd() {
+	jQuery('#adduser-field').css('display', 'none');
 }
 
 function openFilter() {

@@ -387,24 +387,25 @@ div#filter-form a{
 	padding-left:20px;
 	padding-bottom:10px;
 }
-div#filter-form a:hover, div#add-form a:focus {
-text-decoration:underline;
+div#filter-form a:hover {
+	text-decoration:underline;
 }
-div#add-form {
+div#add-form a:hover, div#add-form a:focus, div#add-user-form a:focus, div#add-user-form a:hover {
+	text-decoration:underline;
+}
+div#add-form, div#add-user-form {
 	padding: 5px;
 	margin: 5px;
 	margin-bottom:30px;
 }
-div#add-form a{
+div#add-form a, div#add-user-form a{
 	text-decoration:none;
 	background-image:url(../icons/action-add.png);
 	background-repeat:no-repeat;
 	padding-left:20px;
 	padding-bottom:10px;
 }
-div#add-form a:hover, div#add-form a:focus {
-text-decoration:underline;
-}
+
 
 .close-button {
 	float: right;

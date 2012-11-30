@@ -43,8 +43,9 @@ if ($core->auth->sessionExists() && isset($_POST) && isset($_POST['num_article']
 	$hash = md5($ip.$num_article);
 
 	# On met a jour le score si l'ip n'a pas vote et si le token est bon
-	if(!checkVote($core->con, $ip, $num_article) && ($token == $hash)) {
+	if(!checkVote($core->con, $ip, $num_article)) {
 
+		$user_id = $core->auth->userID();
 		# Verification du numero de l'article
 		$sql = "SELECT post_score from ".$core->prefix."post WHERE post_id = $num_article";
 		$rs = $core->con->select($sql);
@@ -52,14 +53,13 @@ if ($core->auth->sessionExists() && isset($_POST) && isset($_POST['num_article']
 		$post_current_score = $rs->f('post_score');
 
 		#Verification s'il a deja vote
-		$sql = "SELECT COUNT(*) as nb from ".$core->prefix."votes WHERE post_id = $num_article AND vote_ip = '$ip'";
+		$sql = "SELECT COUNT(*) as nb from ".$core->prefix."votes WHERE post_id = $num_article AND vote_ip = '$ip' AND user_id='".$user_id."'";
 		$rs = $core->con->select($sql);
 		$nb_vote = $rs->f('nb');
 
 		if($nb_art>0 && $nb_vote==0) {
 			# Ajout de l'ip a la liste
 			# FIXME : we have to handle the vote with a user logged in !!! Instead of admin.rand()
-			$user_id = $core->auth->userID();
 			$cur = $core->con->openCursor($core->prefix.'votes');
 			$cur->post_id = $num_article;
 			$cur->user_id = $user_id; //'admin'.rand();

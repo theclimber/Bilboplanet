@@ -539,7 +539,7 @@ function showMore() {
 			'popular' : this.popular,
 			'order' : this.order,
 			'tags' : arrayToString(this.tags),
-			'tribe' : this.tribe,
+			'tribe' : this.tribe[0],
 			'users' : arrayToString(this.users),
 			'period' : this.period,
 			'post_status' : this.post_status

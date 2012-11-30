@@ -755,6 +755,7 @@ function getOutput($sql, $num_page=0, $nb_items=30) {
 				$rs->tribe_id,
 				0,
 				0);
+//			print $sql_post;
 			$rs_post = $core->con->select($sql_post);
 
 			$tribe_state = "private";

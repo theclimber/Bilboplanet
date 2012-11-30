@@ -370,12 +370,18 @@ function getIP() {
 # Fonction qui verifie si une ip a votee sur un article
 function checkVote($con, $ip, $num_article) {
 	global $core;
-	# Recuperation des adresses IP qui ont votes
-	$sql = "SELECT COUNT(vote_ip) as nb FROM ".$core->prefix."votes WHERE post_id = '$num_article' AND vote_ip = '$ip'";
-	$rs = $con->select($sql);
-	if ($rs->f('nb')==0)
-		return false;
-	return true;
+	$user_id = '';
+	if ($core->auth->sessionExists()) {
+		$user_id = $core->auth->userID();
+		$sql = "SELECT COUNT(vote_ip) as nb FROM ".$core->prefix."votes WHERE post_id = '$num_article' AND user_id = '".$user_id."'";
+
+		# Recuperation des adresses IP qui ont votes
+		$rs = $con->select($sql);
+		if ($rs->f('nb')==0)
+			return false;
+		return true;
+	}
+	return false;
 }
 
 # Fonction qui converti les code de carateres html special iso en code utf8 html
@@ -505,6 +511,16 @@ function generate_SQL(
 
 	// find all posts without theses tags
 	if (!empty($notags)) {
+
+/*		$sql_notags = "";
+		foreach ($notags as $key=>$tag) {
+			$sql_notags .= "('".$tag."' NOT IN (SELECT
+				LOWER(".$core->prefix."post_tag.tag_id) as tag_id FROM ".$core->prefix."post_tag
+				WHERE ".$core->prefix."post_tag.post_id = ".$core->prefix."post.post_id";
+			$sql_notags .= "))";
+			$sql_notags .= ($key == count($notags)-1) ? "" : " AND ";
+		}*/
+
 		$sql_notags = "(";
 		foreach ($notags as $key=>$tag) {
 //			$sql_notags .= "LOWER(".$core->prefix."post_tag.tag_id) != '".strtolower($tag)."'";
@@ -515,6 +531,7 @@ function generate_SQL(
 			LOWER(".$core->prefix."post_tag.tag_id) FROM ".$core->prefix."post_tag
 			WHERE ".$core->prefix."post_tag.post_id = ".$core->prefix."post.post_id)";
 		$where_clause .= " AND ".$core->prefix."post.post_id = ".$core->prefix."post_tag.post_id";
+
 		$where_clause .= ' AND '.$sql_notags.' ';
 	}
 
@@ -744,6 +761,12 @@ function showSinglePost($rs, $tpl, $search_value, $multiview=true, $strip_tags=f
 			"&go=external";
 	}
 
+	$short = true;
+	$short_content = html_entity_decode($rs->f('short_content'), ENT_QUOTES, 'UTF-8');
+	if (strlen($rs->f('content'))<1200) {
+		$short = false;
+		$short_content = html_entity_decode($rs->f('content'), ENT_QUOTES, 'UTF-8');
+	}
 	$post = array(
 		"id" => $rs->f('post_id'),
 		"date" => mysqldatetime_to_date("d/m/Y",$rs->f('pubdate')),
@@ -754,7 +777,7 @@ function showSinglePost($rs, $tpl, $search_value, $multiview=true, $strip_tags=f
 		"permalink" => urldecode($post_permalink),
 		"title" => html_entity_decode($rs->f('title'), ENT_QUOTES, 'UTF-8'),
 		"content" => html_entity_decode($rs->f('content'), ENT_QUOTES, 'UTF-8'),
-		"short_content" => html_entity_decode($rs->f('short_content'), ENT_QUOTES, 'UTF-8'),
+		"short_content" => $short_content,
 		"image" => $rs->f('image'),
 		"author_id" => $rs->f('user_id'),
 		"author_fullname" => $rs->f('user_fullname'),
@@ -775,8 +798,11 @@ function showSinglePost($rs, $tpl, $search_value, $multiview=true, $strip_tags=f
 		# Format the occurences of the search request in the posts title
 		$post['title'] = split_balise($search_value, '<span class="search_title">'.$search_value.'</span>', $post['title'], 'str_ireplace', 1);
 	}
-	$post['short_content'] = strip_tags($post['short_content'])."&nbsp;[...]".
-			'<br /><a href="'.BP_PLANET_URL.'/?post_id='.$post['id'].'" title="'.$post['title'].'">'.T_('Read more').'</a>';
+
+	if ($short) {
+		$post['short_content'] = strip_tags($post['short_content'])."&nbsp;[...]".
+				'<br /><a href="'.BP_PLANET_URL.'/?post_id='.$post['id'].'" title="'.$post['title'].'">'.T_('Read more').'</a>';
+	}
 	if($strip_tags) {
 		$post['content'] = $post['short_content'];
 	}

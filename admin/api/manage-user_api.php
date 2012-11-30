@@ -288,6 +288,8 @@ if(isset($_POST['action'])) {
 			$confirmation .= "<li>".T_('All the posts of the user will be removed')."</li>";
 			$confirmation .= "<li>".T_('All the votes on these posts will be removed')."</li>";
 			$confirmation .= "<li>".T_('All the feeds of this user will be removed')."</li></ul><br/>";
+			$confirmation .= "<li>".T_('All the tribes of this user will be removed')."</li></ul><br/>";
+			$confirmation .= "<li>".T_('All the settings of this user will be removed')."</li></ul><br/>";
 			$confirmation .= "<form id='removeConfirm_form'><input type='hidden' name='user_id' value='".urlencode($user_id)."'/>";
 			$confirmation .= "<div class='button br3px'><input type='button' class='reset' value='".T_('Reset')."'/></div>&nbsp;&nbsp;";
 			$confirmation .= "<div class='button br3px'><input type='submit' class='valide' name='confirm' value='".T_('Confirm')."'/></div></form></p>";
@@ -316,6 +318,7 @@ if(isset($_POST['action'])) {
 			$core->con->execute("DELETE FROM ".$core->prefix."site WHERE user_id ='$user_id'");
 			$core->con->execute("DELETE FROM ".$core->prefix."permissions WHERE user_id = '$user_id'");
 			$core->con->execute("DELETE FROM ".$core->prefix."setting WHERE user_id = '$user_id'");
+			$core->con->execute("DELETE FROM ".$core->prefix."tribe WHERE user_id = '$user_id'");
 			$core->con->execute("DELETE FROM ".$core->prefix."user WHERE user_id = '$user_id'");
 			$shaarli_dir = dirname(__FILE__).'/../../data/shaarli/'.$user_id;
 			if (is_dir($shaarli_dir))

@@ -677,6 +677,8 @@ class pageBuilder
         $this->tpl->assign('shaarlititle',empty($GLOBALS['title']) ? 'Shaarli': $GLOBALS['title'] );
 		$this->tpl->assign('planet_url',BP_PLANET_URL);
 		$this->tpl->assign('planet_title',$blog_settings->get('planet_title'));
+		global $core;
+		$this->tpl->assign('shaarliuser',$core->auth->userID());
         return;
     }
 

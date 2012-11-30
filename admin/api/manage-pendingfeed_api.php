@@ -42,7 +42,7 @@ if(isset($_POST['action'])) {
 			user_email,
 			site_url,
 			feed_url,
-			'.$core->prefix.'pending_feed.created
+			'.$core->prefix.'pending_feed.created as created
 			FROM '.$core->prefix.'pending_feed, '.$core->prefix.'user
 			WHERE  '.$core->prefix.'user.user_id = '.$core->prefix.'pending_feed.user_id
 			ORDER by created ASC
@@ -242,6 +242,7 @@ function getOutput($sql, $num_page=0, $nb_items=30) {
 					<li>'.T_('User id').' : '.$rs->puser_id.'</li>
 					<li>'.T_('Fullname').' : '.html_entity_decode(stripslashes($rs->user_fullname), ENT_QUOTES, 'UTF-8').'</li>
 					<li>'.T_('Email').' : '.$rs->user_email.'</li>
+					<li>'.T_('Date of submission').' : '.mysqldatetime_to_date("d/m/Y",$rs->created).'</li>
 				</ul>
 			</td>';
 

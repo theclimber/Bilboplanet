@@ -250,17 +250,10 @@ if ($can_install && !empty($_POST))
 		$blog_settings->put('allow_uncensored_feed','1', "boolean");
 		$blog_settings->put('show_similar_posts','1', "boolean");
 		$blog_settings->put('planet_shaarli','1', "boolean");
+		$blog_settings->put('planet_joined_community', '0', "boolean");
 
 		if ($p_comm) { // user enabled the checkbox
-			$objet = T_("A new Bilboplanet joined the community");
-			$to = "dev@bilboplanet.com";
-			$msg .= "\n".T_("Url : ").$blog_settings->get('planet_url');
-			$msg .= "\n".T_("Title : ").$blog_settings->get('planet_title');
-			$msg .= "\n".T_("Description : ").$blog_settings->get('planet_desc');
-			$msg .= "\n\n".T_("Author : ").$blog_settings->get('author');
-			$msg .= "\n".T_("Email : ").$blog_settings->get('author_mail');
-
-			$envoi1 = sendmail($blog_settings->get('author_mail'), $to, $objet, $msg);
+			joinBilboplanetCommunity($blog_settings);
 		}
 
 		# Create planet salt :

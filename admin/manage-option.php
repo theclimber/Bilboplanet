@@ -55,6 +55,16 @@ include_once(dirname(__FILE__).'/sidebar.php');
 		<div id="options-button-close"  class="button br3px">
 			<?php echo '<a class="close-button" href="#" title="'.T_('Close').'" onclick="javascript:listopt();">'.T_('Close').'</a>';?>
 		</div>
+<?php
+$joined = $blog_settings->get("planet_joined_community");
+if (!$joined) {
+?>
+		<div id="options-button-join" class="button br3px">
+			<?php echo '<a class="join" href="#" title="'.T_('Join Bilboplanet Community').'" onclick="javascript:join();">'.T_('Join Bilboplanet Community').'</a>';?>
+		</div>
+<?php
+}
+?>
 		<br /><br />
 		<fieldset>
 			<legend><?php echo T_('Options');?></legend>

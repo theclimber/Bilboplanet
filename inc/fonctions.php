@@ -1729,4 +1729,25 @@ function generateUserToken($name,$email,$password) {
 	$token = sha1(time().substr($salt,0,$len).substr($name,0,$rand).$password);
 	return $token;
 }
+
+function joinBilboplanetCommunity($settings) {
+	$joined = $settings->get('planet_joined_community');
+	if (!$joined) {
+		$objet = T_("A new Bilboplanet joined the community");
+		$to = "dev@bilboplanet.com";
+		$msg .= "\n".T_("Url : ").$settings->get('planet_url');
+		$msg .= "\n".T_("Title : ").$settings->get('planet_title');
+		$msg .= "\n".T_("Description : ").$settings->get('planet_desc');
+		$msg .= "\n\n".T_("Author : ").$settings->get('author');
+		$msg .= "\n".T_("Email : ").$settings->get('author_mail');
+
+		$envoi1 = sendmail($settings->get('author_mail'), $to, $objet, $msg);
+		if ($envoi1) {
+			$settings->put('planet_joined_community', '1', "boolean");
+			return T_("You're planet joined the Bilboplanet community !");
+		}
+		return T_("Problem sending email.");
+	}
+	return T_("Your planet already joined the Bilboplanet community.");
+}
 ?>

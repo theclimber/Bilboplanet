@@ -942,7 +942,11 @@ if(isset($_POST) && isset($_POST['action'])) {
 
 		print $output;
 		break;
-		}
+	case "join":
+		$text = joinBilboplanetCommunity($blog_settings);
+		print $text;
+		break;
+	}
 }
 else {
 	$output = T_("Nothing to do");

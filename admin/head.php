@@ -79,7 +79,7 @@ if ($blog_settings->get('planet_rtl')) {
 					<li><?php echo T_('Official WebSite: ');?><a href="http://www.bilboplanet.com" target="_blank">http://www.bilboplanet.com</a></li>
 					<li><?php echo T_('Official Forum: ');?><a href="http://www.bilboplanet.com/forum" target="_blank">http://www.bilboplanet.com/forum</a></li>
 					<li><?php echo T_('Official Documentation: ');?><a href="http://wiki.bilboplanet.com" target="_blank">http://wiki.bilboplanet.com</a></li>
-					<li><?php echo T_('Tracker: ');?><a href="http://chili.kiwais.com/projects/bilboplanet" target="_blank">http://chili.kiwais.com/projects/bilboplanet</a></li>
+					<li><?php echo T_('Code and bug tracking: ');?><a href="https://github.com/theclimber/Bilboplanet" target="_blank">https://github.com/theclimber/Bilboplanet</a></li>
 				</ul>
 			</p>
 			<br />
@@ -87,7 +87,7 @@ if ($blog_settings->get('planet_rtl')) {
 			<div class="buttons">
 				<a href="#" class="button br3px close" /><?php echo T_('Close');?></a>
 				<br />
-				<a href="http://www.bilboplanet.com" target="_blank" rel="http://www.bilboplanet.com" class="tips">BilboPlanet.com</a> - Open Source Feed Agregator - 2009
+				<a href="http://www.bilboplanet.com" target="_blank" rel="http://www.bilboplanet.com" class="tips">BilboPlanet.com</a> - Open Source Feed Agregator - 2012
 			</div>
 		</div>
 		<div id="mask"></div>

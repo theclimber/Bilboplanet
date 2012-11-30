@@ -27,6 +27,18 @@ function listopt() {
 	return false;
 }
 
+function join() {
+	$.ajax({
+		type: "POST",
+		url: "api/",
+		data : {'ajax' : 'option', 'action' : 'join'},
+		success: function(msg){
+			$("#options-button-join").css('display','none');
+		}
+	});
+	return false;
+}
+
 // Display form to update settings
 function formopt() {
 	$('#flash-log').hide();

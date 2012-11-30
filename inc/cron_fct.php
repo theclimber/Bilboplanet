@@ -743,10 +743,6 @@ function savePostImage($post_id,$file_url) {
 
 		$final_image = imagecreatetruecolor($width , $height)
 			or $error[] = T_('Error when creating final image');
-		imagecopyresampled($final_image ,$image , 0,0, 0,0, $width, $height, $imgsize[0],$imgsize[1])
-			or $error[] = T_('Error while resizing final image');
-		imagedestroy($image)
-			or $error[] = T_('Error while deleting temporary image');
 
 		$filename = 'post'.$post_id.'-'.time().$file_extension;
 		$file_url = 'data/images/'.$filename;
@@ -757,11 +753,15 @@ function savePostImage($post_id,$file_url) {
 		}
 
 		// Adding Alpha channel to created image :
+		imagealphablending($final_image,false);
 		imagesavealpha($final_image, true);
 		$trans_colour = imagecolorallocatealpha($final_image, 0, 0, 0, 127);
-		imagefill($final_image, 0, 0, $trans_colour);
-		$red = imagecolorallocate($final_image, 255, 0, 0);
-		imagefilledellipse($final_image, 400, 300, 400, 300, $red);
+		imagefilledrectangle($final_image,0,0,$width,$height,$trans_colour);
+
+		imagecopyresampled($final_image ,$image , 0,0, 0,0, $width, $height, $imgsize[0],$imgsize[1])
+			or $error[] = T_('Error while resizing final image');
+		imagedestroy($image)
+			or $error[] = T_('Error while deleting temporary image');
 
 		// save image to folder
 		if ($file_extension == '.jpg') {

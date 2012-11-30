@@ -604,17 +604,20 @@ if(isset($_POST['action'])) {
 			$width = ( ($userfile_imgsize[0] * (($height)/$userfile_imgsize[1]))); // relative width
 			$final_image = imagecreatetruecolor($width , $height)
 				or $error[] = T_('Error when creating final image');
+
+			// Adding Alpha channel to created image :
+			imagealphablending($final_image,false);
+			imagesavealpha($final_image, true);
+			$trans_colour = imagecolorallocatealpha($final_image, 0, 0, 0, 127);
+			imagefilledrectangle($final_image,0,0,$width,$height,$trans_colour);
+			//imagefill($final_image, 0, 0, $trans_colour);
+			//$red = imagecolorallocate($final_image, 255, 0, 0);
+			//imagefilledellipse($final_image, 400, 300, 400, 300, $red);
+
 			imagecopyresampled($final_image ,$image , 0,0, 0,0, $width, $height, $userfile_imgsize[0],$userfile_imgsize[1])
 				or $error[] = T_('Error while resizing final image');
 			imagedestroy($image)
 				or $error[] = T_('Error while deleting temporary image');
-
-			// Adding Alpha channel to created image :
-			imagesavealpha($final_image, true);
-			$trans_colour = imagecolorallocatealpha($final_image, 0, 0, 0, 127);
-			imagefill($final_image, 0, 0, $trans_colour);
-			$red = imagecolorallocate($final_image, 255, 0, 0);
-			imagefilledellipse($final_image, 400, 300, 400, 300, $red);
 
 			$filename = 'tribe-'.$tribe_id.'-'.time().'.'.$userfile_ext;
 			$file_fullpath = $folder.'/'.strtolower($filename);
@@ -764,6 +767,7 @@ function getOutput($sql, $num_page=0, $nb_items=30) {
 			if ($rs->user_id != "root") {
 				$tribe_owner = $rs->user_id;
 			}
+			$tribe_name = html_entity_decode($rs->tribe_name, ENT_QUOTES, 'UTF-8');
 
 			$tribe_tags = preg_split('/,/',$rs->tribe_tags, -1, PREG_SPLIT_NO_EMPTY);
 			$tag_list = "";
@@ -792,7 +796,7 @@ function getOutput($sql, $num_page=0, $nb_items=30) {
 			}
 
 			$tribe_icon = '';
-			$icon_action = '<a href="javascript:add_icon('.$num_page.','.$nb_items.',\''.$rs->tribe_id.'\',\''.addslashes($rs->tribe_name).'\')">
+			$icon_action = '<a href="javascript:add_icon('.$num_page.','.$nb_items.',\''.$rs->tribe_id.'\',\''.addslashes($tribe_name).'\')">
 				<img src="meta/icons/add_icon.png" title="'.T_('Add icon to tribe').'" /></a>';
 			if ($rs->tribe_icon) {
 				$tribe_icon = '<p class="tribe-icon"><img class="tribe-icon" src="../'.$rs->tribe_icon.'" /></p>';
@@ -800,7 +804,6 @@ function getOutput($sql, $num_page=0, $nb_items=30) {
 				<img src="meta/icons/rm_icon.png" title="'.T_('Remove icon from tribe').'" /></a>';
 			}
 
-			$tribe_name = html_entity_decode($rs->tribe_name, ENT_QUOTES, 'UTF-8');
 			$output .= '<div class="tribesbox tribe-'.$tribe_state.'" id="tribe-'.$rs->tribe_id.'">
 				<h3><a href="'.BP_PLANET_URL.'/index.php?list=1&tribe_id='.$rs->tribe_id.'">'.$tribe_name.'</a></h3>
 				'.$tribe_icon.'

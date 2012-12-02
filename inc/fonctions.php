@@ -527,8 +527,14 @@ function generate_SQL(
 			$and = ($key == count($notags)-1) ? "'".$tag."'" : "'".$tag."', ";
 			$sql_notags .= $and;
 		}
-		$sql_notags .= ") NOT IN (SELECT
-			LOWER(".$core->prefix."post_tag.tag_id) FROM ".$core->prefix."post_tag
+		$sql_notags .= ") NOT IN (SELECT ";
+		for ($i = 0; $i < count($notags); $i++) {
+			$sql_notags .= "LOWER(".$core->prefix."post_tag.tag_id)";
+			if ($i < count($notags)-1) {
+				$sql_notags .= ",";
+			}
+		}
+		$sql_notags .= " FROM ".$core->prefix."post_tag
 			WHERE ".$core->prefix."post_tag.post_id = ".$core->prefix."post.post_id)";
 		$where_clause .= " AND ".$core->prefix."post.post_id = ".$core->prefix."post_tag.post_id";
 

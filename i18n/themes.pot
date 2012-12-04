@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 
-#: themes/default/index.tpl:95
+#: themes/default/index.tpl:102
 msgid "Tribes and tags"
 msgstr ""
 
@@ -34,7 +34,7 @@ msgstr ""
 msgid "No tags found"
 msgstr ""
 
-#: themes/default/index.tpl:91
+#: themes/default/index.tpl:98
 #: themes/default/contact.tpl:11
 msgid "Contact us"
 msgstr ""
@@ -44,7 +44,7 @@ msgstr ""
 msgid "All posts"
 msgstr ""
 
-#: themes/default/topbar.tpl:41
+#: themes/default/topbar.tpl:42
 msgid "Filter on tags :"
 msgstr ""
 
@@ -65,7 +65,7 @@ msgstr ""
 msgid "Visit the website"
 msgstr ""
 
-#: themes/default/index.tpl:114
+#: themes/default/index.tpl:121
 msgid "Register"
 msgstr ""
 
@@ -85,7 +85,7 @@ msgstr ""
 msgid "Social"
 msgstr ""
 
-#: themes/default/topbar.tpl:34
+#: themes/default/topbar.tpl:35
 msgid "Page :"
 msgstr ""
 
@@ -93,7 +93,7 @@ msgstr ""
 msgid "Captcha"
 msgstr ""
 
-#: themes/default/topbar.tpl:31
+#: themes/default/topbar.tpl:32
 msgid "Page status"
 msgstr ""
 
@@ -101,11 +101,11 @@ msgstr ""
 msgid "Subject"
 msgstr ""
 
-#: themes/default/topbar.tpl:40
+#: themes/default/topbar.tpl:41
 msgid "Ordered by popularity"
 msgstr ""
 
-#: themes/default/index.tpl:97
+#: themes/default/index.tpl:104
 msgid "Stats"
 msgstr ""
 
@@ -145,7 +145,7 @@ msgstr ""
 msgid "No posts found"
 msgstr ""
 
-#: themes/default/index.tpl:85
+#: themes/default/index.tpl:92
 msgid "Main menu"
 msgstr ""
 
@@ -184,11 +184,15 @@ msgstr ""
 msgid "Write or share"
 msgstr ""
 
-#: themes/default/topbar.tpl:27
+#: themes/default/topbar.tpl:28
 msgid "latest posts"
 msgstr ""
 
-#: themes/default/index.tpl:107
+#: themes/default/index.tpl:55
+msgid "Show sidebar"
+msgstr ""
+
+#: themes/default/index.tpl:114
 msgid "Administration"
 msgstr ""
 
@@ -196,12 +200,16 @@ msgstr ""
 msgid "Written by"
 msgstr ""
 
-#: themes/default/index.tpl:112
+#: themes/default/topbar.tpl:27
+msgid "Select only"
+msgstr ""
+
+#: themes/default/index.tpl:119
 #: themes/default/popup.tpl:28
 msgid "Login"
 msgstr ""
 
-#: themes/default/index.tpl:51
+#: themes/default/index.tpl:54
 msgid "Hide sidebar"
 msgstr ""
 
@@ -232,7 +240,7 @@ msgstr ""
 msgid "Visit the source"
 msgstr ""
 
-#: themes/default/index.tpl:109
+#: themes/default/index.tpl:116
 msgid "Logout"
 msgstr ""
 
@@ -245,11 +253,11 @@ msgstr ""
 msgid "Remember me"
 msgstr ""
 
-#: themes/default/index.tpl:103
+#: themes/default/index.tpl:110
 msgid "My Shaarli"
 msgstr ""
 
-#: themes/default/topbar.tpl:46
+#: themes/default/topbar.tpl:47
 msgid "Feed with this parameters"
 msgstr ""
 
@@ -258,11 +266,11 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-#: themes/default/topbar.tpl:43
+#: themes/default/topbar.tpl:44
 msgid "Filter on authors :"
 msgstr ""
 
-#: themes/default/index.tpl:93
+#: themes/default/index.tpl:100
 msgid "Charter"
 msgstr ""
 
@@ -289,9 +297,9 @@ msgstr ""
 msgid "tags :"
 msgstr ""
 
-#: themes/default/index.tpl:76
-#: themes/default/index.tpl:77
-#: themes/default/index.tpl:78
+#: themes/default/index.tpl:83
+#: themes/default/index.tpl:84
+#: themes/default/index.tpl:85
 msgid "Search"
 msgstr ""
 
@@ -308,7 +316,7 @@ msgstr ""
 msgid "Your login"
 msgstr ""
 
-#: themes/default/topbar.tpl:32
+#: themes/default/topbar.tpl:33
 msgid "Tribe :"
 msgstr ""
 
@@ -316,11 +324,11 @@ msgstr ""
 msgid "Profile"
 msgstr ""
 
-#: themes/default/topbar.tpl:38
+#: themes/default/topbar.tpl:39
 msgid "Period of posts :"
 msgstr ""
 
-#: themes/default/index.tpl:94
+#: themes/default/index.tpl:101
 msgid "Users"
 msgstr ""
 
@@ -342,7 +350,7 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: themes/default/topbar.tpl:28
+#: themes/default/topbar.tpl:29
 msgid "popular of the week"
 msgstr ""
 
@@ -363,6 +371,10 @@ msgstr ""
 msgid "See original post"
 msgstr ""
 
+#: themes/default/topbar.tpl:55
+msgid "Info Flash"
+msgstr ""
+
 #: themes/default/popup.tpl:30
 msgid "register"
 msgstr ""
@@ -372,7 +384,7 @@ msgstr ""
 msgid "Tweeter"
 msgstr ""
 
-#: themes/default/topbar.tpl:36
+#: themes/default/topbar.tpl:37
 msgid "Search with :"
 msgstr ""
 
@@ -381,7 +393,7 @@ msgstr ""
 msgid "Apply"
 msgstr ""
 
-#: themes/default/index.tpl:105
+#: themes/default/index.tpl:112
 #: themes/default/user/menu.tpl:5
 msgid "Dashboard"
 msgstr ""

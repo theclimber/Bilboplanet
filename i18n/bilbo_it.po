@@ -17,7 +17,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Virtaal 0.7.1\n"
 
-#: themes/default/index.tpl:95
+#: themes/default/index.tpl:102
 msgid "Tribes and tags"
 msgstr ""
 
@@ -36,7 +36,7 @@ msgstr "Nessun contributo trovato"
 msgid "No tags found"
 msgstr "Nessun contributo trovato"
 
-#: themes/default/index.tpl:91 themes/default/contact.tpl:11
+#: themes/default/index.tpl:98 themes/default/contact.tpl:11
 msgid "Contact us"
 msgstr "Contattaci"
 
@@ -45,12 +45,12 @@ msgstr "Contattaci"
 msgid "All posts"
 msgstr "Elenco di tutti articoli"
 
-#: themes/default/topbar.tpl:41
+#: themes/default/topbar.tpl:42
 #, fuzzy
 msgid "Filter on tags :"
 msgstr "Filtra articoli"
 
-#: themes/default/single.tpl:83 inc/cron_fct.php:287
+#: themes/default/single.tpl:83 inc/cron_fct.php:289
 msgid "Website : "
 msgstr "Sito Web :"
 
@@ -67,7 +67,7 @@ msgstr "Puoi contattare lo staff degli amministratori con il seguente form:"
 msgid "Visit the website"
 msgstr "Visita il sito web"
 
-#: themes/default/index.tpl:114
+#: themes/default/index.tpl:121
 #, fuzzy
 msgid "Register"
 msgstr "Registrazione"
@@ -91,7 +91,7 @@ msgstr "Email :"
 msgid "Social"
 msgstr ""
 
-#: themes/default/topbar.tpl:34
+#: themes/default/topbar.tpl:35
 msgid "Page :"
 msgstr "Pagina :"
 
@@ -99,24 +99,24 @@ msgstr "Pagina :"
 msgid "Captcha"
 msgstr ""
 
-#: themes/default/topbar.tpl:31
+#: themes/default/topbar.tpl:32
 #, fuzzy
 msgid "Page status"
 msgstr "Stato della pagina"
 
-#: themes/default/contact.tpl:24 signup.php:149
+#: themes/default/contact.tpl:24 signup.php:151 admin/manage-newsletter.php:49
+#: admin/manage-newsletter.php:190 admin/manage-selection.php:108
 #: admin/manage-moderation.php:102 admin/manage-pendingfeed.php:56
-#: admin/manage-pendingfeed.php:69 admin/manage-selection.php:108
-#: admin/manage-newsletter.php:49 admin/manage-newsletter.php:190
+#: admin/manage-pendingfeed.php:69
 msgid "Subject"
 msgstr "Oggetto"
 
-#: themes/default/topbar.tpl:40
+#: themes/default/topbar.tpl:41
 #, fuzzy
 msgid "Ordered by popularity"
 msgstr "Powered by Bilboplanet"
 
-#: themes/default/index.tpl:97
+#: themes/default/index.tpl:104
 #, fuzzy
 msgid "Stats"
 msgstr "Stato"
@@ -156,12 +156,12 @@ msgstr "Visita sorgente"
 msgid "Signup"
 msgstr ""
 
-#: themes/default/archives.tpl:9 admin/api/manage-moderation_api.php:197
-#: admin/api/manage-tagging_api.php:168
+#: themes/default/archives.tpl:9 admin/api/manage-tagging_api.php:168
+#: admin/api/manage-moderation_api.php:197
 msgid "No posts found"
 msgstr "Nessun contributo trovato"
 
-#: themes/default/index.tpl:85
+#: themes/default/index.tpl:92
 msgid "Main menu"
 msgstr ""
 
@@ -178,8 +178,8 @@ msgid "Allow comments"
 msgstr "Permetti commenti"
 
 #: themes/default/posts.tpl:80 themes/default/single.tpl:124
-#: admin/manage-tagging.php:96 admin/manage-feed.php:187
-#: admin/manage-tribe.php:147
+#: admin/manage-tribe.php:147 admin/manage-feed.php:230
+#: admin/manage-tagging.php:96
 msgid "Comma separated tags (ex: linux,web,event)"
 msgstr "Tag separati da virgole (es: linux,web,evento)"
 
@@ -202,12 +202,16 @@ msgstr ""
 msgid "Write or share"
 msgstr ""
 
-#: themes/default/topbar.tpl:27
+#: themes/default/topbar.tpl:28
 #, fuzzy
 msgid "latest posts"
 msgstr "%s ultimi post :"
 
-#: themes/default/index.tpl:107 admin/sidebar.php:36 admin/head.php:31
+#: themes/default/index.tpl:55
+msgid "Show sidebar"
+msgstr ""
+
+#: themes/default/index.tpl:114 admin/head.php:31 admin/sidebar.php:37
 #: admin/api/manage-permissions_api.php:166
 msgid "Administration"
 msgstr "Amministrazione"
@@ -217,22 +221,26 @@ msgstr "Amministrazione"
 msgid "Written by"
 msgstr "Scritto da :"
 
-#: themes/default/index.tpl:112 themes/default/popup.tpl:28
+#: themes/default/topbar.tpl:27
+msgid "Select only"
+msgstr ""
+
+#: themes/default/index.tpl:119 themes/default/popup.tpl:28
 #, fuzzy
 msgid "Login"
 msgstr "login"
 
-#: themes/default/index.tpl:51
+#: themes/default/index.tpl:54
 msgid "Hide sidebar"
 msgstr ""
 
 #: themes/default/posts.tpl:78 themes/default/single.tpl:122
-#: themes/default/tags.tpl:25 admin/manage-tagging.php:94
-#: admin/manage-feed.php:185
+#: themes/default/tags.tpl:25 admin/manage-feed.php:228
+#: admin/manage-tagging.php:94
 msgid "Tags"
 msgstr "Tag"
 
-#: themes/default/tags.tpl:19 admin/api/manage-tribe_api.php:833
+#: themes/default/tags.tpl:19 admin/api/manage-tribe_api.php:837
 #, fuzzy
 msgid "No tribes found"
 msgstr "Nessun contributo trovato"
@@ -255,7 +263,7 @@ msgstr ""
 msgid "Visit the source"
 msgstr "Visita sorgente"
 
-#: themes/default/index.tpl:109 admin/head.php:59
+#: themes/default/index.tpl:116 admin/head.php:59
 msgid "Logout"
 msgstr "Logout"
 
@@ -269,32 +277,32 @@ msgstr "Pubblica"
 msgid "Remember me"
 msgstr "Ricordami"
 
-#: themes/default/index.tpl:103
+#: themes/default/index.tpl:110
 msgid "My Shaarli"
 msgstr ""
 
-#: themes/default/topbar.tpl:46
+#: themes/default/topbar.tpl:47
 #, fuzzy
 msgid "Feed with this parameters"
 msgstr "Feed con tutti gli articoli"
 
 #: themes/default/signup.tpl:36 themes/default/contact.tpl:33
-#: admin/manage-moderation.php:109 admin/manage-tagging.php:99
-#: admin/manage-post.php:172 admin/manage-feed.php:190
-#: admin/manage-pendingfeed.php:61 admin/manage-pendingfeed.php:74
-#: admin/manage-selection.php:119 admin/manage-tribe.php:118
-#: admin/manage-tribe.php:150 admin/manage-tribe.php:164
-#: admin/manage-tribe.php:185 admin/manage-newsletter.php:220
-#: admin/manage-update.php:137
+#: admin/manage-tribe.php:118 admin/manage-tribe.php:150
+#: admin/manage-tribe.php:164 admin/manage-tribe.php:185
+#: admin/manage-feed.php:233 admin/manage-update.php:137
+#: admin/manage-post.php:172 admin/manage-tagging.php:99
+#: admin/manage-newsletter.php:220 admin/manage-selection.php:119
+#: admin/manage-moderation.php:109 admin/manage-pendingfeed.php:61
+#: admin/manage-pendingfeed.php:74
 msgid "Send"
 msgstr "Invia"
 
-#: themes/default/topbar.tpl:43
+#: themes/default/topbar.tpl:44
 #, fuzzy
 msgid "Filter on authors :"
 msgstr "Filtra articoli"
 
-#: themes/default/index.tpl:93 charter.php:34
+#: themes/default/index.tpl:100 charter.php:34
 msgid "Charter"
 msgstr ""
 
@@ -304,9 +312,10 @@ msgid "Viewed :"
 msgstr "Feed :"
 
 #: themes/default/posts.tpl:71 themes/default/single.tpl:115
-#: admin/manage-option.php:56 admin/manage-feed.php:93
-#: admin/manage-feed.php:147 admin/manage-user.php:89
-#: admin/manage-user.php:129 admin/head.php:88 admin/manage-tribe.php:93
+#: admin/manage-option.php:56 admin/manage-tribe.php:93
+#: admin/manage-feed.php:92 admin/manage-feed.php:136
+#: admin/manage-feed.php:190 admin/manage-user.php:89
+#: admin/manage-user.php:129 admin/head.php:88
 msgid "Close"
 msgstr "Chiudi"
 
@@ -324,8 +333,8 @@ msgstr "Nome completo"
 msgid "tags :"
 msgstr ""
 
-#: themes/default/index.tpl:76 themes/default/index.tpl:77
-#: themes/default/index.tpl:78
+#: themes/default/index.tpl:83 themes/default/index.tpl:84
+#: themes/default/index.tpl:85
 msgid "Search"
 msgstr "Cerca"
 
@@ -343,7 +352,7 @@ msgstr "Data"
 msgid "Your login"
 msgstr "login"
 
-#: themes/default/topbar.tpl:32
+#: themes/default/topbar.tpl:33
 msgid "Tribe :"
 msgstr ""
 
@@ -351,26 +360,27 @@ msgstr ""
 msgid "Profile"
 msgstr ""
 
-#: themes/default/topbar.tpl:38
+#: themes/default/topbar.tpl:39
 #, fuzzy
 msgid "Period of posts :"
 msgstr "Periodo dei post :"
 
-#: themes/default/index.tpl:94 tags.php:13 users.php:14
+#: themes/default/index.tpl:101 tags.php:13 users.php:14
 #, fuzzy
 msgid "Users"
 msgstr "Utenti"
 
-#: themes/default/signup.tpl:26 themes/default/contact.tpl:20 signup.php:152
+#: themes/default/signup.tpl:26 themes/default/contact.tpl:20 signup.php:154
+#: admin/manage-feed.php:75 admin/manage-account.php:69
 #: admin/manage-user.php:112 admin/manage-user.php:153
-#: admin/manage-account.php:69 admin/api/manage-pendingfeed_api.php:245
-#: admin/api/manage-account_api.php:37 admin/install/index.php:347
-#: user/api/account_api.php:107
+#: admin/install/index.php:340 admin/api/manage-pendingfeed_api.php:244
+#: admin/api/manage-account_api.php:37 user/api/account_api.php:109
 msgid "Email"
 msgstr "Email"
 
 #: themes/default/signup.tpl:30 themes/default/popup.tpl:14 auth.php:338
-#: admin/manage-user.php:116 admin/install/index.php:374
+#: admin/manage-feed.php:79 admin/manage-user.php:116
+#: admin/install/index.php:367
 msgid "Password"
 msgstr "Password"
 
@@ -384,7 +394,7 @@ msgstr "Permessi"
 msgid "Name"
 msgstr "Nome"
 
-#: themes/default/topbar.tpl:28
+#: themes/default/topbar.tpl:29
 #, fuzzy
 msgid "popular of the week"
 msgstr "Articoli della settimana"
@@ -394,7 +404,7 @@ msgid "I forgot my password"
 msgstr "Ho dimenticato la password"
 
 #: themes/default/user/menu.tpl:25 themes/default/tags.tpl:3
-#: admin/sidebar.php:42
+#: admin/sidebar.php:43
 msgid "Tribes"
 msgstr ""
 
@@ -408,6 +418,10 @@ msgstr "Il tuo Bilboplanet"
 msgid "See original post"
 msgstr "Filtra articoli"
 
+#: themes/default/topbar.tpl:55
+msgid "Info Flash"
+msgstr ""
+
 #: themes/default/popup.tpl:30
 #, fuzzy
 msgid "register"
@@ -417,7 +431,7 @@ msgstr "Registrazione"
 msgid "Tweeter"
 msgstr ""
 
-#: themes/default/topbar.tpl:36
+#: themes/default/topbar.tpl:37
 #, fuzzy
 msgid "Search with :"
 msgstr "Sto cercando con :"
@@ -428,24 +442,37 @@ msgstr "Sto cercando con :"
 msgid "Apply"
 msgstr "Applica"
 
-#: themes/default/index.tpl:105 themes/default/user/menu.tpl:5
-#: admin/sidebar.php:30 admin/index.php:141
+#: themes/default/index.tpl:112 themes/default/user/menu.tpl:5
+#: admin/sidebar.php:31 admin/index.php:141
 msgid "Dashboard"
 msgstr "Dashboard"
 
-#: tpl.php:201
+#: tpl.php:209
 msgid "Powered by Bilboplanet"
 msgstr "Powered by Bilboplanet"
 
-#: tpl.php:204
+#: tpl.php:212
 msgid "Valid CSS - Xhtml"
 msgstr "CSS - Xhtml valido"
 
-#: tpl.php:207
+#: tpl.php:215
 msgid "Designed by BilboPlanet"
 msgstr "Designed by BilboPlanet"
 
-#: contact.php:47 signup.php:70
+#: 404.php:33
+msgid "404 Error"
+msgstr "Errore 404"
+
+#: 404.php:34
+msgid "Page not found"
+msgstr "Pagina non trovata"
+
+#: portal.php:60
+#, fuzzy
+msgid "Popular posts"
+msgstr "Feed articoli più popolari"
+
+#: signup.php:70 contact.php:47
 #, php-format
 msgid ""
 "The reCAPTCHA wasn't entered correctly. Go back and try it again. (reCAPTCHA "
@@ -454,13 +481,104 @@ msgstr ""
 "Il reCAPTCHA non è stato inserito correttamente. Torna indietro e riprova. "
 "(reCAPTCHA dice: %s)"
 
+#: signup.php:79
+#, php-format
+msgid "Signup of user %s"
+msgstr ""
+
+#: signup.php:80 inc/cron_fct.php:285 user/api/feed_api.php:120
+#, fuzzy
+msgid "User id : "
+msgstr "ID utente"
+
+#: signup.php:82 contact.php:61 inc/fonctions.php:1774
+msgid "Email : "
+msgstr "Email :"
+
+#: signup.php:84
+msgid "Please validate your account by going on the following link :"
+msgstr ""
+
+#: signup.php:86
+msgid "NOTE: the link will expire in 3 days."
+msgstr ""
+
+#: signup.php:87 user/api/account_api.php:71
+msgid "Thank you"
+msgstr ""
+
+#: signup.php:103
+#, fuzzy
+msgid "Thank you for your registration."
+msgstr "Grazie per la tua contribuzione sul %s"
+
+#: signup.php:105
+msgid ""
+"There was an error,\n"
+"\t\t\t\t\t\tplease report to the website administrator if the same error "
+"occurs several times :\n"
+msgstr ""
+
+#: signup.php:115
+#, fuzzy, php-format
+msgid ""
+"Your request could not be sent for an unknown reason.<br/>\n"
+"\t\t\t\t\tPlease try again or send an email manually to %s."
+msgstr ""
+"La richiesta non è stata inviata per cause sconosciute.<br/>Riprova "
+"nuovamente."
+
+#: signup.php:149 contact.php:95
+msgid "In case of problem"
+msgstr "In caso di problemi"
+
+#: signup.php:150
+#, fuzzy, php-format
+msgid ""
+"If you don't recieve any news from the administration team within the 5 days "
+"do not hesitate to contact us via %s with this information :"
+msgstr ""
+"Se non dovessi ricevere nessuna notizia dallo staff degli amministratori nei "
+"prossimi 5 giorni, non esitare a contattarci via %s con la seguente "
+"informazione :"
+
+#: signup.php:152 admin/install/index.php:364
+msgid "Username"
+msgstr "Nome utente"
+
+#: signup.php:153 admin/manage-feed.php:71 admin/manage-account.php:65
+#: admin/manage-user.php:108 admin/manage-user.php:149
+#: admin/install/index.php:337 admin/api/manage-pendingfeed_api.php:243
+#: admin/api/manage-account_api.php:36 user/api/account_api.php:108
+msgid "Fullname"
+msgstr "Nome completo"
+
+#: signup.php:156
+msgid ""
+"You should have recieved a confirmation email. Please validate and then "
+"you'll be able to connect : "
+msgstr ""
+
+#: signup.php:198 signup.php:201 admin/api/manage-account_api.php:55
+#: admin/api/manage-user_api.php:97 admin/api/manage-user_api.php:100
+#: admin/api/manage-user_api.php:225 user/api/account_api.php:128
+#, php-format
+msgid "The user %s already exists"
+msgstr "L'utente %s esiste già"
+
+#: signup.php:204 admin/api/manage-user_api.php:103
+#, php-format
+msgid "The email address %s is already in use"
+msgstr "L'indirizzo email %s è già in uso"
+
+#: signup.php:213 admin/api/manage-user_api.php:110
+#, php-format
+msgid "The website %s is already assigned to the user %s"
+msgstr "Il sito web %s è già assegnato all'utente %s"
+
 #: contact.php:60
 msgid "Name/Nickname : "
 msgstr "Nome/Nick :"
-
-#: contact.php:61 signup.php:82 admin/install/index.php:261
-msgid "Email : "
-msgstr "Email :"
 
 #: contact.php:62
 msgid "Subject : "
@@ -481,10 +599,6 @@ msgstr ""
 "La richiesta non è stata inviata per cause sconosciute.<br/>Riprova "
 "nuovamente."
 
-#: contact.php:95 signup.php:147
-msgid "In case of problem"
-msgstr "In caso di problemi"
-
 #: contact.php:96
 #, php-format
 msgid ""
@@ -494,118 +608,53 @@ msgstr ""
 "Se non dovessi ricevere nessuna conferma dallo staff degli amministratori "
 "nei prossimi 5 giorni, non esitare a contattarci via email a %s"
 
-#: feed.php:110 list.php:122
-#, php-format
-msgid "%s tribe"
-msgstr ""
+#: archives.php:29
+msgid "January"
+msgstr "Gennaio"
 
-#: feed.php:244
-#, php-format
-msgid "Vote for this post on <a href=\"%s\" title=\"Go on the planet\">%s</a>."
-msgstr "Vota questo post su <a href=\"%s\" title=\"Vai sul planet\">%s</a>."
+#: archives.php:29
+msgid "February"
+msgstr "Febbraio"
 
-#: feed.php:255
-#, php-format
-msgid "Gravatar of %s"
-msgstr "Gravatar di %s"
+#: archives.php:29
+msgid "March"
+msgstr "Marzo"
 
-#: feed.php:350 admin/api/manage-feed_api.php:476
-#: admin/api/manage-pendingfeed_api.php:174
-#: admin/api/manage-pendingfeed_api.php:226
-#: admin/api/manage-pendingfeed_api.php:252
-msgid "Feed"
-msgstr "Feed"
+#: archives.php:29
+msgid "April"
+msgstr "Aprile"
 
-#: signup.php:79
-#, php-format
-msgid "Signup of user %s"
-msgstr ""
+#: archives.php:29
+msgid "May"
+msgstr "Maggio"
 
-#: signup.php:80 inc/cron_fct.php:283 user/api/feed_api.php:120
-#, fuzzy
-msgid "User id : "
-msgstr "ID utente"
+#: archives.php:29
+msgid "June"
+msgstr "Giugno"
 
-#: signup.php:84
-msgid "Please validate your account by going on the following link :"
-msgstr ""
+#: archives.php:29
+msgid "July"
+msgstr "Luglio"
 
-#: signup.php:86
-msgid "NOTE: the link will expire in 3 days."
-msgstr ""
+#: archives.php:29
+msgid "August"
+msgstr "Agosto"
 
-#: signup.php:101
-#, fuzzy
-msgid "Thank you for your registration."
-msgstr "Grazie per la tua contribuzione sul %s"
+#: archives.php:29
+msgid "September"
+msgstr "Settembre"
 
-#: signup.php:103
-msgid ""
-"There was an error,\n"
-"\t\t\t\t\t\tplease report to the website administrator if the same error "
-"occurs several times :\n"
-msgstr ""
+#: archives.php:29
+msgid "October"
+msgstr "Ottobre"
 
-#: signup.php:113
-#, fuzzy, php-format
-msgid ""
-"Your request could not be sent for an unknown reason.<br/>\n"
-"\t\t\t\t\tPlease try again or send an email manually to %s."
-msgstr ""
-"La richiesta non è stata inviata per cause sconosciute.<br/>Riprova "
-"nuovamente."
+#: archives.php:29
+msgid "November"
+msgstr "Novembre"
 
-#: signup.php:148
-#, fuzzy, php-format
-msgid ""
-"If you don't recieve any news from the administration team within the 5 days "
-"do not hesitate to contact us via %s with this information :"
-msgstr ""
-"Se non dovessi ricevere nessuna notizia dallo staff degli amministratori nei "
-"prossimi 5 giorni, non esitare a contattarci via %s con la seguente "
-"informazione :"
-
-#: signup.php:150 admin/install/index.php:371
-msgid "Username"
-msgstr "Nome utente"
-
-#: signup.php:151 admin/manage-user.php:108 admin/manage-user.php:149
-#: admin/manage-account.php:65 admin/api/manage-pendingfeed_api.php:244
-#: admin/api/manage-account_api.php:36 admin/install/index.php:344
-#: user/api/account_api.php:106
-msgid "Fullname"
-msgstr "Nome completo"
-
-#: signup.php:154
-msgid ""
-"You should have recieved a confirmation email. Please validate and then "
-"you'll be able to connect : "
-msgstr ""
-
-#: signup.php:196 signup.php:199 admin/api/manage-user_api.php:97
-#: admin/api/manage-user_api.php:100 admin/api/manage-user_api.php:225
-#: admin/api/manage-account_api.php:55 user/api/account_api.php:126
-#, php-format
-msgid "The user %s already exists"
-msgstr "L'utente %s esiste già"
-
-#: signup.php:202 admin/api/manage-user_api.php:103
-#, php-format
-msgid "The email address %s is already in use"
-msgstr "L'indirizzo email %s è già in uso"
-
-#: signup.php:211 admin/api/manage-user_api.php:110
-#, php-format
-msgid "The website %s is already assigned to the user %s"
-msgstr "Il sito web %s è già assegnato all'utente %s"
-
-#: 404.php:33
-msgid "404 Error"
-msgstr "Errore 404"
-
-#: 404.php:34
-msgid "Page not found"
-msgstr "Pagina non trovata"
+#: archives.php:29
+msgid "December"
+msgstr "Dicembre"
 
 #: auth.php:95
 msgid "Password reset"
@@ -640,12 +689,12 @@ msgstr "L'email è stata inviata con successo a %s."
 msgid "Your new password"
 msgstr "La tua nuova password"
 
-#: auth.php:122 auth.php:288 admin/install/index.php:399
-#: admin/install/wizard.php:193
+#: auth.php:122 auth.php:288 admin/install/wizard.php:198
+#: admin/install/index.php:392
 msgid "Username:"
 msgstr "Nome utente:"
 
-#: auth.php:123 admin/install/index.php:400 admin/install/wizard.php:197
+#: auth.php:123 admin/install/wizard.php:202
 msgid "Password:"
 msgstr "Password:"
 
@@ -701,140 +750,215 @@ msgstr "modifica"
 msgid "login"
 msgstr "login"
 
-#: archives.php:29
-msgid "January"
-msgstr "Gennaio"
-
-#: archives.php:29
-msgid "February"
-msgstr "Febbraio"
-
-#: archives.php:29
-msgid "March"
-msgstr "Marzo"
-
-#: archives.php:29
-msgid "April"
-msgstr "Aprile"
-
-#: archives.php:29
-msgid "May"
-msgstr "Maggio"
-
-#: archives.php:29
-msgid "June"
-msgstr "Giugno"
-
-#: archives.php:29
-msgid "July"
-msgstr "Luglio"
-
-#: archives.php:29
-msgid "August"
-msgstr "Agosto"
-
-#: archives.php:29
-msgid "September"
-msgstr "Settembre"
-
-#: archives.php:29
-msgid "October"
-msgstr "Ottobre"
-
-#: archives.php:29
-msgid "November"
-msgstr "Novembre"
-
-#: archives.php:29
-msgid "December"
-msgstr "Dicembre"
-
-#: portal.php:60
-#, fuzzy
-msgid "Popular posts"
-msgstr "Feed articoli più popolari"
-
-#: api/votes.php:75
-msgid "Success"
-msgstr "Successo"
-
-#: api/votes.php:78
-msgid "Error: article number incorrect !"
-msgstr "Errore: il numero articolo non è corretto !"
-
-#: api/votes.php:82
-msgid "Error: you already vote on this post !"
-msgstr "Errore: hai già votato questo post !"
-
-#: api/main_api.php:168 api/comment_api.php:133
-#: admin/api/manage-user_api.php:382 admin/api/manage-tribe_api.php:730
-#: admin/api/manage-feed_api.php:454 admin/api/manage-moderation_api.php:202
-#: admin/api/manage-pendingfeed_api.php:206
-#: admin/api/manage-permissions_api.php:187
-#: admin/api/manage-selection_api.php:82 admin/api/manage-tagging_api.php:173
-#: admin/api/manage-site_api.php:227 admin/api/manage-account_api.php:104
-#: user/api/main_api.php:60 user/api/account_api.php:93
-#: user/api/account_api.php:176 user/api/feed_api.php:235
-#: user/api/tagging_api.php:214 user/api/social_api.php:111
-#: user/api/post_api.php:134
-msgid "User bad call"
-msgstr "Utente indesiderato"
-
-#: api/index.php:52 admin/api/index.php:122 user/api/index.php:95
-msgid "bad call, this ajax call does not exist"
-msgstr "Chiamata non riuscita, questa chiamata ajax non esiste"
-
-#: api/identishare.php:27 admin/manage-option.php:34
-#: admin/manage-moderation.php:31 admin/manage-useroption.php:31
-#: admin/index.php:31 admin/manage-cache.php:30 admin/manage-tagging.php:31
-#: admin/manage-post.php:30 admin/manage-logs.php:30 admin/manage-feed.php:30
-#: admin/manage-user.php:30 admin/manage-pendingfeed.php:30
-#: admin/manage-permissions.php:30 admin/manage-selection.php:31
-#: admin/manage-account.php:30 admin/manage-tribe.php:30
-#: admin/manage-newsletter.php:30 admin/manage-update.php:30 user/index.php:31
-msgid "Permission denied"
-msgstr "Accesso negato"
-
-#: api/comment_api.php:67
-#, fuzzy
-msgid "This action is forbidden"
-msgstr "Questa azione non è permessa"
-
-#: shaarli/index.php:16
-#, fuzzy
-msgid "This user does not exists"
-msgstr "Il file %s non esiste."
-
-#: shaarli/index.php:18
-msgid "You must specify a valid user"
+#: feed.php:110 list.php:122
+#, php-format
+msgid "%s tribe"
 msgstr ""
 
-#: shaarli/index.php:21
-msgid "User links are disabled on this planet"
-msgstr ""
+#: feed.php:244
+#, php-format
+msgid "Vote for this post on <a href=\"%s\" title=\"Go on the planet\">%s</a>."
+msgstr "Vota questo post su <a href=\"%s\" title=\"Vai sul planet\">%s</a>."
 
-#: shaarli/index.php:25
-msgid "This user have no shared links on this planet"
-msgstr ""
+#: feed.php:255
+#, php-format
+msgid "Gravatar of %s"
+msgstr "Gravatar di %s"
 
-#: inc/prepend.php:161
+#: feed.php:350 admin/api/manage-feed_api.php:476
+#: admin/api/manage-pendingfeed_api.php:173
+#: admin/api/manage-pendingfeed_api.php:225
+#: admin/api/manage-pendingfeed_api.php:252
+msgid "Feed"
+msgstr "Feed"
+
+#: inc/update_manual.php:49 user/api/post_api.php:115
+msgid "Forbidden"
+msgstr "Vietato"
+
+#: inc/prepend.php:82
+#, fuzzy
+msgid "Impossible to detect configuration file : "
+msgstr "Impossibile modificare il ruolo di te stesso"
+
+#: inc/prepend.php:170
 #, php-format
 msgid ""
 "ERROR : The theme '%s' that is configured is not existing in the theme "
 "folder."
 msgstr ""
 
-#: inc/prepend.php:186
+#: inc/prepend.php:195
 msgid "Database error"
 msgstr "Errore database"
 
-#: inc/prepend.php:187
+#: inc/prepend.php:196
 msgid ""
 "There seems to be no Session table in your database. Is Bilboplanet "
 "completly installed?"
 msgstr ""
 "Sembra non esister alcuna tabella sessioni nel tuo database. Bilboplanet è "
 "stato installato correttamente?"
+
+#: inc/cron_fct.php:31
+msgid "The Cron is stopped and exited"
+msgstr ""
+
+#: inc/cron_fct.php:97
+msgid "STOP file detected, trying to shut down cron job"
+msgstr ""
+
+#: inc/cron_fct.php:101
+#, fuzzy
+msgid "Check feed : "
+msgstr "Feed :"
+
+#: inc/cron_fct.php:125
+#, fuzzy
+msgid "No feed found : "
+msgstr "Nessun contributo trovato"
+
+#: inc/cron_fct.php:127
+#, php-format
+msgid "No feed found on %s (owner : %s)"
+msgstr ""
+
+#: inc/cron_fct.php:140 admin/install/wizard.php:85
+#: admin/install/wizard.php:103
+#, php-format
+msgid "Cannot write %s file."
+msgstr "Non è stato possibile scrivere il file %s."
+
+#: inc/cron_fct.php:226
+#, fuzzy, php-format
+msgid "No content on feed %s"
+msgstr "Abilita i commenti in questo feed"
+
+#: inc/cron_fct.php:228
+#, fuzzy
+msgid "Error in link cutting : "
+msgstr "Errore durante l'aggiornamento : %s"
+
+#: inc/cron_fct.php:250
+#, fuzzy, php-format
+msgid "The feed %s is updated"
+msgstr "Il campo \"%s\" è vuoto"
+
+#: inc/cron_fct.php:268
+#, php-format
+msgid "The feed was not updated since %s minutes. It'll be disabled : "
+msgstr ""
+
+#: inc/cron_fct.php:280
+#, fuzzy, php-format
+msgid "Due to errors, a feed has been disabled on %s"
+msgstr "Il campo \"%s\" %s deve contenere un URL valido"
+
+#: inc/cron_fct.php:281
+#, fuzzy, php-format
+msgid "The feed of %s has been disabled :\n"
+msgstr "Il campo \"%s\" %s deve contenere un URL valido"
+
+#: inc/cron_fct.php:283
+#, fuzzy, php-format
+msgid "The feed was in error during more than %s minutes"
+msgstr "Si è verificato un problema durante l'attivazione del ruolo utente"
+
+#: inc/cron_fct.php:284
+msgid "Details :"
+msgstr ""
+
+#: inc/cron_fct.php:286
+#, fuzzy
+msgid "User name : "
+msgstr "Nome utente:"
+
+#: inc/cron_fct.php:287
+#, fuzzy
+msgid "User email : "
+msgstr "Email :"
+
+#: inc/cron_fct.php:288 user/api/feed_api.php:123
+#, fuzzy
+msgid "Feed url : "
+msgstr "Feed :"
+
+#: inc/cron_fct.php:292
+#, fuzzy
+msgid "Email alert could not be send"
+msgstr "Non è stato possibile inviare la mail"
+
+#: inc/cron_fct.php:295
+msgid "Feed disabled and email alert sent !"
+msgstr ""
+
+#: inc/cron_fct.php:488
+msgid "Title change of : "
+msgstr ""
+
+#: inc/cron_fct.php:501
+#, fuzzy
+msgid "Content change of : "
+msgstr "Contenuto del messaggio :"
+
+#: inc/cron_fct.php:667 admin/api/manage-tribe_api.php:559
+#, fuzzy
+msgid "The folder data/images does not exists !"
+msgstr "Il file %s non esiste."
+
+#: inc/cron_fct.php:671 admin/api/manage-tribe_api.php:562
+msgid "The folder data/images must writable !"
+msgstr ""
+
+#: inc/cron_fct.php:677
+#, fuzzy
+msgid "The folder data/tmp does not exists !"
+msgstr "Il file %s non esiste."
+
+#: inc/cron_fct.php:681
+msgid "The folder data/tmp must writable !"
+msgstr ""
+
+#: inc/cron_fct.php:693
+msgid "Unknown file extension"
+msgstr ""
+
+#: inc/cron_fct.php:704
+#, fuzzy
+msgid "File not found"
+msgstr "Pagina non trovata"
+
+#: inc/cron_fct.php:715
+msgid "Bad image ratio"
+msgstr ""
+
+#: inc/cron_fct.php:728
+#, fuzzy
+msgid "Unable to create image object"
+msgstr "Non è stato possibile recuperare le impostazioni:"
+
+#: inc/cron_fct.php:745 admin/api/manage-tribe_api.php:606
+#, fuzzy
+msgid "Error when creating final image"
+msgstr "Errore durante l'aggiornamento : %s"
+
+#: inc/cron_fct.php:762 admin/api/manage-tribe_api.php:618
+msgid "Error while resizing final image"
+msgstr ""
+
+#: inc/cron_fct.php:764 admin/api/manage-tribe_api.php:620
+#, fuzzy
+msgid "Error while deleting temporary image"
+msgstr "Errore durante l'aggiornamento : %s"
+
+#: inc/cron_fct.php:783
+msgid "Problem during saving process"
+msgstr ""
+
+#: inc/upgrade_db.php:39
+#, fuzzy
+msgid "Your database schema has been updated"
+msgstr "Lo schema del database è stato aggiornato"
 
 #: inc/fonctions.php:164
 msgid ""
@@ -848,282 +972,156 @@ msgstr ""
 msgid "Reading cache"
 msgstr "Leggo la cache"
 
-#: inc/fonctions.php:760
+#: inc/fonctions.php:797
 #, php-format
 msgid "By %s, on %s at %s."
 msgstr "Di %s, il %s alle %s."
 
-#: inc/fonctions.php:763
+#: inc/fonctions.php:800
 msgid "View post detail"
 msgstr "Visualizza dettagli del post"
 
-#: inc/fonctions.php:771
+#: inc/fonctions.php:810
 msgid "Read more"
 msgstr "Leggi di più"
 
-#: inc/fonctions.php:944 inc/fonctions.php:957
+#: inc/fonctions.php:987 inc/fonctions.php:1000
 msgid "Vote yes"
 msgstr "Vota sì"
 
-#: inc/fonctions.php:945 inc/fonctions.php:963 inc/fonctions.php:967
+#: inc/fonctions.php:988 inc/fonctions.php:1006 inc/fonctions.php:1010
 msgid "Vote no"
 msgstr "Vota no"
 
-#: inc/fonctions.php:955
+#: inc/fonctions.php:998
 msgid "This post seems pertinent to you"
 msgstr "Questo post sembra pertinente a te"
 
-#: inc/fonctions.php:961
+#: inc/fonctions.php:1004
 msgid "This post seems not pertinent to you"
 msgstr "Questo post non sembra pertinente a te"
 
-#: inc/fonctions.php:965
+#: inc/fonctions.php:1008
 msgid "This post should not be here"
 msgstr "Questo post non dovrebbe essere qui"
 
-#: inc/fonctions.php:966
+#: inc/fonctions.php:1009
 msgid ""
 "Are you sure this post should not be on this planet and should be removed?"
 msgstr ""
 "Sei sicuro che questo post non dovrebbe essere su questo planet e dovrebbe "
 "essere rimosso?"
 
-#: inc/fonctions.php:989
+#: inc/fonctions.php:1032
 #, php-format
 msgid "The field \"%s\" has to be a valid email address"
 msgstr "Il campo \"%s\" deve contenere un indirizzo email valido"
 
-#: inc/fonctions.php:995 inc/fonctions.php:1001
+#: inc/fonctions.php:1038 inc/fonctions.php:1044
 #, php-format
 msgid "The field \"%s\" %s has to be a valid URL"
 msgstr "Il campo \"%s\" %s deve contenere un URL valido"
 
-#: inc/fonctions.php:1005
+#: inc/fonctions.php:1048
 #, php-format
 msgid "The field \"%s\" %s is not a valid simplepie feed"
 msgstr "Il campo \"%s\" %s non è un feed simplepie valido"
 
-#: inc/fonctions.php:1020
+#: inc/fonctions.php:1063
 #, php-format
 msgid "The fields %s does not match"
 msgstr "Il campo %s non corrisponde"
 
-#: inc/fonctions.php:1024
+#: inc/fonctions.php:1067
 #, php-format
 msgid "The fields %s needs to have 4 characters minimum"
 msgstr "I campi %s devono essere lunghi almeno 4 caratteri"
 
-#: inc/fonctions.php:1032
+#: inc/fonctions.php:1075
 #, php-format
 msgid "The field \"%s\" is empty"
 msgstr "Il campo \"%s\" è vuoto"
 
-#: inc/fonctions.php:1201
+#: inc/fonctions.php:1244
 msgid " bytes"
 msgstr "Byte"
 
-#: inc/fonctions.php:1205
+#: inc/fonctions.php:1248
 msgid " Kb"
 msgstr "Kb"
 
-#: inc/fonctions.php:1209
+#: inc/fonctions.php:1252
 msgid " MB"
 msgstr "MB"
 
-#: inc/fonctions.php:1213
+#: inc/fonctions.php:1256
 msgid " GB"
 msgstr "GB"
 
-#: inc/fonctions.php:1674 inc/fonctions.php:1688
+#: inc/fonctions.php:1717 inc/fonctions.php:1731
 msgid "English"
 msgstr ""
 
-#: inc/fonctions.php:1690
+#: inc/fonctions.php:1733
 msgid "French"
 msgstr ""
 
-#: inc/fonctions.php:1692
+#: inc/fonctions.php:1735
 msgid "German"
 msgstr ""
 
-#: inc/fonctions.php:1694
+#: inc/fonctions.php:1737
 msgid "Dutch"
 msgstr ""
 
-#: inc/fonctions.php:1696
+#: inc/fonctions.php:1739
 msgid "Arab"
 msgstr ""
 
-#: inc/fonctions.php:1698
+#: inc/fonctions.php:1741
 msgid "Italian"
 msgstr ""
 
-#: inc/fonctions.php:1700
+#: inc/fonctions.php:1743
 msgid "Spanish"
 msgstr ""
 
-#: inc/cron_fct.php:31
-msgid "The Cron is stopped and exited"
+#: inc/fonctions.php:1768
+msgid "A new Bilboplanet joined the community"
 msgstr ""
 
-#: inc/cron_fct.php:95
-msgid "STOP file detected, trying to shut down cron job"
+#: inc/fonctions.php:1770
+msgid "Url : "
 msgstr ""
 
-#: inc/cron_fct.php:99
+#: inc/fonctions.php:1771
 #, fuzzy
-msgid "Check feed : "
-msgstr "Feed :"
+msgid "Title : "
+msgstr "Titolo"
 
-#: inc/cron_fct.php:123
+#: inc/fonctions.php:1772
 #, fuzzy
-msgid "No feed found : "
-msgstr "Nessun contributo trovato"
+msgid "Description : "
+msgstr "Descrizione"
 
-#: inc/cron_fct.php:125
-#, php-format
-msgid "No feed found on %s (owner : %s)"
+#: inc/fonctions.php:1773
+#, fuzzy
+msgid "Author : "
+msgstr "Autore"
+
+#: inc/fonctions.php:1779
+#, fuzzy
+msgid "You're planet joined the Bilboplanet community !"
+msgstr "Torna al Planet"
+
+#: inc/fonctions.php:1781
+msgid "Problem sending email."
 msgstr ""
 
-#: inc/cron_fct.php:138 admin/install/wizard.php:91
-#: admin/install/wizard.php:106
-#, php-format
-msgid "Cannot write %s file."
-msgstr "Non è stato possibile scrivere il file %s."
-
-#: inc/cron_fct.php:224
-#, fuzzy, php-format
-msgid "No content on feed %s"
-msgstr "Abilita i commenti in questo feed"
-
-#: inc/cron_fct.php:226
+#: inc/fonctions.php:1783
 #, fuzzy
-msgid "Error in link cutting : "
-msgstr "Errore durante l'aggiornamento : %s"
-
-#: inc/cron_fct.php:248
-#, fuzzy, php-format
-msgid "The feed %s is updated"
-msgstr "Il campo \"%s\" è vuoto"
-
-#: inc/cron_fct.php:266
-#, php-format
-msgid "The feed was not updated since %s minutes. It'll be disabled : "
-msgstr ""
-
-#: inc/cron_fct.php:278
-msgid "Due to errors, a feed has been disabled on "
-msgstr ""
-
-#: inc/cron_fct.php:279
-#, fuzzy, php-format
-msgid "The feed of %s has been disabled :\n"
-msgstr "Il campo \"%s\" %s deve contenere un URL valido"
-
-#: inc/cron_fct.php:281
-#, php-format
-msgid "The feed was in error during more than %s hours"
-msgstr ""
-
-#: inc/cron_fct.php:282
-msgid "Details :"
-msgstr ""
-
-#: inc/cron_fct.php:284
-#, fuzzy
-msgid "User name : "
-msgstr "Nome utente:"
-
-#: inc/cron_fct.php:285
-#, fuzzy
-msgid "User email : "
-msgstr "Email :"
-
-#: inc/cron_fct.php:286 user/api/feed_api.php:123
-#, fuzzy
-msgid "Feed url : "
-msgstr "Feed :"
-
-#: inc/cron_fct.php:290
-#, fuzzy
-msgid "Email alert could not be send"
-msgstr "Non è stato possibile inviare la mail"
-
-#: inc/cron_fct.php:293
-msgid "Feed disabled and email alert sent !"
-msgstr ""
-
-#: inc/cron_fct.php:486
-msgid "Title change of : "
-msgstr ""
-
-#: inc/cron_fct.php:499
-#, fuzzy
-msgid "Content change of : "
-msgstr "Contenuto del messaggio :"
-
-#: inc/cron_fct.php:665 admin/api/manage-tribe_api.php:559
-#, fuzzy
-msgid "The folder data/images does not exists !"
-msgstr "Il file %s non esiste."
-
-#: inc/cron_fct.php:669 admin/api/manage-tribe_api.php:562
-msgid "The folder data/images must writable !"
-msgstr ""
-
-#: inc/cron_fct.php:675
-#, fuzzy
-msgid "The folder data/tmp does not exists !"
-msgstr "Il file %s non esiste."
-
-#: inc/cron_fct.php:679
-msgid "The folder data/tmp must writable !"
-msgstr ""
-
-#: inc/cron_fct.php:691
-msgid "Unknown file extension"
-msgstr ""
-
-#: inc/cron_fct.php:702
-#, fuzzy
-msgid "File not found"
-msgstr "Pagina non trovata"
-
-#: inc/cron_fct.php:713
-msgid "Bad image ratio"
-msgstr ""
-
-#: inc/cron_fct.php:726
-#, fuzzy
-msgid "Unable to create image object"
-msgstr "Non è stato possibile recuperare le impostazioni:"
-
-#: inc/cron_fct.php:740 admin/api/manage-tribe_api.php:606
-#, fuzzy
-msgid "Error when creating final image"
-msgstr "Errore durante l'aggiornamento : %s"
-
-#: inc/cron_fct.php:742 admin/api/manage-tribe_api.php:608
-msgid "Error while resizing final image"
-msgstr ""
-
-#: inc/cron_fct.php:744 admin/api/manage-tribe_api.php:610
-#, fuzzy
-msgid "Error while deleting temporary image"
-msgstr "Errore durante l'aggiornamento : %s"
-
-#: inc/cron_fct.php:778
-msgid "Problem during saving process"
-msgstr ""
-
-#: inc/update_manual.php:49 user/api/post_api.php:115
-msgid "Forbidden"
-msgstr "Vietato"
-
-#: inc/upgrade_db.php:39
-#, fuzzy
-msgid "Your database schema has been updated"
-msgstr "Lo schema del database è stato aggiornato"
+msgid "Your planet already joined the Bilboplanet community."
+msgstr "Torna al Planet"
 
 #: inc/core/class.bp.settings.php:77
 msgid "Unable to retrieve settings:"
@@ -1248,787 +1246,118 @@ msgstr "Pagina successiva"
 msgid "Previous page"
 msgstr "Pagina precedente"
 
-#: admin/manage-option.php:35 admin/manage-moderation.php:32
-#: admin/manage-useroption.php:32 admin/index.php:32 admin/manage-cache.php:31
-#: admin/manage-tagging.php:32 admin/manage-post.php:31
-#: admin/manage-logs.php:31 admin/manage-feed.php:31 admin/manage-user.php:31
-#: admin/manage-pendingfeed.php:31 admin/manage-permissions.php:31
-#: admin/manage-selection.php:32 admin/manage-account.php:31
-#: admin/manage-tribe.php:31 admin/manage-newsletter.php:31
-#: admin/manage-update.php:31 user/index.php:32
+#: api/identishare.php:27 admin/manage-option.php:34 admin/manage-tribe.php:30
+#: admin/manage-permissions.php:30 admin/manage-feed.php:30
+#: admin/manage-update.php:30 admin/manage-useroption.php:31
+#: admin/manage-account.php:30 admin/manage-user.php:30
+#: admin/manage-post.php:30 admin/manage-tagging.php:31
+#: admin/manage-newsletter.php:30 admin/manage-selection.php:31
+#: admin/manage-moderation.php:31 admin/manage-logs.php:30
+#: admin/manage-cache.php:30 admin/manage-pendingfeed.php:30
+#: admin/index.php:31 user/index.php:31
+msgid "Permission denied"
+msgstr "Accesso negato"
+
+#: api/main_api.php:168 api/comment_api.php:133
+#: admin/api/manage-site_api.php:229 admin/api/manage-feed_api.php:454
+#: admin/api/manage-selection_api.php:82
+#: admin/api/manage-pendingfeed_api.php:205
+#: admin/api/manage-permissions_api.php:187
+#: admin/api/manage-tagging_api.php:173 admin/api/manage-tribe_api.php:733
+#: admin/api/manage-moderation_api.php:202
+#: admin/api/manage-account_api.php:104 admin/api/manage-user_api.php:395
+#: user/api/feed_api.php:235 user/api/tagging_api.php:214
+#: user/api/account_api.php:95 user/api/account_api.php:178
+#: user/api/main_api.php:60 user/api/social_api.php:111
+#: user/api/post_api.php:134
+msgid "User bad call"
+msgstr "Utente indesiderato"
+
+#: api/votes.php:75
+msgid "Success"
+msgstr "Successo"
+
+#: api/votes.php:78
+msgid "Error: article number incorrect !"
+msgstr "Errore: il numero articolo non è corretto !"
+
+#: api/votes.php:82
+msgid "Error: you already vote on this post !"
+msgstr "Errore: hai già votato questo post !"
+
+#: api/comment_api.php:67
+#, fuzzy
+msgid "This action is forbidden"
+msgstr "Questa azione non è permessa"
+
+#: api/index.php:52 admin/api/index.php:122 user/api/index.php:95
+msgid "bad call, this ajax call does not exist"
+msgstr "Chiamata non riuscita, questa chiamata ajax non esiste"
+
+#: shaarli/index.php:19
+#, fuzzy
+msgid "This user does not exists"
+msgstr "Il file %s non esiste."
+
+#: shaarli/index.php:21
+msgid "You must specify a valid user"
+msgstr ""
+
+#: shaarli/index.php:24
+msgid "User links are disabled on this planet"
+msgstr ""
+
+#: shaarli/index.php:28
+msgid "This user have no shared links on this planet"
+msgstr ""
+
+#: shaarli/index.php:127
+msgid "Shaarli is not installed on this server"
+msgstr ""
+
+#: admin/manage-option.php:35 admin/manage-tribe.php:31
+#: admin/manage-permissions.php:31 admin/manage-feed.php:31
+#: admin/manage-update.php:31 admin/manage-useroption.php:32
+#: admin/manage-account.php:31 admin/manage-user.php:31
+#: admin/manage-post.php:31 admin/manage-tagging.php:32
+#: admin/manage-newsletter.php:31 admin/manage-selection.php:32
+#: admin/manage-moderation.php:32 admin/manage-logs.php:31
+#: admin/manage-cache.php:31 admin/manage-pendingfeed.php:31
+#: admin/index.php:32 user/index.php:32
 msgid "You are not allowed to see this page."
 msgstr "Non puoi accedere a questa pagina."
 
-#: admin/manage-option.php:36 admin/manage-moderation.php:33
-#: admin/manage-useroption.php:33 admin/index.php:33 admin/manage-cache.php:32
-#: admin/manage-tagging.php:33 admin/manage-post.php:32
-#: admin/manage-logs.php:32 admin/manage-feed.php:32 admin/manage-user.php:32
-#: admin/manage-pendingfeed.php:32 admin/manage-permissions.php:32
-#: admin/manage-selection.php:33 admin/manage-account.php:32
-#: admin/manage-tribe.php:32 admin/manage-newsletter.php:32
-#: admin/manage-update.php:32 user/index.php:33
+#: admin/manage-option.php:36 admin/manage-tribe.php:32
+#: admin/manage-permissions.php:32 admin/manage-feed.php:32
+#: admin/manage-update.php:32 admin/manage-useroption.php:33
+#: admin/manage-account.php:32 admin/manage-user.php:32
+#: admin/manage-post.php:32 admin/manage-tagging.php:33
+#: admin/manage-newsletter.php:32 admin/manage-selection.php:33
+#: admin/manage-moderation.php:33 admin/manage-logs.php:32
+#: admin/manage-cache.php:32 admin/manage-pendingfeed.php:32
+#: admin/index.php:33 user/index.php:33
 msgid "You can delete your session if you logout : "
 msgstr "Puoi cancellare la tua sessione facendo il logout :"
 
-#: admin/manage-option.php:53 admin/manage-feed.php:176
+#: admin/manage-option.php:53 admin/manage-tribe.php:135
+#: admin/manage-feed.php:219 admin/manage-account.php:79
 #: admin/manage-user.php:165 admin/manage-user.php:204
-#: admin/manage-account.php:79 admin/manage-tribe.php:135
-#: admin/api/manage-user_api.php:460 admin/api/manage-feed_api.php:558
+#: admin/api/manage-feed_api.php:558 admin/api/manage-user_api.php:473
 msgid "Update"
 msgstr "Aggiorna"
 
-#: admin/manage-option.php:60
+#: admin/manage-option.php:63
+#, fuzzy
+msgid "Join Bilboplanet Community"
+msgstr "Torna al Planet"
+
+#: admin/manage-option.php:70
 msgid "Options"
 msgstr "Opzioni"
 
-#: admin/manage-option.php:62
+#: admin/manage-option.php:72
 msgid "Configuration settings Planet."
 msgstr "Opzioni impostazioni Planet."
-
-#: admin/sidebar.php:27
-msgid "Common"
-msgstr "Common"
-
-#: admin/sidebar.php:30
-msgid "Access the quick summary of the planet"
-msgstr "Accedi alla sintesi veloce del planet"
-
-#: admin/sidebar.php:31
-msgid "Manage your profile account"
-msgstr "Amministra il profilo del tuo account"
-
-#: admin/sidebar.php:31
-msgid "Manage your account"
-msgstr "Amministra il tuo account"
-
-#: admin/sidebar.php:42 admin/manage-tribe.php:98
-#, fuzzy
-msgid "Manage tribes"
-msgstr "amministrare categorie"
-
-#: admin/sidebar.php:45
-msgid "Manage users"
-msgstr "Gestione utenti"
-
-#: admin/sidebar.php:48
-#, fuzzy
-msgid "Pending feeds"
-msgstr "Utenti in attesa"
-
-#: admin/sidebar.php:51 admin/manage-feed.php:152
-msgid "Manage feeds"
-msgstr "Gestione feed"
-
-#: admin/sidebar.php:54
-msgid "Manage posts"
-msgstr "Gestione post"
-
-#: admin/sidebar.php:57
-msgid "Manage newsletter of the planet"
-msgstr "Gestione newsletter del planet"
-
-#: admin/sidebar.php:57
-msgid "Newsletter"
-msgstr "Newsletter"
-
-#: admin/sidebar.php:64 admin/api/manage-permissions_api.php:163
-msgid "Configuration"
-msgstr "Configurazione"
-
-#: admin/sidebar.php:68
-msgid "Author configuration"
-msgstr "Configurazione autore"
-
-#: admin/sidebar.php:68
-msgid "Planet Author"
-msgstr "Autore Planet"
-
-#: admin/sidebar.php:71 admin/manage-moderation.php:55
-msgid "Planet Configuration"
-msgstr "Configurazione Planet"
-
-#: admin/sidebar.php:71
-msgid "Planet configuration"
-msgstr "Configurazione Planet"
-
-#: admin/sidebar.php:74
-msgid "View logs information"
-msgstr "Visualizza informazioni log"
-
-#: admin/sidebar.php:74
-msgid "Logs Files"
-msgstr "Log files"
-
-#: admin/sidebar.php:77
-msgid "Import/Export Planet configuration"
-msgstr "Importa/Esporta configurazione Planet"
-
-#: admin/sidebar.php:77
-msgid "Import/Export"
-msgstr "Importa/Esporta"
-
-#: admin/sidebar.php:80
-msgid "Clear Planet cache"
-msgstr "Cancella la cache del Planet"
-
-#: admin/sidebar.php:80
-msgid "Clear cache"
-msgstr "Cancella la cache"
-
-#: admin/sidebar.php:83
-msgid "Feed fetching system configuration"
-msgstr "Configurazione sistema per il download dei feed"
-
-#: admin/sidebar.php:83
-msgid "Feed fetching"
-msgstr "Download feed"
-
-#: admin/sidebar.php:89 admin/sidebar.php:95
-#: admin/api/manage-permissions_api.php:169
-msgid "Moderation"
-msgstr "Moderazione"
-
-#: admin/sidebar.php:94 admin/manage-moderation.php:48
-msgid "Moderation interface"
-msgstr "Interfaccia amministrazione"
-
-#: admin/sidebar.php:99
-#, fuzzy
-msgid "Tag the last posts"
-msgstr "Tag l'ultimo post"
-
-#: admin/sidebar.php:100
-msgid "Tagging"
-msgstr "Tagging"
-
-#: admin/sidebar.php:116
-msgid "System"
-msgstr "Sistema"
-
-#: admin/sidebar.php:121 admin/manage-permissions.php:48
-msgid "Manage user permissions"
-msgstr "Amministra i permessi utente"
-
-#: admin/sidebar.php:122 admin/api/manage-permissions_api.php:110
-msgid "Permissions"
-msgstr "Permessi"
-
-#: admin/manage-moderation.php:50
-msgid "Moderate some posts."
-msgstr "Modera alcuni post."
-
-#: admin/manage-moderation.php:54
-msgid ""
-"The moderation functionnality is disabled. If you want to enable it, please "
-"go to the configuration page"
-msgstr ""
-"La funzione di moderazione è disabilitata. Se vuoi abilitarla, vai alla "
-"pagina di configurazione"
-
-#: admin/manage-moderation.php:55
-msgid "Planet"
-msgstr "Planet"
-
-#: admin/manage-moderation.php:66 admin/manage-tagging.php:58
-#: admin/manage-selection.php:57
-msgid "Elements to display"
-msgstr "Elementi da visualizzare"
-
-#: admin/manage-moderation.php:68 admin/manage-tagging.php:60
-#: admin/manage-selection.php:59
-msgid "Filter by user"
-msgstr "Filtra per utente"
-
-#: admin/manage-moderation.php:90 admin/manage-tagging.php:82
-#: admin/manage-feed.php:56 admin/manage-feed.php:92 admin/manage-user.php:55
-#: admin/manage-user.php:88 admin/manage-selection.php:81
-msgid "Filter"
-msgstr "Filtra"
-
-#: admin/manage-moderation.php:103 admin/manage-selection.php:109
-msgid "Moderation of your post"
-msgstr "Amministrazione dei tuoi post"
-
-#: admin/manage-moderation.php:105 admin/manage-pendingfeed.php:58
-#: admin/manage-pendingfeed.php:71 admin/manage-selection.php:115
-msgid "Comment"
-msgstr "Commento"
-
-#: admin/manage-moderation.php:108 admin/manage-tagging.php:98
-#: admin/manage-feed.php:175 admin/manage-feed.php:189
-#: admin/manage-user.php:164 admin/manage-user.php:185
-#: admin/manage-user.php:203 admin/manage-pendingfeed.php:60
-#: admin/manage-pendingfeed.php:73 admin/manage-selection.php:118
-#: admin/manage-tribe.php:117 admin/manage-tribe.php:134
-#: admin/manage-tribe.php:149 admin/manage-tribe.php:163
-#: admin/manage-tribe.php:184
-msgid "Cancel"
-msgstr "Cancella"
-
-#: admin/manage-useroption.php:48 admin/manage-useroption.php:108
-msgid "Reference contact email"
-msgstr "Email di contatto"
-
-#: admin/manage-useroption.php:49 admin/manage-useroption.php:111
-msgid "Author Website"
-msgstr "Autore sito web"
-
-#: admin/manage-useroption.php:50 admin/manage-useroption.php:105
-msgid "Contact Name"
-msgstr "Nome contatto"
-
-#: admin/manage-useroption.php:65 admin/api/manage-option_api.php:290
-msgid "Modification succeeded"
-msgstr "Modifica avvenuta con successo"
-
-#: admin/manage-useroption.php:99
-msgid "Users Options"
-msgstr "Opzioni utente"
-
-#: admin/manage-useroption.php:101
-msgid "Configuring user settings."
-msgstr "Configuro impostazioni utente."
-
-#: admin/manage-useroption.php:114
-msgid "Jabber / GoogleTalk"
-msgstr "Jabber / GoogleTalk"
-
-#: admin/manage-useroption.php:117
-msgid "Other Instant Messaging"
-msgstr "Altro Instant Messaging"
-
-#: admin/manage-useroption.php:120
-msgid "About Me"
-msgstr "Su di me"
-
-#: admin/index.php:40
-msgid "Latest articles :"
-msgstr "Ultimi articoli :"
-
-#: admin/index.php:68 admin/api/manage-feed_api.php:474
-msgid "User"
-msgstr "Utente"
-
-#: admin/index.php:68 admin/manage-post.php:217
-#: admin/api/manage-moderation_api.php:162
-#: admin/api/manage-tagging_api.php:132
-msgid "Title"
-msgstr "Titolo"
-
-#: admin/index.php:90
-msgid "BilboPlanet news - Official Website :"
-msgstr "Bilboplanet news - Sito web ufficiale :"
-
-#: admin/index.php:143
-msgid "Quick summary of the planet"
-msgstr "Veloce sintesi del Planet"
-
-#: admin/index.php:148
-#, fuzzy
-msgid "WARNING : please remove /admin/install folder for maximum security"
-msgstr ""
-"WARNING : prego eliminare /admin/install directory per la massima sicurezza"
-
-#: admin/index.php:158
-msgid "Statistics :"
-msgstr "Statistiche :"
-
-#: admin/index.php:163 admin/manage-update.php:119
-msgid "The update is running"
-msgstr "Aggiornamento in corso"
-
-#: admin/index.php:165 admin/manage-update.php:121
-msgid "The update is stopped"
-msgstr "Aggiornamento fermato"
-
-#: admin/index.php:167 admin/manage-update.php:122
-msgid "The update is disabled"
-msgstr "Aggiornamento disabilitato"
-
-#: admin/index.php:169
-msgid "The update on loading of index page enabled"
-msgstr "Aggiornamento abilitato all'accesso della pagina index"
-
-#: admin/index.php:171
-msgid "Current size of the database :"
-msgstr "Peso attuale del database :"
-
-#: admin/index.php:172
-msgid "Number of articles in the DB :"
-msgstr "Numero di articoli nel DB :"
-
-#: admin/index.php:173
-msgid "Number of votes in the DB :"
-msgstr "Numero di voti nel DB :"
-
-#: admin/index.php:174
-msgid "Number of members in the DB :"
-msgstr "Numero di utenti nel DB :"
-
-#: admin/index.php:175
-msgid "Number of feeds in the DB :"
-msgstr "Numero di feed nel DB :"
-
-#: admin/index.php:181
-msgid "System information :"
-msgstr "Informazioni sistema :"
-
-#: admin/index.php:183
-msgid "Date server :"
-msgstr "Data server :"
-
-#: admin/index.php:184
-msgid "Operating System :"
-msgstr "Sistema operativo :"
-
-#: admin/index.php:185
-msgid "PHP version :"
-msgstr "Versione PHP :"
-
-#: admin/index.php:186
-#, fuzzy
-msgid "Database version :"
-msgstr "Errore database"
-
-#: admin/index.php:187
-msgid "Server :"
-msgstr "Server :"
-
-#: admin/index.php:188
-msgid "Memory :"
-msgstr "Memoria :"
-
-#: admin/index.php:189
-msgid "Your BilboPlanet version :"
-msgstr "Versione Bilboplanet :"
-
-#: admin/manage-cache.php:54
-msgid "The cache files were correctly deleted."
-msgstr "I file nella cache sono stati eliminati correttamente."
-
-#: admin/manage-cache.php:70
-msgid "Manage cache"
-msgstr "Amministra cache"
-
-#: admin/manage-cache.php:72
-msgid "Remove the cache files"
-msgstr "Cancella i file nella cache"
-
-#: admin/manage-cache.php:78
-msgid "Delete cache"
-msgstr "Cancella cache"
-
-#: admin/manage-cache.php:83
-msgid "The following files were deleted :"
-msgstr "I seguenti file sono stati cancellati :"
-
-#: admin/manage-tagging.php:48
-#, fuzzy
-msgid "Tagging interface"
-msgstr "Interfaccia dei Tag"
-
-#: admin/manage-tagging.php:50
-msgid "Tag posts and put them together by theme."
-msgstr "Tagga i post e uniscili per argomento."
-
-#: admin/pagination.php:46 admin/pagination.php:61
-msgid "Next page"
-msgstr "Pagina successiva"
-
-#: admin/manage-post.php:95
-#, php-format
-msgid "The post %s was removed"
-msgstr "Il post %s è stato eliminato"
-
-#: admin/manage-post.php:102
-#, php-format
-msgid "The post %s was changed"
-msgstr "Il post %s è stato modificato"
-
-#: admin/manage-post.php:119
-msgid "Filtering of the posts"
-msgstr "Filtraggio dei post"
-
-#: admin/manage-post.php:121
-msgid "Filter articles"
-msgstr "Filtra articoli"
-
-#: admin/manage-post.php:127
-msgid "Posts of the member :"
-msgstr "Post dell'utente :"
-
-#: admin/manage-post.php:146 admin/manage-post.php:148
-#: admin/manage-post.php:158 admin/manage-feed.php:73 admin/manage-feed.php:78
-#: admin/manage-user.php:71 admin/manage-user.php:76
-msgid "All"
-msgstr "Tutti"
-
-#: admin/manage-post.php:155
-msgid "Post status"
-msgstr "Stato del post"
-
-#: admin/manage-post.php:159 admin/manage-post.php:235
-#: admin/manage-post.php:243 admin/manage-post.php:249
-#: admin/manage-post.php:253
-msgid "inactive"
-msgstr "inattivo"
-
-#: admin/manage-post.php:160 admin/manage-post.php:234
-#: admin/manage-post.php:239 admin/manage-post.php:244
-#: admin/manage-post.php:254
-msgid "active"
-msgstr "attivo"
-
-#: admin/manage-post.php:161 admin/manage-post.php:237
-#: admin/manage-post.php:246 admin/manage-post.php:252
-#: admin/manage-post.php:255
-msgid "pending"
-msgstr "in attesa"
-
-#: admin/manage-post.php:167
-msgid "Number of posts"
-msgstr "Numero di post"
-
-#: admin/manage-post.php:171 admin/manage-feed.php:145
-#: admin/manage-user.php:127 admin/manage-tribe.php:91
-#: admin/manage-newsletter.php:224 admin/api/manage-user_api.php:286
-#: admin/api/manage-tribe_api.php:210 admin/api/manage-feed_api.php:255
-#: admin/api/manage-site_api.php:190
-msgid "Reset"
-msgstr "Reset"
-
-#: admin/manage-post.php:178
-msgid "List of the posts"
-msgstr "Elenco dei post"
-
-#: admin/manage-post.php:180
-msgid ""
-"NOTE: If you delete a post which is too recent, it will be refetched next "
-"time the update happen !!"
-msgstr ""
-"NOTA: Se cancelli un post troppo recente, questo sarà riscaricato al "
-"prossimo aggiornamento !!"
-
-#: admin/manage-post.php:216 admin/api/manage-moderation_api.php:160
-#: admin/api/manage-tagging_api.php:131
-msgid "Date"
-msgstr "Data"
-
-#: admin/manage-post.php:218
-msgid "Status"
-msgstr "Stato"
-
-#: admin/manage-post.php:219
-msgid "Nb votes"
-msgstr "Numero voti"
-
-#: admin/manage-post.php:220 admin/manage-logs.php:72
-#: admin/manage-newsletter.php:212 admin/api/manage-user_api.php:403
-#: admin/api/manage-feed_api.php:477 admin/api/manage-moderation_api.php:163
-#: admin/api/manage-pendingfeed_api.php:227
-msgid "Action"
-msgstr "Azione"
-
-#: admin/manage-post.php:269
-msgid "Change"
-msgstr "Modifica"
-
-#: admin/manage-post.php:270 admin/manage-logs.php:88
-#: admin/api/manage-user_api.php:463 admin/api/manage-feed_api.php:560
-msgid "Delete"
-msgstr "Cancella"
-
-#: admin/manage-post.php:286
-msgid "Show items by : "
-msgstr "Visualizza contributi per :"
-
-#: admin/manage-logs.php:63
-msgid "All the log files"
-msgstr "Tutti i file di log"
-
-#: admin/manage-logs.php:65
-msgid "Management planet log files (Advanced users)."
-msgstr "Amministrazione log file del planet (utenti avanzati)."
-
-#: admin/manage-logs.php:109
-msgid "Purge all the log files"
-msgstr "Cancella tutti i file di log"
-
-#: admin/manage-feed.php:48 admin/manage-feed.php:99
-msgid "Add a feed"
-msgstr "Aggiungi feed"
-
-#: admin/manage-feed.php:51
-msgid "Filter feedlist"
-msgstr "Filtra lista dei feed"
-
-#: admin/manage-feed.php:76
-msgid "Active feeds"
-msgstr "Feed attivi"
-
-#: admin/manage-feed.php:77
-msgid "Inactive feeds"
-msgstr "Feed inattivi"
-
-#: admin/manage-feed.php:80
-msgid "Auto disabled feeds"
-msgstr "Feed automaticamente disabilitati"
-
-#: admin/manage-feed.php:85 admin/manage-feed.php:124
-#: admin/manage-feed.php:164 admin/manage-user.php:81
-#: admin/manage-user.php:104 admin/manage-user.php:146
-#: admin/manage-user.php:174 admin/manage-account.php:62
-#: admin/api/manage-pendingfeed_api.php:243
-msgid "User id"
-msgstr "ID utente"
-
-#: admin/manage-feed.php:88
-msgid "Feed status"
-msgstr "Stato feed"
-
-#: admin/manage-feed.php:101
-msgid ""
-"Manage member's feeds. Notice that you can only add a feed to a user who has "
-"a website. So you first need to create the user and add a site to him"
-msgstr ""
-"Amministra i feed utenti. Ricorda che puoi aggiungere un feed solo ad utenti "
-"che hanno un sito web. Pertanto crea prima l'utente e aggiungigli un sito "
-"web."
-
-#: admin/manage-feed.php:116 admin/manage-tribe.php:70
-msgid "-- Choose an user --"
-msgstr "-- Seleziona un utente --"
-
-#: admin/manage-feed.php:127
-msgid "Site id"
-msgstr "ID sito"
-
-#: admin/manage-feed.php:128
-msgid "-- Choose an user id --"
-msgstr "-- Seleziona un ID utente --"
-
-#: admin/manage-feed.php:129
-msgid "Choose the website of the feed"
-msgstr "Seleziona il sito web del feed"
-
-#: admin/manage-feed.php:131
-msgid "Full feed URL"
-msgstr "URL completo del feed"
-
-#: admin/manage-feed.php:133
-msgid "ex: http://www.bilboplanet.com/feed/atom/"
-msgstr "es: http://www.bilboplanet.com/feed/atom/"
-
-#: admin/manage-feed.php:135 admin/manage-feed.php:167
-msgid "Feed name"
-msgstr "Nome feed"
-
-#: admin/manage-feed.php:137
-msgid "ex: gnu/Linux posts"
-msgstr "es: gnu/Linux post"
-
-#: admin/manage-feed.php:140
-msgid "Trusted URL"
-msgstr "URL fidato"
-
-#: admin/manage-feed.php:146 admin/manage-user.php:128
-#: admin/manage-user.php:186 admin/manage-tribe.php:92
-msgid "Add"
-msgstr "Aggiungi"
-
-#: admin/manage-feed.php:154
-msgid "Manage member feed."
-msgstr "Amministra feed utente."
-
-#: admin/manage-feed.php:169
-msgid "ex: GNU/Linux posts"
-msgstr "es: GNU/Linux posts"
-
-#: admin/manage-feed.php:171
-msgid "Feed URL"
-msgstr "Feed URL"
-
-#: admin/manage-feed.php:173
-msgid "ex: http://www.bilboplanet.com/feed/"
-msgstr "es: http://www.bilboplanet.com/feed/"
-
-#: admin/manage-user.php:49 admin/manage-user.php:95
-msgid "Add an user"
-msgstr "Aggiungi utente"
-
-#: admin/manage-user.php:52
-msgid "Filter userlist"
-msgstr "Filtra lista utenti"
-
-#: admin/manage-user.php:74
-msgid "Active user"
-msgstr "Utente attivo"
-
-#: admin/manage-user.php:75
-msgid "Inactive user"
-msgstr "Utente inattivo"
-
-#: admin/manage-user.php:84
-msgid "User status"
-msgstr "Stato utente"
-
-#: admin/manage-user.php:97
-msgid "To add a new member, fill out the form below."
-msgstr "Per aggiunger un nuovo utente, compila il form successivo."
-
-#: admin/manage-user.php:106
-msgid "ex: Frankenstein"
-msgstr "es: Frankenstein"
-
-#: admin/manage-user.php:110 admin/manage-user.php:151
-#: admin/manage-account.php:67
-msgid "ex: Jean Dupont"
-msgstr "es: Mario Rossi"
-
-#: admin/manage-user.php:114 admin/manage-user.php:155
-#: admin/manage-account.php:71
-msgid "ex: xxx@yyy.zzz"
-msgstr "es: xxx@yyy.zzz"
-
-#: admin/manage-user.php:118
-msgid "Minimum 4 chars"
-msgstr "Minimo 4 caratteri"
-
-#: admin/manage-user.php:120
-msgid "Confirm password"
-msgstr "Conferma password"
-
-#: admin/manage-user.php:123
-msgid "Website (Optional)"
-msgstr "Sito web (opzionale)"
-
-#: admin/manage-user.php:125
-msgid "ex: http://www.example.com"
-msgstr "es: http://www.esempio.com"
-
-#: admin/manage-user.php:135
-msgid "List of the users"
-msgstr "Lista utenti"
-
-#: admin/manage-user.php:137
-msgid "List of members of the Planet"
-msgstr "Lista utenti del Planet"
-
-#: admin/manage-user.php:157 admin/manage-account.php:73
-msgid "New password"
-msgstr "Nuova password"
-
-#: admin/manage-user.php:160 admin/manage-account.php:76
-msgid "Confirm new password"
-msgstr "Conferma la nuova password"
-
-#: admin/manage-user.php:162 admin/manage-account.php:78
-msgid "You can leave the password field blank if you don't want to change it"
-msgstr "Puoi lasciare libero il campo password se non vuoi modificarla"
-
-#: admin/manage-user.php:177 admin/manage-user.php:195
-msgid "Site name"
-msgstr "Nome sito"
-
-#: admin/manage-user.php:179 admin/manage-user.php:197
-msgid "ex: Bilboplanet blog"
-msgstr "es: Bilboplanet blog"
-
-#: admin/manage-user.php:181 admin/manage-user.php:199
-msgid "Site URL"
-msgstr "URL sito"
-
-#: admin/manage-user.php:183 admin/manage-user.php:201
-msgid "ex: http://www.bilboplanet.com"
-msgstr "es: http://www.bilboplanet.com"
-
-#: admin/manage-pendingfeed.php:46
-#, fuzzy
-msgid "List of pending feeds"
-msgstr "Lista utenti in attesa"
-
-#: admin/manage-pendingfeed.php:48
-#, fuzzy
-msgid "List of pending feeds for the Planet"
-msgstr "Lista utenti in attesa del Planet"
-
-#: admin/manage-pendingfeed.php:57
-#, fuzzy
-msgid "Refuse subscription"
-msgstr "Rifiuta iscrizione"
-
-#: admin/manage-pendingfeed.php:70
-#, fuzzy
-msgid "Accept subscription"
-msgstr "Accetta iscrizione"
-
-#: admin/head.php:56
-msgid "Back on the Bilboplanet"
-msgstr "Torna al Planet"
-
-#: admin/head.php:60 admin/head.php:66
-msgid "About"
-msgstr "Info"
-
-#: admin/head.php:68
-msgid "Bilboplanet was developed by"
-msgstr "Bilboplanet è stato sviluppato da"
-
-#: admin/head.php:76
-msgid "BilboPlanet : Useful links"
-msgstr "Bilboplanet : Link utili"
-
-#: admin/head.php:79
-#, fuzzy
-msgid "Official WebSite: "
-msgstr "Sito web ufficiale:"
-
-#: admin/head.php:80
-#, fuzzy
-msgid "Official Forum: "
-msgstr "Forum ufficiale:"
-
-#: admin/head.php:81
-#, fuzzy
-msgid "Official Documentation: "
-msgstr "Documentazione ufficiale:"
-
-#: admin/head.php:82
-msgid "Tracker: "
-msgstr "Tracker:"
-
-#: admin/manage-permissions.php:50
-msgid "Check user statuses and configure their permissions"
-msgstr "Controlla gli stati utente e imposta i loro permessi"
-
-#: admin/manage-selection.php:48
-msgid "Selection of the week"
-msgstr "Selezione della settimana"
-
-#: admin/manage-selection.php:50 admin/manage-selection.php:97
-msgid "Make your selection of the week"
-msgstr "Fai la tua selezione della settimana"
-
-#: admin/manage-selection.php:95
-#, php-format
-msgid "Pool of selectionned posts between %s and %s"
-msgstr "Insieme di post selezionati tra %s e %s"
-
-#: admin/manage-selection.php:111
-msgid "Your email address"
-msgstr "Il tuo indirizzo email"
-
-#: admin/manage-selection.php:113
-msgid "This is your own email"
-msgstr "Questa è l'email di te stesso"
-
-#: admin/manage-account.php:48
-msgid "Manage account"
-msgstr "Amministra account"
-
-#: admin/manage-account.php:50
-msgid "You can change your profile configuration here"
-msgstr "Puoi modificare le impostazioni del tuo profilo qui"
 
 #: admin/manage-tribe.php:48 admin/manage-tribe.php:53
 msgid "Create a tribe"
@@ -2039,6 +1368,10 @@ msgid ""
 "Manage tribes. You can add user filters, search filters and tag filters. You "
 "can add tribes for all users or for specific users."
 msgstr ""
+
+#: admin/manage-tribe.php:70 admin/manage-feed.php:159
+msgid "-- Choose an user --"
+msgstr "-- Seleziona un utente --"
 
 #: admin/manage-tribe.php:71
 msgid "-- ALL USERS --"
@@ -2065,6 +1398,25 @@ msgstr ""
 msgid "The ordering specifies the position of your tribe on the portal."
 msgstr ""
 
+#: admin/manage-tribe.php:91 admin/manage-feed.php:90
+#: admin/manage-feed.php:188 admin/manage-user.php:127
+#: admin/manage-post.php:171 admin/manage-newsletter.php:224
+#: admin/api/manage-site_api.php:190 admin/api/manage-feed_api.php:255
+#: admin/api/manage-tribe_api.php:210 admin/api/manage-user_api.php:294
+msgid "Reset"
+msgstr "Reset"
+
+#: admin/manage-tribe.php:92 admin/manage-feed.php:91
+#: admin/manage-feed.php:189 admin/manage-user.php:128
+#: admin/manage-user.php:186
+msgid "Add"
+msgstr "Aggiungi"
+
+#: admin/manage-tribe.php:98 admin/sidebar.php:43
+#, fuzzy
+msgid "Manage tribes"
+msgstr "amministrare categorie"
+
 #: admin/manage-tribe.php:100
 #, fuzzy
 msgid "Manage tribes."
@@ -2077,6 +1429,17 @@ msgstr ""
 #: admin/manage-tribe.php:115
 msgid "The image have to be 100px*100px or will be resized"
 msgstr ""
+
+#: admin/manage-tribe.php:117 admin/manage-tribe.php:134
+#: admin/manage-tribe.php:149 admin/manage-tribe.php:163
+#: admin/manage-tribe.php:184 admin/manage-feed.php:218
+#: admin/manage-feed.php:232 admin/manage-user.php:164
+#: admin/manage-user.php:185 admin/manage-user.php:203
+#: admin/manage-tagging.php:98 admin/manage-selection.php:118
+#: admin/manage-moderation.php:108 admin/manage-pendingfeed.php:60
+#: admin/manage-pendingfeed.php:73
+msgid "Cancel"
+msgstr "Cancella"
 
 #: admin/manage-tribe.php:131
 msgid "Tribe order"
@@ -2110,59 +1473,157 @@ msgstr "Aggiungi utente"
 msgid "Comma separated user id's (ex: john22,jack,flipper)"
 msgstr "Tag separati da virgole (es: linux,web,evento)"
 
-#: admin/manage-newsletter.php:45 admin/manage-newsletter.php:183
-msgid "Sender"
-msgstr "Mittente"
+#: admin/manage-permissions.php:48 admin/sidebar.php:128
+msgid "Manage user permissions"
+msgstr "Amministra i permessi utente"
 
-#: admin/manage-newsletter.php:47 admin/manage-newsletter.php:163
-msgid "Recipients"
-msgstr "Destinatari"
+#: admin/manage-permissions.php:50
+msgid "Check user statuses and configure their permissions"
+msgstr "Controlla gli stati utente e imposta i loro permessi"
 
-#: admin/manage-newsletter.php:51 admin/manage-newsletter.php:197
-msgid "Message"
-msgstr "Messaggio"
+#: admin/manage-feed.php:48 admin/manage-feed.php:58 admin/manage-user.php:49
+#: admin/manage-user.php:95
+msgid "Add an user"
+msgstr "Aggiungi utente"
 
-#: admin/manage-newsletter.php:59
-msgid "Are you sure you want to send this newsletter?"
-msgstr "Sei sicuro che vuoi inviare questa newsletter?"
+#: admin/manage-feed.php:51 admin/manage-feed.php:142
+msgid "Add a feed"
+msgstr "Aggiungi feed"
 
-#: admin/manage-newsletter.php:65
-msgid "Yes"
-msgstr "Sì"
+#: admin/manage-feed.php:54
+msgid "Filter feedlist"
+msgstr "Filtra lista dei feed"
 
-#: admin/manage-newsletter.php:66
-msgid "No"
-msgstr "No"
+#: admin/manage-feed.php:60 admin/manage-user.php:97
+msgid "To add a new member, fill out the form below."
+msgstr "Per aggiunger un nuovo utente, compila il form successivo."
 
-#: admin/manage-newsletter.php:91
-msgid "Your email has been sent"
-msgstr "L'email è stata inviata"
+#: admin/manage-feed.php:67 admin/manage-feed.php:128
+#: admin/manage-feed.php:167 admin/manage-feed.php:207
+#: admin/manage-account.php:62 admin/manage-user.php:81
+#: admin/manage-user.php:104 admin/manage-user.php:146
+#: admin/manage-user.php:174 admin/api/manage-pendingfeed_api.php:242
+msgid "User id"
+msgstr "ID utente"
 
-#: admin/manage-newsletter.php:108
-msgid "Select all members"
-msgstr "Seleziona tutti gli utenti"
+#: admin/manage-feed.php:69 admin/manage-user.php:106
+msgid "ex: Frankenstein"
+msgstr "es: Frankenstein"
 
-#: admin/manage-newsletter.php:167
-msgid "Select recipients of the newsletter"
-msgstr "Seleziona i destinatari della newsletter"
+#: admin/manage-feed.php:73 admin/manage-account.php:67
+#: admin/manage-user.php:110 admin/manage-user.php:151
+msgid "ex: Jean Dupont"
+msgstr "es: Mario Rossi"
 
-#: admin/manage-newsletter.php:179
-msgid "Complete the informations of the newsletter"
-msgstr "Completa le informazioni della newsletter"
+#: admin/manage-feed.php:77 admin/manage-account.php:71
+#: admin/manage-user.php:114 admin/manage-user.php:155
+msgid "ex: xxx@yyy.zzz"
+msgstr "es: xxx@yyy.zzz"
 
-#: admin/manage-newsletter.php:187
-msgid "Default"
-msgstr "Default"
+#: admin/manage-feed.php:81 admin/manage-user.php:118
+msgid "Minimum 4 chars"
+msgstr "Minimo 4 caratteri"
 
-#: admin/manage-newsletter.php:216 admin/api/manage-option_api.php:673
-#: admin/api/manage-option_api.php:932
-msgid "Preview"
-msgstr "Anteprima"
+#: admin/manage-feed.php:83 admin/manage-user.php:120
+msgid "Confirm password"
+msgstr "Conferma password"
 
-#: admin/manage-newsletter.php:264
-#, php-format
-msgid "You shoud have selected %s"
-msgstr "Devi selezionare %s"
+#: admin/manage-feed.php:86 admin/manage-user.php:123
+msgid "Website (Optional)"
+msgstr "Sito web (opzionale)"
+
+#: admin/manage-feed.php:88 admin/manage-user.php:125
+msgid "ex: http://www.example.com"
+msgstr "es: http://www.esempio.com"
+
+#: admin/manage-feed.php:98 admin/manage-feed.php:135 admin/manage-user.php:55
+#: admin/manage-user.php:88 admin/manage-tagging.php:82
+#: admin/manage-selection.php:81 admin/manage-moderation.php:90
+msgid "Filter"
+msgstr "Filtra"
+
+#: admin/manage-feed.php:115 admin/manage-feed.php:120
+#: admin/manage-user.php:71 admin/manage-user.php:76 admin/manage-post.php:146
+#: admin/manage-post.php:148 admin/manage-post.php:158
+msgid "All"
+msgstr "Tutti"
+
+#: admin/manage-feed.php:118
+msgid "Active feeds"
+msgstr "Feed attivi"
+
+#: admin/manage-feed.php:119
+msgid "Inactive feeds"
+msgstr "Feed inattivi"
+
+#: admin/manage-feed.php:122
+msgid "Auto disabled feeds"
+msgstr "Feed automaticamente disabilitati"
+
+#: admin/manage-feed.php:131
+msgid "Feed status"
+msgstr "Stato feed"
+
+#: admin/manage-feed.php:144
+msgid ""
+"Manage member's feeds. Notice that you can only add a feed to a user who has "
+"a website. So you first need to create the user and add a site to him"
+msgstr ""
+"Amministra i feed utenti. Ricorda che puoi aggiungere un feed solo ad utenti "
+"che hanno un sito web. Pertanto crea prima l'utente e aggiungigli un sito "
+"web."
+
+#: admin/manage-feed.php:170
+msgid "Site id"
+msgstr "ID sito"
+
+#: admin/manage-feed.php:171
+msgid "-- Choose an user id --"
+msgstr "-- Seleziona un ID utente --"
+
+#: admin/manage-feed.php:172
+msgid "Choose the website of the feed"
+msgstr "Seleziona il sito web del feed"
+
+#: admin/manage-feed.php:174
+msgid "Full feed URL"
+msgstr "URL completo del feed"
+
+#: admin/manage-feed.php:176
+msgid "ex: http://www.bilboplanet.com/feed/atom/"
+msgstr "es: http://www.bilboplanet.com/feed/atom/"
+
+#: admin/manage-feed.php:178 admin/manage-feed.php:210
+msgid "Feed name"
+msgstr "Nome feed"
+
+#: admin/manage-feed.php:180
+msgid "ex: gnu/Linux posts"
+msgstr "es: gnu/Linux post"
+
+#: admin/manage-feed.php:183
+msgid "Trusted URL"
+msgstr "URL fidato"
+
+#: admin/manage-feed.php:195 admin/sidebar.php:58
+msgid "Manage feeds"
+msgstr "Gestione feed"
+
+#: admin/manage-feed.php:197
+msgid "Manage member feed."
+msgstr "Amministra feed utente."
+
+#: admin/manage-feed.php:212
+msgid "ex: GNU/Linux posts"
+msgstr "es: GNU/Linux posts"
+
+#: admin/manage-feed.php:214
+msgid "Feed URL"
+msgstr "Feed URL"
+
+#: admin/manage-feed.php:216
+msgid "ex: http://www.bilboplanet.com/feed/"
+msgstr "es: http://www.bilboplanet.com/feed/"
 
 #: admin/manage-update.php:46
 msgid "Enable update on loading of index page: Enable"
@@ -2206,6 +1667,18 @@ msgstr "Aggiornamento automatico"
 #: admin/manage-update.php:116
 msgid "System configuration update."
 msgstr "Aggiornamento configurazione di sistema"
+
+#: admin/manage-update.php:119 admin/index.php:163
+msgid "The update is running"
+msgstr "Aggiornamento in corso"
+
+#: admin/manage-update.php:121 admin/index.php:165
+msgid "The update is stopped"
+msgstr "Aggiornamento fermato"
+
+#: admin/manage-update.php:122 admin/index.php:167
+msgid "The update is disabled"
+msgstr "Aggiornamento disabilitato"
 
 #: admin/manage-update.php:125
 msgid "Stop the update algorithm"
@@ -2309,7 +1782,819 @@ msgid ""
 msgstr ""
 "Questo lancerà automaticamente l'aggiornamento e lo metterà nei log file."
 
-#: admin/api/manage-user_api.php:86 admin/install/index.php:112
+#: admin/manage-useroption.php:48 admin/manage-useroption.php:108
+msgid "Reference contact email"
+msgstr "Email di contatto"
+
+#: admin/manage-useroption.php:49 admin/manage-useroption.php:111
+msgid "Author Website"
+msgstr "Autore sito web"
+
+#: admin/manage-useroption.php:50 admin/manage-useroption.php:105
+msgid "Contact Name"
+msgstr "Nome contatto"
+
+#: admin/manage-useroption.php:65 admin/api/manage-option_api.php:290
+msgid "Modification succeeded"
+msgstr "Modifica avvenuta con successo"
+
+#: admin/manage-useroption.php:99
+msgid "Users Options"
+msgstr "Opzioni utente"
+
+#: admin/manage-useroption.php:101
+msgid "Configuring user settings."
+msgstr "Configuro impostazioni utente."
+
+#: admin/manage-useroption.php:114
+msgid "Jabber / GoogleTalk"
+msgstr "Jabber / GoogleTalk"
+
+#: admin/manage-useroption.php:117
+msgid "Other Instant Messaging"
+msgstr "Altro Instant Messaging"
+
+#: admin/manage-useroption.php:120
+msgid "About Me"
+msgstr "Su di me"
+
+#: admin/manage-account.php:48
+msgid "Manage account"
+msgstr "Amministra account"
+
+#: admin/manage-account.php:50
+msgid "You can change your profile configuration here"
+msgstr "Puoi modificare le impostazioni del tuo profilo qui"
+
+#: admin/manage-account.php:73 admin/manage-user.php:157
+msgid "New password"
+msgstr "Nuova password"
+
+#: admin/manage-account.php:76 admin/manage-user.php:160
+msgid "Confirm new password"
+msgstr "Conferma la nuova password"
+
+#: admin/manage-account.php:78 admin/manage-user.php:162
+msgid "You can leave the password field blank if you don't want to change it"
+msgstr "Puoi lasciare libero il campo password se non vuoi modificarla"
+
+#: admin/manage-user.php:52
+msgid "Filter userlist"
+msgstr "Filtra lista utenti"
+
+#: admin/manage-user.php:74
+msgid "Active user"
+msgstr "Utente attivo"
+
+#: admin/manage-user.php:75
+msgid "Inactive user"
+msgstr "Utente inattivo"
+
+#: admin/manage-user.php:84
+msgid "User status"
+msgstr "Stato utente"
+
+#: admin/manage-user.php:135
+msgid "List of the users"
+msgstr "Lista utenti"
+
+#: admin/manage-user.php:137
+msgid "List of members of the Planet"
+msgstr "Lista utenti del Planet"
+
+#: admin/manage-user.php:177 admin/manage-user.php:195
+msgid "Site name"
+msgstr "Nome sito"
+
+#: admin/manage-user.php:179 admin/manage-user.php:197
+msgid "ex: Bilboplanet blog"
+msgstr "es: Bilboplanet blog"
+
+#: admin/manage-user.php:181 admin/manage-user.php:199
+msgid "Site URL"
+msgstr "URL sito"
+
+#: admin/manage-user.php:183 admin/manage-user.php:201
+msgid "ex: http://www.bilboplanet.com"
+msgstr "es: http://www.bilboplanet.com"
+
+#: admin/manage-post.php:95
+#, php-format
+msgid "The post %s was removed"
+msgstr "Il post %s è stato eliminato"
+
+#: admin/manage-post.php:102
+#, php-format
+msgid "The post %s was changed"
+msgstr "Il post %s è stato modificato"
+
+#: admin/manage-post.php:119
+msgid "Filtering of the posts"
+msgstr "Filtraggio dei post"
+
+#: admin/manage-post.php:121
+msgid "Filter articles"
+msgstr "Filtra articoli"
+
+#: admin/manage-post.php:127
+msgid "Posts of the member :"
+msgstr "Post dell'utente :"
+
+#: admin/manage-post.php:155
+msgid "Post status"
+msgstr "Stato del post"
+
+#: admin/manage-post.php:159 admin/manage-post.php:235
+#: admin/manage-post.php:243 admin/manage-post.php:249
+#: admin/manage-post.php:253
+msgid "inactive"
+msgstr "inattivo"
+
+#: admin/manage-post.php:160 admin/manage-post.php:234
+#: admin/manage-post.php:239 admin/manage-post.php:244
+#: admin/manage-post.php:254
+msgid "active"
+msgstr "attivo"
+
+#: admin/manage-post.php:161 admin/manage-post.php:237
+#: admin/manage-post.php:246 admin/manage-post.php:252
+#: admin/manage-post.php:255
+msgid "pending"
+msgstr "in attesa"
+
+#: admin/manage-post.php:167
+msgid "Number of posts"
+msgstr "Numero di post"
+
+#: admin/manage-post.php:178
+msgid "List of the posts"
+msgstr "Elenco dei post"
+
+#: admin/manage-post.php:180
+msgid ""
+"NOTE: If you delete a post which is too recent, it will be refetched next "
+"time the update happen !!"
+msgstr ""
+"NOTA: Se cancelli un post troppo recente, questo sarà riscaricato al "
+"prossimo aggiornamento !!"
+
+#: admin/manage-post.php:216 admin/api/manage-tagging_api.php:131
+#: admin/api/manage-moderation_api.php:160
+msgid "Date"
+msgstr "Data"
+
+#: admin/manage-post.php:217 admin/index.php:68
+#: admin/api/manage-tagging_api.php:132
+#: admin/api/manage-moderation_api.php:162
+msgid "Title"
+msgstr "Titolo"
+
+#: admin/manage-post.php:218
+msgid "Status"
+msgstr "Stato"
+
+#: admin/manage-post.php:219
+msgid "Nb votes"
+msgstr "Numero voti"
+
+#: admin/manage-post.php:220 admin/manage-newsletter.php:212
+#: admin/manage-logs.php:72 admin/api/manage-feed_api.php:477
+#: admin/api/manage-pendingfeed_api.php:226
+#: admin/api/manage-moderation_api.php:163 admin/api/manage-user_api.php:416
+msgid "Action"
+msgstr "Azione"
+
+#: admin/manage-post.php:269
+msgid "Change"
+msgstr "Modifica"
+
+#: admin/manage-post.php:270 admin/manage-logs.php:88
+#: admin/api/manage-feed_api.php:560 admin/api/manage-user_api.php:476
+msgid "Delete"
+msgstr "Cancella"
+
+#: admin/manage-post.php:286
+msgid "Show items by : "
+msgstr "Visualizza contributi per :"
+
+#: admin/manage-tagging.php:48
+#, fuzzy
+msgid "Tagging interface"
+msgstr "Interfaccia dei Tag"
+
+#: admin/manage-tagging.php:50
+msgid "Tag posts and put them together by theme."
+msgstr "Tagga i post e uniscili per argomento."
+
+#: admin/manage-tagging.php:58 admin/manage-selection.php:57
+#: admin/manage-moderation.php:66
+msgid "Elements to display"
+msgstr "Elementi da visualizzare"
+
+#: admin/manage-tagging.php:60 admin/manage-selection.php:59
+#: admin/manage-moderation.php:68
+msgid "Filter by user"
+msgstr "Filtra per utente"
+
+#: admin/manage-newsletter.php:45 admin/manage-newsletter.php:183
+msgid "Sender"
+msgstr "Mittente"
+
+#: admin/manage-newsletter.php:47 admin/manage-newsletter.php:163
+msgid "Recipients"
+msgstr "Destinatari"
+
+#: admin/manage-newsletter.php:51 admin/manage-newsletter.php:197
+msgid "Message"
+msgstr "Messaggio"
+
+#: admin/manage-newsletter.php:59
+msgid "Are you sure you want to send this newsletter?"
+msgstr "Sei sicuro che vuoi inviare questa newsletter?"
+
+#: admin/manage-newsletter.php:65
+msgid "Yes"
+msgstr "Sì"
+
+#: admin/manage-newsletter.php:66
+msgid "No"
+msgstr "No"
+
+#: admin/manage-newsletter.php:91
+msgid "Your email has been sent"
+msgstr "L'email è stata inviata"
+
+#: admin/manage-newsletter.php:108
+msgid "Select all members"
+msgstr "Seleziona tutti gli utenti"
+
+#: admin/manage-newsletter.php:167
+msgid "Select recipients of the newsletter"
+msgstr "Seleziona i destinatari della newsletter"
+
+#: admin/manage-newsletter.php:179
+msgid "Complete the informations of the newsletter"
+msgstr "Completa le informazioni della newsletter"
+
+#: admin/manage-newsletter.php:187
+msgid "Default"
+msgstr "Default"
+
+#: admin/manage-newsletter.php:216 admin/api/manage-option_api.php:673
+#: admin/api/manage-option_api.php:932
+msgid "Preview"
+msgstr "Anteprima"
+
+#: admin/manage-newsletter.php:264
+#, php-format
+msgid "You shoud have selected %s"
+msgstr "Devi selezionare %s"
+
+#: admin/manage-selection.php:48
+msgid "Selection of the week"
+msgstr "Selezione della settimana"
+
+#: admin/manage-selection.php:50 admin/manage-selection.php:97
+msgid "Make your selection of the week"
+msgstr "Fai la tua selezione della settimana"
+
+#: admin/manage-selection.php:95
+#, php-format
+msgid "Pool of selectionned posts between %s and %s"
+msgstr "Insieme di post selezionati tra %s e %s"
+
+#: admin/manage-selection.php:109 admin/manage-moderation.php:103
+msgid "Moderation of your post"
+msgstr "Amministrazione dei tuoi post"
+
+#: admin/manage-selection.php:111
+msgid "Your email address"
+msgstr "Il tuo indirizzo email"
+
+#: admin/manage-selection.php:113
+msgid "This is your own email"
+msgstr "Questa è l'email di te stesso"
+
+#: admin/manage-selection.php:115 admin/manage-moderation.php:105
+#: admin/manage-pendingfeed.php:58 admin/manage-pendingfeed.php:71
+msgid "Comment"
+msgstr "Commento"
+
+#: admin/head.php:56
+msgid "Back on the Bilboplanet"
+msgstr "Torna al Planet"
+
+#: admin/head.php:60 admin/head.php:66
+msgid "About"
+msgstr "Info"
+
+#: admin/head.php:68
+msgid "Bilboplanet was developed by"
+msgstr "Bilboplanet è stato sviluppato da"
+
+#: admin/head.php:76
+msgid "BilboPlanet : Useful links"
+msgstr "Bilboplanet : Link utili"
+
+#: admin/head.php:79
+#, fuzzy
+msgid "Official WebSite: "
+msgstr "Sito web ufficiale:"
+
+#: admin/head.php:80
+#, fuzzy
+msgid "Official Forum: "
+msgstr "Forum ufficiale:"
+
+#: admin/head.php:81
+#, fuzzy
+msgid "Official Documentation: "
+msgstr "Documentazione ufficiale:"
+
+#: admin/head.php:82
+msgid "Code and bug tracking: "
+msgstr ""
+
+#: admin/pagination.php:46 admin/pagination.php:61
+msgid "Next page"
+msgstr "Pagina successiva"
+
+#: admin/manage-moderation.php:48 admin/sidebar.php:101
+msgid "Moderation interface"
+msgstr "Interfaccia amministrazione"
+
+#: admin/manage-moderation.php:50
+msgid "Moderate some posts."
+msgstr "Modera alcuni post."
+
+#: admin/manage-moderation.php:54
+msgid ""
+"The moderation functionnality is disabled. If you want to enable it, please "
+"go to the configuration page"
+msgstr ""
+"La funzione di moderazione è disabilitata. Se vuoi abilitarla, vai alla "
+"pagina di configurazione"
+
+#: admin/manage-moderation.php:55 admin/sidebar.php:78
+msgid "Planet Configuration"
+msgstr "Configurazione Planet"
+
+#: admin/manage-moderation.php:55
+msgid "Planet"
+msgstr "Planet"
+
+#: admin/manage-logs.php:63
+msgid "All the log files"
+msgstr "Tutti i file di log"
+
+#: admin/manage-logs.php:65
+msgid "Management planet log files (Advanced users)."
+msgstr "Amministrazione log file del planet (utenti avanzati)."
+
+#: admin/manage-logs.php:109
+msgid "Purge all the log files"
+msgstr "Cancella tutti i file di log"
+
+#: admin/sidebar.php:28
+msgid "Common"
+msgstr "Common"
+
+#: admin/sidebar.php:31
+msgid "Access the quick summary of the planet"
+msgstr "Accedi alla sintesi veloce del planet"
+
+#: admin/sidebar.php:32
+msgid "Manage your profile account"
+msgstr "Amministra il profilo del tuo account"
+
+#: admin/sidebar.php:32
+msgid "Manage your account"
+msgstr "Amministra il tuo account"
+
+#: admin/sidebar.php:46
+msgid "Manage users"
+msgstr "Gestione utenti"
+
+#: admin/sidebar.php:49
+#, fuzzy
+msgid "Pending feeds"
+msgstr "Utenti in attesa"
+
+#: admin/sidebar.php:61
+msgid "Manage posts"
+msgstr "Gestione post"
+
+#: admin/sidebar.php:64
+msgid "Manage newsletter of the planet"
+msgstr "Gestione newsletter del planet"
+
+#: admin/sidebar.php:64
+msgid "Newsletter"
+msgstr "Newsletter"
+
+#: admin/sidebar.php:71 admin/api/manage-permissions_api.php:163
+msgid "Configuration"
+msgstr "Configurazione"
+
+#: admin/sidebar.php:75
+msgid "Author configuration"
+msgstr "Configurazione autore"
+
+#: admin/sidebar.php:75
+msgid "Planet Author"
+msgstr "Autore Planet"
+
+#: admin/sidebar.php:78
+msgid "Planet configuration"
+msgstr "Configurazione Planet"
+
+#: admin/sidebar.php:81
+msgid "View logs information"
+msgstr "Visualizza informazioni log"
+
+#: admin/sidebar.php:81
+msgid "Logs Files"
+msgstr "Log files"
+
+#: admin/sidebar.php:84
+msgid "Import/Export Planet configuration"
+msgstr "Importa/Esporta configurazione Planet"
+
+#: admin/sidebar.php:84
+msgid "Import/Export"
+msgstr "Importa/Esporta"
+
+#: admin/sidebar.php:87
+msgid "Clear Planet cache"
+msgstr "Cancella la cache del Planet"
+
+#: admin/sidebar.php:87
+msgid "Clear cache"
+msgstr "Cancella la cache"
+
+#: admin/sidebar.php:90
+msgid "Feed fetching system configuration"
+msgstr "Configurazione sistema per il download dei feed"
+
+#: admin/sidebar.php:90
+msgid "Feed fetching"
+msgstr "Download feed"
+
+#: admin/sidebar.php:96 admin/sidebar.php:102
+#: admin/api/manage-permissions_api.php:169
+msgid "Moderation"
+msgstr "Moderazione"
+
+#: admin/sidebar.php:106
+#, fuzzy
+msgid "Tag the last posts"
+msgstr "Tag l'ultimo post"
+
+#: admin/sidebar.php:107
+msgid "Tagging"
+msgstr "Tagging"
+
+#: admin/sidebar.php:123
+msgid "System"
+msgstr "Sistema"
+
+#: admin/sidebar.php:129 admin/api/manage-permissions_api.php:110
+msgid "Permissions"
+msgstr "Permessi"
+
+#: admin/manage-cache.php:54
+msgid "The cache files were correctly deleted."
+msgstr "I file nella cache sono stati eliminati correttamente."
+
+#: admin/manage-cache.php:70
+msgid "Manage cache"
+msgstr "Amministra cache"
+
+#: admin/manage-cache.php:72
+msgid "Remove the cache files"
+msgstr "Cancella i file nella cache"
+
+#: admin/manage-cache.php:78
+msgid "Delete cache"
+msgstr "Cancella cache"
+
+#: admin/manage-cache.php:83
+msgid "The following files were deleted :"
+msgstr "I seguenti file sono stati cancellati :"
+
+#: admin/manage-pendingfeed.php:46
+#, fuzzy
+msgid "List of pending feeds"
+msgstr "Lista utenti in attesa"
+
+#: admin/manage-pendingfeed.php:48
+#, fuzzy
+msgid "List of pending feeds for the Planet"
+msgstr "Lista utenti in attesa del Planet"
+
+#: admin/manage-pendingfeed.php:57
+#, fuzzy
+msgid "Refuse subscription"
+msgstr "Rifiuta iscrizione"
+
+#: admin/manage-pendingfeed.php:70
+#, fuzzy
+msgid "Accept subscription"
+msgstr "Accetta iscrizione"
+
+#: admin/index.php:40
+msgid "Latest articles :"
+msgstr "Ultimi articoli :"
+
+#: admin/index.php:68 admin/api/manage-feed_api.php:474
+msgid "User"
+msgstr "Utente"
+
+#: admin/index.php:90
+msgid "BilboPlanet news - Official Website :"
+msgstr "Bilboplanet news - Sito web ufficiale :"
+
+#: admin/index.php:143
+msgid "Quick summary of the planet"
+msgstr "Veloce sintesi del Planet"
+
+#: admin/index.php:148
+#, fuzzy
+msgid "WARNING : please remove /admin/install folder for maximum security"
+msgstr ""
+"WARNING : prego eliminare /admin/install directory per la massima sicurezza"
+
+#: admin/index.php:158
+msgid "Statistics :"
+msgstr "Statistiche :"
+
+#: admin/index.php:169
+msgid "The update on loading of index page enabled"
+msgstr "Aggiornamento abilitato all'accesso della pagina index"
+
+#: admin/index.php:171
+msgid "Current size of the database :"
+msgstr "Peso attuale del database :"
+
+#: admin/index.php:172
+msgid "Number of articles in the DB :"
+msgstr "Numero di articoli nel DB :"
+
+#: admin/index.php:173
+msgid "Number of votes in the DB :"
+msgstr "Numero di voti nel DB :"
+
+#: admin/index.php:174
+msgid "Number of members in the DB :"
+msgstr "Numero di utenti nel DB :"
+
+#: admin/index.php:175
+msgid "Number of feeds in the DB :"
+msgstr "Numero di feed nel DB :"
+
+#: admin/index.php:181
+msgid "System information :"
+msgstr "Informazioni sistema :"
+
+#: admin/index.php:183
+msgid "Date server :"
+msgstr "Data server :"
+
+#: admin/index.php:184
+msgid "Operating System :"
+msgstr "Sistema operativo :"
+
+#: admin/index.php:185
+msgid "PHP version :"
+msgstr "Versione PHP :"
+
+#: admin/index.php:186
+#, fuzzy
+msgid "Database version :"
+msgstr "Errore database"
+
+#: admin/index.php:187
+msgid "Server :"
+msgstr "Server :"
+
+#: admin/index.php:188
+msgid "Memory :"
+msgstr "Memoria :"
+
+#: admin/index.php:189
+msgid "Your BilboPlanet version :"
+msgstr "Versione Bilboplanet :"
+
+#: admin/install/check.php:34
+#, php-format
+msgid "PHP version is %s (5.0 or earlier needed)."
+msgstr "La versione PHP è %s (necessita 5.0 o superiore)."
+
+#: admin/install/check.php:38
+msgid "Multibyte string module (mbstring) is not available."
+msgstr "Il Multibyte string module (mbstring) non è disponibile."
+
+#: admin/install/check.php:42
+msgid "Iconv module is not available."
+msgstr "Modulo Iconv non è disponibile."
+
+#: admin/install/check.php:46
+msgid "Output control functions are not available."
+msgstr "Le funzioni di controllo output non sono disponibili."
+
+#: admin/install/check.php:50
+msgid "SimpleXML module is not available."
+msgstr "Modulo SimpleXML non è disponibile."
+
+#: admin/install/check.php:54
+msgid "DOM XML module is not available."
+msgstr "Modulo DOM XML non è disponibile."
+
+#: admin/install/check.php:59
+msgid "PCRE engine does not support UTF-8 strings."
+msgstr "Il motore PCRE non supporta le stringhe UTF-8."
+
+#: admin/install/check.php:63
+msgid "SPL module is not available."
+msgstr "Modulo SPL non è disponibile."
+
+#: admin/install/check.php:70
+#, php-format
+msgid "MySQL version is %s (4.1 or earlier needed)."
+msgstr "La versione MySQL è %s (necessita 4.1 o successiva)."
+
+#: admin/install/check.php:92
+#, php-format
+msgid "PostgreSQL version is %s (8.0 or earlier needed)."
+msgstr "La versione PostgreSQL è %s (necessita 8.0 o successiva)."
+
+#: admin/install/wizard.php:74
+msgid "The Bilboplanet could not be installed."
+msgstr "Non è stato possibile installare il Bilboplanet."
+
+#: admin/install/wizard.php:80
+#, php-format
+msgid "File %s does not exist."
+msgstr "Il file %s non esiste."
+
+#: admin/install/wizard.php:113
+#, php-format
+msgid ""
+"The Bilboplanet is already installed. Please remove the tables in the "
+"database before.\n"
+"\t\t\t\t</br> If you want to keep the content of the database, you can also "
+"update the database by launching the updating script : %s"
+msgstr ""
+
+#: admin/install/wizard.php:115
+#, fuzzy
+msgid "Run script"
+msgstr "Rifiuta iscrizione"
+
+#: admin/install/wizard.php:148
+msgid "Bilboplanet Install Wizard"
+msgstr "Installazione guidata Bilboplanet"
+
+#: admin/install/wizard.php:164
+msgid "Installation wizard of the Bilboplanet"
+msgstr "Installazione guidata del Bilboplanet"
+
+#: admin/install/wizard.php:167 admin/install/index.php:306
+msgid "Errors:"
+msgstr "Errori:"
+
+#: admin/install/wizard.php:171
+#, php-format
+msgid ""
+"The file <strong>%s</strong> already exists. If you need to reinitialize on "
+"of the configuration elements in this file, please remove the configuration "
+"file first or <a href=\"%s\">continue the installation</a>."
+msgstr ""
+"Il file <strong>%s</strong> esiste già. Se ti è necessario reinizializzare "
+"uno degli elementi di configurazione in questo file, rimuovi il file di "
+"configurazione o <a href=\"%s\">continua l'installazione</a>."
+
+#: admin/install/wizard.php:176
+msgid ""
+"Welcome to the BilboPlanet. Before you begin, we need some informations "
+"concerning the database. You'll need to provide the following information to "
+"begin the installation and to create the configuration file.<br /><br />\n"
+"   1. The host of the database.<br/>\n"
+"   2. The name of the database.<br/>\n"
+"   3. Your username to the database.<br/>\n"
+"   4. Your password to the database.<br/>\n"
+"   4. Table prefix for your database.<br/><br/>"
+msgstr ""
+"Benvenuto su Bilboplanet. Prima di cominciare, abbiamo bisogno di alcune "
+"informazioni sul database. Dovrai fornire le seguenti informazioni per "
+"iniziare l'installazione e per creare il file di configurazione.<br /><br /"
+">\n"
+"   1. Il host del database.<br/>\n"
+"   2. Il nome del database.<br/>\n"
+"   3. Il tuo nome utente per accedere al database.<br/>\n"
+"   4. La tua password per accedere al database.<br/>\n"
+"   4. Il prefisso delle tabelle del database.<br/><br/>"
+
+#: admin/install/wizard.php:186 admin/install/wizard.php:206
+#: admin/install/index.php:364 admin/install/index.php:367
+#: admin/install/index.php:370
+msgid "Required field"
+msgstr "Campo richiesto"
+
+#: admin/install/wizard.php:186
+#, fuzzy
+msgid "Database type:"
+msgstr "Errore database"
+
+#: admin/install/wizard.php:190
+#, fuzzy
+msgid "Host of the database"
+msgstr "Host del database:"
+
+#: admin/install/wizard.php:192
+msgid "ex: localhost"
+msgstr "es: localhost"
+
+#: admin/install/wizard.php:194
+msgid "Name of the database:"
+msgstr "Nome del database:"
+
+#: admin/install/wizard.php:196
+msgid "ex: bilboplanet"
+msgstr "es: bilboplanet"
+
+#: admin/install/wizard.php:200
+msgid "Your username depends of your provider"
+msgstr "Il nome utente dipende dal tuo provider"
+
+#: admin/install/wizard.php:204
+msgid "Your password depends of your provider"
+msgstr "La password dipende dal tuo provide"
+
+#: admin/install/wizard.php:206
+msgid "Database Tables Prefix:"
+msgstr "Prefisso delle tabelle del database"
+
+#: admin/install/wizard.php:208
+msgid "bp_ is the default prefix"
+msgstr "bp_ è il prefisso di default"
+
+#: admin/install/wizard.php:210 admin/install/index.php:375
+msgid "Save"
+msgstr "Salva"
+
+#: admin/install/index.php:32
+msgid "No configuration file"
+msgstr "Nessun file di configurazione"
+
+#: admin/install/index.php:33
+msgid ""
+"There is no configuration file, you need to create one. Therefor you can use "
+"the wizard to generate a configuration file. Click \"Next\" to go to the "
+"setup page."
+msgstr ""
+"Non esiste nessun file di configurazione, devi crearne uno. Per farlo puoi "
+"utilizzare l'installazione guidata . Clicca \"Avanti\" per andare alla "
+"pagina delle impostazioni."
+
+#: admin/install/index.php:34
+msgid "Next"
+msgstr "Avanti"
+
+#: admin/install/index.php:50
+msgid "The Bilboplanet is already installed."
+msgstr "Bilboplanet è già installato."
+
+#: admin/install/index.php:51
+#, php-format
+msgid ""
+"If you are upgrading to a newer version of the Bilboplanet, please upgrade "
+"your database by running the %s/inc/upgrade_db.php script"
+msgstr ""
+
+#: admin/install/index.php:57
+msgid "The Bilboplanet can not be installed"
+msgstr "Non è stato possibile installare Bilboplanet"
+
+#: admin/install/index.php:94
+#, php-format
+msgid "Unable to read %s file."
+msgstr "Impossibile leggere il file %s."
+
+#: admin/install/index.php:103
+#, fuzzy
+msgid "Please fill the title in."
+msgstr "Prego inserire il titolo."
+
+#: admin/install/index.php:106
+msgid "Please fill the user email in."
+msgstr "Prego inserire l'email utente."
+
+#: admin/install/index.php:109
+msgid "Please fill the username in."
+msgstr "Prego inserire il nome utente."
+
+#: admin/install/index.php:112 admin/api/manage-user_api.php:86
 msgid ""
 "Please do not use special chars in user_id field. Allowed chars are only a-"
 "z, A-Z and 0-9"
@@ -2317,289 +2602,220 @@ msgstr ""
 "Prego non usare caratteri speciali nel campo dello user_id. I caratteri "
 "permessi sono soltanto a-z, A-Z e 0-9"
 
-#: admin/api/manage-user_api.php:145 admin/api/manage-pendingfeed_api.php:184
+#: admin/install/index.php:116
+msgid ""
+"The username has to be formed of minimum 2 characters with letters of numbers"
+msgstr ""
+"Il nome utente deve essere composto dal almeno 2 caratteri di lettere o "
+"numeri"
+
+#: admin/install/index.php:119
+msgid "Invalid email address"
+msgstr "Indirizzo email non valido"
+
+#: admin/install/index.php:125
+msgid "The passwords don't match"
+msgstr "La password non corrisponde"
+
+#: admin/install/index.php:128
+msgid "The password have to contain minimum 6 characters."
+msgstr "La password deve contenere almeno 6 caratteri."
+
+#: admin/install/index.php:289 admin/install/index.php:303
+msgid "Installation of the Bilboplanet"
+msgstr "Installazione di Bilboplanet"
+
+#: admin/install/index.php:310
+msgid "The configuration file was successfully created."
+msgstr "Il file di configurazione è stato creato con successo."
+
+#: admin/install/index.php:330
+msgid "Information on the BilboPlanet"
+msgstr "Informazioni su Bilboplanet"
+
+#: admin/install/index.php:332
+msgid ""
+"Thank you for taking somes minutes to answer those questions to help to the "
+"configuration of the bilboplanet."
+msgstr ""
+"Grazie per spendere qualche minuto per rispondere alle domande per la "
+"configurazione del Bilboplanet."
+
+#: admin/install/index.php:333
+msgid "Fields marked with an asterisk are obligatory"
+msgstr "I campi con l'asterisco sono obbligatori"
+
+#: admin/install/index.php:336
+msgid "Information of the user"
+msgstr "Informazioni sull'utente"
+
+#: admin/install/index.php:339
+msgid "Enter your fullname or the name you want to be displayed"
+msgstr "Inserisci il nome completo o il nome che vuoi che venga visualizzato"
+
+#: admin/install/index.php:342
+msgid "Enter your email address"
+msgstr "Inserisci il tuo indirizzo email"
+
+#: admin/install/index.php:343
+msgid "Website of the user"
+msgstr "Sito web dell'utente"
+
+#: admin/install/index.php:345
+msgid "Entre address of your website or blog (optional)"
+msgstr "Inserisci l'indirizzo del sito web o del tuo blog (opzionale)"
+
+#: admin/install/index.php:348
+msgid "Information on the Planet"
+msgstr "Informazioni sul Planet"
+
+#: admin/install/index.php:349 admin/api/manage-option_api.php:382
+#: admin/api/manage-option_api.php:735
+msgid "Title of the Planet"
+msgstr "Titolo del Planet"
+
+#: admin/install/index.php:351
+msgid "Fill the title of your planet"
+msgstr "Inserisci il titolo del tuo planet"
+
+#: admin/install/index.php:352
+msgid "Description"
+msgstr "Descrizione"
+
+#: admin/install/index.php:354
+msgid "Give a description of your planet"
+msgstr "Dai una descrizione del tuo planet"
+
+#: admin/install/index.php:355
+msgid "Planet Language"
+msgstr "Lingua del planet"
+
+#: admin/install/index.php:357
+msgid "Choose your langage"
+msgstr "Scegli la tua lingua"
+
+#: admin/install/index.php:358
+#, fuzzy
+msgid "Join the Bilboplanet community"
+msgstr "Torna al Planet"
+
+#: admin/install/index.php:360
+msgid ""
+"This will notify the developpers of the Bilboplanet that you are using their "
+"work. Your planet will be added to the community and you will be informed "
+"when new important features will be released. You will also be able to ask "
+"for new features to the development team."
+msgstr ""
+
+#: admin/install/index.php:363
+msgid "Administration username and password"
+msgstr "Amministrazione nome utente e password"
+
+#: admin/install/index.php:366
+msgid "Enter your username"
+msgstr "Inserisci il tuo nome utente"
+
+#: admin/install/index.php:369
+msgid "Enter your password"
+msgstr "Inserisci la tua password"
+
+#: admin/install/index.php:370
+msgid "Confirm your password"
+msgstr "Conferma la tua password"
+
+#: admin/install/index.php:372
+msgid "Re-enter your password for verification"
+msgstr "Re-inserisci la password per verifica"
+
+#: admin/install/index.php:386
+msgid "Install succeeded"
+msgstr "Installazione eseguita con successo"
+
+#: admin/install/index.php:388
+msgid ""
+"The Bilboplanet was successfully installed. Here you can find a resume of "
+"the configuration"
+msgstr ""
+"Il Bilboplanet è stato installato con successo. Qui puoi trovare un "
+"riassunto della configurazione"
+
+#: admin/install/index.php:390
+msgid "Your account"
+msgstr "Il tuo account"
+
+#: admin/install/index.php:396
+msgid "Your Bilboplanet"
+msgstr "Il tuo Bilboplanet"
+
+#: admin/install/index.php:398
+msgid "URL of the BilboPlanet:"
+msgstr "URL del Bilboplanet:"
+
+#: admin/install/index.php:400
+#, fuzzy
+msgid "Administration interface:"
+msgstr "Interfaccia di amministrazione:"
+
+#: admin/install/index.php:405
+msgid "Go to the administration interface"
+msgstr "Vai all'interfaccia di amministrazione"
+
+#: admin/api/manage-site_api.php:58 admin/api/manage-site_api.php:121
 #, php-format
-msgid "User %s successfully added"
-msgstr "Utente %s aggiunto con successo"
+msgid "The user %s already own the website %s"
+msgstr "L'utente %s è già proprietario del sito web %s"
 
-#: admin/api/manage-user_api.php:193
-msgid "User status toggled"
-msgstr "Stato utente attivato"
-
-#: admin/api/manage-user_api.php:228 admin/api/manage-account_api.php:58
-#: user/api/account_api.php:129
+#: admin/api/manage-site_api.php:61
 #, php-format
-msgid "The email address %s is already in use by %s"
-msgstr "L'indirizzo email &s è già in uso da %s"
+msgid "The website %s owns to user %s"
+msgstr "Il sito web %s appartiene all'utente %s"
 
-#: admin/api/manage-user_api.php:242 admin/api/manage-account_api.php:72
-#: user/api/account_api.php:144
+#: admin/api/manage-site_api.php:81
 #, php-format
-msgid "User %s successfully updated"
-msgstr "Utente %s aggiornato con successo"
+msgid "Website %s successfully added to user %s"
+msgstr "Sito web %s aggiunto con successo all'utente %s"
 
-#: admin/api/manage-user_api.php:276 admin/api/manage-user_api.php:300
-msgid "You are not allowed to remove a super user"
-msgstr "Non sei abilitato a rimuovere un super utente"
-
-#: admin/api/manage-user_api.php:280
+#: admin/api/manage-site_api.php:124
 #, php-format
-msgid "Are you sure you want to remove user %s ?"
-msgstr "Sei sicuro di voler rimuovere l'utente %s ?"
+msgid "The website %s is owned by user %s"
+msgstr "Il sito web %s è in possesso dell'utente %s"
 
-#: admin/api/manage-user_api.php:281 admin/api/manage-tribe_api.php:207
-#: admin/api/manage-feed_api.php:252 admin/api/manage-site_api.php:186
+#: admin/api/manage-site_api.php:135
+#, php-format
+msgid "Website %s successfully updated"
+msgstr "Sito web %s aggiornato con successo"
+
+#: admin/api/manage-site_api.php:175
+msgid "Site status toggled"
+msgstr "Stato del sito attivato"
+
+#: admin/api/manage-site_api.php:184
+#, php-format
+msgid "Are you sure you want to remove site %s ?"
+msgstr "Sei sicuro di voler rimuovere il sito %s ?"
+
+#: admin/api/manage-site_api.php:186 admin/api/manage-feed_api.php:252
+#: admin/api/manage-tribe_api.php:207 admin/api/manage-user_api.php:287
 msgid "This action can not be canceled"
 msgstr "Questa azione non può essere annullata"
 
-#: admin/api/manage-user_api.php:282
-msgid "All the posts of the user will be removed"
-msgstr "Tutti i post di questo utente verranno rimossi"
+#: admin/api/manage-site_api.php:187
+msgid "All the posts comming from this site will be removed"
+msgstr "Tutti i post che arrivano da questo sito verranno rimossi"
 
-#: admin/api/manage-user_api.php:283
-msgid "All the votes on these posts will be removed"
-msgstr "Tutti i voti di questi post verranno rimossi"
+#: admin/api/manage-site_api.php:188
+msgid "All the feeds of this site will be removed"
+msgstr "Tutti i feed di questo sito verranno rimossi"
 
-#: admin/api/manage-user_api.php:284
-msgid "All the feeds of this user will be removed"
-msgstr "Tutti i feed di questo utente verranno rimossi"
-
-#: admin/api/manage-user_api.php:287 admin/api/manage-tribe_api.php:211
-#: admin/api/manage-feed_api.php:256 admin/api/manage-site_api.php:191
+#: admin/api/manage-site_api.php:191 admin/api/manage-feed_api.php:256
+#: admin/api/manage-tribe_api.php:211 admin/api/manage-user_api.php:295
 msgid "Confirm"
 msgstr "Conferma"
 
-#: admin/api/manage-user_api.php:314
+#: admin/api/manage-site_api.php:210
 #, php-format
-msgid "Delete of user %s succeeded"
-msgstr "Cancellazione dell'utente %s eseguita con successo"
-
-#: admin/api/manage-user_api.php:400 admin/api/manage-pendingfeed_api.php:224
-#: admin/api/manage-permissions_api.php:107
-msgid "Avatar"
-msgstr "Avatar"
-
-#: admin/api/manage-user_api.php:401 admin/api/manage-pendingfeed_api.php:225
-#: admin/api/manage-permissions_api.php:108
-msgid "User Informations"
-msgstr "Informazioni utente"
-
-#: admin/api/manage-user_api.php:402 admin/api/manage-pendingfeed_api.php:157
-#: admin/api/manage-pendingfeed_api.php:226
-#: admin/api/manage-pendingfeed_api.php:251
-msgid "Website"
-msgstr "Sito web"
-
-#: admin/api/manage-user_api.php:420
-msgid "Disable user"
-msgstr "Disabilita utente"
-
-#: admin/api/manage-user_api.php:423
-msgid "Enable user"
-msgstr "Abilita utente"
-
-#: admin/api/manage-user_api.php:435
-msgid "Planet author"
-msgstr "Autore Planet"
-
-#: admin/api/manage-user_api.php:453
-msgid "Add a new website"
-msgstr "Aggiungi un nuovo sito web"
-
-#: admin/api/manage-tribe_api.php:102
-#, fuzzy, php-format
-msgid "Tribe %s was successfully added"
-msgstr "Il feed %s è stato aggiunto con successo"
-
-#: admin/api/manage-tribe_api.php:104
-msgid ""
-"This tribe id is already existing. This error should not occur : please "
-"report to developper"
-msgstr ""
-
-#: admin/api/manage-tribe_api.php:112
-#, fuzzy
-msgid "Please select the user that you want to add to the tribe"
-msgstr "Prego selezionare l'utente al quale vuoi aggiungere il feed"
-
-#: admin/api/manage-tribe_api.php:155
-#, fuzzy, php-format
-msgid "Tribe %s successfully updated"
-msgstr "Il feed %s è stato aggiunto con successo"
-
-#: admin/api/manage-tribe_api.php:161
-msgid "The ordering has to be an integer value."
-msgstr ""
-
-#: admin/api/manage-tribe_api.php:193
-#, fuzzy
-msgid "Tribe visibility toggled"
-msgstr "Stato del sito attivato"
-
-#: admin/api/manage-tribe_api.php:195
-#, fuzzy
-msgid "Tribe does not exist"
-msgstr "Il file %s non esiste."
-
-#: admin/api/manage-tribe_api.php:205
-#, fuzzy, php-format
-msgid "Are you sure you want to remove tribe %s ?"
-msgstr "Sei sicuro di voler rimuovere il sito %s ?"
-
-#: admin/api/manage-tribe_api.php:224
-#, fuzzy, php-format
-msgid "Delete of tribe %s succeeded"
+msgid "Delete of site %s succeeded"
 msgstr "Cancellazione del sito %s eseguita con successo"
-
-#: admin/api/manage-tribe_api.php:226
-#, fuzzy
-msgid "This tribe does not exist in the database"
-msgstr "Questo feed non esiste nel database."
-
-#: admin/api/manage-tribe_api.php:255 admin/api/manage-tribe_api.php:392
-#: admin/api/manage-feed_api.php:295 admin/api/manage-tagging_api.php:48
-#: user/api/tagging_api.php:52 user/api/tagging_api.php:147
-#, fuzzy
-msgid "The tag was successfuly removed"
-msgstr "Il feed %s è stato eliminato con successo"
-
-#: admin/api/manage-tribe_api.php:297
-#, fuzzy
-msgid "Users added : "
-msgstr "Tag aggiunti :"
-
-#: admin/api/manage-tribe_api.php:328
-#, fuzzy
-msgid "The search was successfuly removed"
-msgstr "Il feed %s è stato eliminato con successo"
-
-#: admin/api/manage-tribe_api.php:350
-#, fuzzy
-msgid "Search added : "
-msgstr "Tag aggiunti :"
-
-#: admin/api/manage-tribe_api.php:431 admin/api/manage-feed_api.php:334
-#: admin/api/manage-tagging_api.php:86 user/api/tagging_api.php:100
-#: user/api/tagging_api.php:190
-msgid "Tags added : "
-msgstr "Tag aggiunti :"
-
-#: admin/api/manage-tribe_api.php:476
-#, fuzzy
-msgid "The unwanted tag was successfuly removed"
-msgstr "Il feed %s è stato eliminato con successo"
-
-#: admin/api/manage-tribe_api.php:515
-#, fuzzy
-msgid "Notags added : "
-msgstr "Tag aggiunti :"
-
-#: admin/api/manage-tribe_api.php:554
-#, fuzzy
-msgid "There was an error during file upload"
-msgstr "Si è verificato un problema durante l'attivazione del ruolo utente"
-
-#: admin/api/manage-tribe_api.php:567
-msgid "The image file should not exceed 150Kb"
-msgstr ""
-
-#: admin/api/manage-tribe_api.php:575
-msgid "The format of the file is not supported : "
-msgstr ""
-
-#: admin/api/manage-tribe_api.php:579
-msgid "This file has the wrong file extension"
-msgstr ""
-
-#: admin/api/manage-tribe_api.php:586
-msgid "The tribe icon has to be almost square (allowed rate of 0.9)"
-msgstr ""
-
-#: admin/api/manage-tribe_api.php:598
-#, php-format
-msgid "The image could not be modified. (File extension is %s)"
-msgstr ""
-
-#: admin/api/manage-tribe_api.php:622
-msgid "The file you want to copy is alreay existing. Please try again."
-msgstr ""
-
-#: admin/api/manage-tribe_api.php:640
-#, fuzzy
-msgid "The image was successfully uploaded to the tribe"
-msgstr "Sito web %s aggiunto con successo all'utente %s"
-
-#: admin/api/manage-tribe_api.php:642
-#, fuzzy, php-format
-msgid "The file could not be saved to %s"
-msgstr "Non è stato possibile installare il Bilboplanet."
-
-#: admin/api/manage-tribe_api.php:669
-msgid "This tribe have no icons"
-msgstr ""
-
-#: admin/api/manage-tribe_api.php:673
-#, fuzzy, php-format
-msgid "The icon file %s does not exists"
-msgstr "Il file %s non esiste."
-
-#: admin/api/manage-tribe_api.php:681
-#, fuzzy
-msgid "The icon was successfully removed from the tribe"
-msgstr "Il feed %s è stato eliminato con successo"
-
-#: admin/api/manage-tribe_api.php:683
-#, fuzzy
-msgid "Impossible to delete file"
-msgstr "Impossibile modificare il ruolo di te stesso"
-
-#: admin/api/manage-tribe_api.php:763
-msgid "Admin"
-msgstr ""
-
-#: admin/api/manage-tribe_api.php:789
-msgid "empty"
-msgstr ""
-
-#: admin/api/manage-tribe_api.php:791
-msgid "clear"
-msgstr ""
-
-#: admin/api/manage-tribe_api.php:796
-msgid "Add icon to tribe"
-msgstr ""
-
-#: admin/api/manage-tribe_api.php:800
-msgid "Remove icon from tribe"
-msgstr ""
-
-#: admin/api/manage-tribe_api.php:818
-msgid "Toggle tribe visibility"
-msgstr ""
-
-#: admin/api/manage-tribe_api.php:819
-msgid "Edit tribe"
-msgstr ""
-
-#: admin/api/manage-tribe_api.php:820
-msgid "Remove tribe"
-msgstr ""
-
-#: admin/api/manage-tribe_api.php:821
-msgid "Add tags to tribe"
-msgstr ""
-
-#: admin/api/manage-tribe_api.php:822
-msgid "Add unwanted tags to tribe"
-msgstr ""
-
-#: admin/api/manage-tribe_api.php:823
-msgid "Add users to tribe"
-msgstr ""
-
-#: admin/api/manage-tribe_api.php:824
-msgid "Add search to tribe"
-msgstr ""
 
 #: admin/api/manage-feed_api.php:90
 #, php-format
@@ -2666,7 +2882,20 @@ msgstr "Questo feed non esiste nel database."
 msgid "The tag you want to remove doesn't exist on this feed"
 msgstr "Il tag che vuoi rimuovere non esiste in questo feed"
 
-#: admin/api/manage-feed_api.php:370 admin/api/manage-option_api.php:948
+#: admin/api/manage-feed_api.php:295 admin/api/manage-tagging_api.php:48
+#: admin/api/manage-tribe_api.php:255 admin/api/manage-tribe_api.php:392
+#: user/api/tagging_api.php:52 user/api/tagging_api.php:147
+#, fuzzy
+msgid "The tag was successfuly removed"
+msgstr "Il feed %s è stato eliminato con successo"
+
+#: admin/api/manage-feed_api.php:334 admin/api/manage-tagging_api.php:86
+#: admin/api/manage-tribe_api.php:431 user/api/tagging_api.php:100
+#: user/api/tagging_api.php:190
+msgid "Tags added : "
+msgstr "Tag aggiunti :"
+
+#: admin/api/manage-feed_api.php:370 admin/api/manage-option_api.php:952
 #: user/api/feed_api.php:44 user/api/post_api.php:105
 msgid "Nothing to do"
 msgstr "Niente da fare"
@@ -2718,94 +2947,68 @@ msgstr "Nome feed :"
 msgid "Site URL : "
 msgstr "URL sito :"
 
-#: admin/api/manage-moderation_api.php:41 user/api/post_api.php:41
-msgid "The post is already accepted"
-msgstr "Questo post è già stato accettato"
-
-#: admin/api/manage-moderation_api.php:47 user/api/post_api.php:47
-msgid "Post successfully updated"
-msgstr "Post aggiornato con successo"
-
-#: admin/api/manage-moderation_api.php:84
-msgid "The post is already refused"
-msgstr "Questo post è già stato rifiutato"
-
-#: admin/api/manage-moderation_api.php:88
-#: admin/api/manage-pendingfeed_api.php:104
-#: admin/api/manage-pendingfeed_api.php:142
-msgid "Mail could not be send"
-msgstr "Non è stato possibile inviare la mail"
-
-#: admin/api/manage-moderation_api.php:93 user/api/post_api.php:83
-msgid "Post successfully refused"
-msgstr "Post rifiutato con successo"
-
-#: admin/api/manage-moderation_api.php:121
-#: admin/api/manage-pendingfeed_api.php:63 user/api/account_api.php:61
+#: admin/api/manage-pendingfeed_api.php:63
+#: admin/api/manage-moderation_api.php:121 user/api/account_api.php:61
 #, php-format
 msgid "Dear %s,"
 msgstr "Gentili %s,"
 
-#: admin/api/manage-moderation_api.php:123
 #: admin/api/manage-pendingfeed_api.php:65
+#: admin/api/manage-moderation_api.php:123
 msgid "Dear user,"
 msgstr "Gentile utente,"
-
-#: admin/api/manage-moderation_api.php:126
-#, php-format
-msgid ""
-"Our team has carefully read your latest post :\n"
-"%s\n"
-"\n"
-"However, this article raised questions among us and we hesitate to keep it "
-"in the feed of our website. Indeed :"
-msgstr ""
-
-#: admin/api/manage-moderation_api.php:131
-msgid ""
-"We decided to remove your post from our main feed. We are of course disposed "
-"to answer to any question and to discuss with you about this."
-msgstr ""
-
-#: admin/api/manage-moderation_api.php:134
-#, php-format
-msgid "Thank you for your contribution on the %s"
-msgstr "Grazie per la tua contribuzione sul %s"
-
-#: admin/api/manage-moderation_api.php:136
-msgid "Sincerely yours"
-msgstr "Cordiali saluti"
-
-#: admin/api/manage-moderation_api.php:161
-msgid "Author"
-msgstr "Autore"
-
-#: admin/api/manage-moderation_api.php:174
-#: admin/api/manage-moderation_api.php:180
-#: admin/api/manage-pendingfeed_api.php:262
-msgid "Accept"
-msgstr "Accetta"
-
-#: admin/api/manage-moderation_api.php:176
-#: admin/api/manage-moderation_api.php:181
-#: admin/api/manage-pendingfeed_api.php:258
-msgid "Refuse"
-msgstr "Rifiuta"
-
-#: admin/api/manage-moderation_api.php:191
-#: admin/api/manage-tagging_api.php:162
-#, php-format
-msgid "%s last posts :"
-msgstr "%s ultimi post :"
 
 #: admin/api/manage-pendingfeed_api.php:81
 msgid "Regards,"
 msgstr "Saluti,"
 
+#: admin/api/manage-pendingfeed_api.php:104
+#: admin/api/manage-pendingfeed_api.php:141
+#: admin/api/manage-moderation_api.php:88
+msgid "Mail could not be send"
+msgstr "Non è stato possibile inviare la mail"
+
 #: admin/api/manage-pendingfeed_api.php:107
 #, fuzzy
 msgid "Subscription successfully refused"
 msgstr "Iscrizione rifiutata con successo"
+
+#: admin/api/manage-pendingfeed_api.php:156
+#: admin/api/manage-pendingfeed_api.php:225
+#: admin/api/manage-pendingfeed_api.php:251 admin/api/manage-user_api.php:415
+msgid "Website"
+msgstr "Sito web"
+
+#: admin/api/manage-pendingfeed_api.php:183 admin/api/manage-user_api.php:145
+#, php-format
+msgid "User %s successfully added"
+msgstr "Utente %s aggiunto con successo"
+
+#: admin/api/manage-pendingfeed_api.php:223
+#: admin/api/manage-permissions_api.php:107 admin/api/manage-user_api.php:413
+msgid "Avatar"
+msgstr "Avatar"
+
+#: admin/api/manage-pendingfeed_api.php:224
+#: admin/api/manage-permissions_api.php:108 admin/api/manage-user_api.php:414
+msgid "User Informations"
+msgstr "Informazioni utente"
+
+#: admin/api/manage-pendingfeed_api.php:245
+msgid "Date of submission"
+msgstr ""
+
+#: admin/api/manage-pendingfeed_api.php:258
+#: admin/api/manage-moderation_api.php:176
+#: admin/api/manage-moderation_api.php:181
+msgid "Refuse"
+msgstr "Rifiuta"
+
+#: admin/api/manage-pendingfeed_api.php:262
+#: admin/api/manage-moderation_api.php:174
+#: admin/api/manage-moderation_api.php:180
+msgid "Accept"
+msgstr "Accetta"
 
 #: admin/api/manage-permissions_api.php:36
 #: admin/api/manage-permissions_api.php:70
@@ -2842,62 +3045,6 @@ msgstr "Website manager"
 msgid "Super user"
 msgstr "Super utente"
 
-#: admin/api/manage-tagging_api.php:43 user/api/tagging_api.php:47
-msgid "The tag you want to remove doesn't exist on this post"
-msgstr "Il tag che vuoi rimuovere non esiste in questo post"
-
-#: admin/api/manage-tagging_api.php:154
-#, fuzzy
-msgid "Tag post"
-msgstr "Tagga post"
-
-#: admin/api/manage-site_api.php:58 admin/api/manage-site_api.php:121
-#, php-format
-msgid "The user %s already own the website %s"
-msgstr "L'utente %s è già proprietario del sito web %s"
-
-#: admin/api/manage-site_api.php:61
-#, php-format
-msgid "The website %s owns to user %s"
-msgstr "Il sito web %s appartiene all'utente %s"
-
-#: admin/api/manage-site_api.php:81
-#, php-format
-msgid "Website %s successfully added to user %s"
-msgstr "Sito web %s aggiunto con successo all'utente %s"
-
-#: admin/api/manage-site_api.php:124
-#, php-format
-msgid "The website %s is owned by user %s"
-msgstr "Il sito web %s è in possesso dell'utente %s"
-
-#: admin/api/manage-site_api.php:135
-#, php-format
-msgid "Website %s successfully updated"
-msgstr "Sito web %s aggiornato con successo"
-
-#: admin/api/manage-site_api.php:175
-msgid "Site status toggled"
-msgstr "Stato del sito attivato"
-
-#: admin/api/manage-site_api.php:184
-#, php-format
-msgid "Are you sure you want to remove site %s ?"
-msgstr "Sei sicuro di voler rimuovere il sito %s ?"
-
-#: admin/api/manage-site_api.php:187
-msgid "All the posts comming from this site will be removed"
-msgstr "Tutti i post che arrivano da questo sito verranno rimossi"
-
-#: admin/api/manage-site_api.php:188
-msgid "All the feeds of this site will be removed"
-msgstr "Tutti i feed di questo sito verranno rimossi"
-
-#: admin/api/manage-site_api.php:208
-#, php-format
-msgid "Delete of site %s succeeded"
-msgstr "Cancellazione del sito %s eseguita con successo"
-
 #: admin/api/manage-option_api.php:40
 msgid "The title can not be empty"
 msgstr "Il titolo non può essere vuoto"
@@ -2924,11 +3071,6 @@ msgstr "Opzione"
 #: admin/api/manage-option_api.php:378 admin/api/manage-option_api.php:731
 msgid "Value"
 msgstr "Valore"
-
-#: admin/api/manage-option_api.php:382 admin/api/manage-option_api.php:735
-#: admin/install/index.php:356
-msgid "Title of the Planet"
-msgstr "Titolo del Planet"
 
 #: admin/api/manage-option_api.php:386 admin/api/manage-option_api.php:739
 msgid "Description of the Planet"
@@ -3135,389 +3277,366 @@ msgstr "ID sito Piwik"
 msgid "Planet statusnet host (ex: http://identi.ca)"
 msgstr "Host Planet statusnet (es: http://identi.ca)"
 
-#: admin/install/index.php:32
-msgid "No configuration file"
-msgstr "Nessun file di configurazione"
+#: admin/api/manage-tagging_api.php:43 user/api/tagging_api.php:47
+msgid "The tag you want to remove doesn't exist on this post"
+msgstr "Il tag che vuoi rimuovere non esiste in questo post"
 
-#: admin/install/index.php:33
-msgid ""
-"There is no configuration file, you need to create one. Therefor you can use "
-"the wizard to generate a configuration file. Click \"Next\" to go to the "
-"setup page."
-msgstr ""
-"Non esiste nessun file di configurazione, devi crearne uno. Per farlo puoi "
-"utilizzare l'installazione guidata . Clicca \"Avanti\" per andare alla "
-"pagina delle impostazioni."
+#: admin/api/manage-tagging_api.php:154
+#, fuzzy
+msgid "Tag post"
+msgstr "Tagga post"
 
-#: admin/install/index.php:34
-msgid "Next"
-msgstr "Avanti"
-
-#: admin/install/index.php:50
-msgid "The Bilboplanet is already installed."
-msgstr "Bilboplanet è già installato."
-
-#: admin/install/index.php:51
+#: admin/api/manage-tagging_api.php:162
+#: admin/api/manage-moderation_api.php:191
 #, php-format
+msgid "%s last posts :"
+msgstr "%s ultimi post :"
+
+#: admin/api/manage-tribe_api.php:102
+#, fuzzy, php-format
+msgid "Tribe %s was successfully added"
+msgstr "Il feed %s è stato aggiunto con successo"
+
+#: admin/api/manage-tribe_api.php:104
 msgid ""
-"If you are upgrading to a newer version of the Bilboplanet, please upgrade "
-"your database by running the %s/inc/upgrade_db.php script"
+"This tribe id is already existing. This error should not occur : please "
+"report to developper"
 msgstr ""
 
-#: admin/install/index.php:57
-msgid "The Bilboplanet can not be installed"
-msgstr "Non è stato possibile installare Bilboplanet"
-
-#: admin/install/index.php:94
-#, php-format
-msgid "Unable to read %s file."
-msgstr "Impossibile leggere il file %s."
-
-#: admin/install/index.php:103
+#: admin/api/manage-tribe_api.php:112
 #, fuzzy
-msgid "Please fill the title in."
-msgstr "Prego inserire il titolo."
+msgid "Please select the user that you want to add to the tribe"
+msgstr "Prego selezionare l'utente al quale vuoi aggiungere il feed"
 
-#: admin/install/index.php:106
-msgid "Please fill the user email in."
-msgstr "Prego inserire l'email utente."
+#: admin/api/manage-tribe_api.php:155
+#, fuzzy, php-format
+msgid "Tribe %s successfully updated"
+msgstr "Il feed %s è stato aggiunto con successo"
 
-#: admin/install/index.php:109
-msgid "Please fill the username in."
-msgstr "Prego inserire il nome utente."
-
-#: admin/install/index.php:116
-msgid ""
-"The username has to be formed of minimum 2 characters with letters of numbers"
-msgstr ""
-"Il nome utente deve essere composto dal almeno 2 caratteri di lettere o "
-"numeri"
-
-#: admin/install/index.php:119
-msgid "Invalid email address"
-msgstr "Indirizzo email non valido"
-
-#: admin/install/index.php:125
-msgid "The passwords don't match"
-msgstr "La password non corrisponde"
-
-#: admin/install/index.php:128
-msgid "The password have to contain minimum 6 characters."
-msgstr "La password deve contenere almeno 6 caratteri."
-
-#: admin/install/index.php:255
-msgid "A new Bilboplanet joined the community"
+#: admin/api/manage-tribe_api.php:161
+msgid "The ordering has to be an integer value."
 msgstr ""
 
-#: admin/install/index.php:257
-msgid "Url : "
-msgstr ""
-
-#: admin/install/index.php:258
+#: admin/api/manage-tribe_api.php:193
 #, fuzzy
-msgid "Title : "
-msgstr "Titolo"
+msgid "Tribe visibility toggled"
+msgstr "Stato del sito attivato"
 
-#: admin/install/index.php:259
+#: admin/api/manage-tribe_api.php:195
 #, fuzzy
-msgid "Description : "
-msgstr "Descrizione"
-
-#: admin/install/index.php:260
-#, fuzzy
-msgid "Author : "
-msgstr "Autore"
-
-#: admin/install/index.php:296 admin/install/index.php:310
-msgid "Installation of the Bilboplanet"
-msgstr "Installazione di Bilboplanet"
-
-#: admin/install/index.php:313 admin/install/wizard.php:162
-msgid "Errors:"
-msgstr "Errori:"
-
-#: admin/install/index.php:317
-msgid "The configuration file was successfully created."
-msgstr "Il file di configurazione è stato creato con successo."
-
-#: admin/install/index.php:337
-msgid "Information on the BilboPlanet"
-msgstr "Informazioni su Bilboplanet"
-
-#: admin/install/index.php:339
-msgid ""
-"Thank you for taking somes minutes to answer those questions to help to the "
-"configuration of the bilboplanet."
-msgstr ""
-"Grazie per spendere qualche minuto per rispondere alle domande per la "
-"configurazione del Bilboplanet."
-
-#: admin/install/index.php:340
-msgid "Fields marked with an asterisk are obligatory"
-msgstr "I campi con l'asterisco sono obbligatori"
-
-#: admin/install/index.php:343
-msgid "Information of the user"
-msgstr "Informazioni sull'utente"
-
-#: admin/install/index.php:346
-msgid "Enter your fullname or the name you want to be displayed"
-msgstr "Inserisci il nome completo o il nome che vuoi che venga visualizzato"
-
-#: admin/install/index.php:349
-msgid "Enter your email address"
-msgstr "Inserisci il tuo indirizzo email"
-
-#: admin/install/index.php:350
-msgid "Website of the user"
-msgstr "Sito web dell'utente"
-
-#: admin/install/index.php:352
-msgid "Entre address of your website or blog (optional)"
-msgstr "Inserisci l'indirizzo del sito web o del tuo blog (opzionale)"
-
-#: admin/install/index.php:355
-msgid "Information on the Planet"
-msgstr "Informazioni sul Planet"
-
-#: admin/install/index.php:358
-msgid "Fill the title of your planet"
-msgstr "Inserisci il titolo del tuo planet"
-
-#: admin/install/index.php:359
-msgid "Description"
-msgstr "Descrizione"
-
-#: admin/install/index.php:361
-msgid "Give a description of your planet"
-msgstr "Dai una descrizione del tuo planet"
-
-#: admin/install/index.php:362
-msgid "Planet Language"
-msgstr "Lingua del planet"
-
-#: admin/install/index.php:364
-msgid "Choose your langage"
-msgstr "Scegli la tua lingua"
-
-#: admin/install/index.php:365
-#, fuzzy
-msgid "Join the Bilboplanet community"
-msgstr "Torna al Planet"
-
-#: admin/install/index.php:367
-msgid ""
-"This will notify the developpers of the Bilboplanet that you are using their "
-"work. Your planet will be added to the community and you will be informed "
-"when new important features will be released. You will also be able to ask "
-"for new features to the development team."
-msgstr ""
-
-#: admin/install/index.php:370
-msgid "Administration username and password"
-msgstr "Amministrazione nome utente e password"
-
-#: admin/install/index.php:371 admin/install/index.php:374
-#: admin/install/index.php:377 admin/install/wizard.php:181
-#: admin/install/wizard.php:201
-msgid "Required field"
-msgstr "Campo richiesto"
-
-#: admin/install/index.php:373
-msgid "Enter your username"
-msgstr "Inserisci il tuo nome utente"
-
-#: admin/install/index.php:376
-msgid "Enter your password"
-msgstr "Inserisci la tua password"
-
-#: admin/install/index.php:377
-msgid "Confirm your password"
-msgstr "Conferma la tua password"
-
-#: admin/install/index.php:379
-msgid "Re-enter your password for verification"
-msgstr "Re-inserisci la password per verifica"
-
-#: admin/install/index.php:382 admin/install/wizard.php:205
-msgid "Save"
-msgstr "Salva"
-
-#: admin/install/index.php:393
-msgid "Install succeeded"
-msgstr "Installazione eseguita con successo"
-
-#: admin/install/index.php:395
-msgid ""
-"The Bilboplanet was successfully installed. Here you can find a resume of "
-"the configuration"
-msgstr ""
-"Il Bilboplanet è stato installato con successo. Qui puoi trovare un "
-"riassunto della configurazione"
-
-#: admin/install/index.php:397
-msgid "Your account"
-msgstr "Il tuo account"
-
-#: admin/install/index.php:403
-msgid "Your Bilboplanet"
-msgstr "Il tuo Bilboplanet"
-
-#: admin/install/index.php:405
-msgid "URL of the BilboPlanet:"
-msgstr "URL del Bilboplanet:"
-
-#: admin/install/index.php:406
-#, fuzzy
-msgid "Administration interface:"
-msgstr "Interfaccia di amministrazione:"
-
-#: admin/install/index.php:410
-msgid "Go to the administration interface"
-msgstr "Vai all'interfaccia di amministrazione"
-
-#: admin/install/wizard.php:74
-msgid "The Bilboplanet could not be installed."
-msgstr "Non è stato possibile installare il Bilboplanet."
-
-#: admin/install/wizard.php:80
-msgid ""
-"The Bilboplanet is already installed. Please remove the tables in the "
-"database before."
-msgstr ""
-"Bilboplanet è già installato. Prego rimuovere le tabelle nel database "
-"precedente."
-
-#: admin/install/wizard.php:86
-#, php-format
-msgid "File %s does not exist."
+msgid "Tribe does not exist"
 msgstr "Il file %s non esiste."
 
-#: admin/install/wizard.php:143
-msgid "Bilboplanet Install Wizard"
-msgstr "Installazione guidata Bilboplanet"
+#: admin/api/manage-tribe_api.php:205
+#, fuzzy, php-format
+msgid "Are you sure you want to remove tribe %s ?"
+msgstr "Sei sicuro di voler rimuovere il sito %s ?"
 
-#: admin/install/wizard.php:159
-msgid "Installation wizard of the Bilboplanet"
-msgstr "Installazione guidata del Bilboplanet"
+#: admin/api/manage-tribe_api.php:224
+#, fuzzy, php-format
+msgid "Delete of tribe %s succeeded"
+msgstr "Cancellazione del sito %s eseguita con successo"
 
-#: admin/install/wizard.php:166
+#: admin/api/manage-tribe_api.php:226
+#, fuzzy
+msgid "This tribe does not exist in the database"
+msgstr "Questo feed non esiste nel database."
+
+#: admin/api/manage-tribe_api.php:297
+#, fuzzy
+msgid "Users added : "
+msgstr "Tag aggiunti :"
+
+#: admin/api/manage-tribe_api.php:328
+#, fuzzy
+msgid "The search was successfuly removed"
+msgstr "Il feed %s è stato eliminato con successo"
+
+#: admin/api/manage-tribe_api.php:350
+#, fuzzy
+msgid "Search added : "
+msgstr "Tag aggiunti :"
+
+#: admin/api/manage-tribe_api.php:476
+#, fuzzy
+msgid "The unwanted tag was successfuly removed"
+msgstr "Il feed %s è stato eliminato con successo"
+
+#: admin/api/manage-tribe_api.php:515
+#, fuzzy
+msgid "Notags added : "
+msgstr "Tag aggiunti :"
+
+#: admin/api/manage-tribe_api.php:554
+#, fuzzy
+msgid "There was an error during file upload"
+msgstr "Si è verificato un problema durante l'attivazione del ruolo utente"
+
+#: admin/api/manage-tribe_api.php:567
+msgid "The image file should not exceed 150Kb"
+msgstr ""
+
+#: admin/api/manage-tribe_api.php:575
+msgid "The format of the file is not supported : "
+msgstr ""
+
+#: admin/api/manage-tribe_api.php:579
+msgid "This file has the wrong file extension"
+msgstr ""
+
+#: admin/api/manage-tribe_api.php:586
+msgid "The tribe icon has to be almost square (allowed rate of 0.9)"
+msgstr ""
+
+#: admin/api/manage-tribe_api.php:598
+#, php-format
+msgid "The image could not be modified. (File extension is %s)"
+msgstr ""
+
+#: admin/api/manage-tribe_api.php:625
+msgid "The file you want to copy is alreay existing. Please try again."
+msgstr ""
+
+#: admin/api/manage-tribe_api.php:643
+#, fuzzy
+msgid "The image was successfully uploaded to the tribe"
+msgstr "Sito web %s aggiunto con successo all'utente %s"
+
+#: admin/api/manage-tribe_api.php:645
+#, fuzzy, php-format
+msgid "The file could not be saved to %s"
+msgstr "Non è stato possibile installare il Bilboplanet."
+
+#: admin/api/manage-tribe_api.php:672
+msgid "This tribe have no icons"
+msgstr ""
+
+#: admin/api/manage-tribe_api.php:676
+#, fuzzy, php-format
+msgid "The icon file %s does not exists"
+msgstr "Il file %s non esiste."
+
+#: admin/api/manage-tribe_api.php:684
+#, fuzzy
+msgid "The icon was successfully removed from the tribe"
+msgstr "Il feed %s è stato eliminato con successo"
+
+#: admin/api/manage-tribe_api.php:686
+#, fuzzy
+msgid "Impossible to delete file"
+msgstr "Impossibile modificare il ruolo di te stesso"
+
+#: admin/api/manage-tribe_api.php:767
+msgid "Admin"
+msgstr ""
+
+#: admin/api/manage-tribe_api.php:794
+msgid "empty"
+msgstr ""
+
+#: admin/api/manage-tribe_api.php:796
+msgid "clear"
+msgstr ""
+
+#: admin/api/manage-tribe_api.php:801
+msgid "Add icon to tribe"
+msgstr ""
+
+#: admin/api/manage-tribe_api.php:805
+msgid "Remove icon from tribe"
+msgstr ""
+
+#: admin/api/manage-tribe_api.php:822
+msgid "Toggle tribe visibility"
+msgstr ""
+
+#: admin/api/manage-tribe_api.php:823
+msgid "Edit tribe"
+msgstr ""
+
+#: admin/api/manage-tribe_api.php:824
+msgid "Remove tribe"
+msgstr ""
+
+#: admin/api/manage-tribe_api.php:825
+msgid "Add tags to tribe"
+msgstr ""
+
+#: admin/api/manage-tribe_api.php:826
+msgid "Add unwanted tags to tribe"
+msgstr ""
+
+#: admin/api/manage-tribe_api.php:827
+msgid "Add users to tribe"
+msgstr ""
+
+#: admin/api/manage-tribe_api.php:828
+msgid "Add search to tribe"
+msgstr ""
+
+#: admin/api/manage-moderation_api.php:41 user/api/post_api.php:41
+msgid "The post is already accepted"
+msgstr "Questo post è già stato accettato"
+
+#: admin/api/manage-moderation_api.php:47 user/api/post_api.php:47
+msgid "Post successfully updated"
+msgstr "Post aggiornato con successo"
+
+#: admin/api/manage-moderation_api.php:84
+msgid "The post is already refused"
+msgstr "Questo post è già stato rifiutato"
+
+#: admin/api/manage-moderation_api.php:93 user/api/post_api.php:83
+msgid "Post successfully refused"
+msgstr "Post rifiutato con successo"
+
+#: admin/api/manage-moderation_api.php:126
 #, php-format
 msgid ""
-"The file <strong>%s</strong> already exists. If you need to reinitialize on "
-"of the configuration elements in this file, please remove the configuration "
-"file first or <a href=\"%s\">continue the installation</a>."
+"Our team has carefully read your latest post :\n"
+"%s\n"
+"\n"
+"However, this article raised questions among us and we hesitate to keep it "
+"in the feed of our website. Indeed :"
 msgstr ""
-"Il file <strong>%s</strong> esiste già. Se ti è necessario reinizializzare "
-"uno degli elementi di configurazione in questo file, rimuovi il file di "
-"configurazione o <a href=\"%s\">continua l'installazione</a>."
 
-#: admin/install/wizard.php:171
+#: admin/api/manage-moderation_api.php:131
 msgid ""
-"Welcome to the BilboPlanet. Before you begin, we need some informations "
-"concerning the database. You'll need to provide the following information to "
-"begin the installation and to create the configuration file.<br /><br />\n"
-"   1. The host of the database.<br/>\n"
-"   2. The name of the database.<br/>\n"
-"   3. Your username to the database.<br/>\n"
-"   4. Your password to the database.<br/>\n"
-"   4. Table prefix for your database.<br/><br/>"
+"We decided to remove your post from our main feed. We are of course disposed "
+"to answer to any question and to discuss with you about this."
 msgstr ""
-"Benvenuto su Bilboplanet. Prima di cominciare, abbiamo bisogno di alcune "
-"informazioni sul database. Dovrai fornire le seguenti informazioni per "
-"iniziare l'installazione e per creare il file di configurazione.<br /><br /"
-">\n"
-"   1. Il host del database.<br/>\n"
-"   2. Il nome del database.<br/>\n"
-"   3. Il tuo nome utente per accedere al database.<br/>\n"
-"   4. La tua password per accedere al database.<br/>\n"
-"   4. Il prefisso delle tabelle del database.<br/><br/>"
 
-#: admin/install/wizard.php:181
+#: admin/api/manage-moderation_api.php:134
+#, php-format
+msgid "Thank you for your contribution on the %s"
+msgstr "Grazie per la tua contribuzione sul %s"
+
+#: admin/api/manage-moderation_api.php:136
+msgid "Sincerely yours"
+msgstr "Cordiali saluti"
+
+#: admin/api/manage-moderation_api.php:161
+msgid "Author"
+msgstr "Autore"
+
+#: admin/api/manage-account_api.php:58 admin/api/manage-user_api.php:228
+#: user/api/account_api.php:131
+#, php-format
+msgid "The email address %s is already in use by %s"
+msgstr "L'indirizzo email &s è già in uso da %s"
+
+#: admin/api/manage-account_api.php:72 admin/api/manage-user_api.php:248
+#: user/api/account_api.php:146
+#, php-format
+msgid "User %s successfully updated"
+msgstr "Utente %s aggiornato con successo"
+
+#: admin/api/manage-user_api.php:193
+msgid "User status toggled"
+msgstr "Stato utente attivato"
+
+#: admin/api/manage-user_api.php:282 admin/api/manage-user_api.php:308
+msgid "You are not allowed to remove a super user"
+msgstr "Non sei abilitato a rimuovere un super utente"
+
+#: admin/api/manage-user_api.php:286
+#, php-format
+msgid "Are you sure you want to remove user %s ?"
+msgstr "Sei sicuro di voler rimuovere l'utente %s ?"
+
+#: admin/api/manage-user_api.php:288
+msgid "All the posts of the user will be removed"
+msgstr "Tutti i post di questo utente verranno rimossi"
+
+#: admin/api/manage-user_api.php:289
+msgid "All the votes on these posts will be removed"
+msgstr "Tutti i voti di questi post verranno rimossi"
+
+#: admin/api/manage-user_api.php:290
+msgid "All the feeds of this user will be removed"
+msgstr "Tutti i feed di questo utente verranno rimossi"
+
+#: admin/api/manage-user_api.php:291
 #, fuzzy
-msgid "Database type:"
-msgstr "Errore database"
+msgid "All the tribes of this user will be removed"
+msgstr "Tutti i feed di questo utente verranno rimossi"
 
-#: admin/install/wizard.php:185
+#: admin/api/manage-user_api.php:292
 #, fuzzy
-msgid "Host of the database"
-msgstr "Host del database:"
+msgid "All the settings of this user will be removed"
+msgstr "Tutti i feed di questo utente verranno rimossi"
 
-#: admin/install/wizard.php:187
-msgid "ex: localhost"
-msgstr "es: localhost"
-
-#: admin/install/wizard.php:189
-msgid "Name of the database:"
-msgstr "Nome del database:"
-
-#: admin/install/wizard.php:191
-msgid "ex: bilboplanet"
-msgstr "es: bilboplanet"
-
-#: admin/install/wizard.php:195
-msgid "Your username depends of your provider"
-msgstr "Il nome utente dipende dal tuo provider"
-
-#: admin/install/wizard.php:199
-msgid "Your password depends of your provider"
-msgstr "La password dipende dal tuo provide"
-
-#: admin/install/wizard.php:201
-msgid "Database Tables Prefix:"
-msgstr "Prefisso delle tabelle del database"
-
-#: admin/install/wizard.php:203
-msgid "bp_ is the default prefix"
-msgstr "bp_ è il prefisso di default"
-
-#: admin/install/check.php:34
+#: admin/api/manage-user_api.php:327
 #, php-format
-msgid "PHP version is %s (5.0 or earlier needed)."
-msgstr "La versione PHP è %s (necessita 5.0 o superiore)."
+msgid "Delete of user %s succeeded"
+msgstr "Cancellazione dell'utente %s eseguita con successo"
 
-#: admin/install/check.php:38
-msgid "Multibyte string module (mbstring) is not available."
-msgstr "Il Multibyte string module (mbstring) non è disponibile."
+#: admin/api/manage-user_api.php:433
+msgid "Disable user"
+msgstr "Disabilita utente"
 
-#: admin/install/check.php:42
-msgid "Iconv module is not available."
-msgstr "Modulo Iconv non è disponibile."
+#: admin/api/manage-user_api.php:436
+msgid "Enable user"
+msgstr "Abilita utente"
 
-#: admin/install/check.php:46
-msgid "Output control functions are not available."
-msgstr "Le funzioni di controllo output non sono disponibili."
+#: admin/api/manage-user_api.php:448
+msgid "Planet author"
+msgstr "Autore Planet"
 
-#: admin/install/check.php:50
-msgid "SimpleXML module is not available."
-msgstr "Modulo SimpleXML non è disponibile."
-
-#: admin/install/check.php:54
-msgid "DOM XML module is not available."
-msgstr "Modulo DOM XML non è disponibile."
-
-#: admin/install/check.php:59
-msgid "PCRE engine does not support UTF-8 strings."
-msgstr "Il motore PCRE non supporta le stringhe UTF-8."
-
-#: admin/install/check.php:63
-msgid "SPL module is not available."
-msgstr "Modulo SPL non è disponibile."
-
-#: admin/install/check.php:70
-#, php-format
-msgid "MySQL version is %s (4.1 or earlier needed)."
-msgstr "La versione MySQL è %s (necessita 4.1 o successiva)."
-
-#: admin/install/check.php:92
-#, php-format
-msgid "PostgreSQL version is %s (8.0 or earlier needed)."
-msgstr "La versione PostgreSQL è %s (necessita 8.0 o successiva)."
+#: admin/api/manage-user_api.php:466
+msgid "Add a new website"
+msgstr "Aggiungi un nuovo sito web"
 
 #: user/index.php:53
 #, fuzzy
 msgid "User dashboard"
 msgstr "Dashboard"
+
+#: user/api/feed_api.php:89
+#, fuzzy, php-format
+msgid "This feed %s or site %s is not a valid URL."
+msgstr "Il campo \"%s\" %s deve contenere un URL valido"
+
+#: user/api/feed_api.php:98
+msgid "This feed is already waiting for validation."
+msgstr ""
+
+#: user/api/feed_api.php:106
+#, fuzzy, php-format
+msgid "This feed is already used in this planet by user %s"
+msgstr "Il feed %s è già in uso dall'utente %s"
+
+#: user/api/feed_api.php:114
+msgid "Feed waiting for validation"
+msgstr ""
+
+#: user/api/feed_api.php:119
+#, php-format
+msgid "Feed validation request for %s"
+msgstr ""
+
+#: user/api/feed_api.php:122
+#, fuzzy
+msgid "Site url : "
+msgstr "URL sito :"
+
+#: user/api/feed_api.php:131
+msgid "An email was sent to the site administrator to ask for validation."
+msgstr ""
+
+#: user/api/feed_api.php:133
+msgid "The email could not be sent to the site administrator for validation."
+msgstr ""
+
+#: user/api/feed_api.php:172 user/api/feed_api.php:212
+#, fuzzy
+msgid "Feed removed : "
+msgstr "Nome feed :"
+
+#: user/api/feed_api.php:175 user/api/feed_api.php:215
+#, fuzzy
+msgid "This feed does not exist"
+msgstr "Questo feed non esiste nel database."
 
 #: user/api/util.php:147
 #, fuzzy
@@ -3573,7 +3692,7 @@ msgstr "Configuro impostazioni utente."
 #: user/api/account_api.php:64
 msgid ""
 "Enable the social networks links that you want to use (Google+, Twitter, "
-"Shaarli"
+"Shaarli)"
 msgstr ""
 
 #: user/api/account_api.php:65
@@ -3589,59 +3708,13 @@ msgid "Create your own tribes and personalised filtered feeds"
 msgstr ""
 
 #: user/api/account_api.php:68
+msgid "To login into your account, go on the following page : "
+msgstr ""
+
+#: user/api/account_api.php:70
 msgid ""
 "We hope you'll enjoy being on this planet and being part of our community."
 msgstr ""
-
-#: user/api/account_api.php:69
-msgid "Thank you"
-msgstr ""
-
-#: user/api/feed_api.php:89
-#, fuzzy, php-format
-msgid "This feed %s or site %s is not a valid URL."
-msgstr "Il campo \"%s\" %s deve contenere un URL valido"
-
-#: user/api/feed_api.php:98
-msgid "This feed is already waiting for validation."
-msgstr ""
-
-#: user/api/feed_api.php:106
-#, fuzzy, php-format
-msgid "This feed is already used in this planet by user %s"
-msgstr "Il feed %s è già in uso dall'utente %s"
-
-#: user/api/feed_api.php:114
-msgid "Feed waiting for validation"
-msgstr ""
-
-#: user/api/feed_api.php:119
-#, php-format
-msgid "Feed validation request for %s"
-msgstr ""
-
-#: user/api/feed_api.php:122
-#, fuzzy
-msgid "Site url : "
-msgstr "URL sito :"
-
-#: user/api/feed_api.php:131
-msgid "An email was sent to the site administrator to ask for validation."
-msgstr ""
-
-#: user/api/feed_api.php:133
-msgid "The email could not be sent to the site administrator for validation."
-msgstr ""
-
-#: user/api/feed_api.php:172 user/api/feed_api.php:212
-#, fuzzy
-msgid "Feed removed : "
-msgstr "Nome feed :"
-
-#: user/api/feed_api.php:175 user/api/feed_api.php:215
-#, fuzzy
-msgid "This feed does not exist"
-msgstr "Questo feed non esiste nel database."
 
 #: user/api/social_api.php:44
 #, fuzzy
@@ -3673,6 +3746,16 @@ msgstr "Iscrizione rifiutata con successo"
 #, fuzzy
 msgid "The post is already removed"
 msgstr "Questo post è già stato cancellato"
+
+#~ msgid "Tracker: "
+#~ msgstr "Tracker:"
+
+#~ msgid ""
+#~ "The Bilboplanet is already installed. Please remove the tables in the "
+#~ "database before."
+#~ msgstr ""
+#~ "Bilboplanet è già installato. Prego rimuovere le tabelle nel database "
+#~ "precedente."
 
 #, fuzzy
 #~ msgid "Voir l'article"

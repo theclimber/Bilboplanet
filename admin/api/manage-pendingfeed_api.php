@@ -97,8 +97,8 @@ if(isset($_POST['action'])) {
 		$to = $useremail.', '.$from;
 		$reply_to = $from;
 
-		$subject = html_entity_decode(stripslashes($_POST['subject']), ENT_QUOTES, 'UTF-8');
-		$content = html_entity_decode(stripslashes($_POST['content']), ENT_QUOTES, 'UTF-8');
+		$subject = html_entity_decode(stripslashes(urldecode($_POST['subject'])), ENT_QUOTES, 'UTF-8');
+		$content = html_entity_decode(stripslashes(urldecode($_POST['content'])), ENT_QUOTES, 'UTF-8');
 
 		if (!sendmail($from, $to, $subject, $content, 'normal', $reply_to)) {
 			$error[] = T_("Mail could not be send");
@@ -135,8 +135,8 @@ if(isset($_POST['action'])) {
 		$to = $useremail.', '.$from;
 		$reply_to = $from;
 
-		$subject = html_entity_decode(stripslashes($_POST['subject']), ENT_QUOTES, 'UTF-8');
-		$content = html_entity_decode(stripslashes($_POST['content']), ENT_QUOTES, 'UTF-8');
+		$subject = html_entity_decode(stripslashes(urldecode($_POST['subject'])), ENT_QUOTES, 'UTF-8');
+		$content = html_entity_decode(stripslashes(urldecode($_POST['content'])), ENT_QUOTES, 'UTF-8');
 		if (!sendmail($from, $to, $subject, $content, 'normal', $reply_to)) {
 			$error[] = T_("Mail could not be send");
 		} else {

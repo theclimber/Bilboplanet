@@ -38,9 +38,9 @@ function shaare(id,title) {
 	var url = '{$planet.url}/?post_id='+id;
 //	var title = url;
 	window.open(
-		'{$shaarli_instance}/index.php?post=' +
-		encodeURIComponent(url)+'&title=' +
-		title+'&source=bookmarklet',
+		'{$shaarli_instance}/index.php?post='+encodeURIComponent(url)+
+//		'&title=' +title+
+		'&source=bookmarklet',
 		'_blank',
 		'menubar=no,height=390,width=600,toolbar=no,scrollbars=no,status=no'
 		);

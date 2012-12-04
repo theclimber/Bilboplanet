@@ -127,7 +127,7 @@ if (isset($_GET) && isset($_GET['type'])) {
 		$title_add = " - Feed";
 	}
 
-
+	$nb_items=$blog_settings->get('planet_nb_post');
 	$num_start = 0;
 	if ($tribe_id != null) {
 		$sql = generate_tribe_SQL(

@@ -24,15 +24,6 @@ themes/default/index.php
 themes/default/css/index.php
 themes/default/css/font2/index.php
 themes/default/js/index.php
-themes/default/user/css/blueprint/index.php
-themes/default/user/css/blueprint/src/index.php
-themes/default/user/css/blueprint/plugins/index.php
-themes/default/user/css/blueprint/plugins/fancy-type/index.php
-themes/default/user/css/blueprint/plugins/link-icons/index.php
-themes/default/user/css/blueprint/plugins/link-icons/icons/index.php
-themes/default/user/css/blueprint/plugins/buttons/index.php
-themes/default/user/css/blueprint/plugins/buttons/icons/index.php
-themes/default/user/css/blueprint/plugins/rtl/index.php
 themes/default/images/index.php
 inc/prepend.php
 inc/fonctions.php

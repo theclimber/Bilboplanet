@@ -70,6 +70,9 @@ class Translation:
             if theme != "index.php" and theme != "planetlibre":
                 relpath = 'themes/%s' % theme
                 self.extract_from_tpl(relpath, 'index.tpl')
+                for file in ['dashboard','menu','profile','social','tribes','write']:
+                    relpath = 'themes/%s/user' % theme
+                    self.extract_from_tpl(relpath,file+'.tpl')
 
     def gettext_header(self):
         return """# SOME DESCRIPTIVE TITLE.

@@ -9,6 +9,7 @@ function render_page ($page) {
 
 	$planet_theme = $blog_settings->get('planet_theme');
 	$tpl = new Hyla_Tpl(dirname(__FILE__).'/../../themes/'.$planet_theme.'/user');
+	$tpl->setL10nCallback('T_');
 	$tpl->importFile($page, $page.'.tpl');
 	$tpl->setVar('planet', array(
 		"url"	=>	BP_PLANET_URL,

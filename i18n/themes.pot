@@ -18,12 +18,24 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 
+#: themes/default/user/write.tpl:9
+msgid "Link to share"
+msgstr ""
+
 #: themes/default/index.tpl:102
 msgid "Tribes and tags"
 msgstr ""
 
+#: themes/default/user/tribes.tpl:155
+msgid "Add a search"
+msgstr ""
+
 #: themes/default/single.tpl:11
 msgid "See post"
+msgstr ""
+
+#: themes/default/user/profile.tpl:81
+msgid "No feed found"
 msgstr ""
 
 #: themes/default/users.tpl:25
@@ -39,6 +51,14 @@ msgstr ""
 msgid "Contact us"
 msgstr ""
 
+#: themes/default/user/profile.tpl:63
+msgid "Allow comments on this feed"
+msgstr ""
+
+#: themes/default/user/dashboard.tpl:48
+msgid "Allow comments on post"
+msgstr ""
+
 #: themes/default/menu.tpl:11
 #: themes/default/topbar.tpl:18
 msgid "All posts"
@@ -52,6 +72,14 @@ msgstr ""
 msgid "Website : "
 msgstr ""
 
+#: themes/default/user/write.tpl:11
+msgid "(Optional)"
+msgstr ""
+
+#: themes/default/user/dashboard.tpl:34
+msgid "Remove post"
+msgstr ""
+
 #: themes/default/single.tpl:67
 msgid "No comments yet"
 msgstr ""
@@ -60,16 +88,41 @@ msgstr ""
 msgid "You can contact the administration team through the contact form below."
 msgstr ""
 
+#: themes/default/user/social.tpl:36
+msgid "Shaarli instance"
+msgstr ""
+
+#: themes/default/user/tribes.tpl:31
+msgid "Reset"
+msgstr ""
+
 #: themes/default/stats.tpl:26
 #: themes/default/stats.tpl:46
 msgid "Visit the website"
+msgstr ""
+
+#: themes/default/user/write.tpl:14
+msgid "Post content"
 msgstr ""
 
 #: themes/default/index.tpl:121
 msgid "Register"
 msgstr ""
 
+#: themes/default/user/dashboard.tpl:30
+msgid "Accept post"
+msgstr ""
+
+#: themes/default/user/write.tpl:5
+msgid "Post title"
+msgstr ""
+
+#: themes/default/user/social.tpl:29
+msgid "Where is your Shaarli?"
+msgstr ""
+
 #: themes/default/single.tpl:104
+#: themes/default/user/dashboard.tpl:55
 msgid "No post found"
 msgstr ""
 
@@ -82,7 +135,44 @@ msgid "E-mail : "
 msgstr ""
 
 #: themes/default/user/menu.tpl:15
+#: themes/default/user/menu.tpl:15
 msgid "Social"
+msgstr ""
+
+#: themes/default/user/profile.tpl:131
+msgid "New site url"
+msgstr ""
+
+#: themes/default/user/tribes.tpl:80
+msgid "Add search to tribe"
+msgstr ""
+
+#: themes/default/user/tribes.tpl:79
+msgid "Add users to tribe"
+msgstr ""
+
+#: themes/default/user/profile.tpl:67
+msgid "Disallow comments on this feed"
+msgstr ""
+
+#: themes/default/user/profile.tpl:122
+msgid "Existing site url"
+msgstr ""
+
+#: themes/default/user/profile.tpl:133
+msgid "Feed url"
+msgstr ""
+
+#: themes/default/user/tribes.tpl:75
+msgid "Edit tribe"
+msgstr ""
+
+#: themes/default/user/tribes.tpl:47
+msgid "Tags :"
+msgstr ""
+
+#: themes/default/user/profile.tpl:6
+msgid "Configure your profile"
 msgstr ""
 
 #: themes/default/topbar.tpl:35
@@ -93,8 +183,20 @@ msgstr ""
 msgid "Captcha"
 msgstr ""
 
+#: themes/default/user/social.tpl:21
+msgid "Share on Google+"
+msgstr ""
+
+#: themes/default/user/dashboard.tpl:43
+msgid "Disable comments on post"
+msgstr ""
+
 #: themes/default/topbar.tpl:32
 msgid "Page status"
+msgstr ""
+
+#: themes/default/user/tribes.tpl:57
+msgid "Users :"
 msgstr ""
 
 #: themes/default/contact.tpl:24
@@ -113,12 +215,29 @@ msgstr ""
 msgid "Posts of the week"
 msgstr ""
 
+#: themes/default/user/social.tpl:38
+msgid "(eg. http://website.tld/shaarli"
+msgstr ""
+
+#: themes/default/user/social.tpl:41
+msgid "NOTE : if you have no shaarli instance, you can create one on this planet."
+msgstr ""
+
 #: themes/default/single.tpl:92
+#: themes/default/user/write.tpl:28
 msgid "Publish"
 msgstr ""
 
 #: themes/default/single.tpl:18
 msgid "Show posts of the user"
+msgstr ""
+
+#: themes/default/user/profile.tpl:90
+msgid "Your pending for validation feeds"
+msgstr ""
+
+#: themes/default/user/profile.tpl:13
+msgid "Fullname"
 msgstr ""
 
 #: themes/default/posts.tpl:35
@@ -131,6 +250,10 @@ msgstr ""
 
 #: themes/default/signup.tpl:22
 msgid "Your full name (Will be displayed)"
+msgstr ""
+
+#: themes/default/user/profile.tpl:23
+msgid "You can leave the password field blank if you don't want to change it"
 msgstr ""
 
 #: themes/default/single.tpl:14
@@ -151,7 +274,13 @@ msgstr ""
 
 #: themes/default/post_tags.tpl:7
 #: themes/default/post_tags.tpl:7
+#: themes/default/user/dashboard.tpl:39
+#: themes/default/user/profile.tpl:72
 msgid "Add tag"
+msgstr ""
+
+#: themes/default/user/profile.tpl:9
+msgid "User id"
 msgstr ""
 
 #: themes/default/topbar.tpl:14
@@ -160,12 +289,33 @@ msgstr ""
 
 #: themes/default/post_tags.tpl:10
 #: themes/default/post_tags.tpl:10
+#: themes/default/user/write.tpl:24
 msgid "Allow comments"
+msgstr ""
+
+#: themes/default/user/profile.tpl:43
+msgid "Your feeds"
+msgstr ""
+
+#: themes/default/user/social.tpl:25
+msgid "Share on Shaarli"
 msgstr ""
 
 #: themes/default/posts.tpl:80
 #: themes/default/single.tpl:124
+#: themes/default/user/dashboard.tpl:64
+#: themes/default/user/profile.tpl:114
+#: themes/default/user/tribes.tpl:142
+#: themes/default/user/write.tpl:21
 msgid "Comma separated tags (ex: linux,web,event)"
+msgstr ""
+
+#: themes/default/user/social.tpl:31
+msgid "Local instance"
+msgstr ""
+
+#: themes/default/user/profile.tpl:44
+msgid "Add new feeds"
 msgstr ""
 
 #: themes/default/topbar.tpl:6
@@ -176,12 +326,33 @@ msgstr ""
 msgid "Show posts of"
 msgstr ""
 
+#: themes/default/user/tribes.tpl:140
+msgid "Add new tags"
+msgstr ""
+
+#: themes/default/user/tribes.tpl:78
+msgid "Add unwanted tags to tribe"
+msgstr ""
+
 #: themes/default/signup.tpl:12
 msgid "Discover the background of all what you can do with Bilboplanet. Read, share, rate, add your own blog"
 msgstr ""
 
 #: themes/default/user/menu.tpl:20
+#: themes/default/user/menu.tpl:20
 msgid "Write or share"
+msgstr ""
+
+#: themes/default/user/social.tpl:32
+msgid "Remote shaarli"
+msgstr ""
+
+#: themes/default/user/tribes.tpl:126
+msgid "Tribe order"
+msgstr ""
+
+#: themes/default/user/tribes.tpl:171
+msgid "Add new users"
 msgstr ""
 
 #: themes/default/topbar.tpl:28
@@ -196,12 +367,35 @@ msgstr ""
 msgid "Administration"
 msgstr ""
 
+#: themes/default/user/tribes.tpl:87
+msgid "Add icon to tribe"
+msgstr ""
+
 #: themes/default/posts.tpl:29
 msgid "Written by"
 msgstr ""
 
+#: themes/default/user/profile.tpl:38
+#: themes/default/user/social.tpl:56
+#: themes/default/user/tribes.tpl:133
+msgid "Update"
+msgstr ""
+
+#: themes/default/user/profile.tpl:137
+#: themes/default/user/tribes.tpl:32
+msgid "Add"
+msgstr ""
+
 #: themes/default/topbar.tpl:27
 msgid "Select only"
+msgstr ""
+
+#: themes/default/user/tribes.tpl:181
+msgid "Comma separated user id's (ex: john22,jack,flipper)"
+msgstr ""
+
+#: themes/default/user/social.tpl:17
+msgid "Share on Twitter"
 msgstr ""
 
 #: themes/default/index.tpl:119
@@ -209,13 +403,24 @@ msgstr ""
 msgid "Login"
 msgstr ""
 
+#: themes/default/user/tribes.tpl:66
+msgid "Empty"
+msgstr ""
+
 #: themes/default/index.tpl:54
 msgid "Hide sidebar"
+msgstr ""
+
+#: themes/default/user/social.tpl:42
+msgid "Go on Shaarli"
 msgstr ""
 
 #: themes/default/posts.tpl:78
 #: themes/default/single.tpl:122
 #: themes/default/tags.tpl:25
+#: themes/default/user/dashboard.tpl:62
+#: themes/default/user/profile.tpl:112
+#: themes/default/user/write.tpl:19
 msgid "Tags"
 msgstr ""
 
@@ -224,7 +429,16 @@ msgid "No tribes found"
 msgstr ""
 
 #: themes/default/single.tpl:88
+#: themes/default/user/write.tpl:16
 msgid "Here you'll find some help concerning the syntax :"
+msgstr ""
+
+#: themes/default/user/tribes.tpl:52
+msgid "No-tags :"
+msgstr ""
+
+#: themes/default/user/tribes.tpl:157
+msgid "Write your search in the text field"
 msgstr ""
 
 #: themes/default/post_tags.tpl:13
@@ -253,6 +467,14 @@ msgstr ""
 msgid "Remember me"
 msgstr ""
 
+#: themes/default/user/social.tpl:53
+msgid "(eg. http://identi.ca/myaccount or http://statusnet.example.com)"
+msgstr ""
+
+#: themes/default/user/tribes.tpl:74
+msgid "Toggle tribe visibility"
+msgstr ""
+
 #: themes/default/index.tpl:110
 msgid "My Shaarli"
 msgstr ""
@@ -261,22 +483,78 @@ msgstr ""
 msgid "Feed with this parameters"
 msgstr ""
 
+#: themes/default/user/profile.tpl:30
+msgid "Language"
+msgstr ""
+
+#: themes/default/user/social.tpl:47
+msgid "Share on StatusNet"
+msgstr ""
+
+#: themes/default/user/profile.tpl:91
+msgid "Theses feeds need the validation of the site administrator. Please read the charter before submitting new feeds."
+msgstr ""
+
+#: themes/default/user/write.tpl:2
+msgid "Write a post"
+msgstr ""
+
 #: themes/default/signup.tpl:36
 #: themes/default/contact.tpl:33
+#: themes/default/user/tribes.tpl:115
+#: themes/default/user/tribes.tpl:148
+#: themes/default/user/tribes.tpl:163
+#: themes/default/user/tribes.tpl:187
 msgid "Send"
+msgstr ""
+
+#: themes/default/user/profile.tpl:125
+msgid "-- choose existing site"
+msgstr ""
+
+#: themes/default/user/tribes.tpl:84
+msgid "Remove icon from tribe"
+msgstr ""
+
+#: themes/default/user/dashboard.tpl:10
+msgid "Your latest posts"
 msgstr ""
 
 #: themes/default/topbar.tpl:44
 msgid "Filter on authors :"
 msgstr ""
 
+#: themes/default/user/social.tpl:51
+msgid "StatusNet account"
+msgstr ""
+
 #: themes/default/index.tpl:100
 msgid "Charter"
+msgstr ""
+
+#: themes/default/user/tribes.tpl:109
+msgid "The image have to be 100px*100px or will be resized"
+msgstr ""
+
+#: themes/default/user/tribes.tpl:107
+msgid "Add tribe icon"
 msgstr ""
 
 #: themes/default/posts.tpl:50
 #: themes/default/single.tpl:40
 msgid "Viewed :"
+msgstr ""
+
+#: themes/default/user/tribes.tpl:6
+msgid "Configure your Tribes"
+msgstr ""
+
+#: themes/default/user/tribes.tpl:112
+#: themes/default/user/tribes.tpl:130
+#: themes/default/user/tribes.tpl:145
+#: themes/default/user/tribes.tpl:160
+#: themes/default/user/tribes.tpl:184
+msgid "Cancel"
 msgstr ""
 
 #: themes/default/posts.tpl:71
@@ -288,6 +566,18 @@ msgstr ""
 msgid "Similar posts"
 msgstr ""
 
+#: themes/default/user/tribes.tpl:69
+msgid "Last post :"
+msgstr ""
+
+#: themes/default/user/tribes.tpl:21
+msgid "ex: climate change"
+msgstr ""
+
+#: themes/default/user/tribes.tpl:77
+msgid "Add tags to tribe"
+msgstr ""
+
 #: themes/default/single.tpl:75
 msgid "Fullname : "
 msgstr ""
@@ -295,6 +585,10 @@ msgstr ""
 #: themes/default/post_tags.tpl:2
 #: themes/default/post_tags.tpl:2
 msgid "tags :"
+msgstr ""
+
+#: themes/default/user/tribes.tpl:25
+msgid "Ordering"
 msgstr ""
 
 #: themes/default/index.tpl:83
@@ -305,6 +599,10 @@ msgstr ""
 
 #: themes/default/contact.tpl:28
 msgid "Content"
+msgstr ""
+
+#: themes/default/user/profile.tpl:17
+msgid "E-mail"
 msgstr ""
 
 #: themes/default/single.tpl:10
@@ -321,7 +619,16 @@ msgid "Tribe :"
 msgstr ""
 
 #: themes/default/user/menu.tpl:10
+#: themes/default/user/menu.tpl:10
 msgid "Profile"
+msgstr ""
+
+#: themes/default/user/tribes.tpl:76
+msgid "Remove tribe"
+msgstr ""
+
+#: themes/default/user/social.tpl:6
+msgid "Share and interact"
 msgstr ""
 
 #: themes/default/topbar.tpl:39
@@ -337,9 +644,30 @@ msgstr ""
 msgid "Email"
 msgstr ""
 
+#: themes/default/user/tribes.tpl:70
+msgid "Post count :"
+msgstr ""
+
+#: themes/default/user/profile.tpl:75
+msgid "Remove feed"
+msgstr ""
+
 #: themes/default/signup.tpl:30
 #: themes/default/popup.tpl:14
+#: themes/default/user/profile.tpl:21
 msgid "Password"
+msgstr ""
+
+#: themes/default/user/social.tpl:9
+msgid "Subscribe to a newsletter"
+msgstr ""
+
+#: themes/default/user/tribes.tpl:27
+msgid "The ordering specifies the position of your tribe on the portal"
+msgstr ""
+
+#: themes/default/user/profile.tpl:92
+msgid "Go to the charter"
 msgstr ""
 
 #: themes/default/posts.tpl:30
@@ -358,8 +686,13 @@ msgstr ""
 msgid "I forgot my password"
 msgstr ""
 
+#: themes/default/user/tribes.tpl:71
+msgid "Ordering :"
+msgstr ""
+
 #: themes/default/user/menu.tpl:25
 #: themes/default/tags.tpl:3
+#: themes/default/user/menu.tpl:25
 msgid "Tribes"
 msgstr ""
 
@@ -367,12 +700,29 @@ msgstr ""
 msgid "Your Bilboplanet Account"
 msgstr ""
 
+#: themes/default/user/tribes.tpl:9
+msgid "Create a tribe"
+msgstr ""
+
 #: themes/default/posts.tpl:31
 msgid "See original post"
 msgstr ""
 
+#: themes/default/user/tribes.tpl:19
+#: themes/default/user/tribes.tpl:123
+msgid "Tribe name"
+msgstr ""
+
+#: themes/default/user/profile.tpl:26
+msgid "Confirm password"
+msgstr ""
+
 #: themes/default/topbar.tpl:55
 msgid "Info Flash"
+msgstr ""
+
+#: themes/default/user/tribes.tpl:64
+msgid "clear"
 msgstr ""
 
 #: themes/default/popup.tpl:30
@@ -384,16 +734,31 @@ msgstr ""
 msgid "Tweeter"
 msgstr ""
 
+#: themes/default/user/profile.tpl:101
+msgid "Remove pending feed"
+msgstr ""
+
 #: themes/default/topbar.tpl:37
 msgid "Search with :"
 msgstr ""
 
+#: themes/default/user/tribes.tpl:62
+msgid "Search :"
+msgstr ""
+
 #: themes/default/posts.tpl:82
 #: themes/default/single.tpl:126
+#: themes/default/user/dashboard.tpl:66
+#: themes/default/user/profile.tpl:116
 msgid "Apply"
 msgstr ""
 
+#: themes/default/user/dashboard.tpl:6
+msgid "User dashboard"
+msgstr ""
+
 #: themes/default/index.tpl:112
+#: themes/default/user/menu.tpl:5
 #: themes/default/user/menu.tpl:5
 msgid "Dashboard"
 msgstr ""

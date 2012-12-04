@@ -133,7 +133,6 @@ themes/default/post_tags.tpl
 themes/default/topbar.tpl
 themes/default/popup.tpl
 themes/default/user/social.tpl
-themes/default/user/index.tpl
 themes/default/user/profile.tpl
 themes/default/user/tribes.tpl
 themes/default/user/write.tpl

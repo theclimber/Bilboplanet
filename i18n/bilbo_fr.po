@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Bilboplanet\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-10-29 10:55+0200\n"
-"PO-Revision-Date: 2012-12-04 11:14+0100\n"
+"PO-Revision-Date: 2012-12-04 12:15+0100\n"
 "Last-Translator: Gregoire de Hemptinne <greg@theclimber.be>\n"
 "Language-Team: French\n"
 "Language: \n"
@@ -17,13 +17,26 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
+#: themes/default/user/write.tpl:9
+msgid "Link to share"
+msgstr "Lien à partager"
+
 #: themes/default/index.tpl:102
 msgid "Tribes and tags"
 msgstr "Tribus et tags"
 
+#: themes/default/user/tribes.tpl:155
+#: admin/manage-tribe.php:159
+msgid "Add a search"
+msgstr "Ajouter une recherche"
+
 #: themes/default/single.tpl:11
 msgid "See post"
 msgstr "Voir l'article"
+
+#: themes/default/user/profile.tpl:81
+msgid "No feed found"
+msgstr "Aucun flux trouvé"
 
 #: themes/default/users.tpl:25
 msgid "No users found"
@@ -37,6 +50,15 @@ msgstr "Aucun tag trouvé"
 #: themes/default/contact.tpl:11
 msgid "Contact us"
 msgstr "Contactez nous"
+
+#: themes/default/user/profile.tpl:63
+#: admin/api/manage-feed_api.php:512
+msgid "Allow comments on this feed"
+msgstr "Autoriser les commentaires sur ce flux"
+
+#: themes/default/user/dashboard.tpl:48
+msgid "Allow comments on post"
+msgstr "Autoriser les commentaires sur l'article"
 
 #: themes/default/menu.tpl:11
 #: themes/default/topbar.tpl:18
@@ -52,6 +74,14 @@ msgstr "Filtrer par tags :"
 msgid "Website : "
 msgstr "Site web : "
 
+#: themes/default/user/write.tpl:11
+msgid "(Optional)"
+msgstr "(Optionel)"
+
+#: themes/default/user/dashboard.tpl:34
+msgid "Remove post"
+msgstr "Supprimer l'article"
+
 #: themes/default/single.tpl:67
 msgid "No comments yet"
 msgstr "Pas encore de commentaires"
@@ -60,16 +90,52 @@ msgstr "Pas encore de commentaires"
 msgid "You can contact the administration team through the contact form below."
 msgstr "Vous pouvez contacter les administrateurs via le formulaire ci-dessous : "
 
+#: themes/default/user/social.tpl:36
+#: user/api/social_api.php:57
+msgid "Shaarli instance"
+msgstr "Instance Shaarli"
+
+#: themes/default/user/tribes.tpl:31
+#: admin/manage-tribe.php:91
+#: admin/manage-feed.php:90
+#: admin/manage-feed.php:188
+#: admin/manage-user.php:127
+#: admin/manage-post.php:171
+#: admin/manage-newsletter.php:224
+#: admin/api/manage-site_api.php:190
+#: admin/api/manage-feed_api.php:255
+#: admin/api/manage-tribe_api.php:210
+#: admin/api/manage-user_api.php:294
+msgid "Reset"
+msgstr "Annuler"
+
 #: themes/default/stats.tpl:26
 #: themes/default/stats.tpl:46
 msgid "Visit the website"
 msgstr "Visiter le site"
 
+#: themes/default/user/write.tpl:14
+msgid "Post content"
+msgstr "Contenu de l'article"
+
 #: themes/default/index.tpl:121
 msgid "Register"
 msgstr "Inscription"
 
+#: themes/default/user/dashboard.tpl:30
+msgid "Accept post"
+msgstr "Accepter articler"
+
+#: themes/default/user/write.tpl:5
+msgid "Post title"
+msgstr "Titre de l'article"
+
+#: themes/default/user/social.tpl:29
+msgid "Where is your Shaarli?"
+msgstr "Où se trouve votre Shaarli?"
+
 #: themes/default/single.tpl:104
+#: themes/default/user/dashboard.tpl:55
 msgid "No post found"
 msgstr "Aucun article trouvé"
 
@@ -86,6 +152,45 @@ msgstr "Email : "
 msgid "Social"
 msgstr "Social"
 
+#: themes/default/user/profile.tpl:131
+msgid "New site url"
+msgstr "Adresse du nouveau site"
+
+#: themes/default/user/tribes.tpl:80
+#: admin/api/manage-tribe_api.php:828
+msgid "Add search to tribe"
+msgstr "Ajouter recherche à la tribu"
+
+#: themes/default/user/tribes.tpl:79
+#: admin/api/manage-tribe_api.php:827
+msgid "Add users to tribe"
+msgstr "Ajouter des utilisateurs à la tribu"
+
+#: themes/default/user/profile.tpl:67
+msgid "Disallow comments on this feed"
+msgstr "Désactiver les commentaires sur ce flux"
+
+#: themes/default/user/profile.tpl:122
+msgid "Existing site url"
+msgstr "URL du site existant"
+
+#: themes/default/user/profile.tpl:133
+msgid "Feed url"
+msgstr "Url du flux"
+
+#: themes/default/user/tribes.tpl:75
+#: admin/api/manage-tribe_api.php:823
+msgid "Edit tribe"
+msgstr "Editer tribu"
+
+#: themes/default/user/tribes.tpl:47
+msgid "Tags :"
+msgstr "Tags :"
+
+#: themes/default/user/profile.tpl:6
+msgid "Configure your profile"
+msgstr "Configurez votre profil"
+
 #: themes/default/topbar.tpl:35
 msgid "Page :"
 msgstr "Page :"
@@ -94,9 +199,21 @@ msgstr "Page :"
 msgid "Captcha"
 msgstr "Captcha"
 
+#: themes/default/user/social.tpl:21
+msgid "Share on Google+"
+msgstr "Partager sur Google+"
+
+#: themes/default/user/dashboard.tpl:43
+msgid "Disable comments on post"
+msgstr "Désactiver les commentaires sur cet article"
+
 #: themes/default/topbar.tpl:32
 msgid "Page status"
 msgstr "Statut de la page"
+
+#: themes/default/user/tribes.tpl:57
+msgid "Users :"
+msgstr "Utilisateurs :"
 
 #: themes/default/contact.tpl:24
 #: signup.php:151
@@ -121,13 +238,39 @@ msgstr "Statistiques"
 msgid "Posts of the week"
 msgstr "Articles de la semaine"
 
+#: themes/default/user/social.tpl:38
+msgid "(eg. http://website.tld/shaarli"
+msgstr "(ex: http://website.tld/shaarli)"
+
+#: themes/default/user/social.tpl:41
+msgid "NOTE : if you have no shaarli instance, you can create one on this planet."
+msgstr "NOTe : si vous n'avez pas d'instance shaarli, vous pouvez en créer un sur ce planet."
+
 #: themes/default/single.tpl:92
+#: themes/default/user/write.tpl:28
 msgid "Publish"
 msgstr "Publier"
 
 #: themes/default/single.tpl:18
 msgid "Show posts of the user"
 msgstr "Afficher les articles de l'utilisateur"
+
+#: themes/default/user/profile.tpl:90
+msgid "Your pending for validation feeds"
+msgstr "Flux en attente de validation"
+
+#: themes/default/user/profile.tpl:13
+#: signup.php:153
+#: admin/manage-feed.php:71
+#: admin/manage-account.php:65
+#: admin/manage-user.php:108
+#: admin/manage-user.php:149
+#: admin/install/index.php:337
+#: admin/api/manage-pendingfeed_api.php:243
+#: admin/api/manage-account_api.php:36
+#: user/api/account_api.php:108
+msgid "Fullname"
+msgstr "Nom complet"
 
 #: themes/default/posts.tpl:35
 msgid "Display posts of this user"
@@ -140,6 +283,12 @@ msgstr "Plus"
 #: themes/default/signup.tpl:22
 msgid "Your full name (Will be displayed)"
 msgstr "Votre nom complet (sera affiché)"
+
+#: themes/default/user/profile.tpl:23
+#: admin/manage-account.php:78
+#: admin/manage-user.php:162
+msgid "You can leave the password field blank if you don't want to change it"
+msgstr "Vous pouvez laisser le champ mot de passe vide si vous ne souhaitez pas le changer"
 
 #: themes/default/single.tpl:14
 msgid "Visit source"
@@ -160,24 +309,61 @@ msgid "Main menu"
 msgstr "Menu principal"
 
 #: themes/default/post_tags.tpl:7
+#: themes/default/user/dashboard.tpl:39
+#: themes/default/user/profile.tpl:72
 msgid "Add tag"
 msgstr "Ajouter un mot-clé"
+
+#: themes/default/user/profile.tpl:9
+#: admin/manage-feed.php:67
+#: admin/manage-feed.php:128
+#: admin/manage-feed.php:167
+#: admin/manage-feed.php:207
+#: admin/manage-account.php:62
+#: admin/manage-user.php:81
+#: admin/manage-user.php:104
+#: admin/manage-user.php:146
+#: admin/manage-user.php:174
+#: admin/api/manage-pendingfeed_api.php:242
+msgid "User id"
+msgstr "id utilisateur"
 
 #: themes/default/topbar.tpl:14
 msgid "Posts of the month"
 msgstr "Articles du mois"
 
 #: themes/default/post_tags.tpl:10
+#: themes/default/user/write.tpl:24
 msgid "Allow comments"
 msgstr "Autoriser les commentaires"
 
+#: themes/default/user/profile.tpl:43
+msgid "Your feeds"
+msgstr "Vos flux"
+
+#: themes/default/user/social.tpl:25
+msgid "Share on Shaarli"
+msgstr "Partager sur Shaarli"
+
 #: themes/default/posts.tpl:80
 #: themes/default/single.tpl:124
+#: themes/default/user/dashboard.tpl:64
+#: themes/default/user/profile.tpl:114
+#: themes/default/user/tribes.tpl:142
+#: themes/default/user/write.tpl:21
 #: admin/manage-tribe.php:147
 #: admin/manage-feed.php:230
 #: admin/manage-tagging.php:96
 msgid "Comma separated tags (ex: linux,web,event)"
 msgstr "Mot-clés séparés par une virgule (ex. : linux,web,event)"
+
+#: themes/default/user/social.tpl:31
+msgid "Local instance"
+msgstr "Instance locale"
+
+#: themes/default/user/profile.tpl:44
+msgid "Add new feeds"
+msgstr "Ajouter des nouveaux flux"
 
 #: themes/default/topbar.tpl:6
 msgid "Posts of the day"
@@ -187,6 +373,16 @@ msgstr "Articles du jour"
 msgid "Show posts of"
 msgstr "Afficher les articles de "
 
+#: themes/default/user/tribes.tpl:140
+#: admin/manage-tribe.php:145
+msgid "Add new tags"
+msgstr "Ajouter des nouveaux tags"
+
+#: themes/default/user/tribes.tpl:78
+#: admin/api/manage-tribe_api.php:826
+msgid "Add unwanted tags to tribe"
+msgstr "Ajouter des tags censurés à la tribu"
+
 #: themes/default/signup.tpl:12
 msgid "Discover the background of all what you can do with Bilboplanet. Read, share, rate, add your own blog"
 msgstr "Découvrez tout ce que vous pouvez faire avec le Bilboplanet. Lire, partager, évaluer, ajouter votre propre blog"
@@ -194,6 +390,20 @@ msgstr "Découvrez tout ce que vous pouvez faire avec le Bilboplanet. Lire, part
 #: themes/default/user/menu.tpl:20
 msgid "Write or share"
 msgstr "Rédigez ou partagez"
+
+#: themes/default/user/social.tpl:32
+msgid "Remote shaarli"
+msgstr "Shaarli distant"
+
+#: themes/default/user/tribes.tpl:126
+#: admin/manage-tribe.php:131
+msgid "Tribe order"
+msgstr "Ordre de la tribu"
+
+#: themes/default/user/tribes.tpl:171
+#: admin/manage-tribe.php:178
+msgid "Add new users"
+msgstr "Ajouter des utilisateurs"
 
 #: themes/default/topbar.tpl:28
 msgid "latest posts"
@@ -210,26 +420,75 @@ msgstr "Afficher la barre latérale"
 msgid "Administration"
 msgstr "Administration"
 
+#: themes/default/user/tribes.tpl:87
+#: admin/api/manage-tribe_api.php:801
+msgid "Add icon to tribe"
+msgstr "Ajouter une icone à la tribu"
+
 #: themes/default/posts.tpl:29
 msgid "Written by"
 msgstr "Ecrit par"
 
+#: themes/default/user/profile.tpl:38
+#: themes/default/user/social.tpl:56
+#: themes/default/user/tribes.tpl:133
+#: admin/manage-option.php:53
+#: admin/manage-tribe.php:135
+#: admin/manage-feed.php:219
+#: admin/manage-account.php:79
+#: admin/manage-user.php:165
+#: admin/manage-user.php:204
+#: admin/api/manage-feed_api.php:558
+#: admin/api/manage-user_api.php:473
+msgid "Update"
+msgstr "Mise à jour"
+
+#: themes/default/user/profile.tpl:137
+#: themes/default/user/tribes.tpl:32
+#: admin/manage-tribe.php:92
+#: admin/manage-feed.php:91
+#: admin/manage-feed.php:189
+#: admin/manage-user.php:128
+#: admin/manage-user.php:186
+msgid "Add"
+msgstr "Ajouter"
+
 #: themes/default/topbar.tpl:27
 msgid "Select only"
 msgstr "Choisissez seulement"
+
+#: themes/default/user/tribes.tpl:181
+#: admin/manage-tribe.php:182
+msgid "Comma separated user id's (ex: john22,jack,flipper)"
+msgstr "Utilisateurs séparés par virgule (ex.: john,jack,flipper)"
+
+#: themes/default/user/social.tpl:17
+msgid "Share on Twitter"
+msgstr "Partager sur Twitter"
 
 #: themes/default/index.tpl:119
 #: themes/default/popup.tpl:28
 msgid "Login"
 msgstr "Login"
 
+#: themes/default/user/tribes.tpl:66
+msgid "Empty"
+msgstr "Vide"
+
 #: themes/default/index.tpl:54
 msgid "Hide sidebar"
 msgstr "Cacher la barre latérale"
 
+#: themes/default/user/social.tpl:42
+msgid "Go on Shaarli"
+msgstr "Aller sur Shaarli"
+
 #: themes/default/posts.tpl:78
 #: themes/default/single.tpl:122
 #: themes/default/tags.tpl:25
+#: themes/default/user/dashboard.tpl:62
+#: themes/default/user/profile.tpl:112
+#: themes/default/user/write.tpl:19
 #: admin/manage-feed.php:228
 #: admin/manage-tagging.php:94
 msgid "Tags"
@@ -241,8 +500,18 @@ msgid "No tribes found"
 msgstr "Aucune tribu trouvée"
 
 #: themes/default/single.tpl:88
+#: themes/default/user/write.tpl:16
 msgid "Here you'll find some help concerning the syntax :"
 msgstr "Ici vous trouverez de l'aide concernant la syntaxe : "
+
+#: themes/default/user/tribes.tpl:52
+msgid "No-tags :"
+msgstr "Non-tags :"
+
+#: themes/default/user/tribes.tpl:157
+#: admin/manage-tribe.php:161
+msgid "Write your search in the text field"
+msgstr "Ecrivez votre recherche dans le champ texte"
 
 #: themes/default/post_tags.tpl:13
 msgid "Disable comments"
@@ -272,6 +541,15 @@ msgstr "Publié par"
 msgid "Remember me"
 msgstr "Se souvenir de moi"
 
+#: themes/default/user/social.tpl:53
+msgid "(eg. http://identi.ca/myaccount or http://statusnet.example.com)"
+msgstr "(ex: http://identi.ca/myaccount ou http://statusnet.example.com)"
+
+#: themes/default/user/tribes.tpl:74
+#: admin/api/manage-tribe_api.php:822
+msgid "Toggle tribe visibility"
+msgstr "Changer la visibilité de la tribu"
+
 #: themes/default/index.tpl:110
 msgid "My Shaarli"
 msgstr "Mon Shaarli"
@@ -280,8 +558,28 @@ msgstr "Mon Shaarli"
 msgid "Feed with this parameters"
 msgstr "Flux avec ces paramètres"
 
+#: themes/default/user/profile.tpl:30
+msgid "Language"
+msgstr "Langue"
+
+#: themes/default/user/social.tpl:47
+msgid "Share on StatusNet"
+msgstr "Partager sur StatusNet"
+
+#: themes/default/user/profile.tpl:91
+msgid "Theses feeds need the validation of the site administrator. Please read the charter before submitting new feeds."
+msgstr "Ces flux nécessitent la validation de l'administrateur. Veuillez lire la charte avant de soumettre de nouveaux flux."
+
+#: themes/default/user/write.tpl:2
+msgid "Write a post"
+msgstr "Rédigez un article"
+
 #: themes/default/signup.tpl:36
 #: themes/default/contact.tpl:33
+#: themes/default/user/tribes.tpl:115
+#: themes/default/user/tribes.tpl:148
+#: themes/default/user/tribes.tpl:163
+#: themes/default/user/tribes.tpl:187
 #: admin/manage-tribe.php:118
 #: admin/manage-tribe.php:150
 #: admin/manage-tribe.php:164
@@ -298,19 +596,73 @@ msgstr "Flux avec ces paramètres"
 msgid "Send"
 msgstr "Envoyer"
 
+#: themes/default/user/profile.tpl:125
+msgid "-- choose existing site"
+msgstr "-- Choisissez un site existant"
+
+#: themes/default/user/tribes.tpl:84
+#: admin/api/manage-tribe_api.php:805
+msgid "Remove icon from tribe"
+msgstr "Supprimer l'icone de la tribu"
+
+#: themes/default/user/dashboard.tpl:10
+msgid "Your latest posts"
+msgstr "Vos derniers articles"
+
 #: themes/default/topbar.tpl:44
 msgid "Filter on authors :"
 msgstr "Filtre sur les auteurs :"
+
+#: themes/default/user/social.tpl:51
+msgid "StatusNet account"
+msgstr "Compte StatusNet"
 
 #: themes/default/index.tpl:100
 #: charter.php:34
 msgid "Charter"
 msgstr "Charte"
 
+#: themes/default/user/tribes.tpl:109
+#: admin/manage-tribe.php:115
+msgid "The image have to be 100px*100px or will be resized"
+msgstr "La taille de l'image doit être 100px*100px ou elle sera redimensionnée"
+
+#: themes/default/user/tribes.tpl:107
+#: admin/manage-tribe.php:109
+msgid "Add tribe icon"
+msgstr "Ajouter une icone à la tribu"
+
 #: themes/default/posts.tpl:50
 #: themes/default/single.tpl:40
 msgid "Viewed :"
 msgstr "Vus :"
+
+#: themes/default/user/tribes.tpl:6
+msgid "Configure your Tribes"
+msgstr "Configurer vos Tribus"
+
+#: themes/default/user/tribes.tpl:112
+#: themes/default/user/tribes.tpl:130
+#: themes/default/user/tribes.tpl:145
+#: themes/default/user/tribes.tpl:160
+#: themes/default/user/tribes.tpl:184
+#: admin/manage-tribe.php:117
+#: admin/manage-tribe.php:134
+#: admin/manage-tribe.php:149
+#: admin/manage-tribe.php:163
+#: admin/manage-tribe.php:184
+#: admin/manage-feed.php:218
+#: admin/manage-feed.php:232
+#: admin/manage-user.php:164
+#: admin/manage-user.php:185
+#: admin/manage-user.php:203
+#: admin/manage-tagging.php:98
+#: admin/manage-selection.php:118
+#: admin/manage-moderation.php:108
+#: admin/manage-pendingfeed.php:60
+#: admin/manage-pendingfeed.php:73
+msgid "Cancel"
+msgstr "Annuler"
 
 #: themes/default/posts.tpl:71
 #: themes/default/single.tpl:115
@@ -330,6 +682,20 @@ msgstr "Fermer"
 msgid "Similar posts"
 msgstr "Articles similaires"
 
+#: themes/default/user/tribes.tpl:69
+msgid "Last post :"
+msgstr "Dernier article :"
+
+#: themes/default/user/tribes.tpl:21
+#: admin/manage-tribe.php:84
+msgid "ex: climate change"
+msgstr "ex : changement climatique"
+
+#: themes/default/user/tribes.tpl:77
+#: admin/api/manage-tribe_api.php:825
+msgid "Add tags to tribe"
+msgstr "Ajouter des tags à la tribu"
+
 #: themes/default/single.tpl:75
 #: signup.php:81
 #: user/api/feed_api.php:121
@@ -339,6 +705,11 @@ msgstr "Nom complet :"
 #: themes/default/post_tags.tpl:2
 msgid "tags :"
 msgstr "tags :"
+
+#: themes/default/user/tribes.tpl:25
+#: admin/manage-tribe.php:86
+msgid "Ordering"
+msgstr "Ordre"
 
 #: themes/default/index.tpl:83
 #: themes/default/index.tpl:84
@@ -350,6 +721,10 @@ msgstr "Recherche"
 #: admin/manage-newsletter.php:175
 msgid "Content"
 msgstr "Contenu"
+
+#: themes/default/user/profile.tpl:17
+msgid "E-mail"
+msgstr "E-mail"
 
 #: themes/default/single.tpl:10
 #: themes/default/single.tpl:22
@@ -367,6 +742,15 @@ msgstr "Tribu:"
 #: themes/default/user/menu.tpl:10
 msgid "Profile"
 msgstr "Profil"
+
+#: themes/default/user/tribes.tpl:76
+#: admin/api/manage-tribe_api.php:824
+msgid "Remove tribe"
+msgstr "Supprimer tribu"
+
+#: themes/default/user/social.tpl:6
+msgid "Share and interact"
+msgstr "Partagez et intéragissez"
 
 #: themes/default/topbar.tpl:39
 msgid "Period of posts :"
@@ -392,14 +776,35 @@ msgstr "Utilisateurs"
 msgid "Email"
 msgstr "Email"
 
+#: themes/default/user/tribes.tpl:70
+msgid "Post count :"
+msgstr "Nombre d'articles :"
+
+#: themes/default/user/profile.tpl:75
+msgid "Remove feed"
+msgstr "Supprimer flux"
+
 #: themes/default/signup.tpl:30
 #: themes/default/popup.tpl:14
+#: themes/default/user/profile.tpl:21
 #: auth.php:338
 #: admin/manage-feed.php:79
 #: admin/manage-user.php:116
 #: admin/install/index.php:367
 msgid "Password"
 msgstr "Mot de passe"
+
+#: themes/default/user/social.tpl:9
+msgid "Subscribe to a newsletter"
+msgstr "S'abonner à une newsletter"
+
+#: themes/default/user/tribes.tpl:27
+msgid "The ordering specifies the position of your tribe on the portal"
+msgstr "L'ordre détermine la position de la tribu sur le portail"
+
+#: themes/default/user/profile.tpl:92
+msgid "Go to the charter"
+msgstr "Aller à la charte"
 
 #: themes/default/posts.tpl:30
 msgid "Permalink"
@@ -420,6 +825,10 @@ msgstr "populaires de la semaine"
 msgid "I forgot my password"
 msgstr "Mot de passe oublié"
 
+#: themes/default/user/tribes.tpl:71
+msgid "Ordering :"
+msgstr "Ordre :"
+
 #: themes/default/user/menu.tpl:25
 #: themes/default/tags.tpl:3
 #: admin/sidebar.php:43
@@ -430,13 +839,37 @@ msgstr "Tribus"
 msgid "Your Bilboplanet Account"
 msgstr "Votre compte sur le Bilboplanet"
 
+#: themes/default/user/tribes.tpl:9
+#: admin/manage-tribe.php:48
+#: admin/manage-tribe.php:53
+msgid "Create a tribe"
+msgstr "Créer une tribu"
+
 #: themes/default/posts.tpl:31
 msgid "See original post"
 msgstr "Afficher l'article originel"
 
+#: themes/default/user/tribes.tpl:19
+#: themes/default/user/tribes.tpl:123
+#: admin/manage-tribe.php:82
+#: admin/manage-tribe.php:128
+msgid "Tribe name"
+msgstr "Nom de la tribu"
+
+#: themes/default/user/profile.tpl:26
+#: admin/manage-feed.php:83
+#: admin/manage-user.php:120
+msgid "Confirm password"
+msgstr "Confirmation mot de passe"
+
 #: themes/default/topbar.tpl:55
 msgid "Info Flash"
 msgstr "Flash info"
+
+#: themes/default/user/tribes.tpl:64
+#: admin/api/manage-tribe_api.php:796
+msgid "clear"
+msgstr "vider"
 
 #: themes/default/popup.tpl:30
 msgid "register"
@@ -446,17 +879,32 @@ msgstr "Inscription"
 msgid "Tweeter"
 msgstr "Tweeter"
 
+#: themes/default/user/profile.tpl:101
+msgid "Remove pending feed"
+msgstr "Supprimer les flux en attente"
+
 #: themes/default/topbar.tpl:37
 msgid "Search with :"
 msgstr "Chercher avec :"
 
+#: themes/default/user/tribes.tpl:62
+msgid "Search :"
+msgstr "Recherche :"
+
 #: themes/default/posts.tpl:82
 #: themes/default/single.tpl:126
+#: themes/default/user/dashboard.tpl:66
+#: themes/default/user/profile.tpl:116
 #: admin/manage-useroption.php:123
 #: admin/api/manage-permissions_api.php:171
 #: admin/api/manage-option_api.php:677
 msgid "Apply"
 msgstr "Appliquer"
+
+#: themes/default/user/dashboard.tpl:6
+#: user/index.php:53
+msgid "User dashboard"
+msgstr "Tableau de bord"
 
 #: themes/default/index.tpl:112
 #: themes/default/user/menu.tpl:5
@@ -560,18 +1008,6 @@ msgstr "Si vous n'avez pas reçu de confirmation de la part de l'équipe d'admin
 #: admin/install/index.php:364
 msgid "Username"
 msgstr "Nom d'utilisateur"
-
-#: signup.php:153
-#: admin/manage-feed.php:71
-#: admin/manage-account.php:65
-#: admin/manage-user.php:108
-#: admin/manage-user.php:149
-#: admin/install/index.php:337
-#: admin/api/manage-pendingfeed_api.php:243
-#: admin/api/manage-account_api.php:36
-#: user/api/account_api.php:108
-msgid "Fullname"
-msgstr "Nom complet"
 
 #: signup.php:156
 msgid "You should have recieved a confirmation email. Please validate and then you'll be able to connect : "
@@ -1373,17 +1809,6 @@ msgstr "Vous n'êtes pas autorisé à voir cette page."
 msgid "You can delete your session if you logout : "
 msgstr "Vous pouvez supprimer votre session si vous vous déconnectez :"
 
-#: admin/manage-option.php:53
-#: admin/manage-tribe.php:135
-#: admin/manage-feed.php:219
-#: admin/manage-account.php:79
-#: admin/manage-user.php:165
-#: admin/manage-user.php:204
-#: admin/api/manage-feed_api.php:558
-#: admin/api/manage-user_api.php:473
-msgid "Update"
-msgstr "Mise à jour"
-
 #: admin/manage-option.php:63
 msgid "Join Bilboplanet Community"
 msgstr "Rejoignez la communauté du Bilboplanet"
@@ -1395,11 +1820,6 @@ msgstr "Options"
 #: admin/manage-option.php:72
 msgid "Configuration settings Planet."
 msgstr "Configuration du Planet."
-
-#: admin/manage-tribe.php:48
-#: admin/manage-tribe.php:53
-msgid "Create a tribe"
-msgstr "Créer une tribu"
 
 #: admin/manage-tribe.php:55
 msgid "Manage tribes. You can add user filters, search filters and tag filters. You can add tribes for all users or for specific users."
@@ -1418,43 +1838,9 @@ msgstr "-- TOUS LES UTILISATEURS --"
 msgid "Owner"
 msgstr "Propriétaire"
 
-#: admin/manage-tribe.php:82
-#: admin/manage-tribe.php:128
-msgid "Tribe name"
-msgstr "Nom de la tribu"
-
-#: admin/manage-tribe.php:84
-msgid "ex: climate change"
-msgstr "ex : changement climatique"
-
-#: admin/manage-tribe.php:86
-msgid "Ordering"
-msgstr "Ordre"
-
 #: admin/manage-tribe.php:88
 msgid "The ordering specifies the position of your tribe on the portal."
 msgstr "L'ordre détermine la position de la tribu sur le portail"
-
-#: admin/manage-tribe.php:91
-#: admin/manage-feed.php:90
-#: admin/manage-feed.php:188
-#: admin/manage-user.php:127
-#: admin/manage-post.php:171
-#: admin/manage-newsletter.php:224
-#: admin/api/manage-site_api.php:190
-#: admin/api/manage-feed_api.php:255
-#: admin/api/manage-tribe_api.php:210
-#: admin/api/manage-user_api.php:294
-msgid "Reset"
-msgstr "Annuler"
-
-#: admin/manage-tribe.php:92
-#: admin/manage-feed.php:91
-#: admin/manage-feed.php:189
-#: admin/manage-user.php:128
-#: admin/manage-user.php:186
-msgid "Add"
-msgstr "Ajouter"
 
 #: admin/manage-tribe.php:98
 #: admin/sidebar.php:43
@@ -1465,59 +1851,9 @@ msgstr "Gérer les tribus"
 msgid "Manage tribes."
 msgstr "Gérer les tribus"
 
-#: admin/manage-tribe.php:109
-msgid "Add tribe icon"
-msgstr "Ajouter une icone à la tribu"
-
-#: admin/manage-tribe.php:115
-msgid "The image have to be 100px*100px or will be resized"
-msgstr "La taille de l'image doit être 100px*100px ou elle sera redimensionnée"
-
-#: admin/manage-tribe.php:117
-#: admin/manage-tribe.php:134
-#: admin/manage-tribe.php:149
-#: admin/manage-tribe.php:163
-#: admin/manage-tribe.php:184
-#: admin/manage-feed.php:218
-#: admin/manage-feed.php:232
-#: admin/manage-user.php:164
-#: admin/manage-user.php:185
-#: admin/manage-user.php:203
-#: admin/manage-tagging.php:98
-#: admin/manage-selection.php:118
-#: admin/manage-moderation.php:108
-#: admin/manage-pendingfeed.php:60
-#: admin/manage-pendingfeed.php:73
-msgid "Cancel"
-msgstr "Annuler"
-
-#: admin/manage-tribe.php:131
-msgid "Tribe order"
-msgstr "Ordre de la tribu"
-
-#: admin/manage-tribe.php:145
-msgid "Add new tags"
-msgstr "Ajouter des nouveaux tags"
-
-#: admin/manage-tribe.php:159
-msgid "Add a search"
-msgstr "Ajouter une recherche"
-
-#: admin/manage-tribe.php:161
-msgid "Write your search in the text field"
-msgstr "Ecrivez votre recherche dans le champ texte"
-
 #: admin/manage-tribe.php:174
 msgid "Select the users to add"
 msgstr "Choisissez les utilisateurs à ajouter"
-
-#: admin/manage-tribe.php:178
-msgid "Add new users"
-msgstr "Ajouter des utilisateurs"
-
-#: admin/manage-tribe.php:182
-msgid "Comma separated user id's (ex: john22,jack,flipper)"
-msgstr "Utilisateurs séparés par virgule (ex.: john,jack,flipper)"
 
 #: admin/manage-permissions.php:48
 #: admin/sidebar.php:128
@@ -1549,19 +1885,6 @@ msgstr "Filtrer la liste des flux"
 msgid "To add a new member, fill out the form below."
 msgstr "Pour ajouter un nouveau membre, remplissez le formulaire ci-dessous."
 
-#: admin/manage-feed.php:67
-#: admin/manage-feed.php:128
-#: admin/manage-feed.php:167
-#: admin/manage-feed.php:207
-#: admin/manage-account.php:62
-#: admin/manage-user.php:81
-#: admin/manage-user.php:104
-#: admin/manage-user.php:146
-#: admin/manage-user.php:174
-#: admin/api/manage-pendingfeed_api.php:242
-msgid "User id"
-msgstr "id utilisateur"
-
 #: admin/manage-feed.php:69
 #: admin/manage-user.php:106
 msgid "ex: Frankenstein"
@@ -1585,11 +1908,6 @@ msgstr "ex : xxx@yyy.zzz"
 #: admin/manage-user.php:118
 msgid "Minimum 4 chars"
 msgstr "Minimum 4 caractères"
-
-#: admin/manage-feed.php:83
-#: admin/manage-user.php:120
-msgid "Confirm password"
-msgstr "Confirmation mot de passe"
 
 #: admin/manage-feed.php:86
 #: admin/manage-user.php:123
@@ -1860,11 +2178,6 @@ msgstr "Nouveau mot de passe"
 #: admin/manage-user.php:160
 msgid "Confirm new password"
 msgstr "Confirmation du nouveau mot de passe"
-
-#: admin/manage-account.php:78
-#: admin/manage-user.php:162
-msgid "You can leave the password field blank if you don't want to change it"
-msgstr "Vous pouvez laisser le champ mot de passe vide si vous ne souhaitez pas le changer"
 
 #: admin/manage-user.php:52
 msgid "Filter userlist"
@@ -2948,10 +3261,6 @@ msgstr "Avoir confiance dans ce flux"
 msgid "Disable comments on this feed"
 msgstr "Désactiver les commentaires sur ce flux"
 
-#: admin/api/manage-feed_api.php:512
-msgid "Allow comments on this feed"
-msgstr "Autoriser les commentaires sur ce flux"
-
 #: admin/api/manage-feed_api.php:531
 msgid "Tag feed"
 msgstr "Tagger le flux"
@@ -3470,46 +3779,6 @@ msgstr "Administrateur"
 msgid "empty"
 msgstr "vide"
 
-#: admin/api/manage-tribe_api.php:796
-msgid "clear"
-msgstr "vider"
-
-#: admin/api/manage-tribe_api.php:801
-msgid "Add icon to tribe"
-msgstr "Ajouter une icone à la tribu"
-
-#: admin/api/manage-tribe_api.php:805
-msgid "Remove icon from tribe"
-msgstr "Supprimer l'icone de la tribu"
-
-#: admin/api/manage-tribe_api.php:822
-msgid "Toggle tribe visibility"
-msgstr "Changer la visibilité de la tribu"
-
-#: admin/api/manage-tribe_api.php:823
-msgid "Edit tribe"
-msgstr "Editer tribu"
-
-#: admin/api/manage-tribe_api.php:824
-msgid "Remove tribe"
-msgstr "Supprimer tribu"
-
-#: admin/api/manage-tribe_api.php:825
-msgid "Add tags to tribe"
-msgstr "Ajouter des tags à la tribu"
-
-#: admin/api/manage-tribe_api.php:826
-msgid "Add unwanted tags to tribe"
-msgstr "Ajouter des tags censurés à la tribu"
-
-#: admin/api/manage-tribe_api.php:827
-msgid "Add users to tribe"
-msgstr "Ajouter des utilisateurs à la tribu"
-
-#: admin/api/manage-tribe_api.php:828
-msgid "Add search to tribe"
-msgstr "Ajouter recherche à la tribu"
-
 #: admin/api/manage-moderation_api.php:41
 #: user/api/post_api.php:41
 msgid "The post is already accepted"
@@ -3628,10 +3897,6 @@ msgstr "Auteur du Planet"
 msgid "Add a new website"
 msgstr "Ajouter un nouveau site"
 
-#: user/index.php:53
-msgid "User dashboard"
-msgstr "Tableau de bord"
-
 #: user/api/feed_api.php:89
 #, php-format
 msgid "This feed %s or site %s is not a valid URL."
@@ -3677,19 +3942,19 @@ msgstr "Flux supprimé :"
 msgid "This feed does not exist"
 msgstr "Ce flux n'existe pas dans la base de données."
 
-#: user/api/util.php:147
+#: user/api/util.php:148
 msgid "Disable newsletter"
 msgstr "Désactiver la newsletter"
 
-#: user/api/util.php:151
+#: user/api/util.php:152
 msgid "Every day"
 msgstr "Chaque jour"
 
-#: user/api/util.php:155
+#: user/api/util.php:156
 msgid "Every week"
 msgstr "Chaque semaine"
 
-#: user/api/util.php:159
+#: user/api/util.php:160
 msgid "Every month"
 msgstr "Chaque mois"
 
@@ -3757,10 +4022,6 @@ msgstr "Erreur détectée"
 #: user/api/social_api.php:51
 msgid "Please check statusnet URL : Invalid URL"
 msgstr "Veuillez vérifier l'URL de statusnet : URL Invalide"
-
-#: user/api/social_api.php:57
-msgid "Shaarli instance"
-msgstr "Instance Shaarli"
 
 #: user/api/social_api.php:59
 msgid "Please check shaarli URL : Invalid URL"
@@ -3859,9 +4120,6 @@ msgstr "Cet article est déjà supprimé"
 #~ msgid "Archives"
 #~ msgstr "Archives"
 
-#~ msgid "Test your feeds"
-#~ msgstr "Testez vos flux"
-
 #~ msgid "Feed with the posts of this category : "
 #~ msgstr "Fil de tous les articles de cette catégorie : "
 
@@ -3941,9 +4199,6 @@ msgstr "Cet article est déjà supprimé"
 
 #~ msgid "Email :"
 #~ msgstr "Email : "
-
-#~ msgid "E-mail"
-#~ msgstr "E-mail"
 
 #~ msgid "Number of items :"
 #~ msgstr "Nombre d'éléments : "
@@ -4107,9 +4362,6 @@ msgstr "Cet article est déjà supprimé"
 
 #~ msgid "Feed table"
 #~ msgstr "Table des flux"
-
-#~ msgid "Post table"
-#~ msgstr "Table des articles"
 
 #~ msgid "Votes table"
 #~ msgstr "Table des votes"
@@ -4278,14 +4530,8 @@ msgstr "Cet article est déjà supprimé"
 #~ msgid "Mobile version"
 #~ msgstr "Version mobile"
 
-#~ msgid "Go to the summary"
-#~ msgstr "Aller au sommaire"
-
 #~ msgid "Summary"
 #~ msgstr "Sommaire"
-
-#~ msgid "Subscribe to RSS feed"
-#~ msgstr "S'abonner au flux RSS"
 
 #~ msgid "Subscribe to all the popular posts RSS feed"
 #~ msgstr "S'abonner au flux RSS des articles populaires"
@@ -4346,9 +4592,6 @@ msgstr "Cet article est déjà supprimé"
 
 #~ msgid "Articles table"
 #~ msgstr "Table des articles"
-
-#~ msgid "Configuration file"
-#~ msgstr "Fichier de configuration"
 
 #~ msgid "Modification of the password succeeded"
 #~ msgstr "Modification de mot de passe réussie"
@@ -4444,9 +4687,6 @@ msgstr "Cet article est déjà supprimé"
 
 #~ msgid "Disconnect from administration panel?"
 #~ msgstr "Se déconnecter du panneau d'administration"
-
-#~ msgid "Posts of the day :"
-#~ msgstr "Articles du jour :"
 
 #~ msgid "Mean posts per day :"
 #~ msgstr "Moyenne d'articles par jour :"

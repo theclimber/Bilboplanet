@@ -439,6 +439,7 @@ function generate_SQL(
 		$select = $core->prefix."user.user_id		as user_id,
 				user_fullname	as user_fullname,
 				user_email		as user_email,
+				user_token		as user_token,
 				post_pubdate	as pubdate,
 				post_title		as title,
 				post_permalink	as permalink,
@@ -822,7 +823,10 @@ function showSinglePost($rs, $tpl, $search_value, $multiview=true, $strip_tags=f
 	# Gravatar
 	if($avatar) {
 		$avatar_email = strtolower($post['author_email']);
-		$tpl->setVar('avatar_url', "http://cdn.libravatar.org/avatar/".md5($avatar_email)."?d=".urlencode(BP_PLANET_URL."/themes/".$blog_settings->get('planet_theme')."/images/gravatar.png"));
+		$identicon = BP_PLANET_URL."/inc/lib/identicon.php?hash=".md5($avatar_email);
+//		$backup_img = urlencode(BP_PLANET_URL."/themes/".$blog_settings->get('planet_theme')."/images/gravatar.png");
+		$libravatar = "http://cdn.libravatar.org/avatar/".md5($avatar_email)."?d=".$identicon;
+		$tpl->setVar('avatar_url', $libravatar);
 
 		$tpl->render('post.block.gravatar');
 	}
@@ -1791,5 +1795,21 @@ function joinBilboplanetCommunity($url,$title,$desc,$author,$mail) {
 		return T_("Problem sending email.");
 	}
 	return T_("Your planet already joined the Bilboplanet community.");
+}
+
+
+ // When the directory is not empty:
+function rrmdir($dir) {
+	if (is_dir($dir)) {
+		$objects = scandir($dir);
+		foreach ($objects as $object) {
+			if ($object != "." && $object != "..") {
+				if (filetype($dir."/".$object) == "dir")
+					rrmdir($dir."/".$object); else unlink($dir."/".$object);
+			}
+		}
+		reset($objects);
+		rmdir($dir);
+	}
 }
 ?>

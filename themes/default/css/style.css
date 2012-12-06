@@ -1276,6 +1276,22 @@ background: url("../images/oui.png") no-repeat scroll 14% 50%;
 .avote span#imgoui{
 background: url("../images/oui-light.png") no-repeat scroll 14% 50%;
 }
+.vote span#imgnon, .avote span#imgnon {
+display:block;
+height: 18px;
+width: 16px;
+float: right;
+position: absolute;
+margin-left: 80px;
+margin-top: -18px;
+}
+.vote span#imgnon{
+background: url("../images/warn.png") no-repeat scroll 14% 50%;
+}
+.avote span#imgnon{
+background: url("../images/warn-light.png") no-repeat scroll 14% 50%;
+}
+
 div.post_description div.tag-line {
 margin : 5px 5px;
 }

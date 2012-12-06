@@ -323,7 +323,7 @@ if(isset($_POST['action'])) {
 			$core->con->execute("DELETE FROM ".$core->prefix."user WHERE user_id = '$user_id'");
 			$shaarli_dir = dirname(__FILE__).'/../../data/shaarli/'.$user_id;
 			if (is_dir($shaarli_dir))
-				rmdir($shaarli_dir);
+				rrmdir($shaarli_dir);
 
 			print '<div class="flash_notice">'.sprintf(T_("Delete of user %s succeeded"),$user->f('fullname')).'</div>';
 		}

@@ -77,10 +77,11 @@ if(isset($_POST) && isset($_POST['submit'])){
 
 			# Build email
 			$objet = sprintf(T_("Signup of user %s"),$user_id['value']);
-			$msg = T_("User id : ").$user_id['value'];
-			$msg .= "\n".T_("Fullname : ").$fullname['value'];
-			$msg .= "\n".T_("Email : ").$email['value'];
-			$msg .= "\nIP : $ip";
+			$bmsg = T_("User id : ").$user_id['value'];
+			$bmsg .= "\n".T_("Fullname : ").$fullname['value'];
+			$bmsg .= "\n".T_("Email : ").$email['value'];
+			$bmsg .= "\nIP : $ip";
+			$msg .= $bmsg;
 			$msg .= "\n\n".T_("Please validate your account by going on the following link :");
 			$msg .= "\n".$validation_url;
 			$msg .= "\n\n".T_("NOTE: the link will expire in 3 days.");
@@ -90,8 +91,10 @@ if(isset($_POST) && isset($_POST['submit'])){
 
 			# Send email to new user to confirm email
 			$envoi1 = sendmail($blog_settings->get('author_mail'), $email['value'], $objet, $msg);
+
+			$bmsg = T_("A new user registered an account on the planet :")."\n\n".$bmsg;
 			# Send email to planet author
-			$envoi2 = sendmail($email['value'], $blog_settings->get('author_mail'), $objet, $msg);
+			$envoi2 = sendmail($email['value'], $blog_settings->get('author_mail'), $objet, $bmsg);
 
 			# Information message
 			if($envoi1 && $envoi2) {

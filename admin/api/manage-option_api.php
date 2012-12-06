@@ -943,7 +943,12 @@ if(isset($_POST) && isset($_POST['action'])) {
 		print $output;
 		break;
 	case "join":
-		$text = joinBilboplanetCommunity($blog_settings);
+		$url = $blog_settings->get('planet_url');
+		$title = $blog_settings->get('planet_title');
+		$desc = $blog_settings->get('planet_desc');
+		$author = $blog_settings->get('author');
+		$mail = $blog_settings->get('author_mail');
+		$text = joinBilboplanetCommunity($url,$title,$desc,$author,$mail);
 		print $text;
 		break;
 	}

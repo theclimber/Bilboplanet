@@ -253,7 +253,7 @@ if ($can_install && !empty($_POST))
 		$blog_settings->put('planet_joined_community', '0', "boolean");
 
 		if ($p_comm) { // user enabled the checkbox
-			joinBilboplanetCommunity($blog_settings);
+			joinBilboplanetCommunity($planet_url,$p_title,$p_desc,$u_fullname,$u_email);
 		}
 
 		# Create planet salt :

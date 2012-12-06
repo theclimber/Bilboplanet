@@ -767,11 +767,13 @@ function showSinglePost($rs, $tpl, $search_value, $multiview=true, $strip_tags=f
 			"&go=external";
 	}
 
-	$short = true;
+	$title = html_entity_decode($rs->f('title'), ENT_QUOTES, 'UTF-8');
+	$content = html_entity_decode($rs->f('content'), ENT_QUOTES, 'UTF-8');
 	$short_content = html_entity_decode($rs->f('short_content'), ENT_QUOTES, 'UTF-8');
-	if (strlen($rs->f('content'))<1200) {
+	$short = true;
+	if (strlen($content)<1200) {
 		$short = false;
-		$short_content = html_entity_decode($rs->f('content'), ENT_QUOTES, 'UTF-8');
+		$short_content = $content;
 	}
 	$post = array(
 		"id" => $rs->f('post_id'),
@@ -781,8 +783,8 @@ function showSinglePost($rs, $tpl, $search_value, $multiview=true, $strip_tags=f
 		"year" => mysqldatetime_to_date("Y",$rs->f('pubdate')),
 		"hour" => mysqldatetime_to_date("H:i",$rs->f('pubdate')),
 		"permalink" => urldecode($post_permalink),
-		"title" => html_entity_decode($rs->f('title'), ENT_QUOTES, 'UTF-8'),
-		"content" => html_entity_decode($rs->f('content'), ENT_QUOTES, 'UTF-8'),
+		"title" => $title,
+		"content" => $content,
 		"short_content" => $short_content,
 		"image" => $rs->f('image'),
 		"author_id" => $rs->f('user_id'),
@@ -806,8 +808,10 @@ function showSinglePost($rs, $tpl, $search_value, $multiview=true, $strip_tags=f
 	}
 
 	if ($short) {
+		$last_space = strripos($post['short_content'], ' ');
+		$post['short_content'] = substr($post['short_content'],0,$last_space);
 		$post['short_content'] = strip_tags($post['short_content'])."&nbsp;[...]".
-				'<br /><a href="'.BP_PLANET_URL.'/?post_id='.$post['id'].'" title="'.$post['title'].'">'.T_('Read more').'</a>';
+				'<br /><a href="'.BP_PLANET_URL.'/?post_id='.$post['id'].'" title="'.$title.'">'.T_('Read more').'</a>';
 	}
 	if($strip_tags) {
 		$post['content'] = $post['short_content'];
@@ -1777,7 +1781,7 @@ function joinBilboplanetCommunity($url,$title,$desc,$author,$mail) {
 		$msg .= "\n\n".T_("Author : ").$author;
 		$msg .= "\n".T_("Email : ").$mail;
 
-		$envoi1 = sendmail($mail), $to, $objet, $msg);
+		$envoi1 = sendmail($mail, $to, $objet, $msg);
 		if ($envoi1) {
 			if ($blog_settings != null) {
 				$blog_settings->put('planet_joined_community', '1', "boolean");

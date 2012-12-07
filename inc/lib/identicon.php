@@ -328,7 +328,9 @@ $spriteZ=128;
 
 /* start with blank 3x3 identicon */
 $identicon=imagecreatetruecolor($spriteZ*3,$spriteZ*3);
-imageantialias($identicon,TRUE);
+if (function_exists('imageantialias')) {
+    imageantialias($identicon,TRUE);
+}
 
 /* assign white as background */
 $bg=imagecolorallocate($identicon,255,255,255);

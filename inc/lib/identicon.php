@@ -4,7 +4,8 @@
 function getsprite($shape,$R,$G,$B,$rotation) {
 	global $spriteZ;
 	$sprite=imagecreatetruecolor($spriteZ,$spriteZ);
-	imageantialias($sprite,TRUE);
+	if (function_exists('imageantialias')) 
+		imageantialias($sprite,TRUE);
 	$fg=imagecolorallocate($sprite,$R,$G,$B);
 	$bg=imagecolorallocate($sprite,255,255,255);
 	imagefilledrectangle($sprite,0,0,$spriteZ,$spriteZ,$bg);
@@ -190,7 +191,8 @@ function getsprite($shape,$R,$G,$B,$rotation) {
 function getcenter($shape,$fR,$fG,$fB,$bR,$bG,$bB,$usebg) {
 	global $spriteZ;
 	$sprite=imagecreatetruecolor($spriteZ,$spriteZ);
-	imageantialias($sprite,TRUE);
+	if (function_exists('imageantialias')) 
+		imageantialias($sprite,TRUE);
 	$fg=imagecolorallocate($sprite,$fR,$fG,$fB);
 	/* make sure there's enough contrast before we use background color of side sprite */
 	if ($usebg>0 && (abs($fR-$bR)>127 || abs($fG-$bG)>127 || abs($fB-$bB)>127))
@@ -367,7 +369,8 @@ imagecolortransparent($identicon,$bg);
 
 /* create blank image according to specified dimensions */
 $resized=imagecreatetruecolor($_GET["size"],$_GET["size"]);
-imageantialias($resized,TRUE);
+if (function_exists('imageantialias'))
+	imageantialias($resized,TRUE);
 
 /* assign white as background */
 $bg=imagecolorallocate($resized,255,255,255);

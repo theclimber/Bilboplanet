@@ -274,7 +274,7 @@ function getItemsFromFeeds ($rs, $print) {
 				$cur->update("WHERE feed_id = '$rs->feed_id'");
 
 				$from = $blog_settings->get('author_mail');
-				$to = $from;.','.$rs->user_email;
+				$to = $from.','.$rs->user_email;
 				$reply_to = $from;
 
 				$subject = sprintf(T_("Due to errors, a feed has been disabled on %s"),$blog_settings->get('planet_title'));

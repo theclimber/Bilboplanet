@@ -823,9 +823,10 @@ function showSinglePost($rs, $tpl, $search_value, $multiview=true, $strip_tags=f
 	# Gravatar
 	if($avatar) {
 		$avatar_email = strtolower($post['author_email']);
-		$identicon = BP_PLANET_URL."/inc/lib/identicon.php?hash=".md5($avatar_email);
+//		$identicon = BP_PLANET_URL."/inc/lib/identicon.php?hash=".md5($avatar_email);
 //		$backup_img = urlencode(BP_PLANET_URL."/themes/".$blog_settings->get('planet_theme')."/images/gravatar.png");
-		$libravatar = "http://cdn.libravatar.org/avatar/".md5($avatar_email)."?d=".$identicon;
+//		$libravatar = "http://cdn.libravatar.org/avatar/".md5($avatar_email)."?d=".$identicon;
+		$libravatar = "http://cdn.libravatar.org/avatar/".md5($avatar_email)."?default=identicon;
 		$tpl->setVar('avatar_url', $libravatar);
 
 		$tpl->render('post.block.gravatar');

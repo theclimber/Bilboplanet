@@ -43,8 +43,8 @@ $(document).ready(function() {
 			add_tag(v, true);
 		});
 	}
-	if (urlVars['users']) {
-		var userList = urlVars['users'];
+	if (urlVars['user_id']) {
+		var userList = urlVars['user_id'];
 		if(userList.search('#')) {
 			userList = userList.split('#')[0];
 		}

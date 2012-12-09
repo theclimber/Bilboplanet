@@ -811,8 +811,8 @@ function showSinglePost($rs, $tpl, $search_value, $multiview=true, $strip_tags=f
 	if ($short) {
 		$last_space = strripos($post['short_content'], ' ');
 		$post['short_content'] = substr($post['short_content'],0,$last_space);
-		$post['short_content'] = strip_tags($post['short_content'])."&nbsp;[...]".
-				'<br /><a href="'.BP_PLANET_URL.'/?post_id='.$post['id'].'" title="'.$title.'">'.T_('Read more').'</a>';
+		$post['short_content'] = '<span class="short-content">'.strip_tags($post['short_content'])."&nbsp;[...] </span>".
+				'<br /><span class="read-more"><a href="'.BP_PLANET_URL.'/?post_id='.$post['id'].'" title="'.$title.'">'.T_('Read more').'</a></span>';
 	}
 	if($strip_tags) {
 		$post['content'] = $post['short_content'];

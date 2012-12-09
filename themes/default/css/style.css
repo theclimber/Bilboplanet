@@ -1791,3 +1791,7 @@ div.flash_warning {
 	text-align: left;
 	/* width:98%; */
 }
+span.read-more {
+    display:block;
+    margin-top: 10px;
+}

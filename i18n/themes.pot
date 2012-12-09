@@ -47,6 +47,7 @@ msgid "No tags found"
 msgstr ""
 
 #: themes/default/index.tpl:98
+#: themes/default/charter.tpl:25
 #: themes/default/contact.tpl:11
 msgid "Contact us"
 msgstr ""
@@ -187,8 +188,8 @@ msgstr ""
 msgid "Share on Google+"
 msgstr ""
 
-#: themes/default/user/dashboard.tpl:43
-msgid "Disable comments on post"
+#: themes/default/charter.tpl:18
+msgid "Simplepie"
 msgstr ""
 
 #: themes/default/topbar.tpl:32
@@ -248,6 +249,10 @@ msgstr ""
 msgid "More"
 msgstr ""
 
+#: themes/default/charter.tpl:14
+msgid "Test your RSS feed"
+msgstr ""
+
 #: themes/default/signup.tpl:22
 msgid "Your full name (Will be displayed)"
 msgstr ""
@@ -281,6 +286,10 @@ msgstr ""
 
 #: themes/default/user/profile.tpl:9
 msgid "User id"
+msgstr ""
+
+#: themes/default/charter.tpl:27
+msgid "contact us"
 msgstr ""
 
 #: themes/default/topbar.tpl:14
@@ -318,6 +327,10 @@ msgstr ""
 msgid "Add new feeds"
 msgstr ""
 
+#: themes/default/charter.tpl:16
+msgid "Before submitting your feed, we advise you to test your RSS / Atom feed to be sure that they will correctly be processed by our planet. You can tests your feed on the website of Simplepie or on the Feedvalidator site of W3C :"
+msgstr ""
+
 #: themes/default/topbar.tpl:6
 msgid "Posts of the day"
 msgstr ""
@@ -336,6 +349,10 @@ msgstr ""
 
 #: themes/default/signup.tpl:12
 msgid "Discover the background of all what you can do with Bilboplanet. Read, share, rate, add your own blog"
+msgstr ""
+
+#: themes/default/user/dashboard.tpl:43
+msgid "Disable comments on post"
 msgstr ""
 
 #: themes/default/user/menu.tpl:20
@@ -719,6 +736,10 @@ msgstr ""
 
 #: themes/default/topbar.tpl:55
 msgid "Info Flash"
+msgstr ""
+
+#: themes/default/charter.tpl:26
+msgid "If you need to contact the administrator of this planet (problem with a feed, help, ...) you are kindly invited to do this on our contact page :"
 msgstr ""
 
 #: themes/default/user/tribes.tpl:64

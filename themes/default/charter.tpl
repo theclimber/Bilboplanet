@@ -11,15 +11,19 @@
 		<div>{$subscription_content}</div>
 	</div>
 	<div class="post box">
-		<h1 class="post-title">Testez vos Flux RSS</h1>
+		<h1 class="post-title">{_Test your RSS feed}</h1>
 		<p>
-			Avant de souscrire, n'hésitez pas à tester vos flux RSS / Atom pour être sûr qu'ils vont être bien interprété par le Planet Libre en testant sur : <a href="http://simplepie.org/demo/" title="test" rel="nofollow">Le site de SimplePie</a>.<br />
-			Vérifiez également que vos flux soit parfaitement valables sur <a href='http://feedvalidator.org/check.cgi' target='_blank'>feedvalidator</a> et les corriger si nécessaire.<br /><br />
+            {_Before submitting your feed, we advise you to test your RSS / Atom feed to be sure that they will correctly be processed by our planet. You can tests your feed on the website of Simplepie or on the Feedvalidator site of W3C :}
+            <ul>
+			<li><a href="http://simplepie.org/demo/" title="test" rel="nofollow">{_Simplepie}</a></li>
+            <li><a href='http://feedvalidator.org/check.cgi' target='_blank'>FeedValidator</a></li>
+            </ul>
 		</p>
 	</div>
 
 	<div class="post box">
-		<h1 class="post-title">Contactez nous</h1>
-		<p>Si vous avez besoin de contactez l'&eacute;quipe du Planet Libre pour quelques raisons que ce soit (changement de flux, aide ...), vous pouvez le faire en <a href='contact.php'>cliquant ici</a>.</p>
+		<h1 class="post-title">{_Contact us}</h1>
+        {_If you need to contact the administrator of this planet (problem with a feed, help, ...) you are kindly invited to do this on our contact page :} 
+        <a href='contact.php'>{_contact us}</a>.</p>
 	</div>
 </div>

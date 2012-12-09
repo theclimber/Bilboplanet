@@ -68,6 +68,7 @@ $(document).ready(function() {
 	});
 
 	detectSmartPhone()
+	checkCookie()
 
 	/*
 	$('div#header-bg').click(function () {
@@ -228,24 +229,34 @@ function showSidebar() {
 		$('img#show-sidebar-button').css('display','');
 		$('img#hide-sidebar-button').css('display','none');
 	}
+	setCookie("sidebar_visible",this.sidebar_hidden,31);
 }
 function detectSmartPhone() {
 	var uagent = navigator.userAgent.toLowerCase();
-	switch(uagent) {
-	case 'android':
+	if (uagent.indexOf("android") > -1) {
 		showSidebar();
-		break;
-	case 'iphone':
+	} else if (uagent.indexOf("iphone") > -1) {
 		showSidebar();
-		break;
-	case 'ipod':
+	} else if (uagent.indexOf("ipod") > -1) {
 		showSidebar();
-		break;
-	case 'blackberry':
+	} else if (uagent.indexOf("palm") > -1) {
 		showSidebar();
-		break;
-	case 'palm':
+	} else if (uagent.indexOf("blackberry") > -1) {
 		showSidebar();
-		break;
+	}
+}
+
+function checkCookie()
+{
+	var sidebar=getCookie("sidebar_visible");
+	if (sidebar!=null && sidebar!="")
+	{
+		if (sidebar != this.sidebar_hidden) {
+			showSidebar();
+		}
+	}
+	else
+	{
+		setCookie("sidebar_visible",this.sidebar_hidden,31);
 	}
 }

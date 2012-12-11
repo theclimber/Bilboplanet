@@ -265,7 +265,7 @@ function getItemsFromFeeds ($rs, $print) {
 			$last_checked = mysqldatetime_to_timestamp($rs_check->f('feed_checked'));
 			if ($last_checked < $toolong) {
 				$diff = ($toolong - $last_checked)/60;
-				$log_msg = logMsg(sprintf(T_("The feed was not updated since %s minutes. It'll be disabled : "),$diff).$rs->feed_url, "", 2, $print);
+				$log_msg = logMsg(sprintf(T_("The feed was not updated since %d minutes. It'll be disabled : "),$diff).$rs->feed_url, "", 2, $print);
 				if ($print) $output .= $log_msg;
 
 				# if feed was in error for too long, let's disable it
@@ -280,7 +280,7 @@ function getItemsFromFeeds ($rs, $print) {
 				$subject = sprintf(T_("Due to errors, a feed has been disabled on %s"),$blog_settings->get('planet_title'));
 				$content = sprintf(T_("The feed of %s has been disabled :\n"), $rs->user_fullname);
 				$content .= $rs->feed_url."\n";
-				$content .= sprintf(T_("The feed was in error during more than %s minutes"), $diff);
+				$content .= sprintf(T_("The feed was in error during more than %d minutes"), $diff);
 				$content .= "\n\n".T_("Details :");
 				$content .= "\n".T_("User id : ").$rs->user_id;
 				$content .= "\n".T_("User name : ").$rs->user_fullname;

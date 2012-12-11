@@ -99,10 +99,11 @@ if (!isset($current_page) || in_array($current_page, array('portal', 'list', 'po
 		if (!empty($tribe_id) && $tribe_id==$rs->tribe_id){
 			$selected='selected';
 		}
+        $tribe_icon = getTribeIcon($rs->tribe_id,$rs->tribe_name,$rs->tribe_icon);
 		$core->tpl->setVar('tribe', array(
 			'id' => $rs->tribe_id,
 			'name' => $rs->tribe_name,
-			'icon' => $rs->tribe_icon,
+			'icon' => $tribe_icon,
 			'selected' => $selected
 			));
 		$core->tpl->render('menu.tribes');

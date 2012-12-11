@@ -40,10 +40,11 @@ $rs = $core->con->select($sql_tribes);
 $align= 'right';
 while ($rs->fetch()) {
 	$align = $align=='right'? 'left' : 'right';
+    $tribe_icon = getTribeIcon($rs->tribe_id,$rs->tribe_name,$rs->tribe_icon);
 	$tribe = array(
 		"title" => $rs->tribe_name,
 		"id" => $rs->tribe_id,
-		"icon" => $rs->tribe_icon,
+		"icon" => $tribe_icon,
 		"align" => $align
 		);
 	$core->tpl->setVar('tribe', $tribe);

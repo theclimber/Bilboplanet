@@ -254,12 +254,9 @@ function render_page ($page) {
 					$tpl->render('tribes.search');
 				}
 
-				$tribe_icon = '';
-				if ($rs->tribe_icon) {
-					$tribe_icon = $rs->tribe_icon;
-					$tpl->setVar('tribe_id', $rs->tribe_id);
-					$tpl->render('tribes.icon.action');
-				}
+                $tribe_icon = getTribeIcon($rs->tribe_id,$rs->tribe_name,$rs->tribe_icon);
+                $tpl->setVar('tribe_id', $rs->tribe_id);
+                $tpl->render('tribes.icon.action');
 
 				$tribe_name = html_entity_decode($rs->tribe_name, ENT_QUOTES, 'UTF-8');
 

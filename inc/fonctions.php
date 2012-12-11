@@ -1813,4 +1813,13 @@ function rrmdir($dir) {
 		rmdir($dir);
 	}
 }
+
+function getTribeIcon($tribe_id,$tribe_name,$tribe_icon) {
+    if ($tribe_icon != '') {
+        $tribe_icon = BP_PLANET_URL.'/'.$tribe_icon;
+    } else {
+        $tribe_icon = "http://cdn.libravatar.org/avatar/".md5($tribe_id.$tribe_name)."?default=retro";
+    }
+    return $tribe_icon;
+}
 ?>

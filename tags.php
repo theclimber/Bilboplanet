@@ -40,6 +40,7 @@ while ($rs->fetch()) {
 		0,
 		0);
 	$rs_post = $core->con->select($sql_post);
+    $tribe_icon = getTribeIcon($rs->tribe_id,$rs->tribe_name,$rs->tribe_icon);
 	$tribe = array(
 		"id" => $rs->tribe_id,
 		"user_id" => $rs->user_id,
@@ -47,7 +48,7 @@ while ($rs->fetch()) {
 		"tags" => implode(', ',getArrayFromList($rs->tribe_tags)),
 		"users" => implode(', ',getArrayFromList($rs->tribe_users)),
 		"search" => $rs->tribe_search,
-		"icon" => $rs->tribe_icon,
+		"icon" => $tribe_icon,
 		"last" => mysqldatetime_to_date("d/m/Y",$rs_post->last),
 		"nb_post" => $rs_post->count
 		);

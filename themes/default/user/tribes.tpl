@@ -42,7 +42,7 @@
 		<!-- BEGIN tribes.box -->
 		<div class="tribesbox tribe-{$tribe.state}" id="tribe-{$tribe.id}">
 			<h3><a href="{$planet.url}/index.php?list=1&tribe_id={$tribe.id}">{$tribe.name}</a></h3>
-			<p class="tribe-icon"><img class="tribe-icon" src="../{$tribe.icon}" /></p>
+			<p class="tribe-icon"><img class="tribe-icon" src="{$tribe.icon}" /></p>
 			<ul class="info-list">
 				<li>{_Tags :} <div class="tag-line">
 					<!-- BEGIN tribes.tag -->

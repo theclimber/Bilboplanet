@@ -48,6 +48,7 @@ $planet_theme = $blog_settings->get('planet_theme');
 $styles[] = "themes/".$planet_theme."/user/css/core.css";
 $scripts[] = "themes/".$planet_theme."/user/js/main.js";
 $scripts[] = "themes/".$planet_theme."/user/js/".$current_page.".js";
+$scripts[] = "admin/meta/js/jquery.form.js";
 require_once(dirname(__FILE__).'/../tpl.php');
 
 $params['title'] = $params['title'].' - '.T_('User dashboard');

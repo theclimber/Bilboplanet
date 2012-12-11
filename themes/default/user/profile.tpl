@@ -41,12 +41,58 @@
 	<p>&nbsp;</p>
 	<div class="user-feed-list dashbox">
 		<h2>{_Your feeds}</h2>
-		<p>
-            <a href="javascript:add_feed()"><img title="{_Add new feeds}" src="{$planet.url}/themes/{$planet.theme}/user/images/add.png" /></a>
-        </p>
         <p>
         {_If you want to add your own blog post to the planet you can add the feed of your blog here. After submitting a new feed, the site administrator will validate it and enable it in the system.<br/>This planet support most of the blog engines (Wordpress, Dotclear, ...). The only thing you need to submit your blog is the url of the RSS feed.}
         </p>
+<div class="button br3px" id="add-form"><a onclick="javascript:openAdd()">
+	{_Submit a feed}</a>
+</div>
+
+<fieldset id="addfeed-field" style="display:none">
+	<!-- Add feed form -->
+	<form id="addfeed_form" class="user">
+		<div class="close-button"><a class="close" onclick="javascript:closeAdd()"><img src="../themes/{$planet.theme}/user/images/close-button.png"/></a></div>
+
+        <div id="site_combo">
+            <label class="required" for="existing_site">{_Site url}</label>
+            <select name="site" id="site_select">
+                <option value="new">-- {_New website} --</option>
+                <!-- BEGIN existing.site -->
+                <option value="{$esite.url}">{$esite.url}</option>
+                <!-- END existing.site -->
+            </select>
+            <img class="loading" src="{$planet.url}/themes/{$planet.theme}/user/images/spinner.gif" style="display:none;">
+        </div>
+        <div id="new_site">
+            <label class="required" for="new_site">{_New site url}</label>
+            <input type="text" id="new_site" name="new_site" value="">
+            <img class="loading" src="{$planet.url}/themes/{$planet.theme}/user/images/spinner.gif" style="display:none;">
+        </div>
+        <div id="new_feeds">
+            <label class="required" for="feed" style="vertical-align:middle">{_Feed url}</label>
+            <ul id="feed_list">
+                <li>
+                    <input class="check" type="checkbox" name="feeds[]" value="other">
+                    <input type="text" id="feed" name="feed_other" value="{_Your feed url}"
+                    onblur="if (this.value=='') this.value='{_Your feed url}';"
+                    onfocus="if (this.value=='{_Your feed url}') this.value='';"
+                    >
+                </li>
+            </ul>
+        </div>
+
+		<p>
+			<input type="reset" class="button" name="reset" value="{_Reset}">&nbsp;&nbsp;
+			<input type="submit" name="add_feed" class="button" value="{_Add}" />
+		</p>
+
+	</form>
+</fieldset>
+
+
+
+
+
 		<table>
 		<!-- BEGIN userfeed.item -->
 			<tr class="user-feed {$feed.status}" id="{$feed.id}">
@@ -120,27 +166,6 @@
 	<div class="button">
 		<input type="submit" name="apply" class="add_tags" value="{_Apply}" />
 	</div>
-</form>
-</div>
-<div id="new-feed-form" style="display:none">
-<form class="user">
-	<label class="required" for="existing_site">{_Existing site url}</label>
-	<input type="checkbox" name="existing_site"/>
-	<select name="site_id">
-		<option value="">{_-- choose existing site}</option>
-		<!-- BEGIN existing.site -->
-		<option value="{$esite.id}">{$esite.url}</option>
-		<!-- END existing.site -->
-	</select>
-	<p>
-		<label class="required" for="site">{_New site url}</label>
-		<input type="text" id="site" name="site" value=""><br/>
-		<label class="required" for="feed">{_Feed url}</label>
-		<input type="text" id="feed" name="feed" value="">
-	</p>
-	<p>
-		<input type="submit" name="apply" id="apply" class="button add_feed" value="{_Add}">
-	</p>
 </form>
 </div>
 

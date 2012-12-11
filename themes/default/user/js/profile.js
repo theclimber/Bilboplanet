@@ -14,6 +14,55 @@ function page_ready() {
 		});
 		return false;
 	});
+    $('form#addfeed_form').submit(function() {
+		var data = $('form#addfeed_form').serialize();
+		$.ajax({
+			type: "POST",
+			url: "api/",
+			data: 'ajax=feed&action=add_feed&'+data,
+			success: function(msg){
+				updatePage('profile', msg);
+			}
+		});
+		return false;
+    });
+    $('select#site_select').change(function(val) {
+        var selected = $('select#site_select').val();
+        if (selected == "new") {
+            $('div#new_site').css('display','');
+            var newSite = $('input#new_site').val();
+            if (newSite != '') {
+                $('div#new_site img.loading').css('display','');
+                get_feed_from_site(newSite);
+            }
+        } else {
+            $('div#site_combo img.loading').css('display','');
+            $('div#new_site').css('display','none');
+            get_feed_from_site(selected);
+        }
+    });
+    $('input#new_site').change(function (val) {
+        $('div#new_site img.loading').css('display','');
+        get_feed_from_site($('input#new_site').val());
+    });
+}
+
+function get_feed_from_site(site) {
+    $.ajax({
+        type: "POST",
+        url: "api/",
+        data : {'ajax' : 'feed', 'action' : 'feed_from_site', 'site' : site},
+        success: function(msg){
+            jQuery.each(msg, function(i,val) {
+                var html = '<li>'
+                    +'<input class="check" type="checkbox" name="feeds[]" value="'+val+'">'
+                    +'<span class="feedurl">'+val+'</span></li>';
+                $('div#new_feeds ul#feed_list').append(html)
+            });
+            $('div#site_combo img.loading').css('display','none');
+            $('div#new_site img.loading').css('display','none');
+        }
+    });
 }
 
 function rm_feed_tag(feed_id, tag) {
@@ -26,6 +75,14 @@ function rm_feed_tag(feed_id, tag) {
         }
     });
 }
+function openAdd() {
+	jQuery('#addfeed-field').css('display', '');
+}
+
+function closeAdd() {
+	jQuery('#addfeed-field').css('display', 'none');
+}
+
 function add_feed_tags(feed_id) {
     var content = $('#tag-feed-form form').clone();
     Boxy.askform(content, function(val) {
@@ -43,25 +100,6 @@ function add_feed_tags(feed_id) {
     });
 }
 
-function add_feed() {
-    var content = $('#new-feed-form form').clone();
-    Boxy.askform(content, function(val) {
-		var sdata = content.serialize();
-		sdata += '&ajax=feed'
-		sdata += '&action=add_feed'
-//		console.debug(sdata);
-        $.ajax({
-            type: "POST",
-            url: "api/",
-			data: sdata,
-            success: function(msg){
-                updatePage('profile', msg);
-            }
-        });
-    }, {
-        title: "Add a new feed",
-    });
-}
 function rm_feed(feed_id) {
     $.ajax({
         type: "POST",

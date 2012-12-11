@@ -47,13 +47,14 @@ $_s->user
 	;
 
 $_s->pending_feed
+    ->pending_id    ('integer',     0,  false)
 	->user_id		('varchar',		64,	false)
 	->site_url		('text',		0,	false)
 	->feed_url		('text',		0,	false)
 	->created		('timestamp',	0,	true, 'now()')
 	->modified		('timestamp',	0,	true, 'now()')
 
-	->primary('pk_pending_user','user_id')
+	->primary('pk_pending_user','pending_id')
 	;
 
 $_s->post

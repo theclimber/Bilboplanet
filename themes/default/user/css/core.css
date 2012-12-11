@@ -73,6 +73,22 @@ form.user div.button {
 	font-size: 12px;
 	text-align: center;
 }
+form.user ul#feed_list {
+    list-style:none;
+    display:inline-block;
+    padding-left:0px;
+}
+form.user ul#feed_list li {
+    padding: 3px;
+}
+form.user ul#feed_list li input.check{
+    vertical-align:middle;
+    margin:0;
+    padding:0;
+}
+form.user ul#feed_list li span.feedurl{
+    padding-left: 5px;
+}
 div#shaarli-details {
 	margin-left: 50px;
 	border: 1px solid #999;

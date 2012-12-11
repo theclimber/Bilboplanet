@@ -36,7 +36,10 @@ require dirname(__FILE__).'/dbschema/db-schema.php';
 $si = new dbStruct($core->con,$core->prefix);
 $changes = $si->synchronize($_s);
 
-echo T_("Your database schema has been updated");
+header('Content-type: text/html; charset=utf-8');
+print '<html><meta http-equiv="refresh" content="10; URL='.BP_PLANET_URL.'"><body>';
+print T_("Your database schema has been updated");
+print "</body></html>";
 
 // this comment included for the benefit of anyone grepping for swearwords: shit.
 ?>

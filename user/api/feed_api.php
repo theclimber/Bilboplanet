@@ -23,8 +23,16 @@
 *
 ***** END LICENSE BLOCK *****/
 ?><?php
-if(isset($_POST['action'])) {
-	switch (trim($_POST['action'])){
+$action = "";
+if (isset($_POST) && isset($_POST['action']) ) {
+	$action = trim($_POST['action']);
+}
+if (isset($_GET) && isset($_GET['action']) ) {
+	$action = trim($_GET['action']);
+}
+
+if($action != "") {
+	switch ($action){
 
 ##########################################################
 # MANAGE COMMENTS ON FEED
@@ -71,70 +79,83 @@ if(isset($_POST['action'])) {
 		$user_id = '';
 		if ($core->auth->sessionExists()){
 			$user_id = $core->auth->userID();
-		}
+        }
 
 		$site = $_POST['site'];
-		$site_id = intval($_POST['site_id']);
-		if($_POST['existing_site'] == "on" && $site_id > 0) {
-			$rs_esite = $core->con->select("SELECT site_url FROM ".$core->prefix."site WHERE site_id=$site_id");
-			if ($rs_esite->count() == 1) {
-				$site = $rs_esite->f('site_url');
-			}
-		}
+		if($site == "new") {
+		    $site_url = check_field('website',urldecode(trim($_POST['new_site'])),'url');
+        } else {
+		    $site_url = check_field('website',urldecode(trim($site)),'url');
+        }
 
-		$feed_url = check_field('feed',urldecode(trim($_POST['feed'])),'url');
-		$site_url = check_field('website',urldecode(trim($site)),'url');
+        $feeds = $_POST['feeds'];
+        if (!is_array($feeds)) {
+            var_dump($feeds);
+            exit();
+        }
+        foreach($feeds as $feed) {
+		    $feed_url = check_field('feed',urldecode(trim($feed)),'url');
 
-		if (!$feed_url['success'] || !$site_url['success']) {
-			$error[] = sprintf(T_('This feed %s or site %s is not a valid URL.'), $feed_url['value'], $site_url['value']);
-		} else {
-			# Check if feed is not yet in pending feeds
-			$sql = "SELECT user_id, site_url, feed_url
-				FROM ".$core->prefix."pending_feed
-				WHERE feed_url = '".$feed_url['value']."';";
-			$rs = $core->con->select($sql);
+            if ($user_id == '' || !$feed_url['success'] || !$site_url['success']) {
+                $error[] = sprintf(T_('This feed %s or site %s is not a valid URL.'), $feed_url['value'], $site_url['value']);
+            } else {
+                # Check if feed is not yet in pending feeds
+                $sql = "SELECT user_id, site_url, feed_url
+                    FROM ".$core->prefix."pending_feed
+                    WHERE feed_url = '".$feed_url['value']."';";
+                $rs = $core->con->select($sql);
 
-			if ($rs->count() > 0) {
-				$error[] = T_('This feed is already waiting for validation.');
-			} else {
-				# check if feed is not yet in existing feeds
-				$sql1 = "SELECT feed_url, user_id
-					FROM ".$core->prefix."feed
-					WHERE feed_url = ".$feed_url.";";
-				$rs1 = $core->con->select($sql);
-				if ($rs1->count() > 0) {
-					$error[] = sprintf(T_('This feed is already used in this planet by user %s'), $rs1->f('user_id'));
-				} else {
-					$cur = $core->con->openCursor($core->prefix.'pending_feed');
-					$cur->user_id = $user_id;
-					$cur->site_url = $site_url['value'];
-					$cur->feed_url = $feed_url['value'];
-					$cur->created = array(' NOW() ');
-					$cur->insert();
-					$output .= T_("Feed waiting for validation");
+                if ($rs->count() > 0) {
+                    $error[] = T_('This feed is already waiting for validation.');
+                } else {
+                    # check if feed is not yet in existing feeds
+                    $sql1 = "SELECT feed_url, user_id
+                        FROM ".$core->prefix."feed
+                        WHERE feed_url = ".$feed_url.";";
+                    $rs1 = $core->con->select($sql);
+                    if ($rs1->count() > 0) {
+                        $error[] = sprintf(T_('This feed is already used in this planet by user %s'), $rs1->f('user_id'));
+                    } else {
+                        # Get next ID
+                        $rs3 = $core->con->select(
+                            'SELECT MAX(pending_id) '.
+                            'FROM '.$core->prefix.'pending_feed '
+                            );
+                        $next_feed_id = (integer) $rs3->f(0) + 1;
 
-					$rs_user = $core->con->select("SELECT * FROM ".$core->prefix."user WHERE user_id = '".$user_id."'");
+                        $cur = $core->con->openCursor($core->prefix.'pending_feed');
+                        $cur->pending_id = $next_feed_id;
+                        $cur->user_id = $user_id;
+                        $cur->site_url = $site_url['value'];
+                        $cur->feed_url = $feed_url['value'];
+                        $cur->created = array(' NOW() ');
+                        $cur->insert();
+                        $output .= sprintf(T_("Feed %s waiting for validation"), $feed_url['value'])."<br/>";
 
-					$ip = getIP();
-					$objet = sprintf(T_("Feed validation request for %s"),$user_id);
-					$msg = T_("User id : ").$user_id;
-					$msg .= "\n".T_("Fullname : ").$rs_user->f('user_fullname');
-					$msg .= "\n".T_("Site url : ").$site_url['value'];
-					$msg .= "\n".T_("Feed url : ").$feed_url['value'];
-					$msg .= "\nIP : $ip";
+                        $rs_user = $core->con->select("SELECT * FROM ".$core->prefix."user WHERE user_id = '".$user_id."'");
 
-					# Send email to planet author
-					$envoi = sendmail($rs_user->f('user_email'), $blog_settings->get('author_mail'), $objet, $msg);
+                        $ip = getIP();
+                        $objet = sprintf(T_("Feed validation request for %s"),$user_id);
+                        $msg = T_("User id : ").$user_id;
+                        $msg .= "\n".T_("Fullname : ").$rs_user->f('user_fullname');
+                        $msg .= "\n".T_("Site url : ").$site_url['value'];
+                        $msg .= "\n".T_("Feed url : ").$feed_url['value'];
+                        $msg .= "\nIP : $ip";
 
-					# Information message
-					if($envoi) {
-						$output .= "<br/>".T_("An email was sent to the site administrator to ask for validation.");
-					} else {
-						$output .= "<br/>".T_("The email could not be sent to the site administrator for validation.");
-					}
-				}
-			}
-		}
+                        # Send email to planet author
+                        $envoi = sendmail($rs_user->f('user_email'), $blog_settings->get('author_mail'), $objet, $msg);
+
+                        # Information message
+                        if($envoi) {
+                            $output .= T_("An email was sent to the site administrator to ask for validation.")."<br/>";
+                        } else {
+                            $output .= T_("The email could not be sent to the site administrator for validation.")."<br/>";
+                        }
+                    }
+                }
+            }
+        }
+
 
 		if (!empty($error)) {
 			$output .= "<ul>";
@@ -202,7 +223,7 @@ if(isset($_POST['action'])) {
 		$sql = "SELECT user_id, feed_url FROM ".$core->prefix."pending_feed
 			WHERE user_id='".$user_id."'
 			AND feed_url='".$feed_url."'";
-		print $sql;
+//		print $sql;
 		$rs = $core->con->select($sql);
 		if ($rs->count() > 0) {
 			// we can remove feed
@@ -227,6 +248,27 @@ if(isset($_POST['action'])) {
 			print '<div class="flash_notice">'.$output.'</div>';
 		}
 		break;
+
+    case "feed_from_site":
+        if (isset($_GET['site']))
+            $url = trim($_GET["site"]);
+        else
+            $url = trim($_POST["site"]);
+		$site_url = check_field('site',urldecode($url),'url');
+        $feeds = array();
+		if ($site_url['success']) {
+            require_once(dirname(__FILE__).'/../../inc/lib/simplepie_1.3.compiled.php');
+	        $simplepie = new SimplePie();
+            $simplepie->set_feed_url($site_url['value']);
+            $simplepie->init();
+            $simplepie->handle_content_type();
+            foreach ($simplepie->get_all_discovered_feeds() as $ob) {
+                $feeds[] = $ob->url;
+            }
+        }
+        header('Content-type: application/json; charset=utf-8');
+        print json_encode($feeds);
+        break;
 
 ##########################################################
 # DEFAULT RETURN

@@ -503,7 +503,6 @@ div#navigation-bg{
 	font-size:11px;
 /*	text-transform:uppercase;*/
     background:#000; /* url('../images/nav-bg2.png') scroll top left repeat-x;*/
-    text-align:right;
 	width: 200px;
 	padding: 0 15px 10px 0;
 }

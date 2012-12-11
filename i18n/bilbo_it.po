@@ -35,7 +35,7 @@ msgstr "Aggiungi utente"
 msgid "See post"
 msgstr "Filtra articoli"
 
-#: themes/default/user/profile.tpl:81
+#: themes/default/user/profile.tpl:86
 #, fuzzy
 msgid "No feed found"
 msgstr "Nessun contributo trovato"
@@ -55,11 +55,11 @@ msgstr "Nessun contributo trovato"
 msgid "Contact us"
 msgstr "Contattaci"
 
-#: themes/default/user/profile.tpl:63 admin/api/manage-feed_api.php:512
+#: themes/default/user/profile.tpl:68 admin/api/manage-feed_api.php:512
 msgid "Allow comments on this feed"
 msgstr "Abilita i commenti in questo feed"
 
-#: themes/default/user/dashboard.tpl:48
+#: themes/default/user/dashboard.tpl:47
 #, fuzzy
 msgid "Allow comments on post"
 msgstr "Accetta commenti nei post"
@@ -83,7 +83,7 @@ msgstr "Sito Web :"
 msgid "(Optional)"
 msgstr "Opzione"
 
-#: themes/default/user/dashboard.tpl:34
+#: themes/default/user/dashboard.tpl:33
 #, fuzzy
 msgid "Remove post"
 msgstr "Filtra articoli"
@@ -124,7 +124,7 @@ msgstr "Articoli del mese"
 msgid "Register"
 msgstr "Registrazione"
 
-#: themes/default/user/dashboard.tpl:30
+#: themes/default/user/dashboard.tpl:29
 #, fuzzy
 msgid "Accept post"
 msgstr "Accetta"
@@ -138,7 +138,7 @@ msgstr "Tabella post"
 msgid "Where is your Shaarli?"
 msgstr ""
 
-#: themes/default/single.tpl:104 themes/default/user/dashboard.tpl:55
+#: themes/default/single.tpl:104 themes/default/user/dashboard.tpl:54
 #, fuzzy
 msgid "No post found"
 msgstr "Nessun contributo trovato"
@@ -157,7 +157,7 @@ msgstr "Email :"
 msgid "Social"
 msgstr ""
 
-#: themes/default/user/profile.tpl:131
+#: themes/default/user/profile.tpl:136
 #, fuzzy
 msgid "New site url"
 msgstr "URL sito :"
@@ -170,16 +170,16 @@ msgstr ""
 msgid "Add users to tribe"
 msgstr ""
 
-#: themes/default/user/profile.tpl:67
+#: themes/default/user/profile.tpl:72
 #, fuzzy
 msgid "Disallow comments on this feed"
 msgstr "Disabilita i commenti in questo feed"
 
-#: themes/default/user/profile.tpl:122
+#: themes/default/user/profile.tpl:127
 msgid "Existing site url"
 msgstr ""
 
-#: themes/default/user/profile.tpl:133
+#: themes/default/user/profile.tpl:138
 #, fuzzy
 msgid "Feed url"
 msgstr "Feed :"
@@ -263,7 +263,7 @@ msgstr "Pubblica"
 msgid "Show posts of the user"
 msgstr "Visualizza i post dell'utente"
 
-#: themes/default/user/profile.tpl:90
+#: themes/default/user/profile.tpl:95
 msgid "Your pending for validation feeds"
 msgstr ""
 
@@ -271,7 +271,7 @@ msgstr ""
 #: admin/manage-account.php:65 admin/manage-user.php:108
 #: admin/manage-user.php:149 admin/install/index.php:337
 #: admin/api/manage-pendingfeed_api.php:243
-#: admin/api/manage-account_api.php:36 user/api/account_api.php:108
+#: admin/api/manage-account_api.php:36 user/api/account_api.php:112
 msgid "Fullname"
 msgstr "Nome completo"
 
@@ -315,8 +315,8 @@ msgstr "Nessun contributo trovato"
 msgid "Main menu"
 msgstr ""
 
-#: themes/default/post_tags.tpl:7 themes/default/user/dashboard.tpl:39
-#: themes/default/user/profile.tpl:72
+#: themes/default/post_tags.tpl:7 themes/default/user/dashboard.tpl:38
+#: themes/default/user/profile.tpl:77
 msgid "Add tag"
 msgstr "Aggiungi tag"
 
@@ -338,9 +338,26 @@ msgstr "Contattaci"
 msgid "Posts of the month"
 msgstr "Articoli del mese"
 
+#: themes/default/portal.tpl:5
+msgid ""
+"Welcome on this Planet. A Planet is a feed aggregator website designed to "
+"collect posts from the weblogs of poeple of an Internet community and "
+"display them on a single page. It creates pages with entries from the "
+"original feeds. This planet is running with the Bilboplanet engine."
+msgstr ""
+
 #: themes/default/post_tags.tpl:10 themes/default/user/write.tpl:24
 msgid "Allow comments"
 msgstr "Permetti commenti"
+
+#: themes/default/user/profile.tpl:48
+msgid ""
+"If you want to add your own blog post to the planet you can add the feed of "
+"your blog here. After submitting a new feed, the site administrator will "
+"validate it and enable it in the system.<br/>This planet support most of the "
+"blog engines (Wordpress, Dotclear, ...). The only thing you need to submit "
+"your blog is the url of the RSS feed."
+msgstr ""
 
 #: themes/default/user/profile.tpl:43
 #, fuzzy
@@ -352,7 +369,7 @@ msgid "Share on Shaarli"
 msgstr ""
 
 #: themes/default/posts.tpl:80 themes/default/single.tpl:124
-#: themes/default/user/dashboard.tpl:64 themes/default/user/profile.tpl:114
+#: themes/default/user/dashboard.tpl:63 themes/default/user/profile.tpl:119
 #: themes/default/user/tribes.tpl:142 themes/default/user/write.tpl:21
 #: admin/manage-tribe.php:147 admin/manage-feed.php:230
 #: admin/manage-tagging.php:96
@@ -363,7 +380,7 @@ msgstr "Tag separati da virgole (es: linux,web,evento)"
 msgid "Local instance"
 msgstr ""
 
-#: themes/default/user/profile.tpl:44
+#: themes/default/user/profile.tpl:45
 #, fuzzy
 msgid "Add new feeds"
 msgstr "Aggiungi feed"
@@ -399,7 +416,7 @@ msgid ""
 "share, rate, add your own blog"
 msgstr ""
 
-#: themes/default/user/dashboard.tpl:43
+#: themes/default/user/dashboard.tpl:42
 #, fuzzy
 msgid "Disable comments on post"
 msgstr "Disabilita commenti"
@@ -453,7 +470,7 @@ msgstr "Scritto da :"
 msgid "Update"
 msgstr "Aggiorna"
 
-#: themes/default/user/profile.tpl:137 themes/default/user/tribes.tpl:32
+#: themes/default/user/profile.tpl:142 themes/default/user/tribes.tpl:32
 #: admin/manage-tribe.php:92 admin/manage-feed.php:91
 #: admin/manage-feed.php:189 admin/manage-user.php:128
 #: admin/manage-user.php:186
@@ -491,8 +508,8 @@ msgid "Go on Shaarli"
 msgstr ""
 
 #: themes/default/posts.tpl:78 themes/default/single.tpl:122
-#: themes/default/tags.tpl:25 themes/default/user/dashboard.tpl:62
-#: themes/default/user/profile.tpl:112 themes/default/user/write.tpl:19
+#: themes/default/tags.tpl:25 themes/default/user/dashboard.tpl:61
+#: themes/default/user/profile.tpl:117 themes/default/user/write.tpl:19
 #: admin/manage-feed.php:228 admin/manage-tagging.php:94
 msgid "Tags"
 msgstr "Tag"
@@ -569,7 +586,7 @@ msgstr "Lingua del planet"
 msgid "Share on StatusNet"
 msgstr ""
 
-#: themes/default/user/profile.tpl:91
+#: themes/default/user/profile.tpl:96
 msgid ""
 "Theses feeds need the validation of the site administrator. Please read the "
 "charter before submitting new feeds."
@@ -579,6 +596,11 @@ msgstr ""
 #, fuzzy
 msgid "Write a post"
 msgstr "Qtity degli articoli"
+
+#: themes/default/user/profile.tpl:26 admin/manage-feed.php:83
+#: admin/manage-user.php:120
+msgid "Confirm password"
+msgstr "Conferma password"
 
 #: themes/default/signup.tpl:36 themes/default/contact.tpl:33
 #: themes/default/user/tribes.tpl:115 themes/default/user/tribes.tpl:148
@@ -593,7 +615,7 @@ msgstr "Qtity degli articoli"
 msgid "Send"
 msgstr "Invia"
 
-#: themes/default/user/profile.tpl:125
+#: themes/default/user/profile.tpl:130
 #, fuzzy
 msgid "-- choose existing site"
 msgstr "-- Seleziona un utente --"
@@ -602,7 +624,7 @@ msgstr "-- Seleziona un utente --"
 msgid "Remove icon from tribe"
 msgstr ""
 
-#: themes/default/user/dashboard.tpl:10
+#: themes/default/user/dashboard.tpl:9
 #, fuzzy
 msgid "Your latest posts"
 msgstr "%s ultimi post :"
@@ -745,7 +767,7 @@ msgstr "Utenti"
 #: admin/manage-feed.php:75 admin/manage-account.php:69
 #: admin/manage-user.php:112 admin/manage-user.php:153
 #: admin/install/index.php:340 admin/api/manage-pendingfeed_api.php:244
-#: admin/api/manage-account_api.php:37 user/api/account_api.php:109
+#: admin/api/manage-account_api.php:37 user/api/account_api.php:113
 msgid "Email"
 msgstr "Email"
 
@@ -753,7 +775,7 @@ msgstr "Email"
 msgid "Post count :"
 msgstr ""
 
-#: themes/default/user/profile.tpl:75
+#: themes/default/user/profile.tpl:80
 #, fuzzy
 msgid "Remove feed"
 msgstr "Feed attivi"
@@ -773,7 +795,7 @@ msgstr "Disabilita newsletter"
 msgid "The ordering specifies the position of your tribe on the portal"
 msgstr ""
 
-#: themes/default/user/profile.tpl:92
+#: themes/default/user/profile.tpl:97
 msgid "Go to the charter"
 msgstr ""
 
@@ -826,10 +848,11 @@ msgstr "Filtra articoli"
 msgid "Tribe name"
 msgstr "Nome sito"
 
-#: themes/default/user/profile.tpl:26 admin/manage-feed.php:83
-#: admin/manage-user.php:120
-msgid "Confirm password"
-msgstr "Conferma password"
+#: themes/default/user/dashboard.tpl:7
+msgid ""
+"Welcome on the new user interface of the Bilboplanet. Here you'll be able to "
+"tag your posts and to remove them if you want."
+msgstr ""
 
 #: themes/default/topbar.tpl:55
 msgid "Info Flash"
@@ -854,7 +877,7 @@ msgstr "Registrazione"
 msgid "Tweeter"
 msgstr ""
 
-#: themes/default/user/profile.tpl:101
+#: themes/default/user/profile.tpl:106
 #, fuzzy
 msgid "Remove pending feed"
 msgstr "Lista utenti in attesa"
@@ -870,7 +893,7 @@ msgid "Search :"
 msgstr "Cerca"
 
 #: themes/default/posts.tpl:82 themes/default/single.tpl:126
-#: themes/default/user/dashboard.tpl:66 themes/default/user/profile.tpl:116
+#: themes/default/user/dashboard.tpl:65 themes/default/user/profile.tpl:121
 #: admin/manage-useroption.php:123 admin/api/manage-permissions_api.php:171
 #: admin/api/manage-option_api.php:677
 msgid "Apply"
@@ -930,7 +953,7 @@ msgstr ""
 msgid "User id : "
 msgstr "ID utente"
 
-#: signup.php:82 contact.php:61 inc/fonctions.php:1786
+#: signup.php:82 contact.php:61 inc/fonctions.php:1787
 msgid "Email : "
 msgstr "Email :"
 
@@ -997,7 +1020,7 @@ msgstr ""
 
 #: signup.php:201 signup.php:204 admin/api/manage-account_api.php:55
 #: admin/api/manage-user_api.php:97 admin/api/manage-user_api.php:100
-#: admin/api/manage-user_api.php:225 user/api/account_api.php:128
+#: admin/api/manage-user_api.php:225 user/api/account_api.php:132
 #, php-format
 msgid "The user %s already exists"
 msgstr "L'utente %s esiste già"
@@ -1421,140 +1444,140 @@ msgstr "Visualizza dettagli del post"
 msgid "Read more"
 msgstr "Leggi di più"
 
-#: inc/fonctions.php:995 inc/fonctions.php:1008
+#: inc/fonctions.php:996 inc/fonctions.php:1009
 msgid "Vote yes"
 msgstr "Vota sì"
 
-#: inc/fonctions.php:996 inc/fonctions.php:1014 inc/fonctions.php:1018
+#: inc/fonctions.php:997 inc/fonctions.php:1015 inc/fonctions.php:1019
 msgid "Vote no"
 msgstr "Vota no"
 
-#: inc/fonctions.php:1006
+#: inc/fonctions.php:1007
 msgid "This post seems pertinent to you"
 msgstr "Questo post sembra pertinente a te"
 
-#: inc/fonctions.php:1012
+#: inc/fonctions.php:1013
 msgid "This post seems not pertinent to you"
 msgstr "Questo post non sembra pertinente a te"
 
-#: inc/fonctions.php:1016
+#: inc/fonctions.php:1017
 msgid "This post should not be here"
 msgstr "Questo post non dovrebbe essere qui"
 
-#: inc/fonctions.php:1017
+#: inc/fonctions.php:1018
 msgid ""
 "Are you sure this post should not be on this planet and should be removed?"
 msgstr ""
 "Sei sicuro che questo post non dovrebbe essere su questo planet e dovrebbe "
 "essere rimosso?"
 
-#: inc/fonctions.php:1040
+#: inc/fonctions.php:1041
 #, php-format
 msgid "The field \"%s\" has to be a valid email address"
 msgstr "Il campo \"%s\" deve contenere un indirizzo email valido"
 
-#: inc/fonctions.php:1046 inc/fonctions.php:1052
+#: inc/fonctions.php:1047 inc/fonctions.php:1053
 #, php-format
 msgid "The field \"%s\" %s has to be a valid URL"
 msgstr "Il campo \"%s\" %s deve contenere un URL valido"
 
-#: inc/fonctions.php:1056
+#: inc/fonctions.php:1057
 #, php-format
 msgid "The field \"%s\" %s is not a valid simplepie feed"
 msgstr "Il campo \"%s\" %s non è un feed simplepie valido"
 
-#: inc/fonctions.php:1071
+#: inc/fonctions.php:1072
 #, php-format
 msgid "The fields %s does not match"
 msgstr "Il campo %s non corrisponde"
 
-#: inc/fonctions.php:1075
+#: inc/fonctions.php:1076
 #, php-format
 msgid "The fields %s needs to have 4 characters minimum"
 msgstr "I campi %s devono essere lunghi almeno 4 caratteri"
 
-#: inc/fonctions.php:1083
+#: inc/fonctions.php:1084
 #, php-format
 msgid "The field \"%s\" is empty"
 msgstr "Il campo \"%s\" è vuoto"
 
-#: inc/fonctions.php:1252
+#: inc/fonctions.php:1253
 msgid " bytes"
 msgstr "Byte"
 
-#: inc/fonctions.php:1256
+#: inc/fonctions.php:1257
 msgid " Kb"
 msgstr "Kb"
 
-#: inc/fonctions.php:1260
+#: inc/fonctions.php:1261
 msgid " MB"
 msgstr "MB"
 
-#: inc/fonctions.php:1264
+#: inc/fonctions.php:1265
 msgid " GB"
 msgstr "GB"
 
-#: inc/fonctions.php:1725 inc/fonctions.php:1739
+#: inc/fonctions.php:1726 inc/fonctions.php:1740
 msgid "English"
 msgstr ""
 
-#: inc/fonctions.php:1741
+#: inc/fonctions.php:1742
 msgid "French"
 msgstr ""
 
-#: inc/fonctions.php:1743
+#: inc/fonctions.php:1744
 msgid "German"
 msgstr ""
 
-#: inc/fonctions.php:1745
+#: inc/fonctions.php:1746
 msgid "Dutch"
 msgstr ""
 
-#: inc/fonctions.php:1747
+#: inc/fonctions.php:1748
 msgid "Arab"
 msgstr ""
 
-#: inc/fonctions.php:1749
+#: inc/fonctions.php:1750
 msgid "Italian"
 msgstr ""
 
-#: inc/fonctions.php:1751
+#: inc/fonctions.php:1752
 msgid "Spanish"
 msgstr ""
 
-#: inc/fonctions.php:1780
+#: inc/fonctions.php:1781
 msgid "A new Bilboplanet joined the community"
 msgstr ""
 
-#: inc/fonctions.php:1782
+#: inc/fonctions.php:1783
 msgid "Url : "
 msgstr ""
 
-#: inc/fonctions.php:1783
+#: inc/fonctions.php:1784
 #, fuzzy
 msgid "Title : "
 msgstr "Titolo"
 
-#: inc/fonctions.php:1784
+#: inc/fonctions.php:1785
 #, fuzzy
 msgid "Description : "
 msgstr "Descrizione"
 
-#: inc/fonctions.php:1785
+#: inc/fonctions.php:1786
 #, fuzzy
 msgid "Author : "
 msgstr "Autore"
 
-#: inc/fonctions.php:1793
+#: inc/fonctions.php:1794
 #, fuzzy
 msgid "You're planet joined the Bilboplanet community !"
 msgstr "Torna al Planet"
 
-#: inc/fonctions.php:1795
+#: inc/fonctions.php:1796
 msgid "Problem sending email."
 msgstr ""
 
-#: inc/fonctions.php:1797
+#: inc/fonctions.php:1798
 #, fuzzy
 msgid "Your planet already joined the Bilboplanet community."
 msgstr "Torna al Planet"
@@ -1703,7 +1726,7 @@ msgstr "Accesso negato"
 #: admin/api/manage-moderation_api.php:202
 #: admin/api/manage-account_api.php:104 admin/api/manage-user_api.php:396
 #: user/api/feed_api.php:235 user/api/tagging_api.php:214
-#: user/api/account_api.php:95 user/api/account_api.php:178
+#: user/api/account_api.php:99 user/api/account_api.php:182
 #: user/api/main_api.php:60 user/api/social_api.php:111
 #: user/api/post_api.php:134
 msgid "User bad call"
@@ -3811,13 +3834,13 @@ msgid "Author"
 msgstr "Autore"
 
 #: admin/api/manage-account_api.php:58 admin/api/manage-user_api.php:228
-#: user/api/account_api.php:131
+#: user/api/account_api.php:135
 #, php-format
 msgid "The email address %s is already in use by %s"
 msgstr "L'indirizzo email &s è già in uso da %s"
 
 #: admin/api/manage-account_api.php:72 admin/api/manage-user_api.php:248
-#: user/api/account_api.php:146
+#: user/api/account_api.php:150
 #, php-format
 msgid "User %s successfully updated"
 msgstr "Utente %s aggiornato con successo"

@@ -35,7 +35,7 @@ msgstr "Voeg een gebruiker"
 msgid "See post"
 msgstr "Filteren van de berichten"
 
-#: themes/default/user/profile.tpl:81
+#: themes/default/user/profile.tpl:86
 #, fuzzy
 msgid "No feed found"
 msgstr "Geen berichten gevonden"
@@ -55,11 +55,11 @@ msgstr "Geen berichten gevonden"
 msgid "Contact us"
 msgstr "Contacteer ons"
 
-#: themes/default/user/profile.tpl:63 admin/api/manage-feed_api.php:512
+#: themes/default/user/profile.tpl:68 admin/api/manage-feed_api.php:512
 msgid "Allow comments on this feed"
 msgstr ""
 
-#: themes/default/user/dashboard.tpl:48
+#: themes/default/user/dashboard.tpl:47
 #, fuzzy
 msgid "Allow comments on post"
 msgstr "Alle berichten"
@@ -82,7 +82,7 @@ msgstr "Website"
 msgid "(Optional)"
 msgstr "Opties"
 
-#: themes/default/user/dashboard.tpl:34
+#: themes/default/user/dashboard.tpl:33
 #, fuzzy
 msgid "Remove post"
 msgstr "Filteren van de berichten"
@@ -124,7 +124,7 @@ msgstr "Berichten van de maand"
 msgid "Register"
 msgstr "Inschrijving"
 
-#: themes/default/user/dashboard.tpl:30
+#: themes/default/user/dashboard.tpl:29
 #, fuzzy
 msgid "Accept post"
 msgstr "Te aanvaarden"
@@ -138,7 +138,7 @@ msgstr "Berichten tabel"
 msgid "Where is your Shaarli?"
 msgstr ""
 
-#: themes/default/single.tpl:104 themes/default/user/dashboard.tpl:55
+#: themes/default/single.tpl:104 themes/default/user/dashboard.tpl:54
 #, fuzzy
 msgid "No post found"
 msgstr "Geen berichten gevonden"
@@ -157,7 +157,7 @@ msgstr "Email :"
 msgid "Social"
 msgstr ""
 
-#: themes/default/user/profile.tpl:131
+#: themes/default/user/profile.tpl:136
 #, fuzzy
 msgid "New site url"
 msgstr "Website URL :"
@@ -170,16 +170,16 @@ msgstr ""
 msgid "Add users to tribe"
 msgstr ""
 
-#: themes/default/user/profile.tpl:67
+#: themes/default/user/profile.tpl:72
 #, fuzzy
 msgid "Disallow comments on this feed"
 msgstr "Disable deze feed"
 
-#: themes/default/user/profile.tpl:122
+#: themes/default/user/profile.tpl:127
 msgid "Existing site url"
 msgstr ""
 
-#: themes/default/user/profile.tpl:133
+#: themes/default/user/profile.tpl:138
 #, fuzzy
 msgid "Feed url"
 msgstr "Feed:"
@@ -262,7 +262,7 @@ msgstr ""
 msgid "Show posts of the user"
 msgstr "Toon berichten van de lid"
 
-#: themes/default/user/profile.tpl:90
+#: themes/default/user/profile.tpl:95
 msgid "Your pending for validation feeds"
 msgstr ""
 
@@ -270,7 +270,7 @@ msgstr ""
 #: admin/manage-account.php:65 admin/manage-user.php:108
 #: admin/manage-user.php:149 admin/install/index.php:337
 #: admin/api/manage-pendingfeed_api.php:243
-#: admin/api/manage-account_api.php:36 user/api/account_api.php:108
+#: admin/api/manage-account_api.php:36 user/api/account_api.php:112
 msgid "Fullname"
 msgstr "Naam"
 
@@ -314,8 +314,8 @@ msgstr "Geen berichten gevonden"
 msgid "Main menu"
 msgstr ""
 
-#: themes/default/post_tags.tpl:7 themes/default/user/dashboard.tpl:39
-#: themes/default/user/profile.tpl:72
+#: themes/default/post_tags.tpl:7 themes/default/user/dashboard.tpl:38
+#: themes/default/user/profile.tpl:77
 msgid "Add tag"
 msgstr ""
 
@@ -337,8 +337,25 @@ msgstr "Contacteer ons"
 msgid "Posts of the month"
 msgstr "Berichten van de maand"
 
+#: themes/default/portal.tpl:5
+msgid ""
+"Welcome on this Planet. A Planet is a feed aggregator website designed to "
+"collect posts from the weblogs of poeple of an Internet community and "
+"display them on a single page. It creates pages with entries from the "
+"original feeds. This planet is running with the Bilboplanet engine."
+msgstr ""
+
 #: themes/default/post_tags.tpl:10 themes/default/user/write.tpl:24
 msgid "Allow comments"
+msgstr ""
+
+#: themes/default/user/profile.tpl:48
+msgid ""
+"If you want to add your own blog post to the planet you can add the feed of "
+"your blog here. After submitting a new feed, the site administrator will "
+"validate it and enable it in the system.<br/>This planet support most of the "
+"blog engines (Wordpress, Dotclear, ...). The only thing you need to submit "
+"your blog is the url of the RSS feed."
 msgstr ""
 
 #: themes/default/user/profile.tpl:43
@@ -351,7 +368,7 @@ msgid "Share on Shaarli"
 msgstr ""
 
 #: themes/default/posts.tpl:80 themes/default/single.tpl:124
-#: themes/default/user/dashboard.tpl:64 themes/default/user/profile.tpl:114
+#: themes/default/user/dashboard.tpl:63 themes/default/user/profile.tpl:119
 #: themes/default/user/tribes.tpl:142 themes/default/user/write.tpl:21
 #: admin/manage-tribe.php:147 admin/manage-feed.php:230
 #: admin/manage-tagging.php:96
@@ -362,7 +379,7 @@ msgstr ""
 msgid "Local instance"
 msgstr ""
 
-#: themes/default/user/profile.tpl:44
+#: themes/default/user/profile.tpl:45
 #, fuzzy
 msgid "Add new feeds"
 msgstr "Voeg een feed"
@@ -398,7 +415,7 @@ msgid ""
 "share, rate, add your own blog"
 msgstr ""
 
-#: themes/default/user/dashboard.tpl:43
+#: themes/default/user/dashboard.tpl:42
 #, fuzzy
 msgid "Disable comments on post"
 msgstr "Disable deze feed"
@@ -451,7 +468,7 @@ msgstr ""
 msgid "Update"
 msgstr "Update"
 
-#: themes/default/user/profile.tpl:137 themes/default/user/tribes.tpl:32
+#: themes/default/user/profile.tpl:142 themes/default/user/tribes.tpl:32
 #: admin/manage-tribe.php:92 admin/manage-feed.php:91
 #: admin/manage-feed.php:189 admin/manage-user.php:128
 #: admin/manage-user.php:186
@@ -488,8 +505,8 @@ msgid "Go on Shaarli"
 msgstr ""
 
 #: themes/default/posts.tpl:78 themes/default/single.tpl:122
-#: themes/default/tags.tpl:25 themes/default/user/dashboard.tpl:62
-#: themes/default/user/profile.tpl:112 themes/default/user/write.tpl:19
+#: themes/default/tags.tpl:25 themes/default/user/dashboard.tpl:61
+#: themes/default/user/profile.tpl:117 themes/default/user/write.tpl:19
 #: admin/manage-feed.php:228 admin/manage-tagging.php:94
 msgid "Tags"
 msgstr ""
@@ -565,7 +582,7 @@ msgstr "Planeet Taal"
 msgid "Share on StatusNet"
 msgstr ""
 
-#: themes/default/user/profile.tpl:91
+#: themes/default/user/profile.tpl:96
 msgid ""
 "Theses feeds need the validation of the site administrator. Please read the "
 "charter before submitting new feeds."
@@ -575,6 +592,11 @@ msgstr ""
 #, fuzzy
 msgid "Write a post"
 msgstr "Aantal berichten"
+
+#: themes/default/user/profile.tpl:26 admin/manage-feed.php:83
+#: admin/manage-user.php:120
+msgid "Confirm password"
+msgstr "Bevestig uw wachtwoord:"
 
 #: themes/default/signup.tpl:36 themes/default/contact.tpl:33
 #: themes/default/user/tribes.tpl:115 themes/default/user/tribes.tpl:148
@@ -589,7 +611,7 @@ msgstr "Aantal berichten"
 msgid "Send"
 msgstr "Sturen"
 
-#: themes/default/user/profile.tpl:125
+#: themes/default/user/profile.tpl:130
 #, fuzzy
 msgid "-- choose existing site"
 msgstr "- Kies een gebruiker -"
@@ -598,7 +620,7 @@ msgstr "- Kies een gebruiker -"
 msgid "Remove icon from tribe"
 msgstr ""
 
-#: themes/default/user/dashboard.tpl:10
+#: themes/default/user/dashboard.tpl:9
 #, fuzzy
 msgid "Your latest posts"
 msgstr "%s laatste berichten"
@@ -741,7 +763,7 @@ msgstr "Gebruikers"
 #: admin/manage-feed.php:75 admin/manage-account.php:69
 #: admin/manage-user.php:112 admin/manage-user.php:153
 #: admin/install/index.php:340 admin/api/manage-pendingfeed_api.php:244
-#: admin/api/manage-account_api.php:37 user/api/account_api.php:109
+#: admin/api/manage-account_api.php:37 user/api/account_api.php:113
 msgid "Email"
 msgstr "E-mail"
 
@@ -750,7 +772,7 @@ msgstr "E-mail"
 msgid "Post count :"
 msgstr "Berichten van de dag:"
 
-#: themes/default/user/profile.tpl:75
+#: themes/default/user/profile.tpl:80
 #, fuzzy
 msgid "Remove feed"
 msgstr "URL van de feed"
@@ -770,7 +792,7 @@ msgstr "Abonneren op RSS-feed"
 msgid "The ordering specifies the position of your tribe on the portal"
 msgstr ""
 
-#: themes/default/user/profile.tpl:92
+#: themes/default/user/profile.tpl:97
 #, fuzzy
 msgid "Go to the charter"
 msgstr "Ga naar de samenvatting"
@@ -825,10 +847,11 @@ msgstr "Filteren van de berichten"
 msgid "Tribe name"
 msgstr "Website naam"
 
-#: themes/default/user/profile.tpl:26 admin/manage-feed.php:83
-#: admin/manage-user.php:120
-msgid "Confirm password"
-msgstr "Bevestig uw wachtwoord:"
+#: themes/default/user/dashboard.tpl:7
+msgid ""
+"Welcome on the new user interface of the Bilboplanet. Here you'll be able to "
+"tag your posts and to remove them if you want."
+msgstr ""
 
 #: themes/default/topbar.tpl:55
 msgid "Info Flash"
@@ -853,7 +876,7 @@ msgstr "Inschrijving"
 msgid "Tweeter"
 msgstr ""
 
-#: themes/default/user/profile.tpl:101
+#: themes/default/user/profile.tpl:106
 #, fuzzy
 msgid "Remove pending feed"
 msgstr "Lijst van de gebruikers"
@@ -869,7 +892,7 @@ msgid "Search :"
 msgstr "Zoek"
 
 #: themes/default/posts.tpl:82 themes/default/single.tpl:126
-#: themes/default/user/dashboard.tpl:66 themes/default/user/profile.tpl:116
+#: themes/default/user/dashboard.tpl:65 themes/default/user/profile.tpl:121
 #: admin/manage-useroption.php:123 admin/api/manage-permissions_api.php:171
 #: admin/api/manage-option_api.php:677
 msgid "Apply"
@@ -929,7 +952,7 @@ msgstr ""
 msgid "User id : "
 msgstr "Gebruiker id"
 
-#: signup.php:82 contact.php:61 inc/fonctions.php:1786
+#: signup.php:82 contact.php:61 inc/fonctions.php:1787
 msgid "Email : "
 msgstr "Email :"
 
@@ -995,7 +1018,7 @@ msgstr ""
 
 #: signup.php:201 signup.php:204 admin/api/manage-account_api.php:55
 #: admin/api/manage-user_api.php:97 admin/api/manage-user_api.php:100
-#: admin/api/manage-user_api.php:225 user/api/account_api.php:128
+#: admin/api/manage-user_api.php:225 user/api/account_api.php:132
 #, php-format
 msgid "The user %s already exists"
 msgstr "De gebruiker %s bestaat al"
@@ -1427,138 +1450,138 @@ msgstr "Berichten detail"
 msgid "Read more"
 msgstr "Lees meer"
 
-#: inc/fonctions.php:995 inc/fonctions.php:1008
+#: inc/fonctions.php:996 inc/fonctions.php:1009
 msgid "Vote yes"
 msgstr "Stem ja"
 
-#: inc/fonctions.php:996 inc/fonctions.php:1014 inc/fonctions.php:1018
+#: inc/fonctions.php:997 inc/fonctions.php:1015 inc/fonctions.php:1019
 msgid "Vote no"
 msgstr "Stem nee"
 
-#: inc/fonctions.php:1006
+#: inc/fonctions.php:1007
 msgid "This post seems pertinent to you"
 msgstr "Dit bericht ziet er relevant voor u uit"
 
-#: inc/fonctions.php:1012
+#: inc/fonctions.php:1013
 msgid "This post seems not pertinent to you"
 msgstr "Dit bericht ziet er niet relevant voor u uit"
 
-#: inc/fonctions.php:1016
+#: inc/fonctions.php:1017
 msgid "This post should not be here"
 msgstr "Dit bericht zou hier niet mogen zijn"
 
-#: inc/fonctions.php:1017
+#: inc/fonctions.php:1018
 msgid ""
 "Are you sure this post should not be on this planet and should be removed?"
 msgstr "Bent u zeker dat deze bericht hier niet zijn plaats heeft?"
 
-#: inc/fonctions.php:1040
+#: inc/fonctions.php:1041
 #, php-format
 msgid "The field \"%s\" has to be a valid email address"
 msgstr "Het veld \"%s\" moet een geldig e-mailadres zijn"
 
-#: inc/fonctions.php:1046 inc/fonctions.php:1052
+#: inc/fonctions.php:1047 inc/fonctions.php:1053
 #, php-format
 msgid "The field \"%s\" %s has to be a valid URL"
 msgstr "Het veld \"%s\" %s moet een geldige URL zijn"
 
-#: inc/fonctions.php:1056
+#: inc/fonctions.php:1057
 #, php-format
 msgid "The field \"%s\" %s is not a valid simplepie feed"
 msgstr "Het veld \"%s\" %s is geen geldige simplepie feed"
 
-#: inc/fonctions.php:1071
+#: inc/fonctions.php:1072
 #, fuzzy, php-format
 msgid "The fields %s does not match"
 msgstr "Het veld \"%s\" is leeg"
 
-#: inc/fonctions.php:1075
+#: inc/fonctions.php:1076
 #, php-format
 msgid "The fields %s needs to have 4 characters minimum"
 msgstr "De velden% s moet hebben 4 tekens minimale"
 
-#: inc/fonctions.php:1083
+#: inc/fonctions.php:1084
 #, php-format
 msgid "The field \"%s\" is empty"
 msgstr "Het veld \"%s\" is leeg"
 
-#: inc/fonctions.php:1252
+#: inc/fonctions.php:1253
 msgid " bytes"
 msgstr "bytes"
 
-#: inc/fonctions.php:1256
+#: inc/fonctions.php:1257
 msgid " Kb"
 msgstr "Kb"
 
-#: inc/fonctions.php:1260
+#: inc/fonctions.php:1261
 msgid " MB"
 msgstr "MB"
 
-#: inc/fonctions.php:1264
+#: inc/fonctions.php:1265
 msgid " GB"
 msgstr " GB"
 
-#: inc/fonctions.php:1725 inc/fonctions.php:1739
+#: inc/fonctions.php:1726 inc/fonctions.php:1740
 msgid "English"
 msgstr ""
 
-#: inc/fonctions.php:1741
+#: inc/fonctions.php:1742
 msgid "French"
 msgstr ""
 
-#: inc/fonctions.php:1743
+#: inc/fonctions.php:1744
 msgid "German"
 msgstr ""
 
-#: inc/fonctions.php:1745
+#: inc/fonctions.php:1746
 msgid "Dutch"
 msgstr ""
 
-#: inc/fonctions.php:1747
+#: inc/fonctions.php:1748
 msgid "Arab"
 msgstr ""
 
-#: inc/fonctions.php:1749
+#: inc/fonctions.php:1750
 msgid "Italian"
 msgstr ""
 
-#: inc/fonctions.php:1751
+#: inc/fonctions.php:1752
 msgid "Spanish"
 msgstr ""
 
-#: inc/fonctions.php:1780
+#: inc/fonctions.php:1781
 msgid "A new Bilboplanet joined the community"
 msgstr ""
 
-#: inc/fonctions.php:1782
+#: inc/fonctions.php:1783
 msgid "Url : "
 msgstr ""
 
-#: inc/fonctions.php:1783
+#: inc/fonctions.php:1784
 #, fuzzy
 msgid "Title : "
 msgstr "Titel"
 
-#: inc/fonctions.php:1784
+#: inc/fonctions.php:1785
 #, fuzzy
 msgid "Description : "
 msgstr "Beschrijving"
 
-#: inc/fonctions.php:1785
+#: inc/fonctions.php:1786
 #, fuzzy
 msgid "Author : "
 msgstr "Auteur"
 
-#: inc/fonctions.php:1793
+#: inc/fonctions.php:1794
 #, fuzzy
 msgid "You're planet joined the Bilboplanet community !"
 msgstr "Terug op de Bilboplanet"
 
-#: inc/fonctions.php:1795
+#: inc/fonctions.php:1796
 msgid "Problem sending email."
 msgstr ""
 
-#: inc/fonctions.php:1797
+#: inc/fonctions.php:1798
 #, fuzzy
 msgid "Your planet already joined the Bilboplanet community."
 msgstr "Terug op de Bilboplanet"
@@ -1716,7 +1739,7 @@ msgstr "Toegang geweigerd"
 #: admin/api/manage-moderation_api.php:202
 #: admin/api/manage-account_api.php:104 admin/api/manage-user_api.php:396
 #: user/api/feed_api.php:235 user/api/tagging_api.php:214
-#: user/api/account_api.php:95 user/api/account_api.php:178
+#: user/api/account_api.php:99 user/api/account_api.php:182
 #: user/api/main_api.php:60 user/api/social_api.php:111
 #: user/api/post_api.php:134
 msgid "User bad call"
@@ -3848,13 +3871,13 @@ msgid "Author"
 msgstr "Auteur"
 
 #: admin/api/manage-account_api.php:58 admin/api/manage-user_api.php:228
-#: user/api/account_api.php:131
+#: user/api/account_api.php:135
 #, fuzzy, php-format
 msgid "The email address %s is already in use by %s"
 msgstr "Het e-mailadres %s is al in gebruik"
 
 #: admin/api/manage-account_api.php:72 admin/api/manage-user_api.php:248
-#: user/api/account_api.php:146
+#: user/api/account_api.php:150
 #, fuzzy, php-format
 msgid "User %s successfully updated"
 msgstr "Gebruiker %s toegevoegd"

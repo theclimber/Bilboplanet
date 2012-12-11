@@ -1,6 +1,9 @@
 <div id="content" class="pages">
 
 	<div id="portal">
+    <div class="welcome-box">
+    {_Welcome on this Planet. A Planet is a feed aggregator website designed to collect posts from the weblogs of poeple of an Internet community and display them on a single page. It creates pages with entries from the original feeds. This planet is running with the Bilboplanet engine.}
+    </div>
 	<!-- BEGIN portal.block -->
 		<div class="portalbox {$tribe.align}box">
 			<div class="title">

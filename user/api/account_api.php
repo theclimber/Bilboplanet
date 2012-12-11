@@ -81,11 +81,15 @@ if(isset($_GET['action'])) {
 				$output .= "<li>".$value."</li>";
 			}
 			$output .= "</ul>";
-			print '<div class="flash_error">'.$output.'</div>';
+			$output = '<div class="flash_error">'.$output.'</div>';
 		}
 		else {
-			print '<div class="flash_notice">'.$output.'</div>';
+			$output = '<div class="flash_notice">'.$output.'</div>';
 		}
+        header('Content-type: text/html; charset=utf-8');
+        print '<html><meta http-equiv="refresh" content="10; URL='.BP_PLANET_URL.'"><body>';
+        print $output;
+        print "</body></html>";
 		break;
 		
 ##########################################################

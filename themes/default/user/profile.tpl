@@ -41,7 +41,12 @@
 	<p>&nbsp;</p>
 	<div class="user-feed-list dashbox">
 		<h2>{_Your feeds}</h2>
-		<a href="javascript:add_feed()"><img title="{_Add new feeds}" src="{$planet.url}/themes/{$planet.theme}/user/images/add.png" /></a>
+		<p>
+            <a href="javascript:add_feed()"><img title="{_Add new feeds}" src="{$planet.url}/themes/{$planet.theme}/user/images/add.png" /></a>
+        </p>
+        <p>
+        {_If you want to add your own blog post to the planet you can add the feed of your blog here. After submitting a new feed, the site administrator will validate it and enable it in the system.<br/>This planet support most of the blog engines (Wordpress, Dotclear, ...). The only thing you need to submit your blog is the url of the RSS feed.}
+        </p>
 		<table>
 		<!-- BEGIN userfeed.item -->
 			<tr class="user-feed {$feed.status}" id="{$feed.id}">

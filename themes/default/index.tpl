@@ -93,7 +93,7 @@
 			</div>
 		</div>
 		<div id="navigation-bg" style="display:none">
-			<ul class="content" id="navigation">
+			<ul class="content-menu" id="navigation">
 			<!-- BEGIN menu.contact -->
 				<li><a href="{$planet.url}/contact.php">{_Contact us}</a></li>
 			<!-- END menu.contact -->

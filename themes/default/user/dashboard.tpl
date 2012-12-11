@@ -4,8 +4,7 @@
 
 <div class="dashboardContent">
 	<h1>{_User dashboard}</h1>
-	<span class="tooltip">{_Welcome on the new user interface of the Bilboplanet.
-		Here you'll be able to tag your posts and to remove them if you want.}</span>
+	<span class="tooltip">{_Welcome on the new user interface of the Bilboplanet. Here you'll be able to tag your posts and to remove them if you want.}</span>
 	<div class="user-post-list dashbox">
 		<h2>{_Your latest posts}</h2>
 		<table>
@@ -27,11 +26,11 @@
 				<span class="action">
 					<!-- BEGIN userpost.action -->
 					<a id="action-post{$post.id}" href="javascript:add_post('{$post.id}')">
-						<img title="{_Accept post}" src="{$planet.url}/themes/{$planet.theme}/user/images/post-refuse.png">
+						<img title="{_Accept post}" src="{$planet.url}/themes/{$planet.theme}/user/images/post-accept.png">
 					</a>
 					<!-- ELSE userpost.action -->
 					<a id="action-post{$post.id}" href="javascript:rm_post('{$post.id}')">
-						<img title="{_Remove post}" src="{$planet.url}/themes/{$planet.theme}/user/images/post-accept.png">
+						<img title="{_Remove post}" src="{$planet.url}/themes/{$planet.theme}/user/images/post-refuse.png">
 					</a>
 					<!-- END userpost.action -->
 				</span>
@@ -40,12 +39,12 @@
 				</span>
 				<!-- BEGIN userpost.action.nocomment -->
 				<span class="action">
-					<a href="javascript:toggle_post_comments('{$post.id}',0)"><img title="{_Disable comments on post}" src="{$planet.url}/themes/{$planet.theme}/user/images/comment.png"></a>
+					<a href="javascript:toggle_post_comments('{$post.id}',0)"><img title="{_Disable comments on post}" src="{$planet.url}/themes/{$planet.theme}/user/images/nocomment.png"></a>
 				</span>
 				<!-- END userpost.action.nocomment -->
 				<!-- BEGIN userpost.action.comment -->
 				<span class="action">
-					<a href="javascript:toggle_post_comments('{$post.id}',1)"><img title="{_Allow comments on post}" src="{$planet.url}/themes/{$planet.theme}/user/images/nocomment.png"></a>
+					<a href="javascript:toggle_post_comments('{$post.id}',1)"><img title="{_Allow comments on post}" src="{$planet.url}/themes/{$planet.theme}/user/images/comment.png"></a>
 				</span>
 				<!-- END userpost.action.comment -->
 				<!-- END userpost.action.activate -->

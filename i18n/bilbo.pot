@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-07 16:03+0100\n"
+"POT-Creation-Date: 2012-12-11 10:34+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -71,7 +71,7 @@ msgstr ""
 msgid "Fullname : "
 msgstr ""
 
-#: signup.php:82 contact.php:61 inc/fonctions.php:1786
+#: signup.php:82 contact.php:61 inc/fonctions.php:1787
 msgid "Email : "
 msgstr ""
 
@@ -131,14 +131,14 @@ msgstr ""
 #: signup.php:156 admin/manage-feed.php:71 admin/manage-account.php:65
 #: admin/manage-user.php:108 admin/manage-user.php:149
 #: admin/install/index.php:337 admin/api/manage-pendingfeed_api.php:243
-#: admin/api/manage-account_api.php:36 user/api/account_api.php:108
+#: admin/api/manage-account_api.php:36 user/api/account_api.php:112
 msgid "Fullname"
 msgstr ""
 
 #: signup.php:157 admin/manage-feed.php:75 admin/manage-account.php:69
 #: admin/manage-user.php:112 admin/manage-user.php:153
 #: admin/install/index.php:340 admin/api/manage-pendingfeed_api.php:244
-#: admin/api/manage-account_api.php:37 user/api/account_api.php:109
+#: admin/api/manage-account_api.php:37 user/api/account_api.php:113
 msgid "Email"
 msgstr ""
 
@@ -148,7 +148,7 @@ msgstr ""
 
 #: signup.php:201 signup.php:204 admin/api/manage-account_api.php:55
 #: admin/api/manage-user_api.php:97 admin/api/manage-user_api.php:100
-#: admin/api/manage-user_api.php:225 user/api/account_api.php:128
+#: admin/api/manage-user_api.php:225 user/api/account_api.php:132
 #, php-format
 msgid "The user %s already exists"
 msgstr ""
@@ -556,133 +556,133 @@ msgstr ""
 msgid "Read more"
 msgstr ""
 
-#: inc/fonctions.php:995 inc/fonctions.php:1008
+#: inc/fonctions.php:996 inc/fonctions.php:1009
 msgid "Vote yes"
 msgstr ""
 
-#: inc/fonctions.php:996 inc/fonctions.php:1014 inc/fonctions.php:1018
+#: inc/fonctions.php:997 inc/fonctions.php:1015 inc/fonctions.php:1019
 msgid "Vote no"
 msgstr ""
 
-#: inc/fonctions.php:1006
+#: inc/fonctions.php:1007
 msgid "This post seems pertinent to you"
 msgstr ""
 
-#: inc/fonctions.php:1012
+#: inc/fonctions.php:1013
 msgid "This post seems not pertinent to you"
 msgstr ""
 
-#: inc/fonctions.php:1016
+#: inc/fonctions.php:1017
 msgid "This post should not be here"
 msgstr ""
 
-#: inc/fonctions.php:1017
+#: inc/fonctions.php:1018
 msgid "Are you sure this post should not be on this planet and should be removed?"
 msgstr ""
 
-#: inc/fonctions.php:1040
+#: inc/fonctions.php:1041
 #, php-format
 msgid "The field \"%s\" has to be a valid email address"
 msgstr ""
 
-#: inc/fonctions.php:1046 inc/fonctions.php:1052
+#: inc/fonctions.php:1047 inc/fonctions.php:1053
 #, php-format
 msgid "The field \"%s\" %s has to be a valid URL"
 msgstr ""
 
-#: inc/fonctions.php:1056
+#: inc/fonctions.php:1057
 #, php-format
 msgid "The field \"%s\" %s is not a valid simplepie feed"
 msgstr ""
 
-#: inc/fonctions.php:1071
+#: inc/fonctions.php:1072
 #, php-format
 msgid "The fields %s does not match"
 msgstr ""
 
-#: inc/fonctions.php:1075
+#: inc/fonctions.php:1076
 #, php-format
 msgid "The fields %s needs to have 4 characters minimum"
 msgstr ""
 
-#: inc/fonctions.php:1083
+#: inc/fonctions.php:1084
 #, php-format
 msgid "The field \"%s\" is empty"
 msgstr ""
 
-#: inc/fonctions.php:1252
+#: inc/fonctions.php:1253
 msgid " bytes"
 msgstr ""
 
-#: inc/fonctions.php:1256
+#: inc/fonctions.php:1257
 msgid " Kb"
 msgstr ""
 
-#: inc/fonctions.php:1260
+#: inc/fonctions.php:1261
 msgid " MB"
 msgstr ""
 
-#: inc/fonctions.php:1264
+#: inc/fonctions.php:1265
 msgid " GB"
 msgstr ""
 
-#: inc/fonctions.php:1725 inc/fonctions.php:1739
+#: inc/fonctions.php:1726 inc/fonctions.php:1740
 msgid "English"
 msgstr ""
 
-#: inc/fonctions.php:1741
+#: inc/fonctions.php:1742
 msgid "French"
 msgstr ""
 
-#: inc/fonctions.php:1743
+#: inc/fonctions.php:1744
 msgid "German"
 msgstr ""
 
-#: inc/fonctions.php:1745
+#: inc/fonctions.php:1746
 msgid "Dutch"
 msgstr ""
 
-#: inc/fonctions.php:1747
+#: inc/fonctions.php:1748
 msgid "Arab"
 msgstr ""
 
-#: inc/fonctions.php:1749
+#: inc/fonctions.php:1750
 msgid "Italian"
 msgstr ""
 
-#: inc/fonctions.php:1751
+#: inc/fonctions.php:1752
 msgid "Spanish"
 msgstr ""
 
-#: inc/fonctions.php:1780
+#: inc/fonctions.php:1781
 msgid "A new Bilboplanet joined the community"
 msgstr ""
 
-#: inc/fonctions.php:1782
+#: inc/fonctions.php:1783
 msgid "Url : "
 msgstr ""
 
-#: inc/fonctions.php:1783
+#: inc/fonctions.php:1784
 msgid "Title : "
 msgstr ""
 
-#: inc/fonctions.php:1784
+#: inc/fonctions.php:1785
 msgid "Description : "
 msgstr ""
 
-#: inc/fonctions.php:1785
+#: inc/fonctions.php:1786
 msgid "Author : "
 msgstr ""
 
-#: inc/fonctions.php:1793
+#: inc/fonctions.php:1794
 msgid "You're planet joined the Bilboplanet community !"
 msgstr ""
 
-#: inc/fonctions.php:1795
+#: inc/fonctions.php:1796
 msgid "Problem sending email."
 msgstr ""
 
-#: inc/fonctions.php:1797
+#: inc/fonctions.php:1798
 msgid "Your planet already joined the Bilboplanet community."
 msgstr ""
 
@@ -827,7 +827,7 @@ msgstr ""
 #: admin/api/manage-moderation_api.php:202
 #: admin/api/manage-account_api.php:104 admin/api/manage-user_api.php:396
 #: user/api/feed_api.php:235 user/api/tagging_api.php:214
-#: user/api/account_api.php:95 user/api/account_api.php:178
+#: user/api/account_api.php:99 user/api/account_api.php:182
 #: user/api/main_api.php:60 user/api/social_api.php:111
 #: user/api/post_api.php:134
 msgid "User bad call"
@@ -2971,13 +2971,13 @@ msgid "Author"
 msgstr ""
 
 #: admin/api/manage-account_api.php:58 admin/api/manage-user_api.php:228
-#: user/api/account_api.php:131
+#: user/api/account_api.php:135
 #, php-format
 msgid "The email address %s is already in use by %s"
 msgstr ""
 
 #: admin/api/manage-account_api.php:72 admin/api/manage-user_api.php:248
-#: user/api/account_api.php:146
+#: user/api/account_api.php:150
 #, php-format
 msgid "User %s successfully updated"
 msgstr ""

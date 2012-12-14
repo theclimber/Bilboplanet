@@ -171,6 +171,16 @@ if(isset($_POST['action'])) {
         $num_start = $page*10;
 
         $sql_tribe = "SELECT * FROM ".$core->prefix."tribe WHERE tribe_id='".$tribe_id."'";
+        if ($tribe_id == "") {
+            $sql_tribe = generate_SQL(
+                    0, // num start
+                    10, // nb items
+                    array(), // users
+                    array(), // tags
+                    null, // search
+                    "week", // period
+                    true); // popular
+        }
         $rs = $core->con->select($sql_tribe);
         if ($rs->count() > 0) {
             $tribe_icon = getTribeIcon($rs->f('tribe_id'),$rs->f('tribe_name'),$rs->f('tribe_icon'));

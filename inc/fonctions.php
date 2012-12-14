@@ -1192,6 +1192,7 @@ function check_feed($url){
 	require_once(dirname(__FILE__).'/lib/simplepie_1.3.compiled.php');
 	$file = new SimplePie_File($url);
 	$test = new SimplePie_Locator($file);
+	$test->set_registry(new SimplePie_Registry());
 
 	if ($test->is_feed($file))
 		return true;

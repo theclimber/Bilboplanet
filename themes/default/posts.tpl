@@ -58,9 +58,10 @@
 	</div>
 
 	<!-- BEGIN post.morebutton -->
-	<a><div id="more-button">
-		{_More}
-	</div></a>
+	<div id="more-button" style="display:none;" more="yes">
+        <img src="{$planet.url}/themes/{$planet.theme}/images/spinner.gif"><br/>
+        {_Loading}
+	</div>
 	<!-- END post.morebutton -->
 
 </div>

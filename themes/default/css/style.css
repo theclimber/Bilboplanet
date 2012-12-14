@@ -1744,14 +1744,15 @@ div.pages {
 div#more-button {
 	text-align: center;
 	font-weight: bold;
-	font-size: 15px;
 	display: block;
 	margin: 15px auto;
-	background: #0f75ff;
-	width: 60%;
+	width: 50px;
 	padding: 10px 30px;
 	border-radius: 10px;
-	color: #062652;
+    background-color: #fff;
+}
+div#more-button img {
+    margin: 5px 0;
 }
 div.flash {
 	margin: 10px 5px;

@@ -521,7 +521,8 @@ $('div#more-button').ready(function() {
 });
 
 function showMore() {
-	if ($('div#more-button').css('display') == 'none') {
+    $('div#more-button').css('display', '');
+    if ($('div#more-button').attr('more') == 'no') {
 		return;
 	}
 	this.page += 1;
@@ -548,10 +549,11 @@ function showMore() {
 			var postlist = $(msg).find('#posts-list');
 			$('div#'+main_div).find('#posts-list').append(postlist.html());
 			if (postlist.html().length<10) {
-				$('div#more-button').css('display', 'none');
+				$('div#more-button').attr('more', 'no');
 			}
+			$('div#more-button').css('display', 'none');
 			$('div#'+main_div).trigger('ready');
 		}
-	});
+    });
 }
 

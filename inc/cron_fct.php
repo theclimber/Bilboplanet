@@ -264,8 +264,8 @@ function getItemsFromFeeds ($rs, $print) {
 			$rs_check = $core->con->select($check_sql);
 			$last_checked = mysqldatetime_to_timestamp($rs_check->f('feed_checked'));
 			if ($last_checked < $toolong) {
-				$diff = ($toolong - $last_checked)/60;
-				$log_msg = logMsg(sprintf(T_("The feed was not updated since %d minutes. It'll be disabled : "),$diff).$rs->feed_url, "", 2, $print);
+				$diff = (time() - $last_checked)/86400;
+				$log_msg = logMsg(sprintf(T_("The feed was not updated since %d days. It'll be disabled : "),$diff).$rs->feed_url, "", 2, $print);
 				if ($print) $output .= $log_msg;
 
 				# if feed was in error for too long, let's disable it
@@ -280,12 +280,13 @@ function getItemsFromFeeds ($rs, $print) {
 				$subject = sprintf(T_("Due to errors, a feed has been disabled on %s"),$blog_settings->get('planet_title'));
 				$content = sprintf(T_("The feed of %s has been disabled :\n"), $rs->user_fullname);
 				$content .= $rs->feed_url."\n";
-				$content .= sprintf(T_("The feed was in error during more than %d minutes"), $diff);
+				$content .= sprintf(T_("The feed was in error during more than %d days"), $diff);
 				$content .= "\n\n".T_("Details :");
 				$content .= "\n".T_("User id : ").$rs->user_id;
 				$content .= "\n".T_("User name : ").$rs->user_fullname;
 				$content .= "\n".T_("User email : ").$rs->user_email;
 				$content .= "\n".T_("Feed url : ").$rs->feed_url;
+				$content .= "\n".T_("Last checked timestamp : ").$last_checked;
 				$content .= "\n".T_("Website : ").$rs->site_url;
 
 				if (!sendmail($from, $to, $subject, $content, 'normal', $reply_to)) {

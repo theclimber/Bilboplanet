@@ -596,7 +596,7 @@ div#tribes-bg {
 	width: 250px;
 /*	font-family: Arial;*/
 	font-style: bold;
-	font-size: 15px;
+	font-size: 14px;
 	background: url('../images/header-bg.png');
 	padding: 25px 0;
 	position: fixed;
@@ -605,7 +605,7 @@ div#tribes-bg ul.menu {
 	list-style: none;
 }
 div#tribes-bg ul.menu li {
-	padding: 10px;
+	padding: 5px;
 	border-radius: 5px 0 0 5px;
 }
 div#tribes-bg ul.menu li.entry:hover {
@@ -1574,6 +1574,11 @@ div#portal {
 	padding: 5px;
 	color : #5C5C5C;
 }
+.portalbox .title .pagination {
+    vertical-align: top;
+    padding: 5px 0;
+    float:right;
+}
 .portalbox .feedlink {
 	float: right;
 	padding: 10px 0px;
@@ -1731,7 +1736,7 @@ div.pages {
 
 .portalbox {
 	border-radius : 5px;
-	width: 400px;
+	width: 450px;
 	padding: 0px;
 	font-size: 0.8em;
 	background-color: #FFF;

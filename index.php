@@ -40,6 +40,9 @@ if ($default_home == "portal") {
 		$current_page = "list";
 	}
 }
+if ($current_page == "portal") {
+    $scripts[] = "javascript/portal.js";
+}
 include dirname(__FILE__).'/tpl.php';#
 header('Content-type: text/html; charset=utf-8');
 

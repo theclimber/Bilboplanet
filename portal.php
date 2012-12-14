@@ -45,13 +45,18 @@ while ($rs->fetch()) {
 		"title" => $rs->tribe_name,
 		"id" => $rs->tribe_id,
 		"icon" => $tribe_icon,
-		"align" => $align
+        "align" => $align,
+        "page" => 0
 		);
 	$core->tpl->setVar('tribe', $tribe);
 
 	// Generating the SQL request
 	$sql_posts = generate_tribe_SQL($rs->tribe_id);
-	showTribe($sql_posts);
+	$rs_posts = $core->con->select($sql_posts);
+    if ($rs_posts->count() > 0) {
+        $core->tpl = showTribe($core->tpl,$rs_posts);
+        $core->tpl->render('portal.block');
+    }
 
 	// For each tribe I'll have to generate a list of 10 posts with their title and permalink
 }
@@ -73,7 +78,11 @@ $popular_sql = generate_SQL(
 		null, // search
 		"week", // period
 		true); // popular
-showTribe($popular_sql, true);
+$rs_posts = $core->con->select($popular_sql);
+if ($rs_posts->count() > 0) {
+    $core->tpl = showTribe($core->tpl,$rs_posts, true);
+    $core->tpl->render('portal.block');
+}
 
 $core->tpl->render("content.portal");
 

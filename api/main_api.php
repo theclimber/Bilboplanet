@@ -161,6 +161,35 @@ if(isset($_POST['action'])) {
 			);
 		print $result['posts'];
 		break;
+
+##########################################################
+# REFRESH TRIBE LIST
+##########################################################
+	case 'tribe':
+		$tribe_id = $_POST['tribe_id'];
+        $page = intval($_POST['page']);
+        $num_start = $page*10;
+
+        $sql_tribe = "SELECT * FROM ".$core->prefix."tribe WHERE tribe_id='".$tribe_id."'";
+        $rs = $core->con->select($sql_tribe);
+        if ($rs->count() > 0) {
+            $tribe_icon = getTribeIcon($rs->f('tribe_id'),$rs->f('tribe_name'),$rs->f('tribe_icon'));
+            $tribe = array(
+                "title" => $rs->f('tribe_name'),
+                "id" => $rs->f('tribe_id'),
+                "icon" => $tribe_icon,
+                "page" => $page
+                );
+            $core->tpl->setVar('tribe', $tribe);
+
+            $sql_posts = generate_tribe_SQL($tribe_id,$num_start);
+            $rs_posts = $core->con->select($sql_posts);
+            $tpl = showTribe($core->tpl,$rs_posts);
+        }
+		
+		print $tpl->render('portal.block');
+		break;
+
 ##########################################################
 # DEFAULT RETURN
 ##########################################################

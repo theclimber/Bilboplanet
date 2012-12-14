@@ -5,16 +5,22 @@
     {_Welcome on this Planet. A Planet is a feed aggregator website designed to collect posts from the weblogs of poeple of an Internet community and display them on a single page. It creates pages with entries from the original feeds. This planet is running with the Bilboplanet engine.}
     </div>
 	<!-- BEGIN portal.block -->
-		<div class="portalbox {$tribe.align}box">
+		<div class="portalbox {$tribe.align}box" id="tribe-{$tribe.id}">
 			<div class="title">
 				<a href="{$planet.url}/?list=1&tribe_id={$tribe.id}">
 				<img src="{$tribe.icon}" height="24px"/>
 				<span class="box-title">{$tribe.title}</span></a>
+                <div class="pagination">
+                    <a href="javascript:tribe_prev('{$tribe.id}',{$tribe.page})">
+                        <img src="{$planet.url}/themes/{$planet.theme}/images/prev.png"/></a>
+                    <a href="javascript:tribe_next('{$tribe.id}',{$tribe.page})">
+                        <img src="{$planet.url}/themes/{$planet.theme}/images/next.png"/></a>
+                </div>
 			</div>
 			<div class="list">
 				<ul>
 			<!-- BEGIN portal.entry -->
-				<li>{$entry.author_fullname} : <a href="{$entry.permalink}" title="{$entry.date} : {$entry.title}">{$entry.title}</a></li>
+				<li>{$entry.date} : <a href="{$entry.permalink}" title="{$entry.author_fullname} : {$entry.title}">{$entry.title}</a></li>
 			<!-- END portal.entry -->
 				</ul>
 			</div>

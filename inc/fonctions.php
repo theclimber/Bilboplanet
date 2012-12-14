@@ -714,9 +714,8 @@ function getSimilarPosts_SQL($post_id,$post_tags) {
 	return $sql_sim;
 }
 
-function showTribe($sql_posts) {
+function showTribe($tpl, $rs_posts, $page = 0) {
 	global $core, $blog_settings;
-	$rs_posts = $core->con->select($sql_posts);
 	if ($rs_posts->count() > 0) {
 		while ($rs_posts->fetch()) {
 			######################
@@ -749,12 +748,12 @@ function showTribe($sql_posts) {
 				"user_posts" => getNbPosts(null,$rs_posts->user_id)
 				);
 
-			$core->tpl->setVar('entry', $entry);
+			$tpl->setVar('entry', $entry);
 
-			$core->tpl->render('portal.entry');
+			$tpl->render('portal.entry');
 		}
-		$core->tpl->render('portal.block');
-	}
+    }
+    return $tpl;
 }
 
 function showSinglePost($rs, $tpl, $search_value, $multiview=true, $strip_tags=false) {

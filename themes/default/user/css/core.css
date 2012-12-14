@@ -3,11 +3,24 @@ li.user-post {
 	list-style: none;
 }
 div.user-post-list li.disabled {
-	background-color : #bababa;
 	color: #ededed;
 }
-li.user-post span.tag-line {
-	margin-left: 60px;
+table tr.disabled {
+    color: #ededed;
+	background-color : #bababa;
+}
+table tr.disabled a{
+    color: #ededed;
+}
+table td{
+    padding: 5px;
+}
+span.post-title {
+    font-size: 1.1em;
+}
+span.tag-line{
+    padding: 5px;
+    display : inline-block;
 }
 div#main-body .dashbox {
 	padding: 20px;
@@ -161,7 +174,22 @@ div#add-form a{
 	padding-bottom:10px;
 }
 div#add-form a:hover, div#add-form a:focus {
-text-decoration:underline;
+    text-decoration:underline;
+}
+div#go-to-charter {
+	padding: 5px;
+	margin: 5px;
+	margin-bottom:30px;
+}
+div#go-to-charter a{
+	text-decoration:none;
+	background-image:url(../images/link_to.png);
+	background-repeat:no-repeat;
+	padding-left:20px;
+	padding-bottom:10px;
+}
+div#go-to-charter a:hover, div#add-form a:focus {
+    text-decoration:underline;
 }
 
 div.br3px {

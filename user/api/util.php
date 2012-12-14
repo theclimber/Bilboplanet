@@ -93,7 +93,7 @@ function render_page ($page) {
 			WHERE user_id ='".$user_id."'");
 		while ($rs_feed->fetch()) {
 			$status = "";
-			if (!$rs_feed->feed_status) {
+			if (!$rs_feed->feed_status || $rs_feed->feed_status == 2) {
 				$status = "disabled";
 			}
 			$feed = array(

@@ -1291,9 +1291,6 @@ background: url("../images/warn.png") no-repeat scroll 14% 50%;
 background: url("../images/warn-light.png") no-repeat scroll 14% 50%;
 }
 
-div.post_description div.tag-line {
-margin : 5px 5px;
-}
 div.post_description span.post-tag {
 margin: 0px 5px;
 padding: 0px 6px 1px 6px;

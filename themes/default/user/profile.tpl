@@ -140,7 +140,10 @@
 	<div class="user-feed-list dashbox">
 		<h2>{_Your pending for validation feeds}</h2>
 		{_Theses feeds need the validation of the site administrator. Please read the charter before submitting new feeds.}
-		<br/><a href="{$planet.url}/charter.php">{_Go to the charter}</a>
+		<br/>
+<div class="button br3px" id="go-to-charter">
+    <a href="{$planet.url}/charter.php">{_Go to the charter}</a>
+</div>
 		<table>
 		<!-- BEGIN userpfeed.item -->
 			<tr class="user-feed">

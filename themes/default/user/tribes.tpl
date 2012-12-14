@@ -44,21 +44,21 @@
 			<h3><a href="{$planet.url}/index.php?list=1&tribe_id={$tribe.id}">{$tribe.name}</a></h3>
 			<p class="tribe-icon"><img class="tribe-icon" src="{$tribe.icon}" /></p>
 			<ul class="info-list">
-				<li>{_Tags :} <div class="tag-line">
+				<li>{_Tags :} <span class="tag-line">
 					<!-- BEGIN tribes.tag -->
 					<span class="tag">{$tribe_tag} <a href="javascript:rm_tag('{$tribe_id}','{$tribe_tag}')">x</a></span>
 					<!-- END tribes.tag -->
-					</div></li>
-				<li>{_No-tags :} <div class="notag-line">
+					</span></li>
+				<li>{_No-tags :} <span class="notag-line">
 					<!-- BEGIN tribes.notag -->
 					<span class="tag">{$tribe_notag} <a href="javascript:rm_notag('{$tribe_id}','{$tribe_notag}')">x</a></span>
 					<!-- END tribes.notag -->
-					</div></li>
-				<li>{_Users :} <div class="user-line">
+					</span></li>
+				<li>{_Users :} <span class="user-line">
 					<!-- BEGIN tribes.user -->
 					<span class="user">{$tribe_user} <a href="javascript:rm_user('{$tribe_id}','{$tribe_user}')">x</a></span>
 					<!-- END tribes.user -->
-					</div></li>
+					</span></li>
 				<li>{_Search :} {$tribe.search} 
 					<!-- BEGIN tribes.search -->
 					(<a href="javascript:rm_search('{$tribe_id}')">{_clear}</a>)

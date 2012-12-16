@@ -19,4 +19,12 @@
 <!-- Place this tag where you want the share button to render. -->
 <li><div class="g-plus" data-action="share" data-annotation="bubble" data-height="20" data-href="{$planet.url}/?post_id={$post.id}"></div></li>
 <!-- END social.google -->
+
+<!-- BEGIN social.reddit -->
+<li>
+	<a href="http://www.reddit.com/submit?title={$post.title}&url={$encoded_url}"
+	onclick="window.location='http://www.reddit.com/submit?title={$stripped_title}&url={$encoded_url}'; return false;"> 
+		<img src="http://www.reddit.com/static/spreddit7.gif" alt="{_Submit to reddit}" border="0" /> </a>
+</li>
+<!-- END social.reddit -->
 </ul>

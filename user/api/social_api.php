@@ -42,6 +42,7 @@ if(isset($_POST['action'])) {
 		}
 		$statusnet = $_POST['statusnet']=='true' ? 1 : 0;
 		$statusnet_account = check_field(T_('Statusnet Account'),$_POST['statusnet-account'], 'url');
+		$reddit = $_POST['reddit']=='true' ? 1 : 0;
 
 		if (!in_array($newsletter,array('nomail','dayly','weekly','monthly'))) {
 			$error[] = T_('Error detected');
@@ -64,7 +65,7 @@ if(isset($_POST['action'])) {
 				$shaarli_instance = BP_PLANET_URL.'/shaarli/?user='.$user_id;
 			}
 		}
-		
+
 		if (empty($error)) {
 			$user_settings->put(
 				'social.newsletter', $newsletter, 'string');
@@ -86,6 +87,8 @@ if(isset($_POST['action'])) {
 				$user_settings->put(
 					'social.statusnet.account', $statusnet_account['value'], 'string');
 			}
+			$user_settings->put(
+				'social.reddit', $reddit, 'boolean');
 
 			$output = T_('Social settings successfully configured.');
 		}

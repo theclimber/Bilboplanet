@@ -176,7 +176,8 @@ function render_page ($page) {
 				$user_settings->get('social.shaarli.type')=='remote' ? 'selected="selected"' : '',
 			"shaarli-type.local" =>
 				$user_settings->get('social.shaarli.type')=='local' ? 'selected="selected"' : '',
-			"google" => $user_settings->get('social.google') ? 'checked' : ''
+			"google" => $user_settings->get('social.google') ? 'checked' : '',
+			"reddit" => $user_settings->get('social.reddit') ? 'checked' : ''
 			);
 		$tpl->setVar('checked', $checked);
 		$tpl->setVar('statusnet_account', $user_settings->get('social.statusnet.account'));

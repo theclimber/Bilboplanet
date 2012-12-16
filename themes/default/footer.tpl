@@ -47,3 +47,6 @@ function shaare(id,title) {
 }
 </script>
 <!-- END social.shaarli.script -->
+
+<!-- BEGIN social.reddit.script -->
+<!-- END social.reddit.script -->

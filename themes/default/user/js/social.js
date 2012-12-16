@@ -22,7 +22,8 @@ function page_ready() {
 				'newsletter' : $('select#newsletter').val(),
 				'statusnet-account' : $('input#statusnet-account').val(),
 				'shaarli-instance' : $('input#shaarli-instance').val(),
-				'shaarli-type' : $('select#shaarli-type').val()
+				'shaarli-type' : $('select#shaarli-type').val(),
+				'reddit' : $('input#reddit').is(':checked')
 			},
 			success: function(msg){
 				updatePage('social', msg);

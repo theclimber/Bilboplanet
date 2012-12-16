@@ -872,6 +872,11 @@ function showSinglePost($rs, $tpl, $search_value, $multiview=true, $strip_tags=f
 			$tpl->setVar('stripped_title', urlencode($rs->f('title')));
 			$tpl->render('social.statusnet');
 		}
+		if ($user_settings->get("social.reddit")) {
+			$tpl->setVar('stripped_title', addslashes($simple_title));
+			$tpl->setVar('encoded_url', urlencode(BP_PLANET_URL.'/?post_id='.$post['id']));
+			$tpl->render('social.reddit');
+		}
 	}
 	if ($blog_settings->get('show_similar_posts') && !empty($post_tags)) {
 		$sql_sim = getSimilarPosts_SQL($rs->f('post_id'), $post_tags);

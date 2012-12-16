@@ -53,6 +53,10 @@
 			<span class="description">{_(eg. http://identi.ca/myaccount or http://statusnet.example.com)}</span>
 		</p>
 		<p>
+			<label for="reddit">{_Share on Reddit}</label>
+			<input class="field" type="checkbox" id="reddit" {$checked.reddit}>
+		</p>
+		<p>
 			<input type="submit" id="apply" class="button" value="{_Update}">
 		</p>
 	</form>

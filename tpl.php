@@ -201,6 +201,9 @@ if ($user_settings != null) {
 	if ($user_settings->get('social.twitter')) {
 		$core->tpl->render('social.twitter.script');
 	}
+	if ($user_settings->get('social.reddit')) {
+		$core->tpl->render('social.reddit.script');
+	}
 }
 
 #####################

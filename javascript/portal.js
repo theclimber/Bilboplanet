@@ -14,10 +14,10 @@ function refresh_tribe(tribe_id,page){
 			}
 	});
 }
-function tribe_next(tribe,page) {
+function tribe_prev(tribe,page) {
     refresh_tribe(tribe,page+1);
 }
-function tribe_prev(tribe,page) {
+function tribe_next(tribe,page) {
     if (page > 0)
         refresh_tribe(tribe,page-1);
 }

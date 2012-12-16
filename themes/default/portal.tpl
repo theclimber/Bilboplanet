@@ -11,9 +11,9 @@
 				<img src="{$tribe.icon}" height="24px"/>
 				<span class="box-title">{$tribe.title}</span></a>
                 <div class="pagination">
-                    <a href="javascript:tribe_prev('{$tribe.id}',{$tribe.page})">
+                    <a title="{_Older posts}" href="javascript:tribe_prev('{$tribe.id}',{$tribe.page})">
                         <img src="{$planet.url}/themes/{$planet.theme}/images/prev.png"/></a>
-                    <a href="javascript:tribe_next('{$tribe.id}',{$tribe.page})">
+                    <a title="{_More recent posts}" href="javascript:tribe_next('{$tribe.id}',{$tribe.page})">
                         <img src="{$planet.url}/themes/{$planet.theme}/images/next.png"/></a>
                 </div>
 			</div>

@@ -94,7 +94,9 @@ if($action != "") {
             exit();
         }
         foreach($feeds as $feed) {
-		    $feed_url = check_field('feed',urldecode(trim($feed)),'url');
+		    $feed_url = check_field('feed',urldecode(trim($feed)),'feed');
+			if ($feed == "other")
+				$feed_url = check_field('feed',urldecode(trim($_POST['feed_other'])),'feed');
 
             if ($user_id == '' || !$feed_url['success'] || !$site_url['success']) {
                 $error[] = sprintf(T_('This feed %s or site %s is not a valid URL.'), $feed_url['value'], $site_url['value']);

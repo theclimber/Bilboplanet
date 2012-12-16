@@ -45,11 +45,16 @@ function page_ready() {
 	$('input#statusnet').change(function() {
 		var checked = $('input#statusnet').is(':checked');
 		if (checked) {
+			$('p#statusnet-input').css("display", "");
 			$('input#statusnet-account').removeAttr("disabled");
 		} else {
 			$('input#statusnet-account').attr("disabled", "disabled");
+			$('p#statusnet-input').css("display", "none");
 		}
 	});
+	if ($('input#statusnet').is(':checked')) {
+		$('p#statusnet-input').css("display", "");
+	}
 }
 
 function selectChange() {

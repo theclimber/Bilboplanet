@@ -47,7 +47,7 @@
 			<label for="statusnet">{_Share on StatusNet}</label>
 			<input class="field" type="checkbox" id="statusnet" {$checked.statusnet}>
 		</p>
-		<p>
+		<p id="statusnet-input" style="display:none;">
 			<label for="statusnet_account">{_StatusNet account}</label>
 			<input class="field" type="text" id="statusnet-account" value="{$statusnet_account}"><br/>
 			<span class="description">{_(eg. http://identi.ca/myaccount or http://statusnet.example.com)}</span>

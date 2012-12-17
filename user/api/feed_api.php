@@ -140,10 +140,10 @@ if($action != "") {
 
                         $ip = getIP();
                         $objet = sprintf(T_("Feed validation request for %s"),$user_id);
-                        $msg = T_("User id : ").$user_id;
-                        $msg .= "\n".T_("Fullname : ").$rs_user->f('user_fullname');
-                        $msg .= "\n".T_("Site url : ").$site_url['value'];
-                        $msg .= "\n".T_("Feed url : ").$feed_url['value'];
+                        $msg = T_("User id :")." ".$user_id;
+                        $msg .= "\n".T_("Fullname :")." ".$rs_user->f('user_fullname');
+                        $msg .= "\n".T_("Site url :")." ".$site_url['value'];
+                        $msg .= "\n".T_("Feed url :")." ".$feed_url['value'];
                         $msg .= "\nIP : $ip";
 
                         # Send email to planet author

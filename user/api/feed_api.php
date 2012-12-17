@@ -98,8 +98,10 @@ if($action != "") {
 			if ($feed == "other")
 				$feed_url = check_field('feed',urldecode(trim($_POST['feed_other'])),'feed');
 
-            if ($user_id == '' || !$feed_url['success'] || !$site_url['success']) {
+            if (!$feed_url['success'] || !$site_url['success']) {
                 $error[] = sprintf(T_('This feed %s or site %s is not a valid URL.'), $feed_url['value'], $site_url['value']);
+            }elseif ($user_id == ''){
+                $error[] = T_("The user is not existing");
             } else {
                 # Check if feed is not yet in pending feeds
                 $sql = "SELECT user_id, site_url, feed_url

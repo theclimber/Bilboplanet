@@ -73,10 +73,7 @@
             <ul id="feed_list">
                 <li>
                     <input class="check" type="checkbox" name="feeds[]" value="other">
-                    <input type="text" id="feed" name="feed_other" value="{_Your feed url}"
-                    onblur="if (this.value=='') this.value='{_Your feed url}';"
-                    onfocus="if (this.value=='{_Your feed url}') this.value='';"
-                    >
+                    <input type="text" id="feed" name="feed_other" value="">
                 </li>
             </ul>
         </div>

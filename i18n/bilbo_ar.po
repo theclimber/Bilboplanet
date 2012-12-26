@@ -48,7 +48,7 @@ msgstr "إضافة مستخدم"
 msgid "See post"
 msgstr "رشح المواضيع"
 
-#: themes/default/user/profile.tpl:132
+#: themes/default/user/profile.tpl:129
 #, fuzzy
 msgid "No feed found"
 msgstr "لم يتم العثور على الموضوع"
@@ -68,7 +68,7 @@ msgstr "لم يتم العثور على الموضوع"
 msgid "Contact us"
 msgstr "راسلنا"
 
-#: themes/default/user/profile.tpl:114 admin/api/manage-feed_api.php:512
+#: themes/default/user/profile.tpl:111 admin/api/manage-feed_api.php:512
 #, fuzzy
 msgid "Allow comments on this feed"
 msgstr "السماح بالتعليقات"
@@ -114,7 +114,7 @@ msgstr "يمكنك مراسلة فريق الإدارة من خلال الإست
 msgid "Shaarli instance"
 msgstr ""
 
-#: themes/default/user/profile.tpl:85 themes/default/user/tribes.tpl:31
+#: themes/default/user/profile.tpl:82 themes/default/user/tribes.tpl:31
 #: admin/manage-post.php:171 admin/manage-feed.php:90
 #: admin/manage-feed.php:188 admin/manage-user.php:127
 #: admin/manage-tribe.php:91 admin/manage-newsletter.php:224
@@ -183,7 +183,7 @@ msgstr ""
 msgid "Add users to tribe"
 msgstr ""
 
-#: themes/default/user/profile.tpl:118
+#: themes/default/user/profile.tpl:115
 #, fuzzy
 msgid "Disallow comments on this feed"
 msgstr "تعطيل التعليقات"
@@ -280,7 +280,7 @@ msgstr "نشر"
 msgid "Show posts of the user"
 msgstr "إظهار مواضيع المستخدمين"
 
-#: themes/default/user/profile.tpl:141
+#: themes/default/user/profile.tpl:138
 msgid "Your pending for validation feeds"
 msgstr ""
 
@@ -333,7 +333,7 @@ msgid "Main menu"
 msgstr ""
 
 #: themes/default/post_tags.tpl:7 themes/default/user/dashboard.tpl:38
-#: themes/default/user/profile.tpl:123
+#: themes/default/user/profile.tpl:120
 msgid "Add tag"
 msgstr "إضافة وَسْم"
 
@@ -386,7 +386,7 @@ msgid "Share on Shaarli"
 msgstr ""
 
 #: themes/default/posts.tpl:81 themes/default/single.tpl:124
-#: themes/default/user/dashboard.tpl:63 themes/default/user/profile.tpl:168
+#: themes/default/user/dashboard.tpl:63 themes/default/user/profile.tpl:165
 #: themes/default/user/tribes.tpl:142 themes/default/user/write.tpl:21
 #: admin/manage-tagging.php:96 admin/manage-feed.php:230
 #: admin/manage-tribe.php:147
@@ -482,7 +482,7 @@ msgstr "كتبه"
 msgid "Update"
 msgstr "تحديث"
 
-#: themes/default/user/profile.tpl:86 themes/default/user/tribes.tpl:32
+#: themes/default/user/profile.tpl:83 themes/default/user/tribes.tpl:32
 #: admin/manage-feed.php:91 admin/manage-feed.php:189
 #: admin/manage-user.php:128 admin/manage-user.php:186
 #: admin/manage-tribe.php:92
@@ -519,9 +519,14 @@ msgstr ""
 msgid "Go on Shaarli"
 msgstr ""
 
+#: themes/default/user/profile.tpl:59
+#, fuzzy
+msgid "New website"
+msgstr "موقع المستخدم"
+
 #: themes/default/posts.tpl:79 themes/default/single.tpl:122
 #: themes/default/tags.tpl:25 themes/default/user/dashboard.tpl:61
-#: themes/default/user/profile.tpl:166 themes/default/user/write.tpl:19
+#: themes/default/user/profile.tpl:163 themes/default/user/write.tpl:19
 #: admin/manage-tagging.php:94 admin/manage-feed.php:228
 msgid "Tags"
 msgstr "الوُسوم"
@@ -578,12 +583,6 @@ msgstr ""
 msgid "Toggle tribe visibility"
 msgstr ""
 
-#: themes/default/user/profile.tpl:76 themes/default/user/profile.tpl:77
-#: themes/default/user/profile.tpl:78
-#, fuzzy
-msgid "Your feed url"
-msgstr "إختبار التلقيم"
-
 #: themes/default/index.tpl:110
 msgid "My Shaarli"
 msgstr ""
@@ -602,7 +601,7 @@ msgstr "لغة الكوكب"
 msgid "Share on StatusNet"
 msgstr ""
 
-#: themes/default/user/profile.tpl:142
+#: themes/default/user/profile.tpl:139
 msgid ""
 "Theses feeds need the validation of the site administrator. Please read the "
 "charter before submitting new feeds."
@@ -700,7 +699,7 @@ msgstr "القناة"
 msgid "Close"
 msgstr "إغلاق"
 
-#: themes/default/single.tpl:46 feed.php:271
+#: themes/default/single.tpl:46 feed.php:272
 #, fuzzy
 msgid "Similar posts"
 msgstr "رشح المواضيع"
@@ -718,15 +717,15 @@ msgstr ""
 msgid "Add tags to tribe"
 msgstr ""
 
-#: themes/default/single.tpl:75 user/api/feed_api.php:142
+#: themes/default/single.tpl:75 user/api/feed_api.php:144
 #, fuzzy
 msgid "Fullname : "
 msgstr "الإسم الكامل"
 
-#: themes/default/user/profile.tpl:59
+#: themes/default/user/menu.tpl:10
 #, fuzzy
-msgid "New website"
-msgstr "موقع المستخدم"
+msgid "Profile and feeds"
+msgstr "إدارة المستخدمين"
 
 #: themes/default/post_tags.tpl:2
 msgid "tags :"
@@ -763,10 +762,6 @@ msgstr "ولوج"
 msgid "Tribe :"
 msgstr ""
 
-#: themes/default/user/menu.tpl:10
-msgid "Profile"
-msgstr ""
-
 #: themes/default/user/tribes.tpl:76 admin/api/manage-tribe_api.php:824
 msgid "Remove tribe"
 msgstr ""
@@ -796,7 +791,7 @@ msgstr "البريد الإلكتروني"
 msgid "Post count :"
 msgstr ""
 
-#: themes/default/user/profile.tpl:126
+#: themes/default/user/profile.tpl:123
 #, fuzzy
 msgid "Remove feed"
 msgstr "التلقيمات النشطة"
@@ -816,7 +811,7 @@ msgstr "تعطيل المستخدم"
 msgid "The ordering specifies the position of your tribe on the portal"
 msgstr ""
 
-#: themes/default/user/profile.tpl:145
+#: themes/default/user/profile.tpl:142
 msgid "Go to the charter"
 msgstr ""
 
@@ -897,7 +892,7 @@ msgstr "التسجيل"
 msgid "Tweeter"
 msgstr ""
 
-#: themes/default/user/profile.tpl:155
+#: themes/default/user/profile.tpl:152
 #, fuzzy
 msgid "Remove pending feed"
 msgstr "قائمة المستخدمين"
@@ -917,7 +912,7 @@ msgid "Search :"
 msgstr "البحث"
 
 #: themes/default/posts.tpl:83 themes/default/single.tpl:126
-#: themes/default/user/dashboard.tpl:65 themes/default/user/profile.tpl:170
+#: themes/default/user/dashboard.tpl:65 themes/default/user/profile.tpl:167
 #: admin/manage-useroption.php:123 admin/api/manage-permissions_api.php:171
 #: admin/api/manage-option_api.php:677
 msgid "Apply"
@@ -958,7 +953,7 @@ msgstr ""
 msgid "Name/Nickname : "
 msgstr "الإسم/اللقب :"
 
-#: contact.php:61 inc/fonctions.php:1792
+#: contact.php:61 inc/fonctions.php:1788
 msgid "Email : "
 msgstr "البريد الإلكتروني :"
 
@@ -1003,12 +998,12 @@ msgid "Vote for this post on <a href=\"%s\" title=\"Go on the planet\">%s</a>."
 msgstr ""
 "صوّت لهذا الموضوع على <a href=\\\"%s\\\" title=\\\"الذهاب للكوكب\\\">%s</a>."
 
-#: feed.php:255
+#: feed.php:256
 #, php-format
 msgid "Gravatar of %s"
 msgstr "غرفتار %s"
 
-#: feed.php:350 admin/api/manage-feed_api.php:476
+#: feed.php:351 admin/api/manage-feed_api.php:476
 #: admin/api/manage-pendingfeed_api.php:173
 #: admin/api/manage-pendingfeed_api.php:225
 #: admin/api/manage-pendingfeed_api.php:252
@@ -1278,7 +1273,7 @@ msgstr "خطأ : سبق لك التصويت لهذا الموضوع !"
 #: admin/api/manage-selection_api.php:82 admin/api/manage-tagging_api.php:173
 #: admin/api/manage-site_api.php:229 admin/api/manage-account_api.php:104
 #: user/api/main_api.php:60 user/api/account_api.php:99
-#: user/api/account_api.php:182 user/api/feed_api.php:279
+#: user/api/account_api.php:182 user/api/feed_api.php:281
 #: user/api/tagging_api.php:214 user/api/social_api.php:114
 #: user/api/post_api.php:134
 msgid "User bad call"
@@ -1372,138 +1367,138 @@ msgstr "عرض المنشور"
 msgid "Read more"
 msgstr "قراءة المزيد"
 
-#: inc/fonctions.php:1000 inc/fonctions.php:1013
+#: inc/fonctions.php:996 inc/fonctions.php:1009
 msgid "Vote yes"
 msgstr "التصويت بنعم"
 
-#: inc/fonctions.php:1001 inc/fonctions.php:1019 inc/fonctions.php:1023
+#: inc/fonctions.php:997 inc/fonctions.php:1015 inc/fonctions.php:1019
 msgid "Vote no"
 msgstr "التصويت بلا"
 
-#: inc/fonctions.php:1011
+#: inc/fonctions.php:1007
 msgid "This post seems pertinent to you"
 msgstr "يبدو هذا الموضوع مناسب لك"
 
-#: inc/fonctions.php:1017
+#: inc/fonctions.php:1013
 msgid "This post seems not pertinent to you"
 msgstr "يبدو هذا الموضوع غير مناسب لك"
 
-#: inc/fonctions.php:1021
+#: inc/fonctions.php:1017
 msgid "This post should not be here"
 msgstr "هذا الموضوع ليس مكانه هنا"
 
-#: inc/fonctions.php:1022
+#: inc/fonctions.php:1018
 msgid ""
 "Are you sure this post should not be on this planet and should be removed?"
 msgstr "هل أنت متأكد من أن هذا الموضوع لا يجب أن يكون بالكوكب ويجب حذفه؟"
 
-#: inc/fonctions.php:1045
+#: inc/fonctions.php:1041
 #, php-format
 msgid "The field \"%s\" has to be a valid email address"
 msgstr " \\\"%s\\\" يجب أن يكون عنوان بريد صالح"
 
-#: inc/fonctions.php:1051 inc/fonctions.php:1057
+#: inc/fonctions.php:1047 inc/fonctions.php:1053
 #, php-format
 msgid "The field \"%s\" %s has to be a valid URL"
 msgstr "الحقل \\\"%s\\\" %s يجب أن يكون مسارا صالحا"
 
-#: inc/fonctions.php:1061
+#: inc/fonctions.php:1057
 #, php-format
 msgid "The field \"%s\" %s is not a valid simplepie feed"
 msgstr "الحقل \\\"%s\\\" %s ليس بتلقيم simplepie صالح"
 
-#: inc/fonctions.php:1076
+#: inc/fonctions.php:1072
 #, php-format
 msgid "The fields %s does not match"
 msgstr "الحقل %s غير مطابق"
 
-#: inc/fonctions.php:1080
+#: inc/fonctions.php:1076
 #, php-format
 msgid "The fields %s needs to have 4 characters minimum"
 msgstr "الحقل %s يتطلب 4 محارف كحد أدنى"
 
-#: inc/fonctions.php:1088
+#: inc/fonctions.php:1084
 #, php-format
 msgid "The field \"%s\" is empty"
 msgstr "الحقل \\\"%s\\\" فارغ"
 
-#: inc/fonctions.php:1258
+#: inc/fonctions.php:1254
 msgid " bytes"
 msgstr "بايت"
 
-#: inc/fonctions.php:1262
+#: inc/fonctions.php:1258
 msgid " Kb"
 msgstr " Kb"
 
-#: inc/fonctions.php:1266
+#: inc/fonctions.php:1262
 msgid " MB"
 msgstr " MB"
 
-#: inc/fonctions.php:1270
+#: inc/fonctions.php:1266
 msgid " GB"
 msgstr " GB"
 
-#: inc/fonctions.php:1731 inc/fonctions.php:1745
+#: inc/fonctions.php:1727 inc/fonctions.php:1741
 msgid "English"
 msgstr ""
 
-#: inc/fonctions.php:1747
+#: inc/fonctions.php:1743
 msgid "French"
 msgstr ""
 
-#: inc/fonctions.php:1749
+#: inc/fonctions.php:1745
 msgid "German"
 msgstr ""
 
-#: inc/fonctions.php:1751
+#: inc/fonctions.php:1747
 msgid "Dutch"
 msgstr ""
 
-#: inc/fonctions.php:1753
+#: inc/fonctions.php:1749
 msgid "Arab"
 msgstr ""
 
-#: inc/fonctions.php:1755
+#: inc/fonctions.php:1751
 msgid "Italian"
 msgstr ""
 
-#: inc/fonctions.php:1757
+#: inc/fonctions.php:1753
 msgid "Spanish"
 msgstr ""
 
-#: inc/fonctions.php:1786
+#: inc/fonctions.php:1782
 msgid "A new Bilboplanet joined the community"
 msgstr ""
 
-#: inc/fonctions.php:1788
+#: inc/fonctions.php:1784
 msgid "Url : "
 msgstr ""
 
-#: inc/fonctions.php:1789
+#: inc/fonctions.php:1785
 #, fuzzy
 msgid "Title : "
 msgstr "العنوان"
 
-#: inc/fonctions.php:1790
+#: inc/fonctions.php:1786
 #, fuzzy
 msgid "Description : "
 msgstr "الوصف"
 
-#: inc/fonctions.php:1791
+#: inc/fonctions.php:1787
 #, fuzzy
 msgid "Author : "
 msgstr "المؤلف"
 
-#: inc/fonctions.php:1799
+#: inc/fonctions.php:1795
 #, fuzzy
 msgid "You're planet joined the Bilboplanet community !"
 msgstr "الرجوع إلى Bilboplanet"
 
-#: inc/fonctions.php:1801
+#: inc/fonctions.php:1797
 msgid "Problem sending email."
 msgstr ""
 
-#: inc/fonctions.php:1803
+#: inc/fonctions.php:1799
 #, fuzzy
 msgid "Your planet already joined the Bilboplanet community."
 msgstr "الرجوع إلى Bilboplanet"
@@ -1576,7 +1571,7 @@ msgstr ""
 msgid "Details :"
 msgstr ""
 
-#: inc/cron_fct.php:285 user/api/feed_api.php:141
+#: inc/cron_fct.php:285 user/api/feed_api.php:143
 #, fuzzy
 msgid "User id : "
 msgstr "معرّف المستخدم"
@@ -1591,7 +1586,7 @@ msgstr "إسم المستخدم:"
 msgid "User email : "
 msgstr "البريد الإلكتروني :"
 
-#: inc/cron_fct.php:288 user/api/feed_api.php:144
+#: inc/cron_fct.php:288 user/api/feed_api.php:146
 #, fuzzy
 msgid "Feed url : "
 msgstr "التلقيم :"
@@ -3971,44 +3966,49 @@ msgstr ""
 msgid "This feed %s or site %s is not a valid URL."
 msgstr "الحقل \\\"%s\\\" %s يجب أن يكون مسارا صالحا"
 
-#: user/api/feed_api.php:111
+#: user/api/feed_api.php:104
+#, fuzzy
+msgid "The user is not existing"
+msgstr "الملف %s غير موجود."
+
+#: user/api/feed_api.php:113
 msgid "This feed is already waiting for validation."
 msgstr ""
 
-#: user/api/feed_api.php:119
+#: user/api/feed_api.php:121
 #, fuzzy, php-format
 msgid "This feed is already used in this planet by user %s"
 msgstr "التلقيم %s مستخدم بالفعل من طرف المستخدم %s"
 
-#: user/api/feed_api.php:135
+#: user/api/feed_api.php:137
 #, php-format
 msgid "Feed %s waiting for validation"
 msgstr ""
 
-#: user/api/feed_api.php:140
+#: user/api/feed_api.php:142
 #, php-format
 msgid "Feed validation request for %s"
 msgstr ""
 
-#: user/api/feed_api.php:143
+#: user/api/feed_api.php:145
 #, fuzzy
 msgid "Site url : "
 msgstr "مسار الموقع :"
 
-#: user/api/feed_api.php:152
+#: user/api/feed_api.php:154
 msgid "An email was sent to the site administrator to ask for validation."
 msgstr ""
 
-#: user/api/feed_api.php:154
+#: user/api/feed_api.php:156
 msgid "The email could not be sent to the site administrator for validation."
 msgstr ""
 
-#: user/api/feed_api.php:195 user/api/feed_api.php:235
+#: user/api/feed_api.php:197 user/api/feed_api.php:237
 #, fuzzy
 msgid "Feed removed : "
 msgstr "إسم التلقيم :"
 
-#: user/api/feed_api.php:198 user/api/feed_api.php:238
+#: user/api/feed_api.php:200 user/api/feed_api.php:240
 #, fuzzy
 msgid "This feed does not exist"
 msgstr "هذا المفتاح غير موجود في قاعدة البيانات"
@@ -4039,6 +4039,10 @@ msgstr "تم رفض الموضوع بنجاح"
 #, fuzzy
 msgid "The post is already removed"
 msgstr "تمت رفض على هذا الموضوع بالفعل"
+
+#, fuzzy
+#~ msgid "Your feed url"
+#~ msgstr "إختبار التلقيم"
 
 #, fuzzy
 #~ msgid "Add new feeds"

@@ -7,7 +7,7 @@
 		<a href="{$planet.url}/user/?page=profile">
 			<li id="profile" class="entry {$menu.profile}">
 				<img src="{$planet.url}/themes/{$planet.theme}/user/images/profile.png"/>
-				<span class="menu-text">{_Profile}</span>
+				<span class="menu-text">{_Profile and feeds}</span>
 		</li></a>
 		<a href="{$planet.url}/user/?page=social">
 			<li id="social" class="entry {$menu.social}">

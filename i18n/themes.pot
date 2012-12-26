@@ -42,7 +42,7 @@ msgstr ""
 msgid "See post"
 msgstr ""
 
-#: themes/default/user/profile.tpl:132
+#: themes/default/user/profile.tpl:129
 msgid "No feed found"
 msgstr ""
 
@@ -60,7 +60,7 @@ msgstr ""
 msgid "Contact us"
 msgstr ""
 
-#: themes/default/user/profile.tpl:114
+#: themes/default/user/profile.tpl:111
 msgid "Allow comments on this feed"
 msgstr ""
 
@@ -101,7 +101,7 @@ msgstr ""
 msgid "Shaarli instance"
 msgstr ""
 
-#: themes/default/user/profile.tpl:85
+#: themes/default/user/profile.tpl:82
 #: themes/default/user/tribes.tpl:31
 msgid "Reset"
 msgstr ""
@@ -161,7 +161,7 @@ msgstr ""
 msgid "Add users to tribe"
 msgstr ""
 
-#: themes/default/user/profile.tpl:118
+#: themes/default/user/profile.tpl:115
 msgid "Disallow comments on this feed"
 msgstr ""
 
@@ -246,7 +246,7 @@ msgstr ""
 msgid "Show posts of the user"
 msgstr ""
 
-#: themes/default/user/profile.tpl:141
+#: themes/default/user/profile.tpl:138
 msgid "Your pending for validation feeds"
 msgstr ""
 
@@ -293,7 +293,7 @@ msgstr ""
 #: themes/default/post_tags.tpl:7
 #: themes/default/post_tags.tpl:7
 #: themes/default/user/dashboard.tpl:38
-#: themes/default/user/profile.tpl:123
+#: themes/default/user/profile.tpl:120
 msgid "Add tag"
 msgstr ""
 
@@ -334,7 +334,7 @@ msgstr ""
 #: themes/default/posts.tpl:81
 #: themes/default/single.tpl:124
 #: themes/default/user/dashboard.tpl:63
-#: themes/default/user/profile.tpl:168
+#: themes/default/user/profile.tpl:165
 #: themes/default/user/tribes.tpl:142
 #: themes/default/user/write.tpl:21
 msgid "Comma separated tags (ex: linux,web,event)"
@@ -415,7 +415,7 @@ msgstr ""
 msgid "Update"
 msgstr ""
 
-#: themes/default/user/profile.tpl:86
+#: themes/default/user/profile.tpl:83
 #: themes/default/user/tribes.tpl:32
 msgid "Add"
 msgstr ""
@@ -449,11 +449,15 @@ msgstr ""
 msgid "Go on Shaarli"
 msgstr ""
 
+#: themes/default/user/profile.tpl:59
+msgid "New website"
+msgstr ""
+
 #: themes/default/posts.tpl:79
 #: themes/default/single.tpl:122
 #: themes/default/tags.tpl:25
 #: themes/default/user/dashboard.tpl:61
-#: themes/default/user/profile.tpl:166
+#: themes/default/user/profile.tpl:163
 #: themes/default/user/write.tpl:19
 msgid "Tags"
 msgstr ""
@@ -509,12 +513,6 @@ msgstr ""
 msgid "Toggle tribe visibility"
 msgstr ""
 
-#: themes/default/user/profile.tpl:76
-#: themes/default/user/profile.tpl:77
-#: themes/default/user/profile.tpl:78
-msgid "Your feed url"
-msgstr ""
-
 #: themes/default/index.tpl:110
 msgid "My Shaarli"
 msgstr ""
@@ -531,7 +529,7 @@ msgstr ""
 msgid "Share on StatusNet"
 msgstr ""
 
-#: themes/default/user/profile.tpl:142
+#: themes/default/user/profile.tpl:139
 msgid "Theses feeds need the validation of the site administrator. Please read the charter before submitting new feeds."
 msgstr ""
 
@@ -626,8 +624,9 @@ msgstr ""
 msgid "Fullname : "
 msgstr ""
 
-#: themes/default/user/profile.tpl:59
-msgid "New website"
+#: themes/default/user/menu.tpl:10
+#: themes/default/user/menu.tpl:10
+msgid "Profile and feeds"
 msgstr ""
 
 #: themes/default/post_tags.tpl:2
@@ -666,11 +665,6 @@ msgstr ""
 msgid "Tribe :"
 msgstr ""
 
-#: themes/default/user/menu.tpl:10
-#: themes/default/user/menu.tpl:10
-msgid "Profile"
-msgstr ""
-
 #: themes/default/user/tribes.tpl:76
 msgid "Remove tribe"
 msgstr ""
@@ -696,7 +690,7 @@ msgstr ""
 msgid "Post count :"
 msgstr ""
 
-#: themes/default/user/profile.tpl:126
+#: themes/default/user/profile.tpl:123
 msgid "Remove feed"
 msgstr ""
 
@@ -714,7 +708,7 @@ msgstr ""
 msgid "The ordering specifies the position of your tribe on the portal"
 msgstr ""
 
-#: themes/default/user/profile.tpl:145
+#: themes/default/user/profile.tpl:142
 msgid "Go to the charter"
 msgstr ""
 
@@ -786,7 +780,7 @@ msgstr ""
 msgid "Tweeter"
 msgstr ""
 
-#: themes/default/user/profile.tpl:155
+#: themes/default/user/profile.tpl:152
 msgid "Remove pending feed"
 msgstr ""
 
@@ -806,7 +800,7 @@ msgstr ""
 #: themes/default/posts.tpl:83
 #: themes/default/single.tpl:126
 #: themes/default/user/dashboard.tpl:65
-#: themes/default/user/profile.tpl:170
+#: themes/default/user/profile.tpl:167
 msgid "Apply"
 msgstr ""
 

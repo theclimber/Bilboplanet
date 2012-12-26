@@ -17,14 +17,14 @@ body{
 	background-color : #b7b7b7;*/
 	background: url('../images/header-bg.png');
 	font-family:'lucida grande',tahoma,verdana,arial,sans-serif;
+	line-height: 20px;
 }
 a{
     color:#247ca5;
     text-decoration:none;
 }
-
 ul{
-    list-style-image:url('../images/bullet.png');
+	list-style: disc;
     padding-left:20px;
 }
 ol{
@@ -200,13 +200,11 @@ div.membersBox {
 	color:#333333;
 }
 .post{
-    font-size:11px;
 	margin: 40px 0;
 	position:relative;
 	display: inline-block;
 	margin: 10px;
 	vertical-align: top;
-	width: 100%;
 }
 .post div.post-data {
 	border-top: solid 3px #000;

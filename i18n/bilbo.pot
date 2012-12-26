@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-16 14:34+0100\n"
+"POT-Creation-Date: 2012-12-26 14:01+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -42,7 +42,7 @@ msgstr ""
 msgid "Name/Nickname : "
 msgstr ""
 
-#: contact.php:61 inc/fonctions.php:1792
+#: contact.php:61 inc/fonctions.php:1788
 msgid "Email : "
 msgstr ""
 
@@ -85,16 +85,16 @@ msgstr ""
 msgid "Vote for this post on <a href=\"%s\" title=\"Go on the planet\">%s</a>."
 msgstr ""
 
-#: feed.php:255
+#: feed.php:256
 #, php-format
 msgid "Gravatar of %s"
 msgstr ""
 
-#: feed.php:271
+#: feed.php:272
 msgid "Similar posts"
 msgstr ""
 
-#: feed.php:350 admin/api/manage-feed_api.php:476
+#: feed.php:351 admin/api/manage-feed_api.php:476
 #: admin/api/manage-pendingfeed_api.php:173
 #: admin/api/manage-pendingfeed_api.php:225
 #: admin/api/manage-pendingfeed_api.php:252
@@ -391,7 +391,7 @@ msgstr ""
 #: admin/api/manage-selection_api.php:82 admin/api/manage-tagging_api.php:173
 #: admin/api/manage-site_api.php:229 admin/api/manage-account_api.php:104
 #: user/api/main_api.php:60 user/api/account_api.php:99
-#: user/api/account_api.php:182 user/api/feed_api.php:279
+#: user/api/account_api.php:182 user/api/feed_api.php:281
 #: user/api/tagging_api.php:214 user/api/social_api.php:114
 #: user/api/post_api.php:134
 msgid "User bad call"
@@ -474,133 +474,133 @@ msgstr ""
 msgid "Read more"
 msgstr ""
 
-#: inc/fonctions.php:1000 inc/fonctions.php:1013
+#: inc/fonctions.php:996 inc/fonctions.php:1009
 msgid "Vote yes"
 msgstr ""
 
-#: inc/fonctions.php:1001 inc/fonctions.php:1019 inc/fonctions.php:1023
+#: inc/fonctions.php:997 inc/fonctions.php:1015 inc/fonctions.php:1019
 msgid "Vote no"
 msgstr ""
 
-#: inc/fonctions.php:1011
+#: inc/fonctions.php:1007
 msgid "This post seems pertinent to you"
 msgstr ""
 
-#: inc/fonctions.php:1017
+#: inc/fonctions.php:1013
 msgid "This post seems not pertinent to you"
 msgstr ""
 
-#: inc/fonctions.php:1021
+#: inc/fonctions.php:1017
 msgid "This post should not be here"
 msgstr ""
 
-#: inc/fonctions.php:1022
+#: inc/fonctions.php:1018
 msgid "Are you sure this post should not be on this planet and should be removed?"
 msgstr ""
 
-#: inc/fonctions.php:1045
+#: inc/fonctions.php:1041
 #, php-format
 msgid "The field \"%s\" has to be a valid email address"
 msgstr ""
 
-#: inc/fonctions.php:1051 inc/fonctions.php:1057
+#: inc/fonctions.php:1047 inc/fonctions.php:1053
 #, php-format
 msgid "The field \"%s\" %s has to be a valid URL"
 msgstr ""
 
-#: inc/fonctions.php:1061
+#: inc/fonctions.php:1057
 #, php-format
 msgid "The field \"%s\" %s is not a valid simplepie feed"
 msgstr ""
 
-#: inc/fonctions.php:1076
+#: inc/fonctions.php:1072
 #, php-format
 msgid "The fields %s does not match"
 msgstr ""
 
-#: inc/fonctions.php:1080
+#: inc/fonctions.php:1076
 #, php-format
 msgid "The fields %s needs to have 4 characters minimum"
 msgstr ""
 
-#: inc/fonctions.php:1088
+#: inc/fonctions.php:1084
 #, php-format
 msgid "The field \"%s\" is empty"
 msgstr ""
 
-#: inc/fonctions.php:1258
+#: inc/fonctions.php:1254
 msgid " bytes"
 msgstr ""
 
-#: inc/fonctions.php:1262
+#: inc/fonctions.php:1258
 msgid " Kb"
 msgstr ""
 
-#: inc/fonctions.php:1266
+#: inc/fonctions.php:1262
 msgid " MB"
 msgstr ""
 
-#: inc/fonctions.php:1270
+#: inc/fonctions.php:1266
 msgid " GB"
 msgstr ""
 
-#: inc/fonctions.php:1731 inc/fonctions.php:1745
+#: inc/fonctions.php:1727 inc/fonctions.php:1741
 msgid "English"
 msgstr ""
 
-#: inc/fonctions.php:1747
+#: inc/fonctions.php:1743
 msgid "French"
 msgstr ""
 
-#: inc/fonctions.php:1749
+#: inc/fonctions.php:1745
 msgid "German"
 msgstr ""
 
-#: inc/fonctions.php:1751
+#: inc/fonctions.php:1747
 msgid "Dutch"
 msgstr ""
 
-#: inc/fonctions.php:1753
+#: inc/fonctions.php:1749
 msgid "Arab"
 msgstr ""
 
-#: inc/fonctions.php:1755
+#: inc/fonctions.php:1751
 msgid "Italian"
 msgstr ""
 
-#: inc/fonctions.php:1757
+#: inc/fonctions.php:1753
 msgid "Spanish"
 msgstr ""
 
-#: inc/fonctions.php:1786
+#: inc/fonctions.php:1782
 msgid "A new Bilboplanet joined the community"
 msgstr ""
 
-#: inc/fonctions.php:1788
+#: inc/fonctions.php:1784
 msgid "Url : "
 msgstr ""
 
-#: inc/fonctions.php:1789
+#: inc/fonctions.php:1785
 msgid "Title : "
 msgstr ""
 
-#: inc/fonctions.php:1790
+#: inc/fonctions.php:1786
 msgid "Description : "
 msgstr ""
 
-#: inc/fonctions.php:1791
+#: inc/fonctions.php:1787
 msgid "Author : "
 msgstr ""
 
-#: inc/fonctions.php:1799
+#: inc/fonctions.php:1795
 msgid "You're planet joined the Bilboplanet community !"
 msgstr ""
 
-#: inc/fonctions.php:1801
+#: inc/fonctions.php:1797
 msgid "Problem sending email."
 msgstr ""
 
-#: inc/fonctions.php:1803
+#: inc/fonctions.php:1799
 msgid "Your planet already joined the Bilboplanet community."
 msgstr ""
 
@@ -669,7 +669,7 @@ msgstr ""
 msgid "Details :"
 msgstr ""
 
-#: inc/cron_fct.php:285 user/api/feed_api.php:141
+#: inc/cron_fct.php:285 user/api/feed_api.php:143
 msgid "User id : "
 msgstr ""
 
@@ -681,7 +681,7 @@ msgstr ""
 msgid "User email : "
 msgstr ""
 
-#: inc/cron_fct.php:288 user/api/feed_api.php:144
+#: inc/cron_fct.php:288 user/api/feed_api.php:146
 msgid "Feed url : "
 msgstr ""
 
@@ -3124,46 +3124,50 @@ msgstr ""
 msgid "This feed %s or site %s is not a valid URL."
 msgstr ""
 
-#: user/api/feed_api.php:111
+#: user/api/feed_api.php:104
+msgid "The user is not existing"
+msgstr ""
+
+#: user/api/feed_api.php:113
 msgid "This feed is already waiting for validation."
 msgstr ""
 
-#: user/api/feed_api.php:119
+#: user/api/feed_api.php:121
 #, php-format
 msgid "This feed is already used in this planet by user %s"
 msgstr ""
 
-#: user/api/feed_api.php:135
+#: user/api/feed_api.php:137
 #, php-format
 msgid "Feed %s waiting for validation"
 msgstr ""
 
-#: user/api/feed_api.php:140
+#: user/api/feed_api.php:142
 #, php-format
 msgid "Feed validation request for %s"
 msgstr ""
 
-#: user/api/feed_api.php:142
+#: user/api/feed_api.php:144
 msgid "Fullname : "
 msgstr ""
 
-#: user/api/feed_api.php:143
+#: user/api/feed_api.php:145
 msgid "Site url : "
 msgstr ""
 
-#: user/api/feed_api.php:152
+#: user/api/feed_api.php:154
 msgid "An email was sent to the site administrator to ask for validation."
 msgstr ""
 
-#: user/api/feed_api.php:154
+#: user/api/feed_api.php:156
 msgid "The email could not be sent to the site administrator for validation."
 msgstr ""
 
-#: user/api/feed_api.php:195 user/api/feed_api.php:235
+#: user/api/feed_api.php:197 user/api/feed_api.php:237
 msgid "Feed removed : "
 msgstr ""
 
-#: user/api/feed_api.php:198 user/api/feed_api.php:238
+#: user/api/feed_api.php:200 user/api/feed_api.php:240
 msgid "This feed does not exist"
 msgstr ""
 

@@ -1,0 +1,40 @@
+div#site-nav {
+	display: block;
+	height: 30px;
+	font-size: 0.8em;
+}
+div#site-nav a, div#site-nav a:hover{
+	color: #DDD;
+}
+div#site-nav ul.menu {
+	list-style:none;
+	padding: 6px 0 0;
+}
+div#site-nav ul.menu li.menu {
+	position: relative;
+	float:left;
+	border-left: 1px solid #2f2f2f;
+	padding: 0 10px;
+}
+div#site-nav ul.menu ul.submenu {
+	display:none;
+}
+div#site-nav ul.menu li:hover ul.submenu {
+	display:block;
+	position: absolute;
+	top: 20px;
+	background-color: #000;
+	z-index: 1000;
+	width: 200px;
+	border-radius: 5px;
+}
+div#site-nav ul.menu li:hover ul.submenu li {
+	line-height: 25px;
+}
+div#site-nav ul.menu li:hover ul.submenu li:hover {
+	background-color: #333;
+}
+img#logo{
+    font-size:30px; /* Affects size of alt text if image is missing */
+	display:inline-block;
+}

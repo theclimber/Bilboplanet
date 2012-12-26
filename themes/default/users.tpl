@@ -3,7 +3,7 @@
 	<!-- BEGIN user.block -->
 		<div class="userbox">
 			<a href="{$planet.url}/index.php?list=1&user_id={$user.id}" class="image" title="{_Show posts of} {$user.fullname}">
-				<img class="avatar" src="{$avatar_url}&size=50"/>
+				<img class="avatar" width="50" src="{$avatar_url}"/>
 			</a>
 			<p class="nickname">
 				{$user.fullname}<br/>

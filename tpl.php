@@ -87,7 +87,7 @@ if (!isset($current_page) || in_array($current_page, array('portal', 'list', 'po
 		FROM ".$core->prefix."tribe
 		WHERE (user_id = 'root' ".$user_condition.")
 			AND visibility = 1
-		ORDER BY ordering DESC
+		ORDER BY ordering ASC
 			";
 	//print $sql_tribes;
 	//exit;

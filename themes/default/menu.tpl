@@ -12,7 +12,7 @@
 		</li></a>
 	<!-- BEGIN menu.tribes -->
 		<a href="{$planet.url}/?list=1&tribe_id={$tribe.id}">
-			<li id="{$tribe.id}" class="entry {$tribe.selected}">
+			<li id="{$tribe.id}" class="entry {$tribe.selected} entry-tribe">
 				<img src="{$tribe.icon}" height="24px"/>
 				<span class="menu-text">{$tribe.name}</span>
 		</li></a>

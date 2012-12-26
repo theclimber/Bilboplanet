@@ -611,6 +611,9 @@ div#tribes-bg ul.menu li {
 div#tribes-bg ul.menu li.entry:hover {
 	background-color: #b7b7b7;
 }
+div#tribes-bg ul.menu li.entry-tribe {
+	padding-left: 20px;
+}
 div#tribes-bg ul.menu a li{
 	color: #5C5C5C;
 }
@@ -1796,4 +1799,10 @@ div.flash_warning {
 span.read-more {
     display:block;
     margin-top: 10px;
+}
+div.welcome-box {
+	background-color: #FFF;
+	padding: 10px;
+	border-radius:; 5px;
+	color: #666;
 }

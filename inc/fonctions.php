@@ -821,11 +821,7 @@ function showSinglePost($rs, $tpl, $search_value, $multiview=true, $strip_tags=f
 	$tpl->setVar('post', $post);
 	# Gravatar
 	if($avatar) {
-		$avatar_email = strtolower($post['author_email']);
-//		$identicon = BP_PLANET_URL."/inc/lib/identicon.php?hash=".md5($avatar_email);
-//		$backup_img = urlencode(BP_PLANET_URL."/themes/".$blog_settings->get('planet_theme')."/images/gravatar.png");
-//		$libravatar = "http://cdn.libravatar.org/avatar/".md5($avatar_email)."?d=".$identicon;
-		$libravatar = "http://cdn.libravatar.org/avatar/".md5($avatar_email)."?default=identicon";
+		$libravatar = getUserIcon($post['author_email']);
 		$tpl->setVar('avatar_url', $libravatar);
 
 		$tpl->render('post.block.gravatar');
@@ -1826,5 +1822,18 @@ function getTribeIcon($tribe_id,$tribe_name,$tribe_icon) {
         $tribe_icon = "http://cdn.libravatar.org/avatar/".md5($tribe_id.$tribe_name)."?default=retro";
     }
     return $tribe_icon;
+}
+function getUserIcon($user_email) {
+	global $blog_settings;
+	$avatar_email = strtolower($user_email);
+//		$backup_img = urlencode(BP_PLANET_URL."/themes/".$blog_settings->get('planet_theme')."/images/gravatar.png");
+	$identicon = "/themes/".$blog_settings->get('planet_theme')."/images/gravatar.png";
+	if (!is_file(dirname(__FILE__)."/..".$identicon)) {
+		$libravatar = "http://cdn.libravatar.org/avatar/".md5($avatar_email)."?default=identicon";
+	} else {
+		$identicon = urlencode(BP_PLANET_URL.$identicon);
+		$libravatar = "http://cdn.libravatar.org/avatar/".md5($avatar_email)."?d=".$identicon;
+	}
+	return $libravatar;
 }
 ?>

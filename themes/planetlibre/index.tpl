@@ -58,7 +58,7 @@
 				<li class="menu"><a href="http://blog.planet-libre.org/a-propos/">&Agrave; propos</a></li>
 				<li class="menu"><a href="http://www.planet-libre.org/contact.php">Nous contacter</a></li>
 				<li class="menu"><a href="http://liens.planet-libre.org">Brèves</a>
-				<li class="menu"><a href="http://www.planet-libre.org/inscription.php">Charte et inscription</a></li>
+				<li class="menu"><a href="http://www.planet-libre.org/charter.php">Charte</a></li>
 				<li class="menu"><a href="http://blog.planet-libre.org/f-a-q/">F.A.Q.</a>
 					<ul class="submenu">
 						<li><a href="http://blog.planet-libre.org/f-a-q/conseil-decriture/">Conseils d'écriture</a></li>

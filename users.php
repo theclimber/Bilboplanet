@@ -51,8 +51,9 @@ while ($rs->fetch()) {
 		);
 	$core->tpl->setVar('user', $user);
 
-	$avatar_email = strtolower($rs->user_email);
-	$libravatar = "http://cdn.libravatar.org/avatar/".md5($avatar_email)."?default=identicon";
+	//$avatar_email = strtolower($rs->user_email);
+	//$libravatar = "http://cdn.libravatar.org/avatar/".md5($avatar_email)."?default=identicon";
+	$libravatar = getUserIcon($rs->user_email);
 	$core->tpl->setVar('avatar_url', $libravatar);
 
 	$core->tpl->render("user.block");

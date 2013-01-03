@@ -250,15 +250,16 @@ if (isset($_GET) && isset($_GET['type'])) {
 
 		# Gravatar
 		if($blog_settings->get('planet_avatar')) {
-			$avatar_email = strtolower($post_list->user_email);
-			$avatar_url = "http://cdn.libravatar.org/avatar/".md5($avatar_email)."?d=".urlencode(BP_PLANET_URL."/themes/".$blog_settings->get('planet_theme')."/images/gravatar.png")."&s=40";
+			$avatar_url = getUserIcon($post_list->user_email);
+//			$avatar_email = strtolower($post_list->user_email);
+//			$avatar_url = "http://cdn.libravatar.org/avatar/".md5($avatar_email)."?d=".urlencode(BP_PLANET_URL."/themes/".$blog_settings->get('planet_theme')."/images/gravatar.png")."&s=40";
 			$avatar = '<img src="'.$avatar_url.'" alt="'.sprintf(T_('Gravatar of %s'),$post_list->user_fullname).'" class="gravatar" />';
 		}
 
 		if($blog_settings->get('planet_avatar')) {
 			$item = $item."\n<p>".$avatar;
 		}
-		
+
 		$item = $item."<br/>".$links."</p>";
 
 		# Similar posts

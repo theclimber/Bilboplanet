@@ -17,14 +17,14 @@ body{
 	background-color : #b7b7b7;*/
 	background: url('../images/header-bg.png');
 	font-family:'lucida grande',tahoma,verdana,arial,sans-serif;
+	line-height: 20px;
 }
 a{
     color:#247ca5;
     text-decoration:none;
 }
-
 ul{
-    list-style-image:url('../images/bullet.png');
+	list-style: disc;
     padding-left:20px;
 }
 ol{
@@ -200,13 +200,11 @@ div.membersBox {
 	color:#333333;
 }
 .post{
-    font-size:11px;
 	margin: 40px 0;
 	position:relative;
 	display: inline-block;
 	margin: 10px;
 	vertical-align: top;
-	width: 100%;
 }
 .post div.post-data {
 	border-top: solid 3px #000;
@@ -610,6 +608,9 @@ div#tribes-bg ul.menu li {
 }
 div#tribes-bg ul.menu li.entry:hover {
 	background-color: #b7b7b7;
+}
+div#tribes-bg ul.menu li.entry-tribe {
+	padding-left: 20px;
 }
 div#tribes-bg ul.menu a li{
 	color: #5C5C5C;
@@ -1796,4 +1797,10 @@ div.flash_warning {
 span.read-more {
     display:block;
     margin-top: 10px;
+}
+div.welcome-box {
+	background-color: #FFF;
+	padding: 10px;
+	border-radius:; 5px;
+	color: #666;
 }

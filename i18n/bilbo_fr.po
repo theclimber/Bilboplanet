@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Bilboplanet\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-10-29 10:55+0200\n"
-"PO-Revision-Date: 2012-12-16 14:37+0100\n"
+"PO-Revision-Date: 2012-12-26 14:01+0100\n"
 "Last-Translator: Gregoire de Hemptinne <greg@theclimber.be>\n"
 "Language-Team: French\n"
 "Language: \n"
@@ -42,7 +42,7 @@ msgstr "Ajouter une recherche"
 msgid "See post"
 msgstr "Voir l'article"
 
-#: themes/default/user/profile.tpl:132
+#: themes/default/user/profile.tpl:129
 msgid "No feed found"
 msgstr "Aucun flux trouvé"
 
@@ -60,7 +60,7 @@ msgstr "Aucun tag trouvé"
 msgid "Contact us"
 msgstr "Contactez nous"
 
-#: themes/default/user/profile.tpl:114
+#: themes/default/user/profile.tpl:111
 #: admin/api/manage-feed_api.php:512
 msgid "Allow comments on this feed"
 msgstr "Autoriser les commentaires sur ce flux"
@@ -104,7 +104,7 @@ msgstr "Vous pouvez contacter les administrateurs via le formulaire ci-dessous :
 msgid "Shaarli instance"
 msgstr "Instance Shaarli"
 
-#: themes/default/user/profile.tpl:85
+#: themes/default/user/profile.tpl:82
 #: themes/default/user/tribes.tpl:31
 #: admin/manage-post.php:171
 #: admin/manage-feed.php:90
@@ -176,7 +176,7 @@ msgstr "Ajouter recherche à la tribu"
 msgid "Add users to tribe"
 msgstr "Ajouter des utilisateurs à la tribu"
 
-#: themes/default/user/profile.tpl:118
+#: themes/default/user/profile.tpl:115
 msgid "Disallow comments on this feed"
 msgstr "Désactiver les commentaires sur ce flux"
 
@@ -270,7 +270,7 @@ msgstr "Publier"
 msgid "Show posts of the user"
 msgstr "Afficher les articles de l'utilisateur"
 
-#: themes/default/user/profile.tpl:141
+#: themes/default/user/profile.tpl:138
 msgid "Your pending for validation feeds"
 msgstr "Flux en attente de validation"
 
@@ -329,7 +329,7 @@ msgstr "Menu principal"
 
 #: themes/default/post_tags.tpl:7
 #: themes/default/user/dashboard.tpl:38
-#: themes/default/user/profile.tpl:123
+#: themes/default/user/profile.tpl:120
 msgid "Add tag"
 msgstr "Ajouter un mot-clé"
 
@@ -379,7 +379,7 @@ msgstr "Partager sur Shaarli"
 #: themes/default/posts.tpl:81
 #: themes/default/single.tpl:124
 #: themes/default/user/dashboard.tpl:63
-#: themes/default/user/profile.tpl:168
+#: themes/default/user/profile.tpl:165
 #: themes/default/user/tribes.tpl:142
 #: themes/default/user/write.tpl:21
 #: admin/manage-tagging.php:96
@@ -478,7 +478,7 @@ msgstr "Ecrit par"
 msgid "Update"
 msgstr "Mise à jour"
 
-#: themes/default/user/profile.tpl:86
+#: themes/default/user/profile.tpl:83
 #: themes/default/user/tribes.tpl:32
 #: admin/manage-feed.php:91
 #: admin/manage-feed.php:189
@@ -518,11 +518,15 @@ msgstr "Cacher la barre latérale"
 msgid "Go on Shaarli"
 msgstr "Aller sur Shaarli"
 
+#: themes/default/user/profile.tpl:59
+msgid "New website"
+msgstr "Nouveau site"
+
 #: themes/default/posts.tpl:79
 #: themes/default/single.tpl:122
 #: themes/default/tags.tpl:25
 #: themes/default/user/dashboard.tpl:61
-#: themes/default/user/profile.tpl:166
+#: themes/default/user/profile.tpl:163
 #: themes/default/user/write.tpl:19
 #: admin/manage-tagging.php:94
 #: admin/manage-feed.php:228
@@ -585,12 +589,6 @@ msgstr "(ex: http://identi.ca/myaccount ou http://statusnet.example.com)"
 msgid "Toggle tribe visibility"
 msgstr "Changer la visibilité de la tribu"
 
-#: themes/default/user/profile.tpl:76
-#: themes/default/user/profile.tpl:77
-#: themes/default/user/profile.tpl:78
-msgid "Your feed url"
-msgstr "L'url de votre flux"
-
 #: themes/default/index.tpl:110
 msgid "My Shaarli"
 msgstr "Mon Shaarli"
@@ -607,7 +605,7 @@ msgstr "Langue"
 msgid "Share on StatusNet"
 msgstr "Partager sur StatusNet"
 
-#: themes/default/user/profile.tpl:142
+#: themes/default/user/profile.tpl:139
 msgid "Theses feeds need the validation of the site administrator. Please read the charter before submitting new feeds."
 msgstr "Ces flux nécessitent la validation de l'administrateur. Veuillez lire la charte avant de soumettre de nouveaux flux."
 
@@ -724,7 +722,7 @@ msgid "Close"
 msgstr "Fermer"
 
 #: themes/default/single.tpl:46
-#: feed.php:271
+#: feed.php:272
 msgid "Similar posts"
 msgstr "Articles similaires"
 
@@ -743,13 +741,13 @@ msgid "Add tags to tribe"
 msgstr "Ajouter des tags à la tribu"
 
 #: themes/default/single.tpl:75
-#: user/api/feed_api.php:142
+#: user/api/feed_api.php:144
 msgid "Fullname : "
 msgstr "Nom complet :"
 
-#: themes/default/user/profile.tpl:59
-msgid "New website"
-msgstr "Nouveau site"
+#: themes/default/user/menu.tpl:10
+msgid "Profile and feeds"
+msgstr "Profil et flux"
 
 #: themes/default/post_tags.tpl:2
 msgid "tags :"
@@ -788,10 +786,6 @@ msgstr "Votre login"
 msgid "Tribe :"
 msgstr "Tribu:"
 
-#: themes/default/user/menu.tpl:10
-msgid "Profile"
-msgstr "Profil"
-
 #: themes/default/user/tribes.tpl:76
 #: admin/api/manage-tribe_api.php:824
 msgid "Remove tribe"
@@ -829,7 +823,7 @@ msgstr "Email"
 msgid "Post count :"
 msgstr "Nombre d'articles :"
 
-#: themes/default/user/profile.tpl:126
+#: themes/default/user/profile.tpl:123
 msgid "Remove feed"
 msgstr "Supprimer flux"
 
@@ -851,7 +845,7 @@ msgstr "S'abonner à une newsletter"
 msgid "The ordering specifies the position of your tribe on the portal"
 msgstr "L'ordre détermine la position de la tribu sur le portail"
 
-#: themes/default/user/profile.tpl:145
+#: themes/default/user/profile.tpl:142
 msgid "Go to the charter"
 msgstr "Aller à la charte"
 
@@ -930,7 +924,7 @@ msgstr "Inscription"
 msgid "Tweeter"
 msgstr "Tweeter"
 
-#: themes/default/user/profile.tpl:155
+#: themes/default/user/profile.tpl:152
 msgid "Remove pending feed"
 msgstr "Supprimer les flux en attente"
 
@@ -949,7 +943,7 @@ msgstr "Recherche :"
 #: themes/default/posts.tpl:83
 #: themes/default/single.tpl:126
 #: themes/default/user/dashboard.tpl:65
-#: themes/default/user/profile.tpl:170
+#: themes/default/user/profile.tpl:167
 #: admin/manage-useroption.php:123
 #: admin/api/manage-permissions_api.php:171
 #: admin/api/manage-option_api.php:677
@@ -991,7 +985,7 @@ msgid "Name/Nickname : "
 msgstr "Nom/Pseudo : "
 
 #: contact.php:61
-#: inc/fonctions.php:1792
+#: inc/fonctions.php:1788
 msgid "Email : "
 msgstr "Email : "
 
@@ -1033,12 +1027,12 @@ msgstr "%s tribe"
 msgid "Vote for this post on <a href=\"%s\" title=\"Go on the planet\">%s</a>."
 msgstr "Votez pour ce billet sur <a href=\"%s\" title=\"Aller sur le planet\">%s</a>."
 
-#: feed.php:255
+#: feed.php:256
 #, php-format
 msgid "Gravatar of %s"
 msgstr "Gravatar de %s"
 
-#: feed.php:350
+#: feed.php:351
 #: admin/api/manage-feed_api.php:476
 #: admin/api/manage-pendingfeed_api.php:173
 #: admin/api/manage-pendingfeed_api.php:225
@@ -1315,7 +1309,7 @@ msgstr "Erreur : vous avez déjà voté pour cet article"
 #: user/api/main_api.php:60
 #: user/api/account_api.php:99
 #: user/api/account_api.php:182
-#: user/api/feed_api.php:279
+#: user/api/feed_api.php:281
 #: user/api/tagging_api.php:214
 #: user/api/social_api.php:114
 #: user/api/post_api.php:134
@@ -1412,138 +1406,138 @@ msgstr "Voir l'article"
 msgid "Read more"
 msgstr "Lire la suite"
 
-#: inc/fonctions.php:1000
-#: inc/fonctions.php:1013
+#: inc/fonctions.php:996
+#: inc/fonctions.php:1009
 msgid "Vote yes"
 msgstr "Votez oui"
 
-#: inc/fonctions.php:1001
+#: inc/fonctions.php:997
+#: inc/fonctions.php:1015
 #: inc/fonctions.php:1019
-#: inc/fonctions.php:1023
 msgid "Vote no"
 msgstr "Votez non"
 
-#: inc/fonctions.php:1011
+#: inc/fonctions.php:1007
 msgid "This post seems pertinent to you"
 msgstr "Cet article vous semble pertinent"
 
-#: inc/fonctions.php:1017
+#: inc/fonctions.php:1013
 msgid "This post seems not pertinent to you"
 msgstr "Cet article ne vous semble pas pertinent"
 
-#: inc/fonctions.php:1021
+#: inc/fonctions.php:1017
 msgid "This post should not be here"
 msgstr "Cet article n'a pas sa place ici"
 
-#: inc/fonctions.php:1022
+#: inc/fonctions.php:1018
 msgid "Are you sure this post should not be on this planet and should be removed?"
 msgstr "Êtes-vous sûr que cet article ne devrait pas se trouver sur le planet et devrait être supprimé ?"
 
-#: inc/fonctions.php:1045
+#: inc/fonctions.php:1041
 #, php-format
 msgid "The field \"%s\" has to be a valid email address"
 msgstr "Le champ \"%s\" doit être une adresse email valide"
 
-#: inc/fonctions.php:1051
-#: inc/fonctions.php:1057
+#: inc/fonctions.php:1047
+#: inc/fonctions.php:1053
 #, php-format
 msgid "The field \"%s\" %s has to be a valid URL"
 msgstr "Le champ \"%s\" %s doit être une URL valide"
 
-#: inc/fonctions.php:1061
+#: inc/fonctions.php:1057
 #, php-format
 msgid "The field \"%s\" %s is not a valid simplepie feed"
 msgstr "Le champ \"%s\" %s n'est pas un flux simplepie valide"
 
-#: inc/fonctions.php:1076
+#: inc/fonctions.php:1072
 #, php-format
 msgid "The fields %s does not match"
 msgstr "Le champ %s ne correspond pas"
 
-#: inc/fonctions.php:1080
+#: inc/fonctions.php:1076
 #, php-format
 msgid "The fields %s needs to have 4 characters minimum"
 msgstr "Le champ %s doit contenir 4 caractères minimum"
 
-#: inc/fonctions.php:1088
+#: inc/fonctions.php:1084
 #, php-format
 msgid "The field \"%s\" is empty"
 msgstr "Le champ \"%s\" est vide"
 
-#: inc/fonctions.php:1258
+#: inc/fonctions.php:1254
 msgid " bytes"
 msgstr "octets"
 
-#: inc/fonctions.php:1262
+#: inc/fonctions.php:1258
 msgid " Kb"
 msgstr "Ko"
 
-#: inc/fonctions.php:1266
+#: inc/fonctions.php:1262
 msgid " MB"
 msgstr "Mo"
 
-#: inc/fonctions.php:1270
+#: inc/fonctions.php:1266
 msgid " GB"
 msgstr "GB"
 
-#: inc/fonctions.php:1731
-#: inc/fonctions.php:1745
+#: inc/fonctions.php:1727
+#: inc/fonctions.php:1741
 msgid "English"
 msgstr "Anglais"
 
-#: inc/fonctions.php:1747
+#: inc/fonctions.php:1743
 msgid "French"
 msgstr "Français"
 
-#: inc/fonctions.php:1749
+#: inc/fonctions.php:1745
 msgid "German"
 msgstr "Allemand"
 
-#: inc/fonctions.php:1751
+#: inc/fonctions.php:1747
 msgid "Dutch"
 msgstr "Néerlandais"
 
-#: inc/fonctions.php:1753
+#: inc/fonctions.php:1749
 msgid "Arab"
 msgstr "Arabe"
 
-#: inc/fonctions.php:1755
+#: inc/fonctions.php:1751
 msgid "Italian"
 msgstr "Italien"
 
-#: inc/fonctions.php:1757
+#: inc/fonctions.php:1753
 msgid "Spanish"
 msgstr "Espagnol"
 
-#: inc/fonctions.php:1786
+#: inc/fonctions.php:1782
 msgid "A new Bilboplanet joined the community"
 msgstr "Un nouveau Bilboplanet a rejoint la communauté"
 
-#: inc/fonctions.php:1788
+#: inc/fonctions.php:1784
 msgid "Url : "
 msgstr "Url :"
 
-#: inc/fonctions.php:1789
+#: inc/fonctions.php:1785
 msgid "Title : "
 msgstr "Titre :"
 
-#: inc/fonctions.php:1790
+#: inc/fonctions.php:1786
 msgid "Description : "
 msgstr "Description :"
 
-#: inc/fonctions.php:1791
+#: inc/fonctions.php:1787
 msgid "Author : "
 msgstr "Auteur : "
 
-#: inc/fonctions.php:1799
+#: inc/fonctions.php:1795
 msgid "You're planet joined the Bilboplanet community !"
 msgstr "Votre planet a rejoint la communauté du Bilboplanet !"
 
-#: inc/fonctions.php:1801
+#: inc/fonctions.php:1797
 msgid "Problem sending email."
 msgstr "Problème en envoyant l'email."
 
-#: inc/fonctions.php:1803
+#: inc/fonctions.php:1799
 msgid "Your planet already joined the Bilboplanet community."
 msgstr "Votre planet a déjà rejoint la communauté du Bilboplanet."
 
@@ -1614,7 +1608,7 @@ msgid "Details :"
 msgstr "Détails :"
 
 #: inc/cron_fct.php:285
-#: user/api/feed_api.php:141
+#: user/api/feed_api.php:143
 msgid "User id : "
 msgstr "Id utilisateur :"
 
@@ -1627,7 +1621,7 @@ msgid "User email : "
 msgstr "Email : "
 
 #: inc/cron_fct.php:288
-#: user/api/feed_api.php:144
+#: user/api/feed_api.php:146
 msgid "Feed url : "
 msgstr "Url du flux :"
 
@@ -4044,44 +4038,48 @@ msgstr "Nous espérons que vous allez apprécier votre accès à ce planet et fa
 msgid "This feed %s or site %s is not a valid URL."
 msgstr "Ce flux %s ou site %s n'est pas une URL valide."
 
-#: user/api/feed_api.php:111
+#: user/api/feed_api.php:104
+msgid "The user is not existing"
+msgstr "L'utilisateur n'existe pas"
+
+#: user/api/feed_api.php:113
 msgid "This feed is already waiting for validation."
 msgstr "Ce flux est déjà en attente de validation"
 
-#: user/api/feed_api.php:119
+#: user/api/feed_api.php:121
 #, php-format
 msgid "This feed is already used in this planet by user %s"
 msgstr "Le flux %s est déjà utilisé par un utilisateur"
 
-#: user/api/feed_api.php:135
+#: user/api/feed_api.php:137
 #, php-format
 msgid "Feed %s waiting for validation"
 msgstr "Flux %s en attente de validation"
 
-#: user/api/feed_api.php:140
+#: user/api/feed_api.php:142
 #, php-format
 msgid "Feed validation request for %s"
 msgstr "Demande de validation pour le flux %s"
 
-#: user/api/feed_api.php:143
+#: user/api/feed_api.php:145
 msgid "Site url : "
 msgstr "Adresse du site :"
 
-#: user/api/feed_api.php:152
+#: user/api/feed_api.php:154
 msgid "An email was sent to the site administrator to ask for validation."
 msgstr "Un email a été envoyé à l'administrateur du site pour demander validation"
 
-#: user/api/feed_api.php:154
+#: user/api/feed_api.php:156
 msgid "The email could not be sent to the site administrator for validation."
 msgstr "L'email n'a pas pu être envoyé à l'administrateur du site pour validation."
 
-#: user/api/feed_api.php:195
-#: user/api/feed_api.php:235
+#: user/api/feed_api.php:197
+#: user/api/feed_api.php:237
 msgid "Feed removed : "
 msgstr "Flux supprimé :"
 
-#: user/api/feed_api.php:198
-#: user/api/feed_api.php:238
+#: user/api/feed_api.php:200
+#: user/api/feed_api.php:240
 msgid "This feed does not exist"
 msgstr "Ce flux n'existe pas dans la base de données."
 
@@ -4108,6 +4106,12 @@ msgstr "Vos préférences sociales ont correctement été configurées"
 #: user/api/post_api.php:77
 msgid "The post is already removed"
 msgstr "Cet article est déjà supprimé"
+
+#~ msgid "Profile"
+#~ msgstr "Profil"
+
+#~ msgid "Your feed url"
+#~ msgstr "L'url de votre flux"
 
 #~ msgid "Existing site url"
 #~ msgstr "URL du site existant"

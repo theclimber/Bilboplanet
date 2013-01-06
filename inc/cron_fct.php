@@ -110,6 +110,7 @@ function getItemsFromFeeds ($rs, $print) {
 		$feed->set_cache_location(dirname(__FILE__).'/../admin/cache');
 #$feed->enable_cache(false);
 #		$feed->set_cache_duration($item_refresh);
+		$feed->set_timeout(15);
 		$feed->init();
 
 		# Pour faire fonctionner les lecteurs flash, non recomande par simplepie
@@ -124,7 +125,7 @@ function getItemsFromFeeds ($rs, $print) {
 			if (ereg($rs->feed_url, $error)) {
 				$log_msg = logMsg(T_("No feed found : ").$error, "", 3, $print);
 			} else {
-				$log_msg = logMsg(sprintf(T_("No feed found on %s (owner : %s)"),$rs->feed_url,$rs->user_id).$error, "", 3, $print);
+				$log_msg = logMsg(sprintf(T_("No feed found on %s (owner : %s)"),$rs->feed_url,$rs->user_id)." ".$error, "", 3, $print);
 			}
 			if ($print) $output .= $log_msg;
 		} else {

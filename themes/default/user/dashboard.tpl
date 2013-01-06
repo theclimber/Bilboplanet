@@ -51,7 +51,8 @@
 			</td>
 			</tr>
 		<!-- ELSE userpost.item -->
-			<tr><td colspan=2>{_No post found}</td></tr>
+			<tr><td colspan=2>{_No post found. Maybe you didn't subscribe any feeds yet. Feel free to submit your feeds on the profile page.}<br/>
+            {_You can submit several kind of feeds. I you have a blog (wordpress), a bookmarking tool (shaarli) or any other kind of feed, maybe we could be interested in your input. Have a look at our charter for any details about this.}</td></tr>
 		<!-- END userpost.item -->
 		</table>
 	</div>

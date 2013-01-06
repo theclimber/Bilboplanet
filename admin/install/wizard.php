@@ -91,6 +91,7 @@ if (!empty($_POST))
 
 		$full_conf = file_get_contents($config_in);
 		writeConfigValue('BP_DBHOST',$DBHOST,$full_conf);
+		writeConfigValue('BP_DBDRIVER',$DBDRIVER,$full_conf);
 		writeConfigValue('BP_DBUSER',$DBUSER,$full_conf);
 		writeConfigValue('BP_DBPASSWORD',$DBPASSWORD,$full_conf);
 		writeConfigValue('BP_DBNAME',$DBNAME,$full_conf);

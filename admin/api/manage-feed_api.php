@@ -71,6 +71,10 @@ if(isset($_POST['action'])) {
 		$feed_name = check_field('feed_name',trim($_POST['feed_name']));
 		$feed_trust = trim($_POST['feed_trust']);
 		$error = array();
+        $moderation_enabled = $blog_settings->get('planet_moderation');
+        if (!$moderation_enabled) {
+            $feed_trust = 1;
+        }
 
 		if ($feed_url['success']
 			&& $feed_name['success']

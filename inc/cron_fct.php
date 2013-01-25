@@ -658,7 +658,7 @@ function getFirstPostImageUrl($post_content) {
 	return $firstImage;
 }
 function savePostImage($post_id,$file_url) {
-	global $blog_settings;
+	global $blog_settings,$log_msg;
 	//echo "<br/>saving image ..." . $file_url. " ----";
 	if ($file_url != '') {
 		$post_icon_folder = 'data/images';

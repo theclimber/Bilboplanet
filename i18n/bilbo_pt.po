@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Bilboplanet\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-10-29 10:55+0200\n"
-"PO-Revision-Date: 2013-01-26 20:22+0100\n"
+"PO-Revision-Date: 2012-12-16 14:37+0100\n"
 "Last-Translator: Gregoire de Hemptinne <greg@theclimber.be>\n"
 "Language-Team: French\n"
 "Language: \n"
@@ -362,6 +362,7 @@ msgstr "Articles du mois"
 msgid "Welcome on this Planet. A Planet is a feed aggregator website designed to collect posts from the weblogs of poeple of an Internet community and display them on a single page. It creates pages with entries from the original feeds. This planet is running with the Bilboplanet engine."
 msgstr "Bemvindo nesse planet. Um planet é um site que agrega fluxos de sites, permitindo recolher os artigos de bloges de uma comunidade do internet e mostrá-los numa única pagina. Ele cria novas paginas usando o fluxo fonte. Esse planet mesmo funciona com o Bilboplanet."
 
+
 #: themes/default/post_tags.tpl:10
 #: themes/default/user/write.tpl:24
 msgid "Allow comments"
@@ -370,6 +371,8 @@ msgstr "Autoriser les commentaires"
 #: themes/default/user/profile.tpl:45
 msgid "If you want to add your own blog post to the planet you can add the feed of your blog here. After submitting a new feed, the site administrador will validate it and enable it in the system.<br/>This planet support most of the blog engines (Wordpress, Dotclear, ...). The only thing you need to submit your blog is the url of the RSS feed."
 msgstr "Se você quiser disponibilizar os artigos do vosso blog nesse planet, pode adicionar o fluxo  aqui. Dahi, o adiministrador do site vai validar a vossa pedida e adicioná-la no sistema.<br/> Esse planet reconhece a maiora das plataformas de blog (Wordpress, Dotclear,…). A única coisa que você presica é a URL do fluxo RSS."
+
+
 
 #: themes/default/user/profile.tpl:43
 msgid "Your feeds"
@@ -395,10 +398,9 @@ msgstr "Palavras chaves separadas por uma virgula (ex. : linux,web,event)"
 msgid "Local instance"
 msgstr "Instancia local"
 
-#: themes/default/charter.tpl:16
 #: themes/default/topbar.tpl:6
 msgid "Posts of the day"
-msgstr "Artigos de hoje" #to chec"
+msgstr "Artigos de hoje" #to check
 
 #: themes/default/users.tpl:5
 msgid "Show posts of"
@@ -428,7 +430,8 @@ msgstr "Escreve ou compartilhe"
 
 #: themes/default/user/social.tpl:32
 msgid "Remote shaarli"
-msgstr "Shaarli remote" #chec"
+msgstr "Shaarli remote" #check
+
 
 #: themes/default/user/tribes.tpl:126
 #: admin/manage-tribe.php:131
@@ -446,7 +449,7 @@ msgstr "Artigos mais antigos"
 
 #: themes/default/index.tpl:55
 msgid "Show sidebar"
-msgstr "Exibir a barra lateral" #chec"
+msgstr "Exibir a barra lateral" #check
 
 #: themes/default/index.tpl:114
 #: admin/sidebar.php:37
@@ -476,7 +479,7 @@ msgstr "Escrito por"
 #: admin/api/manage-user_api.php:474
 #: admin/api/manage-feed_api.php:558
 msgid "Update"
-msgstr "Fazer update"#chec"
+msgstr "Fazer update"#check
 
 #: themes/default/user/profile.tpl:86
 #: themes/default/user/tribes.tpl:32
@@ -512,7 +515,7 @@ msgstr "Vazio"
 
 #: themes/default/index.tpl:54
 msgid "Hide sidebar"
-msgstr "Esconder a barra lateral" #chec"
+msgstr "Esconder a barra lateral" #check
 
 #: themes/default/user/social.tpl:42
 msgid "Go on Shaarli"
@@ -546,7 +549,7 @@ msgstr "Não palavras-chaves :"
 #: themes/default/user/tribes.tpl:157
 #: admin/manage-tribe.php:161
 msgid "Write your search in the text field"
-msgstr "Preenche vossa pesquisa no campo texto"#chec"
+msgstr "Preenche vossa pesquisa no campo texto"#check
 
 #: themes/default/post_tags.tpl:13
 msgid "Disable comments"
@@ -609,7 +612,7 @@ msgstr "Compartilhar no StatusNet"
 
 #: themes/default/user/profile.tpl:142
 msgid "Theses feeds need the validation of the site administrador. Please read the charter before submitting new feeds."
-msgstr "Esses fluxos precisam a avaliação do administrador. Favor ler as regras antes de submitir novos fluxos."#check : chart"
+msgstr "Esses fluxos precisam a avaliação do administrador. Favor ler as regras antes de submitir novos fluxos."#check : charte
 
 #: themes/default/user/write.tpl:2
 msgid "Write a post"
@@ -654,7 +657,7 @@ msgstr "Últimos artigos de você"
 
 #: themes/default/topbar.tpl:44
 msgid "Filter on authors :"
-msgstr "Filtrar com os autores :"#chec"
+msgstr "Filtrar com os autores :"#check
 
 #: themes/default/user/social.tpl:51
 msgid "StatusNet account"
@@ -663,7 +666,7 @@ msgstr "Conta StatusNet"
 #: themes/default/index.tpl:100
 #: charter.php:34
 msgid "Charter"
-msgstr "Charte"#tod"
+msgstr "Charte"#todo
 
 #: themes/default/user/tribes.tpl:109
 #: admin/manage-tribe.php:115
@@ -677,7 +680,7 @@ msgstr "Submitir fluxo"
 #: themes/default/posts.tpl:50
 #: themes/default/single.tpl:40
 msgid "Viewed :"
-msgstr "Vistos :"#viewed o que ?"
+msgstr "Vistos :"#viewed o que ??
 
 #: themes/default/user/tribes.tpl:6
 msgid "Configure your Tribes"
@@ -735,7 +738,7 @@ msgstr "Último artigo :"
 #: themes/default/user/tribes.tpl:21
 #: admin/manage-tribe.php:84
 msgid "ex: climate change"
-msgstr "ex : cambio climático" #vinc"
+msgstr "ex : cambio climático" #vince
 
 #: themes/default/user/tribes.tpl:77
 #: admin/api/manage-tribe_api.php:825
@@ -778,7 +781,7 @@ msgstr "E-mail"
 #: themes/default/single.tpl:10
 #: themes/default/single.tpl:22
 msgid "at"
-msgstr "a"#at o qué ?"
+msgstr "a"#at o qué ??
 
 #: themes/default/signup.tpl:18
 msgid "Your login"
@@ -799,7 +802,7 @@ msgstr "Remover tribo"
 
 #: themes/default/user/social.tpl:6
 msgid "Share and interact"
-msgstr "Compartilhe" #todo interac"
+msgstr "Compartilhe" #todo interact
 
 #: themes/default/topbar.tpl:39
 msgid "Period of posts :"
@@ -845,7 +848,7 @@ msgstr "Senha"
 
 #: themes/default/user/social.tpl:9
 msgid "Subscribe to a newsletter"
-msgstr "Cadastrar-se á newsletter" #chec"
+msgstr "Cadastrar-se á newsletter" #check
 
 #: themes/default/user/tribes.tpl:27
 msgid "The ordering specifies the position of your tribe on the portal"
@@ -853,11 +856,11 @@ msgstr "A ordem determina a posição da tribo no portal"
 
 #: themes/default/user/profile.tpl:145
 msgid "Go to the charter"
-msgstr "Ir na charte"#todo chec"
+msgstr "Ir na charte"#todo check
 
 #: themes/default/posts.tpl:30
 msgid "Permalink"
-msgstr "Link"#tod"
+msgstr "Link"#todo
 
 #: themes/default/contact.tpl:16
 #: admin/manage-post.php:215
@@ -911,7 +914,7 @@ msgstr "Bemvindo na nova interface do Bilboplanet. Aqui você pode gerenciar os 
 
 #: themes/default/topbar.tpl:55
 msgid "Info Flash"
-msgstr "Flash info" #tod"
+msgstr "Flash info" #todo
 
 #: themes/default/topbar.tpl:28
 msgid "latest posts"
@@ -958,15 +961,15 @@ msgstr "Aplicar"
 
 #: themes/default/user/dashboard.tpl:6
 #: user/index.php:54
-msgid "User dashboard" #tableau de bor"
-msgstr "Dashboard"#tod"
+msgid "User dashboard"
+msgstr "Dashboard"
 
 #: themes/default/index.tpl:112
 #: themes/default/user/menu.tpl:5
 #: admin/sidebar.php:31
 #: admin/index.php:141
 msgid "Dashboard"
-msgstr "Dashboard" #tod"
+msgstr "Dashboard" #todo
 
 #: tpl.php:213
 msgid "Powered by Bilboplanet"
@@ -988,7 +991,7 @@ msgstr "O Capcha não foi corretamente preenchido. Ir na página anterior e tent
 
 #: contact.php:60
 msgid "Name/Nickname : "
-msgstr "Nome/Usuário : "#tod"
+msgstr "Nome/Usuário : "#todo
 
 #: contact.php:61
 #: inc/fonctions.php:1792
@@ -1032,8 +1035,8 @@ msgstr "%s tribo"
 #, php-format
 msgid "Vote for this post on <a href=\"%s\" title=\"Go on the planet\">%s</a>."
 msgstr "Votez pour ce billet sur <a href=\"%s\" title=\"Aller sur le planet\">%s</a>."
-
 #vince
+
 #: feed.php:255
 #, php-format
 msgid "Gravatar of %s"
@@ -1066,7 +1069,7 @@ msgstr "Email : "
 
 #: signup.php:85
 msgid "Please validate your account by going on the following link :"
-msgstr ""Favor avaliar a sua conta visitando o link seguinte : "
+msgstr "Favor avaliar a sua conta visitando o link seguinte : "
 
 #: signup.php:87
 msgid "NOTE: the link will expire in 3 days."
@@ -1105,11 +1108,11 @@ msgstr ""
 #: signup.php:153
 #, php-format
 msgid "If you don't recieve any news from the administration team within the 5 days do not hesitate to contact us via %s with this information :"
-msgstr "«Se você não recibe confirmação do equipe de administração daqui á 5 dias, não hesitar contatar a gente no email seguinte : %s" #doubl"
+msgstr "«Se você não recibe confirmação do equipe de administração daqui á 5 dias, não hesitar contatar a gente no email seguinte : %s" #double
 
 #: signup.php:155
 #: admin/install/index.php:364
-msgid "Username" #double tripl"
+msgid "Username"
 msgstr "Nome de usuário"
 
 #: signup.php:159
@@ -1145,7 +1148,7 @@ msgstr "Erro 404"
 
 #: 404.php:34
 msgid "Page not found"
-msgstr "Page not found"#tod"
+msgstr "Page not found"#todo
 
 #: auth.php:95
 msgid "Password reset"
@@ -1177,12 +1180,12 @@ msgstr "A nova senha de você"
 #: admin/install/index.php:392
 #: admin/install/wizard.php:198
 msgid "Username:"
-msgstr "Nome de usuário :" #double x"
+msgstr "Nome de usuário :" #double x2
 
 #: auth.php:123
 #: admin/install/wizard.php:202
 msgid "Password:"
-msgstr "Senha :" #doubl"
+msgstr "Senha :" #double
 
 #: auth.php:130
 msgid "Your new password is in your mailbox."
@@ -1203,7 +1206,7 @@ msgstr "Nome de usuário ou senha errado"
 #: auth.php:279
 #: auth.php:302
 msgid "Back to login screen"
-msgstr "Volta pra screen de login"#tod"
+msgstr "Volta pra screen de login"#todo
 
 #: auth.php:284
 msgid "Request a new password"
@@ -1349,7 +1352,7 @@ msgstr "Má pedida, essa pedida ajax não existe"
 #: admin/manage-update.php:30
 #: user/index.php:31
 msgid "Permission denied"
-msgstr "Acesso proibido" #chec"
+msgstr "Acesso proibido" #check
 
 #: api/comment_api.php:67
 msgid "This action is forbidden"
@@ -1398,7 +1401,7 @@ msgstr "Erro : a conta statusnet não esta propriamente configurada. O host esta
 
 #: inc/fonctions.php:222
 msgid "Reading cache"
-msgstr "Leitura da cache" #tod"
+msgstr "Leitura da cache" #todo
 
 #: inc/fonctions.php:799
 #, php-format
@@ -1502,7 +1505,7 @@ msgstr "Alemã"
 
 #: inc/fonctions.php:1751
 msgid "Dutch"
-msgstr "Dutch" #tod"
+msgstr "Dutch" #todo
 
 #: inc/fonctions.php:1753
 msgid "Arab"
@@ -1518,9 +1521,10 @@ msgstr "Espanhol"
 
 #: inc/fonctions.php:1786
 msgid "A new Bilboplanet joined the community"
-msgstr "Um novo Bilboplanet ingressou a comunidade" #check todo rejoindre joi"
+msgstr "Um novo Bilboplanet ingressou a comunidade" #check todo rejoindre join
 
 #vince
+
 #: inc/fonctions.php:1788
 msgid "Url : "
 msgstr "Url :"

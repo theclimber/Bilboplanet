@@ -14,7 +14,7 @@
 	</div>
 	<!-- END footer.widget -->
 
-<div id="sponsor"><a href="http://www.planethoster.net/" target="_blank"><img src="http://cdn.planethoster.net/images/bannieres/Fbutton-88x31-01.gif" alt="Hébergé par PlanetHoster" width="88" height="31" border="0" /></a></div>
+<div id="sponsor"><a href=" https://membres.planethoster.net/link.php?id=9" target="_blank"><img src="http://cdn.planethoster.net/images/bannieres/Fbutton-88x31-01.gif" alt="Hébergé par PlanetHoster" width="88" height="31" border="0" /></a></div>
 
 {$analytics_html}
 

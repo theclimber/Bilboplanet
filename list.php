@@ -59,7 +59,7 @@ if (isset($_GET)) {
 					false
 				);
 			}
-			$post_url = stripslashes($res->post_permalink);
+			$post_url = html_entity_decode(stripslashes($res->post_permalink), ENT_QUOTES, 'UTF-8');
 			http::head('301');
 			http::redirect($post_url);
 		}

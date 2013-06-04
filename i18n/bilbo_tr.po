@@ -1,0 +1,2644 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-03-07 15:00+0100\n"
+"PO-Revision-Date: 2012-04-02 00:54+0200\n"
+"Last-Translator: eee\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: tpl.php:128
+msgid "Powered by Bilboplanet"
+msgstr "Bilboplanet tarafından güçlendirilmiş."
+
+#: tpl.php:131
+msgid "Valid CSS - Xhtml"
+msgstr "Geçerli CSS - Xhtml"
+
+#: tpl.php:134
+msgid "Designed by BilboPlanet"
+msgstr "BilboPlanet tarafından tasarlanmış."
+
+#: archives.php:29
+msgid "January"
+msgstr "Ocak"
+
+#: archives.php:29
+msgid "February"
+msgstr "Şubat"
+
+#: archives.php:29
+msgid "March"
+msgstr "Mart"
+
+#: archives.php:29
+msgid "April"
+msgstr "Nisan"
+
+#: archives.php:29
+msgid "May"
+msgstr "Mayıs"
+
+#: archives.php:29
+msgid "June"
+msgstr "Haziran"
+
+#: archives.php:29
+msgid "July"
+msgstr "Temmuz"
+
+#: archives.php:29
+msgid "August"
+msgstr "Ağustos"
+
+#: archives.php:29
+msgid "September"
+msgstr "Eylül"
+
+#: archives.php:29
+msgid "October"
+msgstr "Ekim"
+
+#: archives.php:29
+msgid "November"
+msgstr "Kasım"
+
+#: archives.php:29
+msgid "December"
+msgstr "Aralık"
+
+#: 404.php:33
+msgid "404 Error"
+msgstr "404 Hata"
+
+#: 404.php:34
+msgid "Page not found"
+msgstr "Sayfa bulunamadı"
+
+#: inscription.php:53
+#: contact.php:47
+#, php-format
+msgid "The reCAPTCHA wasn't entered correctly. Go back and try it again. (reCAPTCHA said: %s)"
+msgstr "reCAPTCHA doğru girilmedi. Geri dönüp tekrar deneyin. (reCAPTCHA said: %s)"
+
+#: inscription.php:60
+msgid "Name : "
+msgstr "İsim :"
+
+#: inscription.php:61
+msgid "Firstname : "
+msgstr "İlk isim :"
+
+#: inscription.php:62
+#: contact.php:61
+msgid "Email : "
+msgstr "E-posta :"
+
+#: inscription.php:63
+msgid "Website : "
+msgstr "Web sitesi :"
+
+#: inscription.php:64
+msgid "Feed : "
+msgstr "Bildirim :"
+
+#: inscription.php:65
+msgid "Choice : "
+msgstr "Seçim :"
+
+#: inscription.php:73
+#: admin/manage-newsletter.php:133
+msgid "Your email has been sent"
+msgstr "E-postanız gönderildi"
+
+#: inscription.php:75
+#: contact.php:73
+#: admin/manage-newsletter.php:135
+msgid "Your request could not be sent for an unknown reason.<br/>Please try again."
+msgstr "Talebiniz bilinmeyen bir sebepten dolayı gönderilemedi. <br/> Lütfen tekrar deneyin."
+
+#: inscription.php:115
+#: contact.php:95
+msgid "In case of problem"
+msgstr "Sorun olması halinde"
+
+#: inscription.php:116
+#, php-format
+msgid "If you don't recieve any new from the administration team in the 5 days do not hesitate to contact us via %s with this information :"
+msgstr "Eğer yönetim takımından 5 gün içinde haber almazsanız %s yoluyla, şu bilgi ile birlikte çekinmeden bizimle temasa geçin :"
+
+#: inscription.php:117
+#: admin/manage-moderation.php:102
+#: admin/manage-newsletter.php:91
+#: admin/manage-newsletter.php:232
+#: admin/manage-selection.php:108
+msgid "Subject"
+msgstr "Konu"
+
+#: inscription.php:118
+#: admin/install/index.php:326
+msgid "Username"
+msgstr "Kullanıcı adı"
+
+#: inscription.php:119
+#: admin/manage-account.php:65
+#: admin/manage-user.php:107
+#: admin/manage-user.php:148
+#: admin/install/index.php:302
+#: admin/api/manage-account_api.php:36
+msgid "Fullname"
+msgstr "Tam isim"
+
+#: inscription.php:120
+#: admin/manage-account.php:69
+#: admin/manage-user.php:111
+#: admin/manage-user.php:152
+#: admin/install/index.php:305
+#: admin/api/manage-account_api.php:37
+msgid "Email"
+msgstr "E-posta"
+
+#: inscription.php:121
+#: admin/api/manage-user_api.php:402
+msgid "Website"
+msgstr "Web sitesi"
+
+#: inscription.php:122
+#: feed.php:284
+#: admin/api/manage-feed_api.php:354
+msgid "Feed"
+msgstr "Bildirim"
+
+#: inscription.php:123
+msgid "Choice"
+msgstr "Seçim"
+
+#: mobile.php:111
+#, php-format
+msgid "%d vote(s)"
+msgstr "%d oy(lar)"
+
+#: feed.php:215
+#: EKSİK ÇEVİRİ
+#, php-format
+msgid "Vote for this post on <a href=\"%s\" title=\"Go on the planet\">%s</a>."
+msgstr "Vote for this post on <a href=\"%s\" title=\"Go on the planet\">%s</a>."
+
+#: feed.php:226
+#: EKSİK ÇEVİRİ
+#, php-format
+msgid "Gravatar of %s"
+msgstr "Gravatar of %s"
+
+#: contact.php:60
+msgid "Name/Nickname : "
+msgstr "İsim/Takma isim :"
+
+#: contact.php:62
+msgid "Subject : "
+msgstr "Konu :"
+
+#: contact.php:63
+msgid "Content of the message: "
+msgstr "Mesajın içeriği :"
+
+#: contact.php:71
+msgid "Your email has been sent !"
+msgstr "E-postanız gönderildi !"
+
+#: contact.php:96
+#, php-format
+msgid "If you do not recieve any confirmation from the administration team in the 5 days, do not hesitate to contact us by email at %s"
+msgstr "Eğer yönetim takımından 5 gün içinde bir doğrulama almazsanız bize e-posta ile ulaşabilirsiniz %s"
+
+#: api/votes.php:75
+msgid "Success"
+msgstr "Başarı"
+
+#: api/votes.php:78
+msgid "Error: article number incorrect !"
+msgstr "Hata: makale numarası yanlış !"
+
+#: api/votes.php:82
+msgid "Error: you already vote on this post !"
+msgstr "Hata: bu mesajı zaten oyladınız !"
+
+#: api/votes.php:86
+msgid "Error: refused access"
+msgstr "Hata: erişim reddedildi"
+
+#: inc/fonctions.php:140
+msgid "Error : the statusnet account is not properly configured. The given hostname is empty."
+msgstr "Hata: statusnet hesabı doğru ayarlanmamış. Verilen sunucu ismi boş. "
+
+#: inc/fonctions.php:198
+msgid "Reading cache"
+msgstr "Önbellek okunuyor"
+
+#: inc/fonctions.php:380
+#: EKSİK ÇEVİRİ
+#, php-format
+msgid "By %s, on %s at %s."
+msgstr "By %s, on %s at %s."
+
+#: inc/fonctions.php:381
+msgid "View post detail"
+msgstr "Mesaj ayrıntılarına bak."
+
+#: inc/fonctions.php:404
+msgid "Read more"
+msgstr "Devamını oku"
+
+#: inc/fonctions.php:454
+#: inc/fonctions.php:467
+msgid "Vote yes"
+msgstr "Evet oyla"
+
+#: inc/fonctions.php:455
+#: inc/fonctions.php:473
+#: inc/fonctions.php:477
+msgid "Vote no"
+msgstr "Hayır oyla"
+
+#: inc/fonctions.php:465
+msgid "This post seems pertinent to you"
+msgstr "Bu mesaj sizinle ilgili olabilir"
+
+#: inc/fonctions.php:471
+msgid "This post seems not pertinent to you"
+msgstr "Bu mesaj sizinle ilgili olmayabilir"
+
+#: inc/fonctions.php:475
+msgid "This post should not be here"
+msgstr "Bu mesaj burada olmamalı"
+
+#: inc/fonctions.php:476
+msgid "Are you sure this post should not be on this planet and should be removed?"
+msgstr "Bu mesajın bu gezegende olmaması gerektiğine ve kaldırılması gerektiğine emin misiniz?"
+
+#: inc/fonctions.php:499
+#, php-format
+msgid "The field \"%s\" has to be a valid email address"
+msgstr "\"%s\" alanı geçerli bir e-posta adresi olmalıdır"
+
+#: inc/fonctions.php:505
+#: inc/fonctions.php:511
+#, php-format
+msgid "The field \"%s\" %s has to be a valid URL"
+msgstr "\"%s\" %s alanı geçerli bir URL olmalıdır."
+
+#: inc/fonctions.php:515
+#, php-format
+msgid "The field \"%s\" %s is not a valid simplepie feed"
+msgstr "\"%s\" %s alanı geçerli bir simplepie bildirim olmalıdır."
+
+#: inc/fonctions.php:530
+#, php-format
+msgid "The fields %s does not match"
+msgstr "%s alanları aynı değil"
+
+#: inc/fonctions.php:534
+#, php-format
+msgid "The fields %s needs to have 4 characters minimum"
+msgstr "%s alanlarında en az 4 karakter olmalıdır"
+
+#: inc/fonctions.php:542
+#, php-format
+msgid "The field \"%s\" is empty"
+msgstr "\"%s\" alanı boş"
+
+#: inc/fonctions.php:703
+msgid " bytes"
+msgstr " bytes"
+
+#: inc/fonctions.php:707
+msgid " Kb"
+msgstr " Kb"
+
+#: inc/fonctions.php:711
+msgid " MB"
+msgstr " MB"
+
+#: inc/fonctions.php:715
+msgid " GB"
+msgstr " GB"
+
+#: inc/core/class.bp.core.php:400
+#: inc/core/class.bp.core.php:437
+#: inc/core/class.bp.core.php:471
+msgid "You are not an administrator"
+msgstr "Yönetici değilsiniz"
+
+#: inc/core/class.bp.core.php:404
+msgid "No user ID given"
+msgstr "Kullanıcı ID girilmemiş"
+
+#: inc/core/class.bp.core.php:408
+#: admin/install/index.php:120
+msgid "No password given"
+msgstr "Şifre girilmemiş"
+
+#: inc/core/class.bp.core.php:637
+msgid "User ID must contain at least 2 characters using letters, numbers or symbols."
+msgstr "Kullanıcı ID harfler, sayılar veya sembollerden oluşan en az 2 karakter olmalıdır."
+
+#: inc/core/class.bp.core.php:648
+msgid "Password must contain at least 6 characters."
+msgstr "Şifre en az 6 karakterden oluşmalıdır."
+
+#: inc/core/class.bp.core.php:654
+msgid "Invalid user language code"
+msgstr "Geçersiz kullanıcı dil kodu"
+
+#: inc/core/class.bp.settings.php:77
+msgid "Unable to retrieve settings:"
+msgstr "Ayarlar alınamıyor:"
+
+#: inc/core/class.bp.settings.php:139
+#, php-format
+msgid "%s is not a valid setting id"
+msgstr "%s geçerli bir alan kimliği değil"
+
+#: inc/core/class.dc.modules.php:208
+msgid "Empty module zip file."
+msgstr "Boş modül zip dosyası."
+
+#: inc/core/class.dc.modules.php:213
+msgid "The zip file does not appear to be a valid Bilboplanet module."
+msgstr "Zip dosyası geçerli bir BilboPlanet modülü olmayabilir."
+
+#: inc/core/class.dc.modules.php:238
+msgid "An error occurred during module deletion."
+msgstr "Modül silinmesinde hata oldu."
+
+#: inc/core/class.dc.modules.php:245
+#, php-format
+msgid "Unable to upgrade \"%s\". (same version)"
+msgstr "\"%s\" yükseltilemiyor. (aynı versiyon)"
+
+#: inc/core/class.dc.modules.php:251
+#: EKSİK ÇEVİRİ
+msgid "Unable to read new _define.php file"
+msgstr "Unable to read new _define.php file"
+
+#: inc/core/class.dc.modules.php:315
+#: inc/core/class.dc.modules.php:326
+#: inc/core/class.dc.modules.php:341
+msgid "No such module."
+msgstr "Böyle bir modül yok."
+
+#: inc/core/class.dc.modules.php:319
+msgid "Cannot remove module files"
+msgstr "Modül dosyaları kaldırılamıyor"
+
+#: inc/core/class.dc.modules.php:330
+#: inc/core/class.dc.modules.php:334
+msgid "Cannot deactivate plugin."
+msgstr "Eklenti pasif yapılamıyor."
+
+#: inc/core/class.dc.modules.php:345
+#: inc/core/class.dc.modules.php:349
+msgid "Cannot activate plugin."
+msgstr "Eklenti aktif yapılamıyor."
+
+#: inc/core/class.bp.auth.php:68
+msgid "administrator"
+msgstr "yönetici"
+
+#: inc/core/class.bp.auth.php:69
+msgid "manage their own entries and comments"
+msgstr "kendi yazılarını ve yorumlarını yönetme"
+
+#: inc/core/class.bp.auth.php:70
+msgid "publish entries and comments"
+msgstr "yazıları ve yorumları yayınlama"
+
+#: inc/core/class.bp.auth.php:71
+msgid "delete entries and comments"
+msgstr "yazıları ve yorumları silme"
+
+#: inc/core/class.bp.auth.php:72
+msgid "manage all entries and comments"
+msgstr "tüm yazıları ve yorumları yönetme"
+
+#: inc/core/class.bp.auth.php:73
+msgid "manage categories"
+msgstr "kategorileri yönetme"
+
+#: inc/core/class.bp.auth.php:74
+msgid "manage their own media items"
+msgstr "kendi medya nesnelerini yönetme"
+
+#: inc/core/class.bp.auth.php:75
+msgid "manage all media items"
+msgstr "tüm medya nesnelerini yönetme"
+
+#: inc/core/class.bp.auth.php:374
+msgid "That user does not exists in the database."
+msgstr "Bu kullanıcı veritabanında blunmuyor."
+
+#: inc/core/class.bp.auth.php:406
+msgid "That key does not exists in the database."
+msgstr "Bu anahtar veritabanında bulunmuyor."
+
+#: inc/admin/prepend.php:66
+msgid "Database error"
+msgstr "Veritabanı hatası"
+
+#: inc/admin/prepend.php:67
+msgid "There seems to be no Session table in your database. Is Bilboplanet completly installed?"
+msgstr "Veritabanınızda Oturum tablosu yok. Bilboplanet kurulumu tam yapıldı mı?"
+
+#: inc/admin/prepend.php:89
+msgid "Next Page"
+msgstr "Sonraki sayfa"
+
+#: inc/admin/prepend.php:93
+#: admin/pagination.php:53
+#: admin/pagination.php:60
+msgid "Previous page"
+msgstr "Önceki sayfa"
+
+#: admin/manage-post.php:30
+#: admin/manage-account.php:30
+#: admin/manage-permissions.php:30
+#: admin/manage-user.php:30
+#: admin/manage-feed.php:30
+#: admin/manage-moderation.php:31
+#: admin/manage-cache.php:30
+#: admin/manage-option.php:34
+#: admin/manage-newsletter.php:30
+#: admin/manage-selection.php:31
+#: admin/index.php:31
+#: admin/manage-useroption.php:31
+#: admin/manage-logs.php:30
+#: admin/manage-database.php:30
+#: admin/manage-update.php:30
+msgid "Permission denied"
+msgstr "İzin verilmedi"
+
+#: admin/manage-post.php:31
+#: admin/manage-account.php:31
+#: admin/manage-permissions.php:31
+#: admin/manage-user.php:31
+#: admin/manage-feed.php:31
+#: admin/manage-moderation.php:32
+#: admin/manage-cache.php:31
+#: admin/manage-option.php:35
+#: admin/manage-newsletter.php:31
+#: admin/manage-selection.php:32
+#: admin/index.php:32
+#: admin/manage-useroption.php:32
+#: admin/manage-logs.php:31
+#: admin/manage-database.php:31
+#: admin/manage-update.php:31
+msgid "You are not allowed to see this page."
+msgstr "Bu sayfayı görmenize izin yok."
+
+#: admin/manage-post.php:32
+#: admin/manage-account.php:32
+#: admin/manage-permissions.php:32
+#: admin/manage-user.php:32
+#: admin/manage-feed.php:32
+#: admin/manage-moderation.php:33
+#: admin/manage-cache.php:32
+#: admin/manage-option.php:36
+#: admin/manage-newsletter.php:32
+#: admin/manage-selection.php:33
+#: admin/index.php:33
+#: admin/manage-useroption.php:33
+#: admin/manage-logs.php:32
+#: admin/manage-database.php:32
+#: admin/manage-update.php:32
+msgid "You can delete your session if you logout : "
+msgstr "Çıkış yaparsanız oturumunuzu silebilirsiniz :"
+
+#: admin/manage-post.php:95
+#, php-format
+msgid "The post %s was removed"
+msgstr "%s mesajı kaldırılmış"
+
+#: admin/manage-post.php:102
+#, php-format
+msgid "The post %s was changed"
+msgstr "%s mesajı değiştirilmiş"
+
+#: admin/manage-post.php:119
+msgid "Filtering of the posts"
+msgstr "Mesajların filtrelenmesi"
+
+#: admin/manage-post.php:121
+msgid "Filter articles"
+msgstr "Makaleleri filtrele"
+
+#: admin/manage-post.php:127
+msgid "Posts of the member :"
+msgstr "Üyenin mesajları:"
+
+#: admin/manage-post.php:146
+#: admin/manage-post.php:148
+#: admin/manage-post.php:158
+#: admin/manage-user.php:70
+#: admin/manage-user.php:75
+#: admin/manage-feed.php:72
+#: admin/manage-feed.php:77
+msgid "All"
+msgstr "Tümü"
+
+#: admin/manage-post.php:155
+msgid "Post status"
+msgstr "Mesajın durumu"
+
+#: admin/manage-post.php:159
+#: admin/manage-post.php:235
+#: admin/manage-post.php:243
+#: admin/manage-post.php:249
+#: admin/manage-post.php:253
+msgid "inactive"
+msgstr "pasif"
+
+#: admin/manage-post.php:160
+#: admin/manage-post.php:234
+#: admin/manage-post.php:239
+#: admin/manage-post.php:244
+#: admin/manage-post.php:254
+msgid "active"
+msgstr "aktif"
+
+#: admin/manage-post.php:161
+#: admin/manage-post.php:237
+#: admin/manage-post.php:246
+#: admin/manage-post.php:252
+#: admin/manage-post.php:255
+msgid "pending"
+msgstr "bekliyor"
+
+#: admin/manage-post.php:167
+msgid "Number of posts"
+msgstr "Mesaj sayısı"
+
+#: admin/manage-post.php:171
+#: admin/manage-user.php:126
+#: admin/manage-feed.php:143
+#: admin/manage-newsletter.php:266
+#: admin/api/manage-feed_api.php:254
+#: admin/api/manage-user_api.php:286
+#: admin/api/manage-site_api.php:190
+msgid "Reset"
+msgstr "Sıfırla"
+
+#: admin/manage-post.php:172
+#: admin/manage-moderation.php:109
+#: admin/manage-newsletter.php:262
+#: admin/manage-selection.php:119
+#: admin/manage-update.php:138
+msgid "Send"
+msgstr "Gönder"
+
+#: admin/manage-post.php:178
+msgid "List of the posts"
+msgstr "Mesajların listesi"
+
+#: admin/manage-post.php:180
+msgid "NOTE: If you delete a post which is too recent, it will be refetched next time the update happen !!"
+msgstr "UYARI: çok yeni bir mesajı silerseniz bir sonraki güncellemede geri gelecektir !!"
+
+#: admin/manage-post.php:215
+#: admin/manage-logs.php:71
+msgid "Name"
+msgstr "İsim"
+
+#: admin/manage-post.php:216
+#: admin/api/manage-moderation_api.php:156
+msgid "Date"
+msgstr "Tarih"
+
+#: admin/manage-post.php:217
+#: admin/index.php:69
+#: admin/api/manage-moderation_api.php:158
+msgid "Title"
+msgstr "Başlık"
+
+#: admin/manage-post.php:218
+msgid "Status"
+msgstr "Durum"
+
+#: admin/manage-post.php:219
+msgid "Nb votes"
+msgstr "Nb oyları"
+
+#: admin/manage-post.php:220
+#: admin/manage-newsletter.php:254
+#: admin/manage-logs.php:72
+#: admin/api/manage-feed_api.php:355
+#: admin/api/manage-user_api.php:403
+#: admin/api/manage-moderation_api.php:159
+msgid "Action"
+msgstr "Eylem"
+
+#: admin/manage-post.php:269
+msgid "Change"
+msgstr "Değiştir"
+
+#: admin/manage-post.php:270
+#: admin/manage-logs.php:88
+#: admin/api/manage-feed_api.php:409
+#: admin/api/manage-user_api.php:464
+msgid "Delete"
+msgstr "Sil"
+
+#: admin/manage-post.php:286
+msgid "Show items by : "
+msgstr "Nesneleri şöyle göster:"
+
+#: admin/manage-account.php:48
+msgid "Manage account"
+msgstr "Hesap yönetimi"
+
+#: admin/manage-account.php:50
+msgid "You can change your profile configuration here"
+msgstr "Profil ayarlarınızı buradan yapabilirsiniz"
+
+#: admin/manage-account.php:62
+#: admin/manage-user.php:80
+#: admin/manage-user.php:103
+#: admin/manage-user.php:145
+#: admin/manage-user.php:173
+#: admin/manage-feed.php:84
+#: admin/manage-feed.php:122
+#: admin/manage-feed.php:162
+msgid "User id"
+msgstr "Kullanıcı ID"
+
+#: admin/manage-account.php:67
+#: admin/manage-user.php:109
+#: admin/manage-user.php:150
+msgid "ex: Jean Dupont"
+msgstr "Örnek: Jean Dupont"
+
+#: admin/manage-account.php:71
+#: admin/manage-user.php:113
+#: admin/manage-user.php:154
+msgid "ex: xxx@yyy.zzz"
+msgstr "Örnek: xx@yyy.zzz"
+
+#: admin/manage-account.php:73
+#: admin/manage-user.php:156
+msgid "New password"
+msgstr "Yeni şifre"
+
+#: admin/manage-account.php:76
+#: admin/manage-user.php:159
+msgid "Confirm new password"
+msgstr "Yeni şifre tekrar"
+
+#: admin/manage-account.php:78
+#: admin/manage-user.php:161
+msgid "You can leave the password field blank if you don't want to change it"
+msgstr "Değiştirmek istemiyorsanız şifre kısmını boş bırakın"
+
+#: admin/manage-account.php:79
+#: admin/manage-user.php:164
+#: admin/manage-user.php:203
+#: admin/manage-feed.php:174
+#: admin/manage-option.php:53
+#: admin/api/manage-feed_api.php:407
+#: admin/api/manage-user_api.php:461
+msgid "Update"
+msgstr "Güncelle"
+
+#: admin/manage-permissions.php:48
+#: admin/sidebar.php:110
+msgid "Manage user permissions"
+msgstr "Kullanıcı izinlerini yönet"
+
+#: admin/manage-permissions.php:50
+msgid "Check user statuses and configure their permissions"
+msgstr "Kullanıcı durumlarını kontrol et ve izinlerini yapılandır"
+
+#: admin/manage-user.php:49
+#: admin/manage-user.php:94
+msgid "Add an user"
+msgstr "Kullanıcı ekle"
+
+#: admin/manage-user.php:52
+msgid "Filter userlist"
+msgstr "Kullanıcı listesini filtrele"
+
+#: admin/manage-user.php:55
+#: admin/manage-user.php:87
+#: admin/manage-feed.php:56
+#: admin/manage-feed.php:91
+#: admin/manage-moderation.php:90
+#: admin/manage-selection.php:81
+msgid "Filter"
+msgstr "Filtrele"
+
+#: admin/manage-user.php:73
+msgid "Active user"
+msgstr "Aktif kullanıcı"
+
+#: admin/manage-user.php:74
+msgid "Inactive user"
+msgstr "Pasif kullanıcı"
+
+#: admin/manage-user.php:83
+msgid "User status"
+msgstr "Kullanıcı durumu"
+
+#: admin/manage-user.php:88
+#: admin/manage-user.php:128
+#: admin/manage-feed.php:92
+#: admin/manage-feed.php:145
+#: admin/head.php:96
+#: admin/manage-option.php:56
+msgid "Close"
+msgstr "Kapat"
+
+#: admin/manage-user.php:96
+msgid "To add a new member, fill out the form below."
+msgstr "Yeni bir üye eklemek için aşağıdaki formu doldurun."
+
+#: admin/manage-user.php:105
+msgid "ex: Frankenstein"
+msgstr "Örnek: Frankenstein"
+
+#: admin/manage-user.php:115
+#: admin/install/index.php:329
+msgid "Password"
+msgstr "Şifre"
+
+#: admin/manage-user.php:117
+msgid "Minimum 4 chars"
+msgstr "En az 4 karakter"
+
+#: admin/manage-user.php:119
+msgid "Confirm password"
+msgstr "Şifreyi doğrula"
+
+#: admin/manage-user.php:122
+msgid "Website (Optional)"
+msgstr "Web sitesi (opsiyonel)"
+
+#: admin/manage-user.php:124
+msgid "ex: http://www.example.com"
+msgstr "Örnek: http://www.ornek.com"
+
+#: admin/manage-user.php:127
+#: admin/manage-user.php:185
+#: admin/manage-feed.php:144
+msgid "Add"
+msgstr "Ekle"
+
+#: admin/manage-user.php:134
+msgid "List of the users"
+msgstr "Kullanıcı listesi"
+
+#: admin/manage-user.php:136
+msgid "List of members of the Planet"
+msgstr "Gezegen üyeleri listesi"
+
+#: admin/manage-user.php:163
+#: admin/manage-user.php:184
+#: admin/manage-user.php:202
+#: admin/manage-feed.php:173
+#: admin/manage-moderation.php:108
+#: admin/manage-selection.php:118
+msgid "Cancel"
+msgstr "İptal et"
+
+#: admin/manage-user.php:176
+#: admin/manage-user.php:194
+msgid "Site name"
+msgstr "Site ismi"
+
+#: admin/manage-user.php:178
+#: admin/manage-user.php:196
+msgid "ex: Bilboplanet blog"
+msgstr "Örnek: Bilboplanet blog"
+
+#: admin/manage-user.php:180
+#: admin/manage-user.php:198
+msgid "Site URL"
+msgstr "Site URL"
+
+#: admin/manage-user.php:182
+#: admin/manage-user.php:200
+msgid "ex: http://www.bilboplanet.com"
+msgstr "Örnek: http://www.bilboplanet.com"
+
+#: admin/manage-feed.php:48
+#: admin/manage-feed.php:98
+msgid "Add a feed"
+msgstr "Bildirim ekle"
+
+#: admin/manage-feed.php:51
+msgid "Filter feedlist"
+msgstr "Bildirim listesini filtrele"
+
+#: admin/manage-feed.php:75
+msgid "Active feeds"
+msgstr "Aktif bildirimler"
+
+#: admin/manage-feed.php:76
+msgid "Inactive feeds"
+msgstr "Pasif bildirimler"
+
+#: admin/manage-feed.php:79
+msgid "Auto disabled feeds"
+msgstr "Otomatik pasifleşmiş bildirimler"
+
+#: admin/manage-feed.php:87
+msgid "Feed status"
+msgstr "Bildirim durumu"
+
+#: admin/manage-feed.php:100
+msgid "Manage member's feeds. Notice that you can only add a feed to a user who has a website. So you first need to create the user and add a site to him"
+msgstr "Üyenin bildiimlerini yönet. Yalnızca web sitesi olan bir kullanıcıya bildirim ekleyebilirsiniz. bu yüzden önce bir kullanıcı oluşturmalı ve ardından ona bir web sitesi eklemelisiniz."
+
+#: admin/manage-feed.php:114
+msgid "-- Choose an user --"
+msgstr "-- Bir kullanıcı seçin --"
+
+#: admin/manage-feed.php:125
+msgid "Site id"
+msgstr "Site id"
+
+#: admin/manage-feed.php:126
+msgid "-- Choose an user id --"
+msgstr "-- Bir kullanıcı id seçin --"
+
+#: admin/manage-feed.php:127
+msgid "Choose the website of the feed"
+msgstr "Bildirimin web sitesini seçin"
+
+#: admin/manage-feed.php:129
+msgid "Full feed URL"
+msgstr "Tam bildirim URL"
+
+#: admin/manage-feed.php:131
+msgid "ex: http://www.bilboplanet.com/feed/atom/"
+msgstr "Örnek: http://www.bilboplanet.com/feed/atom/"
+
+#: admin/manage-feed.php:133
+#: admin/manage-feed.php:165
+msgid "Feed name"
+msgstr "Bildirim adı"
+
+#: admin/manage-feed.php:135
+msgid "ex: gnu/Linux posts"
+msgstr "Örnek: gnu/Linux mesajları"
+
+#: admin/manage-feed.php:138
+msgid "Trusted URL"
+msgstr "Güvenilen URL"
+
+#: admin/manage-feed.php:150
+#: admin/sidebar.php:45
+msgid "Manage feeds"
+msgstr "Bildirimleri yönet"
+
+#: admin/manage-feed.php:152
+msgid "Manage member feed."
+msgstr "Üye bildirimini yönet"
+
+#: admin/manage-feed.php:167
+msgid "ex: GNU/Linux posts"
+msgstr "örnek: GNU/Linux posts"
+
+#: admin/manage-feed.php:169
+msgid "Feed URL"
+msgstr "Bildirim URL"
+
+#: admin/manage-feed.php:171
+msgid "ex: http://www.bilboplanet.com/feed/"
+msgstr "örnek: http://www.bilboplanet.com/feed/"
+
+#: admin/manage-moderation.php:48
+#: admin/sidebar.php:88
+msgid "Moderation interface"
+msgstr "Moderasyon arayüzü"
+
+#: admin/manage-moderation.php:50
+msgid "Moderate some posts."
+msgstr "Bazı mesajara moderasyon yap."
+
+#: admin/manage-moderation.php:54
+msgid "The moderation functionnality is disabled. If you want to enable it, please go to the configuration page"
+msgstr "Moderasyon işlevselliği etkin değil. Etkin etmek için yapılandırma sayfasına gidin."
+
+#: admin/manage-moderation.php:55
+#: admin/sidebar.php:65
+msgid "Planet Configuration"
+msgstr "Gezegen yapılandırması"
+
+#: admin/manage-moderation.php:55
+msgid "Planet"
+msgstr "Gezegen"
+
+#: admin/manage-moderation.php:66
+#: admin/manage-selection.php:57
+msgid "Elements to display"
+msgstr "Gösterilecek unsurlar"
+
+#: admin/manage-moderation.php:68
+#: admin/manage-selection.php:59
+msgid "Filter by user"
+msgstr "Kullanıcıya göre filtrele"
+
+#: admin/manage-moderation.php:103
+#: admin/manage-selection.php:109
+msgid "Moderation of your post"
+msgstr "Mesajınızın düzenlemesi"
+
+#: admin/manage-moderation.php:105
+#: admin/manage-selection.php:115
+msgid "Comment"
+msgstr "Yorum"
+
+#: admin/head.php:31
+#: admin/sidebar.php:36
+#: admin/api/manage-permissions_api.php:166
+msgid "Administration"
+msgstr "Yönetim"
+
+#: admin/head.php:56
+msgid "Back on the Bilboplanet"
+msgstr "Bilboplanet'a dönüş"
+
+#: admin/head.php:59
+msgid "Logout"
+msgstr "Çıkış"
+
+#: admin/head.php:60
+#: admin/head.php:66
+msgid "About"
+msgstr "Hakkında"
+
+#: admin/head.php:68
+msgid "Bilboplanet was developed by"
+msgstr "Bilboplanet'ı geliştiren:"
+
+#: admin/head.php:76
+msgid "BilboPlanet : Useful links"
+msgstr "BilboPlanet : Faydalı bağlantılar"
+
+#: admin/head.php:79
+msgid "- Official WebSite: "
+msgstr "- Resmi Web sitesi:"
+
+#: admin/head.php:80
+msgid "- Official Forum: "
+msgstr "- Resmi forum:"
+
+#: admin/head.php:81
+msgid "- Official Documentation: "
+msgstr "- Resmi dokümantasyon:"
+
+#: admin/head.php:85
+msgid "What's new in BilboPlanet 1.0"
+msgstr "BilboPlanet 1.0 yenilikleri"
+
+#: admin/head.php:88
+msgid "- New administration panel with user permissions, moderation interface for website manager, <br />multiple feed per site, new configuration system, newsletter and optimized dashboard."
+msgstr "- Kullanıcı izinleri, web sitesi yönetimi için moderasyon arayüzü olan yeni yönetim paneli, <br/> bir site için birden fazla bildirim, yeni yapılandırma sistemi, haberyazısı ve optimize kontrol paneli"
+
+#: admin/head.php:89
+msgid "- Easy templating system allowing you to draw personnalize own Planet"
+msgstr "- Kendi Gezegeninizi oluşturmanızı sağlayan kolay şablon sistemi"
+
+#: admin/head.php:90
+msgid "- New database, new installer, more security, more ajax in admin panel, and a lot of more cool stuff !!"
+msgstr "- Yeni veritabanı, yeni kurulum, daha güvenli, yönetici panelinde daha fazla ajax ve daha bir çok harika şey !!"
+
+#: admin/manage-cache.php:54
+msgid "The cache files were correctly deleted."
+msgstr "- Önbellek dosyaları başarıyla silindi."
+
+#: admin/manage-cache.php:70
+msgid "Manage cache"
+msgstr "Önbellek yönetimi"
+
+#: admin/manage-cache.php:72
+msgid "Remove the cache files"
+msgstr "Önbellek dosyalarını kaldır"
+
+#: admin/manage-cache.php:78
+msgid "Delete cache"
+msgstr "Önbelleği sil"
+
+#: admin/manage-cache.php:83
+msgid "The following files were deleted :"
+msgstr "Aşağıdaki dosyalar silindi:"
+
+#: admin/manage-option.php:60
+msgid "Options"
+msgstr "Seçenekler"
+
+#: admin/manage-option.php:62
+msgid "Configuration settings Planet."
+msgstr "Gezegen yapılandırma ayarları"
+
+#: admin/manage-newsletter.php:60
+#, php-format
+msgid "You shoud have selected %s"
+msgstr "%s seçimi yapmalıydınız"
+
+#: admin/manage-newsletter.php:87
+#: admin/manage-newsletter.php:225
+msgid "Sender"
+msgstr "Gönderen"
+
+#: admin/manage-newsletter.php:89
+#: admin/manage-newsletter.php:205
+msgid "Recipients"
+msgstr "Alıcılar"
+
+#: admin/manage-newsletter.php:93
+#: admin/manage-newsletter.php:239
+msgid "Message"
+msgstr "Mesaj"
+
+#: admin/manage-newsletter.php:101
+msgid "Are you sure you want to send this newsletter?"
+msgstr "Bu haber yazısını göndermek istediğinize emin misiniz?"
+
+#: admin/manage-newsletter.php:107
+msgid "Yes"
+msgstr "Evet"
+
+#: admin/manage-newsletter.php:108
+msgid "No"
+msgstr "Hayır"
+
+#: admin/manage-newsletter.php:150
+msgid "Select all members"
+msgstr "Tüm üyeleri seç"
+
+#: admin/manage-newsletter.php:209
+msgid "Select recipients of the newsletter"
+msgstr "Haber yazısının alıcılarını seç"
+
+#: admin/manage-newsletter.php:217
+msgid "Content"
+msgstr "İçerik"
+
+#: admin/manage-newsletter.php:221
+msgid "Complete the informations of the newsletter"
+msgstr "Haber yazısıının bilgilerini tamamlayın"
+
+#: admin/manage-newsletter.php:229
+msgid "Default"
+msgstr "Varsayılan"
+
+#: admin/manage-newsletter.php:258
+#: admin/api/manage-option_api.php:576
+#: admin/api/manage-option_api.php:785
+msgid "Preview"
+msgstr "Önizleme"
+
+#: admin/pagination.php:46
+#: admin/pagination.php:61
+msgid "Next page"
+msgstr "Sonraki sayfa"
+
+#: admin/manage-selection.php:48
+msgid "Selection of the week"
+msgstr "Haftanın seçimi"
+
+#: admin/manage-selection.php:50
+#: admin/manage-selection.php:97
+msgid "Make your selection of the week"
+msgstr "Haftalık seçiminizi yapın."
+
+#: admin/manage-selection.php:95
+#, php-format
+msgid "Pool of selectionned posts between %s and %s"
+msgstr "%s ve %s arasında seçilen mesajlar"
+
+#: admin/manage-selection.php:111
+msgid "Your email address"
+msgstr "e-posta adresiniz"
+
+#: admin/manage-selection.php:113
+msgid "This is your own email"
+msgstr "Bu sizin kendi e-postanız"
+
+#: admin/index.php:41
+msgid "Latest articles :"
+msgstr "En son makaleler:"
+
+#: admin/index.php:69
+#: admin/api/manage-feed_api.php:352
+msgid "User"
+msgstr "Kullanıcı"
+
+#: admin/index.php:91
+msgid "BilboPlanet news - Official Website :"
+msgstr "BilboPlanet haberleri - Resmi Web sitesi:"
+
+#: admin/index.php:145
+#: admin/sidebar.php:30
+msgid "Dashboard"
+msgstr "Kontrol paneli"
+
+#: admin/index.php:147
+msgid "Quick summary of the planet"
+msgstr "Gezegenin hızlı özeti"
+
+#: admin/index.php:152
+msgid "WARNING : please remove /admin/install folder"
+msgstr "UYARI: lütfen /admin/install klasörünü silin"
+
+#: admin/index.php:162
+msgid "Statistics :"
+msgstr "İstatistikler:"
+
+#: admin/index.php:167
+#: admin/manage-update.php:120
+msgid "The update is running"
+msgstr "Güncelleme çalışıyor"
+
+#: admin/index.php:169
+#: admin/manage-update.php:122
+msgid "The update is stopped"
+msgstr "Güncelleme durdu"
+
+#: admin/index.php:171
+#: admin/manage-update.php:123
+msgid "The update is disabled"
+msgstr "Güncelleme etkin değil"
+
+#: admin/index.php:173
+msgid "The update on loading of index page enabled"
+msgstr "İndeks sayfasının yüklenmesinde güncelleme etkin"
+
+#: admin/index.php:175
+msgid "Current size of the database :"
+msgstr "Veritabanının şu andaki boyutu:"
+
+#: admin/index.php:176
+msgid "Number of articles in the DB :"
+msgstr "DB'daki makale sayısı:"
+
+#: admin/index.php:177
+msgid "Number of votes in the DB :"
+msgstr "DB'deki oy sayısı:"
+
+#: admin/index.php:178
+msgid "Number of members in the DB :"
+msgstr "DB'deki üye sayısı:"
+
+#: admin/index.php:179
+msgid "Number of feeds in the DB :"
+msgstr "DB'deki bildiri sayısı:"
+
+#: admin/index.php:185
+msgid "System information :"
+msgstr "Sistem bilgisi:"
+
+#: admin/index.php:187
+msgid "Date server :"
+msgstr "Sunucu tarihi:"
+
+#: admin/index.php:188
+msgid "Operating System :"
+msgstr "İşletim sistemi:"
+
+#: admin/index.php:189
+msgid "PHP version :"
+msgstr "PHP versiyonu:"
+
+#: admin/index.php:190
+msgid "MySQL version :"
+msgstr "MySQL versiyonu:"
+
+#: admin/index.php:191
+msgid "Server :"
+msgstr "Sunucu:"
+
+#: admin/index.php:192
+msgid "Memory :"
+msgstr "Hafıza:"
+
+#: admin/index.php:193
+msgid "Your BilboPlanet version :"
+msgstr "BilboPlanet versiyonunuz:"
+
+#: admin/manage-useroption.php:48
+#: admin/manage-useroption.php:108
+msgid "Reference contact email"
+msgstr "Referans iletişim e-postası:"
+
+#: admin/manage-useroption.php:49
+#: admin/manage-useroption.php:111
+msgid "Author Website"
+msgstr "Yazarın web sitesi"
+
+#: admin/manage-useroption.php:50
+#: admin/manage-useroption.php:105
+msgid "Contact Name"
+msgstr "İletişim ismi"
+
+#: admin/manage-useroption.php:65
+#: admin/api/manage-option_api.php:254
+msgid "Modification succeeded"
+msgstr "düzenleme başarılı"
+
+#: admin/manage-useroption.php:99
+msgid "Users Options"
+msgstr "Kullanıcı seçenekleri"
+
+#: admin/manage-useroption.php:101
+msgid "Configuring user settings."
+msgstr "Kullanıcı ayarlarının yapılandırılması"
+
+#: admin/manage-useroption.php:114
+msgid "Jabber / GoogleTalk"
+msgstr "Jabber / GoogleTalk"
+
+#: admin/manage-useroption.php:117
+msgid "Other Instant Messaging"
+msgstr "Diğer Hızlı Mesajlaşma"
+
+#: admin/manage-useroption.php:120
+msgid "About Me"
+msgstr "Hakkımda"
+
+#: admin/manage-useroption.php:123
+#: admin/api/manage-option_api.php:580
+#: admin/api/manage-permissions_api.php:171
+msgid "Apply"
+msgstr "Uygula"
+
+#: admin/manage-logs.php:63
+msgid "All the log files"
+msgstr "Tüm log dosyaları"
+
+#: admin/manage-logs.php:65
+msgid "Management planet log files (Advanced users)."
+msgstr "Yönetim gezegen log dosyaları (ileri düzey kullanıcılar)."
+
+#: admin/manage-logs.php:109
+msgid "Purge all the log files"
+msgstr "Tüm log dosyalarını temizle"
+
+#: admin/manage-database.php:51
+msgid "Your file could not be downloaded"
+msgstr "Dosyanız indirilemedi"
+
+#: admin/manage-database.php:54
+msgid "Your file could not be imported"
+msgstr "Dosyanız aktarılamadı"
+
+#: admin/manage-database.php:61
+msgid "Your file doesn't have the right format : "
+msgstr "Dosyanız doğru formatta olmayabilir:"
+
+#: admin/manage-database.php:64
+msgid "Congratulations! You imported an old data configuration successfully"
+msgstr "Tebrikler! Eski bir veri yapılandırmasını başarıyla yüklediniz."
+
+#: admin/manage-database.php:65
+msgid "File name: "
+msgstr "Dosya adı:"
+
+#: admin/manage-database.php:66
+msgid "Size: "
+msgstr "Boyut:"
+
+#: admin/manage-database.php:66
+msgid "Kb"
+msgstr "Kb"
+
+#: admin/manage-database.php:106
+msgid "Two users have the same name, impossible to import. Please try again. Username : "
+msgstr "İki kullanıcı aynı ada sahip, yükleme yapılamaz. Lütfen yeniden deneyin. Kullanıcı adı:"
+
+#: admin/manage-database.php:144
+msgid "You can not import 'flux' table without importing the 'membres' table"
+msgstr "'üyeler' tablosunu yüklemeden 'flux' tablosunu yükleyemezsiniz."
+
+#: admin/manage-database.php:190
+msgid "site_id should not be null for user "
+msgstr "site_id should not be null for user "
+
+#: admin/manage-database.php:196
+msgid "You can not import 'articles' table without importing the 'membres' table"
+msgstr "'üyeler' tablosunu yklemeden 'makaleler' tablosunu yükleyemezsiniz"
+
+#: admin/manage-database.php:200
+msgid "You can not import 'articles' table without importing the 'flux' table"
+msgstr "'flux' tablosunu yüklemeden 'makaleler' tablosunu yükleyemezsiniz"
+
+#: admin/manage-database.php:274
+msgid "Forbidden"
+msgstr "Yasak"
+
+#: admin/manage-database.php:297
+msgid "Import successfully with warning :"
+msgstr "Şu uyarı ile birlikte yükleme başarılı:"
+
+#: admin/manage-database.php:309
+msgid "Export planet configuration"
+msgstr "Gezegen yapılandırmasını dışa aktar"
+
+#: admin/manage-database.php:312
+msgid "Please select the data you want to export"
+msgstr "Dışa aktarmak istediğiniz veriyi seçin"
+
+#: admin/manage-database.php:313
+msgid "This will export the data to a file that you'll be able to import later on another installation"
+msgstr "Bu yolla veri daha sonra başka bir kurulumda yükleyebileceğiniz bir dosyaya aktarılacaktır"
+
+#: admin/manage-database.php:317
+msgid "Exported data"
+msgstr "Dışa aktarılan veri"
+
+#: admin/manage-database.php:326
+msgid "User table"
+msgstr "Kullanıcı tablosu"
+
+#: admin/manage-database.php:331
+msgid "Site table"
+msgstr "Site tablosu"
+
+#: admin/manage-database.php:336
+msgid "Feed table"
+msgstr "Bildiri tablosu"
+
+#: admin/manage-database.php:341
+msgid "Post table"
+msgstr "Mesaj tablosu"
+
+#: admin/manage-database.php:346
+msgid "Votes table"
+msgstr "Oy tablosu"
+
+#: admin/manage-database.php:351
+msgid "Permission table"
+msgstr "İzin tablosu"
+
+#: admin/manage-database.php:356
+msgid "Setting table"
+msgstr "Ayar tablosu"
+
+#: admin/manage-database.php:360
+msgid "Export"
+msgstr "Dışa aktar"
+
+#: admin/manage-database.php:366
+msgid "Import planet configuration"
+msgstr "Gezen yapılandırmasını yükle"
+
+#: admin/manage-database.php:369
+msgid "Please select the file you want to restore."
+msgstr "Yüklemek istediğiniz dosyayı seçin"
+
+#: admin/manage-database.php:370
+msgid "TAKE CARE !"
+msgstr "DİKKAT EDİN!"
+
+#: admin/manage-database.php:370
+msgid "If you apply the content of one of this file, this action can not be cancelled"
+msgstr "Bu dosyanın içeriğini uygularsanız yaptığınız iptal edilemeyecek"
+
+#: admin/manage-database.php:371
+msgid "This action can take several minutes. Be patient and don't cancel the process during execution"
+msgstr "Bu işlem biraz zaman alabilir. Sabırlı olun ve uygulama sırasında işlemi iptal etmeyin."
+
+#: admin/manage-database.php:376
+msgid "Imported data"
+msgstr "Yüklenen veri"
+
+#: admin/manage-database.php:383
+msgid "Select your backup file"
+msgstr "Yedekleme dosyanızı seçin"
+
+#: admin/manage-database.php:385
+msgid "Specify the original version of your file"
+msgstr "Dosyanızın orijinal versiyonunu belirtin"
+
+#: admin/manage-database.php:390
+msgid "Import"
+msgstr "Yükle"
+
+#: admin/manage-database.php:394
+msgid "NOTE : to import a backup file, the file needs to have the *.json.gz extension !"
+msgstr "DİKKAT: yükleyeceğiniz yedek dosyasının uzantısı *.json.gz olmalıdır!"
+
+#: admin/manage-update.php:47
+msgid "Enable update on loading of index page: Enable"
+msgstr "Indeks sayfasının yüklenmesinde güncellemeyi etkinleştir: Etkin"
+
+#: admin/manage-update.php:54
+msgid "Enable update on loading of index page: Disable"
+msgstr "Indeks sayfasının yüklenmesinde güncellemeyi etkinleştir: Pasif"
+
+#: admin/manage-update.php:67
+msgid "The automatical update is disabled "
+msgstr "Otomatik güncelleme pasif"
+
+#: admin/manage-update.php:72
+msgid "The update can not start : the process is already started (You can force update by deleting the /inc/cron_running.txt file)"
+msgstr "Güncelleme başlayamıyor: İşlem zaten başlamış (/inc/cron_running.txt dosyasını silerek güncelleme yapmayı zorlayabilirsiniz)"
+
+#: admin/manage-update.php:74
+msgid "The automatic update is enabled"
+msgstr "Otomatik güncelleme aktif"
+
+#: admin/manage-update.php:82
+msgid "Manual update ..."
+msgstr "Manuel güncelleme ..."
+
+#: admin/manage-update.php:85
+#, php-format
+msgid "Error while updating : %s"
+msgstr "Güncelleme hatası: %s"
+
+#: admin/manage-update.php:115
+msgid "Automatic update"
+msgstr "Otomatik güncelleme"
+
+#: admin/manage-update.php:117
+msgid "System configuration update."
+msgstr "Sistem yapılandırması güncellemesi"
+
+#: admin/manage-update.php:126
+msgid "Stop the update algorithm"
+msgstr "Güncelleme algoritmasını durdur"
+
+#: admin/manage-update.php:127
+msgid "Start the update algorithm"
+msgstr "Güncellme algoritmasını başlat"
+
+#: admin/manage-update.php:128
+msgid "Start a manual update"
+msgstr "Manuel güncellemeyi başlat"
+
+#: admin/manage-update.php:135
+msgid "Enable update on loading of index page"
+msgstr "İndeks sayfasının yüklenmesinde güncellemeyi etkin yap"
+
+#: admin/manage-update.php:141
+msgid "Setup feed update"
+msgstr "Bildiri güncellemesi kur"
+
+#: admin/manage-update.php:143
+msgid "How to configure the update of the feeds ?"
+msgstr "Bildirilerin güncellemeleri nasıl ayarlanır?"
+
+#: admin/manage-update.php:146
+msgid "How does it work?"
+msgstr "Nasıl çalışıyor?"
+
+#: admin/manage-update.php:147
+msgid "The update algorithm can work on several ways. The optimal solution that consumes less ressources and will give you the best results is clearly to setup a cron update manually into your server. But here you'll find a short explanation of the several methods :"
+msgstr "Güncelleme algoritması bikaç yolla çalışabilir. Daha az kaynak kullanan ve en iyi sonuçları sağlayacak en uygun yol sunucuza manel olarak cron güncellemesi kurmaktır. Yine de burada bu birkaç yolun kısa açıklamalarını bulabilirsiniz."
+
+#: admin/manage-update.php:149
+msgid "The first intuitive way is to use this page to update manually the feeds of your database by clicking on the 'Start a manual update' option in the menu above. This means that it will update all your feeds only once."
+msgstr "ilk yol, yukarıdaki menüde \"manuel güncellemeyi başlat\" seçeneğine tıklayarak veritabanınızdaki bildirimleri manuel olarak güncellemek. Bu, tüm bildirimlerinizin yalnızca bir kez güncelleneceği demektir."
+
+#: admin/manage-update.php:150
+msgid "The second solution is to click on the 'Start the update algorithm' in the form. This will enable a PHP script which will fetch your feeds. This can be done but needs some special PHP libraries on your web server that may not be installed. This solution can be used but we advise you to check sometimes if the update engine is still alive (it can be killed after a time)"
+msgstr "İkinci çözüm formdaki \"güncelleme algoritmasını başlat\" seçeneğine tıklamaktır. Böylece bildirimlerinizi alacak bir PHP script'i çalıştırılır. Bu yapılabilir ancak bunun için web sunucunuzda kurulu bulunmayan bazı kütüphaneler gerekebilir. Bu çözüm kullanılabilir ancak zaman zaman güncelleme motorunun hayatta olup olmadığını kontrol etmenizi öneririz (bir süre sonra iptal olabilir)"
+
+#: admin/manage-update.php:151
+msgid "Another intuitive way to configure the update of your feeds is by enabling update on index page loading. This means that all your feeds will be updated whenever people connect to your site. This is a good manner to deal with the update but can slightly slow down your site."
+msgstr "Bildirilerinizin güncellemelerini yapılandırmanın diğer bir yolu da indeks sayfasının yüklenmesinde güncellemeleri aktif yapmaktır. Bu, insanlar web sayfanıza bağlandıklarında bildirilerinizin güncellenmesi demektir. Bu güncelleme yapmak için iyi bir yoldur ancak web sitenizi biraz yavaşlatabilir."
+
+#: admin/manage-update.php:152
+msgid "The optimal solution as said before it to configure manually the crontab of your server to enable the update. To configure a cron manually you'll find some advice here under."
+msgstr "En uygun çözüm daha önce de söylendiği gibi sunucunuzun crontab'ını güncellemeleri yapmak üzere manuel olarak yapılandırılmasıdır. Bir cron'u manuel olarak yapılandırmak için bazı önerileri aşağıda bulabilirsiniz."
+
+#: admin/manage-update.php:156
+msgid "You can setup a manual crontab update by calling automatically every X time the following page :"
+msgstr "Aşağıdaki sayfayı her X zamanda bir otomatik olarak çağırarak manuel bir crontab güncellemesi kurabilirsiniz:"
+
+#: admin/manage-update.php:158
+msgid "This will automatically launch the update and log it into the log files."
+msgstr "Bu otomatik olarak güncellemeyi başlatacak ve log dosyalarına kaydedecektir."
+
+#: admin/auth.php:95
+msgid "Password reset"
+msgstr "şifre sıfırlama"
+
+#: admin/auth.php:97
+msgid "Someone has requested to reset the password for the following site and username."
+msgstr "Birisi aşağıdaki site ve kullanıcı adı için şifre sıfırlamayı talep etti."
+
+#: admin/auth.php:98
+msgid "User_id:"
+msgstr "User_id:"
+
+#: admin/auth.php:99
+msgid "To reset your password visit the following address, otherwise just ignore this email and nothing will happen."
+msgstr "şifrenizi sıfırlamak için aşağıdaki adrese gidin, aksi halde bu postayı göz ardı edin ve hiçbir şey olmayacaktır."
+
+#: admin/auth.php:106
+#, php-format
+msgid "The e-mail was sent successfully to %s."
+msgstr "%s 'e e-posta başarı ile gönderildi."
+
+#: admin/auth.php:120
+msgid "Your new password"
+msgstr "Yeni şifreniz"
+
+#: admin/auth.php:122
+#: admin/auth.php:270
+#: admin/auth.php:316
+#: admin/install/wizard.php:192
+#: admin/install/index.php:354
+msgid "Username:"
+msgstr "Kullanıcı adı:"
+
+#: admin/auth.php:123
+#: admin/auth.php:320
+#: admin/install/wizard.php:196
+#: admin/install/index.php:355
+msgid "Password:"
+msgstr "Şifre:"
+
+#: admin/auth.php:130
+msgid "Your new password is in your mailbox."
+msgstr "Yeni şifreniz posta kutunuzdadır."
+
+#: admin/auth.php:162
+msgid "Passwords don't match"
+msgstr "Şifreler aynı değil"
+
+#: admin/auth.php:166
+msgid "You didn't change your password."
+msgstr "Şifrenizi değiştirmediniz."
+
+#: admin/auth.php:216
+msgid "Wrong username or password"
+msgstr "Yanlış kullanıcı adı veya şifre"
+
+#: admin/auth.php:261
+#: admin/auth.php:284
+msgid "Back to login screen"
+msgstr "Giriş sayfasına geri dön"
+
+#: admin/auth.php:266
+msgid "Request a new password"
+msgstr "Yeni şifre iste"
+
+#: admin/auth.php:274
+msgid "Email:"
+msgstr "e-posta:"
+
+#: admin/auth.php:280
+msgid "recover"
+msgstr "Geri alım"
+
+#: admin/auth.php:290
+msgid "Change your password"
+msgstr "Şifrenizi değiştirin"
+
+#: admin/auth.php:291
+msgid "New password:"
+msgstr "Yeni şifre:"
+
+#: admin/auth.php:294
+msgid "Confirm password:"
+msgstr "Şifre doğrulaması:"
+
+#: admin/auth.php:298
+msgid "change"
+msgstr "Değiştir"
+
+#: admin/auth.php:310
+msgid "I forgot my password"
+msgstr "Şifremi unuttum"
+
+#: admin/auth.php:328
+msgid "Remember my ID on this computer"
+msgstr "Kimliğimi bu bilgisayarda hatırla"
+
+#: admin/auth.php:332
+msgid "login"
+msgstr "Giriş"
+
+#: admin/sidebar.php:27
+msgid "Common"
+msgstr "Ortak"
+
+#: admin/sidebar.php:30
+msgid "Access the quick summary of the planet"
+msgstr "Gezegen hızlı özetine gir"
+
+#: admin/sidebar.php:31
+msgid "Manage your profile account"
+msgstr "Profil hesabınızı yönetin"
+
+#: admin/sidebar.php:31
+msgid "Manage your account"
+msgstr "Hesabını yönetin"
+
+#: admin/sidebar.php:42
+msgid "Manage users"
+msgstr "Kullanıcıları yönet"
+
+#: admin/sidebar.php:48
+msgid "Manage posts"
+msgstr "Mesajları yönet"
+
+#: admin/sidebar.php:51
+msgid "Manage newsletter of the planet"
+msgstr "Gezegen haber yazılarını yönet"
+
+#: admin/sidebar.php:51
+msgid "Newsletter"
+msgstr "Haber yazısı"
+
+#: admin/sidebar.php:58
+#: admin/api/manage-permissions_api.php:163
+msgid "Configuration"
+msgstr "Yapılandırma"
+
+#: admin/sidebar.php:62
+msgid "Author configuration"
+msgstr "Yazar yapılandırması"
+
+#: admin/sidebar.php:62
+msgid "Planet Author"
+msgstr "Gezegen yazarı"
+
+#: admin/sidebar.php:65
+msgid "Planet configuration"
+msgstr "Gezegen yapılandırması"
+
+#: admin/sidebar.php:68
+msgid "View logs information"
+msgstr "Kayır bilgilerine bak"
+
+#: admin/sidebar.php:68
+msgid "Logs Files"
+msgstr "Kayıt dosyaları"
+
+#: admin/sidebar.php:71
+msgid "Import/Export Planet configuration"
+msgstr "Gezegen yapılandırması yükle/dışa aktar"
+
+#: admin/sidebar.php:71
+msgid "Import/Export"
+msgstr "Yükle/Dışa aktar"
+
+#: admin/sidebar.php:74
+msgid "Clear Planet cache"
+msgstr "Gezegen Önbellğini temizle"
+
+#: admin/sidebar.php:74
+msgid "Clear cache"
+msgstr "Önbelleği temizle"
+
+#: admin/sidebar.php:77
+msgid "Feed fetching system configuration"
+msgstr "Bildiri alma sistemi yapılandırması"
+
+#: admin/sidebar.php:77
+msgid "Feed fetching"
+msgstr "Bildiri alma"
+
+#: admin/sidebar.php:83
+#: admin/sidebar.php:89
+#: admin/api/manage-permissions_api.php:169
+msgid "Moderation"
+msgstr "Moderasyon"
+
+#: admin/sidebar.php:105
+msgid "System"
+msgstr "Sistem"
+
+#: admin/sidebar.php:111
+#: admin/api/manage-permissions_api.php:110
+msgid "Permissions"
+msgstr "İzinler"
+
+#: admin/install/wizard.php:74
+msgid "The Bilboplanet could not be installed."
+msgstr "Bilboplanet kurulamıyor."
+
+#: admin/install/wizard.php:80
+msgid "The Bilboplanet is already installed. Please remove the tables in the database before."
+msgstr "Bilboplanet zaten kurulmuş. Lütfen önce veritabanındaki tabloları kaldırın."
+
+#: admin/install/wizard.php:86
+#, php-format
+msgid "File %s does not exist."
+msgstr "%s dosya yok."
+
+#: admin/install/wizard.php:91
+#: admin/install/wizard.php:105
+#, php-format
+msgid "Cannot write %s file."
+msgstr "%s dosya yaılamıyor."
+
+#: admin/install/wizard.php:142
+msgid "Bilboplanet Install Wizard"
+msgstr "Bilboplanet kurulum sihirbazı"
+
+#: admin/install/wizard.php:158
+msgid "Installation wizard of the Bilboplanet"
+msgstr "Bilboplanet'ın kurulum sihirbazı"
+
+#: admin/install/wizard.php:161
+#: admin/install/index.php:271
+msgid "Errors:"
+msgstr "Hatalar:"
+
+#: admin/install/wizard.php:165
+#, php-format
+msgid "The file <strong>%s</strong> already exists. If you need to reinitialize on of the configuration elements in this file, please remove the configuration file first or <a href=\"%s\">continue the installation</a>."
+msgstr "<strong>%s</strong> dosyası zaten var. Bu dosyadaki yapılandırma unsurlarını yeniden başlatmak istiyorsanız önce yapılandırma dosyasını kaldırın veya <a href=\"%s\"> kuruluma devam edin </a>."
+
+#: admin/install/wizard.php:170
+msgid ""
+"Welcome to the BilboPlanet. Before you begin, we need some informations concerning the database. You'll need to provide the following information to begin the installation and to create the configuration file.<br /><br />\n"
+"   1. The host of the database.<br/>\n"
+"   2. The name of the database.<br/>\n"
+"   3. Your username to the database.<br/>\n"
+"   4. Your password to the database.<br/>\n"
+"   4. Table prefix for your database.<br/><br/>"
+msgstr ""
+"Bilboplanet'a hoşgeldiniz. Başlamadan önce veritabanına dair bazı bilgiler gerekiyor. Kuruluma başlamak ve bir yapılandırma dosyası oluşturmak için aşağıdaki bilgileri girmelisiniz. <br /><br />\n"
+"1. Veritabanı sahibi. <br/>\n"
+"2. Veritabanı ismi. <br/>\n"
+"3. Veirtabanı kullanıcı adınız. <br/>\n"
+"4. Veritabanı şifreniz. <br/>\n"
+"5. Veritabanınız için tablo önekiniz. <br/><br/>"
+
+#: admin/install/wizard.php:184
+msgid "Host of the database"
+msgstr "Veritabanı sahibi"
+
+#: admin/install/wizard.php:186
+msgid "ex: localhost"
+msgstr "Örnek: localhost"
+
+#: admin/install/wizard.php:188
+msgid "Name of the database:"
+msgstr "Veritabanı ismi:"
+
+#: admin/install/wizard.php:190
+msgid "ex: bilboplanet"
+msgstr "Örnek: bilboplanet"
+
+#: admin/install/wizard.php:194
+msgid "Your username depends of your provider"
+msgstr "Kullanıcı isminiz sağlayıcınıza bağlıdır"
+
+#: admin/install/wizard.php:198
+msgid "Your password depends of your provider"
+msgstr "Şifreniz sağlayıcınıza bağlıdır"
+
+#: admin/install/wizard.php:200
+#: admin/install/index.php:326
+#: admin/install/index.php:329
+#: admin/install/index.php:332
+msgid "Required field"
+msgstr "Gerekli alan"
+
+#: admin/install/wizard.php:200
+msgid "Database Tables Prefix:"
+msgstr "Veritabanı tabloları Öneki:"
+
+#: admin/install/wizard.php:202
+msgid "bp_ is the default prefix"
+msgstr "bp_ is the default prefix"
+
+#: admin/install/wizard.php:204
+#: admin/install/index.php:337
+msgid "Save"
+msgstr "Kaydet"
+
+#: admin/install/check.php:34
+#, php-format
+msgid "PHP version is %s (5.0 or earlier needed)."
+msgstr "PHP versiyonu %s (5.0 veya daha önceki gerekiyor)."
+
+#: admin/install/check.php:38
+msgid "Multibyte string module (mbstring) is not available."
+msgstr "Multibyte string module (mbstring)  yok."
+
+#: admin/install/check.php:42
+msgid "Iconv module is not available."
+msgstr "Iconv module yok."
+
+#: admin/install/check.php:46
+msgid "Output control functions are not available."
+msgstr "Çıktı kontrol fonksiyonları yok."
+
+#: admin/install/check.php:50
+msgid "SimpleXML module is not available."
+msgstr "SimpleXML module yok."
+
+#: admin/install/check.php:54
+msgid "DOM XML module is not available."
+msgstr "DOM XML module yok."
+
+#: admin/install/check.php:59
+msgid "PCRE engine does not support UTF-8 strings."
+msgstr "PCRE engine UTF-8 string'leri desteklemiyor."
+
+#: admin/install/check.php:63
+msgid "SPL module is not available."
+msgstr "SPL module yok."
+
+#: admin/install/check.php:70
+#, php-format
+msgid "MySQL version is %s (4.1 or earlier needed)."
+msgstr "MySQL veriyonu %s (4.1 veya daha önceki gerekiyor)."
+
+#: admin/install/check.php:92
+#, php-format
+msgid "PostgreSQL version is %s (8.0 or earlier needed)."
+msgstr "PostgreSQL versiyonu %s (8.0 veya daha önceki gerekiyor)."
+
+#: admin/install/index.php:32
+msgid "No configuration file"
+msgstr "Yapılandırma dosyası yok"
+
+#: admin/install/index.php:33
+msgid "There is no configuration file, you need to create one. Therefor you can use the wizard to generate a configuration file. Click \"Next\" to go to the setup page."
+msgstr "Yapılandırma dosyası yok, bir tane oluşturmalısınız. Yapılandırma dosyası oluşturmak için sihirbazı kullanabilirsiniz. Ayar sayfasına gitmek için \"Sonraki\" 'ne tıklayın."
+
+#: admin/install/index.php:34
+msgid "Next"
+msgstr "Sonraki"
+
+#: admin/install/index.php:50
+msgid "The Bilboplanet is already installed."
+msgstr "Bilboplanet zataen kurulmuş."
+
+#: admin/install/index.php:56
+msgid "The Bilboplanet can not be installed"
+msgstr "Bilboplanet kurulamıyor."
+
+#: admin/install/index.php:92
+#, php-format
+msgid "Unable to read %s file."
+msgstr "%s dosyası okunamıyor."
+
+#: admin/install/index.php:101
+msgid "Please fill the title in."
+msgstr "lütfen başlığı yazınız."
+
+#: admin/install/index.php:104
+msgid "Please fill the user email in."
+msgstr "Lütfen kullanıcı e-postasını yazın."
+
+#: admin/install/index.php:107
+msgid "Please fill the username in."
+msgstr "lütfen kullanıcı adını yazın."
+
+#: admin/install/index.php:110
+#: admin/api/manage-user_api.php:86
+msgid "Please do not use special chars in user_id field. Allowed chars are only a-z, A-Z and 0-9"
+msgstr "lütfen user_id alanında özel karakterler kullanmayın. Yalnızca a-z, A-Z ve 0-9 karakterleri kullanılabilir."
+
+#: admin/install/index.php:114
+msgid "The username has to be formed of minimum 2 characters with letters of numbers"
+msgstr "Kullanıcı adı harfler veya sayılardan oluşan en az 2 karakter olmalıdır. "
+
+#: admin/install/index.php:117
+msgid "Invalid email address"
+msgstr "Geçersiz e-posta adresi"
+
+#: admin/install/index.php:123
+msgid "The passwords don't match"
+msgstr "şifreler aynı değil"
+
+#: admin/install/index.php:126
+msgid "The password have to contain minimum 6 characters."
+msgstr "Şifre en az 6 karakterden oluşmalıdır."
+
+#: admin/install/index.php:254
+#: admin/install/index.php:268
+msgid "Installation of the Bilboplanet"
+msgstr "Bilboplanet'ın kurulumu"
+
+#: admin/install/index.php:275
+msgid "The configuration file was successfully created."
+msgstr "Yapılandırma dosyası başarıyla oluşturuldu."
+
+#: admin/install/index.php:295
+msgid "Information on the BilboPlanet"
+msgstr "BilboPlanet bilgisi"
+
+#: admin/install/index.php:297
+msgid "Thank you for taking somes minutes to answer those questions to help to the configuration of the bilboplanet."
+msgstr "Bilboplanet'ın yapılandırılmasına yardımcı olacak bu soruları cevaplamaya ayırdığınız vaktiniz için teşekkürler."
+
+#: admin/install/index.php:298
+msgid "Fields marked with an asterisk are obligatory"
+msgstr "Yıldız ile işaretlenmiş alanların doldurulması zorunludur."
+
+#: admin/install/index.php:301
+msgid "Information of the user"
+msgstr "Kullanıcı bilgisi"
+
+#: admin/install/index.php:304
+msgid "Enter your fullname or the name you want to be displayed"
+msgstr "Tam isminizi veya görünmesini istediğiniz isminizi girin"
+
+#: admin/install/index.php:307
+msgid "Enter your email address"
+msgstr "e-posta adresinizi girin"
+
+#: admin/install/index.php:308
+msgid "Website of the user"
+msgstr "Kullanıcının web sitesi"
+
+#: admin/install/index.php:310
+msgid "Entre address of your website or blog (optional)"
+msgstr "Web sitenizin veya blog'unuzun adresini girin (opsiyonel)"
+
+#: admin/install/index.php:313
+msgid "Information on the Planet"
+msgstr "Gezegen bilgisi"
+
+#: admin/install/index.php:314
+#: admin/api/manage-option_api.php:341
+#: admin/api/manage-option_api.php:633
+msgid "Title of the Planet"
+msgstr "Gezegen başlığı"
+
+#: admin/install/index.php:316
+msgid "Fill the title of your planet"
+msgstr "Gezegeninizin başlığını girin"
+
+#: admin/install/index.php:317
+msgid "Description"
+msgstr "Tanım"
+
+#: admin/install/index.php:319
+msgid "Give a description of your planet"
+msgstr "Gezegeninizin bir tanımını yapın"
+
+#: admin/install/index.php:320
+msgid "Planet Language"
+msgstr "Gezegen dili"
+
+#: admin/install/index.php:322
+msgid "Choose your langage"
+msgstr "Dilinizi seçin"
+
+#: admin/install/index.php:325
+msgid "Administration username and password"
+msgstr "Yöneticinin kullanıcı adı ve şifresi"
+
+#: admin/install/index.php:328
+msgid "Enter your username"
+msgstr "Kullanıcı adınızı girin"
+
+#: admin/install/index.php:331
+msgid "Enter your password"
+msgstr "Şifrenizi girin"
+
+#: admin/install/index.php:332
+msgid "Confirm your password"
+msgstr "Şifrenizi doğrulayın"
+
+#: admin/install/index.php:334
+msgid "Re-enter your password for verification"
+msgstr "Doğrulama içn şifrenizi yeniden girin"
+
+#: admin/install/index.php:348
+msgid "Install succeeded"
+msgstr "Kurulum başarılı"
+
+#: admin/install/index.php:350
+msgid "The Bilboplanet was successfully installed. Here you can find a resume of the configuration"
+msgstr "Bilboplanet başarıyla kuruldu. Kurulumun bir özetini burada bulabilirsiniz"
+
+#: admin/install/index.php:352
+msgid "Your account"
+msgstr "Hesabınız"
+
+#: admin/install/index.php:358
+msgid "Your Bilboplanet"
+msgstr "Sizin Bilboplanet'ınız"
+
+#: admin/install/index.php:360
+msgid "URL of the BilboPlanet:"
+msgstr "BilboPlanet URL"
+
+#: admin/install/index.php:361
+msgid "Administration interface:"
+msgstr "Yönetici arayüzü:"
+
+#: admin/install/index.php:365
+msgid "Go to the administration interface"
+msgstr "Yönetici arayüzüne git"
+
+#: admin/api/manage-feed_api.php:88
+#, php-format
+msgid "This user already owns the feed %s"
+msgstr "Bu kullanıcı zaten %s bildirimine sahip"
+
+#: admin/api/manage-feed_api.php:91
+#, php-format
+msgid "The feed %s is owned by site %s"
+msgstr "%s bildirimi %s sitesine ait"
+
+#: admin/api/manage-feed_api.php:94
+#, php-format
+msgid "They are already multiple use of feed %s"
+msgstr "%s bildiriminin zaten birden fazla kullanımı var"
+
+#: admin/api/manage-feed_api.php:115
+#, php-format
+msgid "Feed %s was successfully added"
+msgstr "%s bildirimi başarıyla eklendi"
+
+#: admin/api/manage-feed_api.php:126
+msgid "Please select the user to you want to add the feed"
+msgstr "Bildirimi eklemek istediğiniz kullanıcıyı seçin"
+
+#: admin/api/manage-feed_api.php:129
+msgid "Please select the site to you wand to add the feed"
+msgstr "Bildirimi eklemek istediğiniz siteyi seçin"
+
+#: admin/api/manage-feed_api.php:172
+#, php-format
+msgid "The feed %s is already used by user %s"
+msgstr "%s bildirimi zaten %s kullanıcısı tarafından kullanılıyor"
+
+#: admin/api/manage-feed_api.php:182
+#, php-format
+msgid "Feed %s successfully updated"
+msgstr "%s bildirimi başarıyla güncellendi"
+
+#: admin/api/manage-feed_api.php:221
+msgid "Feed status toggled"
+msgstr "Bildiri durumu değiştirldi"
+
+#: admin/api/manage-feed_api.php:239
+msgid "Feed trust changed"
+msgstr "Bildiri güveni değiştirldi"
+
+#: admin/api/manage-feed_api.php:248
+#, php-format
+msgid "Are you sure you want to remove feed %s ?"
+msgstr "%s bildirisini kaldırmak istediğinizden emin misiniz?"
+
+#: admin/api/manage-feed_api.php:250
+#: admin/api/manage-user_api.php:281
+#: admin/api/manage-site_api.php:186
+msgid "This action can not be canceled"
+msgstr "Eylem iptal edilemez"
+
+#: admin/api/manage-feed_api.php:251
+msgid "All the posts comming from this feed will be removed"
+msgstr "Bu bildirimden gelen tüm mesajlar kaldırılacak"
+
+#: admin/api/manage-feed_api.php:255
+#: admin/api/manage-user_api.php:287
+#: admin/api/manage-site_api.php:191
+msgid "Confirm"
+msgstr "Doğrula"
+
+#: admin/api/manage-feed_api.php:269
+#, php-format
+msgid "Delete of feed %s succeeded"
+msgstr "%s bildirimi başarıyla silindi"
+
+#: admin/api/manage-feed_api.php:332
+#: admin/api/manage-user_api.php:382
+#: admin/api/manage-database_api.php:95
+#: admin/api/manage-selection_api.php:82
+#: admin/api/manage-site_api.php:227
+#: admin/api/manage-account_api.php:104
+#: admin/api/manage-permissions_api.php:187
+#: admin/api/manage-moderation_api.php:198
+msgid "User bad call"
+msgstr "User bad call"
+
+#: admin/api/manage-feed_api.php:353
+msgid "Website(s) user Informations"
+msgstr "Web sitesi kullanıcı bilgileri"
+
+#: admin/api/manage-feed_api.php:365
+msgid "Disable feed"
+msgstr "Bildiriyi pasif yap"
+
+#: admin/api/manage-feed_api.php:369
+#: admin/api/manage-feed_api.php:373
+msgid "Enable feed"
+msgstr "Bildiriyi etkinleştir"
+
+#: admin/api/manage-feed_api.php:378
+msgid "Untrust this feed"
+msgstr "Bu bildiriye güvenme"
+
+#: admin/api/manage-feed_api.php:381
+msgid "Trust this feed"
+msgstr "Bu bildiriye güven"
+
+#: admin/api/manage-feed_api.php:391
+msgid "Feed name : "
+msgstr "Bildiri adı:"
+
+#: admin/api/manage-feed_api.php:392
+msgid "Site URL : "
+msgstr "Site URL:"
+
+#: admin/api/manage-user_api.php:97
+#: admin/api/manage-user_api.php:100
+#: admin/api/manage-user_api.php:225
+#: admin/api/manage-account_api.php:55
+#, php-format
+msgid "The user %s already exists"
+msgstr "%s kullanıcısı zaten var"
+
+#: admin/api/manage-user_api.php:103
+#, php-format
+msgid "The email address %s is already in use"
+msgstr "%s e-posta adresi zaten kullanımda"
+
+#: admin/api/manage-user_api.php:110
+#, php-format
+msgid "The website %s is already assigned to the user %s"
+msgstr "%s web sitesi zaten %s kullanıcısına atanmış"
+
+#: admin/api/manage-user_api.php:145
+#, php-format
+msgid "User %s successfully added"
+msgstr "%s kullanıcısı başarıyla eklendi"
+
+#: admin/api/manage-user_api.php:193
+msgid "User status toggled"
+msgstr "Kullanıcı durumu değiştirildi"
+
+#: admin/api/manage-user_api.php:228
+#: admin/api/manage-account_api.php:58
+#, php-format
+msgid "The email address %s is already in use by %s"
+msgstr "%s e-posta adresi zaten %s kullanıcısı tarafından kullanılıyor"
+
+#: admin/api/manage-user_api.php:242
+#: admin/api/manage-account_api.php:72
+#, php-format
+msgid "User %s successfully updated"
+msgstr "%s kullanıcısı başarıyla güncellendi"
+
+#: admin/api/manage-user_api.php:276
+#: admin/api/manage-user_api.php:300
+msgid "You are not allowed to remove a super user"
+msgstr "Üstün kullanıcıyı kaldırmak için izniniz yok"
+
+#: admin/api/manage-user_api.php:280
+#, php-format
+msgid "Are you sure you want to remove user %s ?"
+msgstr "%s kullanıcısını kaldırmak istediğinizden emin misiniz?"
+
+#: admin/api/manage-user_api.php:282
+msgid "All the posts of the user will be removed"
+msgstr "Kullanıcının tüm mesajları kaldırılacak"
+
+#: admin/api/manage-user_api.php:283
+msgid "All the votes on these posts will be removed"
+msgstr "Bu mesajların tüm oyları kaldırılıacak"
+
+#: admin/api/manage-user_api.php:284
+msgid "All the feeds of this user will be removed"
+msgstr "Bu kullanıcının tüm bildirimleri kaldırılacak"
+
+#: admin/api/manage-user_api.php:314
+#, php-format
+msgid "Delete of user %s succeeded"
+msgstr "%s kullanıcısı başarıyla silindi"
+
+#: admin/api/manage-user_api.php:400
+#: admin/api/manage-permissions_api.php:107
+msgid "Avatar"
+msgstr "Avatar"
+
+#: admin/api/manage-user_api.php:401
+#: admin/api/manage-permissions_api.php:108
+msgid "User Informations"
+msgstr "Kullanıcı Bilgileri"
+
+#: admin/api/manage-user_api.php:420
+msgid "Disable user"
+msgstr "Kullanıcıyı pasif yap"
+
+#: admin/api/manage-user_api.php:423
+msgid "Enable user"
+msgstr "Kullanıcıyı etkin yap"
+
+#: admin/api/manage-user_api.php:436
+msgid "Planet author"
+msgstr "Gezegen yazarı"
+
+#: admin/api/manage-user_api.php:454
+msgid "Add a new website"
+msgstr "Yeni web sitesi ekle"
+
+#: admin/api/manage-database_api.php:74
+#, php-format
+msgid "Unable to write %s file."
+msgstr "%s dosyası yazılamıyor"
+
+#: admin/api/manage-database_api.php:74
+msgid "Please check you /admin/cache directory permissions"
+msgstr "/admin/cache dizini izinlerinizi kontrol edin"
+
+#: admin/api/manage-database_api.php:81
+msgid "A snapshot of your current database was successfully created. Please download the following file and put it in some safe place."
+msgstr "Geçerli veritabanınızın kopyası oluşturuldu. Şu dosyayı indirerek güvenli bir yerde saklayın."
+
+#: admin/api/manage-database_api.php:86
+msgid "Please select at least one table to export"
+msgstr "Dışa aktarmak için en az bir tablo seçin."
+
+#: admin/api/manage-option_api.php:40
+msgid "The title can not be empty"
+msgstr "Başlık boş olamaz."
+
+#: admin/api/manage-option_api.php:113
+msgid "Only numeric value are allowed for number of posts by page"
+msgstr "Bir sayfada yer alacak mesaj sayısı için yalnızca sayısal değerler girilebilir."
+
+#: admin/api/manage-option_api.php:154
+msgid "Subscription page content can not be empty"
+msgstr "Üyelik sayfası içeriği boş olamaz"
+
+#: admin/api/manage-option_api.php:238
+msgid "Impossible to reach statusnet server : the service could not be activated"
+msgstr "Statusnet sunucuya ulaşılamıyor: servis aktive edilemedi."
+
+#: admin/api/manage-option_api.php:336
+#: admin/api/manage-option_api.php:628
+msgid "Option"
+msgstr "Seçenek"
+
+#: admin/api/manage-option_api.php:337
+#: admin/api/manage-option_api.php:629
+msgid "Value"
+msgstr "Değer"
+
+#: admin/api/manage-option_api.php:345
+#: admin/api/manage-option_api.php:637
+msgid "Description of the Planet"
+msgstr "Gezegenin tanımı"
+
+#: admin/api/manage-option_api.php:349
+#: admin/api/manage-option_api.php:641
+msgid "Graphical theme"
+msgstr "Grafik teması"
+
+#: admin/api/manage-option_api.php:364
+#: admin/api/manage-option_api.php:645
+msgid "Language of the Planet"
+msgstr "Gezegen dili"
+
+#: admin/api/manage-option_api.php:385
+#: admin/api/manage-option_api.php:649
+msgid "Information message (optional)"
+msgstr "Bilgi mesajı (opsiyonel)"
+
+#: admin/api/manage-option_api.php:389
+#: admin/api/manage-option_api.php:653
+msgid "Show the contact page"
+msgstr "İçerik sayfasını göster"
+
+#: admin/api/manage-option_api.php:398
+#: admin/api/manage-option_api.php:662
+msgid "Enable voting"
+msgstr "Oylamayı etkin yap"
+
+#: admin/api/manage-option_api.php:408
+#: admin/api/manage-option_api.php:667
+msgid "Votes system"
+msgstr "oylama sistemi"
+
+#: admin/api/manage-option_api.php:411
+msgid "yes-no"
+msgstr "evet-hayır"
+
+#: admin/api/manage-option_api.php:411
+msgid "Positive and Negative"
+msgstr "Pozitif ve Negatif"
+
+#: admin/api/manage-option_api.php:413
+msgid "yes-warn"
+msgstr "evet-ikaz"
+
+#: admin/api/manage-option_api.php:413
+msgid "Positive and Warning"
+msgstr "Pozitif ve Uyarı"
+
+#: admin/api/manage-option_api.php:431
+#: admin/api/manage-option_api.php:676
+msgid "Option of moderation"
+msgstr "Moderasyon seçeneği"
+
+#: admin/api/manage-option_api.php:441
+#: admin/api/manage-option_api.php:685
+msgid "Enable avatar"
+msgstr "Avatar etkin"
+
+#: admin/api/manage-option_api.php:444
+msgid "Work with"
+msgstr "Çalışma seçimi"
+
+#: admin/api/manage-option_api.php:456
+#: admin/api/manage-option_api.php:694
+msgid "Maintenance mode"
+msgstr "Bakım modu"
+
+#: admin/api/manage-option_api.php:465
+#: admin/api/manage-option_api.php:703
+msgid "Log level"
+msgstr "Kayıt seviyesi"
+
+#: admin/api/manage-option_api.php:480
+#: admin/api/manage-option_api.php:707
+msgid "Number of posts by page"
+msgstr "Bir sayfadaki mesaj sayısı"
+
+#: admin/api/manage-option_api.php:484
+msgid "Analytics engine"
+msgstr "Analiz motoru"
+
+#: admin/api/manage-option_api.php:496
+msgid "Google-Analytics"
+msgstr "Google-Analytics"
+
+#: admin/api/manage-option_api.php:497
+msgid "Piwik"
+msgstr "Piwik"
+
+#: admin/api/manage-option_api.php:498
+#: admin/api/manage-option_api.php:658
+#: admin/api/manage-option_api.php:672
+#: admin/api/manage-option_api.php:681
+#: admin/api/manage-option_api.php:690
+#: admin/api/manage-option_api.php:699
+#: admin/api/manage-option_api.php:713
+#: admin/api/manage-option_api.php:742
+#: admin/api/manage-option_api.php:770
+#: admin/api/manage-option_api.php:791
+msgid "Disabled"
+msgstr "Pasif"
+
+#: admin/api/manage-option_api.php:502
+#: admin/api/manage-option_api.php:720
+msgid "Google Analytics id"
+msgstr "Google Analytics id"
+
+#: admin/api/manage-option_api.php:506
+msgid "Piwik site URL"
+msgstr "Piwik site URL"
+
+#: admin/api/manage-option_api.php:510
+msgid "Piwik site id"
+msgstr "Piwik site id"
+
+#: admin/api/manage-option_api.php:514
+#: admin/api/manage-option_api.php:737
+msgid "Enable Internal links"
+msgstr "İç bağlantıları etkin yap"
+
+#: admin/api/manage-option_api.php:527
+msgid "Planet statusnet host"
+msgstr "Gezegen statusnet sunucusu"
+
+#: admin/api/manage-option_api.php:528
+msgid "(ex: http://identi.ca)"
+msgstr "(ex: http://identi.ca)"
+
+#: admin/api/manage-option_api.php:532
+#: admin/api/manage-option_api.php:756
+msgid "Planet statusnet username"
+msgstr "Gezegen statusnet kullanıcı adı"
+
+#: admin/api/manage-option_api.php:537
+msgid "Planet statusnet password"
+msgstr "Gezegen statusnet şifresi"
+
+#: admin/api/manage-option_api.php:542
+#: admin/api/manage-option_api.php:761
+msgid "Statusnet messages format"
+msgstr "Statusnet mesajları formatı"
+
+#: admin/api/manage-option_api.php:543
+#, fuzzy
+msgid "(ex: \"[Site name] %(author)s %(title)s\" where \"%(author)s\" is the author of the post and \"%(title)s is the title\")"
+msgstr "(örnek: \"[Site adı] %(author)s %(title)s\" burada \"%(author)s\" mesajın yazarı ve \"%(title)s  başlık\")"
+
+#: admin/api/manage-option_api.php:547
+#: admin/api/manage-option_api.php:766
+msgid "Statusnet activate automatic post"
+msgstr "Statusnet otomatik mesaj aktivasyonu"
+
+#: admin/api/manage-option_api.php:557
+#: admin/api/manage-option_api.php:775
+msgid "Enable subscription"
+msgstr "Üyeliği etkin yap"
+
+#: admin/api/manage-option_api.php:568
+#: admin/api/manage-option_api.php:779
+msgid "Subscription page content"
+msgstr "Üyeli sayfası içeriği"
+
+#: admin/api/manage-option_api.php:655
+#: admin/api/manage-option_api.php:664
+#: admin/api/manage-option_api.php:678
+#: admin/api/manage-option_api.php:687
+#: admin/api/manage-option_api.php:696
+#: admin/api/manage-option_api.php:739
+#: admin/api/manage-option_api.php:768
+#: admin/api/manage-option_api.php:777
+msgid "Enabled"
+msgstr "Etkin"
+
+#: admin/api/manage-option_api.php:711
+msgid "Planet Analytics Engine"
+msgstr "Gezegen Analiz Motoru"
+
+#: admin/api/manage-option_api.php:729
+msgid "Piwik URL"
+msgstr "Piwik URL"
+
+#: admin/api/manage-option_api.php:733
+msgid "Piwik Site ID"
+msgstr "Piwik Site ID"
+
+#: admin/api/manage-option_api.php:751
+msgid "Planet statusnet host (ex: http://identi.ca)"
+msgstr "Gezegen statusnet sunucusu (örnek: http://identi.ca)"
+
+#: admin/api/manage-option_api.php:801
+msgid "Nothing to do"
+msgstr "Yapılacak birşey yok"
+
+#: admin/api/manage-site_api.php:58
+#: admin/api/manage-site_api.php:121
+#, php-format
+msgid "The user %s already own the website %s"
+msgstr "%s kullanıcısı zaten %s sitesinin sahibi"
+
+#: admin/api/manage-site_api.php:61
+#, php-format
+msgid "The website %s owns to user %s"
+msgstr "%s web sitesi %s kullanıcısının"
+
+#: admin/api/manage-site_api.php:81
+#, php-format
+msgid "Website %s successfully added to user %s"
+msgstr "%s web sitesi %s kullanıcısına başarıyla eklendi"
+
+#: admin/api/manage-site_api.php:124
+#, php-format
+msgid "The website %s is owned by user %s"
+msgstr "%s web sitesinin sahibi %s kullanıcısı"
+
+#: admin/api/manage-site_api.php:135
+#, php-format
+msgid "Website %s successfully updated"
+msgstr "%s web sitesi başarıyla güncellendi"
+
+#: admin/api/manage-site_api.php:175
+msgid "Site status toggled"
+msgstr "Site durumu değiştirildi"
+
+#: admin/api/manage-site_api.php:184
+#, php-format
+msgid "Are you sure you want to remove site %s ?"
+msgstr "%s sitesini kaldırmak istediğinizden emin misiniz?"
+
+#: admin/api/manage-site_api.php:187
+msgid "All the posts comming from this site will be removed"
+msgstr "Bu siteden gelen tüm mesajlar kaldırılacak"
+
+#: admin/api/manage-site_api.php:188
+msgid "All the feeds of this site will be removed"
+msgstr "Bu sitenin tüm bildirimleri kaldırılacak"
+
+#: admin/api/manage-site_api.php:208
+#, php-format
+msgid "Delete of site %s succeeded"
+msgstr "%s sitesi başarıyla silindi"
+
+#: admin/api/index.php:101
+msgid "bad call, this ajax call does not exist"
+msgstr "bad call, this ajax call does not exist"
+
+#: admin/api/manage-permissions_api.php:36
+#: admin/api/manage-permissions_api.php:70
+msgid "Impossible to change your own role"
+msgstr "Kendi rolünüz değiştirilemez"
+
+#: admin/api/manage-permissions_api.php:41
+#, php-format
+msgid "User %s is now know as %s"
+msgstr "%s kullanıcısı %s olarak biliniyor"
+
+#: admin/api/manage-permissions_api.php:44
+msgid "There was a problem during toggling user role"
+msgstr "Kullanıcı rolünü değiştirirken sorun oldu"
+
+#: admin/api/manage-permissions_api.php:74
+#, php-format
+msgid "User %s has new permissions : %s"
+msgstr "%s kullanıcısının yeni izinleri var: %s"
+
+#: admin/api/manage-permissions_api.php:109
+msgid "Role"
+msgstr "Rol"
+
+#: admin/api/manage-permissions_api.php:114
+msgid "Normal user"
+msgstr "Normal kullanıcı"
+
+#: admin/api/manage-permissions_api.php:115
+msgid "Website manager"
+msgstr "Web sitesi yöneticisi"
+
+#: admin/api/manage-permissions_api.php:116
+msgid "Super user"
+msgstr "Üstün Kullanıcı"
+
+#: admin/api/manage-moderation_api.php:41
+msgid "The post is already accepted"
+msgstr "Mesaj zetn kabul edildi"
+
+#: admin/api/manage-moderation_api.php:47
+msgid "Post successfully updated"
+msgstr "Mesaj başarıyla güncellendi"
+
+#: admin/api/manage-moderation_api.php:84
+msgid "The post is already refused"
+msgstr "Mesaj zaten reddedildi"
+
+#: admin/api/manage-moderation_api.php:88
+msgid "Mail could not be send"
+msgstr "Posta gönderilemiyor"
+
+#: admin/api/manage-moderation_api.php:93
+msgid "Post successfully refused"
+msgstr "Posta başarıyla reddedildi"
+
+#: admin/api/manage-moderation_api.php:121
+#, php-format
+msgid "Dear %s,"
+msgstr "Sayın %s,"
+
+#: admin/api/manage-moderation_api.php:123
+msgid "Dear user,"
+msgstr "Sayın Kullanıcı,"
+
+#: admin/api/manage-moderation_api.php:126
+msgid "We took the decision to moderate the following post :"
+msgstr "Aşağıdaki mesajı modere etme kararı aldık:"
+
+#: admin/api/manage-moderation_api.php:128
+msgid "The reasons of this moderation are :"
+msgstr "Bu moderasyonun sebebi:"
+
+#: admin/api/manage-moderation_api.php:131
+#, php-format
+msgid "Thank you for your contribution on the %s"
+msgstr "%s 'e katkınız için teşekkürler."
+
+#: admin/api/manage-moderation_api.php:132
+msgid "Sincerely yours"
+msgstr "Saygılarımızla"
+
+#: admin/api/manage-moderation_api.php:157
+msgid "Author"
+msgstr "Yazar"
+
+#: admin/api/manage-moderation_api.php:170
+#: admin/api/manage-moderation_api.php:176
+msgid "Accept"
+msgstr "Kabul et"
+
+#: admin/api/manage-moderation_api.php:172
+#: admin/api/manage-moderation_api.php:177
+msgid "Refuse"
+msgstr "Reddet"
+
+#: admin/api/manage-moderation_api.php:187
+#, php-format
+msgid "%s last posts :"
+msgstr "%s son mesajlar:"
+
+#: admin/api/manage-moderation_api.php:193
+msgid "No posts found"
+msgstr "Mesaj bulunamadı"
+

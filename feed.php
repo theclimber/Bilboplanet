@@ -241,7 +241,9 @@ if (isset($_GET) && isset($_GET['type'])) {
 
 		# Other link
 		$links =  '<i>'.sprintf('Original post of <a href="%s" title="Visit the source">%s</a>.',$url, $nom);
-		$links .= sprintf(T_('Vote for this post on <a href="%s" title="Go on the planet">%s</a>.'),BP_PLANET_URL, $blog_settings->get('planet_title')).'</i>';
+	    if ($blog_settings->get('planet_vote')) {
+		    $links .= sprintf(T_('Vote for this post on <a href="%s" title="Go on the planet">%s</a>.'),BP_PLANET_URL, $blog_settings->get('planet_title')).'</i>';
+        }
 
 		# Remove html tag to post content
 		$desc = strip_tags($item);

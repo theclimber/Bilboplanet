@@ -101,7 +101,7 @@ if (!isset($current_page) || in_array($current_page, array('portal', 'list', 'po
 		}
         $tribe_icon = getTribeIcon($rs->tribe_id,$rs->tribe_name,$rs->tribe_icon);
 		$core->tpl->setVar('tribe', array(
-			'id' => $rs->tribe_id,
+			'id' => urlencode($rs->tribe_id),
 			'name' => $rs->tribe_name,
 			'icon' => $tribe_icon,
 			'selected' => $selected

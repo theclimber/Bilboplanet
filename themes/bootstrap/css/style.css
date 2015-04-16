@@ -1397,7 +1397,7 @@ span.user:after{
 
 
 div#filter-feed {
-	background: url('../images/rss_24.png') no-repeat;
+	/*background: url('../images/rss_24.png') no-repeat;*/
 	padding-left : 25px;
 	margin: 5px;
 	line-height: 25px;

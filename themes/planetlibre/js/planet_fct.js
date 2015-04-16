@@ -282,3 +282,121 @@ function checkCookie()
 		setCookie("sidebar_visible",this.sidebar_hidden,31);
 	}
 }
+/*************************/
+/* function from main.js */
+/*************************/
+function add_tribe(tribe, disable_update) {
+	this.page = 0;
+	var already_exists = false;
+	jQuery.each(this.tribe, function(i, val) {
+		if (val == tribe) {
+			already_exists = true;
+		}
+	});
+	if (!already_exists) {
+		this.tribe.push(tribe);
+		if (!disable_update) {
+			updatePostList();
+		}
+		var tribelist = '';
+		jQuery.each(this.tribe, function(i, val) {
+			tribelist += '<span class="tribe"><a href="#" onclick="javascript:rm_tribe(\''+val+'\')">'+val+' x</a></span>';
+		});
+		$('#filter-page').attr('style', 'display:none;');
+		$('#filter-tribe-content').html(tribelist);
+		$('#filter-tribe').attr('style', '');
+	}
+}
+function rm_tribe(tribe) {
+	this.page = 0;
+	this.tribe.pop(tribe);
+	updatePostList();
+	$('#filter-page').attr('style', 'display:none;');
+	if (this.tribe.length == 0) {
+		$('#filter-tribe').attr('style', 'display:none;');
+	} else {
+		var tribelist = '';
+		jQuery.each(this.tribe, function(i, tribe) {
+			tribelist += '<span class="tribe"><a href="#" onclick="javascript:rm_tribe(\''+tribe+'\')">'+tribe+'</a></span>';
+		});
+		$('#filter-tribe-content').html(tribelist);
+		$('#filter-tribe').attr('style', '');
+	}
+}
+
+function add_tag(tag, disable_update) {
+	this.page = 0;
+	var already_exists = false;
+	jQuery.each(this.tags, function(i, val) {
+		if (val == tag) {
+			already_exists = true;
+		}
+	});
+	if (!already_exists) {
+		this.tags.push(tag);
+		if (!disable_update) {
+			updatePostList();
+		}
+		var taglist = '';
+		jQuery.each(this.tags, function(i, val) {
+			taglist += '<span class="tag"><a href="#" onclick="javascript:rm_tag(\''+val+'\')">'+val+' x</a></span>';
+		});
+		$('#filter-page').attr('style', 'display:none;');
+		$('#filter-tags-content').html(taglist);
+		$('#filter-tags').attr('style', '');
+	}
+}
+function rm_tag(tag) {
+	this.page = 0;
+	this.tags.pop(tag);
+	updatePostList();
+	$('#filter-page').attr('style', 'display:none;');
+	if (this.tags.length == 0) {
+		$('#filter-tags').attr('style', 'display:none;');
+	} else {
+		var taglist = '';
+		jQuery.each(this.tags, function(i, tag) {
+			taglist += '<span class="tag"><a href="#" onclick="javascript:rm_tag(\''+tag+'\')">'+tag+'</a></span>';
+		});
+		$('#filter-tags-content').html(taglist);
+		$('#filter-tags').attr('style', '');
+	}
+}
+function add_user(user, disable_update) {
+	this.page = 0;
+	var already_exists = false;
+	jQuery.each(this.users, function(i, val) {
+		if (val == user) {
+			already_exists = true;
+		}
+	});
+	if (!already_exists) {
+		this.users.push(user);
+		if (!disable_update) {
+			updatePostList();
+		}
+		var userlist = '';
+		jQuery.each(this.users, function(i, val) {
+			userlist += '<span class="user"><a href="#" onclick="javascript:rm_user(\''+val+'\')">'+val+'</a></span>';
+		});
+		$('#filter-page').attr('style', 'display:none;');
+		$('#filter-users-content').html(userlist);
+		$('#filter-users').attr('style', '');
+	}
+}
+function rm_user(user) {
+	this.page = 0;
+	this.users.pop(user);
+	updatePostList();
+	$('#filter-page').attr('style', 'display:none;');
+	if (this.users.length == 0) {
+		$('#filter-users').attr('style', 'display:none;');
+	} else {
+		var userlist = '';
+		jQuery.each(this.users, function(i, user) {
+			userlist += '<span class="user"><a href="#" onclick="javascript:rm_user(\''+user+'\')">'+user+'</a></span>';
+		});
+		$('#filter-users-content').html(userlist);
+		$('#filter-users').attr('style', '');
+	}
+}

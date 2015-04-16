@@ -39,7 +39,7 @@
 <link rel="icon" type="image/png" href="{$planet.url}/themes/{$planet.theme}/favicon.png" />
 
 <!-- JS -->
-<script type="text/javascript" src="{$planet.url}/themes/{$planet.theme}/js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="{$planet.url}/themes/{$planet.theme}/js/jquery.min.js"></script>
 <!-- begin old -->
 <script type="text/javascript" src="{$planet.url}/themes/{$planet.theme}/js/jquery.boxy.js"></script>
 <script type="text/javascript" src="{$planet.url}/themes/{$planet.theme}/js/jquery.ba-outside-events.min.js"></script>

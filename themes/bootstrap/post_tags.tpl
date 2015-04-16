@@ -1,7 +1,7 @@
 				<div class="tag-line">
 					{_tags :}
 				<!-- BEGIN post.tags -->
-					<span class="tag"><a href="#" onclick="javascript:add_tag('{$post_tag}')">{$post_tag}</a> <!--<a href="#" onclick="javascript:rm_tag_post('{$post.id}','{$post_tag}')">x</a>--></span>
+					<span class="tag"><a href="#" onclick="javascript:add_tag('{$post_tag}')" class="btn btn-default btn-xs">{$post_tag}</a> <!--<a href="#" onclick="javascript:rm_tag_post('{$post.id}','{$post_tag}')">x</a>--></span>
 				<!-- END post.tags -->
 				<!-- BEGIN post.action.tags -->
 				<a href="javascript:tag_post('{$post.id}')" title="{_Add tag}">
@@ -20,5 +20,6 @@
 					  <i class="fa fa-comment fa-stack-1x"></i>
 					  <i class="fa fa-ban fa-stack-2x text-danger"></i>
 					</span>
+				</a>
 				<!-- END post.action.uncomment -->
 				</div>

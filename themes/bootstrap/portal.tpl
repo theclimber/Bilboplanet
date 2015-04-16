@@ -4,9 +4,9 @@
     <div class="well">
     {_Welcome on this Planet. A Planet is a feed aggregator website designed to collect posts from the weblogs of poeple of an Internet community and display them on a single page. It creates pages with entries from the original feeds. This planet is running with the Bilboplanet engine.}
     </div>
-
+		<div class="col-xs-12">
 	<!-- BEGIN portal.block -->
-	<div class="col-xs-12 col-md-6">
+
 		<div class="portalbox {$tribe.align}box panel panel-default" id="tribe-{$tribe.id}">
 			<div class="panel-heading">
 		    <h3 class="panel-title">
@@ -39,13 +39,13 @@
 
 			<div class="feedlink panel-footer"><a href="{$planet.url}/feed.php?type=atom&tribe_id={$tribe.id}"><i class="fa fa-rss-square fa-lg"></i></a></div>
 		</div>
-	</div>	
+
 	<!-- ELSE portal.block -->
-		<div class="portalbox col-xs-12">
+		<div class="portalbox">
 			{_No tribes found.}
 		</div>
 	<!-- END portal.block -->
-
+</div>
 	</div>
 
 </div>

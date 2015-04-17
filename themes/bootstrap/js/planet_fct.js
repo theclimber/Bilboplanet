@@ -1,3 +1,101 @@
+function callAjaxPost(url, formId, divRefreshId) {
+    jQuery.ajax({
+          type: 'POST',
+          url: url,
+          data: jQuery('#'+formId).serialize(),
+          success: function(data) {
+                jQuery('#'+divRefreshId).html(data);
+          }
+    });
+}
+
+function callAjaxGet(url, divRefreshId) {
+    jQuery.ajax({
+          type: 'GET',
+          url: url,
+          success: function(data) {
+                jQuery('#'+divRefreshId).html(data);
+          }
+    });
+}
+
+function callOnlyAjaxGet(url) {
+    jQuery.ajax({
+          type: 'GET',
+          url: url
+    });
+}
+
+function callOnlyAjaxPost(url, formId) {
+    jQuery.ajax({
+          type: 'POST',
+          url: url,
+          data: jQuery('#'+formId).serialize()
+    });
+}
+
+/* Dialog */
+function jOpenDialog(dialogId, url) {
+	jQuery('body').append('<div id="' + dialogId + '" class="modal hide fade" tabindex="-1"></div>');
+	jQuery.ajax({
+		type: 'GET',
+		url: url,
+		cache: false,
+		success: function(data) {
+			jQuery('#'+dialogId).html(data);
+			jQuery('#'+dialogId).modal({backdrop : 'static', keyboard : false}).show();
+			jQuery('#'+dialogId).on('hidden', function () {
+				jQuery('#'+dialogId).remove();
+			});
+		}
+	});
+}
+
+function jCloseDialog(dialogId) {
+	jQuery('#'+dialogId).modal('hide');
+}
+
+function jSubmitAndCloseDialog(dialogId, url, formId, doReload) {
+	if(doReload == undefined) {
+		doReload = false;
+	}
+	jQuery.ajax({
+		type: 'POST',
+		url: url,
+		data: jQuery('#'+formId).serialize(),
+		success: function(data) {
+			jQuery('#'+dialogId).html(data);
+			if(!containsError(dialogId)) {
+				jCloseDialog(dialogId);
+				if(doReload) {
+					location.reload();
+				}
+			}
+		}
+	});
+}
+
+function jSubmitAndCloseDialogAndRefresh(dialogId, url, formId, urlRefresh) {
+	jQuery.ajax({
+		type: 'POST',
+		url: url,
+		data: jQuery('#'+formId).serialize(),
+		success: function(data) {
+			jQuery('#'+dialogId).html(data);
+			if(!containsError(dialogId)) {
+				jCloseDialog(dialogId);
+				location = urlRefresh;
+			}
+		}
+	});
+}
+
+function containsError(containerId) {
+	var errorMsgs = jQuery(".alert-error,.fieldError,.flash_error", "#"+containerId);
+	return (errorMsgs != null && errorMsgs.length > 0);
+}
+
+
 function finishWith(str, substr) {
 	if (str.indexOf(substr)==str.length-substr.length){
 		return true;

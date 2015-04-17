@@ -1,3 +1,4 @@
+	<div class="well well-sm">
 	<div class="row">
 	  	<div class="col-md-12">
 	<!-- BEGIN menu.filter -->
@@ -25,15 +26,11 @@
 	</div>
 </div>
 <div class="row">
-		<div class="col-md-12">
+
 	<!-- BEGIN postlist.state -->
 	<div class="box page-status">
-		<div id="filter-order-action" class="pull-right">
-			{_Select only}
-            <a href="javascript:order_by('latest')">{_latest posts}</a>
-            - <a href="javascript:order_by('popular')">{_popular of the week}</a>
-		</div>
-		<div id="filter-status" class="well well-sm">
+
+		<div id="filter-status" class="col-xs-12 col-md-7">
 			<h4 id="filter-title">{_Page status}</h4>
 			<div id="filter-tribe" style="display:none">{_Tribe :}
 				<span id="filter-tribe-content"></span></div>
@@ -52,10 +49,15 @@
 				<a id="filter-feed" href="feed.php?type=atom"><i class="fa fa-rss-square fa-lg"></i> {_Feed with this parameters}</a>
 				</div>
 		</div>
+		<div id="filter-order-action" class="col-xs-12 col-md-5 small">
+			{_Select only}
+            <a href="javascript:order_by('latest')">{_latest posts}</a>
+            - <a href="javascript:order_by('popular')">{_popular of the week}</a>
+		</div>
 	</div>
 	<!-- END postlist.state -->
 </div>
-</div>
+
 <div class="row">
 	<div class="col-md-12">
 	<!-- BEGIN main.alert -->
@@ -74,5 +76,6 @@
 		{$sidebar-widget.html}
 	</div>
 	<!-- END sidebar.widget -->
+</div>
 </div>
 </div>

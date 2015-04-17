@@ -26,7 +26,7 @@ function vote(num_article, token, type) {
 		$("#vote" + num_article).addClass("avote");
 
 		/* On reaffiche les images de votes sans possibilite de vote */
-		$("#vote" + num_article).after("<span class='avote'>&nbsp;votes<br/><span id='imgoui' title='vote oui'></span><span id='imgnon' title='vote non'></span>");
+		$("#vote" + num_article).after("<span class='avote'>&nbsp;votes<br/><span id='imgoui' title='vote oui' class='fa fa-heart text-danger'></span> <span id='imgnon' title='vote non' class='fa fa-exclamation-circle text-warning'></span>");
 	}
   },
   error: function() {

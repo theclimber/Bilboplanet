@@ -993,8 +993,8 @@ function afficheVotes($nb_votes, $num_article) {
 
 		# Si le visiteur a deja vote
 		$text .= '<span id="vote'.$num_article.'" class="avote">'.$score.' '.$vote.'.
-				<span id="imgoui" title="'.T_('Vote yes').'"></span>
-				<span id="imgnon" title="'.T_('Vote no').'"></span>';
+				<span id="imgoui" title="'.T_('Vote yes').'" class="fa fa-heart text-danger"></span>
+				<span id="imgnon" title="'.T_('Vote no').'" class="fa fa-exclamation-circle text-warning"></span>';
 		$text .= '</span>';
 
 	} else {
@@ -1006,17 +1006,17 @@ function afficheVotes($nb_votes, $num_article) {
 		$text .= '<span id="vote'.$num_article.'" class="vote">'.$score.' '.$vote.'
 				<a href="#blackhole" title="'.T_('This post seems pertinent to you').'" id="aoui'.$num_article.'"
 				onclick="javascript:vote('."'$num_article','$token', 'positif'".');" >
-				<span id="imgoui" title="'.T_('Vote yes').'"></span></a>';
+				<span id="imgoui" title="'.T_('Vote yes').'" class="fa fa-heart text-danger"></span></a>';
 
 		# En fonciton du systeme de vote
 		if($blog_settings->get('planet_votes_system') == "yes-no") {
 			$text .= '<a href="#blackhole" title="'.T_('This post seems not pertinent to you').'" id="anon'.$num_article.'"
 				onclick="javascript:vote('."'$num_article','$token', 'negatif'".');" >
-				<span id="imgnon" title="'.T_('Vote no').'"></span></a>';
+				<span id="imgnon" title="'.T_('Vote no').'" class="fa fa-exclamation-circle text-warning"></span></a>';
 		} else {
 			$text .= '<a href="#blackhole" title="'.T_('This post should not be here').'" id="anon'.$num_article.'"
 				onclick="if(confirm(\''.T_('Are you sure this post should not be on this planet and should be removed?').'\')) '."{ vote('$num_article','$token', 'negatif');}".' " >
-				<span id="imgnon" title="'.T_('Vote no').'"></span></a>';
+				<span id="imgnon" title="'.T_('Vote no').'" class="fa fa-exclamation-circle text-warning"></span></a>';
 		}
 		$text .= "</span>";
 	}

@@ -66,7 +66,7 @@
 
 </div>
 
-
+<!--
 <div id="popup" style="display:none">
 <div class="window-bar">
 	<a href="#" onclick="javascript:close_popup();" id="close_popup">{_Close} x</a>
@@ -84,3 +84,4 @@
 	</div>
 </form>
 </div>
+-->

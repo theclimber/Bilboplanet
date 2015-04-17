@@ -17,7 +17,7 @@
 				</span><br/>
 				<span class="tag-line">
 				<!-- BEGIN userpost.tags -->
-					<span class="tag" onclick="javascript:rm_tag('{$post_id}', '{$tag}')">{$tag}</span>
+					<span class="tag btn btn-default btn-xs" onclick="javascript:rm_tag('{$post_id}', '{$tag}')">{$tag}</span>
 				<!-- END userpost.tags -->
 				</span>
 			</td>
@@ -25,26 +25,38 @@
 				<!-- BEGIN userpost.action.activate -->
 				<span class="action">
 					<!-- BEGIN userpost.action -->
-					<a id="action-post{$post.id}" href="javascript:add_post('{$post.id}')">
-						<img title="{_Accept post}" src="{$planet.url}/themes/{$planet.theme}/user/images/post-accept.png">
+					<a id="action-post{$post.id}" href="javascript:add_post('{$post.id}')" title="{_Accept post}">
+						<i class="fa fa-check-circle text-success"></i>
 					</a>
 					<!-- ELSE userpost.action -->
-					<a id="action-post{$post.id}" href="javascript:rm_post('{$post.id}')">
-						<img title="{_Remove post}" src="{$planet.url}/themes/{$planet.theme}/user/images/post-refuse.png">
+					<a id="action-post{$post.id}" href="javascript:rm_post('{$post.id}')" title="{_Remove post}">
+						<i class="fa fa-exclamation-circle text-warning"></i>
 					</a>
 					<!-- END userpost.action -->
 				</span>
 				<span class="action">
-					<a href="javascript:add_tags('{$post.id}','{$post.title2}')"><img title="{_Add tag}" src="{$planet.url}/themes/{$planet.theme}/user/images/add_tag.png"></a>
+					<a href="#" data-toggle="modal" data-target="#tag-post-form" title="{_Add tag}">
+						<span class="fa-stack">
+		          <i class="fa fa-tag fa-stack-lg"></i>
+		          <i class="fa fa-plus fa-stack-1x text-success"></i>
+		        </span>
+					</a>
 				</span>
 				<!-- BEGIN userpost.action.nocomment -->
 				<span class="action">
-					<a href="javascript:toggle_post_comments('{$post.id}',0)"><img title="{_Disable comments on post}" src="{$planet.url}/themes/{$planet.theme}/user/images/nocomment.png"></a>
+					<a href="javascript:toggle_post_comments('{$post.id}',0)" title="{_Disable comments on post}">
+						<span class="fa-stack">
+		          <i class="fa fa-comment-o fa-flip-horizontal fa-stack-1x"></i>
+		          <i class="fa fa-ban fa-stack-2x text-danger"></i>
+		        </span>
+					</a>
 				</span>
 				<!-- END userpost.action.nocomment -->
 				<!-- BEGIN userpost.action.comment -->
 				<span class="action">
-					<a href="javascript:toggle_post_comments('{$post.id}',1)"><img title="{_Allow comments on post}" src="{$planet.url}/themes/{$planet.theme}/user/images/comment.png"></a>
+					<a href="javascript:toggle_post_comments('{$post.id}',1)" title="{_Allow comments on post}">
+						<i class="fa fa-comment-o fa-flip-horizontal"></i>
+					</a>
 				</span>
 				<!-- END userpost.action.comment -->
 				<!-- END userpost.action.activate -->
@@ -56,6 +68,7 @@
 		</table>
 	</div>
 </div>
+<!--
 <div id="tag-post-form" style="display:none">
 <form>
 	<label class="required" for="tags">{_Tags}</label>
@@ -66,4 +79,30 @@
 	</div>
 </form>
 </div>
+-->
 
+<!-- Modal -->
+<div class="modal fade" id="tag-post-form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="fa fa-times"></i></span></button>
+        <h4 class="modal-title" id="myModalLabel">{_Add tag}</h4>
+      </div>
+			<form id="tagform" method="POST">
+				<input type="hidden" name="ajax" value="tagging" />
+				<input type="hidden" name="post_id" value="{$post.id}" />
+				<input type="hidden" name="action" value="add_tags" />
+	      <div class="modal-body">
+					<div class="form-group">
+						<label class="required" for="tags">{_Tags}</label>
+						<input type="text" id="tags" name="tags" value="" class="form-control" placeholder="{_Comma separated tags (ex: linux,web,event)}" />
+					</div>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" name="apply" class="btn btn-primary" onclick="jSubmitAndCloseDialog('tag-post-form', '{$planet.url}/user/api/', 'tagform', true)">{_Apply}</button>
+	      </div>
+			</form>
+    </div>
+  </div>
+</div>

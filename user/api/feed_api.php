@@ -65,10 +65,10 @@ if($action != "") {
 				$output .= "<li>".$value."</li>";
 			}
 			$output .= "</ul>";
-			print '<div class="flash_error">'.$output.'</div>';
+			print '<div class="flash_error alert alert-danger">'.$output.'</div>';
 		}
 		else {
-			print '<div class="flash_notice">'.$output.'</div>';
+			print '<div class="flash_notice alert alert-info">'.$output.'</div>';
 		}
 		break;
 
@@ -167,10 +167,10 @@ if($action != "") {
 				$output .= "<li>".$value."</li>";
 			}
 			$output .= "</ul>";
-			print '<div class="flash_error">'.$output.'</div>';
+			print '<div class="flash_error alert alert-danger">'.$output.'</div>';
 		}
 		else {
-			print '<div class="flash_notice">'.$output.'</div>';
+			print '<div class="flash_notice alert alert-info">'.$output.'</div>';
 		}
 		break;
 
@@ -206,10 +206,10 @@ if($action != "") {
 				$output .= "<li>".$value."</li>";
 			}
 			$output .= "</ul>";
-			print '<div class="flash_error">'.$output.'</div>';
+			print '<div class="flash_error alert alert-danger">'.$output.'</div>';
 		}
 		else {
-			print '<div class="flash_notice">'.$output.'</div>';
+			print '<div class="flash_notice alert alert-info">'.$output.'</div>';
 		}
 		break;
 
@@ -246,10 +246,10 @@ if($action != "") {
 				$output .= "<li>".$value."</li>";
 			}
 			$output .= "</ul>";
-			print '<div class="flash_error">'.$output.'</div>';
+			print '<div class="flash_error alert alert-danger">'.$output.'</div>';
 		}
 		else {
-			print '<div class="flash_notice">'.$output.'</div>';
+			print '<div class="flash_notice alert alert-info">'.$output.'</div>';
 		}
 		break;
 
@@ -278,7 +278,7 @@ if($action != "") {
 # DEFAULT RETURN
 ##########################################################
 	default:
-		print '<div class="flash_error">'.T_('User bad call').'</div>';
+		print '<div class="flash_error alert alert-danger">'.T_('User bad call').'</div>';
 		break;
 	}
 } else {

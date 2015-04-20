@@ -138,10 +138,10 @@ if(isset($_POST['action'])) {
 				$output .= "<li>".$value."</li>";
 			}
 			$output .= "</ul>";
-			print '<div class="flash_error">'.$output.'</div>';
+			print '<div class="flash_error alert alert-danger">'.$output.'</div>';
 		}
 		else {
-			print '<div class="flash_notice">'.$output.'</div>';
+			print '<div class="flash_notice alert alert-info">'.$output.'</div>';
 		}
 		break;
 
@@ -198,10 +198,10 @@ if(isset($_POST['action'])) {
 				$output .= "<li>".$value."</li>";
 			}
 			$output .= "</ul>";
-			print '<div class="flash_error">'.$output.'</div>';
+			print '<div class="flash_error alert alert-danger">'.$output.'</div>';
 		}
 		else {
-			print '<div class="flash_notice">'.$output.'</div>';
+			print '<div class="flash_notice alert alert-info">'.$output.'</div>';
 		}
 		break;
 
@@ -220,7 +220,7 @@ if(isset($_POST['action'])) {
 		}
 		$cur->update("WHERE feed_id = '$feed_id'");
 
-		print '<div class="flash_notice">'.T_('Feed status toggled').'</div>';
+		print '<div class="flash_notice alert alert-info">'.T_('Feed status toggled').'</div>';
 		break;
 
 ##########################################################
@@ -238,7 +238,7 @@ if(isset($_POST['action'])) {
 		}
 		$cur->update("WHERE feed_id = '$feed_id'");
 
-		print '<div class="flash_notice">'.T_('Feed trust changed').'</div>';
+		print '<div class="flash_notice alert alert-info">'.T_('Feed trust changed').'</div>';
 		break;
 
 ##########################################################
@@ -266,9 +266,9 @@ if(isset($_POST['action'])) {
 		$rs2 = $core->con->select("SELECT * FROM ".$core->prefix."feed WHERE feed_id = '$feed_id'");
 		if (!$rs2->isEmpty()) {
 			$core->con->execute("DELETE FROM ".$core->prefix."feed WHERE feed_id ='$feed_id'");
-			print '<div class="flash_notice">'.sprintf(T_("Delete of feed %s succeeded"),$rs2->f('feed_url')).'</div>';
+			print '<div class="flash_notice alert alert-info">'.sprintf(T_("Delete of feed %s succeeded"),$rs2->f('feed_url')).'</div>';
 		} else {
-			print '<div class="flash_error">'.sprintf(T_("This feed does not exist in the database"),$rs2->f('feed_url')).'</div>';
+			print '<div class="flash_error alert alert-danger">'.sprintf(T_("This feed does not exist in the database"),$rs2->f('feed_url')).'</div>';
 		}
 		break;
 
@@ -301,10 +301,10 @@ if(isset($_POST['action'])) {
 				$output .= "<li>".$value."</li>";
 			}
 			$output .= "</ul>";
-			print '<div class="flash_error">'.$output.'</div>';
+			print '<div class="flash_error alert alert-danger">'.$output.'</div>';
 		}
 		else {
-			print '<div class="flash_notice">'.$output.'</div>';
+			print '<div class="flash_notice alert alert-info">'.$output.'</div>';
 		}
 		break;
 
@@ -346,10 +346,10 @@ if(isset($_POST['action'])) {
 				$output .= "<li>".$value."</li>";
 			}
 			$output .= "</ul>";
-			print '<div class="flash_error">'.$output.'</div>';
+			print '<div class="flash_error alert alert-danger">'.$output.'</div>';
 		}
 		else {
-			print '<div class="flash_notice">'.$output.'</div>';
+			print '<div class="flash_notice alert alert-info">'.$output.'</div>';
 		}
 		break;
 
@@ -383,10 +383,10 @@ if(isset($_POST['action'])) {
 				$output .= "<li>".$value."</li>";
 			}
 			$output .= "</ul>";
-			print '<div class="flash_error">'.$output.'</div>';
+			print '<div class="flash_error alert alert-danger">'.$output.'</div>';
 		}
 		else {
-			print '<div class="flash_notice">'.$output.'</div>';
+			print '<div class="flash_notice alert alert-info">'.$output.'</div>';
 		}
 		break;
 ##########################################################
@@ -451,7 +451,7 @@ if(isset($_POST['action'])) {
 		break;
 
 	default:
-		print '<div class="flash_error">'.T_('User bad call').'</div>';
+		print '<div class="flash_error alert alert-danger">'.T_('User bad call').'</div>';
 		break;
 	}
 } else {

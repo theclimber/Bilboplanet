@@ -102,13 +102,13 @@ if (!empty($flash)) {
 	foreach ($flash as $value) {
 		$msg .= '<li>'.$value.'</li>';
 	}
-	echo '<div id="post_flash" class="flash_notice" style="display:none;" >'.$msg.'</div>';
+	echo '<div id="post_flash" class="flash_notice alert alert-info" style="display:none;" >'.$msg.'</div>';
 }
 elseif (!empty($error)) {
 	foreach ($error as $value) {
 		$msg .= '<li>'.$value.'</li>';
 	}
-	echo '<div id="post_flash" class="flash_error" style="display:none;" >'.$value.'</div>';
+	echo '<div id="post_flash" class="flash_error alert alert-danger" style="display:none;" >'.$value.'</div>';
 }
 ?>
 <fieldset><legend><?php echo T_('Automatic update');?></legend>

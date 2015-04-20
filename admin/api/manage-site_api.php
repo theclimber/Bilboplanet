@@ -96,10 +96,10 @@ if(isset($_POST['action'])) {
 				$output .= "<li>".$value."</li>";
 			}
 			$output .= "</ul>";
-			print '<div class="flash_error">'.$output.'</div>';
+			print '<div class="flash_error alert alert-danger">'.$output.'</div>';
 		}
 		else {
-			print '<div class="flash_notice">'.$output.'</div>';
+			print '<div class="flash_notice alert alert-info">'.$output.'</div>';
 		}
 		break;
 
@@ -172,7 +172,7 @@ if(isset($_POST['action'])) {
 		}
 		$cur->update("WHERE site_id = '$site_id'");
 
-		print '<div class="flash_notice">'.T_('Site status toggled').'</div>';
+		print '<div class="flash_notice alert alert-info">'.T_('Site status toggled').'</div>';
 		break;
 
 ##########################################################
@@ -207,7 +207,7 @@ if(isset($_POST['action'])) {
 			}
 		}
 		$core->con->execute("DELETE FROM ".$core->prefix."site WHERE site_id ='$site_id'");
-		print '<div class="flash_notice">'.sprintf(T_("Delete of site %s succeeded"),$rs2->f('site_url')).'</div>';
+		print '<div class="flash_notice alert alert-info">'.sprintf(T_("Delete of site %s succeeded"),$rs2->f('site_url')).'</div>';
 		break;
 
 ##########################################################
@@ -226,7 +226,7 @@ if(isset($_POST['action'])) {
 		break;
 
 	default:
-		print '<div class="flash_error">'.T_('User bad call').'</div>';
+		print '<div class="flash_error alert alert-danger">'.T_('User bad call').'</div>';
 		break;
 	}
 } else {

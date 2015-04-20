@@ -1,3 +1,4 @@
+<p>
 <!-- [post social buttons] -->
 <ul>
 <!-- BEGIN social.statusnet -->
@@ -23,8 +24,9 @@
 <!-- BEGIN social.reddit -->
 <li>
 	<a href="http://www.reddit.com/submit?title={$post.title}&url={$encoded_url}"
-	onclick="window.location='http://www.reddit.com/submit?title={$stripped_title}&url={$encoded_url}'; return false;"> 
+	onclick="window.location='http://www.reddit.com/submit?title={$stripped_title}&url={$encoded_url}'; return false;">
 		<img src="http://www.reddit.com/static/spreddit7.gif" alt="{_Submit to reddit}" border="0" /> </a>
 </li>
 <!-- END social.reddit -->
 </ul>
+</p>

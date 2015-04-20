@@ -92,7 +92,7 @@ if ($ajax != "") {
 		require_once(dirname(__FILE__).'/../../admin/api/manage-tribe_api.php');
 		break;
 	default:
-		print '<div class="flash_error">'.T_('bad call, this ajax call does not exist').'</div>';
+		print '<div class="flash_error alert alert-danger">'.T_('bad call, this ajax call does not exist').'</div>';
 		break;
 	}
 }

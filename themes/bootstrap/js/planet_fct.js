@@ -91,7 +91,7 @@ function jSubmitAndCloseDialogAndRefresh(dialogId, url, formId, urlRefresh) {
 }
 
 function containsError(containerId) {
-	var errorMsgs = jQuery(".alert-error,.fieldError,.flash_error", "#"+containerId);
+	var errorMsgs = jQuery(".alert-error,.fieldError,.flash_error, .alert-danger", "#"+containerId);
 	return (errorMsgs != null && errorMsgs.length > 0);
 }
 

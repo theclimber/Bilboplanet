@@ -18,7 +18,6 @@
 			<!-- END post.block.gravatar -->
 			<div class="postbox">
 				<div id="expand-button-{$post.id}" class="collapse-button" onclick="javascript:expand_block({$post.id})">&nbsp;</div>
-	            {_Viewed :} {$post.nbview}<br/>
 	            {_Published by }<a href="#" onclick="javascript:add_user('{$post.author_id}')">{$post.author_fullname}</a> : <b>{$post.user_posts}</b><br />
 			</div>
 	  </div>
@@ -26,17 +25,21 @@
 			<div class="panel panel-default">
 			  <div class="panel-heading">
 					<!-- [title] -->
-			    <h3 class="post-title panel-title"><a name="post{$post.id}" href="{$planet.url}/?post_id={$post.id}" title="{_Visit source}">SINGLE : {$post.title}</a></h3>
+			    <h3 class="post-title panel-title"><a name="post{$post.id}" href="{$planet.url}/?post_id={$post.id}" title="{_Visit source}">SINGLE : {$post.title}</a><span class="pull-right">{_Viewed :} {$post.nbview}</span></h3>
 			  </div>
 			  <div class="panel-body">
-			    Panel content
+
 					<!-- [meta] -->
 
 					<!-- [post content] -->
 					<div id="text-{$post.id}" class="post-text" post_id="{$post.id}">{$post.content}</div>
+					<div class="post_description">
+						{!include:'post_tags.tpl'}
+					</div>
 					<!-- [post footer] -->
+					<div class="socialbar">
 					{!include:'social.tpl'}
-
+					</div>
 					<!-- BEGIN post.similar.block -->
 					<div class="similar-block post{$post.id}">
 						<h3>{_Similar posts}</h3>
@@ -93,18 +96,13 @@
 			  </div>
 				<div class="panel-footer">
 					<div class="post-author">
-
-					{_Par} <a href="#" onclick="javascript:add_user('{$post.author_id}')">{$post.author_fullname}</a>, {_at} {$post.hour} <a href="{$post.permalink}" alt="Permalien">Permalien</a>
-
-					<div class="post_description">
-						{!include:'post_tags.tpl'}
+						<span class="pull-left">
+							{_Par} <a href="#" onclick="javascript:add_user('{$post.author_id}')">{$post.author_fullname}</a>, {_at} {$post.hour} <a href="{$post.permalink}" alt="Permalien">Permalien</a>
+						</span>
+						<!-- BEGIN post.block.votes -->
+						<span class="post-vote pull-right">{$votes.html}</span>
+						<!-- END post.block.votes -->
 					</div>
-
-					</div>
-
-					<!-- BEGIN post.block.votes -->
-					<div class="post-vote">{$votes.html}</div>
-					<!-- END post.block.votes -->
 					</div>
 				</div>
 			</div>

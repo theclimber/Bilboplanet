@@ -1,40 +1,52 @@
-<div id="flash-log" style="display:none;">
-	<div id="flash-msg"><!-- spanner --></div>
+<div class="row">
+	<div class="col-xs-12">
+		<div id="flash-log" style="display:none;">
+			<div id="flash-msg"><!-- spanner --></div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="tribesContent col-xs-12">
+		<h1>{_Configure your Tribes}</h1>
+		<button type="button" data-toggle="modal" data-target="#addTribeModal" class="btn btn-primary"><i class="fa fa-plus"></i> {_Create a tribe}</button>
+		<br />
+	</div>
 </div>
 
-<div class="tribesContent">
-	<h1>{_Configure your Tribes}</h1>
+<div class="modal fade" id="addTribeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="fa fa-times"></i></span></button>
+        <h4 class="modal-title" id="myModalLabel">{_Create a tribe}</h4>
+      </div>
+			<!-- Add tribe form -->
+			<form id="addtribe_form" class="form-horizontal">
+      <div class="modal-body">
+					<div class="form-group">
+						<label class="required col-sm-2 control-label" for="tribe_name">{_Tribe name}</label>
+						<div class="col-sm-10">
+							<input class="field form-control" name="tribe_name" type="text" />
+							<p class="help-block">{_ex: climate change}</p>
+						</div>
+					</div>
 
-<div class="button br3px" id="add-form"><a onclick="javascript:openAdd()">
-	{_Create a tribe}</a>
+					<div class="form-group">
+						<label class="required col-sm-2 control-label" for="ordering">{_Ordering}</label>
+						<div class="col-sm-10">
+							<input class="field form-control" name="ordering" type="text" />
+							<p class="help-block">{_The ordering specifies the position of your tribe on the portal}</p>
+						</div>
+					</div>
+			</div>
+      <div class="modal-footer">
+				<button type="reset" class="btn btn-default" name="reset" value="{_Reset}">{_Reset}</button>
+				<button type="submit" name="add_feed" class="btn btn-primary" value="{_Add}" onclick="jCloseDialog('addTribeModal')">{_Add}</button>
+			</div>
+			</form>
+		</div>
+	</div>
 </div>
-
-
-<fieldset id="addtribe-field" style="display:none">
-	<!-- Add tribe form -->
-	<form id="addtribe_form" class="user">
-		<div class="close-button"><a class="close" onclick="javascript:closeAdd()"><img src="../themes/{$planet.theme}/user/images/close-button.png"/></a></div>
-
-		<p>
-			<label class="required" for="tribe_name">{_Tribe name}</label>
-			<input class="field" name="tribe_name" type="text" /><br/>
-			<span class="description">{_ex: climate change}</span>
-		</p>
-
-		<p>
-			<label class="required" for="ordering">{_Ordering}</label>
-			<input class="field" name="ordering" type="text" /><br/>
-			<span class="description">{_The ordering specifies the position of your tribe on the portal}</span>
-		</p>
-
-		<p>
-			<input type="reset" class="button" name="reset" value="{_Reset}">&nbsp;&nbsp;
-			<input type="submit" name="add_feed" class="button" value="{_Add}" />
-		</p>
-
-	</form>
-</fieldset>
-
 
 <fieldset>
 	<div id="tribe-list">
@@ -59,7 +71,7 @@
 					<span class="user">{$tribe_user} <a href="javascript:rm_user('{$tribe_id}','{$tribe_user}')">x</a></span>
 					<!-- END tribes.user -->
 					</span></li>
-				<li>{_Search :} {$tribe.search} 
+				<li>{_Search :} {$tribe.search}
 					<!-- BEGIN tribes.search -->
 					(<a href="javascript:rm_search('{$tribe_id}')">{_clear}</a>)
 					<!-- ELSE tribes.search -->
@@ -188,8 +200,4 @@
 			</div>
 		</form>
 	</span>
-</div>
-
-
-
 </div>

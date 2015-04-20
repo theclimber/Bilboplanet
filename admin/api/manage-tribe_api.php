@@ -119,10 +119,10 @@ if(isset($_POST['action'])) {
 				$output .= "<li>".$value."</li>";
 			}
 			$output .= "</ul>";
-			print '<div class="flash_error">'.$output.'</div>';
+			print '<div class="flash_error alert alert-danger">'.$output.'</div>';
 		}
 		else {
-			print '<div class="flash_notice">'.$output.'</div>';
+			print '<div class="flash_notice alert alert-info">'.$output.'</div>';
 		}
 		break;
 
@@ -168,10 +168,10 @@ if(isset($_POST['action'])) {
 				$output .= "<li>".$value."</li>";
 			}
 			$output .= "</ul>";
-			print '<div class="flash_error">'.$output.'</div>';
+			print '<div class="flash_error alert alert-danger">'.$output.'</div>';
 		}
 		else {
-			print '<div class="flash_notice">'.$output.'</div>';
+			print '<div class="flash_notice alert alert-info">'.$output.'</div>';
 		}
 		break;
 
@@ -190,9 +190,9 @@ if(isset($_POST['action'])) {
 				$cur->visibility = 1;
 			}
 			$cur->update("WHERE tribe_id = '$tribe_id'");
-			print '<div class="flash_notice">'.T_('Tribe visibility toggled').'</div>';
+			print '<div class="flash_notice alert alert-info">'.T_('Tribe visibility toggled').'</div>';
 		} else {
-			print '<div class="flash_error">'.T_('Tribe does not exist').'</div>';
+			print '<div class="flash_error alert alert-danger">'.T_('Tribe does not exist').'</div>';
 		}
 		break;
 
@@ -221,9 +221,9 @@ if(isset($_POST['action'])) {
 		$rs2 = $core->con->select("SELECT * FROM ".$core->prefix."tribe WHERE tribe_id = '$tribe_id'");
 		if (!$rs2->isEmpty()) {
 			$core->con->execute("DELETE FROM ".$core->prefix."tribe WHERE tribe_id ='$tribe_id'");
-			print '<div class="flash_notice">'.sprintf(T_("Delete of tribe %s succeeded"),$rs2->f('tribe_name')).'</div>';
+			print '<div class="flash_notice alert alert-info">'.sprintf(T_("Delete of tribe %s succeeded"),$rs2->f('tribe_name')).'</div>';
 		} else {
-			print '<div class="flash_error">'.T_("This tribe does not exist in the database").'</div>';
+			print '<div class="flash_error alert alert-danger">'.T_("This tribe does not exist in the database").'</div>';
 		}
 		break;
 
@@ -260,10 +260,10 @@ if(isset($_POST['action'])) {
 				$output .= "<li>".$value."</li>";
 			}
 			$output .= "</ul>";
-			print '<div class="flash_error">'.$output.'</div>';
+			print '<div class="flash_error alert alert-danger">'.$output.'</div>';
 		}
 		else {
-			print '<div class="flash_notice">'.$output.'</div>';
+			print '<div class="flash_notice alert alert-info">'.$output.'</div>';
 		}
 		break;
 
@@ -307,10 +307,10 @@ if(isset($_POST['action'])) {
 				$output .= "<li>".$value."</li>";
 			}
 			$output .= "</ul>";
-			print '<div class="flash_error">'.$output.'</div>';
+			print '<div class="flash_error alert alert-danger">'.$output.'</div>';
 		}
 		else {
-			print '<div class="flash_notice">'.$output.'</div>';
+			print '<div class="flash_notice alert alert-info">'.$output.'</div>';
 		}
 		break;
 
@@ -333,10 +333,10 @@ if(isset($_POST['action'])) {
 				$output .= "<li>".$value."</li>";
 			}
 			$output .= "</ul>";
-			print '<div class="flash_error">'.$output.'</div>';
+			print '<div class="flash_error alert alert-danger">'.$output.'</div>';
 		}
 		else {
-			print '<div class="flash_notice">'.$output.'</div>';
+			print '<div class="flash_notice alert alert-info">'.$output.'</div>';
 		}
 		break;
 
@@ -358,10 +358,10 @@ if(isset($_POST['action'])) {
 				$output .= "<li>".$value."</li>";
 			}
 			$output .= "</ul>";
-			print '<div class="flash_error">'.$output.'</div>';
+			print '<div class="flash_error alert alert-danger">'.$output.'</div>';
 		}
 		else {
-			print '<div class="flash_notice">'.$output.'</div>';
+			print '<div class="flash_notice alert alert-info">'.$output.'</div>';
 		}
 		break;
 
@@ -397,10 +397,10 @@ if(isset($_POST['action'])) {
 				$output .= "<li>".$value."</li>";
 			}
 			$output .= "</ul>";
-			print '<div class="flash_error">'.$output.'</div>';
+			print '<div class="flash_error alert alert-danger">'.$output.'</div>';
 		}
 		else {
-			print '<div class="flash_notice">'.$output.'</div>';
+			print '<div class="flash_notice alert alert-info">'.$output.'</div>';
 		}
 		break;
 
@@ -442,10 +442,10 @@ if(isset($_POST['action'])) {
 				$output .= "<li>".$value."</li>";
 			}
 			$output .= "</ul>";
-			print '<div class="flash_error">'.$output.'</div>';
+			print '<div class="flash_error alert alert-danger">'.$output.'</div>';
 		}
 		else {
-			print '<div class="flash_notice">'.$output.'</div>';
+			print '<div class="flash_notice alert alert-info">'.$output.'</div>';
 		}
 		break;
 
@@ -481,10 +481,10 @@ if(isset($_POST['action'])) {
 				$output .= "<li>".$value."</li>";
 			}
 			$output .= "</ul>";
-			print '<div class="flash_error">'.$output.'</div>';
+			print '<div class="flash_error alert alert-danger">'.$output.'</div>';
 		}
 		else {
-			print '<div class="flash_notice">'.$output.'</div>';
+			print '<div class="flash_notice alert alert-info">'.$output.'</div>';
 		}
 		break;
 
@@ -526,10 +526,10 @@ if(isset($_POST['action'])) {
 				$output .= "<li>".$value."</li>";
 			}
 			$output .= "</ul>";
-			print '<div class="flash_error">'.$output.'</div>';
+			print '<div class="flash_error alert alert-danger">'.$output.'</div>';
 		}
 		else {
-			print '<div class="flash_notice">'.$output.'</div>';
+			print '<div class="flash_notice alert alert-info">'.$output.'</div>';
 		}
 		break;
 
@@ -653,10 +653,10 @@ if(isset($_POST['action'])) {
 				$output .= "<li>".$value."</li>";
 			}
 			$output .= "</ul>";
-			print '<div class="flash_error">'.$output.'</div>';
+			print '<div class="flash_error alert alert-danger">'.$output.'</div>';
 		}
 		else {
-			print '<div class="flash_notice">'.$output.'</div>';
+			print '<div class="flash_notice alert alert-info">'.$output.'</div>';
 		}
 		break;
 
@@ -693,10 +693,10 @@ if(isset($_POST['action'])) {
 				$output .= "<li>".$value."</li>";
 			}
 			$output .= "</ul>";
-			print '<div class="flash_error">'.$output.'</div>';
+			print '<div class="flash_error alert alert-danger">'.$output.'</div>';
 		}
 		else {
-			print '<div class="flash_notice">'.$output.'</div>';
+			print '<div class="flash_notice alert alert-info">'.$output.'</div>';
 		}
 		break;
 
@@ -730,7 +730,7 @@ if(isset($_POST['action'])) {
 		break;
 
 	default:
-		print '<div class="flash_error">'.T_('User bad call').'</div>';
+		print '<div class="flash_error alert alert-danger">'.T_('User bad call').'</div>';
 		break;
 	}
 } else {

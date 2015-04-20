@@ -1,4 +1,5 @@
 				<div class="tag-line">
+					<p>
 					{_tags :}
 				<!-- BEGIN post.tags -->
 					<span class="tag"><a href="#" onclick="javascript:add_tag('{$post_tag}')" class="btn btn-default btn-xs">{$post_tag}</a> <!--<a href="#" onclick="javascript:rm_tag_post('{$post.id}','{$post_tag}')">x</a>--></span>
@@ -22,6 +23,7 @@
 					</span>
 				</a>
 				<!-- END post.action.uncomment -->
+				</p>
 				</div>
 
 

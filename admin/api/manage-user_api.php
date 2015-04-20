@@ -168,10 +168,10 @@ if(isset($_POST['action'])) {
 				$output .= "<li>".$value."</li>";
 			}
 			$output .= "</ul>";
-			print '<div class="flash_error">'.$output.'</div>';
+			print '<div class="flash_error alert alert-danger">'.$output.'</div>';
 		}
 		else {
-			print '<div class="flash_notice">'.$output.'</div>';
+			print '<div class="flash_notice alert alert-info">'.$output.'</div>';
 		}
 		break;
 
@@ -190,7 +190,7 @@ if(isset($_POST['action'])) {
 		}
 		$cur->update("WHERE user_id = '$user_id'");
 
-		print '<div class="flash_notice">'.T_('User status toggled').'</div>';
+		print '<div class="flash_notice alert alert-info">'.T_('User status toggled').'</div>';
 		break;
 
 ##########################################################
@@ -265,10 +265,10 @@ if(isset($_POST['action'])) {
 				$output .= "<li>".$value."</li>";
 			}
 			$output .= "</ul>";
-			print '<div class="flash_error">'.$output.'</div>';
+			print '<div class="flash_error alert alert-danger">'.$output.'</div>';
 		}
 		else {
-			print '<div class="flash_notice">'.$output.'</div>';
+			print '<div class="flash_notice alert alert-info">'.$output.'</div>';
 		}
 		break;
 
@@ -279,7 +279,7 @@ if(isset($_POST['action'])) {
 		$user_id = urldecode(trim($_POST['user_id']));
 		$user_perms = $core->getUserRolePermissions($user_id);
 		if ($user_perms->{'role'} == "god") {
-			print '<div class="flash_error">'.T_('You are not allowed to remove a super user').'</div>';
+			print '<div class="flash_error alert alert-danger">'.T_('You are not allowed to remove a super user').'</div>';
 		}
 		else {
 			$user = $core->con->select("SELECT user_fullname as fullname FROM ".$core->prefix."user WHERE user_id = '$user_id'");
@@ -306,7 +306,7 @@ if(isset($_POST['action'])) {
 		$user_id = urldecode(trim($_POST['user_id']));
 		$user_perms = $core->getUserRolePermissions($user_id);
 		if ($user_perms->{'role'} == "god") {
-			print '<div class="flash_error">'.T_('You are not allowed to remove a super user').'</div>';
+			print '<div class="flash_error alert alert-danger">'.T_('You are not allowed to remove a super user').'</div>';
 		}
 		else {
 			$user = $core->con->select("SELECT user_fullname as fullname FROM ".$core->prefix."user WHERE user_id = '$user_id'");
@@ -325,7 +325,7 @@ if(isset($_POST['action'])) {
 			if (is_dir($shaarli_dir))
 				rrmdir($shaarli_dir);
 
-			print '<div class="flash_notice">'.sprintf(T_("Delete of user %s succeeded"),$user->f('fullname')).'</div>';
+			print '<div class="flash_notice alert alert-info">'.sprintf(T_("Delete of user %s succeeded"),$user->f('fullname')).'</div>';
 		}
 		break;
 
@@ -393,7 +393,7 @@ if(isset($_POST['action'])) {
 # DEFAULT RETURN
 ##########################################################
 	default:
-		print '<div class="flash_error">'.T_('User bad call').'</div>';
+		print '<div class="flash_error alert alert-danger">'.T_('User bad call').'</div>';
 		break;
 	}
 } else {

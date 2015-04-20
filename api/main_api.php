@@ -204,7 +204,7 @@ if(isset($_POST['action'])) {
 # DEFAULT RETURN
 ##########################################################
 	default:
-		print '<div class="flash_error">'.T_('User bad call').'</div>';
+		print '<div class="flash_error alert alert-danger">'.T_('User bad call').'</div>';
 		break;
 	}
 } else {

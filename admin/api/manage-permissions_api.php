@@ -33,15 +33,15 @@ if(isset($_POST['action'])) {
 		$user_id = urldecode(trim($_POST['user_id']));
 		$user_role = trim($_POST['user_role']);
 		if ($user_id == $core->auth->userID()) {
-			print '<div class="flash_error">'.T_('Impossible to change your own role').'</div>';
+			print '<div class="flash_error alert alert-danger">'.T_('Impossible to change your own role').'</div>';
 		}
 		else {
 			if (!empty($user_role)) {
 				$core->setUserRole($user_id, $user_role);
-				print '<div class="flash_notice">'.sprintf(T_('User %s is now know as %s'), $user_id, $user_role).'</div>';
+				print '<div class="flash_notice alert alert-info">'.sprintf(T_('User %s is now know as %s'), $user_id, $user_role).'</div>';
 			}
 			else {
-				print '<div class="flash_error">'.T_('There was a problem during toggling user role').'</div>';
+				print '<div class="flash_error alert alert-danger">'.T_('There was a problem during toggling user role').'</div>';
 			}
 		}
 		break;
@@ -67,11 +67,11 @@ if(isset($_POST['action'])) {
 		}
 
 		if ($user_id == $core->auth->userID()) {
-			print '<div class="flash_error">'.T_('Impossible to change your own role').'</div>';
+			print '<div class="flash_error alert alert-danger">'.T_('Impossible to change your own role').'</div>';
 		}
 		else {
 			$core->setUserPermissions($user_id, $manager_perm);
-			print '<div class="flash_notice">'.sprintf(T_('User %s has new permissions : %s'), $user_id, '('.implode(',',$manager_perm).')').'</div>';
+			print '<div class="flash_notice alert alert-info">'.sprintf(T_('User %s has new permissions : %s'), $user_id, '('.implode(',',$manager_perm).')').'</div>';
 		}
 		break;
 
@@ -184,7 +184,7 @@ if(isset($_POST['action'])) {
 # DEFAULT RETURN
 ##########################################################
 	default:
-		print '<div class="flash_error">'.T_('User bad call').'</div>';
+		print '<div class="flash_error alert alert-danger">'.T_('User bad call').'</div>';
 		break;
 	}
 } else {

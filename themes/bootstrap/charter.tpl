@@ -1,15 +1,19 @@
 <div id="content" class="pages">
-
+<div class="row">
 	<!-- BEGIN subscription.flash -->
-	<div class="post box">
+	<div class="post box col-md-12">
 		<div id="flashmsg">
 			{$flashmsg}
 		</div>
 	</div>
 	<!-- END subscription.flash -->
-	<div class="post box">
+</div>
+<div class="row">
+	<div class="post box col-md-12">
 		<div>{$subscription_content}</div>
 	</div>
+</div>
+<div class="row">
 	<div class="post box">
 		<h1 class="post-title">{_Test your RSS feed}</h1>
 		<p>
@@ -20,10 +24,12 @@
             </ul>
 		</p>
 	</div>
-
+</div>
+<div class="row">
 	<div class="post box">
 		<h1 class="post-title">{_Contact us}</h1>
         {_If you need to contact the administrator of this planet (problem with a feed, help, ...) you are kindly invited to do this on our contact page :}
         <a href='contact.php'>{_contact us}</a>.</p>
 	</div>
+</div>
 </div>

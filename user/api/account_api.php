@@ -74,29 +74,29 @@ if(isset($_GET['action'])) {
 			sendmail($blog_settings->get('author_mail'), $to, $subject, $msg);
 		}
 
-		
+
 		if (!empty($error)) {
 			$output .= "<ul>";
 			foreach($error as $value) {
 				$output .= "<li>".$value."</li>";
 			}
 			$output .= "</ul>";
-			$output = '<div class="flash_error">'.$output.'</div>';
+			$output = '<div class="flash_error alert alert-danger">'.$output.'</div>';
 		}
 		else {
-			$output = '<div class="flash_notice">'.$output.'</div>';
+			$output = '<div class="flash_notice alert alert-info">'.$output.'</div>';
 		}
         header('Content-type: text/html; charset=utf-8');
         print '<html><meta http-equiv="refresh" content="10; URL='.BP_PLANET_URL.'"><body>';
         print $output;
         print "</body></html>";
 		break;
-		
+
 ##########################################################
 # DEFAULT RETURN
 ##########################################################
 	default:
-		print '<div class="flash_error">'.T_('User bad call').'</div>';
+		print '<div class="flash_error alert alert-danger">'.T_('User bad call').'</div>';
 		break;
 	}
 } elseif(isset($_POST['action'])) {
@@ -167,10 +167,10 @@ if(isset($_GET['action'])) {
 				$output .= "<li>".$value."</li>";
 			}
 			$output .= "</ul>";
-			print '<div class="flash_error">'.$output.'</div>';
+			print '<div class="flash_error alert alert-danger">'.$output.'</div>';
 		}
 		else {
-			print '<div class="flash_notice">'.$output.'</div>';
+			print '<div class="flash_notice alert alert-info">'.$output.'</div>';
 		}
 		break;
 
@@ -179,7 +179,7 @@ if(isset($_GET['action'])) {
 # DEFAULT RETURN
 ##########################################################
 	default:
-		print '<div class="flash_error">'.T_('User bad call').'</div>';
+		print '<div class="flash_error alert alert-danger">'.T_('User bad call').'</div>';
 		break;
 	}
 } else {

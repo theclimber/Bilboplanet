@@ -8,9 +8,8 @@
 <title>{$params.title}</title>
 
 <link rel="canonical" href="{$planet.url}" />
-<!-- CSS
+<!-- CSS -->
 <link rel="stylesheet" type="text/css" title="default"	href="{$planet.url}/themes/{$planet.theme}/css/style.css" />
--->
 <link rel="stylesheet" type="text/css" href="{$planet.url}/themes/{$planet.theme}/js/fancy/jquery.fancybox-1.3.1.css" />
 
 <link rel="stylesheet" type="text/css"	href="{$planet.url}/themes/{$planet.theme}/css/jquery-ui.min.css" />
